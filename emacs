@@ -261,7 +261,19 @@
 
 
 ; font size
-(set-face-attribute 'default nil :font "DejaVu Sans Mono-16")
+
+(cond
+ ((string-equal system-type "windows-nt")
+  (progn
+    (set-face-attribute 'default nil :height 150)
+    )
+  )
+ ((string-equal system-type "gnu/linux")
+  (progn
+    (set-face-attribute 'default nil :font "DejaVu Sans Mono-16")
+    )
+  )
+ )
 
 (setenv "SHELL" "/bin/bash")
 (setq explicit-shell-file-name "/bin/bash")
