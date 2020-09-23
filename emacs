@@ -60,6 +60,7 @@
                      helm
                      helm-ag
                      helm-gtags
+                     helm-swoop
                      imenu-list
                      java-imports
                      java-snippets
