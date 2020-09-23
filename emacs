@@ -63,7 +63,6 @@
                      imenu-list
                      java-imports
                      java-snippets
-                     jdee
                      jtags
                      magit
                      magit-find-file
@@ -75,6 +74,7 @@
                      projectile
                      projectile-codesearch
                      prolog
+                     psvn
                      use-package
                      yasnippet
                      ))
@@ -261,7 +261,6 @@
 
 
 ; font size
-
 (cond
  ((string-equal system-type "windows-nt")
   (progn
@@ -293,21 +292,23 @@
    (quote
     ("26e7b5bb876948e89e95ed7b372a15bf2c0ddbadd4c750542290cba22f7da682" "0209b7bbfae424bbc1d4c644c67f288547fd4a727795deebf7d60e730bd08356" "a7aac758457970a66b645e6dea51be0fef73a33cc14e7bbb1c8d99ccf83dd005" "dbf0941d6409475082f1265a30ffb41ee4c9716d94431de79f33800af106f381" "98f4223e9248f6a6310612b9b9758a4ba3bda175461e2024deecc602587cbc76" "005a69c06c6c4db2ae818bf8e9ea1839b185fd0831e2f76b4e581be41db0fb72" "c493b26e78a314f7512e8456027234c3e8a5af55faff91edd5f9823b2300456b" "9cc4c91821b9d63ca0076d3bac25123000e829e997c4bb40fc49b925f8ac2dd1" "a790730a42d04c8d624aacc870a1c8cf047ec88cd9e576412d148adee2fe5468" "d492f6229f3ee0c393daaf4a58d96763ef7dcae04bbb35ac29bf71d28f836663" "e21ca41b179573a4c804bccbe7932c7953b99e61b6ab59d5e847a09316973e6e" "59c192f0d645d67f92de7d5d19019962a8bc7d58cd4085e2018aad53a63d9f73" "08329abeab2963fb806c98abca3814020637fb072e53d21ffb0bcb4b6815e797" "fb25f8c8a8016295e5d1f895b6880cb4d2009cf4b25ded9b0a49616e315dd885" "ae223734896efa666dc6d7ed46a941e9d94d419e1a1aeea93e2173142d45730a" "05cd217e406a2e4912dd42218b2133a71b0125fed21ebeda7f3ac36b1fcb1e2a" default)))
  '(display-time-mode t)
- '(jdee-ant-enable-find t)
- '(jdee-build-function (quote jde-ant-build))
- '(jdee-gen-k&r nil)
- '(jdee-jdk (quote ("10.0")))
- '(jdee-jdk-registry (quote (("10.0" . "/usr/lib/jvm/java-10-openjdk-armhf"))))
- '(jdee-server-dir "~/software/emacs_jdee-server")
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (imenu-list move-text dumb-jump helm-ag engine-mode gnuplot pdf-tools emms dired-rainbow helm ggtags helm-gtags gtags etags-table ctags jtags chess java-snippets java-imports yasnippet prolog projectile-codesearch neotree modern-cpp-font-lock magit-find-file jdee fountain-mode csharp-mode company clang-format auto-complete-c-headers ag)))
+    (helm-swoop psvn imenu-list move-text dumb-jump helm-ag engine-mode gnuplot pdf-tools emms dired-rainbow helm ggtags helm-gtags gtags etags-table ctags jtags chess java-snippets java-imports yasnippet prolog projectile-codesearch neotree modern-cpp-font-lock magit-find-file fountain-mode csharp-mode company clang-format auto-complete-c-headers ag)))
  '(tool-bar-mode nil))
 
 (setq debug-on-error nil)
 
 (global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-c k r") 'helm-show-kill-ring)
+(global-set-key (kbd "C-c g") 'helm-grep-do-git-grep)
+(global-set-key (kbd "C-c h") 'helm-swoop)
+(global-set-key (kbd "C-c b") 'helm-buffers-list)
+(global-set-key (kbd "C-x l") 'helm-bookmarks)
+
+(when (fboundp 'winner-mode)
+  (winner-mode 1))
 
 (require 'projectile)
 (setq projectile-indexing-method 'alien)
