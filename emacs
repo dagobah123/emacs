@@ -296,7 +296,7 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-c k r") 'helm-show-kill-ring)
 (global-set-key (kbd "C-c g") 'helm-grep-do-git-grep)
-(global-set-key (kbd "C-c h") 'helm-swoop)
+(global-set-key (kbd "C-s") 'helm-swoop)
 (global-set-key (kbd "C-c b") 'helm-buffers-list)
 (global-set-key (kbd "C-c l") 'helm-bookmarks)
 (global-set-key (kbd "C-c i") 'helm-mini)
