@@ -35,7 +35,7 @@
 ; package archives
 (require 'package)
 (setq package-archives '(
-                         ("gnu" . "https://elpa.gnu.org/packages/")
+                         ;("gnu" . "https://elpa.gnu.org/packages/")
                          ("marmalade" . "https://marmalade-repo.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")))
 
@@ -65,7 +65,6 @@
                      java-imports
                      java-snippets
                      jtags
-                     load-dir
                      magit
                      magit-find-file
                      modern-cpp-font-lock
@@ -414,7 +413,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (load-dir powershell helm-swoop psvn imenu-list move-text dumb-jump helm-ag engine-mode gnuplot pdf-tools emms dired-rainbow helm ggtags helm-gtags gtags etags-table ctags jtags chess java-snippets java-imports yasnippet prolog projectile-codesearch neotree modern-cpp-font-lock magit-find-file fountain-mode csharp-mode company clang-format auto-complete-c-headers ag)))
+    (powershell helm-swoop psvn imenu-list move-text dumb-jump helm-ag engine-mode gnuplot pdf-tools emms dired-rainbow helm ggtags helm-gtags gtags etags-table ctags jtags chess java-snippets java-imports yasnippet prolog projectile-codesearch neotree modern-cpp-font-lock magit-find-file fountain-mode csharp-mode company clang-format auto-complete-c-headers ag)))
  '(tool-bar-mode nil))
 
 (custom-set-faces
