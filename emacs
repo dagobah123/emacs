@@ -140,7 +140,7 @@
 (cua-mode t)
 
 ; do not truncate lines
-(setq-default truncate-lines -1)
+;(setq-default truncate-lines -1)
 
 ; theme
 (load-theme 'wombat t)
@@ -156,7 +156,7 @@
 
 ; ido
 (setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
+;(setq ido-everywhere t)
 (ido-mode 1)
 
 ; projectile
@@ -292,6 +292,7 @@
 
 (setq debug-on-error nil)
 
+(helm-mode 1)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-c k r") 'helm-show-kill-ring)
 (global-set-key (kbd "C-c g") 'helm-grep-do-git-grep)
@@ -299,6 +300,7 @@
 (global-set-key (kbd "C-c b") 'helm-buffers-list)
 (global-set-key (kbd "C-c l") 'helm-bookmarks)
 (global-set-key (kbd "C-c i") 'helm-mini)
+(global-set-key (kbd "C-c q") 'helm-info)
 
 (when (fboundp 'winner-mode)
   (winner-mode 1))
