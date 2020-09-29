@@ -261,7 +261,6 @@
 
 (define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
 
-
 ; font size
 (cond
  ((string-equal system-type "windows-nt")
@@ -433,3 +432,12 @@
 (put 'erase-buffer 'disabled nil)
 
 (load "~/source/custom_el/custom_projects.el")
+
+(global-display-line-numbers-mode)
+(setq display-line-numbers-type 'relative)
+
+(global-hl-line-mode)
+(set-face-background 'highlight "#007700")
+(set-face-attribute hl-line-face nil :underline nil)
+(set-face-foreground 'highlight nil)
+(set-face-underline-p 'highlight t)
