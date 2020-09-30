@@ -431,8 +431,6 @@
 
 (put 'erase-buffer 'disabled nil)
 
-(load "~/source/custom_el/custom_projects.el")
-
 (global-display-line-numbers-mode)
 (setq display-line-numbers-type 'relative)
 
@@ -441,3 +439,14 @@
 (set-face-attribute hl-line-face nil :underline nil)
 (set-face-foreground 'highlight nil)
 (set-face-underline-p 'highlight t)
+
+(defun my:copy-line()
+  (interactive)
+  (back-to-indentation)
+  (kill-line)
+  (yank)
+)
+
+(global-set-key (kbd "C-c w") 'my:copy-line)
+
+(load "~/source/custom_el/custom_projects.el")
