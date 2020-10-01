@@ -140,7 +140,7 @@
 (cua-mode t)
 
 ; do not truncate lines
-;(setq-default truncate-lines -1)
+(setq-default truncate-lines -1)
 
 ; theme
 (load-theme 'wombat t)
