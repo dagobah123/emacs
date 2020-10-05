@@ -245,8 +245,8 @@
 (setq neo-window-fixed-size nil)
 
 ; dumb-jump
-(global-set-key (kbd "C-,") 'dumb-jump-back)
 (global-set-key (kbd "C-.") 'dumb-jump-go)
+(global-set-key (kbd "C-,") 'dumb-jump-back)
 
 (require 'ggtags)
 (add-hook 'c-mode-common-hook
@@ -261,7 +261,8 @@
 (define-key ggtags-mode-map (kbd "C-c g c") 'ggtags-create-tags)
 (define-key ggtags-mode-map (kbd "C-c g u") 'ggtags-update-tags)
 
-(define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
+(define-key ggtags-mode-map (kbd "M-.") 'xref-find-definitions)
+(define-key ggtags-mode-map (kbd "M-,") 'xref-pop-marker-stack)
 
 ; font size
 (cond
@@ -450,13 +451,13 @@
 (global-set-key (kbd "C-c w") 'my:copy-line)
 
 ; paredit
-(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
-(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
-(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
-(add-hook 'ielm-mode-hook             #'enable-paredit-mode)
-(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
-(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
-(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+;(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+;(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
+;(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+;(add-hook 'ielm-mode-hook             #'enable-paredit-mode)
+;(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
+;(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+;(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 
 (load "~/source/custom_el/custom_projects.el")
   
