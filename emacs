@@ -32,6 +32,8 @@
             )
           )
 
+(global-set-key (kbd "C-c f") 'find-name-dired)
+
 ; package archives
 (require 'package)
 (setq package-archives '(
@@ -298,7 +300,7 @@
 (global-set-key (kbd "C-c l") 'helm-bookmarks)
 (global-set-key (kbd "C-c i") 'helm-mini)
 (global-set-key (kbd "C-c q") 'helm-info)
-(global-set-key (kbd "C-c f") 'helm-find-files)
+; (global-set-key (kbd "C-c f") 'helm-find-files)
 
 (when (fboundp 'winner-mode)
   (winner-mode 1))
