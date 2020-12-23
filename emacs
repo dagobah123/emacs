@@ -48,7 +48,9 @@
                      company
                      counsel-jq
                      csharp-mode
+                     dired-narrow
                      dired-rainbow
+                     dired-subtree
                      dumb-jump
                      emms
                      engine-mode
@@ -311,6 +313,20 @@
 (projectile-global-mode)
 (projectile-mode +1)
 
+(use-package dired-narrow
+  :ensure t
+  :config
+  (bind-key "C-f" #'dired-narrow)
+  ;(bind-key "C-f" #'dired-narrow-fuzzy)
+)
+
+(use-package dired-subtree
+  :ensure t
+  :after dired
+  :config
+  (bind-key "C-1" #'dired-subtree-toggle)
+)
+
 ; emms
 (use-package emms
   :ensure t
@@ -415,7 +431,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (counsel-jq paredit expand-region powershell helm-swoop imenu-list move-text dumb-jump helm-ag engine-mode gnuplot pdf-tools emms dired-rainbow helm ggtags helm-gtags jtags chess java-snippets java-imports yasnippet prolog projectile-codesearch neotree modern-cpp-font-lock magit-find-file fountain-mode csharp-mode company clang-format auto-complete-c-headers ag)))
+    (dired-narrow dired-subtree counsel-jq paredit expand-region powershell helm-swoop imenu-list move-text dumb-jump helm-ag engine-mode gnuplot pdf-tools emms dired-rainbow helm ggtags helm-gtags jtags chess java-snippets java-imports yasnippet prolog projectile-codesearch neotree modern-cpp-font-lock magit-find-file fountain-mode csharp-mode company clang-format auto-complete-c-headers ag)))
  '(tool-bar-mode nil))
 
 (custom-set-faces
