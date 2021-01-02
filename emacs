@@ -6,7 +6,7 @@
 ;  \ \_____\  \ \_\ \ \_\  \ \_\ \_\  \ \_____\  \/\_____\
 ;   \/_____/   \/_/  \/_/   \/_/\/_/   \/_____/   \/_____/
 
-; org-capture
+; org
 (setq org-directory "~/source/org-mode/")
 (setq org-default-notes-file (concat org-directory "/org-capture.org"))
 (global-set-key (kbd "C-c a") 'org-agenda)
@@ -324,7 +324,7 @@
   :ensure t
   :after dired
   :config
-  (bind-key "C-1" #'dired-subtree-toggle)
+  (bind-key "C-c 1" #'dired-subtree-toggle)
 )
 
 ; emms
