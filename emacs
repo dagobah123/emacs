@@ -23,6 +23,9 @@
 
 (setq org-agenda-files (list "~/source/org-mode/tasks.org"))
 
+(global-set-key (kbd "C-x C-b") 'switch-to-buffer)
+(global-set-key (kbd "C-c C-b") 'next-buffer)
+
 ; dired move up folder with "b"
 (add-hook 'dired-mode-hook
           (lambda ()
