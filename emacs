@@ -24,7 +24,16 @@
 (setq org-agenda-files (list "~/source/org-mode/tasks.org"))
 
 (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
-(global-set-key (kbd "C-c C-b") 'next-buffer)
+(global-set-key (kbd "C-<next>") 'next-buffer)
+(global-set-key (kbd "C-<prior>") 'previous-buffer)
+
+(defun eww-new ()
+  (interactive)
+  (let ((url (read-from-minibuffer "Enter URL or keywords: ")))
+    (switch-to-buffer (generate-new-buffer "eww"))
+    (eww-mode)
+    (eww url)))
+
 
 ; dired move up folder with "b"
 (add-hook 'dired-mode-hook
@@ -234,6 +243,8 @@
                   "gimp" '(file))
             (list (openwith-make-extension-regexp '("avi" "mp3" "mp4" "wav"))
                   "vlc" '(file))
+            (list (openwith-make-extension-regexp '("sln"))
+                  "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\Common7\\IDE\\devenv.exe" '(file))
             )
       )
 
