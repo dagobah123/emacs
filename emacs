@@ -188,7 +188,24 @@
 (add-hook 'org-shiftright-final-hook 'windmove-right)
 (setq org-support-shift-select 'always)
 (setq org-todo-keywords
-    '((sequence "TODO" "IN-PROGRESS" "WAITING" "DONE")))
+    '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "CANCELED" "DONE")))
+
+(setq org-todo-keyword-faces
+      '(
+        ("TODO" . (:foreground "dark orange" :background "black" :weight bold))
+        ("IN-PROGRESS" . (:foreground "green yellow" :background "black" :weight bold))
+        ("WAITING" . (:foreground "orange red" :background "black" :weight bold))
+        ("CANCELED" . (:foreground "gray" :background "black" :weight bold))
+        ("DONE" . (:foreground "gray" :background "black" :weight bold))
+         ))
+
+(custom-set-faces
+  '(org-level-1 ((t (:foreground "green" :inherit outline-1 :height 1.0))))
+  '(org-level-2 ((t (:inherit outline-2 :height 1.0))))
+  '(org-level-3 ((t (:inherit outline-3 :height 1.0))))
+  '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
+  '(org-level-5 ((t (:inherit outline-5 :height 1.0))))
+)
 
 ; magit, git status
 (global-set-key (kbd "C-x g") 'magit-status)
@@ -509,6 +526,22 @@
   (previous-line)
 )
 (global-set-key (kbd "C-p") 'my:jump-back-ten-lines)
+
+(defun my:previous-link-center()
+  (interactive)
+  ;(shr-next-link)
+  (Info-prev-reference)
+  (recenter)
+)
+(global-set-key (kbd "<C-iso-lefttab>") 'my:previous-link-center)
+
+(defun my:next-link-center()
+  (interactive)
+  ;(shr-next-link)
+  (Info-next-reference)
+  (recenter)
+)
+(global-set-key (kbd "<C-tab>") 'my:next-link-center)
 
 ; paredit
 ;(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
