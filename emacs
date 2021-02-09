@@ -192,19 +192,22 @@
 
 (setq org-todo-keyword-faces
       '(
-        ("TODO" . (:foreground "dark orange" :background "black" :weight bold))
-        ("IN-PROGRESS" . (:foreground "green yellow" :background "black" :weight bold))
-        ("WAITING" . (:foreground "orange red" :background "black" :weight bold))
+        ("TODO" . (:foreground "black" :background "red" :weight bold))
+        ("IN-PROGRESS" . (:foreground "green" :background "black" :weight bold))
+        ("WAITING" . (:foreground "orange" :background "black" :weight bold))
         ("CANCELED" . (:foreground "gray" :background "black" :weight bold))
         ("DONE" . (:foreground "gray" :background "black" :weight bold))
          ))
 
 (custom-set-faces
-  '(org-level-1 ((t (:foreground "green" :inherit outline-1 :height 1.0))))
-  '(org-level-2 ((t (:inherit outline-2 :height 1.0))))
-  '(org-level-3 ((t (:inherit outline-3 :height 1.0))))
-  '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
-  '(org-level-5 ((t (:inherit outline-5 :height 1.0))))
+  '(org-level-1 ((t (:foreground "yellow" :weight bold))))
+  '(org-level-2 ((t (:foreground "orange" :weight bold))))
+  '(org-level-3 ((t (:foreground "chocolate" :weight bold))))
+  '(org-level-4 ((t (:foreground "deep sky blue" :weight bold))))
+  '(org-level-5 ((t (:foreground "violet" :weight bold))))
+  '(org-level-6 ((t (:foreground "brown1" :weight bold))))
+  '(org-level-7 ((t (:foreground "SeaGreen1" :weight bold))))
+  '(org-level-8 ((t (:foreground "dark turquoise" :weight bold))))
 )
 
 ; magit, git status
@@ -552,4 +555,4 @@
 ;(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
 ;(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 
-(load "~/source/custom_el/custom_projects.el")
+;(load "~/source/custom_el/custom_projects.el")
