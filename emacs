@@ -92,6 +92,7 @@
                      projectile-codesearch
                      prolog
                      use-package
+                     spray
                      yasnippet
                      ))
 
@@ -200,15 +201,18 @@
          ))
 
 (custom-set-faces
-  '(org-level-1 ((t (:foreground "yellow" :weight bold))))
-  '(org-level-2 ((t (:foreground "orange" :weight bold))))
-  '(org-level-3 ((t (:foreground "chocolate" :weight bold))))
-  '(org-level-4 ((t (:foreground "deep sky blue" :weight bold))))
-  '(org-level-5 ((t (:foreground "violet" :weight bold))))
-  '(org-level-6 ((t (:foreground "brown1" :weight bold))))
-  '(org-level-7 ((t (:foreground "SeaGreen1" :weight bold))))
-  '(org-level-8 ((t (:foreground "dark turquoise" :weight bold))))
-)
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-level-1 ((t (:foreground "yellow" :weight bold))))
+ '(org-level-2 ((t (:foreground "orange" :weight bold))))
+ '(org-level-3 ((t (:foreground "chocolate" :weight bold))))
+ '(org-level-4 ((t (:foreground "deep sky blue" :weight bold))))
+ '(org-level-5 ((t (:foreground "violet" :weight bold))))
+ '(org-level-6 ((t (:foreground "brown1" :weight bold))))
+ '(org-level-7 ((t (:foreground "SeaGreen1" :weight bold))))
+ '(org-level-8 ((t (:foreground "dark turquoise" :weight bold)))))
 
 ; magit, git status
 (global-set-key (kbd "C-x g") 'magit-status)
@@ -466,15 +470,10 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (nov dired-narrow dired-subtree counsel-jq paredit expand-region powershell helm-swoop imenu-list move-text dumb-jump helm-ag engine-mode gnuplot pdf-tools emms dired-rainbow helm ggtags helm-gtags jtags chess java-snippets java-imports yasnippet prolog projectile-codesearch neotree modern-cpp-font-lock magit-find-file fountain-mode csharp-mode company clang-format auto-complete-c-headers ag)))
+    (spray monkeytype nov dired-narrow dired-subtree counsel-jq paredit expand-region powershell helm-swoop imenu-list move-text dumb-jump helm-ag engine-mode gnuplot pdf-tools emms dired-rainbow helm ggtags helm-gtags jtags chess java-snippets java-imports yasnippet prolog projectile-codesearch neotree modern-cpp-font-lock magit-find-file fountain-mode csharp-mode company clang-format auto-complete-c-headers ag)))
  '(tool-bar-mode nil))
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
 (put 'dired-find-alternate-file 'disabled nil)
 
 ; set cursor color for multiple frames
