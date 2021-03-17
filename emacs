@@ -93,6 +93,7 @@
                      openwith
                      paredit
                      pdf-tools
+                     popper
                      powershell
                      projectile
                      projectile-codesearch
@@ -138,6 +139,19 @@
 
 (require 'yasnippet)
 (yas-global-mode 1)
+
+; https://github.com/karthink/popper
+(require 'popper)
+(setq popper-reference-buffers
+      '("\\*Messages\\*"
+        "Output\\*$"
+        "magit-mode\\*$"
+        "dired-mode\\*$"
+        help-mode
+        compilation-mode))
+(global-set-key (kbd "C-t") 'popper-toggle-latest)  
+(global-set-key (kbd "C-m") 'popper-cycle)  
+(popper-mode +1)
 
 ; 4 spaces indentation
 (setq c-default-style "linux" c-basic-offset 4)
@@ -476,7 +490,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (spray monkeytype nov dired-narrow dired-subtree counsel-jq paredit expand-region powershell helm-swoop imenu-list move-text dumb-jump helm-ag engine-mode gnuplot pdf-tools emms dired-rainbow helm ggtags helm-gtags jtags chess java-snippets java-imports yasnippet prolog projectile-codesearch neotree modern-cpp-font-lock magit-find-file fountain-mode csharp-mode company clang-format auto-complete-c-headers ag)))
+    (popper spray monkeytype nov dired-narrow dired-subtree counsel-jq paredit expand-region powershell helm-swoop imenu-list move-text dumb-jump helm-ag engine-mode gnuplot pdf-tools emms dired-rainbow helm ggtags helm-gtags jtags chess java-snippets java-imports yasnippet prolog projectile-codesearch neotree modern-cpp-font-lock magit-find-file fountain-mode csharp-mode company clang-format auto-complete-c-headers ag)))
  '(tool-bar-mode nil))
 
 
