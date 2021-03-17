@@ -27,6 +27,12 @@
 (global-set-key (kbd "C-<next>") 'next-buffer)
 (global-set-key (kbd "C-<prior>") 'previous-buffer)
 
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+(defun my-nov-font-setup ()
+  (face-remap-add-relative 'variable-pitch :family "Liberation Serif"
+                                           :height 1.0))
+(add-hook 'nov-mode-hook 'my-nov-font-setup)
+
 (defun eww-new ()
   (interactive)
   (let ((url (read-from-minibuffer "Enter URL or keywords: ")))
@@ -554,4 +560,4 @@
 ;(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
 ;(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 
-;(load "~/source/custom_el/custom_projects.el")
+(load "~/source/custom_el/custom_projects.el")
