@@ -148,13 +148,33 @@
         "magit:*"
         dired-mode
         help-mode
+        "^Calc:"
+        "\\*ielm\\*"
+        "\\*IList\\*"
         compilation-mode))
 ;(setq popper-group-function #'popper-group-by-project)
+;(defun popper-group-by-project()
+;  ')
+;(setq popper-mode-line nil)
 (global-set-key (kbd "C-`") 'popper-toggle-latest)
 (global-set-key (kbd "C-~") 'popper-cycle)
 (global-set-key (kbd "C-M-`") 'popper-toggle-type)
 (global-set-key (kbd "C-c k-p") 'kill-latest-popup)
 (popper-mode +1)
+
+(setq display-buffer-alist '(
+                             ("\\*IList\\*"
+                              (display-buffer-in-side-window)
+                              (side . right)
+                              (window-width . 50)
+                             )
+                             ("magit:*"
+                              (display-buffer-in-side-window)
+                              (side . bottom)
+                              (window-height . 200)
+                              )
+                             )
+)
 
 ; 4 spaces indentation
 (setq c-default-style "linux" c-basic-offset 4)
