@@ -146,9 +146,14 @@
       '("\\*Messages\\*"
         "Output\\*$"
         "magit:*"
+        dired-mode
         help-mode
         compilation-mode))
-(global-set-key (kbd "C-x t") 'popper-cycle)
+;(setq popper-group-function #'popper-group-by-project)
+(global-set-key (kbd "C-`") 'popper-toggle-latest)
+(global-set-key (kbd "C-~") 'popper-cycle)
+(global-set-key (kbd "C-M-`") 'popper-toggle-type)
+(global-set-key (kbd "C-c k-p") 'kill-latest-popup)
 (popper-mode +1)
 
 ; 4 spaces indentation
