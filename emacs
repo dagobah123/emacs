@@ -145,12 +145,10 @@
 (setq popper-reference-buffers
       '("\\*Messages\\*"
         "Output\\*$"
-        "magit-mode\\*$"
-        "dired-mode\\*$"
+        "magit:*"
         help-mode
         compilation-mode))
-(global-set-key (kbd "C-t") 'popper-toggle-latest)  
-(global-set-key (kbd "C-m") 'popper-cycle)  
+(global-set-key (kbd "C-x t") 'popper-cycle)
 (popper-mode +1)
 
 ; 4 spaces indentation
@@ -498,6 +496,7 @@
 
 ; set cursor color for multiple frames
 (add-to-list 'default-frame-alist '(cursor-color . "#00ff00"))
+(setq blink-cursor-blinks 0)
 
 (put 'erase-buffer 'disabled nil)
 
