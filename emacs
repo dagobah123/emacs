@@ -144,6 +144,7 @@
 (require 'popper)
 (setq popper-reference-buffers
       '("\\*Messages\\*"
+        "\\*scratch\\*"
         "Output\\*$"
         "magit:*"
         dired-mode
@@ -168,10 +169,10 @@
                               (side . right)
                               (window-width . 50)
                              )
-                             ("magit:*"
+                             ("\\*Messages\\*"
                               (display-buffer-in-side-window)
                               (side . bottom)
-                              (window-height . 200)
+                              (window-height . 100)
                               )
                              )
 )
