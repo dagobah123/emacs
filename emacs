@@ -6,6 +6,9 @@
 ;  \ \_____\  \ \_\ \ \_\  \ \_\ \_\  \ \_____\  \/\_____\
 ;   \/_____/   \/_/  \/_/   \/_/\/_/   \/_____/   \/_____/
 
+; ag
+; ag -g . | ag 'foo'
+
 ; org
 (setq org-directory "~/source/org-mode/")
 (setq org-default-notes-file (concat org-directory "/org-capture.org"))
@@ -152,6 +155,9 @@
         "^Calc:"
         "\\*ielm\\*"
         "\\*IList\\*"
+        "\\*eshell\\*"
+        "\\*shell\\*"
+        "\\*powershell\\*"
         compilation-mode))
 ;(setq popper-group-function #'popper-group-by-project)
 ;(defun popper-group-by-project()
@@ -355,7 +361,7 @@
   )
  ((string-equal system-type "gnu/linux")
   (progn
-    (set-face-attribute 'default nil :font "DejaVu Sans Mono-16")
+    (set-face-attribute 'default nil :font "DejaVu Sans Mono-20")
     )
   )
  )
@@ -514,7 +520,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (popper spray monkeytype nov dired-narrow dired-subtree counsel-jq paredit expand-region powershell helm-swoop imenu-list move-text dumb-jump helm-ag engine-mode gnuplot pdf-tools emms dired-rainbow helm ggtags helm-gtags jtags chess java-snippets java-imports yasnippet prolog projectile-codesearch neotree modern-cpp-font-lock magit-find-file fountain-mode csharp-mode company clang-format auto-complete-c-headers ag)))
+    (org-mind-map popper spray monkeytype nov dired-narrow dired-subtree counsel-jq paredit expand-region powershell helm-swoop imenu-list move-text dumb-jump helm-ag engine-mode gnuplot pdf-tools emms dired-rainbow helm ggtags helm-gtags jtags chess java-snippets java-imports yasnippet prolog projectile-codesearch neotree modern-cpp-font-lock magit-find-file fountain-mode csharp-mode company clang-format auto-complete-c-headers ag)))
  '(tool-bar-mode nil))
 
 
