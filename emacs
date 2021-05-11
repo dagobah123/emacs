@@ -95,6 +95,7 @@
                      neotree
                      nov
                      openwith
+                     org-mind-map
                      paredit
                      pdf-tools
                      popper
