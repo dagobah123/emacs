@@ -79,6 +79,7 @@
                      fountain-mode
                      ggtags
                      gnuplot
+                     goto-last-change
                      helm
                      helm-ag
                      helm-gtags
@@ -102,6 +103,7 @@
                      projectile-codesearch
                      prolog
                      use-package
+                     solarized-theme
                      spray
                      yasnippet
                      ))
@@ -224,7 +226,7 @@
 (setq-default truncate-lines -1)
 
 ; theme
-(load-theme 'wombat t)
+(load-theme 'solarized-dark-high-contrast t)
 
 ; clock
 (display-time)
@@ -266,19 +268,19 @@
         ("DONE" . (:foreground "gray" :background "black" :weight bold))
          ))
 
-(custom-set-faces
+;(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-level-1 ((t (:foreground "yellow" :weight bold))))
- '(org-level-2 ((t (:foreground "orange" :weight bold))))
- '(org-level-3 ((t (:foreground "chocolate" :weight bold))))
- '(org-level-4 ((t (:foreground "deep sky blue" :weight bold))))
- '(org-level-5 ((t (:foreground "violet" :weight bold))))
- '(org-level-6 ((t (:foreground "brown1" :weight bold))))
- '(org-level-7 ((t (:foreground "SeaGreen1" :weight bold))))
- '(org-level-8 ((t (:foreground "dark turquoise" :weight bold)))))
+ ;'(org-level-1 ((t (:foreground "yellow" :weight bold))))
+ ;'(org-level-2 ((t (:foreground "orange" :weight bold))))
+ ;'(org-level-3 ((t (:foreground "chocolate" :weight bold))))
+ ;'(org-level-4 ((t (:foreground "deep sky blue" :weight bold))))
+ ;'(org-level-5 ((t (:foreground "violet" :weight bold))))
+ ;'(org-level-6 ((t (:foreground "brown1" :weight bold))))
+ ;'(org-level-7 ((t (:foreground "SeaGreen1" :weight bold))))
+ ;'(org-level-8 ((t (:foreground "dark turquoise" :weight bold)))))
 
 ; magit, git status
 (global-set-key (kbd "C-x g") 'magit-status)
@@ -528,15 +530,15 @@
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(cua-mode t nil (cua-base))
- '(custom-enabled-themes (quote (wombat)))
+ '(custom-enabled-themes (quote (solarized-dark-high-contrast)))
  '(custom-safe-themes
    (quote
-    ("2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" "26e7b5bb876948e89e95ed7b372a15bf2c0ddbadd4c750542290cba22f7da682" "0209b7bbfae424bbc1d4c644c67f288547fd4a727795deebf7d60e730bd08356" "a7aac758457970a66b645e6dea51be0fef73a33cc14e7bbb1c8d99ccf83dd005" "dbf0941d6409475082f1265a30ffb41ee4c9716d94431de79f33800af106f381" "98f4223e9248f6a6310612b9b9758a4ba3bda175461e2024deecc602587cbc76" "005a69c06c6c4db2ae818bf8e9ea1839b185fd0831e2f76b4e581be41db0fb72" "c493b26e78a314f7512e8456027234c3e8a5af55faff91edd5f9823b2300456b" "9cc4c91821b9d63ca0076d3bac25123000e829e997c4bb40fc49b925f8ac2dd1" "a790730a42d04c8d624aacc870a1c8cf047ec88cd9e576412d148adee2fe5468" "d492f6229f3ee0c393daaf4a58d96763ef7dcae04bbb35ac29bf71d28f836663" "e21ca41b179573a4c804bccbe7932c7953b99e61b6ab59d5e847a09316973e6e" "59c192f0d645d67f92de7d5d19019962a8bc7d58cd4085e2018aad53a63d9f73" "08329abeab2963fb806c98abca3814020637fb072e53d21ffb0bcb4b6815e797" "fb25f8c8a8016295e5d1f895b6880cb4d2009cf4b25ded9b0a49616e315dd885" "ae223734896efa666dc6d7ed46a941e9d94d419e1a1aeea93e2173142d45730a" "05cd217e406a2e4912dd42218b2133a71b0125fed21ebeda7f3ac36b1fcb1e2a" default)))
+    ("7f1d414afda803f3244c6fb4c2c64bea44dac040ed3731ec9d75275b9e831fe5" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" "26e7b5bb876948e89e95ed7b372a15bf2c0ddbadd4c750542290cba22f7da682" "0209b7bbfae424bbc1d4c644c67f288547fd4a727795deebf7d60e730bd08356" "a7aac758457970a66b645e6dea51be0fef73a33cc14e7bbb1c8d99ccf83dd005" "dbf0941d6409475082f1265a30ffb41ee4c9716d94431de79f33800af106f381" "98f4223e9248f6a6310612b9b9758a4ba3bda175461e2024deecc602587cbc76" "005a69c06c6c4db2ae818bf8e9ea1839b185fd0831e2f76b4e581be41db0fb72" "c493b26e78a314f7512e8456027234c3e8a5af55faff91edd5f9823b2300456b" "9cc4c91821b9d63ca0076d3bac25123000e829e997c4bb40fc49b925f8ac2dd1" "a790730a42d04c8d624aacc870a1c8cf047ec88cd9e576412d148adee2fe5468" "d492f6229f3ee0c393daaf4a58d96763ef7dcae04bbb35ac29bf71d28f836663" "e21ca41b179573a4c804bccbe7932c7953b99e61b6ab59d5e847a09316973e6e" "59c192f0d645d67f92de7d5d19019962a8bc7d58cd4085e2018aad53a63d9f73" "08329abeab2963fb806c98abca3814020637fb072e53d21ffb0bcb4b6815e797" "fb25f8c8a8016295e5d1f895b6880cb4d2009cf4b25ded9b0a49616e315dd885" "ae223734896efa666dc6d7ed46a941e9d94d419e1a1aeea93e2173142d45730a" "05cd217e406a2e4912dd42218b2133a71b0125fed21ebeda7f3ac36b1fcb1e2a" default)))
  '(display-time-mode t)
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (solarized-theme org-mind-map popper spray monkeytype nov dired-narrow dired-subtree counsel-jq paredit expand-region powershell helm-swoop imenu-list move-text dumb-jump helm-ag engine-mode gnuplot pdf-tools emms dired-rainbow helm ggtags helm-gtags jtags chess java-snippets java-imports yasnippet prolog projectile-codesearch neotree modern-cpp-font-lock magit-find-file fountain-mode csharp-mode company clang-format auto-complete-c-headers ag)))
+    (goto-last-change solarized-theme org-mind-map popper spray monkeytype nov dired-narrow dired-subtree counsel-jq paredit expand-region powershell helm-swoop imenu-list move-text dumb-jump helm-ag engine-mode gnuplot pdf-tools emms dired-rainbow helm ggtags helm-gtags jtags chess java-snippets java-imports yasnippet prolog projectile-codesearch neotree modern-cpp-font-lock magit-find-file fountain-mode csharp-mode company clang-format auto-complete-c-headers ag)))
  '(tool-bar-mode nil))
 
 
@@ -622,3 +624,9 @@
 ;(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 
 (load "~/source/custom_el/custom_projects.el")
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
