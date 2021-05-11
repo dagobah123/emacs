@@ -26,6 +26,8 @@
 
 (setq org-agenda-files (list "~/source/org-mode/tasks.org"))
 
+(global-set-key (kbd "C-x q") 'goto-last-change)
+
 (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
 (global-set-key (kbd "C-<next>") 'next-buffer)
 (global-set-key (kbd "C-<prior>") 'previous-buffer)
