@@ -8,6 +8,7 @@
 
 ; ag
 ; ag -g . | ag 'foo'
+; ag 'foo'
 
 ; org
 (setq org-directory "~/source/org-mode/")
@@ -20,13 +21,17 @@
       '(
         ("t" "Tasks" entry (file+headline "~/source/org-mode/tasks.org" "Tasks")
          "* TODO %?\n")
-        ("j" "Journal" entry (file+datetree "~/source/org-mode/journal.org")
-         "* %?\nEntered on %U\n  %i\n  %a"))
+        ("j" "Journal" entry (file+headline "~/source/org-mode/journal.org" "Journal")
+         "* %?\n")
+        ("l" "Log" entry (file+datetree "~/source/org-mode/log.org")
+         "* %?\nEntered on %U\n  %i\n  %a")
+        )
       )
 
 (setq org-agenda-files (list "~/source/org-mode/tasks.org"))
 
 (global-set-key (kbd "C-x q") 'goto-last-change)
+(global-set-key (kbd "C-x f") 'locate)
 
 (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
 (global-set-key (kbd "C-<next>") 'next-buffer)
@@ -85,6 +90,7 @@
                      helm
                      helm-ag
                      helm-gtags
+                     helm-projectile
                      helm-swoop
                      imenu-list
                      java-imports
@@ -541,7 +547,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (goto-last-change solarized-theme org-mind-map popper spray monkeytype nov dired-narrow dired-subtree counsel-jq paredit expand-region powershell helm-swoop imenu-list move-text dumb-jump helm-ag engine-mode gnuplot pdf-tools emms dired-rainbow helm ggtags helm-gtags jtags chess java-snippets java-imports yasnippet prolog projectile-codesearch neotree modern-cpp-font-lock magit-find-file fountain-mode csharp-mode company clang-format auto-complete-c-headers ag)))
+    (helm-projectile goto-last-change solarized-theme org-mind-map popper spray monkeytype nov dired-narrow dired-subtree counsel-jq paredit expand-region powershell helm-swoop imenu-list move-text dumb-jump helm-ag engine-mode gnuplot pdf-tools emms dired-rainbow helm ggtags helm-gtags jtags chess java-snippets java-imports yasnippet prolog projectile-codesearch neotree modern-cpp-font-lock magit-find-file fountain-mode csharp-mode company clang-format auto-complete-c-headers ag)))
  '(tool-bar-mode nil))
 
 
