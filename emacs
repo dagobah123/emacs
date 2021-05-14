@@ -31,7 +31,7 @@
 (setq org-agenda-files (list "~/source/org-mode/tasks.org"))
 
 (global-set-key (kbd "C-x q") 'goto-last-change)
-(global-set-key (kbd "C-x f") 'locate)
+(global-set-key (kbd "C-x l") 'locate)
 
 (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
 (global-set-key (kbd "C-<next>") 'next-buffer)
@@ -300,9 +300,6 @@
 ; gnus
 (setq gnus-select-method '(nnnil))
 (setq gnus-secondary-select-methods '((nntp "news.gwene.org")))
-
-; bookmark-bmenu-list
-(global-set-key (kbd "C-x l") 'bookmark-bmenu-list)
 
 ; engine-mode
 (require 'engine-mode)
