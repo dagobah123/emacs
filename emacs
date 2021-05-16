@@ -348,7 +348,7 @@
       )
 
 ; open file in dired with eww, shortcut: e
-(define-key dired-mode-map "e" (lambda () (interactive) (eww-open-file (dired-get-file-for-visit))))
+; (define-key dired-mode-map "e" (lambda () (interactive) (eww-open-file (dired-get-file-for-visit))))
 
 ; set ant to default compile
 (setq compile-command "ant -emacs")
