@@ -77,6 +77,7 @@
                      counsel-jq
                      csharp-mode
                      dired-narrow
+                     dired-quick-sort
                      dired-rainbow
                      dired-subtree
                      dumb-jump
@@ -169,6 +170,9 @@
 
 (require 'yasnippet)
 (yas-global-mode 1)
+
+(require 'dired-quick-sort)
+(dired-quick-sort-setup)
 
 ; https://github.com/karthink/popper
 (require 'popper)
@@ -578,7 +582,7 @@
     ("#9d0006" "#af3a03" "#b57614" "#747400" "#c6c148" "#004858" "#689d6a" "#d3869b" "#8f3f71")))
  '(package-selected-packages
    (quote
-    (helm-projectile goto-last-change solarized-theme org-mind-map popper spray monkeytype nov dired-narrow dired-subtree counsel-jq paredit expand-region powershell helm-swoop imenu-list move-text dumb-jump helm-ag engine-mode gnuplot pdf-tools emms dired-rainbow helm ggtags helm-gtags jtags chess java-snippets java-imports yasnippet prolog projectile-codesearch neotree modern-cpp-font-lock magit-find-file fountain-mode csharp-mode company clang-format auto-complete-c-headers ag)))
+    (dired-quick-sort helm-projectile goto-last-change solarized-theme org-mind-map popper spray monkeytype nov dired-narrow dired-subtree counsel-jq paredit expand-region powershell helm-swoop imenu-list move-text dumb-jump helm-ag engine-mode gnuplot pdf-tools emms dired-rainbow helm ggtags helm-gtags jtags chess java-snippets java-imports yasnippet prolog projectile-codesearch neotree modern-cpp-font-lock magit-find-file fountain-mode csharp-mode company clang-format auto-complete-c-headers ag)))
  '(pos-tip-background-color "#ebdbb2")
  '(pos-tip-foreground-color "#665c54")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#98971a" "#ebdbb2" 0.2))
