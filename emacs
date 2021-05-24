@@ -171,6 +171,14 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
+; prevent warning to show on windows machine
+(cond
+ ((string-equal system-type "windows-nt")
+  (progn
+    (setq ls-lisp-use-insert-directory-program t)
+    )
+  )
+ )
 (require 'dired-quick-sort)
 (dired-quick-sort-setup)
 
