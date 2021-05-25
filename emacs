@@ -15,8 +15,9 @@
 (setq org-default-notes-file (concat org-directory "/org-capture.org"))
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
-(global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c s") 'org-schedule)
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c b") 'org-switchb)
 (setq org-capture-templates
       '(
         ("t" "Tasks" entry (file+headline "~/source/org-mode/tasks.org" "Tasks")
@@ -103,8 +104,6 @@
                      move-text
                      neotree
                      nov
-                     openwith
-                     org-mind-map
                      paredit
                      pdf-tools
                      popper
@@ -112,7 +111,6 @@
                      projectile
                      projectile-codesearch
                      prolog
-                     use-package
                      solarized-theme
                      spray
                      yasnippet
@@ -144,22 +142,6 @@
 (global-set-key (kbd "C-2") 'shrink-window-horizontally)
 (global-set-key (kbd "C-3") 'enlarge-window)
 (global-set-key (kbd "C-4") 'shrink-window)
-
-(use-package org-mind-map
-  :init
-  (require 'ox-org)
-  :ensure t
-  ;; Uncomment the below if 'ensure-system-packages` is installed
-  ;;:ensure-system-package (gvgen . graphviz)
-  :config
-  ;; (setq org-mind-map-engine "dot")       ; Default. Directed Graph
-  (setq org-mind-map-engine "neato")  ; Undirected Spring Graph
-  ;; (setq org-mind-map-engine "twopi")  ; Radial Layout
-  ;; (setq org-mind-map-engine "fdp")    ; Undirected Spring Force-Directed
-  ;; (setq org-mind-map-engine "sfdp")   ; Multiscale version of fdp for the layout of large graphs
-  ;; (setq org-mind-map-engine "twopi")  ; Radial layouts
-  ;;(setq org-mind-map-engine "circo")  ; Circular Layout
-  )
 
 (require 'modern-cpp-font-lock)
 (modern-c++-font-lock-global-mode t)
@@ -345,19 +327,19 @@
   "http://www.youtube.com/results?aq=f&oq=&search_query=%s"
   :keybinding "y")
 
-(require 'openwith)
-(openwith-mode t)
-(setq openwith-associations
-      (list (list (openwith-make-extension-regexp '("pdf"))
-                  "evince" '(file))
-            (list (openwith-make-extension-regexp '("bmp" "jpeg" "jpg" "png"))
-                  "gimp" '(file))
-            (list (openwith-make-extension-regexp '("avi" "mp3" "mp4" "wav"))
-                  "vlc" '(file))
-            (list (openwith-make-extension-regexp '("sln"))
-                  "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\Common7\\IDE\\devenv.exe" '(file))
-            )
-      )
+;(require 'openwith)
+;(openwith-mode t)
+;(setq openwith-associations
+;      (list (list (openwith-make-extension-regexp '("pdf"))
+;                  "evince" '(file))
+;            (list (openwith-make-extension-regexp '("bmp" "jpeg" "jpg" "png"))
+;                  "gimp" '(file))
+;            (list (openwith-make-extension-regexp '("avi" "mp3" "mp4" "wav"))
+;                  "vlc" '(file))
+;            (list (openwith-make-extension-regexp '("sln"))
+;                  "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\Common7\\IDE\\devenv.exe" '(file))
+;            )
+;      )
 
 ; open file in dired with eww, shortcut: e
 ; (define-key dired-mode-map "e" (lambda () (interactive) (eww-open-file (dired-get-file-for-visit))))
@@ -441,67 +423,67 @@
 (projectile-global-mode)
 (projectile-mode +1)
 
-(use-package dired-narrow
-  :ensure t
-  :config
-  (bind-key "C-f" #'dired-narrow)
-  ;(bind-key "C-f" #'dired-narrow-fuzzy)
-)
+;(use-package dired-narrow
+;  :ensure t
+;  :config
+;  (bind-key "C-f" #'dired-narrow)
+;  ;(bind-key "C-f" #'dired-narrow-fuzzy)
+;)
 
-(use-package dired-subtree
-  :ensure t
-  :after dired
-  :config
-  (bind-key "C-c 1" #'dired-subtree-toggle)
-)
+;(use-package dired-subtree
+;  :ensure t
+;  :after dired
+;  :config
+;  (bind-key "C-c 1" #'dired-subtree-toggle)
+;)
 
 ; emms
-(use-package emms
-  :ensure t
-  :config
-    (require 'emms-setup)
-    (require 'emms-player-mpd)
-    (emms-all)
-    (setq emms-seek-seconds 5)
-    (setq emms-player-list '(emms-player-mpd))
-    (setq emms-info-functions '(emms-info-mpd))
-    (setq emms-player-mpd-server-name "localhost")
-    (setq emms-player-mpd-server-port "6602")
-)
+;(use-package emms
+;  :ensure t
+;  :config
+;    (require 'emms-setup)
+;    (require 'emms-player-mpd)
+;    (emms-all)
+;    (setq emms-seek-seconds 5)
+;    (setq emms-player-list '(emms-player-mpd))
+;    (setq emms-info-functions '(emms-info-mpd))
+;    (setq emms-player-mpd-server-name "localhost")
+;    (setq emms-player-mpd-server-port "6602")
+;)
 
-(global-set-key (kbd "C-5") 'mpd/start-music-daemon)
-(global-set-key (kbd "C-6") 'mpc)
-(global-set-key (kbd "C-7") 'mpd/kill-music-daemon)
+;(global-set-key (kbd "C-5") 'mpd/start-music-daemon)
+;(global-set-key (kbd "C-6") 'mpc)
+;(global-set-key (kbd "C-7") 'mpd/kill-music-daemon)
 
 ; Setting the default port
-(setq mpc-host "localhost:6602")
+;(setq mpc-host "localhost:6602")
 
 ; Starting the daemon from within emacs
-(defun mpd/start-music-daemon ()
-  "Start MPD, connects to it and syncs the metadata cache."
-  (interactive)
-  (shell-command "mpd")
-  (mpd/update-database)
-  (emms-player-mpd-connect)
-  (emms-cache-set-from-mpd-all)
-  (message "MPD Started!"))
+;(defun mpd/start-music-daemon ()
+;  "Start MPD, connects to it and syncs the metadata cache."
+;  (interactive)
+;  (shell-command "mpd")
+;  (mpd/update-database)
+;  (emms-player-mpd-connect)
+;  (emms-cache-set-from-mpd-all)
+;  (message "MPD Started!"))
 
 ; Killing the daemon from within emacs
-(defun mpd/kill-music-daemon ()
-  "Stops playback and kill the music daemon."
-  (interactive)
-  (emms-stop)
-  (call-process "killall" nil nil nil "mpd")
-  (message "MPD Killed!"))
-(global-set-key (kbd "C-9") 'mpd/kill-music-daemon)
+;(defun mpd/kill-music-daemon ()
+;  "Stops playback and kill the music daemon."
+;  (interactive)
+;  (emms-stop)
+;  (call-process "killall" nil nil nil "mpd")
+;  (message "MPD Killed!"))
+;(global-set-key (kbd "C-9") 'mpd/kill-music-daemon)
 
 ; Updating the database
-(defun mpd/update-database ()
-  "Updates the MPD database synchronously."
-  (interactive)
-  (call-process "mpc" nil nil nil "update")
-  (message "MPD Database Updated!"))
-(global-set-key (kbd "C-0") 'mpd/update-database)
+;(defun mpd/update-database ()
+;  "Updates the MPD database synchronously."
+;  (interactive)
+;  (call-process "mpc" nil nil nil "update")
+;  (message "MPD Database Updated!"))
+;(global-set-key (kbd "C-0") 'mpd/update-database)
 
 
 (defvar java-function-regexp
@@ -590,7 +572,7 @@
     ("#9d0006" "#af3a03" "#b57614" "#747400" "#c6c148" "#004858" "#689d6a" "#d3869b" "#8f3f71")))
  '(package-selected-packages
    (quote
-    (dired-quick-sort helm-projectile goto-last-change solarized-theme org-mind-map popper spray monkeytype nov dired-narrow dired-subtree counsel-jq paredit expand-region powershell helm-swoop imenu-list move-text dumb-jump helm-ag engine-mode gnuplot pdf-tools emms dired-rainbow helm ggtags helm-gtags jtags chess java-snippets java-imports yasnippet prolog projectile-codesearch neotree modern-cpp-font-lock magit-find-file fountain-mode csharp-mode company clang-format auto-complete-c-headers ag)))
+    (dired-quick-sort helm-projectile goto-last-change solarized-theme popper spray monkeytype nov dired-narrow dired-subtree counsel-jq paredit expand-region powershell helm-swoop imenu-list move-text dumb-jump helm-ag engine-mode gnuplot pdf-tools emms dired-rainbow helm ggtags helm-gtags jtags chess java-snippets java-imports yasnippet prolog projectile-codesearch neotree modern-cpp-font-lock magit-find-file fountain-mode csharp-mode company clang-format auto-complete-c-headers ag)))
  '(pos-tip-background-color "#ebdbb2")
  '(pos-tip-foreground-color "#665c54")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#98971a" "#ebdbb2" 0.2))
