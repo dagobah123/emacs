@@ -1,0 +1,376 @@
+* emacs
+** package archives
+#+BEGIN_SRC emacs-lisp
+(require 'package)
+
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")
+                         ("org" . "https://orgmode.org/elpa/")
+                        )
+)
+#+END_SRC
+** package initialize
+#+BEGIN_SRC emacs-lisp
+; Initialize
+(package-initialize)
+
+; Refresh available packages
+(unless package-archive-contents (package-refresh-contents))
+
+; Install use-package
+(setq package-list '(use-package
+                     dired-quick-sort
+		     magit
+		     magit-find-file)
+)
+(dolist (package package-list)
+(unless (package-installed-p package) (package-install package)))
+#+END_SRC
+** environment setup
+Load environment variables properly by installing =exec-path-from-shell=.
+#+BEGIN_SRC emacs-lisp
+(use-package exec-path-from-shell :ensure t)
+(exec-path-from-shell-initialize)
+#+END_SRC
+** os specific settings
+#+BEGIN_SRC emacs-lisp
+(cond
+  ((eq system-type 'windows-nt) (load (concat EMACS_HOME "windows")))
+  ((eq system-type 'gnu/linux) (load (concat EMACS_HOME "linux")))
+  (t (load-library "default"))
+)
+#+END_SRC
+** install missing packages
+#+BEGIN_SRC emacs-lisp
+; install missing packages
+;(dolist (p package-list)
+;  (unless (package-installed-p p)
+;    (package-refresh-contents)
+;    (package-install p))
+;  (add-to-list 'package-selected-packages p))
+#+END_SRC
+** look
+#+BEGIN_SRC emacs-lisp
+; disable menu bar
+(menu-bar-mode -1)
+
+; disable tool bar
+(tool-bar-mode -1)
+
+; disable scroll bar
+(scroll-bar-mode -1)
+
+; setup cache folder to prevent temporary files to clutter projects
+(setq user-cache-directory (concat EMACS_HOME "cache"))
+(setq backup-directory-alist `(("." . ,(expand-file-name "backups" user-cache-directory)))
+      url-history-file (expand-file-name "url/history" user-cache-directory)
+      auto-save-list-file-prefix (expand-file-name "auto-save-list/.saves-" user-cache-directory)
+      projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-directory))
+
+
+(use-package solarized-theme
+:ensure t 
+:init 
+(load-theme 'solarized-dark-high-contrast t))
+
+
+; 4 spaces indentation
+;(setq c-default-style "linux" c-basic-offset 4)
+
+; disable tabs
+;(setq-default indent-tabs-mode nil)
+;(setq-default tab-width 4)
+
+; disable menu bar
+;(menu-bar-mode -1)
+
+;
+
+; disable scroll bars
+;(add-to-list 'default-frame-alist '(vertical-scroll-bars . nil))
+
+; disable tool bar
+;(tool-bar-mode -1)
+
+; do not truncate lines
+;(setq-default truncate-lines -1)
+
+; theme
+;(load-theme 'solarized-dark-high-contrast t)
+
+; clock
+;(display-time)
+
+; ask for y/n instead of yes/no
+(fset 'yes-or-no-p 'y-or-n-p)
+
+; confirm before closing emacs
+(setq confirm-kill-emacs 'y-or-n-p)
+
+#+END_SRC
+** behavior
+#+BEGIN_SRC emacs-lisp
+(cua-mode t)
+
+; scrolling up and down one line
+(global-set-key (kbd "C-<down>") 'scroll-up-line)
+(global-set-key (kbd "C-<up>") 'scroll-down-line)
+
+; move text up/down
+(global-set-key (kbd "M-<down>") 'move-text-down)
+(global-set-key (kbd "M-<up>") 'move-text-up)
+
+; change window size
+(global-set-key (kbd "C-1") 'enlarge-window-horizontally)
+(global-set-key (kbd "C-2") 'shrink-window-horizontally)
+(global-set-key (kbd "C-3") 'enlarge-window)
+(global-set-key (kbd "C-4") 'shrink-window)
+
+; do not create backup files
+(setq make-backup-files nil)
+#+END_SRC
+** org mode
+#+BEGIN_SRC emacs-lisp
+(setq org-directory "~/source/org-mode/")
+(setq org-default-notes-file (concat org-directory "/org-capture.org"))
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c c") 'org-capture)
+(global-set-key (kbd "C-c s") 'org-schedule)
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c b") 'org-switchb)
+(setq org-capture-templates
+      '(
+        ("t" "Tasks" entry (file+headline "~/source/org-mode/tasks.org" "Tasks")
+         "* TODO %?\n")
+        ("j" "Journal" entry (file+headline "~/source/org-mode/journal.org" "Journal")
+         "* %?\n")
+        ("l" "Log" entry (file+datetree "~/source/org-mode/log.org")
+         "* %?\nEntered on %U\n  %i\n  %a")
+        )
+      )
+
+(setq org-agenda-files (list "~/source/org-mode/tasks.org"))
+
+; org-mode use shift arrows to change buffer
+(add-hook 'org-shiftup-final-hook 'windmove-up)
+(add-hook 'org-shiftleft-final-hook 'windmove-left)
+(add-hook 'org-shiftdown-final-hook 'windmove-down)
+(add-hook 'org-shiftright-final-hook 'windmove-right)
+(setq org-support-shift-select 'always)
+(setq org-todo-keywords
+    '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "CANCELED" "DONE")))
+
+(setq org-todo-keyword-faces
+      '(
+        ("TODO" . (:foreground "black" :background "red" :weight bold))
+        ("IN-PROGRESS" . (:foreground "green" :background "black" :weight bold))
+        ("WAITING" . (:foreground "orange" :background "black" :weight bold))
+        ("CANCELED" . (:foreground "gray" :background "black" :weight bold))
+        ("DONE" . (:foreground "gray" :background "black" :weight bold))
+         ))
+#+END_SRC
+** projectile
+#+BEGIN_SRC emacs-lisp
+(use-package projectile)
+(require 'projectile)
+(setq projectile-indexing-method 'alien)
+(projectile-global-mode)
+(projectile-mode +1)
+(global-set-key (kbd "C-x p") 'projectile-switch-project)
+(global-set-key (kbd "C-x o") 'projectile-find-file)
+#+END_SRC
+** key bindings
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "<f10>") 'tmm-menubar)
+(global-set-key (kbd "C-x q") 'goto-last-change)
+(global-set-key (kbd "C-x l") 'locate)
+(global-set-key (kbd "C-x C-b") 'switch-to-buffer)
+(global-set-key (kbd "C-<next>") 'next-buffer)
+(global-set-key (kbd "C-<prior>") 'previous-buffer)
+#+END_SRC
+** dired
+#+BEGIN_SRC emacs-lisp
+; dired move up folder with "b"
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (define-key dired-mode-map (kbd "b")
+              (lambda () (interactive) (find-alternate-file ".."))
+              )
+            )
+          )
+
+(global-set-key (kbd "C-c f") 'find-name-dired)
+
+; "S" opens the menu
+(use-package dired-quick-sort)
+(require 'dired-quick-sort)
+(dired-quick-sort-setup)
+#+END_SRC
+** popper
+#+BEGIN_SRC emacs-lisp
+;(require 'popper)
+;(setq popper-reference-buffers
+;      '("\\*Messages\\*"
+;        "\\*scratch\\*"
+;        "Output\\*$"
+;        "magit:*"
+;        dired-mode
+;        help-mode
+;        "^Calc:"
+;        "\\*ielm\\*"
+;        "\\*IList\\*"
+;        "\\*eshell\\*"
+;        "\\*shell\\*"
+;        "\\*powershell\\*"
+;        compilation-mode))
+;(global-set-key (kbd "C-`") 'popper-toggle-latest)
+;(global-set-key (kbd "C-~") 'popper-cycle)
+;(global-set-key (kbd "C-M-`") 'popper-toggle-type)
+;(global-set-key (kbd "C-c k-p") 'kill-latest-popup)
+;(popper-mode +1)
+
+;(setq display-buffer-alist '(
+;                             ("\\*IList\\*"
+;                              (display-buffer-in-side-window)
+;                              (side . right)
+;                              (window-width . 50)
+;                             )
+;                             ("\\*Messages\\*"
+;                              (display-buffer-in-side-window)
+;                              (side . bottom)
+;                              (window-height . 100)
+;                              )
+;                             )
+;)
+
+#+END_SRC
+** lsp
+*** Company
+Complete anything aka Company provides auto-completion. Company-capf is enabled by default when you start LSP on a project. You can also invoke ~M-x company-capf~ to enable capf (completion at point function).
+#+begin_src emacs-lisp
+(use-package company :ensure t)
+#+end_src
+
+*** Yasnippet
+Yasnippet is a template system for Emacs. It allows you to type abbreviation and complete the associated text.
+
+#+begin_src emacs-lisp
+(use-package yasnippet :config (yas-global-mode))
+(use-package yasnippet-snippets :ensure t)
+#+end_src
+
+E.g. In java mode, if you type ~pr~ and hit ~<TAB>~ it should complete to ~System.out.println("text");~
+
+To create a new snippet you can use ~yas-new-snippet~ command. 
+
+*** FlyCheck
+FlyCheck checks for errors in code at run-time.
+#+begin_src emacs-lisp
+(use-package flycheck :ensure t :init (global-flycheck-mode))
+#+end_src
+
+*** Dap Mode
+Emacs Debug Adapter Protocol aka DAP Mode allows us to debug your program. Below we will integrate ~dap-mode~ with ~dap-hydra~. ~Dap-hydra~ shows keys you can use to enable various options and jump through code at runtime. After we install dap-mode we will also install ~dap-java~.
+
+#+begin_src emacs-lisp
+(use-package dap-mode
+  :ensure t
+  :after (lsp-mode)
+  :functions dap-hydra/nil
+  :config
+  (require 'dap-java)
+  :bind (:map lsp-mode-map
+         ("<f5>" . dap-debug)
+         ("M-<f5>" . dap-hydra))
+  :hook ((dap-mode . dap-ui-mode)
+    (dap-session-created . (lambda (&_rest) (dap-hydra)))
+    (dap-terminated . (lambda (&_rest) (dap-hydra/nil)))))
+
+(use-package dap-java :ensure nil)
+#+end_src
+
+*** Treemacs
+Treemacs provides UI elements used for LSP UI. Let's install lsp-treemacs and its dependency treemacs. We will also Assign ~M-9~ to show error list.
+#+begin_src emacs-lisp
+(use-package lsp-treemacs
+  :after (lsp-mode treemacs)
+  :ensure t
+  :commands lsp-treemacs-errors-list
+  :bind (:map lsp-mode-map
+         ("M-9" . lsp-treemacs-errors-list)))
+
+(use-package treemacs
+  :ensure t
+  :commands (treemacs)
+  :after (lsp-mode))
+#+end_src
+
+*** LSP UI
+LSP UI is used in various packages that require UI elements in LSP. E.g ~lsp-ui-flycheck-list~ opens a windows where you can see various coding errors while you code. You can use ~C-c l T~ to toggle several UI elements. We have also remapped some of the xref-find functions, so that we can easily jump around between symbols using ~M-.~, ~M-,~ and ~M-?~ keys.
+
+#+begin_src emacs-lisp
+(use-package lsp-ui
+:ensure t
+:after (lsp-mode)
+:bind (:map lsp-ui-mode-map
+         ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
+         ([remap xref-find-references] . lsp-ui-peek-find-references))
+:init (setq lsp-ui-doc-delay 1.5
+      lsp-ui-doc-position 'bottom
+	  lsp-ui-doc-max-width 100
+))
+#+end_src
+
+Go through this [[https://github.com/emacs-lsp/lsp-ui/blob/master/lsp-ui-doc.el][link]]  to see what other parameters are provided.
+
+*** Helm LSP
+Helm-lsp provides various functionality to work with the code. E.g Code actions like adding *getter, setter, toString*, refactoring etc. You can use ~helm-lsp-workspace-symbol~ to find various symbols (classes) within your workspace.
+
+LSP's built in symbol explorer uses ~xref-find-apropos~ to provide symbol navigation. Below we will replace that with helm version. After that you can use ~C-c l g a~ to find workspace symbols in a more intuitive way.
+
+#+begin_src emacs-lisp
+(use-package helm-lsp
+:ensure t
+:after (lsp-mode)
+:commands (helm-lsp-workspace-symbol)
+:init (define-key lsp-mode-map [remap xref-find-apropos] #'helm-lsp-workspace-symbol))
+#+end_src
+
+*** Install LSP Package
+Let's install the main package for lsp. Here we will integrate lsp with which-key. This way, when we type the prefix key ~C-c l~ we get additional help for compliting the command. 
+
+#+begin_src emacs-lisp
+(use-package lsp-mode
+:ensure t
+:hook (
+   (lsp-mode . lsp-enable-which-key-integration)
+   (java-mode . #'lsp-deferred)
+)
+:init (setq 
+    lsp-keymap-prefix "C-c l"              ; this is for which-key integration documentation, need to use lsp-mode-map
+    lsp-enable-file-watchers nil
+    read-process-output-max (* 1024 1024)  ; 1 mb
+    lsp-completion-provider :capf
+    lsp-idle-delay 0.500
+)
+:config 
+    (setq lsp-intelephense-multi-root nil) ; don't scan unnecessary projects
+    (with-eval-after-load 'lsp-intelephense
+    (setf (lsp--client-multi-root (gethash 'iph lsp-clients)) nil))
+	(define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
+)
+#+end_src
+
+You can start LSP server in a java project by using ~C-c l s s~. Once you type ~C-c l~ ~which-key~ package should guide you through rest of the options. In above setting I have added some memory management settings as suggested in [[https://emacs-lsp.github.io/lsp-mode/page/performance/][this guide]]. Change them to higher numbers, if you find *lsp-mode* sluggish in your computer.
+
+*** LSP Java
+This is the package that handles server installation and session management.
+#+begin_src  emacs-lisp
+(use-package lsp-java 
+:ensure t
+:config (add-hook 'java-mode-hook 'lsp))
+#+end_src
+** magit
+(use-package magit)
+(use-package magit-find-file)
+(global-set-key (kbd "C-x g") 'magit-status)
