@@ -20,8 +20,9 @@
 ; Install use-package
 (setq package-list '(use-package
                      dired-quick-sort
-		     magit
-		     magit-find-file)
+                     helm-swoop
+                     magit
+                     magit-find-file)
 )
 (dolist (package package-list)
 (unless (package-installed-p package) (package-install package)))
@@ -69,37 +70,23 @@ Load environment variables properly by installing =exec-path-from-shell=.
 
 
 (use-package solarized-theme
-:ensure t 
-:init 
+:ensure t
+:init
 (load-theme 'solarized-dark-high-contrast t))
 
+; set cursor color for multiple frames
+(add-to-list 'default-frame-alist '(cursor-color . "#00ff00"))
+(setq blink-cursor-blinks 0)
 
 ; 4 spaces indentation
-;(setq c-default-style "linux" c-basic-offset 4)
+(setq c-default-style "linux" c-basic-offset 4)
 
 ; disable tabs
-;(setq-default indent-tabs-mode nil)
-;(setq-default tab-width 4)
-
-; disable menu bar
-;(menu-bar-mode -1)
-
-;
-
-; disable scroll bars
-;(add-to-list 'default-frame-alist '(vertical-scroll-bars . nil))
-
-; disable tool bar
-;(tool-bar-mode -1)
-
-; do not truncate lines
-;(setq-default truncate-lines -1)
-
-; theme
-;(load-theme 'solarized-dark-high-contrast t)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
 
 ; clock
-;(display-time)
+(display-time)
 
 ; ask for y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -107,6 +94,19 @@ Load environment variables properly by installing =exec-path-from-shell=.
 ; confirm before closing emacs
 (setq confirm-kill-emacs 'y-or-n-p)
 
+; font size
+(cond
+    ((string-equal system-type "windows-nt")
+        (progn
+            (set-face-attribute 'default nil :height 150)
+        )
+    )
+    ((string-equal system-type "gnu/linux")
+        (progn
+            (set-face-attribute 'default nil :font "DejaVu Sans Mono-20")
+        )
+    )
+)
 #+END_SRC
 ** behavior
 #+BEGIN_SRC emacs-lisp
@@ -128,6 +128,10 @@ Load environment variables properly by installing =exec-path-from-shell=.
 
 ; do not create backup files
 (setq make-backup-files nil)
+
+; switch split buffers
+(global-set-key (kbd "M-o") 'other-window)
+(windmove-default-keybindings)
 #+END_SRC
 ** org mode
 #+BEGIN_SRC emacs-lisp
@@ -146,8 +150,8 @@ Load environment variables properly by installing =exec-path-from-shell=.
          "* %?\n")
         ("l" "Log" entry (file+datetree "~/source/org-mode/log.org")
          "* %?\nEntered on %U\n  %i\n  %a")
-        )
-      )
+       )
+)
 
 (setq org-agenda-files (list "~/source/org-mode/tasks.org"))
 
@@ -167,7 +171,8 @@ Load environment variables properly by installing =exec-path-from-shell=.
         ("WAITING" . (:foreground "orange" :background "black" :weight bold))
         ("CANCELED" . (:foreground "gray" :background "black" :weight bold))
         ("DONE" . (:foreground "gray" :background "black" :weight bold))
-         ))
+       )
+)
 #+END_SRC
 ** projectile
 #+BEGIN_SRC emacs-lisp
@@ -178,6 +183,23 @@ Load environment variables properly by installing =exec-path-from-shell=.
 (projectile-mode +1)
 (global-set-key (kbd "C-x p") 'projectile-switch-project)
 (global-set-key (kbd "C-x o") 'projectile-find-file)
+#+END_SRC
+** helm
+#+BEGIN_SRC emacs-lisp
+(use-package helm
+:ensure t
+:init
+(helm-mode 1)
+(progn (setq helm-buffers-fuzzy-matching t))
+:bind
+(("M-x" . helm-M-x))
+(("C-c k r" . helm-show-kill-ring))
+(("C-c h" . helm-grep-do-git-grep))
+(("C-s" . helm-swoop))
+(("C-c b" . helm-buffers-list))
+(("C-c l" . helm-bookmarks))
+(("C-c i" . helm-mini))
+(("C-c q" . helm-info)))
 #+END_SRC
 ** key bindings
 #+BEGIN_SRC emacs-lisp
@@ -196,8 +218,8 @@ Load environment variables properly by installing =exec-path-from-shell=.
             (define-key dired-mode-map (kbd "b")
               (lambda () (interactive) (find-alternate-file ".."))
               )
-            )
           )
+)
 
 (global-set-key (kbd "C-c f") 'find-name-dired)
 
@@ -261,7 +283,7 @@ Yasnippet is a template system for Emacs. It allows you to type abbreviation and
 
 E.g. In java mode, if you type ~pr~ and hit ~<TAB>~ it should complete to ~System.out.println("text");~
 
-To create a new snippet you can use ~yas-new-snippet~ command. 
+To create a new snippet you can use ~yas-new-snippet~ command.
 
 *** FlyCheck
 FlyCheck checks for errors in code at run-time.
@@ -317,7 +339,7 @@ LSP UI is used in various packages that require UI elements in LSP. E.g ~lsp-ui-
          ([remap xref-find-references] . lsp-ui-peek-find-references))
 :init (setq lsp-ui-doc-delay 1.5
       lsp-ui-doc-position 'bottom
-	  lsp-ui-doc-max-width 100
+      lsp-ui-doc-max-width 100
 ))
 #+end_src
 
@@ -337,7 +359,7 @@ LSP's built in symbol explorer uses ~xref-find-apropos~ to provide symbol naviga
 #+end_src
 
 *** Install LSP Package
-Let's install the main package for lsp. Here we will integrate lsp with which-key. This way, when we type the prefix key ~C-c l~ we get additional help for compliting the command. 
+Let's install the main package for lsp. Here we will integrate lsp with which-key. This way, when we type the prefix key ~C-c l~ we get additional help for compliting the command.
 
 #+begin_src emacs-lisp
 (use-package lsp-mode
@@ -346,18 +368,18 @@ Let's install the main package for lsp. Here we will integrate lsp with which-ke
    (lsp-mode . lsp-enable-which-key-integration)
    (java-mode . #'lsp-deferred)
 )
-:init (setq 
+:init (setq
     lsp-keymap-prefix "C-c l"              ; this is for which-key integration documentation, need to use lsp-mode-map
     lsp-enable-file-watchers nil
     read-process-output-max (* 1024 1024)  ; 1 mb
     lsp-completion-provider :capf
     lsp-idle-delay 0.500
 )
-:config 
+:config
     (setq lsp-intelephense-multi-root nil) ; don't scan unnecessary projects
     (with-eval-after-load 'lsp-intelephense
     (setf (lsp--client-multi-root (gethash 'iph lsp-clients)) nil))
-	(define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
+    (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
 )
 #+end_src
 
@@ -366,7 +388,7 @@ You can start LSP server in a java project by using ~C-c l s s~. Once you type ~
 *** LSP Java
 This is the package that handles server installation and session management.
 #+begin_src  emacs-lisp
-(use-package lsp-java 
+(use-package lsp-java
 :ensure t
 :config (add-hook 'java-mode-hook 'lsp))
 #+end_src
@@ -374,3 +396,14 @@ This is the package that handles server installation and session management.
 (use-package magit)
 (use-package magit-find-file)
 (global-set-key (kbd "C-x g") 'magit-status)
+** custom functions
+(defun my:duplicate-line()
+  (interactive)
+  (move-beginning-of-line 1)
+  (kill-line)
+  (yank)
+  (open-line 1)
+  (next-line 1)
+  (yank)
+)
+(global-set-key (kbd "C-c d") 'my:duplicate-line)
