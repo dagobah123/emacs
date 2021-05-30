@@ -13,8 +13,6 @@ ag -g . | ag 'foo'
 ag 'foo'
 
 ag
-auto-complete
-auto-complete-c-headers
 clang-format
 company
 counsel-jq
@@ -23,13 +21,10 @@ dired-narrow
 dired-quick-sort
 dired-rainbow
 dired-subtree
-dumb-jump
 emms
 engine-mode
 expand-region
 fountain-mode
-ggtags
-gnuplot
 goto-last-change
 helm
 helm-ag
@@ -37,12 +32,8 @@ helm-gtags
 helm-projectile
 helm-swoop
 imenu-list
-java-imports
-java-snippets
-jtags
 magit
 magit-find-file
-modern-cpp-font-lock
 move-text
 neotree
 nov
@@ -83,7 +74,8 @@ yasnippet
                      helm-swoop
                      magit
                      magit-find-file
-                     dired-narrow)
+                     dired-narrow
+                     openwith)
 )
 (dolist (package package-list)
 (unless (package-installed-p package) (package-install package)))
@@ -629,19 +621,19 @@ This is the package that handles server installation and session management.
 #+END_SRC
 ** openwith
 #+BEGIN_SRC emacs-lisp
-;(require 'openwith)
-;(openwith-mode t)
-;(setq openwith-associations
-;      (list (list (openwith-make-extension-regexp '("pdf"))
-;                  "evince" '(file))
-;            (list (openwith-make-extension-regexp '("bmp" "jpeg" "jpg" "png"))
-;                  "gimp" '(file))
-;            (list (openwith-make-extension-regexp '("avi" "mp3" "mp4" "wav"))
-;                  "vlc" '(file))
-;            (list (openwith-make-extension-regexp '("sln"))
-;                  "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\Common7\\IDE\\devenv.exe" '(file))
-;            )
-;      )
+(require 'openwith)
+(openwith-mode t)
+(setq openwith-associations
+      (list (list (openwith-make-extension-regexp '("pdf"))
+                  "evince" '(file))
+            (list (openwith-make-extension-regexp '("bmp" "jpeg" "jpg" "png"))
+                  "gimp" '(file))
+            (list (openwith-make-extension-regexp '("avi" "mp3" "mp4" "wav"))
+                  "vlc" '(file))
+            (list (openwith-make-extension-regexp '("sln"))
+                  "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\Common7\\IDE\\devenv.exe" '(file))
+            )
+      )
 #+END_SRC
 ** winner mode
 #+BEGIN_SRC emacs-lisp
