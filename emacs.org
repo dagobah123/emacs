@@ -139,6 +139,12 @@ Load environment variables properly by installing =exec-path-from-shell=.
 (add-to-list 'default-frame-alist '(cursor-color . "#00ff00"))
 (setq blink-cursor-blinks 0)
 
+(global-hl-line-mode)
+(set-face-background 'highlight "#007700")
+(set-face-attribute hl-line-face nil :underline nil)
+(set-face-foreground 'highlight nil)
+(set-face-underline-p 'highlight t)
+
 ; 4 spaces indentation
 (setq c-default-style "linux" c-basic-offset 4)
 
@@ -280,6 +286,9 @@ Load environment variables properly by installing =exec-path-from-shell=.
 (global-set-key (kbd "C-S-<up>") 'my:prev-java-method)
 (global-set-key (kbd "C-S-<down>") 'my:next-java-method)
 (global-set-key (kbd "C-n") 'my:jump-ten-lines)
+(global-set-key (kbd "C-p") 'my:jump-back-ten-lines)
+(global-set-key (kbd "<C-iso-lefttab>") 'my:previous-link-center)
+(global-set-key (kbd "<C-tab>") 'my:next-link-center)
 #+END_SRC
 ** dired
 #+BEGIN_SRC emacs-lisp
@@ -558,6 +567,32 @@ This is the package that handles server installation and session management.
   (next-line)
   (next-line)
 )
+
+(defun my:jump-back-ten-lines()
+  (interactive)
+  (previous-line)
+  (previous-line)
+  (previous-line)
+  (previous-line)
+  (previous-line)
+  (previous-line)
+  (previous-line)
+  (previous-line)
+  (previous-line)
+  (previous-line)
+)
+
+(defun my:previous-link-center()
+  (interactive)
+  (Info-prev-reference)
+  (recenter)
+)
+
+(defun my:next-link-center()
+  (interactive)
+  (Info-next-reference)
+  (recenter)
+)
 #+END_SRC
 ** engine mode
 #+BEGIN_SRC emacs-lisp
@@ -612,4 +647,9 @@ This is the package that handles server installation and session management.
 #+BEGIN_SRC emacs-lisp
 (when (fboundp 'winner-mode)
   (winner-mode 1))
+#+END_SRC
+** ido
+#+BEGIN_SRC emacs-lisp
+(setq ido-enable-flex-matching t)
+(ido-mode 1)
 #+END_SRC
