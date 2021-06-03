@@ -198,11 +198,6 @@ Load environment variables properly by installing =exec-path-from-shell=.
 #+BEGIN_SRC emacs-lisp
 (setq org-directory "~/source/org-mode/")
 (setq org-default-notes-file (concat org-directory "/org-capture.org"))
-(global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-c c") 'org-capture)
-(global-set-key (kbd "C-c s") 'org-schedule)
-(global-set-key (kbd "C-c l") 'org-store-link)
-(global-set-key (kbd "C-c b") 'org-switchb)
 (setq org-capture-templates
       '(
         ("t" "Tasks" entry (file+headline "~/source/org-mode/tasks.org" "Tasks")
@@ -264,6 +259,11 @@ Load environment variables properly by installing =exec-path-from-shell=.
 #+END_SRC
 ** key bindings
 #+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c c") 'org-capture)
+(global-set-key (kbd "C-c s") 'org-schedule)
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c b") 'org-switchb)
 (global-set-key (kbd "<f10>") 'tmm-menubar)
 (global-set-key (kbd "C-x q") 'goto-last-change)
 (global-set-key (kbd "C-x l") 'locate)
@@ -281,6 +281,8 @@ Load environment variables properly by installing =exec-path-from-shell=.
 (global-set-key (kbd "C-p") 'my:jump-back-ten-lines)
 (global-set-key (kbd "<C-iso-lefttab>") 'my:previous-link-center)
 (global-set-key (kbd "<C-tab>") 'my:next-link-center)
+;(global-set-key (kbd "C-c p") 'completion-at-point)
+;(define-key ac-complete-mode-map "\C-p" 'completion-at-point)
 #+END_SRC
 ** dired
 #+BEGIN_SRC emacs-lisp
