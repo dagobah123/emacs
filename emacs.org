@@ -75,7 +75,9 @@ yasnippet
                      magit
                      magit-find-file
                      dired-narrow
-                     openwith)
+                     openwith
+					 projectile
+					 powershell)
 )
 (dolist (package package-list)
 (unless (package-installed-p package) (package-install package)))
@@ -193,11 +195,23 @@ Load environment variables properly by installing =exec-path-from-shell=.
 ; switch split buffers
 (global-set-key (kbd "M-o") 'other-window)
 (windmove-default-keybindings)
+
+; disable bell
+(setq ring-bell-function 'ignore)
+
+; set language environment to UTF-8
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8)
 #+END_SRC
 ** org mode
 #+BEGIN_SRC emacs-lisp
 (setq org-directory "~/source/org-mode/")
 (setq org-default-notes-file (concat org-directory "/org-capture.org"))
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c c") 'org-capture)
+(global-set-key (kbd "C-c s") 'org-schedule)
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c b") 'org-switchb)
 (setq org-capture-templates
       '(
         ("t" "Tasks" entry (file+headline "~/source/org-mode/tasks.org" "Tasks")
@@ -259,11 +273,6 @@ Load environment variables properly by installing =exec-path-from-shell=.
 #+END_SRC
 ** key bindings
 #+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-c c") 'org-capture)
-(global-set-key (kbd "C-c s") 'org-schedule)
-(global-set-key (kbd "C-c l") 'org-store-link)
-(global-set-key (kbd "C-c b") 'org-switchb)
 (global-set-key (kbd "<f10>") 'tmm-menubar)
 (global-set-key (kbd "C-x q") 'goto-last-change)
 (global-set-key (kbd "C-x l") 'locate)
@@ -297,10 +306,19 @@ Load environment variables properly by installing =exec-path-from-shell=.
 
 (global-set-key (kbd "C-c f") 'find-name-dired)
 
+; prevent warning to show on windows machine
+; connected with dired-quick-sort
+;(cond
+; ((string-equal system-type "windows-nt")
+;  (progn
+;    (setq ls-lisp-use-insert-directory-program t)
+;   )
+; )
+;)
 ; "S" opens the menu
-(use-package dired-quick-sort)
-(require 'dired-quick-sort)
-(dired-quick-sort-setup)
+;(use-package dired-quick-sort)
+;(require 'dired-quick-sort)
+;(dired-quick-sort-setup)
 
 ; open file in dired with eww, shortcut: e
 ; (define-key dired-mode-map "e" (lambda () (interactive) (eww-open-file (dired-get-file-for-visit))))
