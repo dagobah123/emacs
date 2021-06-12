@@ -16,7 +16,6 @@ ag
 clang-format
 company
 counsel-jq
-csharp-mode
 dired-narrow
 dired-quick-sort
 dired-rainbow
@@ -77,7 +76,8 @@ yasnippet
                      dired-narrow
                      openwith
 					 projectile
-					 powershell)
+					 powershell
+                     csharp-mode)
 )
 (dolist (package package-list)
 (unless (package-installed-p package) (package-install package)))
@@ -267,31 +267,9 @@ Load environment variables properly by installing =exec-path-from-shell=.
 (("C-c h" . helm-grep-do-git-grep))
 (("C-s" . helm-swoop))
 (("C-c b" . helm-buffers-list))
-(("C-c l" . helm-bookmarks))
+(("C-r" . helm-bookmarks))
 (("C-c i" . helm-mini))
 (("C-c q" . helm-info)))
-#+END_SRC
-** key bindings
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "<f10>") 'tmm-menubar)
-(global-set-key (kbd "C-x q") 'goto-last-change)
-(global-set-key (kbd "C-x l") 'locate)
-(global-set-key (kbd "C-x C-b") 'switch-to-buffer)
-(global-set-key (kbd "C-<next>") 'next-buffer)
-(global-set-key (kbd "C-<prior>") 'previous-buffer)
-(global-set-key (kbd "C-c f") 'find-name-dired)
-(global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "C-x p") 'projectile-switch-project)
-(global-set-key (kbd "C-x o") 'projectile-find-file)
-(global-set-key (kbd "C-c d") 'my:duplicate-line)
-(global-set-key (kbd "C-S-<up>") 'my:prev-java-method)
-(global-set-key (kbd "C-S-<down>") 'my:next-java-method)
-(global-set-key (kbd "C-n") 'my:jump-ten-lines)
-(global-set-key (kbd "C-p") 'my:jump-back-ten-lines)
-(global-set-key (kbd "<C-iso-lefttab>") 'my:previous-link-center)
-(global-set-key (kbd "<C-tab>") 'my:next-link-center)
-;(global-set-key (kbd "C-c p") 'completion-at-point)
-;(define-key ac-complete-mode-map "\C-p" 'completion-at-point)
 #+END_SRC
 ** dired
 #+BEGIN_SRC emacs-lisp
@@ -664,4 +642,27 @@ This is the package that handles server installation and session management.
 #+BEGIN_SRC emacs-lisp
 (setq ido-enable-flex-matching t)
 (ido-mode 1)
+#+END_SRC
+** key bindings
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "<f10>") 'tmm-menubar)
+(global-set-key (kbd "C-x q") 'goto-last-change)
+(global-set-key (kbd "C-x l") 'locate)
+(global-set-key (kbd "C-x C-b") 'switch-to-buffer)
+(global-set-key (kbd "C-<next>") 'next-buffer)
+(global-set-key (kbd "C-<prior>") 'previous-buffer)
+(global-set-key (kbd "C-c f") 'find-name-dired)
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x p") 'projectile-switch-project)
+(global-set-key (kbd "C-x o") 'projectile-find-file)
+(global-set-key (kbd "C-c d") 'my:duplicate-line)
+(global-set-key (kbd "C-S-<up>") 'my:prev-java-method)
+(global-set-key (kbd "C-S-<down>") 'my:next-java-method)
+(global-set-key (kbd "C-n") 'my:jump-ten-lines)
+(global-set-key (kbd "C-p") 'my:jump-back-ten-lines)
+(global-set-key (kbd "<C-iso-lefttab>") 'my:previous-link-center)
+;(global-set-key (kbd "<C-tab>") 'my:next-link-center)
+(global-set-key (kbd "<C-tab>") 'completion-at-point)
+;(global-set-key (kbd "C-c p") 'completion-at-point)
+;(define-key ac-complete-mode-map "\C-p" 'completion-at-point)
 #+END_SRC
