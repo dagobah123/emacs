@@ -77,7 +77,14 @@ yasnippet
                      openwith
                      projectile
                      powershell
-                     csharp-mode)
+                     csharp-mode
+                     solarized-theme
+                     dark-mint-theme
+                     doom-themes
+                     eclipse-theme
+                     ubuntu-theme
+                     grayscale-theme
+                     )
 )
 (dolist (package package-list)
 (unless (package-installed-p package) (package-install package)))
@@ -167,14 +174,14 @@ Load environment variables properly by installing =exec-path-from-shell=.
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
-(use-package solarized-theme)
-(use-package dark-mint-theme)
-(use-package doom-themes)
-(use-package eclipse-theme)
-(use-package ubuntu-theme)
-(use-package grayscale-theme)
+;(use-package solarized-theme)
+;(use-package dark-mint-theme)
+;(use-package doom-themes)
+;(use-package eclipse-theme)
+;(use-package ubuntu-theme)
+;(use-package grayscale-theme)
 
-(load-theme 'dark-mint t)
+;(load-theme 'dark-mint t)
 
 (defun my:disable-themes()
   (interactive)
@@ -186,6 +193,12 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (disable-theme 'grayscale)
 )
 (global-set-key (kbd "C-5") 'my:disable-themes)
+
+;(defun my:theme-switch-toggle()
+;  (interactive)
+;  (my:disable-themes))
+;(global-set-key (kbd "C-=") 'my:theme-switch-toggle)
+
 
 (defun my:theme-switch-solarized-dark-high-contrast()
   (interactive)
@@ -204,19 +217,19 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (my:disable-themes)
   (load-theme 'doom-palenight t))
 (global-set-key (kbd "C-8") 'my:theme-switch-doom-palenight)
-
+ 
 (defun my:theme-switch-eclipse()
   (interactive)
   (my:disable-themes)
   (load-theme 'eclipse t))
 (global-set-key (kbd "C-9") 'my:theme-switch-eclipse)
-
+ 
 (defun my:theme-switch-ubuntu()
   (interactive)
   (my:disable-themes)
   (load-theme 'ubuntu t))
 (global-set-key (kbd "C-0") 'my:theme-switch-ubuntu)
-
+ 
 (defun my:theme-switch-grayscale()
   (interactive)
   (my:disable-themes)
