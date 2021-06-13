@@ -84,6 +84,8 @@ yasnippet
                      eclipse-theme
                      ubuntu-theme
                      grayscale-theme
+                     base16-theme
+                     vs-light-theme
                      )
 )
 (dolist (package package-list)
@@ -191,6 +193,8 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (disable-theme 'eclipse)
   (disable-theme 'ubuntu)
   (disable-theme 'grayscale)
+  (disable-theme 'base16-greenscreen)
+  (disable-theme 'vs-light)
 )
 (global-set-key (kbd "C-5") 'my:disable-themes)
 
@@ -199,42 +203,53 @@ Load environment variables properly by installing =exec-path-from-shell=.
 ;  (my:disable-themes))
 ;(global-set-key (kbd "C-=") 'my:theme-switch-toggle)
 
-
-(defun my:theme-switch-solarized-dark-high-contrast()
+(defun my:theme-switch-eclipse()
   (interactive)
   (my:disable-themes)
-  (load-theme 'solarized-dark-high-contrast t))
-(global-set-key (kbd "C-6") 'my:theme-switch-solarized-dark-high-contrast)
+  (load-theme 'eclipse t))
+(global-set-key (kbd "C-6") 'my:theme-switch-eclipse)
+
+(defun my:theme-switch-vs-light()
+  (interactive)
+  (my:disable-themes)
+  (load-theme 'vs-light t))
+(global-set-key (kbd "C-7") 'my:theme-switch-vs-light)
 
 (defun my:theme-switch-dark-mint()
   (interactive)
   (my:disable-themes)
   (load-theme 'dark-mint t))
-(global-set-key (kbd "C-7") 'my:theme-switch-dark-mint)
+(global-set-key (kbd "C-8") 'my:theme-switch-dark-mint)
+
+(defun my:theme-switch-solarized-dark-high-contrast()
+  (interactive)
+  (my:disable-themes)
+  (load-theme 'solarized-dark-high-contrast t))
+(global-set-key (kbd "C-9") 'my:theme-switch-solarized-dark-high-contrast)
 
 (defun my:theme-switch-doom-palenight()
   (interactive)
   (my:disable-themes)
   (load-theme 'doom-palenight t))
-(global-set-key (kbd "C-8") 'my:theme-switch-doom-palenight)
- 
-(defun my:theme-switch-eclipse()
-  (interactive)
-  (my:disable-themes)
-  (load-theme 'eclipse t))
-(global-set-key (kbd "C-9") 'my:theme-switch-eclipse)
+(global-set-key (kbd "C-0") 'my:theme-switch-doom-palenight)
  
 (defun my:theme-switch-ubuntu()
   (interactive)
   (my:disable-themes)
   (load-theme 'ubuntu t))
-(global-set-key (kbd "C-0") 'my:theme-switch-ubuntu)
+(global-set-key (kbd "C--") 'my:theme-switch-ubuntu)
  
 (defun my:theme-switch-grayscale()
   (interactive)
   (my:disable-themes)
   (load-theme 'grayscale t))
-(global-set-key (kbd "C--") 'my:theme-switch-grayscale)
+(global-set-key (kbd "C-=") 'my:theme-switch-grayscale)
+
+(defun my:theme-switch-base16-greenscreen()
+  (interactive)
+  (my:disable-themes)
+  (load-theme 'base16-greenscreen t))
+(global-set-key (kbd "C-`") 'my:theme-switch-base16-greenscreen)
 #+END_SRC
 ** behavior
 #+BEGIN_SRC emacs-lisp
