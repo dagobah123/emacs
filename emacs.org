@@ -124,11 +124,11 @@ Load environment variables properly by installing =exec-path-from-shell=.
       projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-directory))
 
 ; set cursor color for multiple frames
-(add-to-list 'default-frame-alist '(cursor-color . "#00ff00"))
+;(add-to-list 'default-frame-alist '(cursor-color . "#00ff00"))
 (setq blink-cursor-blinks 0)
 
 (global-hl-line-mode)
-(set-face-background 'highlight "#007700")
+;(set-face-background 'highlight "#007700")
 (set-face-attribute hl-line-face nil :underline nil)
 (set-face-foreground 'highlight nil)
 (set-face-underline-p 'highlight t)
@@ -170,6 +170,9 @@ Load environment variables properly by installing =exec-path-from-shell=.
 (use-package solarized-theme)
 (use-package dark-mint-theme)
 (use-package doom-themes)
+(use-package eclipse-theme)
+(use-package ubuntu-theme)
+(use-package grayscale-theme)
 
 (load-theme 'dark-mint t)
 
@@ -178,26 +181,47 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (disable-theme 'solarized-dark-high-contrast)
   (disable-theme 'dark-mint)
   (disable-theme 'doom-palenight)
+  (disable-theme 'eclipse)
+  (disable-theme 'ubuntu)
+  (disable-theme 'grayscale)
 )
 (global-set-key (kbd "C-5") 'my:disable-themes)
 
-(defun my:theme-switch1()
+(defun my:theme-switch-solarized-dark-high-contrast()
   (interactive)
   (my:disable-themes)
   (load-theme 'solarized-dark-high-contrast t))
-(global-set-key (kbd "C-6") 'my:theme-switch1)
+(global-set-key (kbd "C-6") 'my:theme-switch-solarized-dark-high-contrast)
 
-(defun my:theme-switch2()
+(defun my:theme-switch-dark-mint()
   (interactive)
   (my:disable-themes)
   (load-theme 'dark-mint t))
-(global-set-key (kbd "C-7") 'my:theme-switch2)
+(global-set-key (kbd "C-7") 'my:theme-switch-dark-mint)
 
-(defun my:theme-switch3()
+(defun my:theme-switch-doom-palenight()
   (interactive)
   (my:disable-themes)
   (load-theme 'doom-palenight t))
-(global-set-key (kbd "C-8") 'my:theme-switch3)
+(global-set-key (kbd "C-8") 'my:theme-switch-doom-palenight)
+
+(defun my:theme-switch-eclipse()
+  (interactive)
+  (my:disable-themes)
+  (load-theme 'eclipse t))
+(global-set-key (kbd "C-9") 'my:theme-switch-eclipse)
+
+(defun my:theme-switch-ubuntu()
+  (interactive)
+  (my:disable-themes)
+  (load-theme 'ubuntu t))
+(global-set-key (kbd "C-0") 'my:theme-switch-ubuntu)
+
+(defun my:theme-switch-grayscale()
+  (interactive)
+  (my:disable-themes)
+  (load-theme 'grayscale t))
+(global-set-key (kbd "C--") 'my:theme-switch-grayscale)
 #+END_SRC
 ** behavior
 #+BEGIN_SRC emacs-lisp
