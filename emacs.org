@@ -82,10 +82,10 @@ yasnippet
                      dark-mint-theme
                      doom-themes
                      eclipse-theme
-                     ubuntu-theme
                      grayscale-theme
                      base16-theme
                      vs-light-theme
+                     alect-themes
                      )
 )
 (dolist (package package-list)
@@ -176,32 +176,20 @@ Load environment variables properly by installing =exec-path-from-shell=.
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
-;(use-package solarized-theme)
-;(use-package dark-mint-theme)
-;(use-package doom-themes)
-;(use-package eclipse-theme)
-;(use-package ubuntu-theme)
-;(use-package grayscale-theme)
-
-;(load-theme 'dark-mint t)
-
 (defun my:disable-themes()
   (interactive)
-  (disable-theme 'solarized-dark-high-contrast)
-  (disable-theme 'dark-mint)
-  (disable-theme 'doom-palenight)
   (disable-theme 'eclipse)
-  (disable-theme 'ubuntu)
+  (disable-theme 'vs-light)
+  (disable-theme 'dark-mint)
+  (disable-theme 'doom-zenburn)
+  (disable-theme 'doom-gruvbox)
+  (disable-theme 'alect-light-alt)
   (disable-theme 'grayscale)
   (disable-theme 'base16-greenscreen)
-  (disable-theme 'vs-light)
 )
 (global-set-key (kbd "C-5") 'my:disable-themes)
 
-;(defun my:theme-switch-toggle()
-;  (interactive)
-;  (my:disable-themes))
-;(global-set-key (kbd "C-=") 'my:theme-switch-toggle)
+;base16-icy
 
 (defun my:theme-switch-eclipse()
   (interactive)
@@ -221,23 +209,23 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (load-theme 'dark-mint t))
 (global-set-key (kbd "C-8") 'my:theme-switch-dark-mint)
 
-(defun my:theme-switch-solarized-dark-high-contrast()
+(defun my:theme-switch-doom-zenburn()
   (interactive)
   (my:disable-themes)
-  (load-theme 'solarized-dark-high-contrast t))
-(global-set-key (kbd "C-9") 'my:theme-switch-solarized-dark-high-contrast)
+  (load-theme 'doom-zenburn t))
+(global-set-key (kbd "C-9") 'my:theme-switch-doom-zenburn)
 
-(defun my:theme-switch-doom-palenight()
+(defun my:theme-switch-doom-gruvbox()
   (interactive)
   (my:disable-themes)
-  (load-theme 'doom-palenight t))
-(global-set-key (kbd "C-0") 'my:theme-switch-doom-palenight)
+  (load-theme 'doom-gruvbox t))
+(global-set-key (kbd "C-0") 'my:theme-switch-doom-gruvbox)
  
-(defun my:theme-switch-ubuntu()
+(defun my:alect-light-alt()
   (interactive)
   (my:disable-themes)
-  (load-theme 'ubuntu t))
-(global-set-key (kbd "C--") 'my:theme-switch-ubuntu)
+  (load-theme 'alect-light-alt t))
+(global-set-key (kbd "C--") 'my:alect-light-alt)
  
 (defun my:theme-switch-grayscale()
   (interactive)
