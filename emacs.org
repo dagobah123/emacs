@@ -731,6 +731,7 @@ This is the package that handles server installation and session management.
 (global-set-key (kbd "<C-iso-lefttab>") 'my:previous-link-center)
 ;(global-set-key (kbd "<C-tab>") 'my:next-link-center)
 (global-set-key (kbd "<C-tab>") 'completion-at-point)
+(global-set-key (kbd "C-x 7") 'display-time-world)
 ;(global-set-key (kbd "C-c p") 'completion-at-point)
 ;(define-key ac-complete-mode-map "\C-p" 'completion-at-point)
 #+END_SRC
