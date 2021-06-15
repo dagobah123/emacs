@@ -186,10 +186,32 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (disable-theme 'alect-light-alt)
   (disable-theme 'grayscale)
   (disable-theme 'base16-greenscreen)
+  (disable-theme 'base16-icy)
 )
 (global-set-key (kbd "C-5") 'my:disable-themes)
 
 ;base16-icy
+
+(defvar theme-index 0 "Index to toggle themes")
+(setq theme-index 0)
+
+(defun my:toggle-themes()
+  (interactive)
+  (setq theme-index (+ theme-index 1))
+  (my:disable-themes)
+  (if (eq theme-index 1) (load-theme 'eclipse t))
+  (if (eq theme-index 2) (load-theme 'vs-light t))
+  (if (eq theme-index 3) (load-theme 'dark-mint t))
+  (if (eq theme-index 4) (load-theme 'doom-zenburn t))
+  (if (eq theme-index 5) (load-theme 'doom-gruvbox t))
+  (if (eq theme-index 6) (load-theme 'alect-light-alt t))
+  (if (eq theme-index 7) (load-theme 'grayscale t))
+  (if (eq theme-index 8) (load-theme 'base16-greenscreen t))
+  (if (eq theme-index 9) (load-theme 'base16-icy t))
+  (if (eq theme-index 10) (setq theme-index 0))
+)
+(global-set-key (kbd "C-`") 'my:toggle-themes)
+
 
 (defun my:theme-switch-eclipse()
   (interactive)
@@ -237,7 +259,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (interactive)
   (my:disable-themes)
   (load-theme 'base16-greenscreen t))
-(global-set-key (kbd "C-`") 'my:theme-switch-base16-greenscreen)
+;(global-set-key (kbd "C-`") 'my:theme-switch-base16-greenscreen)
 #+END_SRC
 ** behavior
 #+BEGIN_SRC emacs-lisp
@@ -711,6 +733,10 @@ This is the package that handles server installation and session management.
 (setq ido-enable-flex-matching t)
 (ido-mode 1)
 #+END_SRC
+** clock
+#+BEGIN_SRC emacs-lisp
+(setq display-time-world-list '(("Europe/Vienna" "Graz")))
+#+END_SRC
 ** key bindings
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "<f10>") 'tmm-menubar)
@@ -731,7 +757,7 @@ This is the package that handles server installation and session management.
 (global-set-key (kbd "<C-iso-lefttab>") 'my:previous-link-center)
 ;(global-set-key (kbd "<C-tab>") 'my:next-link-center)
 (global-set-key (kbd "<C-tab>") 'completion-at-point)
-(global-set-key (kbd "C-x 7") 'display-time-world)
+(global-set-key (kbd "C-x 7") 'helm-world-time)
 ;(global-set-key (kbd "C-c p") 'completion-at-point)
 ;(define-key ac-complete-mode-map "\C-p" 'completion-at-point)
 #+END_SRC
