@@ -176,6 +176,9 @@ Load environment variables properly by installing =exec-path-from-shell=.
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
+(defvar theme-index 0 "Index to toggle themes")
+(setq theme-index 0)
+
 (defun my:disable-themes()
   (interactive)
   (disable-theme 'eclipse)
@@ -187,13 +190,15 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (disable-theme 'grayscale)
   (disable-theme 'base16-greenscreen)
   (disable-theme 'base16-icy)
+  (disable-theme 'base16-atelier-dune)
 )
-(global-set-key (kbd "C-5") 'my:disable-themes)
 
-;base16-icy
-
-(defvar theme-index 0 "Index to toggle themes")
-(setq theme-index 0)
+(defun my:reset-themes-index()
+  (interactive)
+  (setq theme-index 0)
+  (my:disable-themes)
+)
+(global-set-key (kbd "C-5") 'my:reset-themes-index)
 
 (defun my:toggle-themes()
   (interactive)
@@ -208,58 +213,10 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (if (eq theme-index 7) (load-theme 'grayscale t))
   (if (eq theme-index 8) (load-theme 'base16-greenscreen t))
   (if (eq theme-index 9) (load-theme 'base16-icy t))
-  (if (eq theme-index 10) (setq theme-index 0))
+  (if (eq theme-index 10) (load-theme 'base16-atelier-dune t))
+  (if (eq theme-index 11) (setq theme-index 0))
 )
 (global-set-key (kbd "C-`") 'my:toggle-themes)
-
-
-(defun my:theme-switch-eclipse()
-  (interactive)
-  (my:disable-themes)
-  (load-theme 'eclipse t))
-(global-set-key (kbd "C-6") 'my:theme-switch-eclipse)
-
-(defun my:theme-switch-vs-light()
-  (interactive)
-  (my:disable-themes)
-  (load-theme 'vs-light t))
-(global-set-key (kbd "C-7") 'my:theme-switch-vs-light)
-
-(defun my:theme-switch-dark-mint()
-  (interactive)
-  (my:disable-themes)
-  (load-theme 'dark-mint t))
-(global-set-key (kbd "C-8") 'my:theme-switch-dark-mint)
-
-(defun my:theme-switch-doom-zenburn()
-  (interactive)
-  (my:disable-themes)
-  (load-theme 'doom-zenburn t))
-(global-set-key (kbd "C-9") 'my:theme-switch-doom-zenburn)
-
-(defun my:theme-switch-doom-gruvbox()
-  (interactive)
-  (my:disable-themes)
-  (load-theme 'doom-gruvbox t))
-(global-set-key (kbd "C-0") 'my:theme-switch-doom-gruvbox)
- 
-(defun my:alect-light-alt()
-  (interactive)
-  (my:disable-themes)
-  (load-theme 'alect-light-alt t))
-(global-set-key (kbd "C--") 'my:alect-light-alt)
- 
-(defun my:theme-switch-grayscale()
-  (interactive)
-  (my:disable-themes)
-  (load-theme 'grayscale t))
-(global-set-key (kbd "C-=") 'my:theme-switch-grayscale)
-
-(defun my:theme-switch-base16-greenscreen()
-  (interactive)
-  (my:disable-themes)
-  (load-theme 'base16-greenscreen t))
-;(global-set-key (kbd "C-`") 'my:theme-switch-base16-greenscreen)
 #+END_SRC
 ** behavior
 #+BEGIN_SRC emacs-lisp
