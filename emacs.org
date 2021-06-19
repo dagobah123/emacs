@@ -24,7 +24,6 @@ emms
 engine-mode
 expand-region
 fountain-mode
-goto-last-change
 helm
 helm-ag
 helm-gtags
