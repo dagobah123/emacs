@@ -85,6 +85,9 @@ yasnippet
                      base16-theme
                      vs-light-theme
                      alect-themes
+                     goto-last-change
+                     move-text
+                     rebecca-theme
                      )
 )
 (dolist (package package-list)
@@ -190,6 +193,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (disable-theme 'base16-greenscreen)
   (disable-theme 'base16-icy)
   (disable-theme 'base16-atelier-dune)
+  (disable-theme 'rebecca)
 )
 
 (defun my:reset-themes-index()
@@ -199,10 +203,25 @@ Load environment variables properly by installing =exec-path-from-shell=.
 )
 (global-set-key (kbd "C-5") 'my:reset-themes-index)
 
-(defun my:toggle-themes()
+(defun my:theme-down()
+  (interactive)
+  (setq theme-index (- theme-index 1))
+  (my:toggle-themes)
+)
+(global-set-key (kbd "C-6") 'my:theme-down)
+
+(defun my:theme-up()
   (interactive)
   (setq theme-index (+ theme-index 1))
+  (my:toggle-themes)
+)
+(global-set-key (kbd "C-7") 'my:theme-up)
+
+(defun my:toggle-themes()
+  (interactive)
+  ;(setq theme-index (+ theme-index 1))
   (my:disable-themes)
+  (if (eq theme-index -1) (setq theme-index 11))
   (if (eq theme-index 1) (load-theme 'eclipse t))
   (if (eq theme-index 2) (load-theme 'vs-light t))
   (if (eq theme-index 3) (load-theme 'dark-mint t))
@@ -213,9 +232,9 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (if (eq theme-index 8) (load-theme 'base16-greenscreen t))
   (if (eq theme-index 9) (load-theme 'base16-icy t))
   (if (eq theme-index 10) (load-theme 'base16-atelier-dune t))
-  (if (eq theme-index 11) (setq theme-index 0))
+  (if (eq theme-index 11) (load-theme 'rebecca t))
+  (if (eq theme-index 12) (setq theme-index 0))
 )
-(global-set-key (kbd "C-`") 'my:toggle-themes)
 #+END_SRC
 ** behavior
 #+BEGIN_SRC emacs-lisp
@@ -248,6 +267,9 @@ Load environment variables properly by installing =exec-path-from-shell=.
 ; set language environment to UTF-8
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
+
+; go to last change
+(global-set-key (kbd "C-x q") 'goto-last-change)
 #+END_SRC
 ** org mode
 #+BEGIN_SRC emacs-lisp
