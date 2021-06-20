@@ -199,7 +199,6 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (disable-theme 'base16-circus)
   (disable-theme 'base16-darkviolet)
   (disable-theme 'base16-apathy)
-  (disable-theme 'base16-darkviolet)
 )
 
 (defun my:reset-themes-index()
@@ -222,30 +221,142 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (my:toggle-themes)
 )
 (global-set-key (kbd "C-7") 'my:theme-up)
+(global-set-key (kbd "C-`") 'my:theme-up)
 
 (defun my:toggle-themes()
   (interactive)
-  ;(setq theme-index (+ theme-index 1))
   (my:disable-themes)
-  (if (eq theme-index -1) (setq theme-index 17))
-  (if (eq theme-index 1) (load-theme 'eclipse t))
-  (if (eq theme-index 2) (load-theme 'vs-light t))
-  (if (eq theme-index 3) (load-theme 'dark-mint t))
-  (if (eq theme-index 4) (load-theme 'doom-zenburn t))
-  (if (eq theme-index 5) (load-theme 'doom-gruvbox t))
-  (if (eq theme-index 6) (load-theme 'alect-light-alt t))
-  (if (eq theme-index 7) (load-theme 'grayscale t))
-  (if (eq theme-index 8) (load-theme 'base16-greenscreen t))
-  (if (eq theme-index 9) (load-theme 'base16-icy t))
-  (if (eq theme-index 10) (load-theme 'base16-atelier-dune t))
-  (if (eq theme-index 11) (load-theme 'rebecca t))
-  (if (eq theme-index 12) (load-theme 'alect-black-alt t))
-  (if (eq theme-index 13) (load-theme 'base16-3024 t))
-  (if (eq theme-index 14) (load-theme 'base16-circus t))
-  (if (eq theme-index 15) (load-theme 'base16-darkviolet t))
-  (if (eq theme-index 16) (load-theme 'base16-apathy t))
-  (if (eq theme-index 17) (load-theme 'base16-darkviolet t))
-  (if (eq theme-index 18) (setq theme-index 0))
+
+  (if (eq theme-index -1)
+      (progn
+          (setq theme-index 16)
+      )
+  )
+
+  (if (eq theme-index 0)
+      (progn
+          (message "emacs")
+      )
+  )
+
+  (if (eq theme-index 1)
+      (progn
+          (load-theme 'eclipse t)
+          (message "eclipse")
+      )
+  )
+
+  (if (eq theme-index 2)
+      (progn
+          (load-theme 'vs-light t)
+          (message "vs-light")
+      )
+  )
+
+  (if (eq theme-index 3)
+      (progn
+          (load-theme 'dark-mint t)
+          (message "dark-mint")
+      )
+  )
+
+  (if (eq theme-index 4)
+      (progn
+          (load-theme 'doom-zenburn t)
+          (message "doom-zenburn")
+      )
+  )
+
+  (if (eq theme-index 5)
+      (progn
+          (load-theme 'doom-gruvbox t)
+          (message "doom-gruvbox")
+      )
+  )
+
+  (if (eq theme-index 6)
+      (progn
+          (load-theme 'alect-light-alt t)
+          (message "alect-light-alt")
+      )
+  )
+
+  (if (eq theme-index 7)
+      (progn
+          (load-theme 'grayscale t)
+          (message "grayscale")
+      )
+  )
+
+  (if (eq theme-index 8)
+      (progn
+          (load-theme 'base16-greenscreen t)
+          (message "base16-greenscreen")
+      )
+  )
+
+  (if (eq theme-index 9)
+      (progn
+          (load-theme 'base16-icy t)
+          (message "base16-icy")
+      )
+  )
+
+  (if (eq theme-index 10)
+      (progn
+          (load-theme 'base16-atelier-dune t)
+          (message "base16-atelier-dune")
+      )
+  )
+
+  (if (eq theme-index 11)
+      (progn
+          (load-theme 'rebecca t)
+          (message "rebecca")
+      )
+  )
+
+  (if (eq theme-index 12)
+      (progn
+          (load-theme 'alect-black-alt t)
+          (message "alect-black-alt")
+      )
+  )
+
+  (if (eq theme-index 13)
+      (progn
+          (load-theme 'base16-3024 t)
+          (message "base16-3024")
+      )
+  )
+
+  (if (eq theme-index 14)
+      (progn
+          (load-theme 'base16-circus t)
+          (message "base16-circus")
+      )
+  )
+
+  (if (eq theme-index 15)
+      (progn
+          (load-theme 'base16-darkviolet t)
+          (message "base16-darkviolet")
+      )
+  )
+
+  (if (eq theme-index 16)
+      (progn
+          (load-theme 'base16-apathy t)
+          (message "base16-apathy")
+      )
+  )
+
+  (if (eq theme-index 17)
+      (progn
+          (setq theme-index 0)
+          (message "emacs")
+      )
+  )
 )
 #+END_SRC
 ** behavior
