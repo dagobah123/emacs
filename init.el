@@ -3,7 +3,7 @@
 ;;; init.el sets EMACS_HOME and loads emacs.org
 
 ;;; Code:
-set EMACS_HOME
+; set EMACS_HOME
 (setq EMACS_HOME "~/.emacs.d/")
 
 ; load emacs.org
