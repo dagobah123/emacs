@@ -181,6 +181,35 @@ Load environment variables properly by installing =exec-path-from-shell=.
 (defvar theme-index 0 "Index to toggle themes")
 (setq theme-index 0)
 
+(setq themes-list '(
+eclipse vs-light dark-mint doom-zenburn doom-gruvbox alect-light-alt
+grayscale base16-greenscreen base16-icy base16-atelier-dune rebecca
+alect-black-alt base16-3024 base16-circus base16-darkviolet base16-apathy
+))
+
+(setq animals '(gazelle giraffe lion tiger))
+
+(defun reverse-list-with-dolist (list)
+  (let (value)
+    (dolist (element list value)
+      (setq value (cons element value)
+      )
+    )
+  )
+)
+
+(reverse-list-with-dolist animals)
+
+
+(defun my:disable-theme2(themes)
+  (interactive)
+  (dolist (element themes value)
+    (disable-theme element)
+  )
+)
+
+
+
 (defun my:disable-themes()
   (interactive)
   (disable-theme 'eclipse)
@@ -495,7 +524,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
 (use-package dired-narrow
   :ensure t
   :config
-  (bind-key "C-f" #'dired-narrow)
+  (bind-key "C-x f" #'dired-narrow)
   ;(bind-key "C-f" #'dired-narrow-fuzzy)
 )
 
@@ -853,8 +882,8 @@ This is the package that handles server installation and session management.
 (global-set-key (kbd "C-c d") 'my:duplicate-line)
 (global-set-key (kbd "C-S-<up>") 'my:prev-java-method)
 (global-set-key (kbd "C-S-<down>") 'my:next-java-method)
-(global-set-key (kbd "C-n") 'my:jump-ten-lines)
-(global-set-key (kbd "C-p") 'my:jump-back-ten-lines)
+;(global-set-key (kbd "C-n") 'my:jump-ten-lines)
+;(global-set-key (kbd "C-p") 'my:jump-back-ten-lines)
 (global-set-key (kbd "<C-iso-lefttab>") 'my:previous-link-center)
 ;(global-set-key (kbd "<C-tab>") 'my:next-link-center)
 (global-set-key (kbd "<C-tab>") 'completion-at-point)
