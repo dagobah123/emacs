@@ -178,37 +178,37 @@ Load environment variables properly by installing =exec-path-from-shell=.
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
+;(setq themes-list '(
+;eclipse vs-light dark-mint doom-zenburn doom-gruvbox alect-light-alt
+;grayscale base16-greenscreen base16-icy base16-atelier-dune rebecca
+;alect-black-alt base16-3024 base16-circus base16-darkviolet base16-apathy
+;))
+; 
+;(setq animals '(gazelle giraffe lion tiger))
+; 
+;(defun reverse-list-with-dolist (list)
+;  (let (value)
+;    (dolist (element list value)
+;      (setq value (cons element value)
+;      )
+;    )
+;  )
+;)
+; 
+;(reverse-list-with-dolist animals)
+; 
+;(defun my:disable-theme2(themes)
+;  (interactive)
+;  (dolist (element themes value)
+;    (disable-theme element)
+;  )
+;)
+
+
+
 (defvar theme-index 0 "Index to toggle themes")
 (setq theme-index 0)
-
-(setq themes-list '(
-eclipse vs-light dark-mint doom-zenburn doom-gruvbox alect-light-alt
-grayscale base16-greenscreen base16-icy base16-atelier-dune rebecca
-alect-black-alt base16-3024 base16-circus base16-darkviolet base16-apathy
-))
-
-(setq animals '(gazelle giraffe lion tiger))
-
-(defun reverse-list-with-dolist (list)
-  (let (value)
-    (dolist (element list value)
-      (setq value (cons element value)
-      )
-    )
-  )
-)
-
-(reverse-list-with-dolist animals)
-
-
-(defun my:disable-theme2(themes)
-  (interactive)
-  (dolist (element themes value)
-    (disable-theme element)
-  )
-)
-
-
+(setq NUMBER-OF-THEMES 19)
 
 (defun my:disable-themes()
   (interactive)
@@ -228,6 +228,9 @@ alect-black-alt base16-3024 base16-circus base16-darkviolet base16-apathy
   (disable-theme 'base16-circus)
   (disable-theme 'base16-darkviolet)
   (disable-theme 'base16-apathy)
+  (disable-theme 'base16-atelier-dune-light)
+  (disable-theme 'doom-laserwave)
+  (disable-theme 'tron-legacy)
 )
 
 (defun my:reset-themes-index()
@@ -258,7 +261,7 @@ alect-black-alt base16-3024 base16-circus base16-darkviolet base16-apathy
 
   (if (eq theme-index -1)
       (progn
-          (setq theme-index 16)
+          (setq theme-index NUMBER-OF-THEMES)
       )
   )
 
@@ -381,6 +384,27 @@ alect-black-alt base16-3024 base16-circus base16-darkviolet base16-apathy
   )
 
   (if (eq theme-index 17)
+      (progn
+          (load-theme 'base16-atelier-dune-light t)
+          (message "base16-atelier-dune-light")
+      )
+  )
+
+  (if (eq theme-index 18)
+      (progn
+          (load-theme 'doom-laserwave t)
+          (message "doom-laserwave")
+      )
+  )
+
+  (if (eq theme-index 19)
+      (progn
+          (load-theme 'tron-legacy t)
+          (message "tron-legacy")
+      )
+  )
+
+  (if (eq theme-index 20)
       (progn
           (setq theme-index 0)
           (message "emacs")
