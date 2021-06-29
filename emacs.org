@@ -178,33 +178,36 @@ Load environment variables properly by installing =exec-path-from-shell=.
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
-;(setq themes-list '(
-;eclipse vs-light dark-mint doom-zenburn doom-gruvbox alect-light-alt
-;grayscale base16-greenscreen base16-icy base16-atelier-dune rebecca
-;alect-black-alt base16-3024 base16-circus base16-darkviolet base16-apathy
-;))
-; 
-;(setq animals '(gazelle giraffe lion tiger))
-; 
-;(defun reverse-list-with-dolist (list)
-;  (let (value)
-;    (dolist (element list value)
-;      (setq value (cons element value)
-;      )
-;    )
-;  )
-;)
-; 
-;(reverse-list-with-dolist animals)
-; 
-;(defun my:disable-theme2(themes)
-;  (interactive)
-;  (dolist (element themes value)
-;    (disable-theme element)
-;  )
-;)
+(setq themes-list '(
+eclipse
+vs-light
+dark-mint
+doom-zenburn
+doom-gruvbox
+alect-light-alt
+grayscale
+base16-greenscreen
+base16-icy
+base16-atelier-dune
+rebecca
+alect-black-alt
+base16-3024
+base16-circus
+base16-darkviolet
+base16-apathy
+base16-atelier-dune-light
+doom-laserwave
+tron-legacy
+))
 
-
+(defun my:print-themes-list()
+  (interactive)
+  (print themes-list)
+  (print (length themes-list))
+  (print (nth 3 themes-list))
+)
+ 
+; ---------------------------------------------
 
 (defvar theme-index 0 "Index to toggle themes")
 (setq theme-index 0)
