@@ -200,18 +200,9 @@ doom-laserwave
 tron-legacy
 ))
 
-(defun my:print-themes-list()
-  (interactive)
-  (print themes-list)
-  (print (length themes-list))
-  (print (nth 3 themes-list))
-)
-
-; ---------------------------------------------
-
-(defvar theme-index 0 "Index to toggle themes")
+(defvar theme-index 0 "Index representing the current theme")
 (setq theme-index 0)
-(setq NUMBER-OF-THEMES 19)
+(setq number-of-themes (length themes-list))
 
 (defun my:disable-themes()
   (interactive)
@@ -258,13 +249,29 @@ tron-legacy
 (global-set-key (kbd "C-7") 'my:theme-up)
 (global-set-key (kbd "C-`") 'my:theme-up)
 
+(defun my:loop()
+  (interactive)
+  (setq loop-index 1)
+  (setq themes-list-index 0)
+  (while (<= loop-index number-of-themes)
+      (if (eq theme-index loop-index)
+          (progn
+              (load-theme (nth themes-list-index themes-list) t)
+              (message "%s" (nth themes-list-index themes-list))
+          )
+      )
+      (setq loop-index (+ loop-index 1))
+      (setq themes-list-index (+ themes-list-index 1))
+  )
+)
+
 (defun my:toggle-themes()
   (interactive)
   (my:disable-themes)
 
   (if (eq theme-index -1)
       (progn
-          (setq theme-index NUMBER-OF-THEMES)
+          (setq theme-index number-of-themes)
       )
   )
 
@@ -274,141 +281,9 @@ tron-legacy
       )
   )
 
-  (if (eq theme-index 1)
-      (progn
-          (load-theme (nth 0 themes-list) t)
-          (message "%s" (nth 0 themes-list))
-      )
-  )
+  (my:loop)
 
-  (if (eq theme-index 2)
-      (progn
-          (load-theme (nth 1 themes-list) t)
-          (message "%s" (nth 1 themes-list))
-      )
-  )
-
-  (if (eq theme-index 3)
-      (progn
-          (load-theme (nth 2 themes-list) t)
-          (message "%s" (nth 2 themes-list))
-      )
-  )
-
-  (if (eq theme-index 4)
-      (progn
-          (load-theme (nth 3 themes-list) t)
-          (message "%s" (nth 3 themes-list))
-      )
-  )
-
-  (if (eq theme-index 5)
-      (progn
-          (load-theme (nth 4 themes-list) t)
-          (message "%s" (nth 4 themes-list))
-      )
-  )
-
-  (if (eq theme-index 6)
-      (progn
-          (load-theme (nth 5 themes-list) t)
-          (message "%s" (nth 5 themes-list))
-      )
-  )
-
-  (if (eq theme-index 7)
-      (progn
-          (load-theme (nth 6 themes-list) t)
-          (message "%s" (nth 6 themes-list))
-      )
-  )
-
-  (if (eq theme-index 8)
-      (progn
-          (load-theme (nth 7 themes-list) t)
-          (message "%s" (nth 7 themes-list))
-      )
-  )
-
-  (if (eq theme-index 9)
-      (progn
-          (load-theme (nth 8 themes-list) t)
-          (message "%s" (nth 8 themes-list))
-      )
-  )
-
-  (if (eq theme-index 10)
-      (progn
-          (load-theme (nth 9 themes-list) t)
-          (message "%s" (nth 9 themes-list))
-      )
-  )
-
-  (if (eq theme-index 11)
-      (progn
-          (load-theme (nth 10 themes-list) t)
-          (message "%s" (nth 10 themes-list))
-      )
-  )
-
-  (if (eq theme-index 12)
-      (progn
-          (load-theme (nth 11 themes-list) t)
-          (message "%s" (nth 11 themes-list))
-      )
-  )
-
-  (if (eq theme-index 13)
-      (progn
-          (load-theme (nth 12 themes-list) t)
-          (message "%s" (nth 12 themes-list))
-      )
-  )
-
-  (if (eq theme-index 14)
-      (progn
-          (load-theme (nth 13 themes-list) t)
-          (message "%s" (nth 13 themes-list))
-      )
-  )
-
-  (if (eq theme-index 15)
-      (progn
-
-          (load-theme (nth 14 themes-list) t)
-          (message "%s" (nth 14 themes-list))
-      )
-  )
-
-  (if (eq theme-index 16)
-      (progn
-          (load-theme (nth 15 themes-list) t)
-          (message "%s" (nth 15 themes-list))
-      )
-  )
-
-  (if (eq theme-index 17)
-      (progn
-          (load-theme (nth 16 themes-list) t)
-          (message "%s" (nth 16 themes-list))
-      )
-  )
-
-  (if (eq theme-index 18)
-      (progn
-          (load-theme (nth 17 themes-list) t)
-          (message "%s" (nth 17 themes-list))
-      )
-  )
-
-  (if (eq theme-index 19)
-      (progn
-          (load-theme (nth 18 themes-list) t)
-          (message "%s" (nth 18 themes-list))
-      )
-  )
-
-  (if (eq theme-index 20)
+  (if (> theme-index number-of-themes)
       (progn
           (setq theme-index 0)
           (message "emacs")
