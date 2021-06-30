@@ -198,6 +198,7 @@ base16-apathy
 base16-atelier-dune-light
 doom-laserwave
 tron-legacy
+base16-bespin
 ))
 
 (defvar theme-index 0 "Index representing the current theme")
