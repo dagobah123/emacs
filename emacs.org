@@ -199,6 +199,18 @@ base16-atelier-dune-light
 doom-laserwave
 tron-legacy
 base16-bespin
+base16-atelier-sulphurpool
+base16-pico
+base16-pop
+base16-vulcan
+doom-homage-black
+doom-manegarm
+doom-outrun-electric
+doom-spacegrey
+autumn-light
+cloud
+afternoon
+base16-redscreen
 ))
 
 (defvar theme-index 0 "Index representing the current theme")
