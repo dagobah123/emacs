@@ -34,7 +34,6 @@ magit
 magit-find-file
 move-text
 neotree
-nov
 paredit
 pdf-tools
 popper
@@ -88,6 +87,7 @@ yasnippet
                      goto-last-change
                      move-text
                      rebecca-theme
+                     nov
                      )
 )
 (dolist (package package-list)
@@ -211,6 +211,7 @@ autumn-light
 cloud
 afternoon
 base16-redscreen
+base16-red2screen
 ))
 
 (defvar theme-index 0 "Index representing the current theme")
@@ -763,6 +764,14 @@ This is the package that handles server installation and session management.
 #+BEGIN_SRC emacs-lisp
 (when (fboundp 'winner-mode)
   (winner-mode 1))
+#+END_SRC
+** nov (epub)
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+(defun my-nov-font-setup ()
+  (face-remap-add-relative 'variable-pitch :family "Liberation Serif"
+                                           :height 1.0))
+(add-hook 'nov-mode-hook 'my-nov-font-setup)
 #+END_SRC
 ** ido
 #+BEGIN_SRC emacs-lisp
