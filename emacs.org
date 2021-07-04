@@ -88,6 +88,10 @@ yasnippet
                      move-text
                      rebecca-theme
                      nov
+                     autumn-light-theme
+                     cloud-theme
+                     afternoon-theme
+                     gandalf-theme
                      )
 )
 (dolist (package package-list)
@@ -212,6 +216,7 @@ cloud
 afternoon
 base16-redscreen
 base16-red2screen
+gandalf
 ))
 
 (defvar theme-index 0 "Index representing the current theme")
