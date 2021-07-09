@@ -92,6 +92,7 @@ yasnippet
                      cloud-theme
                      afternoon-theme
                      gandalf-theme
+                     elfeed
                      )
 )
 (dolist (package package-list)
@@ -208,15 +209,15 @@ base16-pico
 base16-pop
 base16-vulcan
 doom-homage-black
-doom-manegarm
 doom-outrun-electric
 doom-spacegrey
 autumn-light
 cloud
 afternoon
+gandalf
 base16-redscreen
 base16-red2screen
-gandalf
+doom-manegarm
 ))
 
 (defvar theme-index 0 "Index representing the current theme")
@@ -786,6 +787,24 @@ This is the package that handles server installation and session management.
 ** clock
 #+BEGIN_SRC emacs-lisp
 (setq display-time-world-list '(("Europe/Vienna" "Graz")))
+#+END_SRC
+** elfeed
+#+BEGIN_SRC emacs-lisp
+(setq elfeed-feeds
+      '(
+        "https://rss.orf.at/news.xml"
+        "https://rss.orf.at/steiermark.xml"
+        "https://www.reddit.com/r/graz/.rss"
+        "https://www.derstandard.at/rss/web"
+        "https://www.reddit.com/r/emacs/.rss"
+        "https://9to5linux.com/category/news/desktop-environment/feed"
+        "https://www.faz.net/rss/aktuell/technik-motor/digital"
+        "https://www.comicsrss.com/rss/dilbert.rss"
+        "https://www.comicsrss.com/rss/garfield.rss"
+        "https://www.comicsrss.com/rss/peanuts.rss"
+        "https://en.wikinews.org/w/index.php?title=Special:NewsFeed&feed=atom"
+       )
+)
 #+END_SRC
 ** key bindings
 #+BEGIN_SRC emacs-lisp
