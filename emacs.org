@@ -218,6 +218,7 @@ gandalf
 base16-redscreen
 base16-red2screen
 doom-manegarm
+coolman
 ))
 
 (defvar theme-index 0 "Index representing the current theme")
