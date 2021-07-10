@@ -792,17 +792,25 @@ This is the package that handles server installation and session management.
 #+BEGIN_SRC emacs-lisp
 (setq elfeed-feeds
       '(
-        "https://rss.orf.at/news.xml"
-        "https://rss.orf.at/steiermark.xml"
-        "https://www.reddit.com/r/graz/.rss"
-        "https://www.derstandard.at/rss/web"
-        "https://www.reddit.com/r/emacs/.rss"
-        "https://9to5linux.com/category/news/desktop-environment/feed"
-        "https://www.faz.net/rss/aktuell/technik-motor/digital"
-        "https://www.comicsrss.com/rss/dilbert.rss"
-        "https://www.comicsrss.com/rss/garfield.rss"
-        "https://www.comicsrss.com/rss/peanuts.rss"
-        "https://en.wikinews.org/w/index.php?title=Special:NewsFeed&feed=atom"
+        ("https://rss.orf.at/news.xml" news)
+        ("https://www.derstandard.at/rss/web" news)
+        ("https://rss.orf.at/steiermark.xml" news graz)
+        ("https://www.reddit.com/r/graz/.rss" news graz)
+        ("https://en.wikinews.org/w/index.php?title=Special:NewsFeed&feed=atom&categories=Published&notcategories=No%20publish%7CArchived%7CAutoArchived%7Cdisputed&namespace=0&count=30&hourcount=124&ordermethod=categoryadd&stablepages=only" news)
+        ("https://chaski.huffpost.com/us/auto/vertical/front-page" news)
+
+        ("https://chaski.huffpost.com/us/auto/vertical/technology" tech)
+
+        ("https://www.reddit.com/r/emacs/.rss" it)
+        ("https://www.reddit.com/r/vim/.rss" it)
+        ("https://www.reddit.com/r/linux/.rss" it)
+        ("https://www.reddit.com/r/programming/.rss" it)
+        ("https://www.reddit.com/r/cpp/.rss" it)
+        ("https://www.reddit.com/r/java/.rss" it)
+
+        ("https://www.comicsrss.com/rss/dilbert.rss" comic dilbert)
+        ("https://www.comicsrss.com/rss/garfield.rss" comic garfield)
+        ("https://www.comicsrss.com/rss/peanuts.rss" comic peanuts)
        )
 )
 #+END_SRC
