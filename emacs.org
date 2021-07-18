@@ -186,9 +186,8 @@ Load environment variables properly by installing =exec-path-from-shell=.
 (setq themes-list '(
 eclipse
 vs-light
-dark-mint
-doom-zenburn
 doom-gruvbox
+dark-mint
 alect-light-alt
 grayscale
 base16-icy
@@ -200,7 +199,6 @@ base16-circus
 base16-darkviolet
 base16-apathy
 base16-atelier-dune-light
-doom-laserwave
 tron-legacy
 base16-bespin
 base16-atelier-sulphurpool
@@ -215,10 +213,12 @@ cloud
 afternoon
 gandalf
 base16-redscreen
-doom-manegarm
 base16-red2screen
 base16-greenscreen
-coolman
+doom-manegarm
+doom-laserwave
+doom-zenburn
+chiaroscuro
 ))
 
 (defvar theme-index 0 "Index representing the current theme")
