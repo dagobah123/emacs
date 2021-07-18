@@ -142,6 +142,7 @@
     `(org-checkbox-statistics-todo ((,class (:background ,"#000000" :foreground ,"#a72f2f"))))
     `(org-checkbox-statistics-done ((,class (:background ,"#000000" :foreground ,"#317827"))))
 
+    `(magit-diff-whitespace-warning ((,class (:background ,"#a72f2f" :foreground ,"#444444"))))
   )
 )
 
