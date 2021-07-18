@@ -145,9 +145,9 @@ Load environment variables properly by installing =exec-path-from-shell=.
 
 (global-hl-line-mode)
 ;(set-face-background 'highlight "#007700")
-(set-face-attribute hl-line-face nil :underline nil)
-(set-face-foreground 'highlight nil)
-(set-face-underline-p 'highlight t)
+;(set-face-attribute hl-line-face nil :underline nil)
+;(set-face-foreground 'highlight nil)
+;(set-face-underline-p 'highlight t)
 
 ; 4 spaces indentation
 (setq c-default-style "linux" c-basic-offset 4)
@@ -191,7 +191,6 @@ doom-zenburn
 doom-gruvbox
 alect-light-alt
 grayscale
-base16-greenscreen
 base16-icy
 base16-atelier-dune
 rebecca
@@ -216,8 +215,9 @@ cloud
 afternoon
 gandalf
 base16-redscreen
-base16-red2screen
 doom-manegarm
+base16-red2screen
+base16-greenscreen
 coolman
 ))
 
