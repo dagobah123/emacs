@@ -136,6 +136,12 @@
     `(magit-diff-context-highlight ((,class (:background ,"#08091a" :foreground ,"#666666"))))
     `(magit-diff-file-heading-highlight ((,class (:background ,"#15153f" :foreground ,"#5555ff"))))
     `(magit-diff-hunk-heading-highlight ((,class (:background ,"#15153f" :foreground ,"#5555ff"))))
+
+    `(org-block ((,class (:background ,"#000000" :foreground ,"#444444"))))
+    `(org-table ((,class (:background ,"#000000" :foreground ,"#474784"))))
+    `(org-checkbox-statistics-todo ((,class (:background ,"#000000" :foreground ,"#a72f2f"))))
+    `(org-checkbox-statistics-done ((,class (:background ,"#000000" :foreground ,"#317827"))))
+
   )
 )
 

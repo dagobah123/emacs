@@ -368,15 +368,15 @@ chiaroscuro
 (setq org-todo-keywords
     '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "CANCELED" "DONE")))
 
-(setq org-todo-keyword-faces
-      '(
-        ("TODO" . (:foreground "black" :background "red" :weight bold))
-        ("IN-PROGRESS" . (:foreground "green" :background "black" :weight bold))
-        ("WAITING" . (:foreground "orange" :background "black" :weight bold))
-        ("CANCELED" . (:foreground "gray" :background "black" :weight bold))
-        ("DONE" . (:foreground "gray" :background "black" :weight bold))
-       )
-)
+;(setq org-todo-keyword-faces
+;      '(
+;        ("TODO" . (:foreground "black" :background "red" :weight bold))
+;        ("IN-PROGRESS" . (:foreground "green" :background "black" :weight bold))
+;        ("WAITING" . (:foreground "orange" :background "black" :weight bold))
+;        ("CANCELED" . (:foreground "gray" :background "black" :weight bold))
+;        ("DONE" . (:foreground "gray" :background "black" :weight bold))
+;       )
+;)
 #+END_SRC
 ** projectile
 #+BEGIN_SRC emacs-lisp
