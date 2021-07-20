@@ -9,43 +9,26 @@
 
        (black "#000000")
        (dark-gray "#666666")
-       (gray "#888888")
+       (gray "#666666")
        (light-gray "#aaaaaa")
        (orange "#db7b00")
        (dark-orange "#ac4c09")
        (dark-brown "#5c1c00")
        (low-chroma-dark-brown "#522512")
        (lowest-chroma-dark-brown "#4b352e")
-       (bright-blue "#7777ff")
+       (bright-blue "#8d8dec")
        (blue "#4141c2")
        (low-chroma-blue "#6262b6")
        (dark-blue "#282877")
        (darkest-blue "#1a1d55")
        (green "#44a536")
+       (green-gray "#577c52")
        (red "#d23b3b")
+       (red-gray "#ae6767")
        (brightest-red "#ff0000")
        (brightest-green "#00ff00")
 
-;       (black "#000000")
-;       (dark-gray "#222222")
-;       (gray "#444444")
-;       (light-gray "#777777")
-;       (orange "#975500")
-;       (dark-orange "#632c05")
-;       (dark-brown "#1d0900")
-;       (low-chroma-dark-brown "#1f0e07")
-;       (lowest-chroma-dark-brown "#1f1613")
-;       (bright-blue "#5555ff")
-;       (blue "#313192")
-;       (low-chroma-blue "#474784")
-;       (dark-blue "#15153f")
-;       (darkest-blue "#08091a")
-;       (green "#317827")
-;       (red "#a72f2f")
-;       (brightest-red "#ff0000")
-;       (brightest-green "#00ff00")
-
-   )
+    )
 
 (custom-theme-set-faces 'chiaroscuro
 
@@ -72,7 +55,10 @@
     `(helm-M-x-key ((,class (:foreground ,orange :underline t))))
 
     `(helm-source-header ((,class (:weight bold :foreground ,orange))))
-    `(helm-selection ((,class (:foreground ,bright-blue))))
+    ;`(helm-selection ((,class (:background ,dark-blue :foreground ,bright-blue))))
+    ;`(helm-selection ((,class (:foreground ,bright-blue :weight ultra-bold :underline t :overline t))))
+    `(helm-selection ((,class :foreground ,"#ffffff" :weight ultra-bold)))
+
 
     `(helm-swoop-target-line-face ((,class (:background ,dark-blue :foreground nil))))
     `(helm-swoop-target-word-face ((,class (:weight bold :foreground ,bright-blue :background ,dark-blue))))
@@ -84,7 +70,7 @@
     `(highlight ((,class (:background ,dark-blue :weight bold :foreground ,bright-blue))))
     `(show-paren-match ((,class (:background ,nil :foreground ,bright-blue))))
 
-    `(hl-line ((,class (:background ,dark-blue))))
+    `(hl-line ((,class (:background ,dark-blue :foreground ,"#cccccc"))))
     `(cursor ((,class (:background ,bright-blue))))
     `(region ((,class (:background ,dark-brown :foreground ,orange))))
     `(mode-line ((,class (:background ,lowest-chroma-dark-brown :foreground ,light-gray))))
@@ -134,7 +120,6 @@
     `(transient-inactive-argument ((,class (:foreground ,dark-orange))))
     `(transient-inactive-value ((,class (:foreground ,dark-orange))))
 
-
     `(magit-keyword-squash ((,class (:foreground ,orange))))
     `(markdown-missing-link-face ((,class (:foreground ,orange))))
     `(org-warning ((,class (:foreground ,orange))))
@@ -153,25 +138,26 @@
     `(package-status-unsigned ((,class (:foreground ,orange))))
     `(font-lock-warning-face ((,class (:background ,brightest-green :foreground ,brightest-red))))
 
-    `(magit-diff-added ((,class (:background ,nil :foreground ,green))))
-    `(magit-diff-added-highlight ((,class (:background ,darkest-blue :foreground ,green))))
-    `(magit-diff-removed ((,class (:background ,nil :foreground ,red))))
-    `(magit-diff-removed-highlight ((,class (:background ,darkest-blue :foreground ,red))))
-    `(magit-diff-context ((,class (:foreground ,gray))))
+    `(magit-diff-added ((,class (:background ,nil :foreground ,green-gray))))
+    `(magit-diff-removed ((,class (:background ,nil :foreground ,red-gray))))
+    `(magit-diff-context ((,class (:background ,nil :foreground ,gray))))
+
+    `(magit-diff-added-highlight ((,class (:background ,nil :foreground ,green))))
+    `(magit-diff-removed-highlight ((,class (:background ,nil :foreground ,red))))
+    `(magit-diff-context-highlight ((,class (:background ,nil :foreground ,light-gray))))
 
     `(magit-diff-hunk-region ((,class (:background ,black :foreground ,bright-blue))))
 
-    `(magit-diff-conflict-heading ((,class (:background ,dark-blue :foreground ,blue))))
-    `(magit-diff-file-heading ((,class (:background ,dark-blue :foreground ,blue))))
-    `(magit-diff-file-heading-selection ((,class (:background ,dark-blue :foreground ,blue))))
-    `(magit-diff-hunk-heading ((,class (:background ,dark-blue :foreground ,blue))))
-    `(magit-diff-hunk-heading-selection ((,class (:background ,dark-blue :foreground ,blue))))
-    `(magit-diff-hunk-heading ((,class (:background ,dark-blue :foreground ,blue))))
-    `(magit-diff-conflict-heading ((,class (:background ,dark-blue :foreground ,blue))))
+    `(magit-diff-conflict-heading ((,class (:background ,lowest-chroma-dark-brown :foreground ,dark-gray))))
+    `(magit-diff-file-heading ((,class (:background ,lowest-chroma-dark-brown :foreground ,dark-gray))))
+    `(magit-diff-file-heading-selection ((,class (:background ,lowest-chroma-dark-brown :foreground ,dark-gray))))
+    `(magit-diff-hunk-heading ((,class (:background ,lowest-chroma-dark-brown :foreground ,dark-gray))))
+    `(magit-diff-hunk-heading-selection ((,class (:background ,lowest-chroma-dark-brown :foreground ,dark-gray))))
+    `(magit-diff-hunk-heading ((,class (:background ,lowest-chroma-dark-brown :foreground ,dark-gray))))
+    `(magit-diff-conflict-heading ((,class (:background ,lowest-chroma-dark-brown :foreground ,dark-gray))))
 
-    `(magit-diff-context-highlight ((,class (:background ,darkest-blue :foreground ,light-gray))))
-    `(magit-diff-file-heading-highlight ((,class (:background ,dark-blue :foreground ,bright-blue))))
-    `(magit-diff-hunk-heading-highlight ((,class (:background ,dark-blue :foreground ,bright-blue))))
+    `(magit-diff-file-heading-highlight ((,class (:background ,lowest-chroma-dark-brown :foreground ,light-gray))))
+    `(magit-diff-hunk-heading-highlight ((,class (:background ,lowest-chroma-dark-brown :foreground ,light-gray))))
 
     `(org-block ((,class (:background ,black :foreground ,gray))))
     `(org-table ((,class (:background ,black :foreground ,low-chroma-blue))))
@@ -179,6 +165,7 @@
     `(org-checkbox-statistics-done ((,class (:background ,black :foreground ,green))))
 
     `(magit-diff-whitespace-warning ((,class (:background ,red :foreground ,gray))))
+
   )
 )
 
