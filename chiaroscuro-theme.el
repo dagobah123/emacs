@@ -7,17 +7,17 @@
 (deftheme chiaroscuro)
 (let ((class '((class color) (min-colors 89)))
 
+       (white-yellow "#fff3b6")
        (black "#000000")
        (dark-gray "#666666")
-       (gray "#666666")
+       (gray "#888888")
        (light-gray "#aaaaaa")
        (orange "#db7b00")
-       (dark-orange "#ac4c09")
-       (dark-brown "#5c1c00")
-       (low-chroma-dark-brown "#522512")
+       (dark-orange "#c7580b")
+       (dark-brown "#933b15")
        (lowest-chroma-dark-brown "#4b352e")
-       (bright-blue "#8d8dec")
-       (blue "#4141c2")
+       (low-chroma-dark-brown "#212121")
+       (bright-blue "#586cef")
        (low-chroma-blue "#6262b6")
        (dark-blue "#282877")
        (darkest-blue "#1a1d55")
@@ -34,7 +34,7 @@
 
     `(default ((,class (:background ,black :foreground ,gray))))
 
-    `(link ((,class (:foreground ,orange :underline t))))
+    `(link ((,class (:foreground ,bright-blue :underline t))))
 
     `(font-lock-builtin-face ((,class (:foreground ,orange))))
     `(font-lock-comment-face ((,class (:foreground ,dark-orange))))
@@ -44,7 +44,7 @@
     `(font-lock-doc-face ((,class (:foreground ,dark-orange))))
     `(font-lock-function-name-face ((,class (:foreground ,light-gray :bold t))))
     `(font-lock-keyword-face ((,class (:bold ,class :foreground ,orange))))
-    `(font-lock-string-face ((,class (:foreground ,dark-orange))))
+    `(font-lock-string-face ((,class (:foreground ,orange))))
     `(font-lock-type-face ((,class (:foreground ,light-gray))))
     `(font-lock-variable-name-face ((,class (:foreground ,orange))))
     `(font-lock-warning-face ((,class (:background ,light-gray :foreground ,bright-blue))))
@@ -55,24 +55,21 @@
     `(helm-M-x-key ((,class (:foreground ,orange :underline t))))
 
     `(helm-source-header ((,class (:weight bold :foreground ,orange))))
-    ;`(helm-selection ((,class (:background ,dark-blue :foreground ,bright-blue))))
-    ;`(helm-selection ((,class (:foreground ,bright-blue :weight ultra-bold :underline t :overline t))))
-    `(helm-selection ((,class :foreground ,"#ffffff" :weight ultra-bold)))
+    `(helm-selection ((,class :foreground ,white-yellow)))
 
-
-    `(helm-swoop-target-line-face ((,class (:background ,dark-blue :foreground nil))))
-    `(helm-swoop-target-word-face ((,class (:weight bold :foreground ,bright-blue :background ,dark-blue))))
+    `(helm-swoop-target-line-face ((,class (:background ,dark-blue :foreground ,"#cccccc"))))
+    `(helm-swoop-target-word-face ((,class (:foreground ,white-yellow :background ,dark-blue))))
     `(helm-swoop-line-number-face ((,class (:weight bold :foreground ,brightest-red :background ,dark-blue))))
-    `(helm-swoop-target-line-block-face ((,class (:weight bold :foreground ,brightest-red :background ,dark-blue))))
+    `(helm-swoop-target-line-block-face ((,class (:foreground ,brightest-red :background ,dark-blue))))
 
     `(minibuffer-prompt ((,class (:foreground ,orange))))
 
-    `(highlight ((,class (:background ,dark-blue :weight bold :foreground ,bright-blue))))
-    `(show-paren-match ((,class (:background ,nil :foreground ,bright-blue))))
+    `(highlight ((,class (:background ,dark-blue :foreground ,white-yellow))))
+    `(show-paren-match ((,class (:background ,nil :foreground ,orange))))
 
     `(hl-line ((,class (:background ,dark-blue :foreground ,"#cccccc"))))
     `(cursor ((,class (:background ,bright-blue))))
-    `(region ((,class (:background ,dark-brown :foreground ,orange))))
+    `(region ((,class (:background ,"#666666" :foreground ,white-yellow))))
     `(mode-line ((,class (:background ,lowest-chroma-dark-brown :foreground ,light-gray))))
     `(mode-line-inactive ((,class (:background ,lowest-chroma-dark-brown :foreground ,dark-gray))))
     `(helm-selection ((,class (:background ,black :foreground ,light-gray))))
@@ -107,12 +104,12 @@
 
     `(magit-header-line ((,class (:foreground ,orange))))
     `(magit-section-heading ((,class (:foreground ,orange))))
-    `(magit-branch-current ((,class (:box (:line-width 1 :color ,bright-blue) :foreground ,bright-blue))))
-    `(magit-branch-remote-head ((,class (:box (:line-width 1 :color ,bright-blue) :foreground ,bright-blue))))
+    `(magit-branch-current ((,class (:box (:line-width 1 :color ,white-yellow) :foreground ,white-yellow))))
+    `(magit-branch-remote-head ((,class (:box (:line-width 1 :color ,white-yellow) :foreground ,white-yellow))))
 
     `(magit-branch-local ((,class (:foreground ,orange))))
     `(magit-branch-remote ((,class (:foreground ,orange))))
-    `(magit-section-highlight ((,class (:background ,dark-blue :foreground ,bright-blue))))
+    `(magit-section-highlight ((,class (:background ,dark-blue :foreground ,"#cccccc"))))
     `(magit-log-author ((,class (:foreground ,orange))))
     `(magit-log-date ((,class (:foreground ,dark-orange))))
 
@@ -148,16 +145,14 @@
 
     `(magit-diff-hunk-region ((,class (:background ,black :foreground ,bright-blue))))
 
-    `(magit-diff-conflict-heading ((,class (:background ,lowest-chroma-dark-brown :foreground ,dark-gray))))
-    `(magit-diff-file-heading ((,class (:background ,lowest-chroma-dark-brown :foreground ,dark-gray))))
-    `(magit-diff-file-heading-selection ((,class (:background ,lowest-chroma-dark-brown :foreground ,dark-gray))))
-    `(magit-diff-hunk-heading ((,class (:background ,lowest-chroma-dark-brown :foreground ,dark-gray))))
-    `(magit-diff-hunk-heading-selection ((,class (:background ,lowest-chroma-dark-brown :foreground ,dark-gray))))
-    `(magit-diff-hunk-heading ((,class (:background ,lowest-chroma-dark-brown :foreground ,dark-gray))))
-    `(magit-diff-conflict-heading ((,class (:background ,lowest-chroma-dark-brown :foreground ,dark-gray))))
+    `(magit-diff-conflict-heading ((,class (:background ,low-chroma-dark-brown :foreground ,dark-gray))))
+    `(magit-diff-file-heading ((,class (:background ,low-chroma-dark-brown :foreground ,white-yellow))))
+    `(magit-diff-file-heading-selection ((,class (:background ,low-chroma-dark-brown :foreground ,white-yellow))))
+    `(magit-diff-hunk-heading ((,class (:background ,low-chroma-dark-brown :foreground ,dark-gray))))
+    `(magit-diff-hunk-heading-selection ((,class (:background ,low-chroma-dark-brown :foreground ,dark-gray))))
 
-    `(magit-diff-file-heading-highlight ((,class (:background ,lowest-chroma-dark-brown :foreground ,light-gray))))
-    `(magit-diff-hunk-heading-highlight ((,class (:background ,lowest-chroma-dark-brown :foreground ,light-gray))))
+    `(magit-diff-file-heading-highlight ((,class (:background ,low-chroma-dark-brown :foreground ,white-yellow))))
+    `(magit-diff-hunk-heading-highlight ((,class (:background ,low-chroma-dark-brown :foreground ,light-gray))))
 
     `(org-block ((,class (:background ,black :foreground ,gray))))
     `(org-table ((,class (:background ,black :foreground ,low-chroma-blue))))
@@ -165,6 +160,8 @@
     `(org-checkbox-statistics-done ((,class (:background ,black :foreground ,green))))
 
     `(magit-diff-whitespace-warning ((,class (:background ,red :foreground ,gray))))
+    `(custom-invalid ((,class (:background ,red :foreground ,gray))))
+    `(ido-indicator ((,class (:background ,red :foreground ,gray))))
 
   )
 )
