@@ -16,7 +16,7 @@
        (dark-orange "#c7580b")
        (dark-brown "#933b15")
        (lowest-chroma-dark-brown "#4b352e")
-       (low-chroma-dark-brown "#212121")
+       (dark-gray "#212121")
        (bright-blue "#586cef")
        (low-chroma-blue "#6262b6")
        (dark-blue "#282877")
@@ -57,19 +57,21 @@
     `(helm-source-header ((,class (:weight bold :foreground ,orange))))
     `(helm-selection ((,class :foreground ,white-yellow)))
 
-    `(helm-swoop-target-line-face ((,class (:background ,dark-blue :foreground ,"#cccccc"))))
+    `(helm-swoop-target-line-face ((,class (:background ,nil :foreground ,white-yellow))))
     `(helm-swoop-target-word-face ((,class (:foreground ,white-yellow :background ,dark-blue))))
     `(helm-swoop-line-number-face ((,class (:weight bold :foreground ,brightest-red :background ,dark-blue))))
     `(helm-swoop-target-line-block-face ((,class (:foreground ,brightest-red :background ,dark-blue))))
 
     `(minibuffer-prompt ((,class (:foreground ,orange))))
 
-    `(highlight ((,class (:background ,dark-blue :foreground ,white-yellow))))
-    `(show-paren-match ((,class (:background ,nil :foreground ,orange))))
+    `(highlight ((,class (:background ,nil :foreground ,white-yellow))))
+    `(show-paren-match ((,class (:background ,"#444444" :foreground ,white-yellow))))
 
-    `(hl-line ((,class (:background ,dark-blue :foreground ,"#cccccc"))))
-    `(cursor ((,class (:background ,bright-blue))))
+    ;`(hl-line ((,class (:background ,dark-blue :foreground ,"#cccccc"))))
+    `(cursor ((,class (:background ,white-yellow))))
     `(region ((,class (:background ,"#666666" :foreground ,white-yellow))))
+    `(cua-rectangle ((,class (:background ,"#666666" :foreground ,white-yellow))))
+
     `(mode-line ((,class (:background ,lowest-chroma-dark-brown :foreground ,light-gray))))
     `(mode-line-inactive ((,class (:background ,lowest-chroma-dark-brown :foreground ,dark-gray))))
     `(helm-selection ((,class (:background ,black :foreground ,light-gray))))
@@ -109,7 +111,7 @@
 
     `(magit-branch-local ((,class (:foreground ,orange))))
     `(magit-branch-remote ((,class (:foreground ,orange))))
-    `(magit-section-highlight ((,class (:background ,dark-blue :foreground ,"#cccccc"))))
+    `(magit-section-highlight ((,class (:background ,nil :foreground ,white-yellow))))
     `(magit-log-author ((,class (:foreground ,orange))))
     `(magit-log-date ((,class (:foreground ,dark-orange))))
 
@@ -145,14 +147,14 @@
 
     `(magit-diff-hunk-region ((,class (:background ,black :foreground ,bright-blue))))
 
-    `(magit-diff-conflict-heading ((,class (:background ,low-chroma-dark-brown :foreground ,dark-gray))))
-    `(magit-diff-file-heading ((,class (:background ,low-chroma-dark-brown :foreground ,white-yellow))))
-    `(magit-diff-file-heading-selection ((,class (:background ,low-chroma-dark-brown :foreground ,white-yellow))))
-    `(magit-diff-hunk-heading ((,class (:background ,low-chroma-dark-brown :foreground ,dark-gray))))
-    `(magit-diff-hunk-heading-selection ((,class (:background ,low-chroma-dark-brown :foreground ,dark-gray))))
+    `(magit-diff-conflict-heading ((,class (:background ,dark-gray :foreground ,dark-gray))))
+    `(magit-diff-file-heading ((,class (:background ,dark-gray :foreground ,white-yellow))))
+    `(magit-diff-file-heading-selection ((,class (:background ,dark-gray :foreground ,white-yellow))))
+    `(magit-diff-hunk-heading ((,class (:background ,dark-gray :foreground ,dark-gray))))
+    `(magit-diff-hunk-heading-selection ((,class (:background ,dark-gray :foreground ,dark-gray))))
 
-    `(magit-diff-file-heading-highlight ((,class (:background ,low-chroma-dark-brown :foreground ,white-yellow))))
-    `(magit-diff-hunk-heading-highlight ((,class (:background ,low-chroma-dark-brown :foreground ,light-gray))))
+    `(magit-diff-file-heading-highlight ((,class (:background ,dark-gray :foreground ,white-yellow))))
+    `(magit-diff-hunk-heading-highlight ((,class (:background ,dark-gray :foreground ,light-gray))))
 
     `(org-block ((,class (:background ,black :foreground ,gray))))
     `(org-table ((,class (:background ,black :foreground ,low-chroma-blue))))
@@ -162,7 +164,7 @@
     `(magit-diff-whitespace-warning ((,class (:background ,red :foreground ,gray))))
     `(custom-invalid ((,class (:background ,red :foreground ,gray))))
     `(ido-indicator ((,class (:background ,red :foreground ,gray))))
-
+    
   )
 )
 

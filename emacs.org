@@ -143,7 +143,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
 ;(add-to-list 'default-frame-alist '(cursor-color . "#00ff00"))
 (setq blink-cursor-blinks 0)
 
-(global-hl-line-mode)
+;(global-hl-line-mode)
 ;(set-face-background 'highlight "#007700")
 ;(set-face-attribute hl-line-face nil :underline nil)
 ;(set-face-foreground 'highlight nil)
@@ -336,6 +336,9 @@ chiaroscuro
 ; highlight opening and closing parenthesis
 (show-paren-mode t)
 (setq show-paren-style 'expression)
+
+; truncate lines
+(setq-default truncate-lines t)
 #+END_SRC
 ** org mode
 #+BEGIN_SRC emacs-lisp
