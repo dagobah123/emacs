@@ -812,6 +812,10 @@ This is the package that handles server installation and session management.
         ("https://www.reddit.com/r/cpp/.rss" it)
         ("https://www.reddit.com/r/java/.rss" it)
 
+        ("https://screenrant.com/feed" movie film kino)
+        ("http://feeds.feedburner.com/cinemablendallthing" movie film kino)
+        ("https://www.joblo.com/newsfeeds/rss.xml" movie film kino)
+
         ("https://www.comicsrss.com/rss/dilbert.rss" comic dilbert)
         ("https://www.comicsrss.com/rss/garfield.rss" comic garfield)
         ("https://www.comicsrss.com/rss/peanuts.rss" comic peanuts)
