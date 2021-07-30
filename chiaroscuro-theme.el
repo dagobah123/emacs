@@ -8,19 +8,27 @@
 (let ((class '((class color) (min-colors 89)))
 
        (white-yellow "#fff3b6")
+
        (black "#000000")
-       (dark-gray "#666666")
-       (gray "#888888")
+
        (light-gray "#aaaaaa")
+       (gray "#888888")
+       (light-middle-gray "#666666")
+       (middle-gray "#555555")
+       (middle-dark-dark-gray "#444444")
+       (middle-dark-gray "#333333")
+       (dark-gray "#212121")
+       (very-dark-gray "#111111")
+
        (orange "#db7b00")
        (dark-orange "#c7580b")
        (dark-brown "#933b15")
-       (lowest-chroma-dark-brown "#4b352e")
-       (dark-gray "#212121")
+
        (bright-blue "#586cef")
        (low-chroma-blue "#6262b6")
        (dark-blue "#282877")
        (darkest-blue "#1a1d55")
+
        (green "#44a536")
        (green-gray "#577c52")
        (red "#d23b3b")
@@ -58,22 +66,22 @@
     `(helm-selection ((,class :foreground ,white-yellow)))
 
     `(helm-swoop-target-line-face ((,class (:background ,nil :foreground ,white-yellow))))
-    `(helm-swoop-target-word-face ((,class (:foreground ,white-yellow :background ,dark-blue))))
+    `(helm-swoop-target-word-face ((,class (:background ,dark-blue :foreground ,white-yellow))))
     `(helm-swoop-line-number-face ((,class (:weight bold :foreground ,brightest-red :background ,dark-blue))))
     `(helm-swoop-target-line-block-face ((,class (:foreground ,brightest-red :background ,dark-blue))))
 
     `(minibuffer-prompt ((,class (:foreground ,orange))))
 
     `(highlight ((,class (:background ,nil :foreground ,white-yellow))))
-    `(show-paren-match ((,class (:background ,"#444444" :foreground ,white-yellow))))
+    `(show-paren-match ((,class (:background ,middle-dark-dark-gray :foreground ,white-yellow))))
 
     ;`(hl-line ((,class (:background ,dark-blue :foreground ,"#cccccc"))))
     `(cursor ((,class (:background ,white-yellow))))
-    `(region ((,class (:background ,"#666666" :foreground ,white-yellow))))
-    `(cua-rectangle ((,class (:background ,"#666666" :foreground ,white-yellow))))
+    `(region ((,class (:background ,light-middle-gray :foreground ,white-yellow))))
+    `(cua-rectangle ((,class (:background ,light-middle-gray :foreground ,white-yellow))))
 
-    `(mode-line ((,class (:background ,lowest-chroma-dark-brown :foreground ,light-gray))))
-    `(mode-line-inactive ((,class (:background ,lowest-chroma-dark-brown :foreground ,dark-gray))))
+    `(mode-line ((,class (:background ,very-dark-gray :foreground ,light-gray))))
+    `(mode-line-inactive ((,class (:background ,very-dark-gray :foreground ,dark-gray))))
     `(helm-selection ((,class (:background ,black :foreground ,light-gray))))
     `(helm-swoop-target-word-face ((,class (:background ,black :foreground ,light-gray :bold t))))
 
@@ -101,8 +109,6 @@
     `(elfeed-search-title-face ((,class (:background ,black :foreground ,dark-orange))))
     `(elfeed-search-unread-count-face ((,class (:background ,black :foreground ,light-gray))))
     `(elfeed-search-unread-title-face ((,class (:background ,black :foreground ,orange))))
-
-    `(ido-only-match ((,class (:foreground ,bright-blue))))
 
     `(magit-header-line ((,class (:foreground ,orange))))
     `(magit-section-heading ((,class (:foreground ,orange))))
@@ -164,7 +170,19 @@
     `(magit-diff-whitespace-warning ((,class (:background ,red :foreground ,gray))))
     `(custom-invalid ((,class (:background ,red :foreground ,gray))))
     `(ido-indicator ((,class (:background ,red :foreground ,gray))))
+
+    `(org-block-begin-line ((,class (:foreground ,middle-dark-gray))))
+    `(org-block-end-line ((,class (:foreground ,middle-dark-gray))))
     
+    `(company-echo-common ((,class (:foreground ,bright-blue))))
+    `(helm-buffer-saved-out ((,class (:foreground ,bright-blue))))
+    `(ido-subdir ((,class (:foreground ,bright-blue))))
+    `(ido-first-match ((,class (:foreground ,white-yellow :bold t))))
+    `(ido-only-match ((,class (:foreground ,white-yellow :bold t))))
+
+    `(whitespace-space ((,class (:foreground ,middle-gray))))
+    `(whitespace-trailing ((,class ( :foreground ,white-yellow :bold t))))
+    ;`(whitespace-trailing ((,class (:background ,dark-blue :foreground ,white-yellow))))
   )
 )
 

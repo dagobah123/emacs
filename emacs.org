@@ -1,61 +1,19 @@
 * emacs
-** notes
+** header
 #+BEGIN_SRC emacs-lisp
 ;  ______     __    __     ______     ______     ______
 ; /\  ___\   /\ "-./  \   /\  __ \   /\  ___\   /\  ___\
 ; \ \  __\   \ \ \-./\ \  \ \  __ \  \ \ \__/_  \ \___  \
 ;  \ \_____\  \ \_\ \ \_\  \ \_\ \_\  \ \_____\  \/\_____\
 ;   \/_____/   \/_/  \/_/   \/_/\/_/   \/_____/   \/_____/
-
 #+END_SRC
-ag
-ag -g . | ag 'foo'
-ag 'foo'
-
-ag
-clang-format
-company
-counsel-jq
-dired-narrow
-dired-quick-sort
-dired-rainbow
-dired-subtree
-emms
-engine-mode
-expand-region
-fountain-mode
-helm
-helm-ag
-helm-gtags
-helm-projectile
-helm-swoop
-imenu-list
-magit
-magit-find-file
-move-text
-neotree
-paredit
-pdf-tools
-popper
-powershell
-projectile
-projectile-codesearch
-prolog
-solarized-theme
-spray
-yasnippet
 ** package archives
 #+BEGIN_SRC emacs-lisp
 (require 'package)
 
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("elpa" . "https://elpa.gnu.org/packages/")
-                         ("org" . "https://orgmode.org/elpa/")
-                        )
-)
-
-;"melpa-edge" "https://melpa.org/packages/"
-;"melpa-stable" "https://stable.melpa.org/packages/"
+                         ("org" . "https://orgmode.org/elpa/")))
 #+END_SRC
 ** package initialize
 #+BEGIN_SRC emacs-lisp
@@ -65,7 +23,7 @@ yasnippet
 ; Refresh available packages
 (unless package-archive-contents (package-refresh-contents))
 
-; Install use-package
+; Set package list
 (setq package-list '(use-package
                      dired-quick-sort
                      helm-swoop
@@ -93,8 +51,9 @@ yasnippet
                      afternoon-theme
                      gandalf-theme
                      elfeed
-                     )
-)
+                     org-scrum
+                     uml-mode))
+
 (dolist (package package-list)
 (unless (package-installed-p package) (package-install package)))
 #+END_SRC
@@ -111,15 +70,6 @@ Load environment variables properly by installing =exec-path-from-shell=.
   ((eq system-type 'gnu/linux) (load (concat EMACS_HOME "linux")))
   (t (load-library "default"))
 )
-#+END_SRC
-** install missing packages
-#+BEGIN_SRC emacs-lisp
-; install missing packages
-;(dolist (p package-list)
-;  (unless (package-installed-p p)
-;    (package-refresh-contents)
-;    (package-install p))
-;  (add-to-list 'package-selected-packages p))
 #+END_SRC
 ** look
 #+BEGIN_SRC emacs-lisp
@@ -139,8 +89,6 @@ Load environment variables properly by installing =exec-path-from-shell=.
       auto-save-list-file-prefix (expand-file-name "auto-save-list/.saves-" user-cache-directory)
       projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-directory))
 
-; set cursor color for multiple frames
-;(add-to-list 'default-frame-alist '(cursor-color . "#00ff00"))
 (setq blink-cursor-blinks 0)
 
 ;(global-hl-line-mode)
@@ -567,7 +515,7 @@ LSP UI is used in various packages that require UI elements in LSP. E.g ~lsp-ui-
 ))
 #+end_src
 
-Go through this [[https://github.com/emacs-lsp/lsp-ui/blob/master/lsp-ui-doc.el][link]]  to see what other parameters are provided.
+Go through this [[https://github.com/emacs-lsp/lsp-ui/blob/master/lsp-ui-doc.el][link]] to see what other parameters are provided.
 
 *** Helm LSP
 Helm-lsp provides various functionality to work with the code. E.g Code actions like adding *getter, setter, toString*, refactoring etc. You can use ~helm-lsp-workspace-symbol~ to find various symbols (classes) within your workspace.
@@ -673,12 +621,12 @@ This is the package that handles server installation and session management.
 (defun my:next-java-method()
   (interactive)
   (re-search-forward java-function-regexp nil t)
-  (recenter)
+  ;(recenter)
 )
 (defun my:prev-java-method()
   (interactive)
   (re-search-backward java-function-regexp nil t)
-  (recenter)
+  ;(recenter)
 )
 
 (defun my:jump-ten-lines()
