@@ -132,41 +132,41 @@ Load environment variables properly by installing =exec-path-from-shell=.
 ** themes
 #+BEGIN_SRC emacs-lisp
 (setq themes-list '(
-eclipse
-vs-light
-doom-gruvbox
-dark-mint
-alect-light-alt
-grayscale
-base16-icy
-base16-atelier-dune
-rebecca
-alect-black-alt
-base16-3024
-base16-circus
-base16-darkviolet
-base16-apathy
-base16-atelier-dune-light
-tron-legacy
-base16-bespin
-base16-atelier-sulphurpool
-base16-pico
-base16-pop
-base16-vulcan
-doom-homage-black
-doom-outrun-electric
-doom-spacegrey
-autumn-light
-cloud
-afternoon
-gandalf
-base16-redscreen
-base16-red2screen
-base16-greenscreen
-doom-manegarm
-doom-laserwave
-doom-zenburn
-chiaroscuro
+    eclipse
+    vs-light
+    doom-gruvbox
+    dark-mint
+    alect-light-alt
+    grayscale
+    base16-icy
+    base16-atelier-dune
+    rebecca
+    alect-black-alt
+    base16-3024
+    base16-circus
+    base16-darkviolet
+    base16-apathy
+    base16-atelier-dune-light
+    tron-legacy
+    base16-bespin
+    base16-atelier-sulphurpool
+    base16-pico
+    base16-pop
+    base16-vulcan
+    doom-homage-black
+    doom-outrun-electric
+    doom-spacegrey
+    autumn-light
+    cloud
+    afternoon
+    gandalf
+    base16-redscreen
+    base16-red2screen
+    base16-greenscreen
+    doom-manegarm
+    doom-laserwave
+    doom-zenburn
+    chiaroscuro
 ))
 
 (defvar theme-index 0 "Index representing the current theme")
