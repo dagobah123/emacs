@@ -298,15 +298,14 @@ Load environment variables properly by installing =exec-path-from-shell=.
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c b") 'org-switchb)
 (setq org-capture-templates
-      '(
-        ("t" "Tasks" entry (file+headline "~/source/org-mode/tasks.org" "Tasks")
+      '(("t" "Tasks" entry (file+headline "~/source/org-mode/tasks.org" "Tasks")
+         "* TODO %?\n")
+        ("s" "Shopping List" entry (file+headline "~/source/org-mode/shopping_list.org" "Shopping List")
          "* TODO %?\n")
         ("j" "Journal" entry (file+headline "~/source/org-mode/journal.org" "Journal")
          "* %?\n")
         ("l" "Log" entry (file+datetree "~/source/org-mode/log.org")
-         "* %?\nEntered on %U\n  %i\n  %a")
-       )
-)
+         "* %?\nEntered on %U\n  %i\n  %a")))
 
 (setq org-agenda-files (list "~/source/org-mode/tasks.org"))
 
@@ -318,16 +317,6 @@ Load environment variables properly by installing =exec-path-from-shell=.
 (setq org-support-shift-select 'always)
 (setq org-todo-keywords
     '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "CANCELED" "DONE")))
-
-;(setq org-todo-keyword-faces
-;      '(
-;        ("TODO" . (:foreground "black" :background "red" :weight bold))
-;        ("IN-PROGRESS" . (:foreground "green" :background "black" :weight bold))
-;        ("WAITING" . (:foreground "orange" :background "black" :weight bold))
-;        ("CANCELED" . (:foreground "gray" :background "black" :weight bold))
-;        ("DONE" . (:foreground "gray" :background "black" :weight bold))
-;       )
-;)
 #+END_SRC
 ** projectile
 #+BEGIN_SRC emacs-lisp

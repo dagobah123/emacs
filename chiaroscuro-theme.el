@@ -181,8 +181,10 @@
     `(ido-only-match ((,class (:foreground ,white-yellow :bold t))))
 
     `(whitespace-space ((,class (:foreground ,middle-gray))))
-    `(whitespace-trailing ((,class ( :foreground ,white-yellow :bold t))))
-    ;`(whitespace-trailing ((,class (:background ,dark-blue :foreground ,white-yellow))))
+    `(whitespace-trailing ((,class (:foreground ,white-yellow :bold t))))
+    
+    `(org-todo ((,class (:foreground ,red :bold t))))
+    `(org-done ((,class (:foreground ,green :bold t))))
   )
 )
 
