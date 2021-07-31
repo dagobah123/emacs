@@ -185,6 +185,10 @@
     
     `(org-todo ((,class (:foreground ,red :bold t))))
     `(org-done ((,class (:foreground ,green :bold t))))
+
+    `(org-agenda-structure ((,class (:foreground ,light-gray))))
+    
+    `(info-xref-visited ((,class (:foreground ,orange :underline t))))
   )
 )
 
