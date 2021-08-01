@@ -299,14 +299,27 @@ Load environment variables properly by installing =exec-path-from-shell=.
 (global-set-key (kbd "C-c b") 'org-switchb)
 (setq org-capture-templates
       '(("t" "Tasks" entry (file+headline "~/source/org-mode/tasks.org" "Tasks")
-         "* TODO %?\n")
+         "* TODO %? :task:")
+
+        ("p" "Painting" entry (file+headline "~/source/org-mode/painting.org" "Painting")
+         "* TODO %? :painting:")
+
         ("r" "Reading List" entry (file+headline "~/source/org-mode/reading_list.org" "Reading List")
-         "* TODO %?\n")
-        ("s" "Shopping List" entry (file+headline "~/source/org-mode/shopping_list.org" "Shopping List")
-         "* TODO %?\n")
+         "* TODO %? :book:")
+
+        ("s" "Shopping List" checkitem (file+headline "~/source/org-mode/shopping_list.org" "Shopping List")
+         "- [ ] %?")
+
+        ("h" "Haushalt" entry (file+headline "~/source/org-mode/haushalt.org" "Haushalt")
+         "* TODO %? :haushalt:")
+
+        ("b" "Business" entry (file+headline "~/source/org-mode/business.org" "Business")
+         "* TODO %? :business:")
+
         ("j" "Journal" entry (file+headline "~/source/org-mode/journal.org" "Journal")
          "* %?\n")
-        ("l" "Log" entry (file+datetree "~/source/org-mode/log.org" "~/source/org-mode/shopping_list.org")
+
+        ("l" "Log" entry (file+headline "~/source/org-mode/log.org" "Log")
          "* %?\nEntered on %U\n  %i\n  %a")))
 
 (setq org-agenda-files (list "~/source/org-mode"))
