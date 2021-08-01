@@ -83,7 +83,7 @@
     `(mode-line ((,class (:background ,very-dark-gray :foreground ,light-gray))))
     `(mode-line-inactive ((,class (:background ,very-dark-gray :foreground ,dark-gray))))
     `(mode-line-buffer-id ((,class (:foreground ,orange :bold t))))
-    
+
     `(helm-selection ((,class (:background ,black :foreground ,light-gray))))
     `(helm-swoop-target-word-face ((,class (:background ,black :foreground ,light-gray :bold t))))
 
@@ -175,7 +175,7 @@
 
     `(org-block-begin-line ((,class (:foreground ,middle-dark-gray))))
     `(org-block-end-line ((,class (:foreground ,middle-dark-gray))))
-    
+
     `(company-echo-common ((,class (:foreground ,bright-blue))))
     `(helm-buffer-saved-out ((,class (:foreground ,bright-blue))))
     `(ido-subdir ((,class (:foreground ,bright-blue))))
@@ -184,14 +184,14 @@
 
     `(whitespace-space ((,class (:foreground ,middle-gray))))
     `(whitespace-trailing ((,class (:foreground ,white-yellow :bold t))))
-    
+
     `(org-todo ((,class (:foreground ,red :bold t))))
     `(org-done ((,class (:foreground ,green :bold t))))
 
     `(org-agenda-structure ((,class (:foreground ,light-gray))))
-    
+
     `(info-xref-visited ((,class (:foreground ,orange :underline t))))
-    
+
   )
 )
 
