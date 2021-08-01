@@ -82,6 +82,8 @@
 
     `(mode-line ((,class (:background ,very-dark-gray :foreground ,light-gray))))
     `(mode-line-inactive ((,class (:background ,very-dark-gray :foreground ,dark-gray))))
+    `(mode-line-buffer-id ((,class (:foreground ,orange :bold t))))
+    
     `(helm-selection ((,class (:background ,black :foreground ,light-gray))))
     `(helm-swoop-target-word-face ((,class (:background ,black :foreground ,light-gray :bold t))))
 
@@ -189,6 +191,7 @@
     `(org-agenda-structure ((,class (:foreground ,light-gray))))
     
     `(info-xref-visited ((,class (:foreground ,orange :underline t))))
+    
   )
 )
 
