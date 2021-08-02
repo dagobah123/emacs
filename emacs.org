@@ -248,7 +248,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
 #+END_SRC
 ** behavior
 #+BEGIN_SRC emacs-lisp
-;(cua-mode t)
+(cua-mode t)
 
 ; scrolling up and down one line
 (global-set-key (kbd "C-<down>") 'scroll-up-line)
