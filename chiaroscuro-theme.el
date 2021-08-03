@@ -192,6 +192,8 @@
 
     `(info-xref-visited ((,class (:foreground ,orange :underline t))))
 
+    `(ivy-current-match ((,class (:foreground ,white-yellow :bold t))))
+    `(eww-valid-certificate ((,class (:foreground ,orange :bold t))))
   )
 )
 
