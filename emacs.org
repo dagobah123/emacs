@@ -718,8 +718,8 @@ This is the package that handles server installation and session management.
 (setq openwith-associations
       (list (list (openwith-make-extension-regexp '("pdf"))
                   "evince" '(file))
-            (list (openwith-make-extension-regexp '("bmp" "jpeg" "jpg" "png"))
-                  "gimp" '(file))
+           ;(list (openwith-make-extension-regexp '("bmp" "jpeg" "jpg" "png"))
+           ;      "gimp" '(file))
             (list (openwith-make-extension-regexp '("avi" "mp3" "mp4" "wav"))
                   "vlc" '(file))
             (list (openwith-make-extension-regexp '("sln"))
@@ -932,20 +932,20 @@ This is the package that handles server installation and session management.
 
         ("https://chaski.huffpost.com/us/auto/vertical/technology" tech)
 
-        ("https://www.reddit.com/r/emacs/.rss" it)
-        ("https://www.reddit.com/r/vim/.rss" it)
-        ("https://www.reddit.com/r/linux/.rss" it)
-        ("https://www.reddit.com/r/programming/.rss" it)
-        ("https://www.reddit.com/r/cpp/.rss" it)
-        ("https://www.reddit.com/r/java/.rss" it)
+        ("https://www.reddit.com/r/emacs/.rss" computer emacs)
+        ("https://www.reddit.com/r/vim/.rss" computer vim)
+        ("https://www.reddit.com/r/linux/.rss" computer linux)
+        ("https://www.reddit.com/r/programming/.rss" computer)
+        ("https://www.reddit.com/r/cpp/.rss" computer)
+        ("https://www.reddit.com/r/java/.rss" computer)
 
         ("https://screenrant.com/feed" movie film kino)
         ("http://feeds.feedburner.com/cinemablendallthing" movie film kino)
         ("https://www.joblo.com/newsfeeds/rss.xml" movie film kino)
 
-        ("https://www.comicsrss.com/rss/dilbert.rss" comic dilbert)
-        ("https://www.comicsrss.com/rss/garfield.rss" comic garfield)
-        ("https://www.comicsrss.com/rss/peanuts.rss" comic peanuts)
+        ("https://www.comicsrss.com/rss/dilbert.rss" comics dilbert)
+        ("https://www.comicsrss.com/rss/garfield.rss" comics garfield)
+        ("https://www.comicsrss.com/rss/peanuts.rss" comics peanuts)
        )
 )
 #+END_SRC
