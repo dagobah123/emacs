@@ -195,6 +195,8 @@
     `(ivy-current-match ((,class (:foreground ,white-yellow :bold t))))
     `(eww-valid-certificate ((,class (:foreground ,orange :bold t))))
 
+    ;`(variable-pitch ((,class (:foreground ,orange :bold t))))
+
     ;(set-frame-font "DejaVu Sans Mono-30" nil t)
     ;(set-frame-font "STIXGeneral-20" nil t)
     ;(set-frame-font "FreeSerif-20" nil t)

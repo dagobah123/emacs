@@ -991,8 +991,13 @@ This is the package that handles server installation and session management.
 #+END_SRC
 ** fonts
 #+BEGIN_SRC emacs-lisp
-;  set default font
-(set-frame-font "Comfortaa-20" nil t)
+; set default font
+;(set-frame-font "Comfortaa-20" nil t)
+
+; set font of mode-line
+(set-face-attribute 'mode-line nil :font "Comfortaa-20")
+
+;(variable-pitch-mode -1)
 
 (defun my:buffer-face-mode-mono()
   (interactive)
@@ -1014,4 +1019,26 @@ This is the package that handles server installation and session management.
 (add-hook 'Info-mode-hook 'my:buffer-face-mode-text)
 (add-hook 'org-mode-hook 'my:buffer-face-mode-default)
 (add-hook 'fundamental-mode-hook 'my:buffer-face-mode-default)
+
+;(defun set-buffer-variable-pitch ()
+;  (interactive)
+;  (variable-pitch-mode t)
+;  (setq line-spacing 3)
+;   (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
+;   (set-face-attribute 'org-code nil :inherit 'fixed-pitch)
+;   (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
+;   (set-face-attribute 'org-block-background nil :inherit 'fixed-pitch)
+;  )
+;
+;(add-hook 'org-mode-hook 'set-buffer-variable-pitch)
+;(add-hook 'eww-mode-hook 'set-buffer-variable-pitch)
+;(add-hook 'markdown-mode-hook 'set-buffer-variable-pitch)
+;(add-hook 'Info-mode-hook 'set-buffer-variable-pitch)
+
+;(setq-default mode-line-format `(
+;    ,(propertize "Line:" 'face 'bold)
+;    " %l "
+;    ,(propertize "Size:" 'face 'bold)
+;    " %i"
+;))
 #+END_SRC
