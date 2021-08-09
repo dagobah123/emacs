@@ -129,123 +129,6 @@ Load environment variables properly by installing =exec-path-from-shell=.
 
 (setq display-line-numbers-type 'relative)
 #+END_SRC
-** themes
-#+BEGIN_SRC emacs-lisp
-(setq themes-list '(
-    eclipse
-    vs-light
-    doom-gruvbox
-    dark-mint
-    alect-light-alt
-    grayscale
-    base16-icy
-    base16-atelier-dune
-    rebecca
-    alect-black-alt
-    base16-3024
-    base16-circus
-    base16-darkviolet
-    base16-apathy
-    base16-atelier-dune-light
-    tron-legacy
-    base16-bespin
-    base16-atelier-sulphurpool
-    base16-pico
-    base16-pop
-    base16-vulcan
-    doom-homage-black
-    doom-outrun-electric
-    doom-spacegrey
-    autumn-light
-    cloud
-    afternoon
-    gandalf
-    base16-redscreen
-    base16-red2screen
-    base16-greenscreen
-    doom-manegarm
-    doom-laserwave
-    doom-zenburn
-    chiaroscuro
-))
-
-(defvar theme-index 0 "Index representing the current theme")
-(setq theme-index 0)
-(setq number-of-themes (length themes-list))
-
-(defun my:disable-themes()
-  (interactive)
-  (setq loop-index 0)
-  (while (< loop-index number-of-themes)
-      (disable-theme (nth loop-index themes-list))
-      (setq loop-index (+ loop-index 1))
-  )
-)
-
-(defun my:reset-themes-index()
-  (interactive)
-  (setq theme-index 0)
-  (my:disable-themes)
-)
-(global-set-key (kbd "C-5") 'my:reset-themes-index)
-
-(defun my:theme-down()
-  (interactive)
-  (setq theme-index (- theme-index 1))
-  (my:toggle-themes)
-)
-(global-set-key (kbd "C-6") 'my:theme-down)
-
-(defun my:theme-up()
-  (interactive)
-  (setq theme-index (+ theme-index 1))
-  (my:toggle-themes)
-)
-(global-set-key (kbd "C-7") 'my:theme-up)
-(global-set-key (kbd "C-`") 'my:theme-up)
-
-(defun my:loop()
-  (interactive)
-  (setq loop-index 1)
-  (setq themes-list-index 0)
-  (while (<= loop-index number-of-themes)
-      (if (eq theme-index loop-index)
-          (progn
-              (load-theme (nth themes-list-index themes-list) t)
-              (message "%s" (nth themes-list-index themes-list))
-          )
-      )
-      (setq loop-index (+ loop-index 1))
-      (setq themes-list-index (+ themes-list-index 1))
-  )
-)
-
-(defun my:toggle-themes()
-  (interactive)
-  (my:disable-themes)
-
-  (if (eq theme-index -1)
-      (progn
-          (setq theme-index number-of-themes)
-      )
-  )
-
-  (if (eq theme-index 0)
-      (progn
-          (message "emacs")
-      )
-  )
-
-  (my:loop)
-
-  (if (> theme-index number-of-themes)
-      (progn
-          (setq theme-index 0)
-          (message "emacs")
-      )
-  )
-)
-#+END_SRC
 ** behavior
 #+BEGIN_SRC emacs-lisp
 (cua-mode t)
@@ -997,7 +880,11 @@ This is the package that handles server installation and session management.
 ; set font of mode-line
 (set-face-attribute 'mode-line nil :font "Comfortaa-20")
 
-;(variable-pitch-mode -1)
+(custom-theme-set-faces
+ 'user
+  '(org-table ((t (:family "DejaVu Sans Mono" :height 250))))
+  '(org-link ((t (:family "DejaVu Sans Mono" :height 250 :underline t))))
+)
 
 (defun my:buffer-face-mode-mono()
   (interactive)
@@ -1011,34 +898,145 @@ This is the package that handles server installation and session management.
 
 (defun my:buffer-face-mode-default()
   (interactive)
-  (setq buffer-face-mode-face '(:family "DejaVu Sans Mono"))
+  (setq buffer-face-mode-face '(:family "DejaVu Sans Mono" :height 250))
+  (buffer-face-mode))
+
+(defun my:buffer-face-mode-stylish()
+  (interactive)
+  (setq buffer-face-mode-face '(:family "Comfortaa" :height 250))
   (buffer-face-mode))
 
 (add-hook 'eww-mode-hook 'my:buffer-face-mode-text)
 (add-hook 'dired-mode-hook 'my:buffer-face-mode-mono)
 (add-hook 'Info-mode-hook 'my:buffer-face-mode-text)
-(add-hook 'org-mode-hook 'my:buffer-face-mode-default)
-(add-hook 'fundamental-mode-hook 'my:buffer-face-mode-default)
+(add-hook 'org-mode-hook 'my:buffer-face-mode-stylish)
+(add-hook 'c++-mode-hook 'my:buffer-face-mode-mono)
+(add-hook 'java-mode-hook 'my:buffer-face-mode-mono)
+#+END_SRC
+** themes
+#+BEGIN_SRC emacs-lisp
+(setq themes-list '(
+    eclipse
+    vs-light
+    doom-gruvbox
+    dark-mint
+    alect-light-alt
+    grayscale
+    base16-icy
+    base16-atelier-dune
+    rebecca
+    alect-black-alt
+    base16-3024
+    base16-circus
+    base16-darkviolet
+    base16-apathy
+    base16-atelier-dune-light
+    tron-legacy
+    base16-bespin
+    base16-atelier-sulphurpool
+    base16-pico
+    base16-pop
+    base16-vulcan
+    doom-homage-black
+    doom-outrun-electric
+    doom-spacegrey
+    autumn-light
+    cloud
+    afternoon
+    gandalf
+    base16-redscreen
+    base16-red2screen
+    base16-greenscreen
+    doom-manegarm
+    doom-laserwave
+    doom-zenburn
+    chiaroscuro
+))
 
-;(defun set-buffer-variable-pitch ()
-;  (interactive)
-;  (variable-pitch-mode t)
-;  (setq line-spacing 3)
-;   (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
-;   (set-face-attribute 'org-code nil :inherit 'fixed-pitch)
-;   (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
-;   (set-face-attribute 'org-block-background nil :inherit 'fixed-pitch)
-;  )
-;
-;(add-hook 'org-mode-hook 'set-buffer-variable-pitch)
-;(add-hook 'eww-mode-hook 'set-buffer-variable-pitch)
-;(add-hook 'markdown-mode-hook 'set-buffer-variable-pitch)
-;(add-hook 'Info-mode-hook 'set-buffer-variable-pitch)
+(defvar theme-index 0 "Index representing the current theme")
+(setq theme-index 0)
+(setq number-of-themes (length themes-list))
 
-;(setq-default mode-line-format `(
-;    ,(propertize "Line:" 'face 'bold)
-;    " %l "
-;    ,(propertize "Size:" 'face 'bold)
-;    " %i"
-;))
+(defun my:disable-themes()
+  (interactive)
+  (setq loop-index 0)
+  (while (< loop-index number-of-themes)
+      (disable-theme (nth loop-index themes-list))
+      (setq loop-index (+ loop-index 1))
+  )
+)
+
+(defun my:reset-themes-index()
+  (interactive)
+  (setq theme-index 0)
+  (my:disable-themes)
+  (my:set-mode-line-font)
+)
+(global-set-key (kbd "C-5") 'my:reset-themes-index)
+
+(defun my:theme-down()
+  (interactive)
+  (setq theme-index (- theme-index 1))
+  (my:toggle-themes)
+  (my:set-mode-line-font)
+
+)
+(global-set-key (kbd "C-6") 'my:theme-down)
+
+(defun my:theme-up()
+  (interactive)
+  (setq theme-index (+ theme-index 1))
+  (my:toggle-themes)
+  (my:set-mode-line-font)
+)
+(global-set-key (kbd "C-7") 'my:theme-up)
+(global-set-key (kbd "C-`") 'my:theme-up)
+
+(defun my:loop()
+  (interactive)
+  (setq loop-index 1)
+  (setq themes-list-index 0)
+  (while (<= loop-index number-of-themes)
+      (if (eq theme-index loop-index)
+          (progn
+              (load-theme (nth themes-list-index themes-list) t)
+              (message "%s" (nth themes-list-index themes-list))
+          )
+      )
+      (setq loop-index (+ loop-index 1))
+      (setq themes-list-index (+ themes-list-index 1))
+  )
+)
+
+(defun my:toggle-themes()
+  (interactive)
+  (my:disable-themes)
+
+  (if (eq theme-index -1)
+      (progn
+          (setq theme-index number-of-themes)
+      )
+  )
+
+  (if (eq theme-index 0)
+      (progn
+          (message "emacs")
+      )
+  )
+
+  (my:loop)
+
+  (if (> theme-index number-of-themes)
+      (progn
+          (setq theme-index 0)
+          (message "emacs")
+      )
+  )
+
+(defun my:set-mode-line-font()
+  (interactive)
+  (set-face-attribute 'mode-line nil :font "Comfortaa-20")
+  ;(set-face-attribute 'minibuffer-prompt nil :font "Comfortaa-18")
+  )
+)
 #+END_SRC
