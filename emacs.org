@@ -1,12 +1,4 @@
 * emacs
-** header
-#+BEGIN_SRC emacs-lisp
-;  ______     __    __     ______     ______     ______
-; /\  ___\   /\ "-./  \   /\  __ \   /\  ___\   /\  ___\
-; \ \  __\   \ \ \-./\ \  \ \  __ \  \ \ \__/_  \ \___  \
-;  \ \_____\  \ \_\ \ \_\  \ \_\ \_\  \ \_____\  \/\_____\
-;   \/_____/   \/_/  \/_/   \/_/\/_/   \/_____/   \/_____/
-#+END_SRC
 ** package archives
 #+BEGIN_SRC emacs-lisp
 (require 'package)
@@ -614,7 +606,18 @@ This is the package that handles server installation and session management.
 
 ;; How tall the mode-line should be. It's only respected in GUI.
 ;; If the actual char height is larger, it respects the actual height.
-(setq doom-modeline-height 42)
+(cond
+    ((string-equal system-type "windows-nt")
+        (progn
+            (setq doom-modeline-height 42)
+        )
+    )
+    ((string-equal system-type "gnu/linux")
+        (progn
+            (setq doom-modeline-height 66)
+        )
+    )
+)
 
 ;; How wide the mode-line bar should be. It's only respected in GUI.
 ;(setq doom-modeline-bar-width 4)
@@ -981,7 +984,7 @@ This is the package that handles server installation and session management.
     )
     ((string-equal system-type "gnu/linux")
         (progn
-            (set-face-attribute 'mode-line nil :font "Comfortaa-20")
+            (set-face-attribute 'mode-line nil :font "Comfortaa-25")
         )
     )
 )
