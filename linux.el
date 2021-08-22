@@ -37,3 +37,5 @@
 (add-hook 'org-mode-hook 'my:buffer-face-mode-stylish)
 (add-hook 'c++-mode-hook 'my:buffer-face-mode-mono)
 (add-hook 'java-mode-hook 'my:buffer-face-mode-mono)
+
+(setq compile-command "mvn exec:java")

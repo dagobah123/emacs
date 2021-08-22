@@ -194,7 +194,10 @@
 
     `(ivy-current-match ((,class (:foreground ,white-yellow :bold t))))
     `(eww-valid-certificate ((,class (:foreground ,orange :bold t))))
-  )
+
+    `(org-date ((,class (:foreground ,bright-blue :underline t))))
+
+    )
 )
 
 ;;;###autoload
