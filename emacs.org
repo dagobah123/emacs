@@ -175,13 +175,19 @@ Load environment variables properly by installing =exec-path-from-shell=.
 
 (load (concat EMACS_HOME "agenda"))
 
+; fold/overview
+; nofold/showall
+; content
+; showeverything
+(setq org-startup-folded 'content)
+
 ; org-mode use shift arrows to change buffer
 (add-hook 'org-shiftup-final-hook 'windmove-up)
 (add-hook 'org-shiftleft-final-hook 'windmove-left)
 (add-hook 'org-shiftdown-final-hook 'windmove-down)
 (add-hook 'org-shiftright-final-hook 'windmove-right)
 (setq org-support-shift-select 'always)
-(setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "|" "DONE")))
+(setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "FEEDBACK" "|" "DONE" "DELEGATED")))
 (setq org-tags-column 0)
 (setq org-adapt-indentation nil)
 (org-reload)
@@ -799,19 +805,10 @@ This is the package that handles server installation and session management.
 (setq elfeed-feeds
       '(
         ("https://rss.orf.at/news.xml" news)
-        ("https://www.derstandard.at/rss/web" news)
         ("https://rss.orf.at/steiermark.xml" news graz)
         ("https://www.reddit.com/r/graz/.rss" news graz)
-        ("https://en.wikinews.org/w/index.php?title=Special:NewsFeed&feed=atom&categories=Published&notcategories=No%20publish%7CArchived%7CAutoArchived%7Cdisputed&namespace=0&count=30&hourcount=124&ordermethod=categoryadd&stablepages=only" news)
-        ("https://chaski.huffpost.com/us/auto/vertical/front-page" news)
-
-        ("https://chaski.huffpost.com/us/auto/vertical/technology" computer)
-        ("https://hnrss.org/newest" computer)
-        ("https://www.reddit.com/r/emacs/.rss" computer emacs)
 
         ("https://screenrant.com/feed" movie film kino)
-        ("http://feeds.feedburner.com/cinemablendallthing" movie film kino)
-        ("https://www.joblo.com/newsfeeds/rss.xml" movie film kino)
 
         ("https://www.comicsrss.com/rss/dilbert.rss" comics dilbert)
         ("https://www.comicsrss.com/rss/garfield.rss" comics garfield)

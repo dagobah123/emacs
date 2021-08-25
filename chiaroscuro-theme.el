@@ -158,8 +158,8 @@
     `(magit-diff-conflict-heading ((,class (:background ,dark-gray :foreground ,dark-gray))))
     `(magit-diff-file-heading ((,class (:background ,dark-gray :foreground ,white-yellow))))
     `(magit-diff-file-heading-selection ((,class (:background ,dark-gray :foreground ,white-yellow))))
-    `(magit-diff-hunk-heading ((,class (:background ,dark-gray :foreground ,dark-gray))))
-    `(magit-diff-hunk-heading-selection ((,class (:background ,dark-gray :foreground ,dark-gray))))
+    `(magit-diff-hunk-heading ((,class (:background ,dark-gray :foreground ,middle-gray))))
+    `(magit-diff-hunk-heading-selection ((,class (:background ,dark-gray :foreground ,middle-gray))))
 
     `(magit-diff-file-heading-highlight ((,class (:background ,dark-gray :foreground ,white-yellow))))
     `(magit-diff-hunk-heading-highlight ((,class (:background ,dark-gray :foreground ,light-gray))))
