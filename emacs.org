@@ -804,11 +804,11 @@ This is the package that handles server installation and session management.
 (require 'elfeed)
 (setq elfeed-feeds
       '(
-        ("https://rss.orf.at/news.xml" news)
-        ("https://rss.orf.at/steiermark.xml" news graz)
-        ("https://www.reddit.com/r/graz/.rss" news graz)
+        ;("https://rss.orf.at/news.xml" news)
+        ;("https://rss.orf.at/steiermark.xml" news graz)
+        ;("https://www.reddit.com/r/graz/.rss" news graz)
 
-        ("https://screenrant.com/feed" movie film kino)
+        ;("https://screenrant.com/feed" movie film kino)
 
         ("https://www.comicsrss.com/rss/dilbert.rss" comics dilbert)
         ("https://www.comicsrss.com/rss/garfield.rss" comics garfield)
