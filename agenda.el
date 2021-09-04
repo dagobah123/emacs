@@ -7,6 +7,9 @@
         ("p" "Painting" entry (file+headline "~/source/org-mode/agenda/painting.org" "Painting")
          "* TODO %? :painting:")
 
+        ("c" "Programming" entry (file+headline "~/source/org-mode/agenda/programming.org" "Programming")
+         "* TODO %? :programming:")
+
         ("e" "Emacs" entry (file+headline "~/source/org-mode/agenda/emacs_tasks.org" "Emacs")
          "* TODO %? :emacs:")
 
