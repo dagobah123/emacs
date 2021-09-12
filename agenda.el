@@ -4,6 +4,9 @@
       '(("t" "Tasks" entry (file+headline "~/source/org-mode/agenda/tasks.org" "Tasks")
          "* TODO %? :task:")
 
+        ("r" "Reading" entry (file+headline "~/source/org-mode/agenda/reading_list.org" "Reading List")
+         "* TODO %? :book:")
+
         ("p" "Painting" entry (file+headline "~/source/org-mode/agenda/painting.org" "Painting")
          "* TODO %? :painting:")
 
@@ -12,9 +15,6 @@
 
         ("e" "Emacs" entry (file+headline "~/source/org-mode/agenda/emacs_tasks.org" "Emacs")
          "* TODO %? :emacs:")
-
-        ("r" "Reading List" entry (file+headline "~/source/org-mode/agenda/reading_list.org" "Reading List")
-         "* TODO %? :book:")
 
         ("s" "Shopping List" checkitem (file+headline "~/source/org-mode/agenda/shopping_list.org" "Shopping List")
          "- [ ] %?")
