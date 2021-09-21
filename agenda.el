@@ -4,7 +4,7 @@
       '(("t" "Tasks" entry (file+headline "~/source/org-mode/agenda/tasks.org" "Tasks")
          "* TODO %? :task:")
 
-        ("r" "Reading" entry (file+headline "~/source/org-mode/agenda/reading_list.org" "Reading List")
+        ("b" "Reading" entry (file+headline "~/source/org-mode/agenda/books.org" "Reading")
          "* TODO %? :book:")
 
         ("p" "Painting" entry (file+headline "~/source/org-mode/agenda/painting.org" "Painting")
@@ -22,7 +22,7 @@
         ("h" "Haushalt" entry (file+headline "~/source/org-mode/agenda/haushalt.org" "Haushalt")
          "* TODO %? :haushalt:")
 
-        ("b" "Business" entry (file+headline "~/source/org-mode/agenda/business.org" "Business")
+        ("x" "Business" entry (file+headline "~/source/org-mode/agenda/business.org" "Business")
          "* TODO %? :business:")
 
         ("j" "Journal" entry (file+headline "~/source/org-mode/agenda/journal.org" "Journal")
