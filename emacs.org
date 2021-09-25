@@ -814,6 +814,13 @@ This is the package that handles server installation and session management.
   (Info-next-reference)
   (recenter)
 )
+
+(defun my:agenda-view()
+  (interactive)
+  (org-agenda t "a")
+  (org-agenda-day-view)
+  (delete-other-windows)
+)
 #+END_SRC
 ** key bindings
 #+BEGIN_SRC emacs-lisp
@@ -833,6 +840,7 @@ This is the package that handles server installation and session management.
 (global-set-key (kbd "<C-iso-lefttab>") 'my:previous-link-center)
 (global-set-key (kbd "<C-tab>") 'completion-at-point)
 (global-set-key (kbd "C-x 7") 'helm-world-time)
+(global-set-key (kbd "C-c m") 'my:agenda-view)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
@@ -871,6 +879,7 @@ This is the package that handles server installation and session management.
     doom-manegarm
     doom-laserwave
     doom-zenburn
+    chiaroscuro-light
     chiaroscuro
 ))
 

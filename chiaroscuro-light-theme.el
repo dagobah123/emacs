@@ -4,40 +4,40 @@
 
 ;;; Code:
 
-(deftheme chiaroscuro)
+(deftheme chiaroscuro-light)
 (let ((class '((class color) (min-colors 89)))
 
-       (white-yellow "#fff3b6")
+       (white-yellow "#a79f76")
 
-       (background-color "#000000")
+       (background-color "#333333")
 
        (light-gray "#aaaaaa")
        (gray "#888888")
        (light-middle-gray "#666666")
        (middle-gray "#555555")
        (middle-dark-dark-gray "#444444")
-       (middle-dark-gray "#333333")
-       (dark-gray "#212121")
-       (very-dark-gray "#111111")
+       (middle-dark-gray "#383838")
+       (dark-gray "#363636")
+       (very-dark-gray "#2f2f2f")
 
-       (orange "#db7b00")
-       (dark-orange "#c7580b")
-       (dark-brown "#933b15")
+       (orange "#b76600")
+       (dark-orange "#a2531b")
+       (dark-brown "#783c23")
 
-       (bright-blue "#586cef")
+       (bright-blue "#545c94")
        (low-chroma-blue "#6262b6")
        (dark-blue "#282877")
        (darkest-blue "#1a1d55")
 
-       (green "#44a536")
+       (green "#35812a")
        (green-gray "#577c52")
-       (red "#d23b3b")
+       (red "#a84d4d")
        (red-gray "#ae6767")
-       (brightest-red "#ff0000")
-       (brightest-green "#00ff00")
+       (brightest-red "#872727")
+       (brightest-green "#2d752d")
     )
 
-(custom-theme-set-faces 'chiaroscuro
+(custom-theme-set-faces 'chiaroscuro-light
 
     `(default ((,class (:background ,background-color :foreground ,gray))))
 
@@ -172,8 +172,8 @@
     `(custom-invalid ((,class (:background ,red :foreground ,gray))))
     `(ido-indicator ((,class (:background ,red :foreground ,gray))))
 
-    `(org-block-begin-line ((,class (:foreground ,middle-dark-gray))))
-    `(org-block-end-line ((,class (:foreground ,middle-dark-gray))))
+    `(org-block-begin-line ((,class (:foreground ,middle-dark-dark-gray))))
+    `(org-block-end-line ((,class (:foreground ,middle-dark-dark-gray))))
 
     `(company-echo-common ((,class (:foreground ,bright-blue))))
     `(helm-buffer-saved-out ((,class (:foreground ,bright-blue))))
@@ -218,6 +218,6 @@
      (add-to-list 'custom-theme-load-path
          (file-name-as-directory (file-name-directory load-file-name))))
 
-(provide-theme 'chiaroscuro)
+(provide-theme 'chiaroscuro-light)
 
-;;; chiaroscuro-theme.el ends here
+;;; chiaroscuro-light-theme.el ends here
