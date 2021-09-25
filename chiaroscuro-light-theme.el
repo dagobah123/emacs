@@ -7,7 +7,7 @@
 (deftheme chiaroscuro-light)
 (let ((class '((class color) (min-colors 89)))
 
-       (white-yellow "#a79f76")
+       (white-yellow "#cfc594")
 
        (background-color "#333333")
 
