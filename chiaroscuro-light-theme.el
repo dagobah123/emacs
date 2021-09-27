@@ -8,6 +8,7 @@
 (let ((class '((class color) (min-colors 89)))
 
        (white-yellow "#cfc594")
+       (yellow "#dabc14")
 
        (background-color "#333333")
 
@@ -210,6 +211,12 @@
     `(doom-modeline-evil-normal-state ((,class (:foreground ,orange))))
     `(doom-modeline-info ((,class (:foreground ,orange))))
     `(doom-modeline-lsp-success ((,class (:foreground ,orange))))
+
+    `(org-agenda-date-today ((,class (:foreground ,orange :bold t))))
+    `(org-agenda-clocking ((,class (:foreground ,yellow :background ,bright-blue))))
+
+    ;`(org-agenda-current-time ((,class (:foreground ,yellow))))
+    ;`(org-agenda-structure ((,class (:foreground ,yellow))))
     )
 )
 

@@ -761,7 +761,44 @@ This is the package that handles server installation and session management.
   (let ((url (read-from-minibuffer "Enter URL or keywords: ")))
     (switch-to-buffer (generate-new-buffer "eww"))
     (eww-mode)
-                         (eww url)))
+    (eww url)))
+
+(defvar java-function-regexp
+  (concat
+   "^[ \t]*"                                   ; leading white space
+   "\\(public\\|private\\|protected\\|"        ; some of these 8 keywords
+   "abstract\\|final\\|static\\|"
+   "synchronized\\|native"
+   "\\|override"                               ; C# support
+   "\\|[ \t\n\r]\\)*"                          ; or whitespace
+   "[a-zA-Z0-9_$]+"                            ; return type
+   "[ \t\n\r]*[[]?[]]?"                        ; (could be array)
+   "[ \t\n\r]+"                                ; whitespace
+   "\\([a-zA-Z0-9_$]+\\)"                      ; the name we want!
+   "[ \t\n\r]*"                                ; optional whitespace
+   "("                                         ; open the param list
+   "\\([ \t\n\r]*"                             ; optional whitespace
+   "\\<[a-zA-Z0-9_$]+\\>"                      ; typename
+   "[ \t\n\r]*[[]?[]]?"                        ; (could be array)
+   "[ \t\n\r]+"                                ; whitespace
+   "\\<[a-zA-Z0-9_$]+\\>"                      ; variable name
+   "[ \t\n\r]*[[]?[]]?"                        ; (could be array)
+   "[ \t\n\r]*,?\\)*"                          ; opt whitespace and comma
+   "[ \t\n\r]*"                                ; optional whitespace
+   ")"                                         ; end the param list
+))
+
+(defun my:next-java-method()
+  (interactive)
+  (re-search-forward java-function-regexp nil t)
+  (recenter)
+)
+
+(defun my:prev-java-method()
+  (interactive)
+  (re-search-backward java-function-regexp nil t)
+  (recenter)
+)
 
 ;(defvar java-function-regexp
 ;  (concat
@@ -821,6 +858,7 @@ This is the package that handles server installation and session management.
   (org-agenda t "a")
   (org-agenda-day-view)
   (delete-other-windows)
+  (org-agenda-reload-all)
 )
 #+END_SRC
 ** key bindings
@@ -836,12 +874,14 @@ This is the package that handles server installation and session management.
 (global-set-key (kbd "C-x p") 'projectile-switch-project)
 (global-set-key (kbd "C-x o") 'projectile-find-file)
 (global-set-key (kbd "C-c d") 'my:duplicate-line)
-(global-set-key (kbd "C-S-<up>") 'my:prev-method)
-(global-set-key (kbd "C-S-<down>") 'my:next-method)
 (global-set-key (kbd "<C-iso-lefttab>") 'my:previous-link-center)
 (global-set-key (kbd "<C-tab>") 'completion-at-point)
 (global-set-key (kbd "C-x 7") 'helm-world-time)
 (global-set-key (kbd "C-c m") 'my:agenda-view)
+;(global-set-key (kbd "C-S-<up>") 'my:prev-method)
+;(global-set-key (kbd "C-S-<down>") 'my:next-method)
+(global-set-key (kbd "C-S-<up>") 'my:prev-java-method)
+(global-set-key (kbd "C-S-<down>") 'my:next-java-method)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
