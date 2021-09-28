@@ -858,7 +858,7 @@ This is the package that handles server installation and session management.
   (org-agenda t "a")
   (org-agenda-day-view)
   (delete-other-windows)
-  (org-agenda-reload-all)
+  (org-agenda-redo-all)
 )
 #+END_SRC
 ** key bindings
