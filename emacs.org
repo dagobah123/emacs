@@ -109,7 +109,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
 (cond
     ((string-equal system-type "windows-nt")
         (progn
-            (set-face-attribute 'default nil :height 150)
+            (set-face-attribute 'default nil :height 190)
         )
     )
     ((string-equal system-type "gnu/linux")
@@ -1009,7 +1009,7 @@ This is the package that handles server installation and session management.
   (cond
     ((string-equal system-type "windows-nt")
         (progn
-            (set-face-attribute 'mode-line nil :font "Tw Cen MT-20")
+            (set-face-attribute 'mode-line nil :font "Tw Cen MT-25")
         )
     )
     ((string-equal system-type "gnu/linux")
@@ -1020,4 +1020,15 @@ This is the package that handles server installation and session management.
 )
   )
 )
+#+END_SRC
+** dap-debug template
+#+BEGIN_SRC emacs-lisp
+(dap-register-debug-template "My Runner"
+                             (list :type "java"
+                                   :request "launch"
+                                   :args "heeeeeeeeeello"
+                                   :vmArgs ""
+                                   :projectName "maven_sandbox"
+                                   :mainClass "org.sandbox.Main"
+                                   :env '(("DEV" . "1"))))
 #+END_SRC
