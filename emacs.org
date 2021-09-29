@@ -1023,10 +1023,19 @@ This is the package that handles server installation and session management.
 #+END_SRC
 ** dap-debug template
 #+BEGIN_SRC emacs-lisp
-(dap-register-debug-template "My Runner"
+(dap-register-debug-template "My Runner1"
                              (list :type "java"
                                    :request "launch"
                                    :args "heeeeeeeeeello"
+                                   :vmArgs ""
+                                   :projectName "maven_sandbox"
+                                   :mainClass "org.sandbox.Main"
+                                   :env '(("DEV" . "1"))))
+
+(dap-register-debug-template "My Runner2"
+                             (list :type "java"
+                                   :request "launch"
+                                   :args "1 2 3 4 5 6"
                                    :vmArgs ""
                                    :projectName "maven_sandbox"
                                    :mainClass "org.sandbox.Main"
