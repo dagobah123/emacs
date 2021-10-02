@@ -1,4 +1,8 @@
 * emacs
+** global variables
+#+BEGIN_SRC emacs-lisp
+(setq CHIAROSCURO_INDEX 0)
+#+END_SRC
 ** package archives
 #+BEGIN_SRC emacs-lisp
 (require 'package)
@@ -885,6 +889,9 @@ This is the package that handles server installation and session management.
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
+(defvar chiaroscuro-index 0 "Index representing the current theme")
+(setq chiaroscuro-index 0)
+
 (setq themes-list '(
     eclipse
     vs-light
@@ -920,7 +927,7 @@ This is the package that handles server installation and session management.
     doom-manegarm
     doom-laserwave
     doom-zenburn
-    chiaroscuro-light
+    chiaroscuro
     chiaroscuro
 ))
 
@@ -940,6 +947,7 @@ This is the package that handles server installation and session management.
 (defun my:reset-themes-index()
   (interactive)
   (setq theme-index 0)
+  (setq CHIAROSCURO_INDEX 0)
   (my:disable-themes)
   (my:set-mode-line-font)
 )
