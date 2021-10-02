@@ -929,6 +929,7 @@ This is the package that handles server installation and session management.
     doom-zenburn
     chiaroscuro
     chiaroscuro
+    chiaroscuro
 ))
 
 (defvar theme-index 0 "Index representing the current theme")
