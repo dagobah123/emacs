@@ -91,9 +91,9 @@
         (setq background-1 "#b0aeaa")
         (setq background-2 "#b0aeaa");check
         (setq background-3 "#b0aeaa");check
-        (setq colorA-1 "#996699")
-        (setq colorA-2 "#996699");check
-        (setq colorA-3 "#996699");check
+        (setq colorA-1 "#8b3f8b")
+        (setq colorA-2 "#8b3f8b");check
+        (setq colorA-3 "#8b3f8b");check
         (setq colorB-1 "#b0aeaa");check
         (setq colorB-2 "#b0aeaa");check
         (setq colorB-3 "#b0aeaa");check
