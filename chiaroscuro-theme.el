@@ -91,12 +91,12 @@
         (setq background-1 "#b0aeaa")
         (setq background-2 "#b0aeaa");check
         (setq background-3 "#b0aeaa");check
-        (setq colorA-1 "#906324")
-        (setq colorA-2 "#906324");check
-        (setq colorA-3 "#906324");check
-        (setq colorB-1 "#131f9d");check
-        (setq colorB-2 "#131f9d");check
-        (setq colorB-3 "#131f9d");check
+        (setq colorA-1 "#996699")
+        (setq colorA-2 "#996699");check
+        (setq colorA-3 "#996699");check
+        (setq colorB-1 "#b0aeaa");check
+        (setq colorB-2 "#b0aeaa");check
+        (setq colorB-3 "#b0aeaa");check
         (setq green-1 "#35812a");check
         (setq green-2 "#2d752d");check
         (setq green-3 "#577c52");check
