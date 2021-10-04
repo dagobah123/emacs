@@ -5,7 +5,6 @@
 ;;; Code:
 
 (defvar highlight-1    "")
-(defvar background-A-1 "")
 (defvar text-A-1       "")
 (defvar text-B-1       "")
 (defvar text-C-1       "")
@@ -38,7 +37,7 @@
         (setq red-A-1 "#ff0000")
         (setq red-A-2 "#d23b3b")
         (setq red-A-3 "#ae6767")
-        (setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#00ff00" :weight bold))))
+        ;(setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#00ff00" :weight bold))))
         )
   )
 
@@ -58,7 +57,7 @@
         (setq red-A-1 "#872727")
         (setq red-A-2 "#a84d4d")
         (setq red-A-3 "#ae6767")
-        (setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#ff0000" :weight bold))))
+        ;(setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#ff0000" :weight bold))))
     )
 )
 
@@ -66,18 +65,18 @@
     (progn
         (setq highlight-1 "#000000")
         (setq text-A-1 "#444444") ;main text
-        (setq text-B-1 "#721c72")
-        (setq text-C-1 "#721c72")
-        (setq background-A-1 "#dbdad5")
-        (setq background-B-1 "#b0aeaa") ;background
-        (setq background-C-1 "#b0aeaa") ;mode-line
+        (setq text-B-1 "#999999") ;#721c72
+        (setq text-C-1 "#ff0000")
+        (setq background-A-1 "#dddddd")
+        (setq background-B-1 "#cccccc")
+        (setq background-C-1 "#000000")
         (setq green-A-1 "#35812a")
         (setq green-A-2 "#2d752d")
         (setq green-A-3 "#577c52")
         (setq red-A-1 "#872727")
         (setq red-A-2 "#a84d4d")
         (setq red-A-3 "#ae6767")
-        (setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#ffffff" :weight bold))))
+        ;(setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#ffffff" :weight bold))))
     )
 )
 
@@ -101,9 +100,9 @@
 
   ;base
   `(default                      ((t (:foreground ,text-A-1 :background ,background-A-1))))
-  `(cursor                       ((t (                      :background ,highlight-1   ))))
+  `(cursor                       ((t (                      :background ,background-C-1))))
   `(link                         ((t (:foreground ,text-A-1 :underline t               ))))
-  `(region                       ((t (:foreground ,text-A-1 :background ,background-A-1))))
+  `(region                       ((t (:foreground ,text-A-1 :background ,background-B-1))))
   `(highlight                    ((t (:foreground ,text-A-1 :background ,nil           ))))
   `(show-paren-match             ((t (:foreground ,text-A-1 :background ,background-A-1))))
   `(cua-rectangle                ((t (:foreground ,text-A-1 :background ,background-A-1))))
@@ -117,11 +116,11 @@
   `(font-lock-constant-face      ((t (:foreground ,text-A-1                            ))))
   `(font-lock-doc-face           ((t (:foreground ,text-A-1                            ))))
   `(font-lock-function-name-face ((t (:foreground ,text-A-1 :bold t                    ))))
-  `(font-lock-keyword-face       ((t (:foreground ,text-A-1 :bold t                    ))))
+  `(font-lock-keyword-face       ((t (:foreground ,text-A-1                    ))))
   `(font-lock-string-face        ((t (:foreground ,text-A-1                            ))))
-  `(font-lock-type-face          ((t (:foreground ,text-A-1                            ))))
-  `(font-lock-variable-name-face ((t (:foreground ,text-A-1                            ))))
-  `(font-lock-warning-face       ((t (:foreground ,text-A-1 :background ,background-A-1))))
+  `(font-lock-type-face          ((t (:foreground ,text-B-1                            ))))
+  `(font-lock-variable-name-face ((t (:foreground ,text-A-1 :bold t                           ))))
+  `(font-lock-warning-face       ((t (:foreground ,text-A-1                            ))))
   `(font-lock-builtin-face       ((t (:foreground ,text-A-1                            ))))
   `(font-lock-comment-face       ((t (:foreground ,text-A-1                            ))))
   `(font-lock-negation-char-face ((t (:foreground ,text-A-1                            ))))
@@ -140,7 +139,7 @@
   `(helm-match                        ((t (:foreground ,text-A-1                                         ))))
   `(helm-candidate-number             ((t (:foreground ,text-A-1                                         ))))
   `(helm-M-x-key                      ((t (:foreground ,text-A-1 :underline t                            ))))
-  `(helm-source-header                ((t (:foreground ,text-A-1 :weight bold                            ))))
+  `(helm-source-header                ((t (:foreground ,text-A-1 :bold t                             ))))
   `(helm-selection                    ((t (:foreground ,text-A-1                                         ))))
   `(helm-swoop-target-line-face       ((t (:foreground ,text-A-1 :background ,nil                        ))))
   `(helm-swoop-target-word-face       ((t (:foreground ,text-A-1 :background ,background-A-1             ))))
