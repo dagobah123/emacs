@@ -5,12 +5,6 @@
 ; set font of mode-line
 (set-face-attribute 'mode-line nil :font "Comfortaa-20")
 
-(custom-theme-set-faces
- 'user
-  '(org-table ((t (:family "DejaVu Sans Mono" :height 220))))
-  '(org-link ((t (:family "DejaVu Sans Mono" :height 220 :underline t))))
-)
-
 (defun my:buffer-face-mode-mono()
   (interactive)
   (setq buffer-face-mode-face '(:family "FreeMono" :height 220 :weight bold))
