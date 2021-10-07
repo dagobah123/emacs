@@ -434,6 +434,7 @@ This is the package that handles server installation and session management.
 ** magit
 (use-package magit)
 (use-package magit-find-file)
+(global-magit-file-mode t)
 ** eww
 #+begin_src emacs-lisp
 (setq
@@ -1018,11 +1019,13 @@ This is the package that handles server installation and session management.
     ((string-equal system-type "windows-nt")
         (progn
             (set-face-attribute 'mode-line nil :font "Tw Cen MT-25")
+            (set-face-attribute 'mode-line-inactive nil :font "Tw Cen MT-25")
         )
     )
     ((string-equal system-type "gnu/linux")
         (progn
             (set-face-attribute 'mode-line nil :font "Comfortaa-25")
+            (set-face-attribute 'mode-line-inactive nil :font "Comfortaa-25")
         )
     )
 )
