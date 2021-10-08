@@ -101,6 +101,7 @@
   `(highlight                    ((t (:foreground ,text-A-1 :background ,nil           ))))
   `(show-paren-match             ((t (:foreground ,text-A-1 :background ,background-A-1))))
   `(hl-line                      ((t (:foreground ,text-A-1 :background ,background-A-1))))
+  `(fringe                       ((t (:foreground ,text-A-1 :background ,background-B-1))))
 
   ;font-lock
   `(font-lock-negation-char-face ((t (:foreground ,text-A-1                            ))))
@@ -200,18 +201,17 @@
   `(org-date                        ((t (:foreground ,text-A-1  :underline t               ))))
   `(org-scheduled                   ((t (:foreground ,text-A-1                             ))))
   `(org-scheduled-today             ((t (:foreground ,text-A-1                             ))))
-  `(org-agenda-current-time         ((t (:foreground ,text-A-1                             ))))
+  `(org-agenda-current-time         ((t (:foreground ,text-A-1  :bold t                    ))))
   `(org-time-grid                   ((t (:foreground ,text-A-1                             ))))
   `(org-agenda-done                 ((t (:foreground ,text-B-1                             ))))
   `(org-agenda-dimmed-todo-face     ((t (:foreground ,text-A-1                             ))))
-  `(org-agenda-current-time         ((t (:foreground ,text-A-1                             ))))
   `(org-scheduled-previously        ((t (:foreground ,text-A-1                             ))))
   `(org-headline-todo               ((t (:foreground ,text-A-1                             ))))
   `(org-headline-done               ((t (:foreground ,text-A-1                             ))))
   `(org-agenda-date-today           ((t (:foreground ,text-A-1  :bold t                    ))))
   `(org-warning                     ((t (:foreground ,text-A-1                             ))))
   `(org-agenda-clocking             ((t (:foreground ,green-A-1 :background ,green-A-2     ))))
-  
+
   ;mode-line
   `(mode-line                         ((t (:foreground ,text-A-1 :background ,background-B-1))))
   `(mode-line-inactive                ((t (:foreground ,text-B-1 :background ,background-B-1))))

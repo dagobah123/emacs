@@ -78,6 +78,8 @@ Load environment variables properly by installing =exec-path-from-shell=.
 ; disable scroll bar
 (scroll-bar-mode -1)
 
+(fringe-mode '(20 . 20))
+
 ; setup cache folder to prevent temporary files to clutter projects
 (setq user-cache-directory (concat EMACS_HOME "cache"))
 (setq backup-directory-alist `(("." . ,(expand-file-name "backups" user-cache-directory)))
