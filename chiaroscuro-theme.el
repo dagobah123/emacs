@@ -15,6 +15,8 @@
 (defvar green-A-2      "")
 (defvar red-A-1        "")
 (defvar red-A-2        "")
+(defvar blue-A-1       "")
+(defvar blue-A-2       "")
 
 ;(custom-theme-set-faces
 ; 'user
@@ -72,6 +74,8 @@
         (setq green-A-2 "#cceecc")
         (setq red-A-1 "#ac2222")
         (setq red-A-2 "#eecccc")
+        (setq blue-A-1 "#2222ac")
+        (setq blue-A-2 "#ccccee")
         (setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#22aa22" :weight bold))))
     )
 )
@@ -107,13 +111,17 @@
   `(minibuffer-prompt            ((t (:foreground ,text-B-1                                ))))
   `(ido-first-match              ((t (:foreground ,green-A-1 :background ,green-A-2 :bold t                    ))))
   `(ido-only-match               ((t (:foreground ,green-A-1 :background ,green-A-2 :bold t                    ))))
+  `(lsp-face-highlight-read      ((t (:foreground ,blue-A-1  :background ,blue-A-2 :bold t                    ))))
+  `(lsp-face-highlight-write     ((t (:foreground ,blue-A-1  :background ,blue-A-2 :bold t                    ))))
 
+                                        ;`(lsp-lens-mouse-face          ((t (:foreground ,blue-A-1  :background ,blue-A-2 :bold t                    ))))
+  
   ;font-lock
   `(font-lock-negation-char-face ((t (:foreground ,text-A-1                            ))))
   `(font-lock-function-name-face ((t (:foreground ,green-A-1 :background ,green-A-2 :bold t                    ))))
   `(font-lock-string-face        ((t (:foreground ,text-B-1                            ))))
   `(font-lock-type-face          ((t (:foreground ,red-A-1  :background ,red-A-2                            ))))
-  `(font-lock-variable-name-face ((t (:foreground ,text-A-1 :bold t                    ))))
+  `(font-lock-variable-name-face ((t (:foreground ,blue-A-1 :background ,blue-A-2 :bold t                    ))))
   `(font-lock-warning-face       ((t (:foreground ,text-A-1                            ))))
   `(font-lock-builtin-face       ((t (:foreground ,text-A-1                            ))))
   `(font-lock-comment-face       ((t (:foreground ,text-B-1                            ))))
@@ -123,7 +131,6 @@
   `(font-lock-keyword-face       ((t (:foreground ,text-A-1 :bold t                    ))))
   `(font-lock-string-face        ((t (:foreground ,text-A-1                            ))))
   `(font-lock-type-face          ((t (:foreground ,text-A-1                            ))))
-  `(font-lock-variable-name-face ((t (:foreground ,text-A-1                            ))))
   `(font-lock-warning-face       ((t (:foreground ,text-A-1 :background ,background-A-1))))
 
   ;helm
