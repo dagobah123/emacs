@@ -548,8 +548,10 @@ This is the package that handles server installation and session management.
     )
 )
 
+;(custom-set-faces `(doom-modeline-icon-inactive ((t (:inherit mode-line-inactive)))))
+
 ;; How wide the mode-line bar should be. It's only respected in GUI.
-;(setq doom-modeline-bar-width 4)
+(setq doom-modeline-bar-width 10)
 
 ;; Whether to use hud instead of default bar. It's only respected in GUI.
 ;(defcustom doom-modeline-hud nil)
