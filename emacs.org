@@ -893,148 +893,150 @@ This is the package that handles server installation and session management.
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
-(defvar chiaroscuro-index 0 "Index representing the current theme")
-(setq chiaroscuro-index 0)
-
-(setq themes-list '(
-    eclipse
-    vs-light
-    doom-gruvbox
-    dark-mint
-    alect-light-alt
-    grayscale
-    base16-icy
-    base16-atelier-dune
-    rebecca
-    alect-black-alt
-    base16-3024
-    base16-circus
-    base16-darkviolet
-    base16-apathy
-    base16-atelier-dune-light
-    tron-legacy
-    base16-bespin
-    base16-atelier-sulphurpool
-    base16-pico
-    base16-pop
-    base16-vulcan
-    doom-homage-black
-    doom-outrun-electric
-    doom-spacegrey
-    autumn-light
-    cloud
-    afternoon
-    gandalf
-    base16-redscreen
-    base16-red2screen
-    base16-greenscreen
-    doom-manegarm
-    doom-laserwave
-    doom-zenburn
-    chiaroscuro
-    chiaroscuro
-    chiaroscuro
-))
-
-(defvar theme-index 0 "Index representing the current theme")
-(setq theme-index 0)
-(setq number-of-themes (length themes-list))
-
-(defun my:disable-themes()
-  (interactive)
-  (setq loop-index 0)
-  (while (< loop-index number-of-themes)
-      (disable-theme (nth loop-index themes-list))
-      (setq loop-index (+ loop-index 1))
-  )
-)
-
-(defun my:reset-themes-index()
-  (interactive)
+  (defvar chiaroscuro-index 0 "Index representing the current theme")
+  (setq chiaroscuro-index 0)
+  
+  (setq themes-list '(
+      eclipse
+      vs-light
+      doom-gruvbox
+      dark-mint
+      alect-light-alt
+      grayscale
+      base16-icy
+      base16-atelier-dune
+      rebecca
+      alect-black-alt
+      base16-3024
+      base16-circus
+      base16-darkviolet
+      base16-apathy
+      base16-atelier-dune-light
+      tron-legacy
+      base16-bespin
+      base16-atelier-sulphurpool
+      base16-pico
+      base16-pop
+      base16-vulcan
+      doom-homage-black
+      doom-outrun-electric
+      doom-spacegrey
+      autumn-light
+      cloud
+      afternoon
+      gandalf
+      base16-redscreen
+      base16-red2screen
+      base16-greenscreen
+      doom-manegarm
+      doom-laserwave
+      doom-zenburn
+      chiaroscuro
+      chiaroscuro
+      chiaroscuro
+  ))
+  
+  (defvar theme-index 0 "Index representing the current theme")
   (setq theme-index 0)
-  (setq CHIAROSCURO_INDEX 0)
-  (my:disable-themes)
-  (my:set-mode-line-font)
-)
-(global-set-key (kbd "C-5") 'my:reset-themes-index)
-
-(defun my:theme-down()
-  (interactive)
-  (setq theme-index (- theme-index 1))
-  (my:toggle-themes)
-  (my:set-mode-line-font)
-
-)
-(global-set-key (kbd "C-6") 'my:theme-down)
-
-(defun my:theme-up()
-  (interactive)
-  (setq theme-index (+ theme-index 1))
-  (my:toggle-themes)
-  (my:set-mode-line-font)
-)
-(global-set-key (kbd "C-7") 'my:theme-up)
-(global-set-key (kbd "C-`") 'my:theme-up)
-
-(defun my:loop()
-  (interactive)
-  (setq loop-index 1)
-  (setq themes-list-index 0)
-  (while (<= loop-index number-of-themes)
-      (if (eq theme-index loop-index)
+  (setq number-of-themes (length themes-list))
+  
+  (defun my:disable-themes()
+    (interactive)
+    (setq loop-index 0)
+    (while (< loop-index number-of-themes)
+        (disable-theme (nth loop-index themes-list))
+        (setq loop-index (+ loop-index 1))
+    )
+  )
+  
+  (defun my:set-mode-line-font()
+    (interactive)
+    (cond
+      ((string-equal system-type "windows-nt")
           (progn
-              (load-theme (nth themes-list-index themes-list) t)
-              (message "%s" (nth themes-list-index themes-list))
+              (set-face-attribute 'mode-line nil :font "Tw Cen MT-25")
+              (set-face-attribute 'mode-line-inactive nil :font "Tw Cen MT-25")
           )
       )
-      (setq loop-index (+ loop-index 1))
-      (setq themes-list-index (+ themes-list-index 1))
-  )
-)
-
-(defun my:toggle-themes()
-  (interactive)
-  (my:disable-themes)
-
-  (if (eq theme-index -1)
-      (progn
-          (setq theme-index number-of-themes)
+      ((string-equal system-type "gnu/linux")
+          (progn
+              (set-face-attribute 'mode-line nil :font "Comfortaa-25")
+              (set-face-attribute 'mode-line-inactive nil :font "Comfortaa-25")
+          )
       )
   )
-
-  (if (eq theme-index 0)
-      (progn
-          (message "emacs")
-      )
+    )
+  
+  (defun my:reset-themes-index()
+    (interactive)
+    (setq theme-index 0)
+    (setq CHIAROSCURO_INDEX 0)
+    (my:disable-themes)
+    (my:set-mode-line-font)
   )
-
-  (my:loop)
-
-  (if (> theme-index number-of-themes)
-      (progn
-          (setq theme-index 0)
-          (message "emacs")
-      )
+  (global-set-key (kbd "C-5") 'my:reset-themes-index)
+  
+  (defun my:theme-down()
+    (interactive)
+    (setq theme-index (- theme-index 1))
+    (my:toggle-themes)
+    (my:set-mode-line-font)
+  
   )
-
-(defun my:set-mode-line-font()
-  (interactive)
-  (cond
-    ((string-equal system-type "windows-nt")
+  (global-set-key (kbd "C-6") 'my:theme-down)
+  
+  (defun my:theme-up()
+    (interactive)
+    (setq theme-index (+ theme-index 1))
+    (my:toggle-themes)
+    (my:set-mode-line-font)
+  )
+  (global-set-key (kbd "C-7") 'my:theme-up)
+  (global-set-key (kbd "C-`") 'my:theme-up)
+  
+  (defun my:loop()
+    (interactive)
+    (setq loop-index 1)
+    (setq themes-list-index 0)
+    (while (<= loop-index number-of-themes)
+        (if (eq theme-index loop-index)
+            (progn
+                (load-theme (nth themes-list-index themes-list) t)
+                (message "%s" (nth themes-list-index themes-list))
+            )
+        )
+        (setq loop-index (+ loop-index 1))
+        (setq themes-list-index (+ themes-list-index 1))
+    )
+  )
+  
+  (defun my:toggle-themes()
+    (interactive)
+    (my:disable-themes)
+  
+    (if (eq theme-index -1)
         (progn
-            (set-face-attribute 'mode-line nil :font "Tw Cen MT-25")
-            (set-face-attribute 'mode-line-inactive nil :font "Tw Cen MT-25")
+            (setq theme-index number-of-themes)
         )
     )
-    ((string-equal system-type "gnu/linux")
+  
+    (if (eq theme-index 0)
         (progn
-            (set-face-attribute 'mode-line nil :font "Comfortaa-25")
-            (set-face-attribute 'mode-line-inactive nil :font "Comfortaa-25")
+            (message "emacs")
         )
     )
-)
+  
+    (my:loop)
+  
+    (if (> theme-index number-of-themes)
+        (progn
+            (setq theme-index 0)
+            (message "emacs")
+        )
+    )
   )
-)
+  
+(my:set-mode-line-font)
 #+END_SRC
 ** dap-debug template
 #+BEGIN_SRC emacs-lisp

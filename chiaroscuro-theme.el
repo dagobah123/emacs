@@ -117,9 +117,10 @@
   `(ido-only-match               ((t (:foreground ,green-A-1  :background ,green-A-2 :bold t                    ))))
   `(lsp-face-highlight-read      ((t (:foreground ,yellow-A-1 :background ,yellow-A-2 :bold t                    ))))
   `(lsp-face-highlight-write     ((t (:foreground ,yellow-A-1 :background ,yellow-A-2 :bold t                    ))))
+  `(eshell-prompt                ((t (:foreground ,text-B-1   :background ,background-A-1 :bold t))))
 
                                         ;`(lsp-lens-mouse-face          ((t (:foreground ,blue-A-1  :background ,blue-A-2 :bold t                    ))))
-  
+
   ;font-lock
   `(font-lock-negation-char-face ((t (:foreground ,text-A-1                            ))))
   `(font-lock-function-name-face ((t (:foreground ,green-A-1 :background ,green-A-2 :bold t                    ))))
@@ -136,6 +137,20 @@
   `(font-lock-string-face        ((t (:foreground ,text-A-1                            ))))
   `(font-lock-type-face          ((t (:foreground ,text-A-1                            ))))
   `(font-lock-warning-face       ((t (:foreground ,text-A-1 :background ,background-A-1))))
+
+  ;dired
+  `(dired-directory       ((t (:foreground ,yellow-A-1 :background, yellow-A-2))))
+  `(dired-flagged         ((t (:foreground ,red-A-1    :background, red-A-2))))
+  `(dired-header          ((t (:foreground ,green-A-1  :background, green-A-2))))
+  `(dired-ignored         ((t (:foreground ,text-A-1   :background, background-A-1))))
+  `(dired-mark            ((t (:foreground ,red-A-1    :background, red-A-2))))
+  `(dired-marked          ((t (:foreground ,red-A-1    :background, red-A-2))))
+  `(dired-narrow-blink    ((t (:foreground ,text-A-1   :background, background-A-1))))
+  `(dired-perm-write      ((t (:foreground ,text-A-1   :background, background-A-1))))
+  `(dired-set-id          ((t (:foreground ,text-A-1   :background, background-A-1))))
+  `(dired-special         ((t (:foreground ,text-A-1   :background, background-A-1))))
+  `(dired-symlink         ((t (:foreground ,text-A-1   :background, background-A-1))))
+  `(dired-warning         ((t (:foreground ,text-A-1   :background, background-A-1))))
 
   ;helm
   `(helm-minibuffer-prompt            ((t (:foreground ,text-B-1                                         ))))
