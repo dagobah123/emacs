@@ -119,8 +119,6 @@
   `(lsp-face-highlight-write     ((t (:foreground ,yellow-A-1 :background ,yellow-A-2 :bold t                    ))))
   `(eshell-prompt                ((t (:foreground ,text-B-1   :background ,background-A-1 :bold t))))
 
-                                        ;`(lsp-lens-mouse-face          ((t (:foreground ,blue-A-1  :background ,blue-A-2 :bold t                    ))))
-
   ;font-lock
   `(font-lock-negation-char-face ((t (:foreground ,text-A-1                            ))))
   `(font-lock-function-name-face ((t (:foreground ,green-A-1 :background ,green-A-2 :bold t                    ))))
@@ -241,8 +239,8 @@
   `(org-table                         ((t (:foreground ,text-A-1  :background ,background-A-1                                               ))))
   `(org-checkbox-statistics-todo      ((t (:foreground ,text-A-1  :background ,background-A-1                                               ))))
   `(org-checkbox-statistics-done      ((t (:foreground ,text-A-1  :background ,background-A-1                                               ))))
-  `(org-block-begin-line              ((t (:foreground ,text-A-1                                                                            ))))
-  `(org-block-end-line                ((t (:foreground ,text-A-1                                                                            ))))
+  `(org-block-begin-line              ((t (:foreground ,text-B-1  :background ,background-B-1                                               ))))
+  `(org-block-end-line                ((t (:foreground ,text-B-1  :background ,background-B-1                                               ))))
   `(org-todo                          ((t (:foreground ,red-A-1                               :bold t                                       ))))
   `(org-done                          ((t (:foreground ,text-B-1                              :bold t                                       ))))
   `(org-date                          ((t (:foreground ,text-A-1                              :underline t                                  ))))
