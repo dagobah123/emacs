@@ -166,6 +166,7 @@
   `(helm-ff-rsync-progress            ((t (:foreground ,text-A-1                                         ))))
   `(helm-ff-rsync-progress            ((t (:foreground ,text-A-1                                         ))))
   `(helm-buffer-saved-out             ((t (:foreground ,text-A-1                                         ))))
+  `(helm-ff-prefix                    ((t (:foreground ,yellow-A-1 :background ,yellow-A-2                                        ))))
 
   ;elfeed
   `(elfeed-log-date-face            ((t (:foreground ,text-A-1 :background ,background-A-1))))
