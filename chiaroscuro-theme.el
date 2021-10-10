@@ -387,6 +387,14 @@
   `(whitespace-tab              ((t (:foreground ,text-B-1 :background ,background-A-1))))
   `(whitespace-trailing         ((t (:foreground ,text-B-1 :background ,background-A-1))))
 
+  `(dashboard-banner-logo-title ((t (:foreground ,text-A-1 :background ,background-A-1))))
+  `(dashboard-footer            ((t (:foreground ,text-A-1 :background ,background-A-1))))
+  `(dashboard-heading           ((t (:foreground ,green-A-1 :background ,green-A-2 :bold t))))
+  `(dashboard-items-face        ((t (:foreground ,text-A-1 :background ,background-A-1 :bold t))))
+  `(dashboard-navigator         ((t (:foreground ,text-A-1 :background ,background-A-1))))
+  `(dashboard-no-items-face     ((t (:foreground ,text-A-1 :background ,background-A-1))))
+  `(dashboard-text-banner       ((t (:foreground ,text-A-1 :background ,background-A-1))))
+
 ;  `(company-echo-common ((t (:foreground ,colorB-1))))
 ;  `(custom-invalid ((t (:background ,red-2 :foreground ,text-1))))
 ;  `(dired-warning ((t (:foreground ,colorA-1))))

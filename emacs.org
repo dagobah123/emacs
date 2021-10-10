@@ -727,6 +727,7 @@ This is the package that handles server installation and session management.
         )
   (setq dashboard-banner-logo-title "Tough & Competent")
   (setq dashboard-startup-banner 'logo)
+  (setq dashboard-set-footer nil)
 #+END_SRC
 ** custom pop up
 #+BEGIN_SRC emacs-lisp
