@@ -204,7 +204,6 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "FEEDBACK" "|" "DONE" "DELEGATED")))
   (setq org-tags-column 0)
   (setq org-adapt-indentation nil)
-  (setq org-indent-mode -1)
   (org-reload)
 #+END_SRC
 ** projectile
@@ -409,10 +408,10 @@ This is the package that handles server installation and session management.
     )
 #+end_src
 ** magit
+(global-magit-file-mode t)
 #+begin_src emacs-lisp
-  (use-(point)ackage magit)
+  (use-package magit)
   (use-package magit-find-file)
-  (global-magit-file-mode t)
 #+end_src
 ** eww
 #+begin_src emacs-lisp
