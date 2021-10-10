@@ -17,10 +17,10 @@
 #+BEGIN_SRC emacs-lisp
   ; Initialize
   (package-initialize)
-  
+
   ; Refresh available packages
   (unless package-archive-contents (package-refresh-contents))
-  
+
   ; Set package list
   (setq package-list '(use-package
                         dired-quick-sort
@@ -55,7 +55,7 @@
                         treemacs-projectile
                         )
         )
-  
+
   (dolist (package package-list)
     (unless (package-installed-p package) (package-install package)
             )
@@ -79,46 +79,46 @@ Load environment variables properly by installing =exec-path-from-shell=.
 #+BEGIN_SRC emacs-lisp
   ; disable menu bar
   (menu-bar-mode -1)
-  
+
   ; disable tool bar
   (tool-bar-mode -1)
-  
+
   ; disable scroll bar
   (scroll-bar-mode -1)
-  
+
   (fringe-mode '(20 . 20))
-  
+
   ; setup cache folder to prevent temporary files to clutter projects
   (setq user-cache-directory (concat EMACS_HOME "cache"))
   (setq backup-directory-alist `(("." . ,(expand-file-name "backups" user-cache-directory)))
         url-history-file (expand-file-name "url/history" user-cache-directory)
         auto-save-list-file-prefix (expand-file-name "auto-save-list/.saves-" user-cache-directory)
         projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-directory))
-  
+
   (setq blink-cursor-blinks 0)
-  
+
   ;(global-hl-line-mode)
   ;(set-face-background 'highlight "#007700")
   ;(set-face-attribute hl-line-face nil :underline nil)
   ;(set-face-foreground 'highlight nil)
   ;(set-face-underline-p 'highlight t)
-  
+
   ; 4 spaces indentation
   (setq c-default-style "linux" c-basic-offset 4)
-  
+
   ; disable tabs
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 4)
-  
+
   ; clock
   (display-time)
-  
+
   ; ask for y/n instead of yes/no
   (fset 'yes-or-no-p 'y-or-n-p)
-  
+
   ; confirm before closing emacs
   (setq confirm-kill-emacs 'y-or-n-p)
-  
+
   ; font size
   (cond
       ((string-equal system-type "windows-nt")
@@ -132,48 +132,48 @@ Load environment variables properly by installing =exec-path-from-shell=.
           )
       )
   )
-  
+
   (setq display-line-numbers-type 'relative)
 #+END_SRC
 ** behavior
 #+BEGIN_SRC emacs-lisp
   (cua-mode t)
-  
+
   ; scrolling up and down one line
   (global-set-key (kbd "C-<down>") 'scroll-up-line)
   (global-set-key (kbd "C-<up>") 'scroll-down-line)
-  
+
   ; move text up/down
   (global-set-key (kbd "M-<down>") 'move-text-down)
   (global-set-key (kbd "M-<up>") 'move-text-up)
-  
+
   ; change window size
   (global-set-key (kbd "C-1") 'enlarge-window-horizontally)
   (global-set-key (kbd "C-2") 'shrink-window-horizontally)
   (global-set-key (kbd "C-3") 'enlarge-window)
   (global-set-key (kbd "C-4") 'shrink-window)
-  
+
   ; do not create backup files
   (setq make-backup-files nil)
-  
+
   ; switch split buffers
   (global-set-key (kbd "M-o") 'other-window)
   (windmove-default-keybindings)
-  
+
   ; disable bell
   (setq ring-bell-function 'ignore)
-  
+
   ; set language environment to UTF-8
   (set-language-environment "UTF-8")
   (set-default-coding-systems 'utf-8)
-  
+
   ; go to last change
   (global-set-key (kbd "C-x q") 'goto-last-change)
-  
+
   ; highlight opening and closing parenthesis
   (show-paren-mode t)
   (setq show-paren-style 'expression)
-  
+
   ; truncate lines
   (setq-default truncate-lines t)
 #+END_SRC
@@ -186,15 +186,15 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (global-set-key (kbd "C-c s") 'org-schedule)
   (global-set-key (kbd "C-c l") 'org-store-link)
   (global-set-key (kbd "C-c b") 'org-switchb)
-  
+
   (load (concat EMACS_HOME "agenda"))
-  
+
   ; fold/overview
   ; nofold/showall
   ; content
   ; showeverything
   (setq org-startup-folded 'content)
-  
+
   ; org-mode use shift arrows to change buffer
   (add-hook 'org-shiftup-final-hook 'windmove-up)
   (add-hook 'org-shiftleft-final-hook 'windmove-left)
@@ -243,9 +243,9 @@ Load environment variables properly by installing =exec-path-from-shell=.
                 )
             )
   )
-  
+
   (global-set-key (kbd "C-c f") 'find-name-dired)
-  
+
   ; prevent warning to show on windows machine
   ; connected with dired-quick-sort
   ;(cond
@@ -259,17 +259,17 @@ Load environment variables properly by installing =exec-path-from-shell=.
   ;(use-package dired-quick-sort)
   ;(require 'dired-quick-sort)
   ;(dired-quick-sort-setup)
-  
+
   ; open file in dired with eww, shortcut: e
   ; (define-key dired-mode-map "e" (lambda () (interactive) (eww-open-file (dired-get-file-for-visit))))
-  
+
   (use-package dired-narrow
     :ensure t
     :config
     (bind-key "C-x f" #'dired-narrow)
     ;(bind-key "C-f" #'dired-narrow-fuzzy)
   )
-  
+
   ;(use-package dired-subtree
   ;  :ensure t
   ;  :after dired
@@ -317,7 +317,7 @@ Emacs Debug Adapter Protocol aka DAP Mode allows us to debug your program. Below
     :hook ((dap-mode . dap-ui-mode)
       (dap-session-created . (lambda (&_rest) (dap-hydra)))
       (dap-terminated . (lambda (&_rest) (dap-hydra/nil)))))
-  
+
   (use-package dap-java :ensure nil)
 #+end_src
 
@@ -330,12 +330,14 @@ Treemacs provides UI elements used for LSP UI. Let's install lsp-treemacs and it
     :commands lsp-treemacs-errors-list
     :bind (:map lsp-mode-map
            ("M-9" . lsp-treemacs-errors-list)))
-  
+
   (use-package treemacs
     :ensure t
     :commands (treemacs)
     :after (lsp-mode)
     )
+
+  (setq treemacs-no-png-images t)
 #+end_src
 
 *** LSP UI
@@ -428,7 +430,7 @@ This is the package that handles server installation and session management.
     (interactive)
     (visual-line-mode)
     )
-  
+
   (add-hook 'nov-mode-hook 'my:nov-visual-line-mode)
 #+END_SRC
 ** engine mode
@@ -497,7 +499,7 @@ This is the package that handles server installation and session management.
 #+BEGIN_SRC emacs-lisp
   (require 'doom-modeline)
   (doom-modeline-mode 1)
-  
+
   ;; How tall the mode-line should be. It's only respected in GUI.
   ;; If the actual char height is larger, it respects the actual height.
   (cond
@@ -512,19 +514,19 @@ This is the package that handles server installation and session management.
       )
     )
    )
-  
+
   ;(custom-set-faces `(doom-modeline-icon-inactive ((t (:inherit mode-line-inactive)))))
-  
+
   ;; How wide the mode-line bar should be. It's only respected in GUI.
   (setq doom-modeline-bar-width 10)
-  
+
   ;; Whether to use hud instead of default bar. It's only respected in GUI.
   ;(defcustom doom-modeline-hud nil)
-  
+
   ;; The limit of the window width.
   ;; If `window-width' is smaller than the limit, some information won't be displayed.
   ;(setq doom-modeline-window-width-limit fill-column)
-  
+
   ;; How to detect the project root.
   ;; The default priority of detection is `ffip' > `projectile' > `project'.
   ;; nil means to use `default-directory'.
@@ -533,7 +535,7 @@ This is the package that handles server installation and session management.
   ;; to hanle sub-projects.
   ;; You can specify one if you encounter the issue.
   ;(setq doom-modeline-project-detection 'project)
-  
+
   ;; Determines the style used by `doom-modeline-buffer-file-name'.
   ;;
   ;; Given ~/Projects/FOSS/emacs/lisp/comint.el
@@ -554,98 +556,98 @@ This is the package that handles server installation and session management.
   ;; with tramp, please try `file-name' style.
   ;; Please refer to https://github.com/bbatsov/projectile/issues/657.
   ;(setq doom-modeline-buffer-file-name-style 'auto)
-  
+
   ;; Whether display icons in the mode-line.
   ;; While using the server mode in GUI, should set the value explicitly.
   (setq doom-modeline-icon (display-graphic-p))
-  
+
   ;; Whether display the icon for `major-mode'. It respects `doom-modeline-icon'.
   (setq doom-modeline-major-mode-icon t)
-  
+
   ;; Whether display the colorful icon for `major-mode'.
   ;; It respects `all-the-icons-color-icons'.
   (setq doom-modeline-major-mode-color-icon t)
-  
+
   ;; Whether display the icon for the buffer state. It respects `doom-modeline-icon'.
   (setq doom-modeline-buffer-state-icon t)
-  
+
   ;; Whether display the modification icon for the buffer.
   ;; It respects `doom-modeline-icon' and `doom-modeline-buffer-state-icon'.
   (setq doom-modeline-buffer-modification-icon t)
-  
+
   ;; Whether to use unicode as a fallback (instead of ASCII) when not using icons.
   (setq doom-modeline-unicode-fallback nil)
-  
+
   ;; Whether display the minor modes in the mode-line.
   ;(setq doom-modeline-minor-modes nil)
-  
+
   ;; If non-nil, a word count will be added to the selection-info modeline segment.
   ;(setq doom-modeline-enable-word-count nil)
-  
+
   ;; Major modes in which to display word count continuously.
   ;; Also applies to any derived modes. Respects `doom-modeline-enable-word-count'.
   ;; If it brings the sluggish issue, disable `doom-modeline-enable-word-count' or
   ;; remove the modes from `doom-modeline-continuous-word-count-modes'.
   ;(setq doom-modeline-continuous-word-count-modes '(markdown-mode gfm-mode org-mode))
-  
+
   ;; Whether display the buffer encoding.
   ;(setq doom-modeline-buffer-encoding t)
-  
+
   ;; Whether display the indentation information.
   ;(setq doom-modeline-indent-info nil)
-  
+
   ;; If non-nil, only display one number for checker information if applicable.
   ;(setq doom-modeline-checker-simple-format t)
-  
+
   ;; The maximum number displayed for notifications.
   ;(setq doom-modeline-number-limit 99)
-  
+
   ;; The maximum displayed length of the branch name of version control.
   ;(setq doom-modeline-vcs-max-length 12)
-  
+
   ;; Whether display the workspace name. Non-nil to display in the mode-line.
   ;(setq doom-modeline-workspace-name t)
-  
+
   ;; Whether display the perspective name. Non-nil to display in the mode-line.
   ;(setq doom-modeline-persp-name t)
-  
+
   ;; If non nil the default perspective name is displayed in the mode-line.
   ;(setq doom-modeline-display-default-persp-name nil)
-  
+
   ;; If non nil the perspective name is displayed alongside a folder icon.
   ;(setq doom-modeline-persp-icon t)
-  
+
   ;; Whether display the `lsp' state. Non-nil to display in the mode-line.
   ;(setq doom-modeline-lsp t)
-  
+
   ;; Whether display the GitHub notifications. It requires `ghub' package.
   ;(setq doom-modeline-github nil)
-  
+
   ;; The interval of checking GitHub.
   ;(setq doom-modeline-github-interval (* 30 60))
-  
+
   ;; Whether display the modal state icon.
   ;; Including `evil', `overwrite', `god', `ryo' and `xah-fly-keys', etc.
   ;(setq doom-modeline-modal-icon t)
-  
+
   ;; Whether display the mu4e notifications. It requires `mu4e-alert' package.
   ;(setq doom-modeline-mu4e nil)
-  
+
   ;; Whether display the gnus notifications.
   ;(setq doom-modeline-gnus t)
-  
+
   ;; Wheter gnus should automatically be updated and how often (set to 0 or smaller than 0 to disable)
   ;(setq doom-modeline-gnus-timer 2)
-  
+
   ;; Wheter groups should be excludede when gnus automatically being updated.
   ;(setq doom-modeline-gnus-excluded-groups '("dummy.group"))
-  
+
   ;; Whether display the IRC notifications. It requires `circe' or `erc' package.
   ;(setq doom-modeline-irc t)
-  
+
   ;; Function to stylize the irc buffer names.
   ;(setq doom-modeline-irc-stylize 'identity)
-  
+
   ;; Whether display the environment version.
   ;(setq doom-modeline-env-version t)
   ;; Or for individual languages
@@ -655,7 +657,7 @@ This is the package that handles server installation and session management.
   ;(setq doom-modeline-env-enable-go t)
   ;(setq doom-modeline-env-enable-elixir t)
   ;(setq doom-modeline-env-enable-rust t)
-  
+
   ;; Change the executables to use for the language version string
   ;(setq doom-modeline-env-python-executable "python") ; or `python-shell-interpreter'
   ;(setq doom-modeline-env-ruby-executable "ruby")
@@ -663,10 +665,10 @@ This is the package that handles server installation and session management.
   ;(setq doom-modeline-env-go-executable "go")
   ;(setq doom-modeline-env-elixir-executable "iex")
   ;(setq doom-modeline-env-rust-executable "rustc")
-  
+
   ;; What to display as the version while a new one is being loaded
   ;(setq doom-modeline-env-load-string "...")
-  
+
   ;; Hooks that run before/after the modeline version string is updated
   ;(setq doom-modeline-before-update-env-hook nil)
   ;(setq doom-modeline-after-update-env-hook nil)
@@ -687,9 +689,9 @@ This is the package that handles server installation and session management.
           ;("https://rss.orf.at/news.xml" news)
           ;("https://rss.orf.at/steiermark.xml" news graz)
           ;("https://www.reddit.com/r/graz/.rss" news graz)
-  
+
           ;("https://screenrant.com/feed" movie film kino)
-  
+
           ("https://www.comicsrss.com/rss/dilbert.rss" comics dilbert)
           ("https://www.comicsrss.com/rss/garfield.rss" comics garfield)
           ("https://www.comicsrss.com/rss/peanuts.rss" comics peanuts)
@@ -699,7 +701,7 @@ This is the package that handles server installation and session management.
 ** counsel-web
 #+BEGIN_SRC emacs-lisp
   (require 'counsel-web)
-  
+
   ;; Define "C-c w" as a prefix key.
   (defvar counsel-web-map
     (let ((map (make-sparse-keymap "counsel-web")))
@@ -709,6 +711,22 @@ This is the package that handles server installation and session management.
       map)
     )
   (global-set-key (kbd "C-c w") counsel-web-map)
+#+END_SRC
+** dashboard
+#+BEGIN_SRC emacs-lisp
+  (require 'dashboard)
+  (dashboard-setup-startup-hook)
+  (setq dashboard-projects-switch-function 'counsel-projectile-switch-project-by-name)
+  (setq dashboard-projects-backend 'projectile)
+  (setq dashboard-items '((recents  . 10)
+                          (bookmarks . 10)
+                          (projects . 10)
+                          (agenda . 10)
+                          (registers . 10)
+                          )
+        )
+  (setq dashboard-banner-logo-title "Tough & Competent")
+  (setq dashboard-startup-banner 'logo)
 #+END_SRC
 ** custom pop up
 #+BEGIN_SRC emacs-lisp
@@ -729,7 +747,7 @@ This is the package that handles server installation and session management.
     (next-line 1)
     (yank)
     )
-  
+
   (defun eww-new ()
     (interactive)
     (let ((url (read-from-minibuffer "Enter URL or keywords: ")))
@@ -738,7 +756,7 @@ This is the package that handles server installation and session management.
       (eww url)
       )
     )
-  
+
   (defvar java-function-regexp
     (concat
      "^[ \t]*"                                   ; leading white space
@@ -764,19 +782,19 @@ This is the package that handles server installation and session management.
      ")"                                         ; end the param list
      )
     )
-  
+
   (defun my:next-java-method()
     (interactive)
     (re-search-forward java-function-regexp nil t)
     (recenter)
     )
-  
+
   (defun my:prev-java-method()
     (interactive)
     (re-search-backward java-function-regexp nil t)
     (recenter)
     )
-  
+
   ;(defvar java-function-regexp
   ;  (concat
   ;   "^[ \t]*" ; leading white space
@@ -801,35 +819,35 @@ This is the package that handles server installation and session management.
   ;   "[ \t\n\r]*" ; optional whitespace
   ;   ")" ; end the param list
   ;))
-  
+
   ;(concat "^[ \t]*def[ \t\n\r]+[a-zA-Z0-9_$]*\\(self(,[ \t\n\r]+[a-zA-Z0-9]+)*\\):")
-  
+
   (defvar next-method-regexp "\\(class\\|def\\|public\\|private\\|protected\\|defun\\|defvar\\|[a-zA-Z0-9_$]+(\\)")
-  
+
   (defun my:next-method()
     (interactive)
     (re-search-forward next-method-regexp nil t)
     (recenter)
   )
-  
+
   (defun my:prev-method()
     (interactive)
     (re-search-backward next-method-regexp nil t)
     (recenter)
   )
-  
+
   (defun my:previous-link-center()
     (interactive)
     (Info-prev-reference)
     (recenter)
   )
-  
+
   (defun my:next-link-center()
     (interactive)
     (Info-next-reference)
     (recenter)
   )
-  
+
   (defun my:agenda-view()
     (interactive)
     (org-agenda t "a")
@@ -864,7 +882,7 @@ This is the package that handles server installation and session management.
 #+BEGIN_SRC emacs-lisp
   (defvar chiaroscuro-index 0 "Index representing the current theme")
   (setq chiaroscuro-index 0)
-  
+
   (setq themes-list '(
                       eclipse
                       vs-light
@@ -905,11 +923,11 @@ This is the package that handles server installation and session management.
                       chiaroscuro
                       )
         )
-  
+
   (defvar theme-index 0 "Index representing the current theme")
   (setq theme-index 0)
   (setq number-of-themes (length themes-list))
-  
+
   (defun my:disable-themes()
     (interactive)
     (setq loop-index 0)
@@ -919,7 +937,7 @@ This is the package that handles server installation and session management.
             )
       )
     )
-  
+
   (defun my:set-mode-line-font()
     (interactive)
     (cond
@@ -937,7 +955,7 @@ This is the package that handles server installation and session management.
       )
      )
     )
-  
+
   (defun my:reset-themes-index()
     (interactive)
     (setq theme-index 0)
@@ -946,16 +964,16 @@ This is the package that handles server installation and session management.
     (my:set-mode-line-font)
     )
   (global-set-key (kbd "C-5") 'my:reset-themes-index)
-  
+
   (defun my:theme-down()
     (interactive)
     (setq theme-index (- theme-index 1))
     (my:toggle-themes)
     (my:set-mode-line-font)
-  
+
     )
   (global-set-key (kbd "C-6") 'my:theme-down)
-  
+
   (defun my:theme-up()
     (interactive)
     (setq theme-index (+ theme-index 1))
@@ -964,7 +982,7 @@ This is the package that handles server installation and session management.
     )
   (global-set-key (kbd "C-7") 'my:theme-up)
   (global-set-key (kbd "C-`") 'my:theme-up)
-  
+
   (defun my:loop()
     (interactive)
     (setq loop-index 1)
@@ -980,25 +998,25 @@ This is the package that handles server installation and session management.
       (setq themes-list-index (+ themes-list-index 1))
       )
     )
-  
+
   (defun my:toggle-themes()
     (interactive)
     (my:disable-themes)
-  
+
     (if (eq theme-index -1)
         (progn
           (setq theme-index number-of-themes)
           )
       )
-  
+
     (if (eq theme-index 0)
         (progn
           (message "emacs")
           )
       )
-  
+
     (my:loop)
-  
+
     (if (> theme-index number-of-themes)
         (progn
           (setq theme-index 0)
@@ -1006,7 +1024,7 @@ This is the package that handles server installation and session management.
           )
       )
     )
-  
+
   (my:set-mode-line-font)
 #+END_SRC
 ** dap-debug template
@@ -1021,7 +1039,7 @@ This is the package that handles server installation and session management.
                                      :env '(("DEV" . "1"))
                                      )
                                )
-  
+
   (dap-register-debug-template "My Runner2"
                                (list :type "java"
                                      :request "launch"
