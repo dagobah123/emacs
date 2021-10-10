@@ -119,6 +119,7 @@
   `(lsp-face-highlight-write     ((t (:foreground ,yellow-A-1 :background ,yellow-A-2 :bold t                    ))))
   `(eshell-prompt                ((t (:foreground ,text-B-1   :background ,background-A-1 :bold t))))
   `(secondary-selection          ((t (:foreground ,blue-A-1   :background ,blue-A-2 :bold t))))
+  `(git-commit-summary           ((t (:foreground ,blue-A-1   :background ,blue-A-2))))
 
   ;font-lock
   `(font-lock-negation-char-face ((t (:foreground ,text-A-1                            ))))
