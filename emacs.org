@@ -718,16 +718,27 @@ This is the package that handles server installation and session management.
   (dashboard-setup-startup-hook)
   (setq dashboard-projects-switch-function 'counsel-projectile-switch-project-by-name)
   (setq dashboard-projects-backend 'projectile)
-  (setq dashboard-items '((recents  . 10)
-                          (bookmarks . 10)
+  (setq dashboard-items '(
                           (projects . 10)
+                          (bookmarks . 10)
                           (agenda . 10)
-                          (registers . 10)
+                          (recents  . 5)
+                          ;(registers . 10)
                           )
         )
-  (setq dashboard-banner-logo-title "Tough & Competent")
-  (setq dashboard-startup-banner 'logo)
+  (setq dashboard-startup-banner nil)
   (setq dashboard-set-footer nil)
+  (setq dashboard-center-content t)
+  (setq dashboard-set-heading-icons t)
+  (dashboard-modify-heading-icons '(
+                                    (projects . "terminal")
+                                    (bookmarks . "git-branch")
+                                    (agenda . "bug")
+                                    (recents . "code")
+                                    ;(registers . "code")
+                                    )
+                                  )
+  (setq dashboard-set-init-info t)
 #+END_SRC
 ** custom pop up
 #+BEGIN_SRC emacs-lisp

@@ -13,12 +13,6 @@
 ; set font of mode-line
 (set-face-attribute 'mode-line nil :font "Tw Cen MT-20")
 
-(custom-theme-set-faces
- 'user
-  '(org-table ((t (:family "DejaVu Sans Mono" :height 170))))
-  '(org-link ((t (:family "DejaVu Sans Mono" :height 170 :underline t))))
-)
-
 (defun my:buffer-face-mode-mono()
   (interactive)
   (setq buffer-face-mode-face '(:family "Courier New" :height 170 :weight bold))

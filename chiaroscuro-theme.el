@@ -7,7 +7,6 @@
 (defvar text-A-1       "")
 (defvar text-B-1       "")
 (defvar text-C-1       "")
-(defvar color-A-1      "")
 (defvar background-A-1 "")
 (defvar background-B-1 "")
 (defvar background-C-1 "")
@@ -19,12 +18,33 @@
 (defvar blue-A-2       "")
 (defvar yellow-A-1     "")
 (defvar yellow-A-2     "")
+(defvar violet-A-1     "")
+(defvar violet-A-2     "")
 
-(custom-theme-set-faces
- 'user
-  '(org-table ((t (:family "DejaVu Sans Mono" :height 1.0))))
-  '(org-link ((t (:family "DejaVu Sans Mono" :height 1.0 :underline t))))
-)
+  (cond
+   (
+    (string-equal system-type "windows-nt")
+    (progn
+      (custom-theme-set-faces
+       'user
+       '(org-table ((t (:family "Courier New" :height 1.0))))
+       '(org-link  ((t (:family "Courier New" :height 1.0 :underline t))))
+       )
+      )
+    )
+   (
+    (string-equal system-type "gnu/linux")
+    (progn
+      (custom-theme-set-faces
+       'user
+       '(org-table ((t (:family "DejaVu Sans Mono" :height 1.0))))
+       '(org-link  ((t (:family "DejaVu Sans Mono" :height 1.0 :underline t))))
+       )
+      )
+    )
+  )
+
+
 
 (if (eq CHIAROSCURO_INDEX 2) ;original chiaroscuro theme
     (progn
@@ -71,7 +91,6 @@
         (setq background-A-1 "#dddddd")
         (setq background-B-1 "#cccccc")
         (setq background-C-1 "#000000")
-        (setq color-A-1 "#ffff00")
         (setq green-A-1 "#22aa22")
         (setq green-A-2 "#cceecc")
         (setq red-A-1 "#ac2222")
@@ -80,6 +99,8 @@
         (setq blue-A-2 "#ccccee")
         (setq yellow-A-1 "#acac22")
         (setq yellow-A-2 "#eeeecc")
+        (setq violet-A-1 "#9400d3")
+        (setq violet-A-2 "#9400d3")
         (setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#22aa22" :weight bold))))
     )
 )
@@ -389,7 +410,7 @@
 
   `(dashboard-banner-logo-title ((t (:foreground ,text-A-1 :background ,background-A-1))))
   `(dashboard-footer            ((t (:foreground ,text-A-1 :background ,background-A-1))))
-  `(dashboard-heading           ((t (:foreground ,green-A-1 :background ,green-A-2 :bold t))))
+  `(dashboard-heading           ((t (:foreground ,violet-A-1 :background ,background-A-1 :bold t))))
   `(dashboard-items-face        ((t (:foreground ,text-A-1 :background ,background-A-1 :bold t))))
   `(dashboard-navigator         ((t (:foreground ,text-A-1 :background ,background-A-1))))
   `(dashboard-no-items-face     ((t (:foreground ,text-A-1 :background ,background-A-1))))
