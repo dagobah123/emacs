@@ -1,7 +1,8 @@
 ;;; org-agenda templates
 
 (setq org-capture-templates
-      '(("t" "Tasks" entry (file+headline "~/source/org-mode/agenda/tasks.org" "Tasks")
+      '(
+        ("t" "Tasks" entry (file+headline "~/source/org-mode/agenda/tasks.org" "Tasks")
          "* TODO %? :task:")
 
         ("b" "Reading" entry (file+headline "~/source/org-mode/agenda/books.org" "Reading")
@@ -29,6 +30,10 @@
          "* %?\n")
 
         ("l" "Log" entry (file+headline "~/source/org-mode/agenda/log.org" "Log")
-         "* %?\nEntered on %U\n  %i\n  %a")))
+         "* %?\nEntered on %U\n  %i\n  %a")
 
+        ("v" "Event" entry (file+headline "~/source/org-mode/agenda/events.org" "Event")
+         "* TODO %? :event:")
+        )
+      )
 (setq org-agenda-files (list "~/source/org-mode/agenda"))
