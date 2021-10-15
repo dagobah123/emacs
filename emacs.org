@@ -17,10 +17,10 @@
 #+BEGIN_SRC emacs-lisp
   ; Initialize
   (package-initialize)
-
+  
   ; Refresh available packages
   (unless package-archive-contents (package-refresh-contents))
-
+  
   ; Set package list
   (setq package-list '(use-package
                         dired-quick-sort
@@ -55,7 +55,7 @@
                         treemacs-projectile
                         )
         )
-
+  
   (dolist (package package-list)
     (unless (package-installed-p package) (package-install package)
             )
@@ -70,57 +70,57 @@ Load environment variables properly by installing =exec-path-from-shell=.
 ** os specific settings
 #+BEGIN_SRC emacs-lisp
   (cond
-    ((eq system-type 'windows-nt) (load (concat EMACS_HOME "windows")))
-    ((eq system-type 'gnu/linux) (load (concat EMACS_HOME "linux")))
-    (t (load-library "default"))
-  )
+   ((eq system-type 'windows-nt) (load (concat EMACS_HOME "windows")))
+   ((eq system-type 'gnu/linux) (load (concat EMACS_HOME "linux")))
+   (t (load-library "default"))
+   )
 #+END_SRC
 ** look
 #+BEGIN_SRC emacs-lisp
   ; disable menu bar
   (menu-bar-mode -1)
-
+  
   ; disable tool bar
   (tool-bar-mode -1)
-
+  
   ; disable scroll bar
   (scroll-bar-mode -1)
-
+  
   (fringe-mode '(20 . 20))
-
+  
   ; setup cache folder to prevent temporary files to clutter projects
   (setq user-cache-directory (concat EMACS_HOME "cache"))
   (setq backup-directory-alist `(("." . ,(expand-file-name "backups" user-cache-directory)))
         url-history-file (expand-file-name "url/history" user-cache-directory)
         auto-save-list-file-prefix (expand-file-name "auto-save-list/.saves-" user-cache-directory)
         projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-directory))
-
+  
   (setq blink-cursor-blinks 0)
-
+  
   (global-display-line-numbers-mode)
   (setq display-line-numbers-type 'relative)
-  ;(global-hl-line-mode)
+  (global-hl-line-mode)
   ;(set-face-background 'highlight "#007700")
   ;(set-face-attribute hl-line-face nil :underline nil)
   ;(set-face-foreground 'highlight nil)
   ;(set-face-underline-p 'highlight t)
-
+  
   ; 4 spaces indentation
   (setq c-default-style "linux" c-basic-offset 4)
-
+  
   ; disable tabs
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 4)
-
+  
   ; clock
   (display-time)
-
+  
   ; ask for y/n instead of yes/no
   (fset 'yes-or-no-p 'y-or-n-p)
-
+  
   ; confirm before closing emacs
   (setq confirm-kill-emacs 'y-or-n-p)
-
+  
   ; font size
   (cond
       ((string-equal system-type "windows-nt")
@@ -134,7 +134,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
           )
       )
   )
-
+  
   (setq display-line-numbers-type 'relative)
 #+END_SRC
 ** behavior
@@ -875,12 +875,13 @@ This is the package that handles server installation and session management.
   
     )
   
-  (add-hook 'java-mode-hook (lambda ()
-                              (font-lock-add-keywords
-                               'java-mode
-                               '(("\\<\\(\\sw+\\) ?(" 1 'font-lock-function-name-face)))
-                              )
-            )
+;  (add-hook 'java-mode-hook (lambda ()
+;                              (font-lock-add-keywords
+;                               'java-mode
+;                               '(("hello" 1 'font-lock-preprocessor-face)))
+;                              )
+;            )
+                              ; '(("\\<\\(\\sw+\\) ?(" 1 'font-lock-function-name-face)))
 #+END_SRC
 ** key bindings
 #+BEGIN_SRC emacs-lisp
