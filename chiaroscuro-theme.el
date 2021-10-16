@@ -104,7 +104,7 @@
         (setq yellow-1 "#acac22")
         (setq yellow-2 "#eeeecc")
         (setq violet-1 "#9400d3")
-        (setq violet-2 "#9400d3")
+        (setq violet-2 "#ab82ff")
         (setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#22aa22" :weight bold))))
     )
 )
@@ -167,6 +167,7 @@
   `(font-lock-type-face                 ((t (:foreground ,red-1    :background ,red-2                            ))))
   `(font-lock-variable-name-face        ((t (:foreground ,blue-1   :background ,blue-2 :bold t                    ))))
   `(font-lock-warning-face              ((t (:foreground ,background-2   :background ,background-1))))
+  `(dired-special         ((t (:foreground ,violet-1   :background, violet-2))))
 
   ;dired
   `(dired-directory       ((t (:foreground ,yellow-1 :background, yellow-2))))
@@ -178,7 +179,7 @@
   `(dired-narrow-blink    ((t (:foreground ,text-1   :background, background-1))))
   `(dired-perm-write      ((t (:foreground ,text-1   :background, background-1))))
   `(dired-set-id          ((t (:foreground ,text-1   :background, background-1))))
-  `(dired-special         ((t (:foreground ,text-1   :background, background-1))))
+  ;`(dired-special         ((t (:foreground ,text-1   :background, background-1))))
   `(dired-symlink         ((t (:foreground ,text-1   :background, background-1))))
   `(dired-warning         ((t (:foreground ,text-1   :background, background-1))))
 
