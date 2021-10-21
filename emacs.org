@@ -53,6 +53,11 @@
                         uml-mode
                         treemacs
                         treemacs-projectile
+                        all-the-icons
+                        doom-modeline
+                        counsel-web
+                        dashboard
+                        counsel-projectile
                         )
         )
 
