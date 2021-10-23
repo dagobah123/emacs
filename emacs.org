@@ -58,6 +58,7 @@
                         counsel-web
                         dashboard
                         counsel-projectile
+                        kotlin-mode
                         )
         )
 
