@@ -200,6 +200,10 @@
   `(helm-buffer-saved-out             ((t (:foreground ,text-1                                         ))))
   `(helm-ff-prefix                    ((t (:foreground ,yellow-1 :background ,yellow-2                                        ))))
 
+  ;ido
+  `(ido-subdir                        ((t (:foreground ,text-1))))
+
+  
   ;elfeed
   `(elfeed-log-date-face            ((t (:foreground ,text-1 :background ,background-1))))
   `(elfeed-log-debug-level-face     ((t (:foreground ,text-1 :background ,background-1))))

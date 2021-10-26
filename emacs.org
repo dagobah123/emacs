@@ -853,11 +853,11 @@ This is the package that handles server installation and session management.
       (org-agenda-redo-all)
       )
   
-(add-hook 'java-mode-hook
-          (lambda ()
-           (font-lock-add-keywords nil
-            '(("\\<\\(\\sw+\\) ?(" 1
-               'dired-special t)))))
+;(add-hook 'java-mode-hook
+;          (lambda ()
+;           (font-lock-add-keywords nil
+;            '(("\\<\\(\\sw+\\) ?(" 1
+;               'dired-special t)))))
   
   ;  (add-hook 'java-mode-hook (lambda ()
   ;                              (font-lock-add-keywords
