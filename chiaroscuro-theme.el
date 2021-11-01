@@ -135,7 +135,7 @@
   `(cua-rectangle                ((t (:foreground ,text-1   :background ,background-2))))
   `(highlight                    ((t (:foreground ,text-1   :background ,nil           ))))
   `(show-paren-match             ((t (:foreground ,text-1   :background ,background-2))))
-  `(hl-line                      ((t (:foreground ,nil      :background ,background-4))))
+  `(hl-line                      ((t (:foreground ,text-1   :background ,background-4))))
   `(fringe                       ((t (:foreground ,text-1   :background ,background-2))))
   `(minibuffer-prompt            ((t (:foreground ,text-1   :background ,background-1))))
   `(ido-first-match              ((t (:foreground ,green-1  :background ,green-2 :bold t                    ))))

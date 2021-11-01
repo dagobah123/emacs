@@ -33,3 +33,9 @@
 (add-hook 'java-mode-hook 'my:buffer-face-mode-mono)
 
 (setq compile-command "mvn exec:java")
+
+(defun my:robotloader()
+  (interactive)
+  (let ((default-directory "/home/computer/software/robotloader")) 
+    (eshell '(4)))
+  (insert "sudo ./robotloader_linux_x64.sh"))
