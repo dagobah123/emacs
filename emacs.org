@@ -762,6 +762,24 @@ This is the package that handles server installation and session management.
 #+END_SRC
 ** custom functions
 #+BEGIN_SRC emacs-lisp
+    (defun my:switch-buffers-right()
+      (interactive)
+      (org-shiftright)
+      (next-buffer)
+      (org-shiftleft)
+      (next-buffer)
+      (org-shiftright)
+      )
+
+    (defun my:switch-buffers-left()
+      (interactive)
+      (org-shiftleft)
+      (next-buffer)
+      (org-shiftright)
+      (next-buffer)
+      (org-shiftleft)
+      )
+
     (defun my:duplicate-line()
       (interactive)
       (move-beginning-of-line 1)
@@ -888,6 +906,8 @@ This is the package that handles server installation and session management.
   ;(global-set-key (kbd "C-S-<down>") 'my:next-method)
   (global-set-key (kbd "C-S-<up>") 'my:prev-java-method)
   (global-set-key (kbd "C-S-<down>") 'my:next-java-method)
+  (global-set-key (kbd "C-x <up>") 'my:switch-buffers-right)
+  (global-set-key (kbd "C-x <down>") 'my:switch-buffers-left)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
