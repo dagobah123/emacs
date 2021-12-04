@@ -209,7 +209,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (add-hook 'org-shiftdown-final-hook 'windmove-down)
   (add-hook 'org-shiftright-final-hook 'windmove-right)
   (setq org-support-shift-select 'always)
-  (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "FEEDBACK" "|" "DONE" "DELEGATED")))
+  (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "FEEDBACK" "ON-HOLD" "|" "DONE" "DELEGATED")))
   (setq org-tags-column 0)
   (setq org-adapt-indentation nil)
   (org-reload)
@@ -952,6 +952,7 @@ This is the package that handles server installation and session management.
                       chiaroscuro
                       chiaroscuro
                       chiaroscuro
+                      chiaroscuro
                       )
         )
 
@@ -1001,7 +1002,6 @@ This is the package that handles server installation and session management.
     (setq theme-index (- theme-index 1))
     (my:toggle-themes)
     (my:set-mode-line-font)
-
     )
   (global-set-key (kbd "C-6") 'my:theme-down)
 

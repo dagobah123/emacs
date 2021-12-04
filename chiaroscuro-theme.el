@@ -7,11 +7,13 @@
 (defvar text-1            "")
 (defvar text-2            "")
 (defvar text-3            "")
+(defvar text-match        "")
 (defvar background-1      "")
 (defvar background-2      "")
 (defvar background-3      "")
 (defvar background-4      "")
 (defvar background-5      "")
+(defvar background-match  "")
 (defvar background-cursor "")
 (defvar green-1           "")
 (defvar green-2           "")
@@ -48,28 +50,56 @@
   )
 
 
+(if (eq CHIAROSCURO_INDEX 3) ;wald
+    (progn
+        (setq text-1 "#b3d949");
+        (setq text-2 "#c08e42");
+        (setq text-3 "#68bb18");
+        (setq text-match "#8f5504");
+        (setq background-1 "#5c7a27");
+        (setq background-2 "#875c30");
+        (setq background-3 "#4f7401");
+        (setq background-4 "#8a582c");
+        (setq background-5 "#b0ad15");
+        (setq background-match "#63b512");
+        (setq background-cursor "#73e009");
+        (setq green-1 "#56b854")
+        (setq green-2 "#30832f")
+        (setq red-1 "#e07171")
+        (setq red-2 "#832f2f")
+        (setq blue-1 "#8888f8")
+        (setq blue-2 "#53537d")
+        (setq yellow-1 "#c5c23d")
+        (setq yellow-2 "#7f7d21")
+        (setq violet-1 "#a95dd0")
+        (setq violet-2 "#664279")
+        (setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#22aa22" :weight bold))))
+  )
+)
 
 (if (eq CHIAROSCURO_INDEX 2) ;toskana
     (progn
         (setq text-1 "#e0b612");
         (setq text-2 "#9bb5c6")
         (setq text-3 "#9bb5c6")
+        (setq text-match "#f5b201")
         (setq background-1 "#6a6a6a");
         (setq background-2 "#464e5b");
         (setq background-3 "#4b5258");
         (setq background-4 "#b45f1c");
         (setq background-5 "#ac7647");
+        (setq background-match "#db680d");
         (setq background-cursor "#ffffff");
-        (setq green-1 "#cceecc")
-        (setq green-2 "#22aa22")
-        (setq red-1 "#eecccc")
-        (setq red-2 "#ac2222")
-        (setq blue-1 "#ccccee")
-        (setq blue-2 "#2222ac")
-        (setq yellow-1 "#eeeecc")
-        (setq yellow-2 "#acac22")
-        (setq violet-1 "#ab82ff")
-        (setq violet-2 "#9400d3")
+        (setq green-1 "#56b854");
+        (setq green-2 "#30832f");
+        (setq red-1 "#e07171");
+        (setq red-2 "#832f2f");
+        (setq blue-1 "#8888f8");
+        (setq blue-2 "#53537d");
+        (setq yellow-1 "#c5c23d");
+        (setq yellow-2 "#7f7d21");
+        (setq violet-1 "#a95dd0");
+        (setq violet-2 "#664279");
         (setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#22aa22" :weight bold))))
   )
 )
@@ -79,11 +109,13 @@
         (setq text-1 "#c3ac88")
         (setq text-2 "#89918f")
         (setq text-3 "#943632")
+        (setq text-match "#ca915a")
         (setq background-1 "#272c28")
         (setq background-2 "#433b33")
-        (setq background-3 "#927c59")
+        (setq background-3 "#63543c")
         (setq background-4 "#91423a")
         (setq background-5 "#693126")
+        (setq background-match "#96653f")
         (setq background-cursor "#d7b269")
         (setq green-1 "#ca915a")
         (setq green-2 "#96653f")
@@ -104,11 +136,13 @@
         (setq text-1 "#444444")
         (setq text-2 "#999999")
         (setq text-3 "#bbbbbb")
+        (setq text-match "#22aa22")
         (setq background-1 "#dddddd")
         (setq background-2 "#cccccc")
         (setq background-3 "#d5d5d5")
         (setq background-4 "#d7d7d7")
         (setq background-5 "#cccccc")
+        (setq background-match "#cceecc")
         (setq background-cursor "#000000")
         (setq green-1 "#22aa22")
         (setq green-2 "#cceecc")
@@ -126,7 +160,7 @@
 
 (setq CHIAROSCURO_INDEX (+ CHIAROSCURO_INDEX 1))
 
-(if (> CHIAROSCURO_INDEX 2)
+(if (> CHIAROSCURO_INDEX 3)
     (progn
         (setq CHIAROSCURO_INDEX 0)
     )
@@ -153,8 +187,8 @@
   `(hl-line                      ((t (:foreground ,text-1   :background ,background-4))))
   `(fringe                       ((t (:foreground ,text-1   :background ,background-2))))
   `(minibuffer-prompt            ((t (:foreground ,text-1   :background ,background-1))))
-  `(ido-first-match              ((t (:foreground ,green-1  :background ,green-2 :bold t                    ))))
-  `(ido-only-match               ((t (:foreground ,green-1  :background ,green-2 :bold t                    ))))
+  `(ido-first-match              ((t (:foreground ,text-match  :background ,background-match :bold t                    ))))
+  `(ido-only-match               ((t (:foreground ,text-match  :background ,background-match :bold t                    ))))
   `(lsp-face-highlight-read      ((t (:foreground ,yellow-1 :background ,yellow-2 :bold t                    ))))
   `(lsp-face-highlight-write     ((t (:foreground ,yellow-1 :background ,yellow-2 :bold t                    ))))
   `(eshell-prompt                ((t (:foreground ,text-2   :background ,background-1 :bold t))))
@@ -204,9 +238,9 @@
   `(helm-candidate-number             ((t (:foreground ,text-1                                         ))))
   `(helm-M-x-key                      ((t (:foreground ,text-1 :underline t                            ))))
   `(helm-source-header                ((t (:foreground ,text-1 :bold t                                 ))))
-  `(helm-selection                    ((t (:foreground ,green-1 :background ,green-2 :bold t    ))))
-  `(helm-swoop-target-line-face       ((t (:foreground ,green-1 :bold t                                 ))))
-  `(helm-swoop-target-word-face       ((t (:foreground ,green-1 :background ,green-2             ))))
+  `(helm-selection                    ((t (:foreground ,text-match :background ,background-match :bold t    ))))
+  `(helm-swoop-target-line-face       ((t (:foreground ,text-match :bold t                                 ))))
+  `(helm-swoop-target-word-face       ((t (:foreground ,text-match :background ,background-match             ))))
   `(helm-swoop-line-number-face       ((t (:foreground ,text-1 :background ,background-1 :weight bold))))
   `(helm-swoop-target-line-block-face ((t (:foreground ,text-1 :background ,background-1             ))))
   `(helm-swoop-target-word-face       ((t (:foreground ,text-1 :background ,background-1 :bold t     ))))
