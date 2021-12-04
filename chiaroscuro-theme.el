@@ -11,6 +11,7 @@
 (defvar background-2      "")
 (defvar background-3      "")
 (defvar background-4      "")
+(defvar background-5      "")
 (defvar background-cursor "")
 (defvar green-1           "")
 (defvar green-2           "")
@@ -48,52 +49,66 @@
 
 
 
-(if (eq CHIAROSCURO_INDEX 2) ;original chiaroscuro theme
+(if (eq CHIAROSCURO_INDEX 2) ;toskana
     (progn
-        (setq background-1 "#000000")
-        (setq text-1 "#aaaaaa")
-        (setq text-2 "#888888")
-        (setq text-3 "#fff3b6")
-        (setq background-1 "#222222")
-        (setq background-2 "#888888")
-        (setq background-3 "#555555")
-        (setq text-1 "#db7b00")
-        (setq text-2 "#c7580b")
-        (setq text-3 "#c7580b")
-        (setq green-1 "#22aa22")
-        (setq green-2 "#cceecc")
-        (setq red-1 "#ac2222")
-        (setq red-2 "#eecccc")
-        ;(setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#00ff00" :weight bold))))
-        )
+        (setq text-1 "#e0b612");
+        (setq text-2 "#9bb5c6")
+        (setq text-3 "#9bb5c6")
+        (setq background-1 "#6a6a6a");
+        (setq background-2 "#464e5b");
+        (setq background-3 "#4b5258");
+        (setq background-4 "#b45f1c");
+        (setq background-5 "#ac7647");
+        (setq background-cursor "#ffffff");
+        (setq green-1 "#cceecc")
+        (setq green-2 "#22aa22")
+        (setq red-1 "#eecccc")
+        (setq red-2 "#ac2222")
+        (setq blue-1 "#ccccee")
+        (setq blue-2 "#2222ac")
+        (setq yellow-1 "#eeeecc")
+        (setq yellow-2 "#acac22")
+        (setq violet-1 "#ab82ff")
+        (setq violet-2 "#9400d3")
+        (setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#22aa22" :weight bold))))
   )
+)
 
-(if (eq CHIAROSCURO_INDEX 1) ;low contrast chiaroscuro theme
+(if (eq CHIAROSCURO_INDEX 1) ;caravaggio
     (progn
-        (setq background-1 "#333333")
-        (setq text-1 "#aaaaaa")
-        (setq text-2 "#b76600")
-        (setq text-3 "#545c94")
-        (setq background-1 "#444444")
-        (setq background-2 "#888888")
-        (setq background-3 "#cfc594")
-        (setq green-1 "#22aa22")
-        (setq green-2 "#cceecc")
-        (setq red-1 "#ac2222")
-        (setq red-2 "#eecccc")
-        ;(setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#ff0000" :weight bold))))
+        (setq text-1 "#c3ac88")
+        (setq text-2 "#89918f")
+        (setq text-3 "#943632")
+        (setq background-1 "#272c28")
+        (setq background-2 "#433b33")
+        (setq background-3 "#927c59")
+        (setq background-4 "#91423a")
+        (setq background-5 "#693126")
+        (setq background-cursor "#d7b269")
+        (setq green-1 "#ca915a")
+        (setq green-2 "#96653f")
+        (setq red-1 "#a35449")
+        (setq red-2 "#662e27")
+        (setq blue-1 "#767f76")
+        (setq blue-2 "#194544")
+        (setq yellow-1 "#c09e56")
+        (setq yellow-2 "#95722f")
+        (setq violet-1 "#ab6d47")
+        (setq violet-2 "#70432d")
+        (setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#22aa22" :weight bold))))
     )
 )
 
-(if (eq CHIAROSCURO_INDEX 0) ;light chiaroscuro theme
+(if (eq CHIAROSCURO_INDEX 0) ;light gray
     (progn
-        (setq text-1 "#444444") ;main text
+        (setq text-1 "#444444")
         (setq text-2 "#999999")
         (setq text-3 "#bbbbbb")
         (setq background-1 "#dddddd")
         (setq background-2 "#cccccc")
         (setq background-3 "#d5d5d5")
         (setq background-4 "#d7d7d7")
+        (setq background-5 "#cccccc")
         (setq background-cursor "#000000")
         (setq green-1 "#22aa22")
         (setq green-2 "#cceecc")
@@ -131,8 +146,8 @@
   `(default                      ((t (:foreground ,text-1   :background ,background-1))))
   `(cursor                       ((t (                        :background ,background-cursor))))
   `(link                         ((t (:foreground ,text-1   :underline t               ))))
-  `(region                       ((t (:foreground ,text-1   :background ,background-2))))
-  `(cua-rectangle                ((t (:foreground ,text-1   :background ,background-2))))
+  `(region                       ((t (:foreground ,text-1   :background ,background-5))))
+  `(cua-rectangle                ((t (:foreground ,text-1   :background ,background-5))))
   `(highlight                    ((t (:foreground ,text-1   :background ,nil           ))))
   `(show-paren-match             ((t (:foreground ,text-1   :background ,background-2))))
   `(hl-line                      ((t (:foreground ,text-1   :background ,background-4))))
@@ -203,7 +218,7 @@
   ;ido
   `(ido-subdir                        ((t (:foreground ,text-1))))
 
-  
+
   ;elfeed
   `(elfeed-log-date-face            ((t (:foreground ,text-1 :background ,background-1))))
   `(elfeed-log-debug-level-face     ((t (:foreground ,text-1 :background ,background-1))))
@@ -429,7 +444,7 @@
   `(dashboard-navigator          ((t (:foreground ,text-1 :background ,background-1))))
   `(dashboard-no-items-face      ((t (:foreground ,text-1 :background ,background-1))))
   `(dashboard-text-banner        ((t (:foreground ,text-1 :background ,background-1))))
-  
+
   ;`(ivy-action                     ((t (:foreground ,text-1   :background ,background-1      ))))
   ;`(ivy-completions-annotations    ((t (:foreground ,text-1   :background ,background-1      ))))
   ;`(ivy-confirm-face               ((t (:foreground ,text-1   :background ,background-1      ))))
