@@ -55,13 +55,13 @@
         (setq text-1 "#b3d949");
         (setq text-2 "#c08e42");
         (setq text-3 "#68bb18");
-        (setq text-match "#8f5504");
+        (setq text-match "#682400");
         (setq background-1 "#5c7a27");
         (setq background-2 "#875c30");
         (setq background-3 "#4f7401");
         (setq background-4 "#8a582c");
         (setq background-5 "#b0ad15");
-        (setq background-match "#63b512");
+        (setq background-match "#72de13");
         (setq background-cursor "#73e009");
         (setq green-1 "#56b854")
         (setq green-2 "#30832f")
