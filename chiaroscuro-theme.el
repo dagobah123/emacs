@@ -388,6 +388,7 @@
   `(header-line                     ((t (:foreground ,text-1                            ))))
 
   ;magit
+  `(magit-hash                        ((t (:foreground ,text-2                                                                     ))))
   `(magit-header-line                 ((t (:foreground ,text-1  :bold t                                                                   ))))
   `(magit-section-heading             ((t (:foreground ,text-1                                                                            ))))
   `(magit-branch-current              ((t (:foreground ,green-1 :background ,green-2      :bold t :box (:line-width 3 :color ,green-1)))))
