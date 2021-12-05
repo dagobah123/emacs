@@ -945,7 +945,7 @@ This is the package that handles server installation and session management.
                       ;gandalf
                       ;base16-redscreen
                       ;base16-red2screen
-                      base16-greenscreen
+                      ;base16-greenscreen
                       ;doom-manegarm
                       ;doom-laserwave
                       ;doom-zenburn
