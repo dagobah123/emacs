@@ -50,56 +50,83 @@
   )
 
 
-(if (eq CHIAROSCURO_INDEX 3) ;wald
+(if (eq CHIAROSCURO_INDEX 4) ;pop
     (progn
-        (setq text-1 "#b3d949");
-        (setq text-2 "#c08e42");
-        (setq text-3 "#68bb18");
-        (setq text-match "#682400");
-        (setq background-1 "#5c7a27");
-        (setq background-2 "#875c30");
-        (setq background-3 "#4f7401");
-        (setq background-4 "#8a582c");
-        (setq background-5 "#b0ad15");
-        (setq background-match "#72de13");
-        (setq background-cursor "#73e009");
-        (setq green-1 "#56b854")
-        (setq green-2 "#30832f")
-        (setq red-1 "#e07171")
-        (setq red-2 "#832f2f")
-        (setq blue-1 "#8888f8")
-        (setq blue-2 "#53537d")
-        (setq yellow-1 "#c5c23d")
-        (setq yellow-2 "#7f7d21")
-        (setq violet-1 "#a95dd0")
-        (setq violet-2 "#664279")
+        (setq text-1 "#e500df")
+        (setq text-2 "#ffffff")
+        (setq text-3 "#ffffff")
+        (setq text-match "#22aa22")
+        (setq background-1 "#ff9cff")
+        (setq background-2 "#fc79f8")
+        (setq background-3 "#fc79f8")
+        (setq background-4 "#fc79f8")
+        (setq background-5 "#7f3f17")
+        (setq background-match "#cceecc")
+        (setq background-cursor "#ffffff")
+        (setq green-1 "#22aa22")
+        (setq green-2 "#cceecc")
+        (setq red-1 "#ac2222")
+        (setq red-2 "#eecccc")
+        (setq blue-1 "#2222ac")
+        (setq blue-2 "#ccccee")
+        (setq yellow-1 "#acac22")
+        (setq yellow-2 "#eeeecc")
+        (setq violet-1 "#9400d3")
+        (setq violet-2 "#ab82ff")
         (setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#22aa22" :weight bold))))
   )
 )
 
-(if (eq CHIAROSCURO_INDEX 2) ;toskana
+(if (eq CHIAROSCURO_INDEX 3) ;white
     (progn
-        (setq text-1 "#e0b612");
-        (setq text-2 "#9bb5c6")
-        (setq text-3 "#9bb5c6")
-        (setq text-match "#f5b201")
-        (setq background-1 "#6a6a6a");
-        (setq background-2 "#464e5b");
-        (setq background-3 "#4b5258");
-        (setq background-4 "#b45f1c");
-        (setq background-5 "#ac7647");
-        (setq background-match "#db680d");
-        (setq background-cursor "#ffffff");
-        (setq green-1 "#56b854");
-        (setq green-2 "#30832f");
-        (setq red-1 "#e07171");
-        (setq red-2 "#832f2f");
-        (setq blue-1 "#8888f8");
-        (setq blue-2 "#53537d");
-        (setq yellow-1 "#c5c23d");
-        (setq yellow-2 "#7f7d21");
-        (setq violet-1 "#a95dd0");
-        (setq violet-2 "#664279");
+        (setq text-1 "#000000")
+        (setq text-2 "#000000")
+        (setq text-3 "#000000")
+        (setq text-match "#22aa22")
+        (setq background-1 "#ffffff")
+        (setq background-2 "#ffffff")
+        (setq background-3 "#f0f0f0")
+        (setq background-4 "#f0f0f0")
+        (setq background-5 "#dddddd")
+        (setq background-match "#cceecc")
+        (setq background-cursor "#ffffff")
+        (setq green-1 "#22aa22")
+        (setq green-2 "#cceecc")
+        (setq red-1 "#ac2222")
+        (setq red-2 "#eecccc")
+        (setq blue-1 "#2222ac")
+        (setq blue-2 "#ccccee")
+        (setq yellow-1 "#acac22")
+        (setq yellow-2 "#eeeecc")
+        (setq violet-1 "#9400d3")
+        (setq violet-2 "#ab82ff")
+        (setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#22aa22" :weight bold))))
+  )
+)
+
+(if (eq CHIAROSCURO_INDEX 2) ;giaconda
+    (progn
+        (setq text-1 "#d6af6a")
+        (setq text-2 "#9d996a")
+        (setq text-3 "#8b9174")
+        (setq text-match "#f4b92d")
+        (setq background-1 "#6b5026")
+        (setq background-2 "#3d2920")
+        (setq background-3 "#686c54")
+        (setq background-4 "#924d13")
+        (setq background-5 "#7f3f17")
+        (setq background-match "#c88200")
+        (setq background-cursor "#d9b369")
+        (setq green-1 "#a1a655")
+        (setq green-2 "#72772a")
+        (setq red-1 "#fd8667")
+        (setq red-2 "#a64c22")
+        (setq blue-1 "#8189ce")
+        (setq blue-2 "#464a6f")
+        (setq yellow-1 "#f4b92d")
+        (setq yellow-2 "#c88200")
+        (setq violet-1 "#aa8db8")
+        (setq violet-2 "#5a4366")
         (setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#22aa22" :weight bold))))
   )
 )
@@ -117,8 +144,8 @@
         (setq background-5 "#693126")
         (setq background-match "#96653f")
         (setq background-cursor "#d7b269")
-        (setq green-1 "#ca915a")
-        (setq green-2 "#96653f")
+        (setq green-1 "#a1a655")
+        (setq green-2 "#72772a")
         (setq red-1 "#a35449")
         (setq red-2 "#662e27")
         (setq blue-1 "#767f76")
@@ -160,7 +187,7 @@
 
 (setq CHIAROSCURO_INDEX (+ CHIAROSCURO_INDEX 1))
 
-(if (> CHIAROSCURO_INDEX 3)
+(if (> CHIAROSCURO_INDEX 4)
     (progn
         (setq CHIAROSCURO_INDEX 0)
     )

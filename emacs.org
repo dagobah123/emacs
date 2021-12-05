@@ -916,39 +916,40 @@ This is the package that handles server installation and session management.
 
   (setq themes-list '(
                       eclipse
-                      vs-light
-                      doom-gruvbox
-                      dark-mint
-                      alect-light-alt
-                      grayscale
-                      base16-icy
-                      base16-atelier-dune
-                      rebecca
-                      alect-black-alt
-                      base16-3024
-                      base16-circus
-                      base16-darkviolet
-                      base16-apathy
-                      base16-atelier-dune-light
-                      tron-legacy
-                      base16-bespin
-                      base16-atelier-sulphurpool
-                      base16-pico
-                      base16-pop
-                      base16-vulcan
-                      doom-homage-black
-                      doom-outrun-electric
-                      doom-spacegrey
-                      autumn-light
-                      cloud
-                      afternoon
-                      gandalf
-                      base16-redscreen
-                      base16-red2screen
+                      ;vs-light
+                      ;doom-gruvbox
+                      ;dark-mint
+                      ;alect-light-alt
+                      ;grayscale
+                      ;base16-icy
+                      ;base16-atelier-dune
+                      ;rebecca
+                      ;alect-black-alt
+                      ;base16-3024
+                      ;base16-circus
+                      ;base16-darkviolet
+                      ;base16-apathy
+                      ;base16-atelier-dune-light
+                      ;tron-legacy
+                      ;base16-bespin
+                      ;base16-atelier-sulphurpool
+                      ;base16-pico
+                      ;base16-pop
+                      ;base16-vulcan
+                      ;doom-homage-black
+                      ;doom-outrun-electric
+                      ;doom-spacegrey
+                      ;autumn-light
+                      ;cloud
+                      ;afternoon
+                      ;gandalf
+                      ;base16-redscreen
+                      ;base16-red2screen
                       base16-greenscreen
-                      doom-manegarm
-                      doom-laserwave
-                      doom-zenburn
+                      ;doom-manegarm
+                      ;doom-laserwave
+                      ;doom-zenburn
+                      chiaroscuro
                       chiaroscuro
                       chiaroscuro
                       chiaroscuro
@@ -968,24 +969,6 @@ This is the package that handles server installation and session management.
       (setq loop-index (+ loop-index 1)
             )
       )
-    )
-
-  (defun my:set-mode-line-font()
-    (interactive)
-    (cond
-     ((string-equal system-type "windows-nt")
-      (progn
-        (set-face-attribute 'mode-line nil :font "Tw Cen MT-25")
-        (set-face-attribute 'mode-line-inactive nil :font "Tw Cen MT-25")
-        )
-      )
-     ((string-equal system-type "gnu/linux")
-      (progn
-        (set-face-attribute 'mode-line nil :font "Comfortaa-25")
-        (set-face-attribute 'mode-line-inactive nil :font "Comfortaa-25")
-        )
-      )
-     )
     )
 
   (defun my:reset-themes-index()
@@ -1054,6 +1037,24 @@ This is the package that handles server installation and session management.
           (message "emacs")
           )
       )
+    )
+
+  (defun my:set-mode-line-font()
+    (interactive)
+    (cond
+     ((string-equal system-type "windows-nt")
+      (progn
+        (set-face-attribute 'mode-line nil :font "Tw Cen MT-25")
+        (set-face-attribute 'mode-line-inactive nil :font "Tw Cen MT-25")
+        )
+      )
+     ((string-equal system-type "gnu/linux")
+      (progn
+        (set-face-attribute 'mode-line nil :font "Comfortaa-25")
+        (set-face-attribute 'mode-line-inactive nil :font "Comfortaa-25")
+        )
+      )
+     )
     )
 
   (my:set-mode-line-font)
