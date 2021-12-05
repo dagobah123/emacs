@@ -915,7 +915,7 @@ This is the package that handles server installation and session management.
   (setq chiaroscuro-index 0)
 
   (setq themes-list '(
-                      eclipse
+                      ;eclipse
                       ;vs-light
                       ;doom-gruvbox
                       ;dark-mint
@@ -923,7 +923,7 @@ This is the package that handles server installation and session management.
                       ;grayscale
                       ;base16-icy
                       ;base16-atelier-dune
-                      ;rebecca
+                      rebecca
                       ;alect-black-alt
                       ;base16-3024
                       ;base16-circus
@@ -933,7 +933,7 @@ This is the package that handles server installation and session management.
                       ;tron-legacy
                       ;base16-bespin
                       ;base16-atelier-sulphurpool
-                      ;base16-pico
+                      base16-pico
                       ;base16-pop
                       ;base16-vulcan
                       ;doom-homage-black
@@ -948,7 +948,7 @@ This is the package that handles server installation and session management.
                       ;base16-greenscreen
                       ;doom-manegarm
                       ;doom-laserwave
-                      ;doom-zenburn
+                      doom-zenburn
                       chiaroscuro
                       chiaroscuro
                       chiaroscuro
