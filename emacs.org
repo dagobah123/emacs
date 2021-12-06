@@ -948,8 +948,7 @@ This is the package that handles server installation and session management.
                       ;base16-greenscreen
                       ;doom-manegarm
                       ;doom-laserwave
-                      doom-zenburn
-                      chiaroscuro
+                      ;doom-zenburn
                       chiaroscuro
                       chiaroscuro
                       chiaroscuro
