@@ -884,6 +884,13 @@ This is the package that handles server installation and session management.
       (org-agenda-redo-all)
       )
   
+    (defun my:helm-grep-do-git-grep()
+      (interactive)
+      (let ((current-prefix-arg 4))
+      (call-interactively 'helm-grep-do-git-grep)
+      )
+      )
+
 ;(add-hook 'java-mode-hook
 ;          (lambda ()
 ;           (font-lock-add-keywords nil
@@ -922,6 +929,8 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-x <up>") 'my:switch-buffers-right)
   (global-set-key (kbd "C-x <down>") 'my:switch-buffers-left)
   (global-set-key (kbd "C-9") 'helm-do-grep-ag)
+  (global-set-key (kbd "C-0") 'helm-grep-do-git-grep)
+  (global-set-key (kbd "C-`") 'my:helm-grep-do-git-grep)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
@@ -1012,7 +1021,6 @@ This is the package that handles server installation and session management.
     (my:set-mode-line-font)
     )
   (global-set-key (kbd "C-7") 'my:theme-up)
-  (global-set-key (kbd "C-`") 'my:theme-up)
 
   (defun my:loop()
     (interactive)

@@ -428,6 +428,13 @@
   `(markdown-highlighting-face        ((t (:foreground ,green-1  :background ,green-2                                        ))))
   `(helm-header-line-left-margin      ((t (:foreground ,green-1  :background ,green-2                                        ))))
   `(cua-global-mark                   ((t (:foreground ,green-1  :background ,green-2                                        ))))
+  `(helm-match-item                   ((t (:foreground ,violet-1 :background ,violet-2                                        ))))
+  `(helm-separator                    ((t (:foreground ,yellow-1 :background ,yellow-2                                        ))))
+  `(helm-lisp-completion-info         ((t (:foreground ,yellow-1 :background ,yellow-2                                        ))))
+  `(ivy-match-required-face           ((t (:foreground ,yellow-1 :background ,yellow-2                                        ))))
+  `(transient-red                     ((t (:foreground ,yellow-1 :background ,yellow-2                                        ))))
+  `(info-menu-star                    ((t (:foreground ,yellow-1 :background ,yellow-2                                        ))))
+  `(helm-ff-denied                    ((t (:foreground ,yellow-1 :background ,yellow-2                                        ))))
 
   ;ido
   `(ido-subdir                        ((t (:foreground ,text-1))))
@@ -463,7 +470,7 @@
   `(magit-branch-remote               ((t (:foreground ,red-1   :background ,red-2        :bold t :box (:line-width 3 :color ,red-1)  ))))
   `(magit-branch-remote-head          ((t (:foreground ,red-1   :background ,red-2        :bold t :box (:line-width 3 :color ,red-1)  ))))
   `(magit-branch-upstream             ((t (:foreground ,red-1   :background ,red-2        :bold t :box (:line-width 3 :color ,red-1)  ))))
-  `(magit-section-highlight           ((t (                       :background ,background-2 :bold t                                       ))))
+  `(magit-section-highlight           ((t (                     :background ,background-2 :bold t                                       ))))
   `(magit-log-author                  ((t (:foreground ,text-2                                                                            ))))
   `(magit-log-date                    ((t (:foreground ,text-2                                                                            ))))
   `(magit-keyword-squash              ((t (:foreground ,text-1                                                                            ))))
