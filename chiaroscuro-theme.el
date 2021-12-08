@@ -54,6 +54,50 @@
     )
   )
 
+(if (eq CHIAROSCURO_INDEX 2) ;terminal
+    (progn
+        (setq text-1 "#00cc00")
+        (setq text-2 "#009900")
+        (setq text-3 "#006600")
+        (setq text-hl "#00ff00")
+        (setq text-match "#000000")
+        (setq background-1 "#000000")
+        (setq background-2 "#000000")
+        (setq background-3 "#111111")
+        (setq background-4 "#003300")
+        (setq background-5 "#006600")
+        (setq background-match "#00ff00")
+        (setq background-cursor "#00ff00")
+        (setq green-1 "#cccccc")
+        (setq green-2 "#006d00")
+        (setq red-1 "#cccccc")
+        (setq red-2 "#6d0006")
+        (setq blue-1 "#cccccc")
+        (setq blue-2 "#0d00b2")
+        (setq yellow-1 "#cccccc")
+        (setq yellow-2 "#7e7900")
+        (setq violet-1 "#cccccc")
+        (setq violet-2 "#43006d")
+
+;        (setq green-1 "#eaffea")
+;        (setq green-2 "#006d00")
+;        (setq red-1 "#ffeaee")
+;        (setq red-2 "#6d0006")
+;        (setq blue-1 "#ebeaff")
+;        (setq blue-2 "#08006d")
+;        (setq yellow-1 "#fffeea")
+;        (setq yellow-2 "#6d6900")
+;        (setq violet-1 "#f9eaff")
+;        (setq violet-2 "#43006d")
+        
+        (setq line-number-1 "#000000")
+        (setq line-number-2 "#00ff00")
+        (setq line-number-3 "#009900")
+        (setq line-number-4 "#000000")
+        ;(setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#22aa22" :weight bold))))
+  )
+)
+
 (if (eq CHIAROSCURO_INDEX 6) ;pop
     (progn
         (setq text-1 "#e500df")
@@ -103,13 +147,13 @@
         (setq green-1 "#000000")
         (setq green-2 "#ffffff")
         (setq red-1 "#000000")
-        (setq red-2 "#ffffff")
+        (setq red-2 "#f0f0f0")
         (setq blue-1 "#000000")
-        (setq blue-2 "#ffffff")
+        (setq blue-2 "#f0f0f0")
         (setq yellow-1 "#000000")
-        (setq yellow-2 "#ffffff")
+        (setq yellow-2 "#f0f0f0")
         (setq violet-1 "#000000")
-        (setq violet-2 "#ffffff")
+        (setq violet-2 "#f0f0f0")
         (setq line-number-1 "#000000")
         (setq line-number-2 "#f0f0f0")
         (setq line-number-3 "#000000")
@@ -182,7 +226,7 @@
   )
 )
 
-(if (eq CHIAROSCURO_INDEX 2) ;orange
+(if (eq CHIAROSCURO_INDEX 7) ;orange
     (progn
         (setq text-1 "#f98801")
         (setq text-2 "#89918f")
@@ -244,7 +288,7 @@
         (setq line-number-4 "#475f5e")
         ;(setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#22aa22" :weight bold))))
     )
-)
+  )
 
 (if (eq CHIAROSCURO_INDEX 0) ;light gray
     (progn
@@ -280,7 +324,7 @@
 
 (setq CHIAROSCURO_INDEX (+ CHIAROSCURO_INDEX 1))
 
-(if (> CHIAROSCURO_INDEX 6)
+(if (> CHIAROSCURO_INDEX 7)
     (progn
         (setq CHIAROSCURO_INDEX 0)
     )
@@ -327,7 +371,7 @@
   `(font-lock-constant-face             ((t (:foreground ,yellow-1 :background ,yellow-2    ))))
   `(font-lock-doc-face                  ((t (:foreground ,text-2                            ))))
   `(font-lock-function-name-face        ((t (:foreground ,green-1  :background ,green-2 :bold t                    ))))
-  `(font-lock-keyword-face              ((t (:foreground ,text-1   :bold t                    ))))
+  `(font-lock-keyword-face              ((t (:foreground ,text-2   :bold t                    ))))
   `(font-lock-negation-char-face        ((t (:foreground ,text-1                            ))))
   `(font-lock-preprocessor-face         ((t (:foreground ,violet-1 :background ,violet-2                            ))))
   `(font-lock-regexp-grouping-backslash ((t (:foreground ,text-1                            ))))
