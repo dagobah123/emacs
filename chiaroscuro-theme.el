@@ -643,7 +643,7 @@
 
   `(dashboard-banner-logo-title  ((t (:foreground ,text-1 :background ,background-1))))
   `(dashboard-footer             ((t (:foreground ,text-1 :background ,background-1))))
-  `(dashboard-heading            ((t (:foreground ,violet-1 :background ,background-1 :bold t))))
+  `(dashboard-heading            ((t (:foreground ,text-1 :background ,background-1 :bold t))))
   `(dashboard-items-face         ((t (:foreground ,text-1 :background ,background-1 :bold t))))
   `(dashboard-navigator          ((t (:foreground ,text-1 :background ,background-1))))
   `(dashboard-no-items-face      ((t (:foreground ,text-1 :background ,background-1))))
