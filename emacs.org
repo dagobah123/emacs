@@ -921,6 +921,7 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-S-<down>") 'my:next-java-method)
   (global-set-key (kbd "C-x <up>") 'my:switch-buffers-right)
   (global-set-key (kbd "C-x <down>") 'my:switch-buffers-left)
+  (global-set-key (kbd "C-9") 'helm-do-grep-ag)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp

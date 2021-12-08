@@ -417,10 +417,20 @@
   `(helm-ff-rsync-progress            ((t (:foreground ,text-1                                         ))))
   `(helm-buffer-saved-out             ((t (:foreground ,text-1                                         ))))
   `(helm-ff-prefix                    ((t (:foreground ,yellow-1 :background ,yellow-2                                        ))))
+  `(helm-buffer-directory             ((t (:foreground ,yellow-1 :background ,yellow-2                                        ))))
+  `(helm-ff-directory                 ((t (:foreground ,yellow-1 :background ,yellow-2                                        ))))
+  `(helm-ff-dotted-directory          ((t (:foreground ,yellow-1 :background ,yellow-2                                        ))))
+  `(helm-ff-file-extension            ((t (:foreground ,green-1  :background ,green-2                                        ))))
+  `(helm-grep-file                    ((t (:foreground ,green-1  :background ,green-2                                        ))))
+  `(helm-grep-finish                  ((t (:foreground ,green-1  :background ,green-2                                        ))))
+  `(helm-grep-lineno                  ((t (:foreground ,green-2                                          ))))
+  `(helm-grep-match                   ((t (:foreground ,text-match :background ,background-match                                        ))))
+  `(markdown-highlighting-face        ((t (:foreground ,green-1  :background ,green-2                                        ))))
+  `(helm-header-line-left-margin      ((t (:foreground ,green-1  :background ,green-2                                        ))))
+  `(cua-global-mark                   ((t (:foreground ,green-1  :background ,green-2                                        ))))
 
   ;ido
   `(ido-subdir                        ((t (:foreground ,text-1))))
-
 
   ;elfeed
   `(elfeed-log-date-face            ((t (:foreground ,text-1 :background ,background-1))))
