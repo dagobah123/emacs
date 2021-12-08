@@ -64,7 +64,7 @@
         (setq text-hl "#00ff00")
         (setq text-match "#000000")
         (setq background-1 "#000000")
-        (setq background-2 "#000000")
+        (setq background-2 "#003300")
         (setq background-3 "#111111")
         (setq background-4 "#003300")
         (setq background-5 "#006600")
@@ -158,7 +158,7 @@
   )
 )
 
-(if (eq CHIAROSCURO_INDEX 4) ;giaconda
+(if (eq CHIAROSCURO_INDEX 4) ;gioconda
     (progn
         (setq text-1 "#d6af6a")
         (setq text-2 "#9d996a")
@@ -409,7 +409,7 @@
   `(helm-M-x-key                      ((t (:foreground ,text-1 :underline t                            ))))
   `(helm-source-header                ((t (:foreground ,text-1 :bold t                                 ))))
   `(helm-selection                    ((t (:foreground ,text-match :background ,background-match :bold t    ))))
-  `(helm-swoop-target-line-face       ((t (:foreground ,text-match :bold t                                 ))))
+  `(helm-swoop-target-line-face       ((t (:foreground ,text-match :background ,background-match :bold t                                 ))))
   `(helm-swoop-target-word-face       ((t (:foreground ,green-1 :background ,green-2 :bold t     ))))
   `(helm-swoop-line-number-face       ((t (:foreground ,text-1 :background ,background-1 :weight bold))))
   `(helm-swoop-target-line-block-face ((t (:foreground ,text-1 :background ,background-1             ))))
