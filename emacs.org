@@ -920,7 +920,7 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-c d") 'my:duplicate-line)
   (global-set-key (kbd "<C-iso-lefttab>") 'my:previous-link-center)
   (global-set-key (kbd "<C-tab>") 'completion-at-point)
-  (global-set-key (kbd "C-x 7") 'helm-world-time)
+  ;(global-set-key (kbd "C-x 7") 'helm-world-time)
   (global-set-key (kbd "C-c m") 'my:agenda-view)
   ;(global-set-key (kbd "C-S-<up>") 'my:prev-method)
   ;(global-set-key (kbd "C-S-<down>") 'my:next-method)
@@ -931,6 +931,10 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-9") 'helm-do-grep-ag)
   (global-set-key (kbd "C-0") 'helm-grep-do-git-grep)
   (global-set-key (kbd "C-`") 'my:helm-grep-do-git-grep)
+  (global-set-key (kbd "C-7") 'whitespace-mode)
+  (global-set-key (kbd "C-x t") 'bookmark-bmenu-list)
+  (global-set-key (kbd "C-x 6") 'magit-blame)
+  (global-set-key (kbd "C-x 7") 'magit-blame-quit)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
@@ -1020,7 +1024,7 @@ This is the package that handles server installation and session management.
     (my:toggle-themes)
     (my:set-mode-line-font)
     )
-  (global-set-key (kbd "C-7") 'my:theme-up)
+  ;(global-set-key (kbd "C-7") 'my:theme-up)
 
   (defun my:loop()
     (interactive)
