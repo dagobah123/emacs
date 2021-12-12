@@ -240,7 +240,7 @@
         (setq background-5 "#006600")
         (setq background-match "#00ff00")
         (setq background-cursor "#00ff00")
-        (setq green-1 "#00bb00")
+        (setq green-1 "#00cc00")
         (setq green-2 "#005d00")
         (setq red-1 "#b57e7e")
         (setq red-2 "#510004")
@@ -389,7 +389,7 @@
   `(dired-special         ((t (:foreground ,violet-1   :background, violet-2))))
 
   ;dired
-  `(dired-directory       ((t (:foreground ,yellow-1 :background, yellow-2))))
+  `(dired-directory       ((t (:foreground ,green-1 :background,  green-2))))
   `(dired-flagged         ((t (:foreground ,red-1    :background, red-2))))
   `(dired-header          ((t (:foreground ,green-1  :background, green-2))))
   `(dired-ignored         ((t (:foreground ,text-1   :background, background-1))))
