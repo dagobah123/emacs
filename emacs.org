@@ -104,7 +104,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (setq blink-cursor-blinks 0)
 
   (global-display-line-numbers-mode)
-  (setq display-line-numbers-type 'relative)
+  (setq display-line-numbers-type 'absolute)
   (global-set-key (kbd "C-8") 'global-display-line-numbers-mode)
   (defun my:global-display-line-numbers-mode-on()
     (interactive)
@@ -153,8 +153,6 @@ Load environment variables properly by installing =exec-path-from-shell=.
           )
       )
   )
-
-  (setq display-line-numbers-type 'relative)
 #+END_SRC
 ** behavior
 #+BEGIN_SRC emacs-lisp
