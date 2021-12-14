@@ -936,6 +936,8 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-x t") 'bookmark-bmenu-list)
   (global-set-key (kbd "C-x 6") 'magit-blame)
   (global-set-key (kbd "C-x 7") 'magit-blame-quit)
+  (global-set-key (kbd "C-'") 'treemacs-increase-width)
+  (global-set-key (kbd "C-;") 'treemacs-decrease-width)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
