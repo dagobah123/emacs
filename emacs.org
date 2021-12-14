@@ -105,7 +105,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
 
   (global-display-line-numbers-mode)
   (setq display-line-numbers-type 'absolute)
-  (global-set-key (kbd "C-8") 'global-display-line-numbers-mode)
+  (global-set-key (kbd "C-7") 'global-display-line-numbers-mode)
   (defun my:global-display-line-numbers-mode-on()
     (interactive)
     (global-display-line-numbers-mode t)
@@ -929,7 +929,7 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-9") 'helm-do-grep-ag)
   (global-set-key (kbd "C-0") 'helm-grep-do-git-grep)
   (global-set-key (kbd "C-`") 'my:helm-grep-do-git-grep)
-  (global-set-key (kbd "C-7") 'whitespace-mode)
+  (global-set-key (kbd "C-8") 'whitespace-mode)
   (global-set-key (kbd "C-x t") 'bookmark-bmenu-list)
   (global-set-key (kbd "C-x 6") 'magit-blame)
   (global-set-key (kbd "C-x 7") 'magit-blame-quit)
@@ -1022,7 +1022,6 @@ This is the package that handles server installation and session management.
     (my:toggle-themes)
     (my:set-mode-line-font)
     )
-  ;(global-set-key (kbd "C-7") 'my:theme-up)
 
   (defun my:loop()
     (interactive)
