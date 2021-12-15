@@ -542,7 +542,7 @@
   `(org-agenda-restriction-lock       ((t (:foreground ,text-1                                                                            ))))
   `(org-agenda-structure              ((t (:foreground ,text-1                                                                            ))))
   `(org-archived                      ((t (:foreground ,text-1  :background ,background-1 ))))
-  `(org-block                         ((t (:foreground ,text-1  :background ,background-3 :family "FreeMono"))))
+  `(org-block                         ((t (:foreground ,text-1  :background ,background-3 ))))
   `(org-block-begin-line              ((t (:foreground ,text-2  :background ,background-2                                               ))))
   `(org-block-end-line                ((t (:foreground ,text-2  :background ,background-2                                               ))))
   `(org-checkbox                      ((t (:foreground ,text-1  :background ,background-1 ))))
