@@ -36,29 +36,6 @@
 (defvar line-number-3     "")
 (defvar line-number-4     "")
 
-  (cond
-   (
-    (string-equal system-type "windows-nt")
-    (progn
-      (custom-theme-set-faces
-       'user
-       '(org-table ((t (:family "Courier New" :height 1.0))))
-       '(org-link  ((t (:family "Courier New" :height 1.0 :underline t))))
-       )
-      )
-    )
-   (
-    (string-equal system-type "gnu/linux")
-    (progn
-      (custom-theme-set-faces
-       'user
-       '(org-table ((t (:family "DejaVu Sans Mono" :height 1.0))))
-       '(org-link  ((t (:family "DejaVu Sans Mono" :height 1.0 :underline t))))
-       )
-      )
-    )
-  )
-
 (if (eq CHIAROSCURO_INDEX 7) ;orange
     (progn
         (setq text-1 "#f98801")
@@ -699,54 +676,12 @@
   `(dashboard-no-items-face      ((t (:foreground ,text-1 :background ,background-1))))
   `(dashboard-text-banner        ((t (:foreground ,text-1 :background ,background-1))))
 
-  ;`(ivy-action                     ((t (:foreground ,text-1   :background ,background-1      ))))
-  ;`(ivy-completions-annotations    ((t (:foreground ,text-1   :background ,background-1      ))))
-  ;`(ivy-confirm-face               ((t (:foreground ,text-1   :background ,background-1      ))))
   `(ivy-current-match               ((t (:foreground ,text-match :background ,background-match           ))))
-  ;`(ivy-cursor                     ((t (:foreground ,text-1   :background ,background-1      ))))
-  ;`(ivy-grep-info                  ((t (:foreground ,text-1   :background ,background-1      ))))
-  ;`(ivy-grep-line-number           ((t (:foreground ,text-1   :background ,background-1      ))))
   `(ivy-highlight-face              ((t (:foreground ,text-1   :background ,background-1      ))))
-  ;`(ivy-match-required-face        ((t (:foreground ,text-1   :background ,background-1      ))))
   `(ivy-minibuffer-match-face-1     ((t (:foreground ,blue-1   :background ,blue-2       :bold))))
   `(ivy-minibuffer-match-face-2     ((t (:foreground ,green-1  :background ,green-2      :bold))))
   `(ivy-minibuffer-match-face-3     ((t (:foreground ,red-1    :background ,red-2        :bold))))
   `(ivy-minibuffer-match-face-4     ((t (:foreground ,yellow-1 :background ,yellow-2     :bold))))
-  ;`(ivy-minibuffer-match-highlight ((t (:foreground ,text-1   :background ,background-1      ))))
-  ;`(ivy-modified-buffer            ((t (:foreground ,text-1   :background ,background-1      ))))
-  ;`(ivy-modified-outside-buffer    ((t (:foreground ,text-1   :background ,background-1      ))))
-  ;`(ivy-org                        ((t (:foreground ,text-1   :background ,background-1      ))))
-  ;`(ivy-prompt-match               ((t (:foreground ,text-1   :background ,background-1      ))))
-  ;`(ivy-remote                     ((t (:foreground ,text-1   :background ,background-1      ))))
-  ;`(ivy-separator                  ((t (:foreground ,text-1   :background ,background-1      ))))
-  ;`(ivy-subdir                     ((t (:foreground ,text-1   :background ,background-1      ))))
-  ;`(ivy-virtual                    ((t (:foreground ,text-1   :background ,background-1      ))))
-  ;`(ivy-yanked-word                ((t (:foreground ,text-1   :background ,background-1      ))))
-
-;  `(company-echo-common ((t (:foreground ,colorB-1))))
-;  `(custom-invalid ((t (:background ,red-2 :foreground ,text-1))))
-;  `(dired-warning ((t (:foreground ,color1))))
-;  `(eww-valid-certificate ((t (:foreground ,color1 :bold t))))
-;  `(git-commit-nonempty-second-line ((t (:foreground ,color1))))
-;  `(git-commit-overlong-summary ((t (:foreground ,color1))))
-;  `(ido-incomplete-regexp ((t (:foreground ,color1))))
-;  `(ido-indicator ((t (:background ,red-2 :foreground ,text-1))))
-;  `(ido-subdir ((t (:foreground ,colorB-1))))
-;  `(ido-first-match ((t (:foreground ,text-1 :bold t))))
-;  `(ido-only-match ((t (:foreground ,text-1 :bold t))))
-;  `(info-xref-visited ((t (:foreground ,color1 :underline t))))
-;  `(ivy-current-match ((t (:foreground ,text-1 :bold t))))
-;  `(lsp-lsp-flycheck-warning-unnecessary-face ((t (:background ,background-color :foreground ,colorB-1 :underline t))))
-;  `(markdown-missing-link-face ((t (:foreground ,color1))))
-;  `(minibuffer-prompt ((t (:foreground ,color1))))
-;  `(package-status-disabled ((t (:foreground ,color1))))
-;  `(package-status-unsigned ((t (:foreground ,color1))))
-;  `(secondary-selection ((t (:background ,color1 :foreground ,colorB-1))))
-;  `(transient-argument ((t (:foreground ,color1))))
-;  `(transient-inactive-argument ((t (:foreground ,color1))))
-;  `(transient-inactive-value ((t (:foreground ,color1))))
-;  `(whitespace-space ((t (:foreground ,text-1))))
-;  `(whitespace-trailing ((t (:foreground ,text-1 :bold t))))
 )
 
 ;;;###autoload
