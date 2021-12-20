@@ -1077,12 +1077,18 @@ This is the package that handles server installation and session management.
       (progn
         (set-face-attribute 'mode-line nil :font "Tw Cen MT-25")
         (set-face-attribute 'mode-line-inactive nil :font "Tw Cen MT-25")
+        (set-face-attribute 'org-table nil :font "Courier New")
+        (set-face-attribute 'org-link nil :font "Courier New")
+        (set-face-attribute 'org-block nil :font "Courier New")
         )
       )
      ((string-equal system-type "gnu/linux")
       (progn
         (set-face-attribute 'mode-line nil :font "Comfortaa-25")
         (set-face-attribute 'mode-line-inactive nil :font "Comfortaa-25")
+        (set-face-attribute 'org-table nil :font "FreeMono-25")
+        (set-face-attribute 'org-link nil :font "FreeMono-25")
+        (set-face-attribute 'org-block nil :font "FreeMono-25")
         )
       )
      )
