@@ -23,6 +23,9 @@
 (defun my:buffer-face-mode-stylish()
   (interactive)
   (setq buffer-face-mode-face '(:family "Comfortaa" :height 220))
+  (set-face-attribute 'org-table nil :font "FreeMono-25")
+  (set-face-attribute 'org-link nil :font "FreeMono-25")
+  (set-face-attribute 'org-block nil :font "FreeMono-25")
   (buffer-face-mode))
 
 (add-hook 'eww-mode-hook 'my:buffer-face-mode-text)

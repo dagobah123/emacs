@@ -31,6 +31,9 @@
 (defun my:buffer-face-mode-stylish()
   (interactive)
   (setq buffer-face-mode-face '(:family "Tw Cen MT" :height 170))
+  (set-face-attribute 'org-table nil :font "Courier New")
+  (set-face-attribute 'org-link nil :font "Courier New")
+  (set-face-attribute 'org-block nil :font "Courier New")
   (buffer-face-mode))
 
 (add-hook 'eww-mode-hook 'my:buffer-face-mode-text)
