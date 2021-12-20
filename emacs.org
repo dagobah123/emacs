@@ -235,9 +235,9 @@ Load environment variables properly by installing =exec-path-from-shell=.
     )
     ((string-equal system-type "gnu/linux")
       (progn
-        (set-face-attribute 'org-table nil :font "FreeMono-25")
-        (set-face-attribute 'org-link nil :font "FreeMono-25")
-        (set-face-attribute 'org-block nil :font "FreeMono-25")
+        (set-face-attribute 'org-table nil :font "FreeMono")
+        (set-face-attribute 'org-link nil :font "FreeMono")
+        (set-face-attribute 'org-block nil :font "FreeMono")
       )
     )
   )
