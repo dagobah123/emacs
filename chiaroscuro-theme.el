@@ -36,7 +36,7 @@
 (defvar line-number-3     "")
 (defvar line-number-4     "")
 
-(if (eq CHIAROSCURO_INDEX 7) ;orange
+(if (eq CHIAROSCURO_INDEX 8) ;orange
     (progn
         (setq text-1 "#f98801")
         (setq text-2 "#89918f")
@@ -72,7 +72,7 @@
   )
 )
 
-(if (eq CHIAROSCURO_INDEX 6) ;pop
+(if (eq CHIAROSCURO_INDEX 7) ;pop
     (progn
         (setq text-1 "#e500df")
         (setq text-2 "#ffffff")
@@ -108,7 +108,7 @@
   )
 )
 
-(if (eq CHIAROSCURO_INDEX 5) ;white
+(if (eq CHIAROSCURO_INDEX 6) ;white
     (progn
         (setq text-1 "#000000")
         (setq text-2 "#000000")
@@ -144,7 +144,7 @@
   )
 )
 
-(if (eq CHIAROSCURO_INDEX 4) ;gioconda
+(if (eq CHIAROSCURO_INDEX 5) ;gioconda
     (progn
         (setq text-1 "#d6af6a")
         (setq text-2 "#9d996a")
@@ -180,7 +180,7 @@
   )
 )
 
-(if (eq CHIAROSCURO_INDEX 3) ;karekare
+(if (eq CHIAROSCURO_INDEX 4) ;karekare
     (progn
         (setq text-1 "#c0e347")
         (setq text-2 "#b2c4e0")
@@ -216,7 +216,7 @@
   )
 )
 
-(if (eq CHIAROSCURO_INDEX 2) ;caravaggio
+(if (eq CHIAROSCURO_INDEX 3) ;caravaggio
     (progn
         (setq text-1 "#c3ac88")
         (setq text-2 "#89918f")
@@ -252,6 +252,43 @@
         (setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#b4ba5f" :background "#2b550c" :weight bold))))
     )
   )
+
+(if (eq CHIAROSCURO_INDEX 2) ;terminal no background
+    (progn
+        (setq text-1 "#00cc00")
+        (setq text-2 "#009900")
+        (setq text-3 "#006600")
+        (setq text-hl "#00ff00")
+        (setq text-match "#000000")
+        (setq background-1 "#000000")
+        (setq background-2 "#003300")
+        (setq background-3 "#111111")
+        (setq background-4 "#003300")
+        (setq background-5 "#006600")
+        (setq background-6 "#009900")
+        (setq background-match "#00ff00")
+        (setq background-cursor "#00ff00")
+        (setq green-1 "#00cc00")
+        (setq green-2 "#000000")
+        (setq red-1 "#f15a83")
+        (setq red-2 "#000000")
+        (setq blue-1 "#7a70f7")
+        (setq blue-2 "#000000")
+        (setq yellow-1 "#eead0e")
+        (setq yellow-2 "#000000")
+        (setq violet-1 "#dc67dc")
+        (setq violet-2 "#43006d")
+        (setq orange-1 "#e87b2c")
+        (setq orange-2 "#000000")
+        (setq gray-1 "#777777")
+        (setq gray-2 "#222222")
+        (setq line-number-1 "#000000")
+        (setq line-number-2 "#00ff00")
+        (setq line-number-3 "#009900")
+        (setq line-number-4 "#000000")
+        (setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#00ff00" :background "#006d00" :weight bold))))
+  )
+)
 
 (if (eq CHIAROSCURO_INDEX 1) ;terminal
     (progn
@@ -327,11 +364,15 @@
     )
 )
 
-(setq CHIAROSCURO_INDEX (+ CHIAROSCURO_INDEX 1))
-
-(if (> CHIAROSCURO_INDEX 7)
+(if (> CHIAROSCURO_INDEX 8)
     (progn
         (setq CHIAROSCURO_INDEX 0)
+    )
+)
+
+(if (< CHIAROSCURO_INDEX 0)
+    (progn
+        (setq CHIAROSCURO_INDEX 8)
     )
 )
 
