@@ -409,7 +409,7 @@
   `(helm-source-header                ((t (:foreground ,text-1 :bold t                                 ))))
   `(helm-selection                    ((t (:foreground ,text-match :background ,background-match :bold t    ))))
   `(helm-swoop-target-line-face       ((t (:foreground ,text-match :background ,background-match :bold t                                 ))))
-  `(helm-swoop-target-word-face       ((t (:foreground ,green-1 :background ,green-2 :bold t     ))))
+  `(helm-swoop-target-word-face       ((t (:foreground ,violet-1 :background ,violet-2 :bold t     ))))
   `(helm-swoop-line-number-face       ((t (:foreground ,text-1 :background ,background-1 :weight bold))))
   `(helm-swoop-target-line-block-face ((t (:foreground ,text-1 :background ,background-1             ))))
   `(helm-ff-rsync-progress            ((t (:foreground ,text-1                                         ))))
@@ -427,7 +427,7 @@
   `(markdown-highlighting-face        ((t (:foreground ,green-1  :background ,green-2                                        ))))
   `(helm-header-line-left-margin      ((t (:foreground ,green-1  :background ,green-2                                        ))))
   `(cua-global-mark                   ((t (:foreground ,green-1  :background ,green-2                                        ))))
-  `(helm-match-item                   ((t (:foreground ,violet-1 :background ,violet-2                                        ))))
+  `(helm-match-item                   ((t (:foreground ,violet-1 :background ,violet-2 :weight bold                           ))))
   `(helm-separator                    ((t (:foreground ,yellow-1 :background ,yellow-2                                        ))))
   `(helm-lisp-completion-info         ((t (:foreground ,yellow-1 :background ,yellow-2                                        ))))
   `(ivy-match-required-face           ((t (:foreground ,yellow-1 :background ,yellow-2                                        ))))
@@ -435,6 +435,9 @@
   `(info-menu-star                    ((t (:foreground ,yellow-1 :background ,yellow-2                                        ))))
   `(helm-ff-denied                    ((t (:foreground ,yellow-1 :background ,yellow-2                                        ))))
 
+  ;`(helm-ff-socket                    ((t (:foreground ,violet-1 :background ,violet-2 :weight bold                           ))))
+
+  
   ;ido
   `(ido-subdir                        ((t (:foreground ,text-1))))
 

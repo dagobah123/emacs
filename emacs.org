@@ -59,6 +59,8 @@
                         dashboard
                         counsel-projectile
                         kotlin-mode
+                        evil
+                        evil-org
                         )
         )
 
@@ -224,6 +226,12 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (setq org-tags-column 0)
   (setq org-adapt-indentation nil)
   (org-reload)
+#+END_SRC
+** evil
+#+BEGIN_SRC emacs-lisp
+  (use-package evil)
+  (require 'evil)
+  (evil-mode 1)
 #+END_SRC
 ** projectile
 #+BEGIN_SRC emacs-lisp
@@ -936,6 +944,7 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-x t") 'bookmark-bmenu-list)
   (global-set-key (kbd "C-x 6") 'magit-blame)
   (global-set-key (kbd "C-x 7") 'magit-blame-quit)
+  (global-set-key (kbd "C-x 9") 'evil-mode)
   (global-set-key (kbd "C-'") 'treemacs-increase-width)
   (global-set-key (kbd "C-;") 'treemacs-decrease-width)
 #+END_SRC
