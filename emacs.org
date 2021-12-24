@@ -953,6 +953,19 @@ This is the package that handles server installation and session management.
                       )
         )
 
+  (setq themes-list-names '(
+                            "light gray"
+                            "terminal"
+                            "terminal no background"
+                            "orange"
+                            "caravaggio"
+                            "gioconda"
+                            "white"
+                            "karekare"
+                            "pop"
+                            )
+        )
+
   (defvar theme-index 0 "Index representing the current theme")
   (setq theme-index 0)
   (setq number-of-themes (length themes-list))
@@ -980,7 +993,7 @@ This is the package that handles server installation and session management.
     (interactive)
     (setq theme-index (- theme-index 1))
     (setq CHIAROSCURO_INDEX (- CHIAROSCURO_INDEX 1))
-    (message "theme-down")
+    ;(message "theme-down")
     (my:toggle-themes)
     (my:set-mode-line-font)
     )
@@ -990,7 +1003,7 @@ This is the package that handles server installation and session management.
     (interactive)
     (setq theme-index (+ theme-index 1))
     (setq CHIAROSCURO_INDEX (+ CHIAROSCURO_INDEX 1))
-    (message "theme-up")
+    ;(message "theme-up")
     (my:toggle-themes)
     (my:set-mode-line-font)
     )
@@ -1004,7 +1017,8 @@ This is the package that handles server installation and session management.
       (if (eq theme-index loop-index)
           (progn
             (load-theme (nth themes-list-index themes-list) t)
-            (message "%s" (nth themes-list-index themes-list))
+            ;(message "%s" (nth themes-list-index themes-list))
+            (message "%s" (nth themes-list-index themes-list-names))
             )
         )
       (setq loop-index (+ loop-index 1))
