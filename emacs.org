@@ -48,6 +48,7 @@
                         kotlin-mode
                         evil
                         evil-org
+                        cl-lib
                         )
         )
 
@@ -219,6 +220,22 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (use-package evil)
   (require 'evil)
   ;(evil-mode 1)
+
+  (require 'cl)
+
+  ;; change mode-line color by evil state
+  (lexical-let ((default-color (cons (face-background 'mode-line)
+                                     (face-foreground 'mode-line))))
+     (add-hook 'post-command-hook
+       (lambda ()
+         (let ((color (cond ((minibufferp) default-color)
+                            ((evil-insert-state-p) '("#00e800" . "#ffffff"))
+                            ((evil-visual-state-p) '("#e8e8e8" . "#ffffff"))
+                            ((evil-emacs-state-p)  '("#444488" . "#ffffff"))
+                            ((buffer-modified-p)   '("#006fa0" . "#ffffff"))
+                            (t default-color))))
+           (set-face-background 'mode-line (car color))
+           (set-face-foreground 'mode-line (cdr color))))))
 #+END_SRC
 ** projectile
 #+BEGIN_SRC emacs-lisp
@@ -512,7 +529,7 @@ This is the package that handles server installation and session management.
 ** doom-modeline
 #+BEGIN_SRC emacs-lisp
   (require 'doom-modeline)
-  (doom-modeline-mode 1)
+  ;(doom-modeline-mode 1)
 
   ;; How tall the mode-line should be. It's only respected in GUI.
   ;; If the actual char height is larger, it respects the actual height.
