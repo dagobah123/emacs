@@ -972,8 +972,8 @@ This is the package that handles server installation and session management.
 
   (setq themes-list-names '(
                             "light gray"
-                            "terminal"
                             "terminal no background"
+                            "terminal"
                             "orange"
                             "caravaggio"
                             "gioconda"
