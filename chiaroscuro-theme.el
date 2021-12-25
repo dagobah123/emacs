@@ -667,6 +667,9 @@
   `(mode-line                         ((t (:foreground ,text-1 :background ,background-2))))
   `(mode-line-inactive                ((t (:foreground ,text-2 :background ,background-2))))
   `(mode-line-buffer-id               ((t (:foreground ,text-1 :bold t                    ))))
+
+  `(telephone-line-evil-normal        ((t (:foreground ,violet-1 :background ,violet-2))))
+
   `(doom-modeline-bar                 ((t (:foreground ,text-1                            ))))
   `(doom-modeline-bar-inactive        ((t (:foreground ,text-1                            ))))
   `(doom-modeline-battery-charging    ((t (:foreground ,text-1                            ))))

@@ -221,18 +221,20 @@ Load environment variables properly by installing =exec-path-from-shell=.
 #+BEGIN_SRC emacs-lisp
   (use-package evil)
   (require 'evil)
-
   (evil-mode 1)
 
-  (use-package powerline)
-  (require 'powerline)
+  ;(use-package powerline)
+  ;(require 'powerline)
+  ;
+  ;(use-package powerline-evil)
+  ;(require 'powerline-evil)
+  ;
+  ;(powerline-evil-center-color-theme)
 
-  (use-package powerline-evil)
-  (require 'powerline-evil)
+  (use-package telephone-line)
+  (require 'telephone-line)
+  (telephone-line-mode 1)
 
-  (powerline-evil-center-color-theme)
-  ;(powerline-evil-vim-theme)
-  ;(powerline-evil-vim-color-theme)
 #+END_SRC
 ** projectile
 #+BEGIN_SRC emacs-lisp
