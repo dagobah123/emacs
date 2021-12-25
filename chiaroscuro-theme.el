@@ -39,6 +39,22 @@
 (defvar line-number-2           "")
 (defvar line-number-3           "")
 (defvar line-number-4           "")
+(defvar evil-emacs-1            "#ffffff")
+(defvar evil-emacs-2            "#bf3eff") ;violet
+(defvar evil-normal-1           "#ffffff")
+(defvar evil-normal-2           "#00cc00") ;green
+(defvar evil-insert-1           "#ffffff")
+(defvar evil-insert-2           "#dd0000") ;red
+(defvar evil-replace-1          "#ffffff")
+(defvar evil-replace-2          "#dd0000") ;red
+(defvar evil-replace-1          "#ffffff")
+(defvar evil-replace-2          "#ffa500") ;orange
+(defvar evil-visual-1           "#ffffff")
+(defvar evil-visual-2           "#ffb90f") ;yellow
+(defvar evil-motion-1           "#ffffff")
+(defvar evil-motion-2           "#4876ff") ;blue
+(defvar evil-operator-1         "#ffffff")
+(defvar evil-operator-2         "#4876ff") ;blue
 
 (if (eq CHIAROSCURO_INDEX 9) ;pop
     (progn
@@ -281,48 +297,7 @@
   )
 )
 
-(if (eq CHIAROSCURO_INDEX 3) ;terminal no background
-    (progn
-        (setq text-1 "#00cc00")
-        (setq text-2 "#009900")
-        (setq text-3 "#006600")
-        (setq text-hl "#00ff00")
-        (setq text-match "#000000")
-        (setq background-1 "#000000")
-        (setq background-2 "#003300")
-        (setq background-3 "#111111")
-        (setq background-4 "#003300")
-        (setq background-5 "#006600")
-        (setq background-6 "#009900")
-        (setq background-match "#00ff00")
-        (setq background-cursor "#00ff00")
-        (setq green-1 "#00cc00")
-        (setq green-2 "#000000")
-        (setq red-1 "#f15a83")
-        (setq red-2 "#000000")
-        (setq blue-1 "#7a70f7")
-        (setq blue-2 "#000000")
-        (setq yellow-1 "#eead0e")
-        (setq yellow-2 "#000000")
-        (setq violet-1 "#dc67dc")
-        (setq violet-2 "#43006d")
-        (setq orange-1 "#e87b2c")
-        (setq orange-2 "#000000")
-        (setq gray-1 "#777777")
-        (setq gray-2 "#222222")
-        (setq line-number-1 "#000000")
-        (setq line-number-2 "#00ff00")
-        (setq line-number-3 "#009900")
-        (setq line-number-4 "#000000")
-        (setq text-diff-added "#00cc00")
-        (setq background-diff-added "#005d00")
-        (setq text-diff-removed "#f15a83")
-        (setq background-diff-removed "#790725")
-        (setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#00ff00" :background "#006d00" :weight bold))))
-  )
-)
-
-(if (eq CHIAROSCURO_INDEX 2) ;terminal
+(if (eq CHIAROSCURO_INDEX 3) ;terminal
     (progn
         (setq text-1 "#00cc00")
         (setq text-2 "#009900")
@@ -349,6 +324,47 @@
         (setq violet-2 "#43006d")
         (setq orange-1 "#e87b2c")
         (setq orange-2 "#792a07")
+        (setq gray-1 "#777777")
+        (setq gray-2 "#222222")
+        (setq line-number-1 "#000000")
+        (setq line-number-2 "#00ff00")
+        (setq line-number-3 "#009900")
+        (setq line-number-4 "#000000")
+        (setq text-diff-added "#00cc00")
+        (setq background-diff-added "#005d00")
+        (setq text-diff-removed "#f15a83")
+        (setq background-diff-removed "#790725")
+        (setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#00ff00" :background "#006d00" :weight bold))))
+  )
+)
+
+(if (eq CHIAROSCURO_INDEX 2) ;terminal no background
+    (progn
+        (setq text-1 "#00cc00")
+        (setq text-2 "#009900")
+        (setq text-3 "#006600")
+        (setq text-hl "#00ff00")
+        (setq text-match "#000000")
+        (setq background-1 "#000000")
+        (setq background-2 "#003300")
+        (setq background-3 "#111111")
+        (setq background-4 "#003300")
+        (setq background-5 "#006600")
+        (setq background-6 "#009900")
+        (setq background-match "#00ff00")
+        (setq background-cursor "#00ff00")
+        (setq green-1 "#00cc00")
+        (setq green-2 "#000000")
+        (setq red-1 "#f15a83")
+        (setq red-2 "#000000")
+        (setq blue-1 "#7a70f7")
+        (setq blue-2 "#000000")
+        (setq yellow-1 "#eead0e")
+        (setq yellow-2 "#000000")
+        (setq violet-1 "#dc67dc")
+        (setq violet-2 "#43006d")
+        (setq orange-1 "#e87b2c")
+        (setq orange-2 "#000000")
         (setq gray-1 "#777777")
         (setq gray-2 "#222222")
         (setq line-number-1 "#000000")
@@ -518,7 +534,7 @@
 
   ;`(helm-ff-socket                    ((t (:foreground ,violet-1 :background ,violet-2 :weight bold                           ))))
 
-  
+
   ;ido
   `(ido-subdir                        ((t (:foreground ,text-1))))
 
@@ -668,7 +684,21 @@
   `(mode-line-inactive                ((t (:foreground ,text-2 :background ,background-2))))
   `(mode-line-buffer-id               ((t (:foreground ,text-1 :bold t                    ))))
 
-  `(telephone-line-evil-normal        ((t (:foreground ,violet-1 :background ,violet-2))))
+  `(telephone-line-accent-active      ((t (:foreground ,text-1 :background ,background-1))))
+  `(telephone-line-accent-inactive    ((t (:foreground ,text-2 :background ,background-1))))
+;  `(telephone-line-error              ((t (:foreground ,violet-1 :background ,violet-2))))
+;  `(telephone-line-evil               ((t (:foreground ,violet-1 :background ,violet-2))))
+  `(telephone-line-evil-emacs         ((t (:foreground ,evil-emacs-1 :background ,evil-emacs-2))))
+;  `(telephone-line-evil-god           ((t (:foreground ,violet-1 :background ,violet-2))))
+  `(telephone-line-evil-insert        ((t (:foreground ,evil-insert-1 :background ,evil-insert-2))))
+  `(telephone-line-evil-motion        ((t (:foreground ,evil-motion-1 :background ,evil-motion-2))))
+  `(telephone-line-evil-normal        ((t (:foreground ,evil-normal-1 :background ,evil-normal-2))))
+  `(telephone-line-evil-operator      ((t (:foreground ,evil-operator-1 :background ,evil-operator-2))))
+  `(telephone-line-evil-replace       ((t (:foreground ,evil-replace-1 :background ,evil-replace-2))))
+  `(telephone-line-evil-visual        ((t (:foreground ,evil-visual-1 :background ,evil-visual-2))))
+  `(telephone-line-projectile         ((t (:foreground ,violet-1))))
+;  `(telephone-line-unimportant        ((t (:foreground ,yellow-1))))
+  `(telephone-line-warning            ((t (:foreground ,red-1))))
 
   `(doom-modeline-bar                 ((t (:foreground ,text-1                            ))))
   `(doom-modeline-bar-inactive        ((t (:foreground ,text-1                            ))))

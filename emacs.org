@@ -51,6 +51,7 @@
                         cl-lib
                         powerline
                         powerline-evil
+                        telephone-line
                         )
         )
 
@@ -811,7 +812,7 @@ This is the package that handles server installation and session management.
       (next-line 1)
       (yank)
       )
-  
+
     (defun eww-new ()
       (interactive)
       (let ((url (read-from-minibuffer "Enter URL or keywords: ")))
@@ -820,7 +821,7 @@ This is the package that handles server installation and session management.
         (eww url)
         )
       )
-  
+
     (defvar java-function-regexp
       (concat
        "^[ \t]*"                                   ; leading white space
@@ -846,45 +847,45 @@ This is the package that handles server installation and session management.
        ")"                                         ; end the param list
        )
       )
-  
+
     (defun my:next-java-method()
       (interactive)
       (re-search-forward java-function-regexp nil t)
       (recenter)
       )
-  
+
     (defun my:prev-java-method()
       (interactive)
       (re-search-backward java-function-regexp nil t)
       (recenter)
       )
-  
+
     (defvar next-method-regexp "\\(class\\|def\\|public\\|private\\|protected\\|defun\\|defvar\\|[a-zA-Z0-9_$]+(\\)")
-  
+
     (defun my:next-method()
       (interactive)
       (re-search-forward next-method-regexp nil t)
       (recenter)
     )
-  
+
     (defun my:prev-method()
       (interactive)
       (re-search-backward next-method-regexp nil t)
       (recenter)
     )
-  
+
     (defun my:previous-link-center()
       (interactive)
       (Info-prev-reference)
       (recenter)
     )
-  
+
     (defun my:next-link-center()
       (interactive)
       (Info-next-reference)
       (recenter)
     )
-  
+
     (defun my:agenda-view()
       (interactive)
       (org-agenda t "a")
@@ -892,7 +893,7 @@ This is the package that handles server installation and session management.
       (delete-other-windows)
       (org-agenda-redo-all)
       )
-  
+
     (defun my:helm-grep-do-git-grep()
       (interactive)
       (let ((current-prefix-arg 4))
@@ -905,7 +906,7 @@ This is the package that handles server installation and session management.
 ;           (font-lock-add-keywords nil
 ;            '(("\\<\\(\\sw+\\) ?(" 1
 ;               'dired-special t)))))
-  
+
   ;  (add-hook 'java-mode-hook (lambda ()
   ;                              (font-lock-add-keywords
   ;                               'java-mode
@@ -947,7 +948,7 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-x t") 'bookmark-bmenu-list)
   (global-set-key (kbd "C-x 5 5") 'magit-blame)
   (global-set-key (kbd "C-x 7") 'magit-blame-quit)
-  (global-set-key (kbd "C-x 9") 'evil-mode)
+  (global-set-key (kbd "C-<escape>") 'evil-mode)
   (global-set-key (kbd "C-'") 'treemacs-increase-width)
   (global-set-key (kbd "C-;") 'treemacs-decrease-width)
 #+END_SRC
