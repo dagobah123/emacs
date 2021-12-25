@@ -793,12 +793,12 @@
   `(dashboard-no-items-face      ((t (:foreground ,text-1 :background ,background-1))))
   `(dashboard-text-banner        ((t (:foreground ,text-1 :background ,background-1))))
 
-  `(ivy-current-match               ((t (:foreground ,text-match :background ,background-match           ))))
-  `(ivy-highlight-face              ((t (:foreground ,text-1   :background ,background-1      ))))
-  `(ivy-minibuffer-match-face-1     ((t (:foreground ,blue-1   :background ,blue-2       :bold))))
-  `(ivy-minibuffer-match-face-2     ((t (:foreground ,green-1  :background ,green-2      :bold))))
-  `(ivy-minibuffer-match-face-3     ((t (:foreground ,red-1    :background ,red-2        :bold))))
-  `(ivy-minibuffer-match-face-4     ((t (:foreground ,yellow-1 :background ,yellow-2     :bold))))
+  `(ivy-current-match               ((t (:foreground ,violet-1 :background ,violet-2      ))))
+  `(ivy-highlight-face              ((t (:foreground ,violet-1 :background ,violet-2      ))))
+  `(ivy-minibuffer-match-face-1     ((t (:foreground ,violet-1 :background ,violet-2 :bold))))
+  `(ivy-minibuffer-match-face-2     ((t (:foreground ,violet-1 :background ,violet-2 :bold))))
+  `(ivy-minibuffer-match-face-3     ((t (:foreground ,violet-1 :background ,violet-2 :bold))))
+  `(ivy-minibuffer-match-face-4     ((t (:foreground ,violet-1 :background ,violet-2 :bold))))
 )
 
 ;;;###autoload
