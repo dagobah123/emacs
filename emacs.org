@@ -97,7 +97,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (setq blink-cursor-blinks 0)
 
   (global-display-line-numbers-mode)
-  (setq display-line-numbers-type 'absolute)
+  (setq display-line-numbers-type 'relative)
   (global-set-key (kbd "C-7") 'global-display-line-numbers-mode)
   (defun my:global-display-line-numbers-mode-on()
     (interactive)
@@ -112,10 +112,6 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (add-hook 'org-agenda-hook 'my:global-display-line-numbers-mode-off)
 
   (global-hl-line-mode)
-  ;(set-face-background 'highlight "#007700")
-  ;(set-face-attribute hl-line-face nil :underline nil)
-  ;(set-face-foreground 'highlight nil)
-  ;(set-face-underline-p 'highlight t)
 
   ; 4 spaces indentation
   (setq c-default-style "linux" c-basic-offset 4)
@@ -146,6 +142,8 @@ Load environment variables properly by installing =exec-path-from-shell=.
           )
       )
   )
+
+  (setq inhibit-startup-screen t)
 #+END_SRC
 ** behavior
 #+BEGIN_SRC emacs-lisp
@@ -260,7 +258,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (("C-c h" . helm-grep-do-git-grep))
   (("C-s" . helm-swoop))
   (("C-c b" . helm-buffers-list))
-  (("C-r" . helm-bookmarks))
+  (("C-c r" . helm-bookmarks))
   (("C-c i" . helm-mini))
   (("C-c q" . helm-info)))
 #+END_SRC
@@ -745,31 +743,31 @@ This is the package that handles server installation and session management.
 #+END_SRC
 ** dashboard
 #+BEGIN_SRC emacs-lisp
-  (require 'dashboard)
-  (dashboard-setup-startup-hook)
-  (setq dashboard-projects-switch-function 'counsel-projectile-switch-project-by-name)
-  (setq dashboard-projects-backend 'projectile)
-  (setq dashboard-items '(
-                          (projects . 10)
-                          (bookmarks . 10)
-                          (agenda . 10)
-                          (recents  . 5)
-                          ;(registers . 10)
-                          )
-        )
-  (setq dashboard-startup-banner nil)
-  (setq dashboard-set-footer nil)
-  (setq dashboard-center-content t)
-  (setq dashboard-set-heading-icons t)
-  (dashboard-modify-heading-icons '(
-                                    (projects . "terminal")
-                                    (bookmarks . "git-branch")
-                                    (agenda . "bug")
-                                    (recents . "code")
-                                    ;(registers . "code")
-                                    )
-                                  )
-  (setq dashboard-set-init-info t)
+;  (require 'dashboard)
+;  (dashboard-setup-startup-hook)
+;  (setq dashboard-projects-switch-function 'counsel-projectile-switch-project-by-name)
+;  (setq dashboard-projects-backend 'projectile)
+;  (setq dashboard-items '(
+;                          (projects . 30)
+;                          ;(bookmarks . 10)
+;                          ;(agenda . 10)
+;                          ;(recents  . 5)
+;                          ;(registers . 10)
+;                          )
+;        )
+;  (setq dashboard-startup-banner nil)
+;  (setq dashboard-set-footer nil)
+;  (setq dashboard-center-content t)
+;  (setq dashboard-set-heading-icons t)
+;  (dashboard-modify-heading-icons '(
+;                                    (projects . "terminal")
+;                                    (bookmarks . "git-branch")
+;                                    (agenda . "bug")
+;                                    (recents . "code")
+;                                    ;(registers . "code")
+;                                    )
+;                                  )
+;  (setq dashboard-set-init-info t)
 #+END_SRC
 ** counsel-projectile
 #+BEGIN_SRC emacs-lisp
@@ -1024,7 +1022,7 @@ This is the package that handles server installation and session management.
     (my:toggle-themes)
     (my:set-mode-line-font)
     )
-  (global-set-key (kbd "C-6") 'my:theme-up)
+  (global-set-key (kbd "C-~") 'my:theme-up)
 
   (defun my:loop()
     (interactive)
