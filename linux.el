@@ -3,7 +3,7 @@
 ; (setenv "JAVA_HOME" "/usr/lib/jvm/java-14-openjdk-amd64")
 
 ; set font of mode-line
-(set-face-attribute 'mode-line nil :font "Comfortaa-20")
+;(set-face-attribute 'mode-line nil :font "Comfortaa-20")
 
 (defun my:buffer-face-mode-mono()
   (interactive)

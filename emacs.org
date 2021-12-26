@@ -1083,8 +1083,8 @@ This is the package that handles server installation and session management.
       )
      ((string-equal system-type "gnu/linux")
       (progn
-        (set-face-attribute 'mode-line nil :font "Comfortaa-20")
-        (set-face-attribute 'mode-line-inactive nil :font "Comfortaa-20")
+        ;(set-face-attribute 'mode-line nil :font "Comfortaa-20")
+        ;(set-face-attribute 'mode-line-inactive nil :font "Comfortaa-20")
         (set-face-attribute 'org-table nil :font "FreeMono-25")
         (set-face-attribute 'org-link nil :font "FreeMono-25")
         (set-face-attribute 'org-block nil :font "FreeMono-25")
