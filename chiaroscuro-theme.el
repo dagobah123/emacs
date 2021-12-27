@@ -685,7 +685,7 @@
   `(mode-line-buffer-id               ((t (:foreground ,text-1 :bold t                    ))))
 
   `(telephone-line-accent-active      ((t (:foreground ,text-1          :background ,background-1))))
-  `(`telephone-line-accent-inactive    ((t (:foreground ,text-2          :background ,background-1))))
+  `(telephone-line-accent-inactive    ((t (:foreground ,text-2          :background ,background-1))))
 ;  `(telephone-line-error              ((t (:foreground ,violet-1       :background ,violet-2))))
 ;  `(telephone-line-evil               ((t (:foreground ,violet-1       :background ,violet-2))))
   `(telephone-line-evil-emacs         ((t (:foreground ,evil-emacs-1    :background ,evil-emacs-2))))
@@ -699,6 +699,16 @@
   `(telephone-line-projectile         ((t (:foreground ,text-1 :bold t))))
 ;  `(telephone-line-unimportant        ((t (:foreground ,yellow-1))))
   `(telephone-line-warning            ((t (:foreground ,red-1))))
+
+;  `(evil-ex-commands                  ((t (:foreground ,text-1 :background ,background-1))))
+;  `(evil-ex-info                      ((t (:foreground ,text-1 :background ,background-1))))
+  `(evil-ex-lazy-highlight            ((t (:foreground ,violet-1 :background ,violet-2)))) 
+  `(evil-ex-search                    ((t (:foreground ,violet-1 :background ,violet-2)))) 
+  `(evil-ex-substitute-matches        ((t (:foreground ,violet-1 :background ,violet-2)))) 
+  `(lazy-highlight                    ((t (:foreground ,violet-1 :background ,violet-2)))) 
+  `(isearch                           ((t (:foreground ,violet-1 :background ,violet-2)))) 
+;  `(query-replace        ((t (:foreground ,violet-1 :background ,violet-2)))) 
+;  `(evil-ex-substitute-replacement    ((t (:foreground ,text-1 :background ,background-1))))
 
   `(doom-modeline-bar                 ((t (:foreground ,text-1                            ))))
   `(doom-modeline-bar-inactive        ((t (:foreground ,text-1                            ))))
