@@ -949,6 +949,8 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-<escape>") 'evil-mode)
   (global-set-key (kbd "C-'") 'treemacs-increase-width)
   (global-set-key (kbd "C-;") 'treemacs-decrease-width)
+  (global-set-key (kbd "M-m") 'xref-pop-marker-stack)
+  (global-set-key (kbd "M-,") 'xref-find-definitions)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp

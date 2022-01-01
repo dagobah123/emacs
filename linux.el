@@ -1,6 +1,10 @@
 ;;; Linux specific settings
 
-; (setenv "JAVA_HOME" "/usr/lib/jvm/java-14-openjdk-amd64")
+;(setenv "JAVA_HOME" "/usr/lib/jvm/java-14-openjdk-amd64")
+;(setenv "JAVA_HOME" "/usr/lib/jvm/java-11-openjdk-armhf/bin/java")
+
+;(setenv "JAVA_HOME" "/usr/lib/jvm/java-11-openjdk-armhf/bin/java")
+;(setq lsp-java-java-path "/usr/lib/jvm/java-11-openjdk-armhf/bin/java")
 
 ; set font of mode-line
 ;(set-face-attribute 'mode-line nil :font "Comfortaa-20")
