@@ -355,7 +355,7 @@
         (setq background-match "#00ff00")
         (setq background-cursor "#00ff00")
         (setq green-1 "#00cc00")
-        (setq green-2 "#000000")
+        (setq green-2 "#005d00")
         (setq red-1 "#fa529b")
         (setq red-2 "#000000")
         (setq blue-1 "#7a70f7")

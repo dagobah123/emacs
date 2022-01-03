@@ -111,7 +111,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (add-hook 'org-mode-hook 'my:global-display-line-numbers-mode-off)
   (add-hook 'org-agenda-hook 'my:global-display-line-numbers-mode-off)
 
-  (global-hl-line-mode)
+  (global-hl-line-mode 1)
 
   ; 4 spaces indentation
   (setq c-default-style "linux" c-basic-offset 4)
