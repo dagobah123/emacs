@@ -23,36 +23,24 @@
 
   ; Set package list
   (setq package-list '(use-package
-                        dired-quick-sort
-                        helm-swoop
-                        magit
-                        magit-find-file
-                        dired-narrow
-                        openwith
-                        projectile
-                        powershell
-                        csharp-mode
-                        goto-last-change
-                        move-text
-                        nov
-                        elfeed
-                        org-scrum
-                        uml-mode
-                        treemacs
-                        treemacs-projectile
-                        all-the-icons
-                        doom-modeline
-                        counsel-web
-                        dashboard
-                        counsel-projectile
-                        kotlin-mode
-                        evil
-                        evil-org
-                        cl-lib
-                        powerline
-                        powerline-evil
-                        telephone-line
-                        )
+                       all-the-icons
+                       helm-swoop
+                       move-text
+                       goto-last-change
+                       evil
+                       telephone-line
+                       projectile
+                       treemacs-projectile
+                       magit
+                       magit-find-file
+                       nov
+                       openwith
+                       powershell
+                       csharp-mode
+                       elfeed
+                       counsel-web
+                       counsel-projectile
+                       )
         )
 
   (dolist (package package-list)
@@ -222,14 +210,6 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (require 'evil)
   (evil-mode 1)
 
-  ;(use-package powerline)
-  ;(require 'powerline)
-  ;
-  ;(use-package powerline-evil)
-  ;(require 'powerline-evil)
-  ;
-  ;(powerline-evil-center-color-theme)
-
   (use-package telephone-line)
   (require 'telephone-line)
   (telephone-line-mode 1)
@@ -275,36 +255,13 @@ Load environment variables properly by installing =exec-path-from-shell=.
 
   (global-set-key (kbd "C-c f") 'find-name-dired)
 
-  ; prevent warning to show on windows machine
-  ; connected with dired-quick-sort
-  ;(cond
-  ; ((string-equal system-type "windows-nt")
-  ;  (progn
-  ;    (setq ls-lisp-use-insert-directory-program t)
-  ;   )
-  ; )
-  ;)
-  ; "S" opens the menu
-  ;(use-package dired-quick-sort)
-  ;(require 'dired-quick-sort)
-  ;(dired-quick-sort-setup)
-
-  ; open file in dired with eww, shortcut: e
-  ; (define-key dired-mode-map "e" (lambda () (interactive) (eww-open-file (dired-get-file-for-visit))))
-
   (use-package dired-narrow
     :ensure t
     :config
     (bind-key "C-x f" #'dired-narrow)
     ;(bind-key "C-f" #'dired-narrow-fuzzy)
   )
-
-  ;(use-package dired-subtree
-  ;  :ensure t
-  ;  :after dired
-  ;  :config
-  ;  (bind-key "C-c 1" #'dired-subtree-toggle)
-  ;)
+  (require 'dired-narrow)
 #+END_SRC
 ** lsp
 *** Company
@@ -512,195 +469,18 @@ This is the package that handles server installation and session management.
     (winner-mode 1)
     )
 #+END_SRC
-** nov (epub)
-#+BEGIN_SRC emacs-lisp
-  (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
-  (defun my-nov-font-setup ()
-    (face-remap-add-relative 'variable-pitch :family "Liberation Serif" :height 1.0))
-  (add-hook 'nov-mode-hook 'my-nov-font-setup)
-#+END_SRC
 ** ido
 #+BEGIN_SRC emacs-lisp
   (setq ido-enable-flex-matching t)
   (ido-mode 1)
 #+END_SRC
-** doom-modeline
+** windows
 #+BEGIN_SRC emacs-lisp
-  (require 'doom-modeline)
-  ;(doom-modeline-mode 1)
+  (use-package powershell)
+  (require 'powershell)
 
-  ;; How tall the mode-line should be. It's only respected in GUI.
-  ;; If the actual char height is larger, it respects the actual height.
-  (cond
-   ((string-equal system-type "windows-nt")
-    (progn
-      (setq doom-modeline-height 42)
-      )
-    )
-   ((string-equal system-type "gnu/linux")
-    (progn
-      (setq doom-modeline-height 20)
-      )
-    )
-   )
-
-  ;(custom-set-faces `(doom-modeline-icon-inactive ((t (:inherit mode-line-inactive)))))
-
-  ;; How wide the mode-line bar should be. It's only respected in GUI.
-  (setq doom-modeline-bar-width 10)
-
-  ;; Whether to use hud instead of default bar. It's only respected in GUI.
-  ;(defcustom doom-modeline-hud nil)
-
-  ;; The limit of the window width.
-  ;; If `window-width' is smaller than the limit, some information won't be displayed.
-  ;(setq doom-modeline-window-width-limit fill-column)
-
-  ;; How to detect the project root.
-  ;; The default priority of detection is `ffip' > `projectile' > `project'.
-  ;; nil means to use `default-directory'.
-  ;; The project management packages have some issues on detecting project root.
-  ;; e.g. `projectile' doesn't handle symlink folders well, while `project' is unable
-  ;; to hanle sub-projects.
-  ;; You can specify one if you encounter the issue.
-  ;(setq doom-modeline-project-detection 'project)
-
-  ;; Determines the style used by `doom-modeline-buffer-file-name'.
-  ;;
-  ;; Given ~/Projects/FOSS/emacs/lisp/comint.el
-  ;;   auto => emacs/lisp/comint.el (in a project) or comint.el
-  ;;   truncate-upto-project => ~/P/F/emacs/lisp/comint.el
-  ;;   truncate-from-project => ~/Projects/FOSS/emacs/l/comint.el
-  ;;   truncate-with-project => emacs/l/comint.el
-  ;;   truncate-except-project => ~/P/F/emacs/l/comint.el
-  ;;   truncate-upto-root => ~/P/F/e/lisp/comint.el
-  ;;   truncate-all => ~/P/F/e/l/comint.el
-  ;;   truncate-nil => ~/Projects/FOSS/emacs/lisp/comint.el
-  ;;   relative-from-project => emacs/lisp/comint.el
-  ;;   relative-to-project => lisp/comint.el
-  ;;   file-name => comint.el
-  ;;   buffer-name => comint.el<2> (uniquify buffer name)
-  ;;
-  ;; If you are experiencing the laggy issue, especially while editing remote files
-  ;; with tramp, please try `file-name' style.
-  ;; Please refer to https://github.com/bbatsov/projectile/issues/657.
-  ;(setq doom-modeline-buffer-file-name-style 'auto)
-
-  ;; Whether display icons in the mode-line.
-  ;; While using the server mode in GUI, should set the value explicitly.
-  (setq doom-modeline-icon (display-graphic-p))
-
-  ;; Whether display the icon for `major-mode'. It respects `doom-modeline-icon'.
-  (setq doom-modeline-major-mode-icon t)
-
-  ;; Whether display the colorful icon for `major-mode'.
-  ;; It respects `all-the-icons-color-icons'.
-  (setq doom-modeline-major-mode-color-icon t)
-
-  ;; Whether display the icon for the buffer state. It respects `doom-modeline-icon'.
-  (setq doom-modeline-buffer-state-icon t)
-
-  ;; Whether display the modification icon for the buffer.
-  ;; It respects `doom-modeline-icon' and `doom-modeline-buffer-state-icon'.
-  (setq doom-modeline-buffer-modification-icon t)
-
-  ;; Whether to use unicode as a fallback (instead of ASCII) when not using icons.
-  (setq doom-modeline-unicode-fallback nil)
-
-  ;; Whether display the minor modes in the mode-line.
-  ;(setq doom-modeline-minor-modes nil)
-
-  ;; If non-nil, a word count will be added to the selection-info modeline segment.
-  ;(setq doom-modeline-enable-word-count nil)
-
-  ;; Major modes in which to display word count continuously.
-  ;; Also applies to any derived modes. Respects `doom-modeline-enable-word-count'.
-  ;; If it brings the sluggish issue, disable `doom-modeline-enable-word-count' or
-  ;; remove the modes from `doom-modeline-continuous-word-count-modes'.
-  ;(setq doom-modeline-continuous-word-count-modes '(markdown-mode gfm-mode org-mode))
-
-  ;; Whether display the buffer encoding.
-  ;(setq doom-modeline-buffer-encoding t)
-
-  ;; Whether display the indentation information.
-  ;(setq doom-modeline-indent-info nil)
-
-  ;; If non-nil, only display one number for checker information if applicable.
-  ;(setq doom-modeline-checker-simple-format t)
-
-  ;; The maximum number displayed for notifications.
-  ;(setq doom-modeline-number-limit 99)
-
-  ;; The maximum displayed length of the branch name of version control.
-  ;(setq doom-modeline-vcs-max-length 12)
-
-  ;; Whether display the workspace name. Non-nil to display in the mode-line.
-  ;(setq doom-modeline-workspace-name t)
-
-  ;; Whether display the perspective name. Non-nil to display in the mode-line.
-  ;(setq doom-modeline-persp-name t)
-
-  ;; If non nil the default perspective name is displayed in the mode-line.
-  ;(setq doom-modeline-display-default-persp-name nil)
-
-  ;; If non nil the perspective name is displayed alongside a folder icon.
-  ;(setq doom-modeline-persp-icon t)
-
-  ;; Whether display the `lsp' state. Non-nil to display in the mode-line.
-  ;(setq doom-modeline-lsp t)
-
-  ;; Whether display the GitHub notifications. It requires `ghub' package.
-  ;(setq doom-modeline-github nil)
-
-  ;; The interval of checking GitHub.
-  ;(setq doom-modeline-github-interval (* 30 60))
-
-  ;; Whether display the modal state icon.
-  ;; Including `evil', `overwrite', `god', `ryo' and `xah-fly-keys', etc.
-  ;(setq doom-modeline-modal-icon t)
-
-  ;; Whether display the mu4e notifications. It requires `mu4e-alert' package.
-  ;(setq doom-modeline-mu4e nil)
-
-  ;; Whether display the gnus notifications.
-  ;(setq doom-modeline-gnus t)
-
-  ;; Wheter gnus should automatically be updated and how often (set to 0 or smaller than 0 to disable)
-  ;(setq doom-modeline-gnus-timer 2)
-
-  ;; Wheter groups should be excludede when gnus automatically being updated.
-  ;(setq doom-modeline-gnus-excluded-groups '("dummy.group"))
-
-  ;; Whether display the IRC notifications. It requires `circe' or `erc' package.
-  ;(setq doom-modeline-irc t)
-
-  ;; Function to stylize the irc buffer names.
-  ;(setq doom-modeline-irc-stylize 'identity)
-
-  ;; Whether display the environment version.
-  ;(setq doom-modeline-env-version t)
-  ;; Or for individual languages
-  ;(setq doom-modeline-env-enable-python t)
-  ;(setq doom-modeline-env-enable-ruby t)
-  ;(setq doom-modeline-env-enable-perl t)
-  ;(setq doom-modeline-env-enable-go t)
-  ;(setq doom-modeline-env-enable-elixir t)
-  ;(setq doom-modeline-env-enable-rust t)
-
-  ;; Change the executables to use for the language version string
-  ;(setq doom-modeline-env-python-executable "python") ; or `python-shell-interpreter'
-  ;(setq doom-modeline-env-ruby-executable "ruby")
-  ;(setq doom-modeline-env-perl-executable "perl")
-  ;(setq doom-modeline-env-go-executable "go")
-  ;(setq doom-modeline-env-elixir-executable "iex")
-  ;(setq doom-modeline-env-rust-executable "rustc")
-
-  ;; What to display as the version while a new one is being loaded
-  ;(setq doom-modeline-env-load-string "...")
-
-  ;; Hooks that run before/after the modeline version string is updated
-  ;(setq doom-modeline-before-update-env-hook nil)
-  ;(setq doom-modeline-after-update-env-hook nil)
+  (use-package csharp-mode)
+  (require 'csharp-mode)
 #+END_SRC
 ** mood-line-mode
 #+BEGIN_SRC emacs-lisp
@@ -741,37 +521,11 @@ This is the package that handles server installation and session management.
     )
   (global-set-key (kbd "C-c w") counsel-web-map)
 #+END_SRC
-** dashboard
-#+BEGIN_SRC emacs-lisp
-;  (require 'dashboard)
-;  (dashboard-setup-startup-hook)
-;  (setq dashboard-projects-switch-function 'counsel-projectile-switch-project-by-name)
-;  (setq dashboard-projects-backend 'projectile)
-;  (setq dashboard-items '(
-;                          (projects . 30)
-;                          ;(bookmarks . 10)
-;                          ;(agenda . 10)
-;                          ;(recents  . 5)
-;                          ;(registers . 10)
-;                          )
-;        )
-;  (setq dashboard-startup-banner nil)
-;  (setq dashboard-set-footer nil)
-;  (setq dashboard-center-content t)
-;  (setq dashboard-set-heading-icons t)
-;  (dashboard-modify-heading-icons '(
-;                                    (projects . "terminal")
-;                                    (bookmarks . "git-branch")
-;                                    (agenda . "bug")
-;                                    (recents . "code")
-;                                    ;(registers . "code")
-;                                    )
-;                                  )
-;  (setq dashboard-set-init-info t)
-#+END_SRC
 ** counsel-projectile
 #+BEGIN_SRC emacs-lisp
-(counsel-projectile-mode t)
+  (require 'counsel-projectile)
+  (use-package counsel-projectile)
+  (counsel-projectile-mode t)
 #+END_SRC
 ** custom pop up
 #+BEGIN_SRC emacs-lisp
@@ -783,135 +537,154 @@ This is the package that handles server installation and session management.
 #+END_SRC
 ** custom functions
 #+BEGIN_SRC emacs-lisp
-    (defun my:switch-buffers-right()
-      (interactive)
-      (org-shiftright)
-      (next-buffer)
-      (org-shiftleft)
-      (next-buffer)
-      (org-shiftright)
-      )
-
-    (defun my:switch-buffers-left()
-      (interactive)
-      (org-shiftleft)
-      (next-buffer)
-      (org-shiftright)
-      (next-buffer)
-      (org-shiftleft)
-      )
-
-    (defun my:duplicate-line()
-      (interactive)
-      (move-beginning-of-line 1)
-      (kill-line)
-      (yank)
-      (open-line 1)
-      (next-line 1)
-      (yank)
-      )
-
-    (defun eww-new ()
-      (interactive)
-      (let ((url (read-from-minibuffer "Enter URL or keywords: ")))
-        (switch-to-buffer (generate-new-buffer "eww"))
-        (eww-mode)
-        (eww url)
+      (defun my:switch-buffers-right()
+        (interactive)
+        (org-shiftright)
+        (next-buffer)
+        (org-shiftleft)
+        (next-buffer)
+        (org-shiftright)
         )
+
+      (defun my:switch-buffers-left()
+        (interactive)
+        (org-shiftleft)
+        (next-buffer)
+        (org-shiftright)
+        (next-buffer)
+        (org-shiftleft)
+        )
+
+      (defun my:duplicate-line()
+        (interactive)
+        (move-beginning-of-line 1)
+        (kill-line)
+        (yank)
+        (open-line 1)
+        (next-line 1)
+        (yank)
+        )
+
+      (defun eww-new ()
+        (interactive)
+        (let ((url (read-from-minibuffer "Enter URL or keywords: ")))
+          (switch-to-buffer (generate-new-buffer "eww"))
+          (eww-mode)
+          (eww url)
+          )
+        )
+
+      (defvar java-function-regexp
+        (concat
+         "^[ \t]*"                                   ; leading white space
+         "\\(public\\|private\\|protected\\|"        ; some of these 8 keywords
+         "abstract\\|final\\|static\\|"
+         "synchronized\\|native"
+         "\\|override"                               ; C# support
+         "\\|[ \t\n\r]\\)*"                          ; or whitespace
+         "[a-zA-Z0-9_$]+"                            ; return type
+         "[ \t\n\r]*[[]?[]]?"                        ; (could be array)
+         "[ \t\n\r]+"                                ; whitespace
+         "\\([a-zA-Z0-9_$]+\\)"                      ; the name we want!
+         "[ \t\n\r]*"                                ; optional whitespace
+         "("                                         ; open the param list
+         "\\([ \t\n\r]*"                             ; optional whitespace
+         "\\<[a-zA-Z0-9_$]+\\>"                      ; typename
+         "[ \t\n\r]*[[]?[]]?"                        ; (could be array)
+         "[ \t\n\r]+"                                ; whitespace
+         "\\<[a-zA-Z0-9_$]+\\>"                      ; variable name
+         "[ \t\n\r]*[[]?[]]?"                        ; (could be array)
+         "[ \t\n\r]*,?\\)*"                          ; opt whitespace and comma
+         "[ \t\n\r]*"                                ; optional whitespace
+         ")"                                         ; end the param list
+         )
+        )
+
+      (defun my:next-java-method()
+        (interactive)
+        (re-search-forward java-function-regexp nil t)
+        (recenter)
+        )
+
+      (defun my:prev-java-method()
+        (interactive)
+        (re-search-backward java-function-regexp nil t)
+        (recenter)
+        )
+
+      (defvar next-method-regexp "\\(class\\|def\\|public\\|private\\|protected\\|defun\\|defvar\\|[a-zA-Z0-9_$]+(\\)")
+
+      (defun my:next-method()
+        (interactive)
+        (re-search-forward next-method-regexp nil t)
+        (recenter)
       )
 
-    (defvar java-function-regexp
-      (concat
-       "^[ \t]*"                                   ; leading white space
-       "\\(public\\|private\\|protected\\|"        ; some of these 8 keywords
-       "abstract\\|final\\|static\\|"
-       "synchronized\\|native"
-       "\\|override"                               ; C# support
-       "\\|[ \t\n\r]\\)*"                          ; or whitespace
-       "[a-zA-Z0-9_$]+"                            ; return type
-       "[ \t\n\r]*[[]?[]]?"                        ; (could be array)
-       "[ \t\n\r]+"                                ; whitespace
-       "\\([a-zA-Z0-9_$]+\\)"                      ; the name we want!
-       "[ \t\n\r]*"                                ; optional whitespace
-       "("                                         ; open the param list
-       "\\([ \t\n\r]*"                             ; optional whitespace
-       "\\<[a-zA-Z0-9_$]+\\>"                      ; typename
-       "[ \t\n\r]*[[]?[]]?"                        ; (could be array)
-       "[ \t\n\r]+"                                ; whitespace
-       "\\<[a-zA-Z0-9_$]+\\>"                      ; variable name
-       "[ \t\n\r]*[[]?[]]?"                        ; (could be array)
-       "[ \t\n\r]*,?\\)*"                          ; opt whitespace and comma
-       "[ \t\n\r]*"                                ; optional whitespace
-       ")"                                         ; end the param list
-       )
+      (defun my:prev-method()
+        (interactive)
+        (re-search-backward next-method-regexp nil t)
+        (recenter)
       )
 
-    (defun my:next-java-method()
-      (interactive)
-      (re-search-forward java-function-regexp nil t)
-      (recenter)
+      (defun my:previous-link-center()
+        (interactive)
+        (Info-prev-reference)
+        (recenter)
       )
 
-    (defun my:prev-java-method()
-      (interactive)
-      (re-search-backward java-function-regexp nil t)
-      (recenter)
+      (defun my:next-link-center()
+        (interactive)
+        (Info-next-reference)
+        (recenter)
       )
 
-    (defvar next-method-regexp "\\(class\\|def\\|public\\|private\\|protected\\|defun\\|defvar\\|[a-zA-Z0-9_$]+(\\)")
+      (defun my:agenda-view()
+        (interactive)
+        (org-agenda t "a")
+        (org-agenda-day-view)
+        (delete-other-windows)
+        (org-agenda-redo-all)
+        )
 
-    (defun my:next-method()
-      (interactive)
-      (re-search-forward next-method-regexp nil t)
-      (recenter)
-    )
+      (defun my:helm-grep-do-git-grep()
+        (interactive)
+        (let ((current-prefix-arg 4))
+        (call-interactively 'helm-grep-do-git-grep)
+        )
+        )
 
-    (defun my:prev-method()
-      (interactive)
-      (re-search-backward next-method-regexp nil t)
-      (recenter)
-    )
+      (defun my:replace-umlauts()
+        (interactive)
+        (beginning-of-buffer)
+        (while (search-forward "ae" nil t)
+            (replace-match "ä" nil t)
+        )
+        (beginning-of-buffer)
+        (while (search-forward "oe" nil t)
+            (replace-match "ö" nil t)
+        )
+        (beginning-of-buffer)
+        (while (search-forward "ue" nil t)
+            (replace-match "ü" nil t)
+        )
+        (beginning-of-buffer)
+        (while (search-forward "ss" nil t)
+            (replace-match "ß" nil t)
+        )
+        )
+  ;(add-hook 'java-mode-hook
+  ;          (lambda ()
+  ;           (font-lock-add-keywords nil
+  ;            '(("\\<\\(\\sw+\\) ?(" 1
+  ;               'dired-special t)))))
 
-    (defun my:previous-link-center()
-      (interactive)
-      (Info-prev-reference)
-      (recenter)
-    )
-
-    (defun my:next-link-center()
-      (interactive)
-      (Info-next-reference)
-      (recenter)
-    )
-
-    (defun my:agenda-view()
-      (interactive)
-      (org-agenda t "a")
-      (org-agenda-day-view)
-      (delete-other-windows)
-      (org-agenda-redo-all)
-      )
-
-    (defun my:helm-grep-do-git-grep()
-      (interactive)
-      (let ((current-prefix-arg 4))
-      (call-interactively 'helm-grep-do-git-grep)
-      )
-      )
-
-;(add-hook 'java-mode-hook
-;          (lambda ()
-;           (font-lock-add-keywords nil
-;            '(("\\<\\(\\sw+\\) ?(" 1
-;               'dired-special t)))))
-
-  ;  (add-hook 'java-mode-hook (lambda ()
-  ;                              (font-lock-add-keywords
-  ;                               'java-mode
-  ;                               '(("hello" 1 'font-lock-preprocessor-face)))
-  ;                              )
-  ;            )
-                                ; '(("\\<\\(\\sw+\\) ?(" 1 'font-lock-function-name-face)))
+    ;  (add-hook 'java-mode-hook (lambda ()
+    ;                              (font-lock-add-keywords
+    ;                               'java-mode
+    ;                               '(("hello" 1 'font-lock-preprocessor-face)))
+    ;                              )
+    ;            )
+                                  ; '(("\\<\\(\\sw+\\) ?(" 1 'font-lock-function-name-face)))
 #+END_SRC
 ** key bindings
 #+BEGIN_SRC emacs-lisp
