@@ -739,14 +739,12 @@ This is the package that handles server installation and session management.
                       chiaroscuro
                       chiaroscuro
                       chiaroscuro
-                      chiaroscuro
                       )
         )
 
   (setq themes-list-names '(
-                            "light gray"
-                            "terminal no background"
                             "terminal"
+                            "light gray"
                             "orange"
                             "caravaggio"
                             "gioconda"
@@ -765,8 +763,7 @@ This is the package that handles server installation and session management.
     (setq loop-index 0)
     (while (< loop-index number-of-themes)
       (disable-theme (nth loop-index themes-list))
-      (setq loop-index (+ loop-index 1)
-            )
+      (setq loop-index (+ loop-index 1))
       )
     )
 
@@ -829,6 +826,8 @@ This is the package that handles server installation and session management.
     (if (eq theme-index 0)
         (progn
           (message "emacs")
+          (setq theme-index 0)
+          (setq CHIAROSCURO_INDEX 0)
           )
       )
 
@@ -836,8 +835,9 @@ This is the package that handles server installation and session management.
 
     (if (> theme-index number-of-themes)
         (progn
-          (setq theme-index 0)
           (message "emacs")
+          (setq theme-index 0)
+          (setq CHIAROSCURO_INDEX 0)
           )
       )
     )

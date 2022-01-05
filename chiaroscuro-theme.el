@@ -57,7 +57,7 @@
 (defvar evil-operator-2         "#4876ff") ;blue
 (defvar error                   "#ff0000")
 
-(if (eq CHIAROSCURO_INDEX 9) ;pop
+(if (eq CHIAROSCURO_INDEX 8) ;pop
     (progn
         (setq text-1 "#e500df")
         (setq text-2 "#ffffff")
@@ -97,7 +97,7 @@
   )
 )
 
-(if (eq CHIAROSCURO_INDEX 8) ;karekare
+(if (eq CHIAROSCURO_INDEX 7) ;karekare
     (progn
         (setq text-1 "#c0e347")
         (setq text-2 "#b2c4e0")
@@ -137,7 +137,7 @@
   )
 )
 
-(if (eq CHIAROSCURO_INDEX 7) ;white
+(if (eq CHIAROSCURO_INDEX 6) ;white
     (progn
         (setq text-1 "#000000")
         (setq text-2 "#000000")
@@ -177,7 +177,7 @@
   )
 )
 
-(if (eq CHIAROSCURO_INDEX 6) ;gioconda
+(if (eq CHIAROSCURO_INDEX 5) ;gioconda
     (progn
         (setq text-1 "#d6af6a")
         (setq text-2 "#9d996a")
@@ -217,7 +217,7 @@
   )
 )
 
-(if (eq CHIAROSCURO_INDEX 5) ;caravaggio
+(if (eq CHIAROSCURO_INDEX 4) ;caravaggio
     (progn
         (setq text-1 "#c3ac88")
         (setq text-2 "#89918f")
@@ -258,7 +258,7 @@
     )
   )
 
-(if (eq CHIAROSCURO_INDEX 4) ;orange
+(if (eq CHIAROSCURO_INDEX 3) ;orange
     (progn
         (setq text-1 "#f98801")
         (setq text-2 "#89918f")
@@ -298,89 +298,7 @@
   )
 )
 
-(if (eq CHIAROSCURO_INDEX 3) ;terminal
-    (progn
-        (setq text-1 "#00cc00")
-        (setq text-2 "#009900")
-        (setq text-3 "#006600")
-        (setq text-hl "#00ff00")
-        (setq text-match "#000000")
-        (setq background-1 "#000000")
-        (setq background-2 "#003300")
-        (setq background-3 "#111111")
-        (setq background-4 "#003300")
-        (setq background-5 "#006600")
-        (setq background-6 "#009900")
-        (setq background-match "#00ff00")
-        (setq background-cursor "#00ff00")
-        (setq green-1 "#00cc00")
-        (setq green-2 "#005d00")
-        (setq red-1 "#f15a83")
-        (setq red-2 "#790725")
-        (setq blue-1 "#7a70f7")
-        (setq blue-2 "#0a0082")
-        (setq yellow-1 "#eead0e")
-        (setq yellow-2 "#795807")
-        (setq violet-1 "#dc67dc")
-        (setq violet-2 "#43006d")
-        (setq orange-1 "#e87b2c")
-        (setq orange-2 "#792a07")
-        (setq gray-1 "#777777")
-        (setq gray-2 "#222222")
-        (setq line-number-1 "#00ff00")
-        (setq line-number-2 "#003300")
-        (setq line-number-3 "#009900")
-        (setq line-number-4 "#000000")
-        (setq text-diff-added "#00cc00")
-        (setq background-diff-added "#005d00")
-        (setq text-diff-removed "#f15a83")
-        (setq background-diff-removed "#790725")
-        (setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#00ff00" :background "#006d00" :weight bold))))
-  )
-)
-
-(if (eq CHIAROSCURO_INDEX 2) ;terminal no background
-    (progn
-        (setq text-1 "#00cc00")
-        (setq text-2 "#009900")
-        (setq text-3 "#006600")
-        (setq text-hl "#00ff00")
-        (setq text-match "#000000")
-        (setq background-1 "#000000")
-        (setq background-2 "#003300")
-        (setq background-3 "#111111")
-        (setq background-4 "#003300")
-        (setq background-5 "#006600")
-        (setq background-6 "#009900")
-        (setq background-match "#00ff00")
-        (setq background-cursor "#00ff00")
-        (setq green-1 "#00cc00")
-        (setq green-2 "#005d00")
-        (setq red-1 "#fa529b")
-        (setq red-2 "#000000")
-        (setq blue-1 "#7a70f7")
-        (setq blue-2 "#000000")
-        (setq yellow-1 "#eead0e")
-        (setq yellow-2 "#000000")
-        (setq violet-1 "#f974f9")
-        (setq violet-2 "#43006d")
-        (setq orange-1 "#e87b2c")
-        (setq orange-2 "#000000")
-        (setq gray-1 "#777777")
-        (setq gray-2 "#222222")
-        (setq line-number-1 "#00ff00")
-        (setq line-number-2 "#003300")
-        (setq line-number-3 "#009900")
-        (setq line-number-4 "#000000")
-        (setq text-diff-added "#00cc00")
-        (setq background-diff-added "#005d00")
-        (setq text-diff-removed "#f15a83")
-        (setq background-diff-removed "#790725")
-        (setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#00ff00" :background "#006d00" :weight bold))))
-  )
-)
-
-(if (eq CHIAROSCURO_INDEX 1) ;light gray
+(if (eq CHIAROSCURO_INDEX 2) ;light gray
     (progn
         (setq text-1 "#444444")
         (setq text-2 "#999999")
@@ -421,7 +339,48 @@
     )
 )
 
-(if (> CHIAROSCURO_INDEX 8)
+(if (eq CHIAROSCURO_INDEX 1) ;terminal
+    (progn
+        (setq text-1 "#00cc00")
+        (setq text-2 "#009900")
+        (setq text-3 "#006600")
+        (setq text-hl "#00ff00")
+        (setq text-match "#000000")
+        (setq background-1 "#000000")
+        (setq background-2 "#003300")
+        (setq background-3 "#111111")
+        (setq background-4 "#003300")
+        (setq background-5 "#006600")
+        (setq background-6 "#009900")
+        (setq background-match "#00ff00")
+        (setq background-cursor "#00ff00")
+        (setq green-1 "#00cc00")
+        (setq green-2 "#005d00")
+        (setq red-1 "#fa529b")
+        (setq red-2 "#000000")
+        (setq blue-1 "#7a70f7")
+        (setq blue-2 "#000000")
+        (setq yellow-1 "#eead0e")
+        (setq yellow-2 "#000000")
+        (setq violet-1 "#f974f9")
+        (setq violet-2 "#43006d")
+        (setq orange-1 "#e87b2c")
+        (setq orange-2 "#000000")
+        (setq gray-1 "#777777")
+        (setq gray-2 "#222222")
+        (setq line-number-1 "#00ff00")
+        (setq line-number-2 "#003300")
+        (setq line-number-3 "#009900")
+        (setq line-number-4 "#000000")
+        (setq text-diff-added "#00cc00")
+        (setq background-diff-added "#005d00")
+        (setq text-diff-removed "#f15a83")
+        (setq background-diff-removed "#790725")
+        (setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#00ff00" :background "#006d00" :weight bold))))
+  )
+)
+
+(if (> CHIAROSCURO_INDEX 7)
     (progn
         (setq CHIAROSCURO_INDEX 0)
     )
@@ -429,7 +388,7 @@
 
 (if (< CHIAROSCURO_INDEX 0)
     (progn
-        (setq CHIAROSCURO_INDEX 8)
+        (setq CHIAROSCURO_INDEX 7)
     )
 )
 
@@ -666,7 +625,7 @@
   `(org-scheduled-today               ((t (:foreground ,text-1  :background ,background-1 ))))
   `(org-sexp-date                     ((t (:foreground ,text-1  :background ,background-1 ))))
   `(org-special-keyword               ((t (:foreground ,text-1  :background ,background-1 ))))
-  `(org-table                         ((t (:foreground ,green-1  :background ,green-2 ))))
+  `(org-table                         ((t (:foreground ,text-1  :background ,background-4 ))))
   `(org-table-header                  ((t (:foreground ,green-1  :background ,green-2 ))))
   `(org-tag                           ((t (:foreground ,text-2  :background ,background-1 ))))
   `(org-tag-group                     ((t (:foreground ,text-1  :background ,background-1 ))))
