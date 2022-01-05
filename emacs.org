@@ -194,10 +194,10 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (setq org-startup-folded 'content)
 
   ; org-mode use shift arrows to change buffer
-  (add-hook 'org-shiftup-final-hook 'windmove-up)
-  (add-hook 'org-shiftleft-final-hook 'windmove-left)
-  (add-hook 'org-shiftdown-final-hook 'windmove-down)
-  (add-hook 'org-shiftright-final-hook 'windmove-right)
+  ;(add-hook 'org-shiftup-final-hook 'windmove-up)
+  ;(add-hook 'org-shiftleft-final-hook 'windmove-left)
+  ;(add-hook 'org-shiftdown-final-hook 'windmove-down)
+  ;(add-hook 'org-shiftright-final-hook 'windmove-right)
   (setq org-support-shift-select 'always)
   (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "FEEDBACK" "ON-HOLD" "|" "DONE" "DELEGATED")))
   (setq org-tags-column 0)
@@ -395,6 +395,14 @@ This is the package that handles server installation and session management.
     :config (add-hook 'java-mode-hook 'lsp)
     )
 #+end_src
+** lsp python
+#+begin_src emacs-lisp
+  (use-package lsp-mode
+    :hook
+    ((python-mode . lsp)))
+  (use-package lsp-ui
+    :commands lsp-ui-mode)
+#+END_SRC
 ** magit
 (global-magit-file-mode t)
 #+begin_src emacs-lisp
