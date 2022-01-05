@@ -899,3 +899,7 @@ This is the package that handles server installation and session management.
                                      )
                                )
 #+END_SRC
+** change theme on startup
+#+BEGIN_SRC emacs-lisp
+  (my:theme-up)
+#+END_SRC
