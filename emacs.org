@@ -675,10 +675,11 @@ This is the package that handles server installation and session management.
         (while (search-forward "ue" nil t)
             (replace-match "ü" nil t)
         )
-        (beginning-of-buffer)
-        (while (search-forward "ss" nil t)
-            (replace-match "ß" nil t)
         )
+
+      (defun my:umlaut-s()
+        (interactive)
+        (insert "ß")
         )
   ;(add-hook 'java-mode-hook
   ;          (lambda ()
