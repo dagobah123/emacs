@@ -677,10 +677,26 @@ This is the package that handles server installation and session management.
         )
         )
 
-      (defun my:umlaut-s()
+      (defun my:ua-umlaut-a()
+       (interactive)
+        (insert "ä")
+        )
+
+      (defun my:uo-umlaut-o()
+        (interactive)
+        (insert "ö")
+        )
+
+      (defun my:uu-umlaut-u()
+        (interactive)
+        (insert "ü")
+        )
+
+      (defun my:us-umlaut-s()
         (interactive)
         (insert "ß")
         )
+
   ;(add-hook 'java-mode-hook
   ;          (lambda ()
   ;           (font-lock-add-keywords nil
