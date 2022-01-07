@@ -677,25 +677,29 @@ This is the package that handles server installation and session management.
         )
         )
 
-      (defun my:ua-umlaut-a()
+      (defun my:umlaut-a()
        (interactive)
         (insert "ä")
         )
+      (global-set-key (kbd "C-c k a") 'my:umlaut-a)
 
-      (defun my:uo-umlaut-o()
+      (defun my:umlaut-o()
         (interactive)
         (insert "ö")
         )
+      (global-set-key (kbd "C-c k o") 'my:umlaut-o)
 
-      (defun my:uu-umlaut-u()
+      (defun my:umlaut-u()
         (interactive)
         (insert "ü")
         )
+      (global-set-key (kbd "C-c k u") 'my:umlaut-u)
 
-      (defun my:us-umlaut-s()
+      (defun my:umlaut-s()
         (interactive)
         (insert "ß")
         )
+      (global-set-key (kbd "C-c k s") 'my:umlaut-s)
 
   ;(add-hook 'java-mode-hook
   ;          (lambda ()
