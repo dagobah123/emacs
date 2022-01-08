@@ -203,6 +203,29 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (setq org-tags-column 0)
   (setq org-adapt-indentation nil)
   (org-reload)
+
+  (setq org-latex-pdf-process '("latexmk -f -pdf %f"))
+
+  (setq org-publish-project-alist
+      '(
+           ("org-mode-notes-emacs"
+            :base-directory "~/source/org-mode/notes/emacs/"
+            :base-extension "org"
+            :publishing-directory "~/publish/emacs/"
+            :recursive t
+            :publishing-function org-html-publish-to-html
+            :headline-levels 4
+            :auto-preamble t
+           )
+           ("org-mode-notes-emacs-static"
+            :base-directory "~/source/org-mode/notes/emacs/"
+            :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+            :publishing-directory "~/publish/emacs/"
+            :recursive t
+            :publishing-function org-publish-attachment
+           )
+           ("org" :components ("org-mode-notes-emacs" "org-mode-notes-emacs-static"))
+        ))
 #+END_SRC
 ** evil
 #+BEGIN_SRC emacs-lisp
