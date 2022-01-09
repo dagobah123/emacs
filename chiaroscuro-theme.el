@@ -445,17 +445,17 @@
   `(dired-special                       ((t (:foreground ,violet-1                                    ))))
 
   ;dired
-  `(dired-directory       ((t (:foreground ,text-2  :background, background-1))))
-  `(dired-flagged         ((t (:foreground ,red-1   :background, red-2       ))))
-  `(dired-header          ((t (:foreground ,text-1  :background, background-1))))
-  `(dired-ignored         ((t (:foreground ,text-1  :background, background-1))))
-  `(dired-mark            ((t (:foreground ,red-1   :background, red-2       ))))
-  `(dired-marked          ((t (:foreground ,red-1   :background, red-2       ))))
-  `(dired-narrow-blink    ((t (:foreground ,text-1  :background, background-1))))
-  `(dired-perm-write      ((t (:foreground ,text-1  :background, background-1))))
-  `(dired-set-id          ((t (:foreground ,text-1  :background, background-1))))
-  `(dired-symlink         ((t (:foreground ,text-1  :background, background-1))))
-  `(dired-warning         ((t (:foreground ,text-1  :background, background-1))))
+  `(dired-directory       ((t (:foreground ,violet-1 :background, violet-2    ))))
+  `(dired-flagged         ((t (:foreground ,red-1    :background, red-2       ))))
+  `(dired-header          ((t (:foreground ,text-1   :background, background-1))))
+  `(dired-ignored         ((t (:foreground ,text-1   :background, background-1))))
+  `(dired-mark            ((t (:foreground ,red-1    :background, red-2       ))))
+  `(dired-marked          ((t (:foreground ,red-1    :background, red-2       ))))
+  `(dired-narrow-blink    ((t (:foreground ,text-1   :background, background-1))))
+  `(dired-perm-write      ((t (:foreground ,text-1   :background, background-1))))
+  `(dired-set-id          ((t (:foreground ,text-1   :background, background-1))))
+  `(dired-symlink         ((t (:foreground ,text-1   :background, background-1))))
+  `(dired-warning         ((t (:foreground ,text-1   :background, background-1))))
 
   ;helm
   `(helm-minibuffer-prompt            ((t (:foreground ,text-1 :background ,background-1             ))))

@@ -177,55 +177,75 @@ Load environment variables properly by installing =exec-path-from-shell=.
 #+END_SRC
 ** org mode
 #+BEGIN_SRC emacs-lisp
-  (setq org-directory "~/source/org-mode/")
-  (setq org-default-notes-file (concat org-directory "/org-capture.org"))
-  (global-set-key (kbd "C-c a") 'org-agenda)
-  (global-set-key (kbd "C-c c") 'org-capture)
-  (global-set-key (kbd "C-c s") 'org-schedule)
-  (global-set-key (kbd "C-c l") 'org-store-link)
-  (global-set-key (kbd "C-c b") 'org-switchb)
+      (setq org-directory "~/source/org-mode/")
+      (setq org-default-notes-file (concat org-directory "/org-capture.org"))
+      (global-set-key (kbd "C-c a") 'org-agenda)
+      (global-set-key (kbd "C-c c") 'org-capture)
+      (global-set-key (kbd "C-c s") 'org-schedule)
+      (global-set-key (kbd "C-c l") 'org-store-link)
+      (global-set-key (kbd "C-c b") 'org-switchb)
 
-  (load (concat EMACS_HOME "agenda"))
+      (load (concat EMACS_HOME "agenda"))
 
-  ; fold/overview
-  ; nofold/showall
-  ; content
-  ; showeverything
-  (setq org-startup-folded 'content)
+      ; fold/overview
+      ; nofold/showall
+      ; content
+      ; showeverything
+      (setq org-startup-folded 'content)
 
-  ; org-mode use shift arrows to change buffer
-  ;(add-hook 'org-shiftup-final-hook 'windmove-up)
-  ;(add-hook 'org-shiftleft-final-hook 'windmove-left)
-  ;(add-hook 'org-shiftdown-final-hook 'windmove-down)
-  ;(add-hook 'org-shiftright-final-hook 'windmove-right)
-  (setq org-support-shift-select 'always)
-  (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "FEEDBACK" "ON-HOLD" "|" "DONE" "DELEGATED")))
-  (setq org-tags-column 0)
-  (setq org-adapt-indentation nil)
-  (org-reload)
+      ; org-mode use shift arrows to change buffer
+      ;(add-hook 'org-shiftup-final-hook 'windmove-up)
+      ;(add-hook 'org-shiftleft-final-hook 'windmove-left)
+      ;(add-hook 'org-shiftdown-final-hook 'windmove-down)
+      ;(add-hook 'org-shiftright-final-hook 'windmove-right)
+      (setq org-support-shift-select 'always)
+      (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "FEEDBACK" "ON-HOLD" "|" "DONE" "DELEGATED")))
+      (setq org-tags-column 0)
+      (setq org-adapt-indentation nil)
+      (org-reload)
 
-  (setq org-latex-pdf-process '("latexmk -f -pdf %f"))
+      (setq org-latex-pdf-process '("latexmk -f -pdf %f"))
 
-  (setq org-publish-project-alist
-      '(
-           ("org-mode-notes-emacs"
-            :base-directory "~/source/org-mode/notes/emacs/"
-            :base-extension "org"
-            :publishing-directory "~/publish/emacs/"
-            :recursive t
-            :publishing-function org-html-publish-to-html
-            :headline-levels 4
-            :auto-preamble t
-           )
-           ("org-mode-notes-emacs-static"
-            :base-directory "~/source/org-mode/notes/emacs/"
-            :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
-            :publishing-directory "~/publish/emacs/"
-            :recursive t
-            :publishing-function org-publish-attachment
-           )
-           ("org" :components ("org-mode-notes-emacs" "org-mode-notes-emacs-static"))
-        ))
+      (setq org-publish-project-alist
+          '(
+               ("org-mode-notes-emacs"
+                :base-directory "~/source/org-mode/notes/emacs/"
+                :base-extension "org"
+                :publishing-directory "~/publish/emacs/"
+                :recursive t
+                :publishing-function org-html-publish-to-html
+                :headline-levels 4
+                :auto-preamble t
+               )
+               ("org-mode-notes-emacs-static"
+                :base-directory "~/source/org-mode/notes/emacs/"
+                :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+                :publishing-directory "~/publish/emacs/"
+                :recursive t
+                :publishing-function org-publish-attachment
+               )
+               ("org-mode-notes-development"
+                :base-directory "~/source/org-mode/notes/development/"
+                :base-extension "org"
+                :publishing-directory "~/publish/development/"
+                :recursive t
+                :publishing-function org-html-publish-to-html
+                :headline-levels 4
+                :auto-preamble t
+               )
+               ("org-mode-notes-development-static"
+                :base-directory "~/source/org-mode/notes/development/"
+                :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+                :publishing-directory "~/publish/development/"
+                :recursive t
+                :publishing-function org-publish-attachment
+               )
+               ("org" :components ("org-mode-notes-emacs"
+                                   "org-mode-notes-emacs-static"
+                                   "org-mode-notes-development"
+                                   "org-mode-notes-development-static"
+                                  ))
+            ))
 #+END_SRC
 ** evil
 #+BEGIN_SRC emacs-lisp
@@ -488,7 +508,7 @@ This is the package that handles server installation and session management.
   (require 'openwith)
   (openwith-mode t)
   (setq openwith-associations
-        (list (list (openwith-make-extension-regexp '("pdf")) "evince" '(file))
+        (list (list (openwith-make-extension-regexp '("pdf")) "qpdfview" '(file))
               (list (openwith-make-extension-regexp '("avi" "mp3" "mp4" "wav")) "vlc" '(file))
               (list (openwith-make-extension-regexp '("sln")) "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\Common7\\IDE\\devenv.exe" '(file))
               )
