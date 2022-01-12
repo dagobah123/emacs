@@ -251,7 +251,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
 #+BEGIN_SRC emacs-lisp
   (use-package evil)
   (require 'evil)
-  (evil-mode 1)
+  (evil-mode 0)
 
   (use-package telephone-line)
   (require 'telephone-line)
@@ -792,10 +792,12 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-x 5 5") 'magit-blame)
   (global-set-key (kbd "C-x 7") 'magit-blame-quit)
   (global-set-key (kbd "C-<escape>") 'evil-mode)
+  (global-set-key (kbd "C-x 9") 'evil-mode)
   (global-set-key (kbd "C-'") 'treemacs-increase-width)
   (global-set-key (kbd "C-;") 'treemacs-decrease-width)
   (global-set-key (kbd "M-m") 'xref-pop-marker-stack)
   (global-set-key (kbd "M-,") 'xref-find-definitions)
+  (global-set-key (kbd "M-n") 'evil-first-non-blank)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp

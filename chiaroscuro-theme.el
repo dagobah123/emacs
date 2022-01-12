@@ -638,6 +638,9 @@
   `(org-verse                         ((t (:foreground ,text-1  :background ,background-1 ))))
   `(org-warning                       ((t (:foreground ,text-1  :background ,background-1 ))))
 
+  `(diff-added                       ((t (:foreground ,text-diff-added    :background ,background-diff-added ))))
+  `(diff-removed                     ((t (:foreground ,text-diff-removed  :background ,background-diff-removed ))))
+
   ;mode-line
   `(mode-line                         ((t (:foreground ,text-1 :background ,background-2))))
   `(mode-line-inactive                ((t (:foreground ,text-2 :background ,background-2))))
