@@ -251,7 +251,10 @@ Load environment variables properly by installing =exec-path-from-shell=.
 #+BEGIN_SRC emacs-lisp
   (use-package evil)
   (require 'evil)
-  (evil-mode 0)
+  (evil-mode 1)
+
+  ;(evil-set-initial-state 'org-mode 'emacs)
+  (setq-default evil-default-state 'emacs)
 
   (use-package telephone-line)
   (require 'telephone-line)
