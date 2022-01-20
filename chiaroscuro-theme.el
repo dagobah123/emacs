@@ -35,6 +35,7 @@
 (defvar orange-2                "")
 (defvar gray-1                  "")
 (defvar gray-2                  "")
+(defvar white-1                 "#ffffff")
 (defvar line-number-1           "")
 (defvar line-number-2           "")
 (defvar line-number-3           "")
@@ -362,7 +363,7 @@
         (setq blue-2 "#000000")
         (setq yellow-1 "#eead0e")
         (setq yellow-2 "#000000")
-        (setq violet-1 "#f974f9")
+        (setq violet-1 "#fd86fd")
         (setq violet-2 "#43006d")
         (setq orange-1 "#e87b2c")
         (setq orange-2 "#000000")
@@ -644,7 +645,7 @@
   ;mode-line
   `(mode-line                         ((t (:foreground ,text-1 :background ,background-2))))
   `(mode-line-inactive                ((t (:foreground ,text-2 :background ,background-2))))
-  `(mode-line-buffer-id               ((t (:foreground ,text-1 :bold t                    ))))
+  `(mode-line-buffer-id               ((t (:foreground ,violet-1 :background ,violet-2 :bold t :underline t :italic t ))))
 
   `(telephone-line-accent-active      ((t (:foreground ,text-1          :background ,background-1))))
   `(telephone-line-accent-inactive    ((t (:foreground ,text-2          :background ,background-1))))
@@ -658,9 +659,9 @@
   `(telephone-line-evil-operator      ((t (:foreground ,evil-operator-1 :background ,evil-operator-2))))
   `(telephone-line-evil-replace       ((t (:foreground ,evil-replace-1  :background ,evil-replace-2))))
   `(telephone-line-evil-visual        ((t (:foreground ,evil-visual-1   :background ,evil-visual-2))))
-  `(telephone-line-projectile         ((t (:foreground ,text-1 :bold t))))
+  `(telephone-line-projectile         ((t (:foreground ,text-hl :background ,background-5 :bold t :box (:line-width 3 :color ,text-hl)))))
 ;  `(telephone-line-unimportant        ((t (:foreground ,yellow-1))))
-  `(telephone-line-warning            ((t (:foreground ,red-1))))
+  `(telephone-line-warning            ((t (:foreground ,text-1))))
 
 ;  `(evil-ex-commands                  ((t (:foreground ,text-1 :background ,background-1))))
 ;  `(evil-ex-info                      ((t (:foreground ,text-1 :background ,background-1))))
