@@ -263,8 +263,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
         telephone-line-secondary-left-separator 'telephone-line-flat
         telephone-line-primary-right-separator 'telephone-line-flat
         telephone-line-secondary-right-separator 'telephone-line-flat)
-  (setq telephone-line-height 24
-        telephone-line-evil-use-short-tag t)
+  (setq telephone-line-evil-use-short-tag t)
 
   ;all configurations must be set before this line
   ;https://github.com/dbordak/telephone-line/blob/master/examples.org
@@ -983,5 +982,6 @@ This is the package that handles server installation and session management.
 #+END_SRC
 ** change theme on startup
 #+BEGIN_SRC emacs-lisp
+  (my:theme-up)
   (my:theme-up)
 #+END_SRC

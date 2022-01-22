@@ -222,12 +222,12 @@
 (if (eq CHIAROSCURO_INDEX 2) ;light
     (progn
         (setq text-1 "#000000")
-        (setq text-2 "#000000")
+        (setq text-2 "#999999")
         (setq text-3 "#000000")
         (setq text-hl "#000000")
         (setq text-match "#000000")
         (setq background-1 "#ffffff")
-        (setq background-2 "#dddddd")
+        (setq background-2 "#f7f7f7")
         (setq background-3 "#bbbbbb")
         (setq background-4 "#fffc84")
         (setq background-5 "#9bff83")
