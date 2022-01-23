@@ -11,22 +11,22 @@
 
 (defun my:buffer-face-mode-mono()
   (interactive)
-  (setq buffer-face-mode-face '(:family "FreeMono" :height 220 :weight bold))
+  (setq buffer-face-mode-face '(:family "FreeMono" :weight bold))
   (buffer-face-mode))
 
 (defun my:buffer-face-mode-text()
   (interactive)
-  (setq buffer-face-mode-face '(:family "FreeSerif" :height 220))
+  (setq buffer-face-mode-face '(:family "FreeSerif"))
   (buffer-face-mode))
 
 (defun my:buffer-face-mode-default()
   (interactive)
-  (setq buffer-face-mode-face '(:family "DejaVu Sans Mono" :height 220))
+  (setq buffer-face-mode-face '(:family "DejaVu Sans Mono"))
   (buffer-face-mode))
 
 (defun my:buffer-face-mode-stylish()
   (interactive)
-  (setq buffer-face-mode-face '(:family "Comfortaa" :height 220))
+  (setq buffer-face-mode-face '(:family "Comfortaa"))
   (set-face-attribute 'org-table nil :font "FreeMono-25")
   (set-face-attribute 'org-link nil :font "FreeMono-25")
   (set-face-attribute 'org-block nil :font "FreeMono-25")
