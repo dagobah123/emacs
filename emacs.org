@@ -177,75 +177,75 @@ Load environment variables properly by installing =exec-path-from-shell=.
 #+END_SRC
 ** org mode
 #+BEGIN_SRC emacs-lisp
-      (setq org-directory "~/source/org-mode/")
-      (setq org-default-notes-file (concat org-directory "/org-capture.org"))
-      (global-set-key (kbd "C-c a") 'org-agenda)
-      (global-set-key (kbd "C-c c") 'org-capture)
-      (global-set-key (kbd "C-c s") 'org-schedule)
-      (global-set-key (kbd "C-c l") 'org-store-link)
-      (global-set-key (kbd "C-c b") 'org-switchb)
+  (setq org-directory "~/source/org-mode/")
+  (setq org-default-notes-file (concat org-directory "/org-capture.org"))
+  (global-set-key (kbd "C-c a") 'org-agenda)
+  (global-set-key (kbd "C-c c") 'org-capture)
+  (global-set-key (kbd "C-c s") 'org-schedule)
+  (global-set-key (kbd "C-c l") 'org-store-link)
+  (global-set-key (kbd "C-c b") 'org-switchb)
 
-      (load (concat EMACS_HOME "agenda"))
+  (load (concat EMACS_HOME "agenda"))
 
-      ; fold/overview
-      ; nofold/showall
-      ; content
-      ; showeverything
-      (setq org-startup-folded 'content)
+  ; fold/overview
+  ; nofold/showall
+  ; content
+  ; showeverything
+  (setq org-startup-folded 'content)
 
-      ; org-mode use shift arrows to change buffer
-      ;(add-hook 'org-shiftup-final-hook 'windmove-up)
-      ;(add-hook 'org-shiftleft-final-hook 'windmove-left)
-      ;(add-hook 'org-shiftdown-final-hook 'windmove-down)
-      ;(add-hook 'org-shiftright-final-hook 'windmove-right)
-      (setq org-support-shift-select 'always)
-      (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "FEEDBACK" "ON-HOLD" "|" "DONE" "DELEGATED")))
-      (setq org-tags-column 0)
-      (setq org-adapt-indentation nil)
-      (org-reload)
+  ; org-mode use shift arrows to change buffer
+  (add-hook 'org-shiftup-final-hook 'windmove-up)
+  (add-hook 'org-shiftleft-final-hook 'windmove-left)
+  (add-hook 'org-shiftdown-final-hook 'windmove-down)
+  (add-hook 'org-shiftright-final-hook 'windmove-right)
+  (setq org-support-shift-select 'always)
+  (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "FEEDBACK" "ON-HOLD" "|" "DONE" "DELEGATED")))
+  (setq org-tags-column 0)
+  (setq org-adapt-indentation nil)
+  (org-reload)
 
-      (setq org-latex-pdf-process '("latexmk -f -pdf %f"))
+  (setq org-latex-pdf-process '("latexmk -f -pdf %f"))
 
-      (setq org-publish-project-alist
-          '(
-               ("org-mode-notes-emacs"
-                :base-directory "~/source/org-mode/notes/emacs/"
-                :base-extension "org"
-                :publishing-directory "~/publish/emacs/"
-                :recursive t
-                :publishing-function org-html-publish-to-html
-                :headline-levels 4
-                :auto-preamble t
-               )
-               ("org-mode-notes-emacs-static"
-                :base-directory "~/source/org-mode/notes/emacs/"
-                :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
-                :publishing-directory "~/publish/emacs/"
-                :recursive t
-                :publishing-function org-publish-attachment
-               )
-               ("org-mode-notes-development"
-                :base-directory "~/source/org-mode/notes/development/"
-                :base-extension "org"
-                :publishing-directory "~/publish/development/"
-                :recursive t
-                :publishing-function org-html-publish-to-html
-                :headline-levels 4
-                :auto-preamble t
-               )
-               ("org-mode-notes-development-static"
-                :base-directory "~/source/org-mode/notes/development/"
-                :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
-                :publishing-directory "~/publish/development/"
-                :recursive t
-                :publishing-function org-publish-attachment
-               )
-               ("org" :components ("org-mode-notes-emacs"
-                                   "org-mode-notes-emacs-static"
-                                   "org-mode-notes-development"
-                                   "org-mode-notes-development-static"
-                                  ))
-            ))
+  (setq org-publish-project-alist
+      '(
+           ("org-mode-notes-emacs"
+            :base-directory "~/source/org-mode/notes/emacs/"
+            :base-extension "org"
+            :publishing-directory "~/publish/emacs/"
+            :recursive t
+            :publishing-function org-html-publish-to-html
+            :headline-levels 4
+            :auto-preamble t
+           )
+           ("org-mode-notes-emacs-static"
+            :base-directory "~/source/org-mode/notes/emacs/"
+            :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+            :publishing-directory "~/publish/emacs/"
+            :recursive t
+            :publishing-function org-publish-attachment
+           )
+           ("org-mode-notes-development"
+            :base-directory "~/source/org-mode/notes/development/"
+            :base-extension "org"
+            :publishing-directory "~/publish/development/"
+            :recursive t
+            :publishing-function org-html-publish-to-html
+            :headline-levels 4
+            :auto-preamble t
+           )
+           ("org-mode-notes-development-static"
+            :base-directory "~/source/org-mode/notes/development/"
+            :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+            :publishing-directory "~/publish/development/"
+            :recursive t
+            :publishing-function org-publish-attachment
+           )
+           ("org" :components ("org-mode-notes-emacs"
+                               "org-mode-notes-emacs-static"
+                               "org-mode-notes-development"
+                               "org-mode-notes-development-static"
+                              ))
+        ))
 #+END_SRC
 ** evil
 #+BEGIN_SRC emacs-lisp
@@ -263,7 +263,32 @@ Load environment variables properly by installing =exec-path-from-shell=.
         telephone-line-secondary-left-separator 'telephone-line-flat
         telephone-line-primary-right-separator 'telephone-line-flat
         telephone-line-secondary-right-separator 'telephone-line-flat)
+
   (setq telephone-line-evil-use-short-tag t)
+
+  (setq telephone-line-lhs
+      '(
+        (evil  . (telephone-line-evil-tag-segment
+        ))
+        (nil   . (telephone-line-buffer-segment
+        ))
+        (nil   . (telephone-line-vc-segment
+                  telephone-line-erc-modified-channels-segment
+        ))
+        (nil   . (telephone-line-projectile-segment
+        ))
+  ))
+  (setq telephone-line-rhs
+      '(
+        (nil   . (telephone-line-misc-info-segment
+        ))
+        (nil   . (telephone-line-major-mode-segment
+        ))
+        (nil   . (telephone-line-airline-position-segment
+        ))
+  ))
+
+  ;(set-face-attribute 'mode-line nil :font "Tw Cen MT-25")
 
   ;all configurations must be set before this line
   ;https://github.com/dbordak/telephone-line/blob/master/examples.org
@@ -599,161 +624,161 @@ This is the package that handles server installation and session management.
 #+END_SRC
 ** custom functions
 #+BEGIN_SRC emacs-lisp
-      (defun my:switch-buffers-right()
-        (interactive)
-        (org-shiftright)
-        (next-buffer)
-        (org-shiftleft)
-        (next-buffer)
-        (org-shiftright)
-        )
+  (defun my:switch-buffers-right()
+    (interactive)
+    (org-shiftright)
+    (next-buffer)
+    (org-shiftleft)
+    (next-buffer)
+    (org-shiftright)
+    )
 
-      (defun my:switch-buffers-left()
-        (interactive)
-        (org-shiftleft)
-        (next-buffer)
-        (org-shiftright)
-        (next-buffer)
-        (org-shiftleft)
-        )
+  (defun my:switch-buffers-left()
+    (interactive)
+    (org-shiftleft)
+    (next-buffer)
+    (org-shiftright)
+    (next-buffer)
+    (org-shiftleft)
+    )
 
-      (defun my:duplicate-line()
-        (interactive)
-        (move-beginning-of-line 1)
-        (kill-line)
-        (yank)
-        (open-line 1)
-        (next-line 1)
-        (yank)
-        )
+  (defun my:duplicate-line()
+    (interactive)
+    (move-beginning-of-line 1)
+    (kill-line)
+    (yank)
+    (open-line 1)
+    (next-line 1)
+    (yank)
+    )
 
-      (defun eww-new ()
-        (interactive)
-        (let ((url (read-from-minibuffer "Enter URL or keywords: ")))
-          (switch-to-buffer (generate-new-buffer "eww"))
-          (eww-mode)
-          (eww url)
-          )
-        )
-
-      (defvar java-function-regexp
-        (concat
-         "^[ \t]*"                                   ; leading white space
-         "\\(public\\|private\\|protected\\|"        ; some of these 8 keywords
-         "abstract\\|final\\|static\\|"
-         "synchronized\\|native"
-         "\\|override"                               ; C# support
-         "\\|[ \t\n\r]\\)*"                          ; or whitespace
-         "[a-zA-Z0-9_$]+"                            ; return type
-         "[ \t\n\r]*[[]?[]]?"                        ; (could be array)
-         "[ \t\n\r]+"                                ; whitespace
-         "\\([a-zA-Z0-9_$]+\\)"                      ; the name we want!
-         "[ \t\n\r]*"                                ; optional whitespace
-         "("                                         ; open the param list
-         "\\([ \t\n\r]*"                             ; optional whitespace
-         "\\<[a-zA-Z0-9_$]+\\>"                      ; typename
-         "[ \t\n\r]*[[]?[]]?"                        ; (could be array)
-         "[ \t\n\r]+"                                ; whitespace
-         "\\<[a-zA-Z0-9_$]+\\>"                      ; variable name
-         "[ \t\n\r]*[[]?[]]?"                        ; (could be array)
-         "[ \t\n\r]*,?\\)*"                          ; opt whitespace and comma
-         "[ \t\n\r]*"                                ; optional whitespace
-         ")"                                         ; end the param list
-         )
-        )
-
-      (defun my:next-java-method()
-        (interactive)
-        (re-search-forward java-function-regexp nil t)
-        (recenter)
-        )
-
-      (defun my:prev-java-method()
-        (interactive)
-        (re-search-backward java-function-regexp nil t)
-        (recenter)
-        )
-
-      (defvar next-method-regexp "\\(class\\|def\\|public\\|private\\|protected\\|defun\\|defvar\\|[a-zA-Z0-9_$]+(\\)")
-
-      (defun my:next-method()
-        (interactive)
-        (re-search-forward next-method-regexp nil t)
-        (recenter)
+  (defun eww-new ()
+    (interactive)
+    (let ((url (read-from-minibuffer "Enter URL or keywords: ")))
+      (switch-to-buffer (generate-new-buffer "eww"))
+      (eww-mode)
+      (eww url)
       )
+    )
 
-      (defun my:prev-method()
-        (interactive)
-        (re-search-backward next-method-regexp nil t)
-        (recenter)
-      )
+  (defvar java-function-regexp
+    (concat
+     "^[ \t]*"                                   ; leading white space
+     "\\(public\\|private\\|protected\\|"        ; some of these 8 keywords
+     "abstract\\|final\\|static\\|"
+     "synchronized\\|native"
+     "\\|override"                               ; C# support
+     "\\|[ \t\n\r]\\)*"                          ; or whitespace
+     "[a-zA-Z0-9_$]+"                            ; return type
+     "[ \t\n\r]*[[]?[]]?"                        ; (could be array)
+     "[ \t\n\r]+"                                ; whitespace
+     "\\([a-zA-Z0-9_$]+\\)"                      ; the name we want!
+     "[ \t\n\r]*"                                ; optional whitespace
+     "("                                         ; open the param list
+     "\\([ \t\n\r]*"                             ; optional whitespace
+     "\\<[a-zA-Z0-9_$]+\\>"                      ; typename
+     "[ \t\n\r]*[[]?[]]?"                        ; (could be array)
+     "[ \t\n\r]+"                                ; whitespace
+     "\\<[a-zA-Z0-9_$]+\\>"                      ; variable name
+     "[ \t\n\r]*[[]?[]]?"                        ; (could be array)
+     "[ \t\n\r]*,?\\)*"                          ; opt whitespace and comma
+     "[ \t\n\r]*"                                ; optional whitespace
+     ")"                                         ; end the param list
+     )
+    )
 
-      (defun my:previous-link-center()
-        (interactive)
-        (Info-prev-reference)
-        (recenter)
-      )
+  (defun my:next-java-method()
+    (interactive)
+    (re-search-forward java-function-regexp nil t)
+    (recenter)
+    )
 
-      (defun my:next-link-center()
-        (interactive)
-        (Info-next-reference)
-        (recenter)
-      )
+  (defun my:prev-java-method()
+    (interactive)
+    (re-search-backward java-function-regexp nil t)
+    (recenter)
+    )
 
-      (defun my:agenda-view()
-        (interactive)
-        (org-agenda t "a")
-        (org-agenda-day-view)
-        (delete-other-windows)
-        (org-agenda-redo-all)
-        )
+  (defvar next-method-regexp "\\(class\\|def\\|public\\|private\\|protected\\|defun\\|defvar\\|[a-zA-Z0-9_$]+(\\)")
 
-      (defun my:helm-grep-do-git-grep()
-        (interactive)
-        (let ((current-prefix-arg 4))
-        (call-interactively 'helm-grep-do-git-grep)
-        )
-        )
+  (defun my:next-method()
+    (interactive)
+    (re-search-forward next-method-regexp nil t)
+    (recenter)
+  )
 
-      (defun my:replace-umlauts()
-        (interactive)
-        (beginning-of-buffer)
-        (while (search-forward "ae" nil t)
-            (replace-match "ä" nil t)
-        )
-        (beginning-of-buffer)
-        (while (search-forward "oe" nil t)
-            (replace-match "ö" nil t)
-        )
-        (beginning-of-buffer)
-        (while (search-forward "ue" nil t)
-            (replace-match "ü" nil t)
-        )
-        )
+  (defun my:prev-method()
+    (interactive)
+    (re-search-backward next-method-regexp nil t)
+    (recenter)
+  )
 
-      (defun my:umlaut-a()
-       (interactive)
-        (insert "ä")
-        )
-      (global-set-key (kbd "C-c k a") 'my:umlaut-a)
+  (defun my:previous-link-center()
+    (interactive)
+    (Info-prev-reference)
+    (recenter)
+  )
 
-      (defun my:umlaut-o()
-        (interactive)
-        (insert "ö")
-        )
-      (global-set-key (kbd "C-c k o") 'my:umlaut-o)
+  (defun my:next-link-center()
+    (interactive)
+    (Info-next-reference)
+    (recenter)
+  )
 
-      (defun my:umlaut-u()
-        (interactive)
-        (insert "ü")
-        )
-      (global-set-key (kbd "C-c k u") 'my:umlaut-u)
+  (defun my:agenda-view()
+    (interactive)
+    (org-agenda t "a")
+    (org-agenda-day-view)
+    (delete-other-windows)
+    (org-agenda-redo-all)
+    )
 
-      (defun my:umlaut-s()
-        (interactive)
-        (insert "ß")
-        )
-      (global-set-key (kbd "C-c k s") 'my:umlaut-s)
+  (defun my:helm-grep-do-git-grep()
+    (interactive)
+    (let ((current-prefix-arg 4))
+    (call-interactively 'helm-grep-do-git-grep)
+    )
+    )
+
+  (defun my:replace-umlauts()
+    (interactive)
+    (beginning-of-buffer)
+    (while (search-forward "ae" nil t)
+        (replace-match "ä" nil t)
+    )
+    (beginning-of-buffer)
+    (while (search-forward "oe" nil t)
+        (replace-match "ö" nil t)
+    )
+    (beginning-of-buffer)
+    (while (search-forward "ue" nil t)
+        (replace-match "ü" nil t)
+    )
+    )
+
+  (defun my:umlaut-a()
+   (interactive)
+    (insert "ä")
+    )
+  (global-set-key (kbd "C-c k a") 'my:umlaut-a)
+
+  (defun my:umlaut-o()
+    (interactive)
+    (insert "ö")
+    )
+  (global-set-key (kbd "C-c k o") 'my:umlaut-o)
+
+  (defun my:umlaut-u()
+    (interactive)
+    (insert "ü")
+    )
+  (global-set-key (kbd "C-c k u") 'my:umlaut-u)
+
+  (defun my:umlaut-s()
+    (interactive)
+    (insert "ß")
+    )
+  (global-set-key (kbd "C-c k s") 'my:umlaut-s)
 
   ;(add-hook 'java-mode-hook
   ;          (lambda ()
@@ -761,13 +786,13 @@ This is the package that handles server installation and session management.
   ;            '(("\\<\\(\\sw+\\) ?(" 1
   ;               'dired-special t)))))
 
-    ;  (add-hook 'java-mode-hook (lambda ()
-    ;                              (font-lock-add-keywords
-    ;                               'java-mode
-    ;                               '(("hello" 1 'font-lock-preprocessor-face)))
-    ;                              )
-    ;            )
-                                  ; '(("\\<\\(\\sw+\\) ?(" 1 'font-lock-function-name-face)))
+  ;  (add-hook 'java-mode-hook (lambda ()
+  ;                              (font-lock-add-keywords
+  ;                               'java-mode
+  ;                               '(("hello" 1 'font-lock-preprocessor-face)))
+  ;                              )
+  ;            )
+  ; '(("\\<\\(\\sw+\\) ?(" 1 'font-lock-function-name-face)))
 #+END_SRC
 ** key bindings
 #+BEGIN_SRC emacs-lisp
@@ -933,6 +958,8 @@ This is the package that handles server installation and session management.
         (set-face-attribute 'org-table nil :font "Courier New")
         (set-face-attribute 'org-link nil :font "Courier New")
         (set-face-attribute 'org-block nil :font "Courier New")
+        ;(set-face-attribute 'mode-line-buffer-id nil :font "Courier New")
+        ;(set-face-attribute 'telephone-line-projectile nil :font "Courier New")
         )
       )
      ((string-equal system-type "gnu/linux")
@@ -949,6 +976,8 @@ This is the package that handles server installation and session management.
         (set-face-attribute 'info-header-node nil :font "FreeSerif-25")
         (set-face-attribute 'info-header-xref nil :font "FreeSerif-25")
         (set-face-attribute 'info-menu-header nil :font "FreeSerif-25")
+        ;(set-face-attribute 'mode-line-buffer-id nil :font "FreeMono-24")
+        ;(set-face-attribute 'telephone-line-projectile nil :font "FreeMono-24")
         )
       )
      )
