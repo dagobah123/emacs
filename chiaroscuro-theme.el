@@ -22,6 +22,7 @@
 (defvar background-cursor          "")
 (defvar background-diff-added      "")
 (defvar background-diff-removed    "")
+(defvar background-buffer-id       "ffff00")
 (defvar green-1                    "")
 (defvar green-2                    "")
 (defvar red-1                      "")
@@ -240,6 +241,7 @@
         (setq background-match "#e4a1ff")
         (setq background-cursor "#000000")
         (setq background-mode-line-fringe "#eeeeee")
+        (setq background-buffer-id "#ffff00")
         (setq green-1 "#000000")
         (setq green-2 "#9bff83")
         (setq red-1 "#fb2463")
@@ -282,6 +284,7 @@
         (setq background-match "#43006d")
         (setq background-cursor "#00ff00")
         (setq background-mode-line-fringe "#003300")
+        (setq background-buffer-id "#006600")
         (setq green-1 "#00cc00")
         (setq green-2 "#005d00")
         (setq red-1 "#fa529b")
@@ -572,7 +575,7 @@
   ;mode-line
   `(mode-line                         ((t (:foreground ,text-1 :background ,background-mode-line-fringe))))
   `(mode-line-inactive                ((t (:foreground ,text-2 :background ,background-mode-line-fringe))))
-  `(mode-line-buffer-id               ((t (:foreground ,text-1 :background ,"#ffff00" :bold t :box (:line-width 3 :color ,text-hl)))))
+  `(mode-line-buffer-id               ((t (:foreground ,text-hl :background ,background-buffer-id :bold t :box (:line-width 3 :color ,text-hl)))))
 
   `(telephone-line-accent-active      ((t (:foreground ,text-1          :background ,background-mode-line-fringe))))
   `(telephone-line-accent-inactive    ((t (:foreground ,text-2          :background ,background-mode-line-fringe))))
