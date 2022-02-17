@@ -41,6 +41,10 @@
 
 (setq compile-command "mvn exec:java")
 
+(defun my:run()
+  (interactive)
+  (insert "java -cp target/adapter-1.0-SNAPSHOT.jar org.designpatterns.adapter.Adapter org.designpatterns.adapter.Adapter"))
+
 (defun my:robotloader()
   (interactive)
   (let ((default-directory "/home/computer/software/robotloader")) 

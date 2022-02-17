@@ -240,7 +240,7 @@
         (setq background-3 "#bbbbbb")
         (setq background-4 "#fffc84")
         (setq background-5 "#9bff83")
-        (setq background-6 "#ffffff")
+        (setq background-6 "#eeeeee")
         (setq background-7 "#dddddd")
         (setq background-match "#e4a1ff")
         (setq background-cursor "#000000")
@@ -284,7 +284,7 @@
         (setq background-3 "#111111")
         (setq background-4 "#003300")
         (setq background-5 "#006600")
-        (setq background-6 "#009900")
+        (setq background-6 "#002200")
         (setq background-7 "#333333")
         (setq background-match "#43006d")
         (setq background-cursor "#00ff00")
@@ -491,9 +491,9 @@
   `(magit-diff-added                  ((t (:foreground ,text-diff-added  :background ,nil                                               ))))
   `(magit-diff-removed                ((t (:foreground ,text-diff-removed    :background ,nil                                               ))))
 
-  `(magit-blame-heading               ((t (:foreground ,text-diff-added  :background ,background-diff-added  :bold t                                            ))))
-  `(magit-blame-highlight             ((t (:foreground ,text-diff-added  :background ,background-diff-added  :bold t                                            ))))
-  `(magit-blame-margin                ((t (:foreground ,text-diff-added  :background ,background-diff-added  :bold t                                            ))))
+  `(magit-blame-heading               ((t (:foreground ,text-1 :background ,background-6 :bold t                                            ))))
+  `(magit-blame-highlight             ((t (:foreground ,text-1 :background ,background-6 :bold t                                            ))))
+  `(magit-blame-margin                ((t (:foreground ,text-1 :background ,background-6 :bold t                                            ))))
 
   ;org
   `(org-agenda-calendar-event         ((t (:foreground ,text-1                                                                            ))))
