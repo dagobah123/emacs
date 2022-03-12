@@ -43,7 +43,7 @@
 
 (defun my:run()
   (interactive)
-  (insert "java -cp target/adapter-1.0-SNAPSHOT.jar org.designpatterns.adapter.Adapter org.designpatterns.adapter.Adapter"))
+  (insert "./run.sh"))
 
 (defun my:robotloader()
   (interactive)
