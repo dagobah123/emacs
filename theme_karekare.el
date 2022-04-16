@@ -1,0 +1,46 @@
+;;; karekare
+
+;;; Commentary:
+
+;;; Code:
+
+(if (eq CHIAROSCURO_INDEX 6) ;karekare
+    (progn
+        (setq text-1 "#c0e347")
+        (setq text-2 "#b2c4e0")
+        (setq text-3 "#6e9714")
+        (setq text-hl "#c0e347")
+        (setq text-match "#c0e347")
+        (setq background-1 "#63667c")
+        (setq background-2 "#493b3a")
+        (setq background-3 "#545566")
+        (setq background-4 "#e34f35")
+        (setq background-5 "#314d1d")
+        (setq background-match "#e34f35")
+        (setq background-cursor "#ffffff")
+        (setq background-mode-line-fringe "#493b3a")
+        (setq green-1 "#c3e84f")
+        (setq green-2 "#508729")
+        (setq red-1 "#fead97")
+        (setq red-2 "#a64c22")
+        (setq blue-1 "#a4adfb")
+        (setq blue-2 "#3e458c")
+        (setq yellow-1 "#fcbf2f")
+        (setq yellow-2 "#8d6720")
+        (setq violet-1 "#aa8db8")
+        (setq violet-2 "#5a4366")
+        (setq orange-1 "#fc962f")
+        (setq orange-2 "#8d4c20")
+        (setq gray-1 "#999999")
+        (setq gray-2 "#666666")
+        (setq line-number-1 "#ff6044")
+        (setq line-number-2 "#211d12")
+        (setq line-number-3 "#4e7830")
+        (setq line-number-4 "#98b53f")
+        (setq text-diff-added "#c3e84f")
+        (setq background-diff-added "#508729")
+        (setq text-diff-removed "#fead97")
+        (setq background-diff-removed "#a64c22")
+        ;(setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#c3e84f" :background "#508729" :weight bold))))
+  )
+)

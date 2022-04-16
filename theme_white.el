@@ -1,0 +1,46 @@
+;;; white
+
+;;; Commentary:
+
+;;; Code:
+
+(if (eq CHIAROSCURO_INDEX 5) ;white
+    (progn
+        (setq text-1 "#000000")
+        (setq text-2 "#000000")
+        (setq text-3 "#000000")
+        (setq text-hl "#000000")
+        (setq text-match "#000000")
+        (setq background-1 "#ffffff")
+        (setq background-2 "#f0f0f0")
+        (setq background-3 "#f0f0f0")
+        (setq background-4 "#f0f0f0")
+        (setq background-5 "#dddddd")
+        (setq background-match "#f0f0f0")
+        (setq background-cursor "#ffffff")
+        (setq background-mode-line-fringe "#f0f0f0")
+        (setq green-1 "#000000")
+        (setq green-2 "#ffffff")
+        (setq red-1 "#000000")
+        (setq red-2 "#f0f0f0")
+        (setq blue-1 "#000000")
+        (setq blue-2 "#f0f0f0")
+        (setq yellow-1 "#000000")
+        (setq yellow-2 "#f0f0f0")
+        (setq violet-1 "#9400d3")
+        (setq violet-2 "#ab82ff")
+        (setq orange-1 "#000000")
+        (setq orange-2 "#f0f0f0")
+        (setq gray-1 "#999999")
+        (setq gray-2 "#666666")
+        (setq line-number-1 "#000000")
+        (setq line-number-2 "#f0f0f0")
+        (setq line-number-3 "#000000")
+        (setq line-number-4 "#ffffff")
+        (setq text-diff-added "#22aa22")
+        (setq background-diff-added "#cceecc")
+        (setq text-diff-removed "#ac2222")
+        (setq background-diff-removed "#eecccc")
+        ;(setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#000000" :background "#ffffff" :weight bold))))
+  )
+)

@@ -108,6 +108,8 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 4)
 
+  (setq whitespace-line-column 1000)
+
   ; clock
   (display-time)
 
