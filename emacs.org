@@ -858,12 +858,12 @@ This is the package that handles server installation and session management.
         )
 
   (setq themes-list-names '(
-                            "terminal"
                             "light"
                             "caravaggio"
-                            "gioconda"
-                            "white"
+                            "terminal"
                             "karekare"
+                           "gioconda"
+                            "white"
                             )
         )
 
@@ -1019,5 +1019,5 @@ This is the package that handles server installation and session management.
 ** change theme on startup
 #+BEGIN_SRC emacs-lisp
   (my:theme-up)
-  (my:theme-up)
+  ;(my:theme-up)
 #+END_SRC

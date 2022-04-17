@@ -61,24 +61,15 @@
 (defvar evil-operator-2             "#4876ff") ;blue
 (defvar error                       "#ff0000")
 
-(load-file "~/.emacs.d/theme_karekare.el")
-(load-file "~/.emacs.d/theme_white.el")
-(load-file "~/.emacs.d/theme_gioconda.el")
-(load-file "~/.emacs.d/theme_caravaggio.el")
-(load-file "~/.emacs.d/theme_light.el")
-(load-file "~/.emacs.d/theme_terminal.el")
+(if (eq CHIAROSCURO_INDEX 6) (progn (load-file "~/.emacs.d/theme_white.el")))
+(if (eq CHIAROSCURO_INDEX 5) (progn (load-file "~/.emacs.d/theme_gioconda.el")))
+(if (eq CHIAROSCURO_INDEX 4) (progn (load-file "~/.emacs.d/theme_karekare.el")))
+(if (eq CHIAROSCURO_INDEX 3) (progn (load-file "~/.emacs.d/theme_terminal.el")))
+(if (eq CHIAROSCURO_INDEX 2) (progn (load-file "~/.emacs.d/theme_caravaggio.el")))
+(if (eq CHIAROSCURO_INDEX 1) (progn (load-file "~/.emacs.d/theme_light.el")))
 
-(if (> CHIAROSCURO_INDEX 5)
-    (progn
-        (setq CHIAROSCURO_INDEX 0)
-    )
-)
-
-(if (< CHIAROSCURO_INDEX 0)
-    (progn
-        (setq CHIAROSCURO_INDEX 5)
-    )
-)
+(if (> CHIAROSCURO_INDEX 5) (progn (setq CHIAROSCURO_INDEX 0)))
+(if (< CHIAROSCURO_INDEX 0) (progn (setq CHIAROSCURO_INDEX 5)))
 
 (deftheme chiaroscuro)
 
@@ -116,7 +107,7 @@
 `(font-lock-constant-face             ((t (:foreground ,orange-1                                        ))))
 `(font-lock-doc-face                  ((t (:foreground ,text-2                                          ))))
 `(font-lock-function-name-face        ((t (:foreground ,green-1  :background ,green-2      :bold t      ))))
-`(font-lock-keyword-face              ((t (:foreground ,yellow-1 :background ,yellow-2     :bold t      ))))
+`(font-lock-keyword-face              ((t (:foreground ,yellow-1 :background ,nil          :bold t      ))))
 `(font-lock-negation-char-face        ((t (:foreground ,text-1                                          ))))
 `(font-lock-preprocessor-face         ((t (:foreground ,violet-1                                        ))))
 `(font-lock-regexp-grouping-backslash ((t (:foreground ,text-1                                          ))))
