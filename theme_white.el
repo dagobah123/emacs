@@ -7,6 +7,7 @@
 (setq text-1 "#000000")
 (setq text-2 "#000000")
 (setq text-3 "#000000")
+(setq text-4 "#000000")
 (setq text-hl "#000000")
 (setq text-match "#000000")
 (setq background-1 "#ffffff")

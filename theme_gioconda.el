@@ -7,6 +7,7 @@
 (setq text-1 "#d6af6a")
 (setq text-2 "#9d996a")
 (setq text-3 "#8b9174")
+(setq text-4 "#8b9174")
 (setq text-hl "#d6af6a")
 (setq text-match "#ffd47c")
 (setq background-1 "#6b5026")

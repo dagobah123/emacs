@@ -27,15 +27,16 @@
 (defun my:buffer-face-mode-stylish()
   (interactive)
   (setq buffer-face-mode-face '(:family "Comfortaa"))
-  (set-face-attribute 'org-table nil :font "FreeMono-25")
-  (set-face-attribute 'org-link nil :font "FreeMono-25")
-  (set-face-attribute 'org-block nil :font "FreeMono-25")
   (buffer-face-mode))
+
+;(set-face-attribute 'org-table nil :font "FreeMono")
+;(set-face-attribute 'org-link nil :font "FreeMono")
+;(set-face-attribute 'org-block nil :font "FreeMono")
 
 (add-hook 'eww-mode-hook 'my:buffer-face-mode-text)
 (add-hook 'dired-mode-hook 'my:buffer-face-mode-mono)
 (add-hook 'Info-mode-hook 'my:buffer-face-mode-text)
-(add-hook 'org-mode-hook 'my:buffer-face-mode-stylish)
+(add-hook 'org-mode-hook 'my:buffer-face-mode-mono)
 (add-hook 'c++-mode-hook 'my:buffer-face-mode-mono)
 (add-hook 'java-mode-hook 'my:buffer-face-mode-mono)
 
