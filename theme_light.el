@@ -49,4 +49,5 @@
 (setq background-fine-diff-A "#ffbbbb")
 (setq background-fine-diff-B "#aaffaa")
 (setq background-fine-diff-C "#ffff55")
+(setq background-ediff "#f7f7f7")
 ;(setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#00ff00" :background "#006d00" :weight bold))))
