@@ -21,7 +21,6 @@
 
 (setq background-cursor "#ffffff")
 (setq background-mode-line-fringe "#493b3a")
-(setq background-buffer-id "#ffff00")
 
 (setq line-number-1 "#ff6044")
 (setq line-number-2 "#211d12")
