@@ -11,7 +11,7 @@
 (setq text-3 "#8b9174")
 (setq text-4 "#8b9174")
 
-(setq background-1 "#6b5026")
+(setq background-1 "#5e4721")
 (setq background-2 "#3d2920")
 (setq background-3 "#686c54")
 (setq background-4 "#924d13")

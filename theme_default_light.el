@@ -4,13 +4,13 @@
 
 ;;; Code:
 
-(setq green-1 "#007700")
+(setq green-1 "#008100")
 (setq green-2 "#85ff85")
 (setq red-1 "#ff3333")
 (setq red-2 "#990000")
-(setq blue-1 "#222299")
-(setq blue-2 "#96cbff")
-(setq yellow-1 "#ffd700")
+(setq blue-1 "#1111ca")
+(setq blue-2 "#bcdfff")
+(setq yellow-1 "#ffb100")
 (setq yellow-2 "#cdad00")
 (setq violet-1 "#43006d")
 (setq violet-2 "#f974f9")
@@ -26,8 +26,8 @@
 (setq background-telephone-line-projectile "#00de00")
 
 ;match
-(setq text-match "#000000")
-(setq background-match "#e4a1ff")
+(setq text-match "#ffffff")
+(setq background-match "#f974f9")
 
 ;magit
 (setq text-diff-added "#229506")

@@ -6,11 +6,11 @@
 
 (setq green-1 "#00de00")
 (setq green-2 "#007700")
-(setq red-1 "#ff2f2f")
+(setq red-1 "#d53a26")
 (setq red-2 "#770000")
 (setq blue-1 "#1e90ff")
 (setq blue-2 "#222299")
-(setq yellow-1 "#ffd700")
+(setq yellow-1 "#d6b400")
 (setq yellow-2 "#cdad00")
 (setq violet-1 "#f974f9")
 (setq violet-2 "#43006d")
@@ -20,10 +20,10 @@
 (setq gray-2 "#666666")
 
 ;mode line
-(setq text-buffer-id "#00de00")
-(setq background-buffer-id "#007700")
-(setq text-telephone-line-projectile "#00de00")
-(setq background-telephone-line-projectile "#007700")
+(setq text-buffer-id "#00bb00")
+(setq background-buffer-id "#003300")
+(setq text-telephone-line-projectile "#00bb00")
+(setq background-telephone-line-projectile "#003300")
 
 ;match
 (setq text-match "#f974f9")
@@ -34,10 +34,10 @@
 (setq background-diff-added "#2b550c")
 (setq text-diff-removed "#f17b6c")
 
-(setq text-magit-branch-local "#00de00")
-(setq background-magit-branch-local "#007700")
-(setq text-magit-branch-remote "#ff2f2f")
-(setq background-magit-branch-remote "#770000")
+(setq text-magit-branch-local "#00bb00")
+(setq background-magit-branch-local "#003300")
+(setq text-magit-branch-remote "#bb0000")
+(setq background-magit-branch-remote "#330000")
 
 ;ediff
 (setq background-diff-removed "#48241f")
