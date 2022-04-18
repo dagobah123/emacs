@@ -1,15 +1,16 @@
-;;; light
+;;; light --- theme
 
 ;;; Commentary:
 
 ;;; Code:
 
+(setq text-hl "#000000")
+
 (setq text-1 "#000000")
 (setq text-2 "#999999")
 (setq text-3 "#000000")
-(setq text-3 "#bbbbbb")
-(setq text-hl "#000000")
-(setq text-match "#000000")
+(setq text-4 "#bbbbbb")
+
 (setq background-1 "#ffffff")
 (setq background-2 "#f7f7f7")
 (setq background-3 "#bbbbbb")
@@ -17,37 +18,12 @@
 (setq background-5 "#9bff83")
 (setq background-6 "#eeeeee")
 (setq background-7 "#dddddd")
-(setq background-match "#e4a1ff")
+
 (setq background-cursor "#000000")
 (setq background-mode-line-fringe "#eeeeee")
 (setq background-buffer-id "#ffff00")
-(setq green-1 "#000000")
-(setq green-2 "#9bff83")
-(setq red-1 "#fb2463")
-(setq red-2 "#fb80a4")
-(setq blue-1 "#0000ff")
-(setq blue-2 "#e2e2ff")
-(setq yellow-1 "#000000")
-(setq yellow-2 "#fefcc1")
-(setq violet-1 "#000000")
-(setq violet-2 "#e4a1ff")
-(setq orange-1 "#ff8c00")
-(setq orange-2 "#000000")
-(setq gray-1 "#000000")
-(setq gray-2 "#000000")
+
 (setq line-number-1 "#000000")
 (setq line-number-2 "#9bff83")
 (setq line-number-3 "#999999")
 (setq line-number-4 "#ffffff")
-(setq text-diff-added "#229506")
-(setq background-diff-added "#9bff83")
-(setq text-diff-removed "#dc0f50")
-(setq background-diff-removed "#feacc7")
-(setq background-current-diff-A "#ffdddd")
-(setq background-current-diff-B "#ddffdd")
-(setq background-current-diff-C "#ffffaa")
-(setq background-fine-diff-A "#ffbbbb")
-(setq background-fine-diff-B "#aaffaa")
-(setq background-fine-diff-C "#ffff55")
-(setq background-ediff "#f7f7f7")
-;(setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#00ff00" :background "#006d00" :weight bold))))

@@ -1,15 +1,16 @@
-;;; caravaggio
+;;; caravaggio --- theme
 
 ;;; Commentary:
 
 ;;; Code:
 
+(setq text-hl "#f8ce8d")
+
 (setq text-1 "#c3ac88")
 (setq text-2 "#89918f")
 (setq text-3 "#943632")
 (setq text-4 "#943632")
-(setq text-hl "#f8ce8d")
-(setq text-match "#f8ce8d")
+
 (setq background-1 "#272c28")
 (setq background-2 "#433b33")
 (setq background-3 "#49604b")
@@ -17,37 +18,12 @@
 (setq background-5 "#693126")
 (setq background-6 "#433b33")
 (setq background-7 "#000000")
-(setq background-match "#96653f")
+
 (setq background-cursor "#d7b269")
 (setq background-mode-line-fringe "#433b33")
 (setq background-buffer-id "#104342")
-(setq green-1 "#b4ba5f")
-(setq green-2 "#2b550c")
-(setq red-1 "#f17b6c")
-(setq red-2 "#91423a")
-(setq blue-1 "#a5b1a5")
-(setq blue-2 "#104342")
-(setq yellow-1 "#d0b254")
-(setq yellow-2 "#272c28")
-(setq violet-1 "#f8ce8d")
-(setq violet-2 "#91423a")
-(setq orange-1 "#d08e54")
-(setq orange-2 "#5a3005")
-(setq gray-1 "#89918f")
-(setq gray-2 "#666666")
+
 (setq line-number-1 "#f8ce8d")
 (setq line-number-2 "#95722f")
 (setq line-number-3 "#89918f")
 (setq line-number-4 "#475f5e")
-(setq text-diff-added "#b4ba5f")
-(setq background-diff-added "#2b550c")
-(setq text-diff-removed "#f17b6c")
-(setq background-diff-removed "#48241f")
-(setq background-current-diff-A "#994444")
-(setq background-current-diff-B "#226622")
-(setq background-current-diff-C "#887400")
-(setq background-fine-diff-A "#7d2323")
-(setq background-fine-diff-B "#124d12")
-(setq background-fine-diff-C "#726000")
-(setq background-ediff "#232723")
-;(setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#b4ba5f" :background "#2b550c" :weight bold))))

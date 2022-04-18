@@ -1,50 +1,29 @@
-;;; gioconda
+;;; gioconda --- theme
 
 ;;; Commentary:
 
 ;;; Code:
 
+(setq text-hl "#d6af6a")
+
 (setq text-1 "#d6af6a")
 (setq text-2 "#9d996a")
 (setq text-3 "#8b9174")
 (setq text-4 "#8b9174")
-(setq text-hl "#d6af6a")
-(setq text-match "#ffd47c")
+
 (setq background-1 "#6b5026")
 (setq background-2 "#3d2920")
 (setq background-3 "#686c54")
 (setq background-4 "#924d13")
 (setq background-5 "#7f3f17")
+(setq background-6 "#7f3f17")
+(setq background-7 "#7f3f17")
+
 (setq background-match "#c88200")
 (setq background-cursor "#d9b369")
 (setq background-mode-line-fringe "#3d2920")
-(setq green-1 "#c3e84f")
-(setq green-2 "#508729")
-(setq red-1 "#fead97")
-(setq red-2 "#a64c22")
-(setq blue-1 "#a4adfb")
-(setq blue-2 "#3e458c")
-(setq yellow-1 "#fcbf2f")
-(setq yellow-2 "#8d6720")
-(setq violet-1 "#aa8db8")
-(setq violet-2 "#5a4366")
-(setq orange-1 "#fc962f")
-(setq orange-2 "#8d4c20")
-(setq gray-1 "#999999")
-(setq gray-2 "#666666")
+
 (setq line-number-1 "#000000")
 (setq line-number-2 "#ddb672")
 (setq line-number-3 "#9d996a")
 (setq line-number-4 "#946c15")
-(setq text-diff-added "#c3e84f")
-(setq background-diff-added "#508729")
-(setq text-diff-removed "#fead97")
-(setq background-diff-removed "#a64c22")
-(setq background-current-diff-A "#994444")
-(setq background-current-diff-B "#226622")
-(setq background-current-diff-C "#887400")
-(setq background-fine-diff-A "#7d2323")
-(setq background-fine-diff-B "#124d12")
-(setq background-fine-diff-C "#726000")
-(setq background-ediff "#624923")
-;(setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#c3e84f" :background "#508729" :weight bold))))

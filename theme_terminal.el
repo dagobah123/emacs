@@ -1,15 +1,16 @@
-;;; terminal
+;;; terminal --- theme
 
 ;;; Commentary:
 
 ;;; Code:
 
+(setq text-hl "#00ff00")
+
 (setq text-1 "#00cc00")
 (setq text-2 "#009900")
 (setq text-3 "#006600")
 (setq text-4 "#003300")
-(setq text-hl "#00ff00")
-(setq text-match "#f974f9")
+
 (setq background-1 "#000000")
 (setq background-2 "#003300")
 (setq background-3 "#111111")
@@ -17,37 +18,12 @@
 (setq background-5 "#006600")
 (setq background-6 "#002200")
 (setq background-7 "#333333")
-(setq background-match "#43006d")
+
 (setq background-cursor "#00ff00")
 (setq background-mode-line-fringe "#003300")
 (setq background-buffer-id "#006600")
-(setq green-1 "#00cc00")
-(setq green-2 "#005d00")
-(setq red-1 "#fa529b")
-(setq red-2 "#770000")
-(setq blue-1 "#7a70f7")
-(setq blue-2 "#000000")
-(setq yellow-1 "#eead0e")
-(setq yellow-2 "#000000")
-(setq violet-1 "#fd86fd")
-(setq violet-2 "#43006d")
-(setq orange-1 "#e87b2c")
-(setq orange-2 "#000000")
-(setq gray-1 "#777777")
-(setq gray-2 "#222222")
+
 (setq line-number-1 "#00ff00")
 (setq line-number-2 "#003300")
 (setq line-number-3 "#009900")
 (setq line-number-4 "#000000")
-(setq text-diff-added "#00cc00")
-(setq background-diff-added "#005d00")
-(setq text-diff-removed "#f15a83")
-(setq background-diff-removed "#790725")
-(setq background-current-diff-A "#994444")
-(setq background-current-diff-B "#444499")
-(setq background-current-diff-C "#887400")
-(setq background-fine-diff-A "#7d2323")
-(setq background-fine-diff-B "#2e2e80")
-(setq background-fine-diff-C "#726000")
-(setq background-ediff "#002200")
-;(setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#00ff00" :background "#006d00" :weight bold))))
