@@ -4,12 +4,12 @@
 
 ;;; Code:
 
-(setq green-1 "#00de00")
-(setq green-2 "#007700")
+(setq green-1 "#007700")
+(setq green-2 "#85ff85")
 (setq red-1 "#ff3333")
 (setq red-2 "#990000")
 (setq blue-1 "#222299")
-(setq blue-2 "#1e90ff")
+(setq blue-2 "#96cbff")
 (setq yellow-1 "#ffd700")
 (setq yellow-2 "#cdad00")
 (setq violet-1 "#43006d")
@@ -34,10 +34,10 @@
 (setq background-diff-added "#9bff83")
 (setq text-diff-removed "#dc0f50")
 
-(setq text-magit-branch-local "#2b550c")
-(setq text-magit-branch-remote "#91423a")
-(setq background-magit-branch-local "#b4ba5f")
-(setq background-magit-branch-remote "#f17b6c")
+(setq text-magit-branch-local "#000000")
+(setq background-magit-branch-local "#00de00")
+(setq text-magit-branch-remote "#000000")
+(setq background-magit-branch-remote "#ff2f2f")
 
 ;ediff
 (setq background-diff-removed "#feacc7")

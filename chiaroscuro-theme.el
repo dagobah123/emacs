@@ -232,12 +232,12 @@
 `(magit-diff-conflict-heading       ((t (:foreground ,text-1            :background ,nil                                                       ))))
 
 `(magit-diff-file-heading           ((t (:foreground ,gray-1            :background ,nil :bold t                                               ))))
-`(magit-diff-file-heading-selection ((t (:foreground ,violet-1          :background ,nil :bold t                                               ))))
-`(magit-diff-file-heading-highlight ((t (:foreground ,violet-1          :background ,nil :bold t                                               ))))
+`(magit-diff-file-heading-selection ((t (:foreground ,text-1            :background ,nil :bold t                                               ))))
+`(magit-diff-file-heading-highlight ((t (:foreground ,text-1            :background ,nil :bold t                                               ))))
 
-`(magit-diff-hunk-heading           ((t (:foreground ,gray-1            :background ,violet-2                                                  ))))
-`(magit-diff-hunk-heading-selection ((t (:foreground ,violet-1          :background ,violet-2                                                  ))))
-`(magit-diff-hunk-heading-highlight ((t (:foreground ,violet-1          :background ,violet-2                                                  ))))
+`(magit-diff-hunk-heading           ((t (:foreground ,gray-1            :background ,background-5                                                  ))))
+`(magit-diff-hunk-heading-selection ((t (:foreground ,text-1            :background ,background-4                                                  ))))
+`(magit-diff-hunk-heading-highlight ((t (:foreground ,text-1            :background ,background-4                                                  ))))
 
 `(magit-diff-whitespace-warning     ((t (:foreground ,text-1            :background ,text-error                                                     ))))
 
