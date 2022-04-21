@@ -30,6 +30,7 @@
                        evil
                        telephone-line
                        projectile
+                       helm-projectile
                        treemacs-projectile
                        magit
                        magit-find-file
@@ -302,12 +303,18 @@ Load environment variables properly by installing =exec-path-from-shell=.
 ** projectile
 #+BEGIN_SRC emacs-lisp
   (use-package projectile)
+
+  (unless (package-installed-p 'projectile)
+  (package-install 'projectile))
+
   (require 'projectile)
   (setq projectile-indexing-method 'alien)
   (projectile-global-mode)
   (projectile-mode +1)
   (global-set-key (kbd "C-x p") 'projectile-switch-project)
   (global-set-key (kbd "C-x o") 'projectile-find-file)
+  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 #+END_SRC
 ** helm
 #+BEGIN_SRC emacs-lisp
@@ -325,6 +332,12 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (("C-c r" . helm-bookmarks))
   (("C-c i" . helm-mini))
   (("C-c q" . helm-info)))
+#+END_SRC
+** helm-projectile
+#+BEGIN_SRC emacs-lisp
+  ;; (setq helm-projectile-fuzzy-match nil)
+  (require 'helm-projectile)
+  (helm-projectile-on)
 #+END_SRC
 ** dired
 #+BEGIN_SRC emacs-lisp
