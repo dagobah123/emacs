@@ -5,6 +5,7 @@
 ;;; Code:
 
 (setq text-hl "#000000")
+(setq background-hl "#f0f0f0")
 
 (setq text-1 "#000000")
 (setq text-2 "#000000")

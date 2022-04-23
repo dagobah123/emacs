@@ -5,6 +5,7 @@
 ;;; Code:
 
 (setq text-hl "#f8ce8d")
+(setq background-hl "#95722f")
 
 (setq text-1 "#c3ac88")
 (setq text-2 "#89918f")
@@ -14,8 +15,8 @@
 (setq background-1 "#272c28")
 (setq background-2 "#433b33")
 (setq background-3 "#49604b")
-(setq background-4 "#91423a")
-(setq background-5 "#693126")
+(setq background-4 "#735825")
+(setq background-5 "#1b541a")
 (setq background-6 "#433b33")
 (setq background-7 "#000000")
 

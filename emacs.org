@@ -311,8 +311,8 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (setq projectile-indexing-method 'alien)
   (projectile-global-mode)
   (projectile-mode +1)
-  (global-set-key (kbd "C-x p") 'projectile-switch-project)
-  (global-set-key (kbd "C-x o") 'projectile-find-file)
+  (global-set-key (kbd "C-x p") 'helm-projectile-switch-project)
+  (global-set-key (kbd "C-x o") 'helm-projectile-find-file)
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 #+END_SRC
