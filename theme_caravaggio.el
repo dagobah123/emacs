@@ -10,14 +10,14 @@
 (setq text-1 "#c3ac88")
 (setq text-2 "#89918f")
 (setq text-3 "#943632")
-(setq text-4 "#943632")
+(setq text-4 "#999999")
 
-(setq background-1 "#272c28")
-(setq background-2 "#433b33")
-(setq background-3 "#49604b")
-(setq background-4 "#735825")
-(setq background-5 "#1b541a")
-(setq background-6 "#433b33")
+(setq background-1 "#272c28") ;dark gray
+(setq background-2 "#433b33") ;lighter warm gray
+(setq background-3 "#49604b") ;green
+(setq background-4 "#735825") ;yellow ochre
+(setq background-5 "#1b541a") ;higher chroma green
+(setq background-6 "#152b3f") ;dark blue
 (setq background-7 "#000000")
 
 (setq background-cursor "#d7b269")

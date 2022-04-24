@@ -124,7 +124,7 @@
 
 ;font-lock
 `(font-lock-builtin-face              ((t (:foreground ,text-1                                          ))))
-`(font-lock-comment-delimiter-face    ((t (:foreground ,text-1                                          ))))
+`(font-lock-comment-delimiter-face    ((t (:foreground ,text-2                                          ))))
 `(font-lock-comment-face              ((t (:foreground ,text-2                                          ))))
 `(font-lock-constant-face             ((t (:foreground ,orange-1                                        ))))
 `(font-lock-doc-face                  ((t (:foreground ,text-2                                          ))))
@@ -248,9 +248,9 @@
 `(magit-diff-added                  ((t (:foreground ,text-diff-added   :background ,nil                                                       ))))
 `(magit-diff-removed                ((t (:foreground ,text-diff-removed :background ,nil                                                       ))))
 
-`(magit-blame-heading               ((t (:foreground ,text-1            :background ,background-6 :bold t                                      ))))
-`(magit-blame-highlight             ((t (:foreground ,text-1            :background ,background-6 :bold t                                      ))))
-`(magit-blame-margin                ((t (:foreground ,text-1            :background ,background-6 :bold t                                      ))))
+`(magit-blame-heading               ((t (:foreground ,text-1            :background ,background-3 :bold t                                      ))))
+`(magit-blame-highlight             ((t (:foreground ,text-1            :background ,background-3 :bold t                                      ))))
+`(magit-blame-margin                ((t (:foreground ,text-1            :background ,background-3 :bold t                                      ))))
 
 ;ediff
 `(ediff-current-diff-A        ((t (:foreground ,text-1 :background ,background-current-diff-A ))))
@@ -289,9 +289,9 @@
 `(org-agenda-restriction-lock       ((t (:foreground ,text-1                                                                            ))))
 `(org-agenda-structure              ((t (:foreground ,text-1                                                                            ))))
 `(org-archived                      ((t (:foreground ,text-1  :background ,background-1 ))))
-`(org-block                         ((t (:foreground ,text-1  :background ,background-2 ))))
-`(org-block-begin-line              ((t (:foreground ,text-4  :background ,background-5 ))))
-`(org-block-end-line                ((t (:foreground ,text-4  :background ,background-5 ))))
+`(org-block                         ((t (:foreground ,text-1  :background ,background-6 ))))
+`(org-block-begin-line              ((t (:foreground ,text-2  :background ,nil          ))))
+`(org-block-end-line                ((t (:foreground ,text-2  :background ,nil          ))))
 `(org-checkbox                      ((t (:foreground ,text-1  :background ,background-1 ))))
 `(org-checkbox-statistics-done      ((t (:foreground ,text-1  :background ,background-1 ))))
 `(org-checkbox-statistics-todo      ((t (:foreground ,text-1  :background ,background-1 ))))
