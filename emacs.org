@@ -6,12 +6,9 @@
 ** package archives
 #+BEGIN_SRC emacs-lisp
   (require 'package)
-  (setq package-archives '(
-                           ("melpa" . "https://melpa.org/packages/")
+  (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                            ("elpa" . "https://elpa.gnu.org/packages/")
-                           ("org" . "https://orgmode.org/elpa/")
-                           )
-        )
+                           ("org" . "https://orgmode.org/elpa/")))
 #+END_SRC
 ** package initialize
 #+BEGIN_SRC emacs-lisp

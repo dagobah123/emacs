@@ -17,7 +17,7 @@
 (setq background-3 "#49604b") ;green
 (setq background-4 "#735825") ;yellow ochre
 (setq background-5 "#1b541a") ;higher chroma green
-(setq background-6 "#152b3f") ;dark blue
+(setq background-6 "#164066") ;dark blue
 (setq background-7 "#000000")
 
 (setq background-cursor "#d7b269")
