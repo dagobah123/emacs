@@ -418,6 +418,7 @@ Treemacs provides UI elements used for LSP UI. Let's install lsp-treemacs and it
     )
 
   (setq treemacs-no-png-images t)
+  (treemacs-project-follow-mode t)
 #+end_src
 
 *** LSP UI
