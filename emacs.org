@@ -204,9 +204,6 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (setq org-adapt-indentation nil)
   (org-reload)
 
-  (require 'ol)
-  (require 'ol-man)
-
   (setq org-latex-pdf-process '("latexmk -f -pdf %f"))
 
   (setq org-publish-project-alist
@@ -971,8 +968,8 @@ This is the package that handles server installation and session management.
     (cond
      ((string-equal system-type "windows-nt")
       (progn
-        (set-face-attribute 'mode-line nil :font "Tw Cen MT-25")
-        (set-face-attribute 'mode-line-inactive nil :font "Tw Cen MT-25")
+        ;(set-face-attribute 'mode-line nil :font "Tw Cen MT-25")
+        ;(set-face-attribute 'mode-line-inactive nil :font "Tw Cen MT-25")
         (set-face-attribute 'org-table nil :font "Courier New")
         (set-face-attribute 'org-link nil :font "Courier New")
         (set-face-attribute 'org-block nil :font "Courier New")
