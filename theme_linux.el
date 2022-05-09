@@ -14,9 +14,9 @@
 
 (setq background-1 "#380c2a") ;ubuntu
 (setq background-2 "#5b1244") ;lighter ubuntu
-(setq background-3 "#49604b") ;green
-(setq background-4 "#735825") ;yellow ochre
-(setq background-5 "#1b541a") ;higher chroma green
+(setq background-3 "#5b1244") ;lighter ubuntu
+(setq background-4 "#701654") ;lightest ubuntu
+(setq background-5 "#5b1244") ;lighter ubuntu
 (setq background-6 "#164066") ;dark blue
 (setq background-7 "#000000")
 
