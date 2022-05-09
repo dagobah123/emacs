@@ -76,22 +76,20 @@
 (defvar background-diff-added                "#000000")
 (defvar text-diff-removed                    "#000000")
 
-(if (eq CHIAROSCURO_INDEX 6) (progn (load-file "~/.emacs.d/theme_default_light.el")))
-(if (eq CHIAROSCURO_INDEX 5) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
+(if (eq CHIAROSCURO_INDEX 5) (progn (load-file "~/.emacs.d/theme_default_light.el")))
 (if (eq CHIAROSCURO_INDEX 4) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
 (if (eq CHIAROSCURO_INDEX 3) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
 (if (eq CHIAROSCURO_INDEX 2) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
 (if (eq CHIAROSCURO_INDEX 1) (progn (load-file "~/.emacs.d/theme_default_light.el")))
 
-(if (eq CHIAROSCURO_INDEX 6) (progn (load-file "~/.emacs.d/theme_white.el")))
-(if (eq CHIAROSCURO_INDEX 5) (progn (load-file "~/.emacs.d/theme_gioconda.el")))
-(if (eq CHIAROSCURO_INDEX 4) (progn (load-file "~/.emacs.d/theme_karekare.el")))
-(if (eq CHIAROSCURO_INDEX 3) (progn (load-file "~/.emacs.d/theme_terminal.el")))
+(if (eq CHIAROSCURO_INDEX 5) (progn (load-file "~/.emacs.d/theme_white.el")))
+(if (eq CHIAROSCURO_INDEX 4) (progn (load-file "~/.emacs.d/theme_terminal.el")))
+(if (eq CHIAROSCURO_INDEX 3) (progn (load-file "~/.emacs.d/theme_linux.el")))
 (if (eq CHIAROSCURO_INDEX 2) (progn (load-file "~/.emacs.d/theme_caravaggio.el")))
 (if (eq CHIAROSCURO_INDEX 1) (progn (load-file "~/.emacs.d/theme_light.el")))
 
-(if (> CHIAROSCURO_INDEX 5) (progn (setq CHIAROSCURO_INDEX 0)))
-(if (< CHIAROSCURO_INDEX 0) (progn (setq CHIAROSCURO_INDEX 5)))
+(if (> CHIAROSCURO_INDEX 4) (progn (setq CHIAROSCURO_INDEX 0)))
+(if (< CHIAROSCURO_INDEX 0) (progn (setq CHIAROSCURO_INDEX 4)))
 
 (deftheme chiaroscuro)
 

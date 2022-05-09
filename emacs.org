@@ -82,7 +82,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
 
   (setq blink-cursor-blinks 0)
 
-  (global-display-line-numbers-mode)
+  ;(global-display-line-numbers-mode)
   (setq display-line-numbers-type 'relative)
   (global-set-key (kbd "C-7") 'global-display-line-numbers-mode)
   (defun my:global-display-line-numbers-mode-on()
@@ -861,16 +861,14 @@ This is the package that handles server installation and session management.
                       chiaroscuro
                       chiaroscuro
                       chiaroscuro
-                      chiaroscuro
                       )
         )
 
   (setq themes-list-names '(
                             "light"
                             "caravaggio"
+                            "linux"
                             "terminal"
-                            "karekare"
-                           "gioconda"
                             "white"
                             )
         )
@@ -1027,5 +1025,6 @@ This is the package that handles server installation and session management.
 ** change theme on startup
 #+BEGIN_SRC emacs-lisp
   (my:theme-up)
-  ;(my:theme-up)
+  (my:theme-up)
+  (my:theme-up)
 #+END_SRC
