@@ -5,7 +5,7 @@
 ;;; Code:
 
 (setq text-hl "#f8ce8d")
-(setq background-hl "#95722f")
+(setq background-hl "#336e23")
 
 (setq text-1 "#c3ac88")
 (setq text-2 "#89918f")
@@ -24,6 +24,6 @@
 (setq background-mode-line-fringe "#5b1244")
 
 (setq line-number-1 "#f8ce8d")
-(setq line-number-2 "#95722f")
-(setq line-number-3 "#89918f")
-(setq line-number-4 "#475f5e")
+(setq line-number-2 "#336e23")
+(setq line-number-3 "#7f0e5b")
+(setq line-number-4 "#310a25")
