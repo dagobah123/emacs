@@ -4,11 +4,31 @@
 
 ;;; Code:
 
+(defvar text-hl)
+(defvar background-hl)
+(defvar text-1)
+(defvar text-2)
+(defvar text-3)
+(defvar text-4)
+(defvar background-1)
+(defvar background-2)
+(defvar background-3)
+(defvar background-4)
+(defvar background-5)
+(defvar background-6)
+(defvar background-7)
+(defvar background-cursor)
+(defvar background-mode-line-fringe)
+(defvar line-number-1)
+(defvar line-number-2)
+(defvar line-number-3)
+(defvar line-number-4)
+
 (setq text-hl "#f8ce8d")
 (setq background-hl "#95722f")
 
 (setq text-1 "#c3ac88")
-(setq text-2 "#89918f")
+(setq text-2 "#6a716f")
 (setq text-3 "#943632")
 (setq text-4 "#999999")
 
@@ -27,3 +47,5 @@
 (setq line-number-2 "#95722f")
 (setq line-number-3 "#89918f")
 (setq line-number-4 "#475f5e")
+
+;;; theme_caravaggio.el ends here

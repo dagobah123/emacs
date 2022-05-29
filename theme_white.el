@@ -4,6 +4,42 @@
 
 ;;; Code:
 
+(defvar text-hl)
+(defvar background-hl)
+(defvar text-1)
+(defvar text-2)
+(defvar text-3)
+(defvar text-4)
+(defvar background-1)
+(defvar background-2)
+(defvar background-3)
+(defvar background-4)
+(defvar background-5)
+(defvar background-6)
+(defvar background-7)
+(defvar background-cursor)
+(defvar background-mode-line-fringe)
+(defvar line-number-1)
+(defvar line-number-2)
+(defvar line-number-3)
+(defvar line-number-4)
+(defvar green-1)
+(defvar green-2)
+(defvar red-1)
+(defvar red-2)
+(defvar blue-1)
+(defvar blue-2 )
+(defvar yellow-1)
+(defvar yellow-2)
+(defvar violet-1)
+(defvar violet-2)
+(defvar orange-1)
+(defvar orange-2)
+(defvar gray-1)
+(defvar gray-2)
+(defvar background-buffer-id)
+(defvar background-telephone-line-projectile)
+
 (setq text-hl "#000000")
 (setq background-hl "#f0f0f0")
 
@@ -45,3 +81,5 @@
 
 (setq background-buffer-id "#ffffff")
 (setq background-telephone-line-projectile "#ffffff")
+
+;;; theme_white.el ends here
