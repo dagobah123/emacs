@@ -34,7 +34,7 @@
 (setq text-diff-added "#229506")
 (setq background-diff-added "#9bff83")
 (setq text-diff-removed "#dc0f50")
-(setq background-diff-removed "#ff839c")
+(setq background-diff-removed "#ffa1ba")
 
 (setq text-magit-branch-local "#000000")
 (setq background-magit-branch-local "#00de00")

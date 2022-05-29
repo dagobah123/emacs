@@ -33,7 +33,7 @@
 ;magit
 (setq text-diff-added "#51bc39")
 (setq background-diff-added "#2b550c")
-(setq text-diff-removed "#fb8f8f")
+(setq text-diff-removed "#fc9c9c")
 (setq background-diff-removed "#c02c2c")
 
 (setq text-magit-branch-local "#00bb00")
