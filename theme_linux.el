@@ -1,14 +1,14 @@
-;;; caravaggio --- theme
+;;; linux --- theme
 
 ;;; Commentary:
 
 ;;; Code:
 
 (setq text-hl "#f8ce8d")
-(setq background-hl "#336e23")
+(setq background-hl "#6c1650")
 
 (setq text-1 "#c3ac88")
-(setq text-2 "#89918f")
+(setq text-2 "#5c6361")
 (setq text-3 "#943632")
 (setq text-4 "#999999")
 
@@ -16,8 +16,8 @@
 (setq background-2 "#5b1244") ;lighter ubuntu
 (setq background-3 "#5b1244") ;lighter ubuntu
 (setq background-4 "#701654") ;lightest ubuntu
-(setq background-5 "#5b1244") ;lighter ubuntu
-(setq background-6 "#164066") ;dark blue
+(setq background-5 "#172f7e") ;region
+(setq background-6 "#111111") ;dark gray
 (setq background-7 "#000000")
 
 (setq background-cursor "#d7b269")

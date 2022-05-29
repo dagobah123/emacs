@@ -7,10 +7,10 @@
 (setq text-hl "#00ff00")
 (setq background-hl "#003300")
 
-(setq text-1 "#00cc00")
-(setq text-2 "#009900")
-(setq text-3 "#006600")
-(setq text-4 "#003300")
+(setq text-1 "#009900")
+(setq text-2 "#006600")
+(setq text-3 "#003300")
+(setq text-4 "#001100")
 
 (setq background-1 "#000000")
 (setq background-2 "#003300")

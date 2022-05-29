@@ -4,10 +4,10 @@
 
 ;;; Code:
 
-(setq green-1 "#00de00")
-(setq green-2 "#007700")
-(setq red-1 "#d53a26")
-(setq red-2 "#770000")
+(setq green-1 "#1ad600")
+(setq green-2 "#004400")
+(setq red-1 "#cb4880")
+(setq red-2 "#b15184")
 (setq blue-1 "#1e90ff")
 (setq blue-2 "#222299")
 (setq yellow-1 "#d6b400")
@@ -18,6 +18,7 @@
 (setq orange-2 "#cd6600")
 (setq gray-1 "#999999")
 (setq gray-2 "#666666")
+(setq text-error "#5c6361")
 
 ;mode line
 (setq text-buffer-id "#00bb00")
@@ -30,9 +31,10 @@
 (setq background-match "#43006d")
 
 ;magit
-(setq text-diff-added "#b4ba5f")
+(setq text-diff-added "#51bc39")
 (setq background-diff-added "#2b550c")
-(setq text-diff-removed "#f17b6c")
+(setq text-diff-removed "#fb8f8f")
+(setq background-diff-removed "#c02c2c")
 
 (setq text-magit-branch-local "#00bb00")
 (setq background-magit-branch-local "#003300")
@@ -40,11 +42,10 @@
 (setq background-magit-branch-remote "#330000")
 
 ;ediff
-(setq background-diff-removed "#48241f")
-(setq background-current-diff-A "#994444")
-(setq background-current-diff-B "#226622")
-(setq background-current-diff-C "#887400")
-(setq background-fine-diff-A "#7d2323")
-(setq background-fine-diff-B "#124d12")
-(setq background-fine-diff-C "#726000")
-(setq background-ediff "#232723")
+(setq background-current-diff-A "#a21c1c") ;red 
+(setq background-current-diff-B "#226622") ;green
+(setq background-current-diff-C "#887400") ;yellow
+(setq background-fine-diff-A "#7d2323") ;red 
+(setq background-fine-diff-B "#124d12") ;green 
+(setq background-fine-diff-C "#726000") ;yellow
+(setq background-ediff "#172f7e")
