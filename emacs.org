@@ -1,7 +1,7 @@
 * emacs
 ** global variables
 #+BEGIN_SRC emacs-lisp
-  (setq CHIAROSCURO_INDEX 0)
+  (setq CHIAROSCURO-INDEX 0)
 #+END_SRC
 ** package archives
 #+BEGIN_SRC emacs-lisp
@@ -55,8 +55,8 @@ Load environment variables properly by installing =exec-path-from-shell=.
 ** os specific settings
 #+BEGIN_SRC emacs-lisp
   (cond
-   ((eq system-type 'windows-nt) (load (concat EMACS_HOME "windows")))
-   ((eq system-type 'gnu/linux) (load (concat EMACS_HOME "linux")))
+   ((eq system-type 'windows-nt) (load (concat EMACS-HOME "windows")))
+   ((eq system-type 'gnu/linux) (load (concat EMACS-HOME "linux")))
    (t (load-library "default"))
    )
 #+END_SRC
@@ -74,7 +74,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (fringe-mode '(20 . 20))
 
   ; setup cache folder to prevent temporary files to clutter projects
-  (setq user-cache-directory (concat EMACS_HOME "cache"))
+  (setq user-cache-directory (concat EMACS-HOME "cache"))
   (setq backup-directory-alist `(("." . ,(expand-file-name "backups" user-cache-directory)))
         url-history-file (expand-file-name "url/history" user-cache-directory)
         auto-save-list-file-prefix (expand-file-name "auto-save-list/.saves-" user-cache-directory)
@@ -126,7 +126,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
       )
       ((string-equal system-type "gnu/linux")
           (progn
-              (set-face-attribute 'default nil :font "DejaVu Sans Mono-18")
+              (set-face-attribute 'default nil :font "DejaVu Sans Mono-14")
           )
       )
   )
@@ -185,7 +185,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (global-set-key (kbd "C-c l") 'org-store-link)
   (global-set-key (kbd "C-c b") 'org-switchb)
 
-  (load (concat EMACS_HOME "agenda"))
+  (load (concat EMACS-HOME "agenda"))
 
   ; fold/overview
   ; nofold/showall
@@ -889,7 +889,7 @@ This is the package that handles server installation and session management.
   (defun my:reset-themes-index()
     (interactive)
     (setq theme-index 0)
-    (setq CHIAROSCURO_INDEX 0)
+    (setq CHIAROSCURO-INDEX 0)
     (my:disable-themes)
     (my:set-mode-line-font)
     )
@@ -898,7 +898,7 @@ This is the package that handles server installation and session management.
   (defun my:theme-down()
     (interactive)
     (setq theme-index (- theme-index 1))
-    (setq CHIAROSCURO_INDEX (- CHIAROSCURO_INDEX 1))
+    (setq CHIAROSCURO-INDEX (- CHIAROSCURO-INDEX 1))
     ;(message "theme-down")
     (my:toggle-themes)
     (my:set-mode-line-font)
@@ -908,7 +908,7 @@ This is the package that handles server installation and session management.
   (defun my:theme-up()
     (interactive)
     (setq theme-index (+ theme-index 1))
-    (setq CHIAROSCURO_INDEX (+ CHIAROSCURO_INDEX 1))
+    (setq CHIAROSCURO-INDEX (+ CHIAROSCURO-INDEX 1))
     ;(message "theme-up")
     (my:toggle-themes)
     (my:set-mode-line-font)
@@ -946,7 +946,7 @@ This is the package that handles server installation and session management.
         (progn
           (message "emacs")
           (setq theme-index 0)
-          (setq CHIAROSCURO_INDEX 0)
+          (setq CHIAROSCURO-INDEX 0)
           )
       )
 
@@ -956,7 +956,7 @@ This is the package that handles server installation and session management.
         (progn
           (message "emacs")
           (setq theme-index 0)
-          (setq CHIAROSCURO_INDEX 0)
+          (setq CHIAROSCURO-INDEX 0)
           )
       )
     )

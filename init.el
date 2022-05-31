@@ -3,8 +3,9 @@
 ;;; init.el sets EMACS_HOME and loads emacs.org
 
 ;;; Code:
-; set EMACS_HOME
-(setq EMACS_HOME "~/.emacs.d/")
+; set EMACS-HOME
+(defvar EMACS-HOME)
+(setq EMACS-HOME "~/.emacs.d/")
 
 ; load emacs.org
 (org-babel-load-file "~/.emacs.d/emacs.org")
