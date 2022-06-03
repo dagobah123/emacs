@@ -156,7 +156,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
 
   ; switch split buffers
   (global-set-key (kbd "M-o") 'other-window)
-  (windmove-default-keybindings)
+  ;(windmove-default-keybindings)
 
   ; disable bell
   (setq ring-bell-function 'ignore)
@@ -194,10 +194,10 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (setq org-startup-folded 'content)
 
   ; org-mode use shift arrows to change buffer
-  (add-hook 'org-shiftup-final-hook 'windmove-up)
-  (add-hook 'org-shiftleft-final-hook 'windmove-left)
-  (add-hook 'org-shiftdown-final-hook 'windmove-down)
-  (add-hook 'org-shiftright-final-hook 'windmove-right)
+  ;(add-hook 'org-shiftup-final-hook 'windmove-up)
+  ;(add-hook 'org-shiftleft-final-hook 'windmove-left)
+  ;(add-hook 'org-shiftdown-final-hook 'windmove-down)
+  ;(add-hook 'org-shiftright-final-hook 'windmove-right)
   (setq org-support-shift-select 'always)
   (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "FEEDBACK" "ON-HOLD" "|" "DONE" "DELEGATED")))
   (setq org-tags-column 0)
