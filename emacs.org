@@ -187,6 +187,10 @@ Load environment variables properly by installing =exec-path-from-shell=.
 
   (load (concat EMACS-HOME "agenda"))
 
+  (setq org-priority-faces '((?A . (:foreground "white" :background "red3"    :weight 'bold))
+                             (?B . (:foreground "white" :background "orange1" :weight 'bold))
+                             (?C . (:foreground "white" :background "green4"  :weight 'bold))))
+
   ; fold/overview
   ; nofold/showall
   ; content

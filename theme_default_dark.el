@@ -48,7 +48,7 @@
 (setq blue-1 "#1e90ff")
 (setq blue-2 "#222299")
 (setq yellow-1 "#d6b400")
-(setq yellow-2 "#cdad00")
+(setq yellow-2 "#625300")
 (setq violet-1 "#f974f9")
 (setq violet-2 "#43006d")
 (setq orange-1 "#ff7f00")
