@@ -79,20 +79,22 @@
 (defvar CHIAROSCURO-INDEX                             )
 (defvar alert-1                              "#ff0000")
 
+;(if (eq CHIAROSCURO-INDEX 6) (progn (load-file "~/.emacs.d/theme_default_light.el")))
 (if (eq CHIAROSCURO-INDEX 5) (progn (load-file "~/.emacs.d/theme_default_light.el")))
 (if (eq CHIAROSCURO-INDEX 4) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
 (if (eq CHIAROSCURO-INDEX 3) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
 (if (eq CHIAROSCURO-INDEX 2) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
 (if (eq CHIAROSCURO-INDEX 1) (progn (load-file "~/.emacs.d/theme_default_light.el")))
 
+(if (eq CHIAROSCURO-INDEX 6) (progn (load-file "~/.emacs.d/theme_eclipse.el")))
 (if (eq CHIAROSCURO-INDEX 5) (progn (load-file "~/.emacs.d/theme_white.el")))
 (if (eq CHIAROSCURO-INDEX 4) (progn (load-file "~/.emacs.d/theme_terminal.el")))
 (if (eq CHIAROSCURO-INDEX 3) (progn (load-file "~/.emacs.d/theme_linux.el")))
 (if (eq CHIAROSCURO-INDEX 2) (progn (load-file "~/.emacs.d/theme_caravaggio.el")))
 (if (eq CHIAROSCURO-INDEX 1) (progn (load-file "~/.emacs.d/theme_light.el")))
 
-(if (> CHIAROSCURO-INDEX 4) (progn (setq CHIAROSCURO-INDEX 0)))
-(if (< CHIAROSCURO-INDEX 0) (progn (setq CHIAROSCURO-INDEX 4)))
+(if (> CHIAROSCURO-INDEX 5) (progn (setq CHIAROSCURO-INDEX 0)))
+(if (< CHIAROSCURO-INDEX 0) (progn (setq CHIAROSCURO-INDEX 5)))
 
 (deftheme chiaroscuro)
 

@@ -853,6 +853,7 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "M-m") 'xref-pop-marker-stack)
   (global-set-key (kbd "M-,") 'xref-find-definitions)
   (global-set-key (kbd "M-n") 'evil-first-non-blank)
+  (global-set-key (kbd "C-x w") 'overwrite-mode)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
@@ -860,6 +861,7 @@ This is the package that handles server installation and session management.
   (setq chiaroscuro-index 0)
 
   (setq themes-list '(
+                      chiaroscuro
                       chiaroscuro
                       chiaroscuro
                       chiaroscuro
@@ -874,6 +876,7 @@ This is the package that handles server installation and session management.
                             "linux"
                             "terminal"
                             "white"
+                            "eclipse"
                             )
         )
 
