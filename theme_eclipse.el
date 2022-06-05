@@ -64,8 +64,8 @@
 (setq background-telephone-line-projectile "#00de00")
 
 ;match
-(setq text-match "#ffffff")
-(setq background-match "#f974f9")
+(setq text-match "#000000")
+(setq background-match "#bbbbbb")
 
 ;magit
 (setq text-diff-added "#229506")
