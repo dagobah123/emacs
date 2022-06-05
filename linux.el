@@ -11,7 +11,7 @@
 
 (defun my:buffer-face-mode-mono()
   (interactive)
-  (setq buffer-face-mode-face '(:family "FreeMono" :weight bold))
+  (setq buffer-face-mode-face '(:family "FreeMono"))
   (buffer-face-mode))
 
 (defun my:buffer-face-mode-text()

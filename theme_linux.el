@@ -32,11 +32,13 @@
 (setq text-3 "#943632")
 (setq text-4 "#999999")
 
+;840071
+
 (setq background-1 "#380c2a") ;ubuntu
 (setq background-2 "#2a091f") ;darker ubuntu
 (setq background-3 "#5b1244") ;lighter ubuntu
 (setq background-4 "#701654") ;lightest ubuntu
-(setq background-5 "#91005b") ;region
+(setq background-5 "#700060") ;region
 (setq background-6 "#111111") ;dark gray
 (setq background-7 "#000000")
 
@@ -44,7 +46,7 @@
 (setq background-mode-line-fringe "#5b1244")
 
 (setq line-number-1 "#f8ce8d")
-(setq line-number-2 "#91005b")
+(setq line-number-2 "#700060")
 (setq line-number-3 "#7f0e5b")
 (setq line-number-4 "#310a25")
 
