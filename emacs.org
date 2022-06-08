@@ -686,13 +686,11 @@ This is the package that handles server installation and session management.
     (yank)
     )
 
-;  (defun my:trim-whitespace()
-;    (interactive)
-;    (move-beginning-of-line 1)
-;    (cua-set-mark)
-;    (move-end-of-line)
-;    (whitespace-cleanup-region)
-;    )
+  (defun my:trim-whitespace()
+    (interactive)
+    (move-beginning-of-line 1)
+    (fixup-whitespace)
+    )
 
   (defvar java-function-regexp
     (concat
@@ -870,7 +868,7 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "M-n") 'evil-first-non-blank)
   (global-set-key (kbd "C-x w") 'overwrite-mode)
   (global-set-key (kbd "C-c y") 'my:copy-line-at-point)
-  ;(global-set-key (kbd "C-c t") 'my:trim-whitespace)
+  (global-set-key (kbd "C-c t") 'my:trim-whitespace)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
