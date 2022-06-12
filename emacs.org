@@ -126,7 +126,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
       )
       ((string-equal system-type "gnu/linux")
           (progn
-              (set-face-attribute 'default nil :font "DejaVu Sans Mono-14")
+              (set-face-attribute 'default nil :font "DejaVu Sans Mono-20")
           )
       )
   )
@@ -209,6 +209,8 @@ Load environment variables properly by installing =exec-path-from-shell=.
   (org-reload)
 
   (setq org-latex-pdf-process '("latexmk -f -pdf %f"))
+
+  (setq org-image-actual-width (list 500))
 
   (setq org-publish-project-alist
       '(
