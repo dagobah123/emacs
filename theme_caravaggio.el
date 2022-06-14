@@ -33,7 +33,7 @@
 (setq text-4 "#999999")
 
 (setq background-1 "#222222") ;dark gray
-(setq background-2 "#433b33") ;lighter warm gray
+(setq background-2 "#222222") ;dark gray
 (setq background-3 "#49604b") ;green
 (setq background-4 "#735825") ;yellow ochre
 (setq background-5 "#1b541a") ;higher chroma green

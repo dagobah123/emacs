@@ -35,7 +35,7 @@
 ;840071
 
 (setq background-1 "#380c2a") ;ubuntu
-(setq background-2 "#2a091f") ;darker ubuntu
+(setq background-2 "#380c2a") ;ubuntu
 (setq background-3 "#5b1244") ;lighter ubuntu
 (setq background-4 "#701654") ;lightest ubuntu
 (setq background-5 "#700060") ;region

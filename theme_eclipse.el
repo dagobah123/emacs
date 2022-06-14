@@ -116,7 +116,7 @@
 (setq text-4 "#999999")
 
 (setq background-1 "#ffffff")
-(setq background-2 "#dddddd")
+(setq background-2 "#ffffff")
 (setq background-3 "#bbbbbb")
 (setq background-4 "#e8f2fe")
 (setq background-5 "#bbbbbb")

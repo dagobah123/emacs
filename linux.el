@@ -1,10 +1,21 @@
+;;; linux.el --- linux init file
+;;; Commentary:
+;;; linux.el sets linux specific settings
+
+;;; Code:
+
 ;;; Linux specific settings
+
+(defvar lsp-java-java-path)
+(defvar buffer-face-mode-face)
 
 ;(setenv "JAVA_HOME" "/usr/lib/jvm/java-14-openjdk-amd64")
 ;(setenv "JAVA_HOME" "/usr/lib/jvm/java-11-openjdk-armhf/bin/java")
+(setenv "JAVA_HOME" "/usr/lib/jvm/java-17-openjdk-amd64/bin/java")
 
 ;(setenv "JAVA_HOME" "/usr/lib/jvm/java-11-openjdk-armhf/bin/java")
 ;(setq lsp-java-java-path "/usr/lib/jvm/java-11-openjdk-armhf/bin/java")
+(setq lsp-java-java-path "/usr/lib/jvm/java-17-openjdk-amd64/bin/java")
 
 ; set font of mode-line
 ;(set-face-attribute 'mode-line nil :font "Comfortaa-20")
@@ -48,6 +59,8 @@
 
 (defun my:robotloader()
   (interactive)
-  (let ((default-directory "/home/computer/software/robotloader")) 
+  (let ((default-directory "/home/computer/software/robotloader"))
     (eshell '(4)))
   (insert "sudo ./robotloader_linux_x64.sh"))
+
+;;; linux.el ends here

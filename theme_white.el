@@ -49,7 +49,7 @@
 (setq text-4 "#000000")
 
 (setq background-1 "#ffffff")
-(setq background-2 "#f0f0f0")
+(setq background-2 "#ffffff")
 (setq background-3 "#f0f0f0")
 (setq background-4 "#f0f0f0")
 (setq background-5 "#dddddd")

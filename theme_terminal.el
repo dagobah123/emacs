@@ -33,7 +33,7 @@
 (setq text-4 "#001100")
 
 (setq background-1 "#000000")
-(setq background-2 "#003300")
+(setq background-2 "#000000")
 (setq background-3 "#003300")
 (setq background-4 "#003300")
 (setq background-5 "#003300")
