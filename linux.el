@@ -10,12 +10,16 @@
 (defvar buffer-face-mode-face)
 
 ;(setenv "JAVA_HOME" "/usr/lib/jvm/java-14-openjdk-amd64")
-;(setenv "JAVA_HOME" "/usr/lib/jvm/java-11-openjdk-armhf/bin/java")
-(setenv "JAVA_HOME" "/usr/lib/jvm/java-17-openjdk-amd64/bin/java")
+;(setenv "JAVA_HOME" "/usr/lib/jvm/java-11-openjdk-armhf")
+;(setenv "JAVA_HOME" "/usr/lib/jvm/java-17-openjdk-amd64")
+;(setenv "JAVA_HOME" "/usr/lib/jvm/java-11-openjdk-amd64")
+(setenv "JAVA_HOME" "/usr/lib/jvm/java-18-openjdk-amd64")
 
 ;(setenv "JAVA_HOME" "/usr/lib/jvm/java-11-openjdk-armhf/bin/java")
 ;(setq lsp-java-java-path "/usr/lib/jvm/java-11-openjdk-armhf/bin/java")
-(setq lsp-java-java-path "/usr/lib/jvm/java-17-openjdk-amd64/bin/java")
+;(setq lsp-java-java-path "/usr/lib/jvm/java-17-openjdk-amd64/bin/java")
+;(setq lsp-java-java-path "/usr/lib/jvm/java-11-openjdk-amd64/bin/java")
+(setq lsp-java-java-path "/usr/lib/jvm/java-18-openjdk-amd64/bin/java")
 
 ; set font of mode-line
 ;(set-face-attribute 'mode-line nil :font "Comfortaa-20")
