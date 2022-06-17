@@ -127,7 +127,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
       )
       ((string-equal system-type "gnu/linux")
           (progn
-              (set-face-attribute 'default nil :font "DejaVu Sans Mono-20")
+              (set-face-attribute 'default nil :font "DejaVu Sans Mono-14")
           )
       )
   )
@@ -175,6 +175,11 @@ Load environment variables properly by installing =exec-path-from-shell=.
 
   ; truncate lines
   (setq-default truncate-lines t)
+
+  (add-hook 'c-mode-common-hook
+          (lambda () (subword-mode 1)))
+  (add-hook 'java-mode-common-hook
+          (lambda () (subword-mode 1)))
 #+END_SRC
 ** org mode
 #+BEGIN_SRC emacs-lisp

@@ -25,7 +25,7 @@
 (defvar line-number-4)
 
 (setq text-hl "#f8ce8d")
-(setq background-hl "#95722f")
+(setq background-hl "#2d2d2d")
 
 (setq text-1 "#c3ac88")
 (setq text-2 "#6a716f")

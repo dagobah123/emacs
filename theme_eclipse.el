@@ -43,7 +43,7 @@
 
 (setq green-1 "#000000")
 (setq green-2 "#ffffff")
-(setq red-1 "#000000")
+(setq red-1 "#7f0055")
 (setq red-2 "#990000")
 (setq blue-1 "#6a3e3e")
 (setq blue-2 "#bcdfff")
@@ -55,7 +55,6 @@
 (setq orange-2 "#cd6600")
 (setq gray-1 "#999999")
 (setq gray-2 "#666666")
-(setq text-error "#5c6361")
 
 ;mode line
 (setq text-buffer-id "#000000")

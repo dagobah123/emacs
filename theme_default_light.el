@@ -55,7 +55,7 @@
 (setq orange-2 "#cd6600")
 (setq gray-1 "#999999")
 (setq gray-2 "#666666")
-(setq text-error "#5c6361")
+(setq text-error "#ff0000")
 
 ;mode line
 (setq text-buffer-id "#000000")

@@ -71,7 +71,7 @@
 (defvar evil-motion-2                        "#4876ff") ;blue
 (defvar evil-operator-1                      "#ffffff")
 (defvar evil-operator-2                      "#4876ff") ;blue
-(defvar text-error                           "#dd0000")
+(defvar text-error                           "#ff0000")
 (defvar background-magit-branch-local                 )
 (defvar text-magit-branch-local                       )
 (defvar background-magit-branch-remote                )
@@ -140,7 +140,7 @@
 `(font-lock-string-face               ((t (:foreground ,text-2                                          ))))
 `(font-lock-type-face                 ((t (:foreground ,red-1    :bold t                   :italic t    ))))
 `(font-lock-variable-name-face        ((t (:foreground ,blue-1   :background ,nil          :bold t      ))))
-`(font-lock-warning-face              ((t (:foreground ,text-1   :background ,background-1 :underline t ))))
+`(font-lock-warning-face              ((t (:foreground ,red-1    :background ,background-1 :underline t ))))
 
 ;dired
 `(dired-directory    ((t (:foreground ,violet-1 :background, violet-2     :bold t ))))
@@ -390,11 +390,39 @@
 `(whitespace-tab              ((t (:foreground ,violet-1 :background ,violet-2     ))))
 `(whitespace-trailing         ((t (:foreground ,violet-1 :background ,violet-2     ))))
 
-`(flycheck-error                            ((t (:foreground ,text-error :weight normal :italic nil :underline t ))))
-`(lsp-lsp-flycheck-warning-unnecessary-face ((t (:foreground ,text-error :weight normal :italic nil :underline t ))))
-`(flycheck-fringe-info                      ((t (:foreground ,green-1                                            ))))
-`(flycheck-fringe-warning                   ((t (:foreground ,orange-1                                           ))))
-`(flycheck-fringe-error                     ((t (:foreground ,red-1                                              ))))
+`(error                                     ((t (:foreground ,text-error :bold t :underline t ))))
+`(flycheck-error                            ((t (:foreground ,text-error :bold t :underline t ))))
+`(lsp-lsp-flycheck-warning-unnecessary-face ((t (:foreground ,text-error :bold t :underline t ))))
+`(flycheck-fringe-info                      ((t (:foreground ,green-1                         ))))
+`(flycheck-fringe-warning                   ((t (:foreground ,orange-1                        ))))
+`(flycheck-fringe-error                     ((t (:foreground ,text-error :bold t              ))))
+
+;lsp-headerline-breadcrumb-deprecated-face
+;lsp-headerline-breadcrumb-path-error-face
+;lsp-headerline-breadcrumb-path-face
+;lsp-headerline-breadcrumb-path-hint-face
+;lsp-headerline-breadcrumb-path-info-face
+;lsp-headerline-breadcrumb-path-warning-face
+;lsp-headerline-breadcrumb-project-prefix-face
+;lsp-headerline-breadcrumb-separator-face
+;lsp-headerline-breadcrumb-symbols-error-face
+;lsp-headerline-breadcrumb-symbols-face
+;lsp-headerline-breadcrumb-symbols-hint-face
+;lsp-headerline-breadcrumb-symbols-info-face
+;lsp-headerline-breadcrumb-symbols-warning-face
+;lsp-headerline-breadcrumb-unknown-project-prefix-face
+
+;which-key-command-description-face
+;which-key-docstring-face
+;which-key-group-description-face
+;which-key-highlighted-command-face
+;which-key-key-face
+;which-key-local-map-description-face
+;which-key-note-face
+;which-key-separator-face
+;which-key-special-key-face
+
+`(bookmark-face ((t (:foreground ,text-1 :background ,nil ))))
 
 `(ansi-color-bold ((t (:foreground ,text-match :background ,background-match :bold t ))))
 
