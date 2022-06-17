@@ -529,6 +529,10 @@ This is the package that handles server installation and session management.
 (use-package helm
   :config (helm-mode))
 (use-package lsp-treemacs)
+
+;show nice unit test results
+(add-hook 'compilation-filter-hook
+          (lambda() (ansi-color-apply-on-region (point-min) (point-max))))
 #+end_src
 
 #+begin_src  emacs-lisp

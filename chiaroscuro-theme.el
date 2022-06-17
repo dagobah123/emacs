@@ -412,15 +412,15 @@
 ;lsp-headerline-breadcrumb-symbols-warning-face
 ;lsp-headerline-breadcrumb-unknown-project-prefix-face
 
-;which-key-command-description-face
-;which-key-docstring-face
-;which-key-group-description-face
-;which-key-highlighted-command-face
-;which-key-key-face
-;which-key-local-map-description-face
-;which-key-note-face
-;which-key-separator-face
-;which-key-special-key-face
+`(which-key-command-description-face    ((t (:background ,nil ))))
+`(which-key-docstring-face              ((t (:background ,nil ))))
+`(which-key-group-description-face      ((t (:background ,nil ))))
+`(which-key-highlighted-command-face    ((t (:background ,nil ))))
+`(which-key-key-face                    ((t (:background ,nil ))))
+`(which-key-local-map-description-face  ((t (:background ,nil ))))
+`(which-key-note-face                   ((t (:background ,nil ))))
+`(which-key-separator-face              ((t (:background ,nil ))))
+`(which-key-special-key-face            ((t (:background ,nil ))))
 
 `(bookmark-face ((t (:foreground ,text-1 :background ,nil ))))
 
