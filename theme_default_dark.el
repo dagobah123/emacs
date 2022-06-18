@@ -18,7 +18,6 @@
 (defvar orange-2)
 (defvar gray-1)
 (defvar gray-2)
-(defvar text-error)
 (defvar text-buffer-id)
 (defvar background-buffer-id)
 (defvar text-telephone-line-projectile)
@@ -55,7 +54,6 @@
 (setq orange-2 "#cd6600")
 (setq gray-1 "#999999")
 (setq gray-2 "#666666")
-(setq text-error "#ff0000")
 
 ;mode line
 (setq text-buffer-id "#00bb00")

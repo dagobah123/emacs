@@ -555,6 +555,14 @@ This is the package that handles server installation and session management.
 
 (setq lsp-print-io t)
 #+end_src
+** lsp c++
+#+begin_src emacs-lisp
+  (use-package lsp-mode
+    :hook
+    ((c++-mode . lsp)))
+  (use-package lsp-ui
+    :commands lsp-ui-mode)
+#+END_SRC
 ** lsp python
 #+begin_src emacs-lisp
   (use-package lsp-mode

@@ -18,7 +18,6 @@
 (defvar orange-2)
 (defvar gray-1)
 (defvar gray-2)
-(defvar text-error)
 (defvar text-buffer-id)
 (defvar background-buffer-id)
 (defvar text-telephone-line-projectile)
