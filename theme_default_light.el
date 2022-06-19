@@ -18,7 +18,16 @@
 (defvar orange-2)
 (defvar gray-1)
 (defvar gray-2)
+(defvar text-constant)
+(defvar text-function)
+(defvar background-function)
+(defvar text-keyword)
+(defvar text-preprocessor)
+(defvar text-type)
+(defvar text-variable)
+(defvar text-warning)
 (defvar text-buffer-id)
+(defvar text-ediff)
 (defvar background-buffer-id)
 (defvar text-telephone-line-projectile)
 (defvar background-telephone-line-projectile)
@@ -39,43 +48,52 @@
 (defvar background-fine-diff-B)
 (defvar background-fine-diff-C)
 (defvar background-ediff)
-
-(setq green-1 "#008100")
-(setq green-2 "#85ff85")
-(setq red-1 "#ff3333")
-(setq red-2 "#990000")
+ 
+(setq green-1 "#113e00")
+(setq green-2 "#d6ffc7")
+(setq red-1 "#850b0b")
+(setq red-2 "#ffc8c8")
 (setq blue-1 "#1111ca")
 (setq blue-2 "#bcdfff")
-(setq yellow-1 "#ffb100")
-(setq yellow-2 "#cdad00")
-(setq violet-1 "#43006d")
-(setq violet-2 "#f974f9")
-(setq orange-1 "#ff7f00")
-(setq orange-2 "#cd6600")
-(setq gray-1 "#999999")
-(setq gray-2 "#666666")
+(setq yellow-1 "#645900")
+(setq yellow-2 "#fff190")
+(setq violet-1 "#611481")
+(setq violet-2 "#f0cdff")
+(setq orange-1 "#7b2d06")
+(setq orange-2 "#ffce82")
+(setq gray-1 "#333333")
+(setq gray-2 "#dddddd")
 
+(setq text-constant "#994410")
+(setq text-function "#113e00")
+(setq background-function "#d6ffc7")
+(setq text-keyword "#85089e")
+(setq text-preprocessor "#04bcc0")
+(setq text-type "#991010")
+(setq text-variable "#386df5")
+(setq text-warning "#ff0000")
+ 
 ;mode line
 (setq text-buffer-id "#000000")
 (setq background-buffer-id "#ffff00")
 (setq text-telephone-line-projectile "#000000")
 (setq background-telephone-line-projectile "#00de00")
-
+ 
 ;match
-(setq text-match "#ffffff")
-(setq background-match "#f974f9")
-
+(setq text-match "#9b209b")
+(setq background-match "#ffe2ff")
+ 
 ;magit
-(setq text-diff-added "#229506")
-(setq background-diff-added "#9bff83")
-(setq text-diff-removed "#dc0f50")
-(setq background-diff-removed "#ffa1ba")
-
+(setq text-diff-added "#113e00")
+(setq background-diff-added "#d6ffc7")
+(setq text-diff-removed "#850b0b")
+(setq background-diff-removed "#ffc8c8")
+ 
 (setq text-magit-branch-local "#000000")
 (setq background-magit-branch-local "#00de00")
 (setq text-magit-branch-remote "#000000")
 (setq background-magit-branch-remote "#ff2f2f")
-
+ 
 ;ediff
 (setq background-current-diff-A "#ffdddd")
 (setq background-current-diff-B "#ddffdd")
@@ -84,5 +102,6 @@
 (setq background-fine-diff-B "#aaffaa")
 (setq background-fine-diff-C "#ffff55")
 (setq background-ediff "#bbcaff")
+(setq text-ediff "#000000")
 
 ;;; theme_default_light.el ends here

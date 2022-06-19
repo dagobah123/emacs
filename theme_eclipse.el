@@ -18,6 +18,13 @@
 (defvar orange-2)
 (defvar gray-1)
 (defvar gray-2)
+(defvar text-constant)
+(defvar text-function)
+(defvar text-keyword)
+(defvar text-preprocessor)
+(defvar text-type)
+(defvar text-variable)
+(defvar text-warning)
 (defvar text-buffer-id)
 (defvar background-buffer-id)
 (defvar text-telephone-line-projectile)
@@ -40,20 +47,13 @@
 (defvar background-fine-diff-C)
 (defvar background-ediff)
 
-(setq green-1 "#000000")
-(setq green-2 "#ffffff")
-(setq red-1 "#7f0055")
-(setq red-2 "#990000")
-(setq blue-1 "#6a3e3e")
-(setq blue-2 "#bcdfff")
-(setq yellow-1 "#7f0055")
-(setq yellow-2 "#cdad00")
-(setq violet-1 "#afafaf")
-(setq violet-2 "#ffffff")
-(setq orange-1 "#000000")
-(setq orange-2 "#cd6600")
-(setq gray-1 "#999999")
-(setq gray-2 "#666666")
+(setq text-constant "000000")
+(setq text-function "#000000")
+(setq text-keyword "#7f0055")
+(setq text-preprocessor "#afafaf")
+(setq text-type "#7f0055")
+(setq text-variable "6a3e3e")
+(setq text-warning "#6a3e3e")
 
 ;mode line
 (setq text-buffer-id "#000000")
@@ -66,15 +66,15 @@
 (setq background-match "#bbbbbb")
 
 ;magit
-(setq text-diff-added "#229506")
-(setq background-diff-added "#9bff83")
-(setq text-diff-removed "#dc0f50")
-(setq background-diff-removed "#ffa1ba")
-
-(setq text-magit-branch-local "#000000")
-(setq background-magit-branch-local "#00de00")
-(setq text-magit-branch-remote "#000000")
-(setq background-magit-branch-remote "#ff2f2f")
+;setq text-diff-added "#229506")
+;(setq background-diff-added "#9bff83")
+;(setq text-diff-removed "#dc0f50")
+;(setq background-diff-removed "#ffa1ba")
+; 
+;(setq text-magit-branch-local "#000000")
+;(setq background-magit-branch-local "#00de00")
+;(setq text-magit-branch-remote "#000000")
+;(setq background-magit-branch-remote "#ff2f2f")
 
 ;ediff
 (setq background-current-diff-A "#ffdddd")
@@ -128,7 +128,5 @@
 (setq line-number-2 "#ffffff")
 (setq line-number-3 "#787878")
 (setq line-number-4 "#ffffff")
-
-`(font-lock-comment-face              ((t (:foreground ,text-1                                          ))))
 
 ;;; theme_eclipse.el ends here

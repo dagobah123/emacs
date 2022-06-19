@@ -37,7 +37,7 @@
 (setq background-3 "#003300")
 (setq background-4 "#003300")
 (setq background-5 "#003300")
-(setq background-6 "#003300")
+(setq background-6 "#001100")
 (setq background-7 "#003300")
 
 (setq background-cursor "#00ff00")

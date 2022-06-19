@@ -18,7 +18,16 @@
 (defvar orange-2)
 (defvar gray-1)
 (defvar gray-2)
+(defvar text-constant)
+(defvar text-function)
+(defvar background-function)
+(defvar text-keyword)
+(defvar text-preprocessor)
+(defvar text-type)
+(defvar text-variable)
+(defvar text-warning)
 (defvar text-buffer-id)
+(defvar text-ediff)
 (defvar background-buffer-id)
 (defvar text-telephone-line-projectile)
 (defvar background-telephone-line-projectile)
@@ -42,18 +51,27 @@
 
 (setq green-1 "#1ad600")
 (setq green-2 "#004400")
-(setq red-1 "#cb4880")
-(setq red-2 "#440000")
+(setq red-1 "#ffb9b9")
+(setq red-2 "#850d0d")
 (setq blue-1 "#1e90ff")
-(setq blue-2 "#222299")
+(setq blue-2 "#202055")
 (setq yellow-1 "#d6b400")
-(setq yellow-2 "#625300")
+(setq yellow-2 "#554804")
 (setq violet-1 "#f974f9")
 (setq violet-2 "#43006d")
 (setq orange-1 "#ff7f00")
-(setq orange-2 "#cd6600")
+(setq orange-2 "#4e2700")
 (setq gray-1 "#999999")
-(setq gray-2 "#666666")
+(setq gray-2 "#222222")
+
+(setq text-constant "#cb6a30")
+(setq text-function "#1ad600")
+(setq background-function "#004400")
+(setq text-keyword "#d091ff")
+(setq text-preprocessor "#04bcc0")
+(setq text-type "#bb4f80")
+(setq text-variable "#7ea0f7")
+(setq text-warning "#ff0000")
 
 ;mode line
 (setq text-buffer-id "#00bb00")
@@ -66,10 +84,10 @@
 (setq background-match "#43006d")
 
 ;magit
-(setq text-diff-added "#51bc39")
-(setq background-diff-added "#2b550c")
-(setq text-diff-removed "#fc9c9c")
-(setq background-diff-removed "#c02c2c")
+(setq text-diff-added "#1ad600")
+(setq background-diff-added "#004400")
+(setq text-diff-removed "#ffb9b9")
+(setq background-diff-removed "#850d0d")
 
 (setq text-magit-branch-local "#00bb00")
 (setq background-magit-branch-local "#003300")
@@ -80,9 +98,10 @@
 (setq background-current-diff-A "#a21c1c") ;red
 (setq background-current-diff-B "#226622") ;green
 (setq background-current-diff-C "#887400") ;yellow
-(setq background-fine-diff-A "#7d2323") ;red
-(setq background-fine-diff-B "#124d12") ;green
+(setq background-fine-diff-A "#830e0e") ;red
+(setq background-fine-diff-B "#094309") ;green
 (setq background-fine-diff-C "#726000") ;yellow
 (setq background-ediff "#172f7e")
+(setq text-ediff "#dddddd")
 
 ;;; theme_default_dark.el ends here
