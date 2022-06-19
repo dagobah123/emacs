@@ -83,20 +83,8 @@ Load environment variables properly by installing =exec-path-from-shell=.
 
   (setq blink-cursor-blinks 0)
 
-  ;(global-display-line-numbers-mode)
   (setq display-line-numbers-type 'relative)
   (global-set-key (kbd "C-7") 'global-display-line-numbers-mode)
-  (defun my:global-display-line-numbers-mode-on()
-    (interactive)
-    (global-display-line-numbers-mode t)
-  )
-  (defun my:global-display-line-numbers-mode-off()
-    (interactive)
-    (global-display-line-numbers-mode 0)
-  )
-  (add-hook 'java-mode-hook 'my:global-display-line-numbers-mode-on)
-  (add-hook 'org-mode-hook 'my:global-display-line-numbers-mode-off)
-  (add-hook 'org-agenda-hook 'my:global-display-line-numbers-mode-off)
 
   (global-hl-line-mode 1)
 
