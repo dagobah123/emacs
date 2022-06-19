@@ -42,3 +42,4 @@
 (add-hook 'org-mode-hook 'my:buffer-face-mode-stylish)
 (add-hook 'c++-mode-hook 'my:buffer-face-mode-mono)
 (add-hook 'java-mode-hook 'my:buffer-face-mode-mono)
+(add-hook 'treemacs-mode-hook 'my:buffer-face-mode-mono)
