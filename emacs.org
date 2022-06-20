@@ -367,7 +367,7 @@ Yasnippet is a template system for Emacs. It allows you to type abbreviation and
 #+begin_src emacs-lisp
   (use-package yasnippet :config (yas-global-mode))
   (use-package yasnippet-snippets :ensure t)
-  ;todo add yasnippet directory
+  (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
 #+end_src
 
 E.g. In java mode, if you type ~pr~ and hit ~<TAB>~ it should complete to ~System.out.println("text");~
