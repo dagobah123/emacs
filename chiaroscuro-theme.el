@@ -258,8 +258,8 @@
 `(magit-diff-added-highlight        ((t (:foreground ,text-diff-added          :background ,background-diff-added                                                                        ))))
 `(magit-diff-removed-highlight      ((t (:foreground ,text-diff-removed        :background ,background-diff-removed                                                                      ))))
 
-`(magit-diff-added                  ((t (:foreground ,text-1                   :background ,nil                                                                                          ))))
-`(magit-diff-removed                ((t (:foreground ,text-1                   :background ,nil                                                                                          ))))
+`(magit-diff-added                  ((t (:foreground ,green-1                  :background ,nil                                                                                          ))))
+`(magit-diff-removed                ((t (:foreground ,red-1                    :background ,nil                                                                                          ))))
 
 `(magit-blame-heading               ((t (:foreground ,text-1                   :background ,background-3 :bold t                                                                         ))))
 `(magit-blame-highlight             ((t (:foreground ,text-1                   :background ,background-3 :bold t                                                                         ))))
@@ -495,6 +495,9 @@
 `(lsp-headerline-breadcrumb-symbols-warning-face        ((t (:foreground ,text-warning :background ,nil ))))
 ;`(lsp-headerline-breadcrumb-unknown-project-prefix-face ((t (:foreground ,text-1 :background ,nil ))))
 
+`(company-tooltip-selection        ((t (:foreground ,text-match :background ,background-match ))))
+
+`(helm-ff-executable               ((t (:foreground ,text-match :background ,background-match ))))
 )
 
 ;;;###autoload

@@ -39,6 +39,8 @@
                        counsel-web
                        counsel-projectile
                        ox-jira
+                       company
+                       company-box
                        )
         )
 
@@ -115,7 +117,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
       )
       ((string-equal system-type "gnu/linux")
           (progn
-              (set-face-attribute 'default nil :font "DejaVu Sans Mono-16")
+              (set-face-attribute 'default nil :font "DejaVu Sans Mono-18")
           )
       )
   )
@@ -191,11 +193,6 @@ Load environment variables properly by installing =exec-path-from-shell=.
   ; showeverything
   (setq org-startup-folded 'showeverything)
 
-  ; org-mode use shift arrows to change buffer
-  ;(add-hook 'org-shiftup-final-hook 'windmove-up)
-  ;(add-hook 'org-shiftleft-final-hook 'windmove-left)
-  ;(add-hook 'org-shiftdown-final-hook 'windmove-down)
-  ;(add-hook 'org-shiftright-final-hook 'windmove-right)
   (setq org-support-shift-select 'always)
   (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "FEEDBACK" "ON-HOLD" "|" "DONE" "DELEGATED")))
   (setq org-tags-column 0)
@@ -359,28 +356,33 @@ Load environment variables properly by installing =exec-path-from-shell=.
 Complete anything aka Company provides auto-completion. Company-capf is enabled by default when you start LSP on a project. You can also invoke ~M-x company-capf~ to enable capf (completion at point function).
 #+begin_src emacs-lisp
   (use-package company :ensure t)
+  (use-package company-box :ensure t)
+  (company-mode t)
+  (require 'company-box)
+    (add-hook 'company-mode-hook 'company-box-mode)
 #+end_src
- 
+
 *** Yasnippet
 Yasnippet is a template system for Emacs. It allows you to type abbreviation and complete the associated text.
 #+begin_src emacs-lisp
   (use-package yasnippet :config (yas-global-mode))
   (use-package yasnippet-snippets :ensure t)
+  ;todo add yasnippet directory
 #+end_src
- 
+
 E.g. In java mode, if you type ~pr~ and hit ~<TAB>~ it should complete to ~System.out.println("text");~
- 
+
 To create a new snippet you can use ~yas-new-snippet~ command.
- 
+
 *** FlyCheck
 FlyCheck checks for errors in code at run-time.
 #+begin_src emacs-lisp
   (use-package flycheck :ensure t :init (global-flycheck-mode))
 #+end_src
- 
+
 *** Dap Mode
 Emacs Debug Adapter Protocol aka DAP Mode allows us to debug your program. Below we will integrate ~dap-mode~ with ~dap-hydra~. ~Dap-hydra~ shows keys you can use to enable various options and jump through code at runtime. After we install dap-mode we will also install ~dap-java~.
- 
+
 #+begin_src emacs-lisp
   (use-package dap-mode
     :ensure t
@@ -394,10 +396,10 @@ Emacs Debug Adapter Protocol aka DAP Mode allows us to debug your program. Below
     :hook ((dap-mode . dap-ui-mode)
       (dap-session-created . (lambda (&_rest) (dap-hydra)))
       (dap-terminated . (lambda (&_rest) (dap-hydra/nil)))))
- 
+
   (use-package dap-java :ensure nil)
 #+end_src
- 
+
 *** Treemacs
 Treemacs provides UI elements used for LSP UI. Let's install lsp-treemacs and its dependency treemacs. We will also Assign ~M-9~ to show error list.
 #+begin_src emacs-lisp
@@ -407,20 +409,20 @@ Treemacs provides UI elements used for LSP UI. Let's install lsp-treemacs and it
     :commands lsp-treemacs-errors-list
     :bind (:map lsp-mode-map
            ("M-9" . lsp-treemacs-errors-list)))
- 
+
   (use-package treemacs
     :ensure t
     :commands (treemacs)
     :after (lsp-mode)
     )
- 
+
   (setq treemacs-no-png-images t)
   (treemacs-project-follow-mode t)
 #+end_src
- 
+
 *** LSP UI
 LSP UI is used in various packages that require UI elements in LSP. E.g ~lsp-ui-flycheck-list~ opens a windows where you can see various coding errors while you code. You can use ~C-c l T~ to toggle several UI elements. We have also remapped some of the xref-find functions, so that we can easily jump around between symbols using ~M-.~, ~M-,~ and ~M-?~ keys.
- 
+
 #+begin_src emacs-lisp
   (use-package lsp-ui
     :ensure t
@@ -434,14 +436,14 @@ LSP UI is used in various packages that require UI elements in LSP. E.g ~lsp-ui-
                 )
     )
 #+end_src
- 
+
 Go through this [[https://github.com/emacs-lsp/lsp-ui/blob/master/lsp-ui-doc.el][link]] to see what other parameters are provided.
- 
+
 *** Helm LSP
 Helm-lsp provides various functionality to work with the code. E.g Code actions like adding *getter, setter, toString*, refactoring etc. You can use ~helm-lsp-workspace-symbol~ to find various symbols (classes) within your workspace.
- 
+
 LSP's built in symbol explorer uses ~xref-find-apropos~ to provide symbol navigation. Below we will replace that with helm version. After that you can use ~C-c l g a~ to find workspace symbols in a more intuitive way.
- 
+
 #+begin_src emacs-lisp
   (use-package helm-lsp
     :ensure t
@@ -450,10 +452,10 @@ LSP's built in symbol explorer uses ~xref-find-apropos~ to provide symbol naviga
     :init (define-key lsp-mode-map [remap xref-find-apropos] #'helm-lsp-workspace-symbol)
     )
 #+end_src
- 
+
 *** Install LSP Package
 Let's install the main package for lsp. Here we will integrate lsp with which-key. This way, when we type the prefix key ~C-c l~ we get additional help for compliting the command.
- 
+
 #+begin_src emacs-lisp
   (use-package lsp-mode
     :ensure t
@@ -476,9 +478,9 @@ Let's install the main package for lsp. Here we will integrate lsp with which-ke
     (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
     )
 #+end_src
- 
+
 You can start LSP server in a java project by using ~C-c l s s~. Once you type ~C-c l~ ~which-key~ package should guide you through rest of the options. In above setting I have added some memory management settings as suggested in [[https://emacs-lsp.github.io/lsp-mode/page/performance/][this guide]]. Change them to higher numbers, if you find *lsp-mode* sluggish in your computer.
- 
+
 *** LSP Java
 This is the package that handles server installation and session management.
 #+begin_src  emacs-lisp
@@ -504,10 +506,12 @@ This is the package that handles server installation and session management.
 (use-package projectile)
 (use-package flycheck)
 (use-package yasnippet :config (yas-global-mode))
+
 (use-package lsp-mode :hook ((lsp-mode . lsp-enable-which-key-integration))
   :config (setq lsp-completion-enable-additional-text-edit nil))
 (use-package hydra)
 (use-package company)
+(use-package company-box)
 (use-package lsp-ui)
 (use-package which-key :config (which-key-mode))
 (use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
@@ -937,6 +941,8 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-x w") 'overwrite-mode)
   (global-set-key (kbd "C-c y") 'my:copy-line-at-point)
   (global-set-key (kbd "C-c t") 'my:trim-whitespace)
+  (global-set-key (kbd "C-c j") 'company-yasnippet)
+  (global-set-key (kbd "C-c SPC") 'company-capf)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
@@ -1112,6 +1118,8 @@ This is the package that handles server installation and session management.
 #+END_SRC
 ** change theme on startup
 #+BEGIN_SRC emacs-lisp
+  (my:theme-up)
+  (my:theme-up)
   (my:theme-up)
   (my:theme-up)
   (my:theme-up)

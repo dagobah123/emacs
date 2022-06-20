@@ -4,20 +4,6 @@
 
 ;;; Code:
 
-(defvar green-1)
-(defvar green-2)
-(defvar red-1)
-(defvar red-2)
-(defvar blue-1)
-(defvar blue-2)
-(defvar yellow-1)
-(defvar yellow-2)
-(defvar violet-1)
-(defvar violet-2)
-(defvar orange-1)
-(defvar orange-2)
-(defvar gray-1)
-(defvar gray-2)
 (defvar text-constant)
 (defvar text-function)
 (defvar text-keyword)
