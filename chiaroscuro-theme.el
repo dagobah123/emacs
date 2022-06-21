@@ -498,6 +498,13 @@
 `(company-tooltip-selection        ((t (:foreground ,text-match :background ,background-match ))))
 
 `(helm-ff-executable               ((t (:foreground ,text-match :background ,background-match ))))
+
+`(bm-face                          ((t (:foreground ,green-1    :background ,green-2          ))))
+`(bm-fringe-face                   ((t (:foreground ,text-match :background ,background-match ))))
+`(bm-fringe-persistent-face        ((t (:foreground ,text-match :background ,background-match ))))
+`(bm-persistent-face               ((t (:foreground ,red-1      :background ,red-2            ))))
+
+
 )
 
 ;;;###autoload
