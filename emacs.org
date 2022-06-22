@@ -628,6 +628,7 @@ This is the package that handles server installation and session management.
 
 (global-set-key (kbd "C-!") 'bookmark-bmenu-list)
 (global-set-key (kbd "C-$") 'my:set-bookmark)
+(global-set-key (kbd "C-(") 'bookmark-delete-all)
 
 (defun my:set-bookmark()
   (interactive)
