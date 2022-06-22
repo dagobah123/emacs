@@ -91,17 +91,20 @@
 (defvar CHIAROSCURO-INDEX                             )
 (defvar alert-1                              "#ff0000")
 
-(if (eq CHIAROSCURO-INDEX 5) (progn (load-file "~/.emacs.d/theme_default_light.el")))
-(if (eq CHIAROSCURO-INDEX 4) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
-(if (eq CHIAROSCURO-INDEX 3) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
-(if (eq CHIAROSCURO-INDEX 2) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
 (if (eq CHIAROSCURO-INDEX 1) (progn (load-file "~/.emacs.d/theme_default_light.el")))
+(if (eq CHIAROSCURO-INDEX 1) (progn (load-file "~/.emacs.d/theme_eclipse.el")))
 
-(if (eq CHIAROSCURO-INDEX 5) (progn (load-file "~/.emacs.d/theme_eclipse.el")))
-(if (eq CHIAROSCURO-INDEX 4) (progn (load-file "~/.emacs.d/theme_terminal.el")))
+(if (eq CHIAROSCURO-INDEX 2) (progn (load-file "~/.emacs.d/theme_default_light.el")))
+(if (eq CHIAROSCURO-INDEX 2) (progn (load-file "~/.emacs.d/theme_light.el")))
+
+(if (eq CHIAROSCURO-INDEX 3) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
 (if (eq CHIAROSCURO-INDEX 3) (progn (load-file "~/.emacs.d/theme_linux.el")))
-(if (eq CHIAROSCURO-INDEX 2) (progn (load-file "~/.emacs.d/theme_caravaggio.el")))
-(if (eq CHIAROSCURO-INDEX 1) (progn (load-file "~/.emacs.d/theme_light.el")))
+
+(if (eq CHIAROSCURO-INDEX 4) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
+(if (eq CHIAROSCURO-INDEX 4) (progn (load-file "~/.emacs.d/theme_caravaggio.el")))
+
+(if (eq CHIAROSCURO-INDEX 5) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
+(if (eq CHIAROSCURO-INDEX 5) (progn (load-file "~/.emacs.d/theme_terminal.el")))
 
 (if (> CHIAROSCURO-INDEX 4) (progn (setq CHIAROSCURO-INDEX 0)))
 (if (< CHIAROSCURO-INDEX 0) (progn (setq CHIAROSCURO-INDEX 4)))
@@ -498,6 +501,11 @@
 `(company-tooltip-selection        ((t (:foreground ,text-match :background ,background-match ))))
 
 `(helm-ff-executable               ((t (:foreground ,text-match :background ,background-match ))))
+
+`(bm-face                          ((t (:foreground ,green-1    :background ,green-2          ))))
+`(bm-fringe-face                   ((t (:foreground ,text-match :background ,background-match ))))
+`(bm-fringe-persistent-face        ((t (:foreground ,text-match :background ,background-match ))))
+`(bm-persistent-face               ((t (:foreground ,red-1      :background ,red-2            ))))
 )
 
 ;;;###autoload

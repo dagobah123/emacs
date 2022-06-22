@@ -1,8 +1,8 @@
 # -*- mode: snippet -*-
 # name: org source block
-# key: <bs
+# key: <<
 # --
 
-#+BEGIN_SRC
+#+BEGIN_SRC java
 $0
 #+END_SRC
