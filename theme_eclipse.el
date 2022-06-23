@@ -35,7 +35,7 @@
 (setq text-keyword "#7f0055")
 (setq text-preprocessor "#afafaf")
 (setq text-type "#7f0055")
-(setq text-variable "6a3e3e")
+(setq text-variable "#6a3e3e")
 (setq text-warning "#6a3e3e")
 
 ;match
