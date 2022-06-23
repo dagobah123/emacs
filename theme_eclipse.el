@@ -12,9 +12,6 @@
 (defvar text-variable)
 (defvar text-warning)
 (defvar text-buffer-id)
-(defvar background-buffer-id)
-(defvar text-telephone-line-projectile)
-(defvar background-telephone-line-projectile)
 (defvar text-match)
 (defvar background-match)
 (defvar text-diff-added)
@@ -40,12 +37,6 @@
 (setq text-type "#7f0055")
 (setq text-variable "6a3e3e")
 (setq text-warning "#6a3e3e")
-
-;mode line
-(setq text-buffer-id "#000000")
-(setq background-buffer-id "#ffff00")
-(setq text-telephone-line-projectile "#000000")
-(setq background-telephone-line-projectile "#00de00")
 
 ;match
 (setq text-match "#000000")

@@ -28,9 +28,6 @@
 (defvar text-warning)
 (defvar text-buffer-id)
 (defvar text-ediff)
-(defvar background-buffer-id)
-(defvar text-telephone-line-projectile)
-(defvar background-telephone-line-projectile)
 (defvar text-match)
 (defvar background-match)
 (defvar text-diff-added)
@@ -48,6 +45,22 @@
 (defvar background-fine-diff-B)
 (defvar background-fine-diff-C)
 (defvar background-ediff)
+(defvar evil-emacs-1)
+(defvar evil-emacs-2)
+(defvar evil-normal-1)
+(defvar evil-normal-2)
+(defvar evil-insert-1)
+(defvar evil-insert-2)
+(defvar evil-replace-1)
+(defvar evil-replace-2)
+(defvar evil-replace-1)
+(defvar evil-replace-2)
+(defvar evil-visual-1)
+(defvar evil-visual-2)
+(defvar evil-motion-1)
+(defvar evil-motion-2)
+(defvar evil-operator-1)
+(defvar evil-operator-2)
 
 (setq green-1 "#1ad600")
 (setq green-2 "#004400")
@@ -73,12 +86,6 @@
 (setq text-variable "#7ea0f7")
 (setq text-warning "#ff0000")
 
-;mode line
-(setq text-buffer-id "#00bb00")
-(setq background-buffer-id "#003300")
-(setq text-telephone-line-projectile "#00bb00")
-(setq background-telephone-line-projectile "#003300")
-
 ;match
 (setq text-match "#f974f9")
 (setq background-match "#43006d")
@@ -103,5 +110,22 @@
 (setq background-fine-diff-C "#726000") ;yellow
 (setq background-ediff "#172f7e")
 (setq text-ediff "#dddddd")
+
+(setq evil-emacs-1 "#f974f9") ;violet
+(setq evil-emacs-2 "#43006d") ;violet
+(setq evil-normal-1 "#1ad600") ;green
+(setq evil-normal-2 "#004400") ;green
+(setq evil-insert-1 "#ffb9b9") ;red
+(setq evil-insert-2 "#850d0d") ;red
+(setq evil-replace-1 "#ffb9b9") ;red
+(setq evil-replace-2 "#850d0d") ;red
+(setq evil-replace-1 "#ff7f00") ;orange
+(setq evil-replace-2 "#4e2700") ;orange
+(setq evil-visual-1 "#d6b400") ;yellow
+(setq evil-visual-2 "#554804") ;yellow
+(setq evil-motion-1 "#1e90ff") ;blue
+(setq evil-motion-2 "#202055") ;blue
+(setq evil-operator-1 "#1e90ff") ;blue
+(setq evil-operator-2 "#202055") ;blue
 
 ;;; theme_default_dark.el ends here
