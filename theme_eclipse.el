@@ -40,7 +40,7 @@
 
 ;match
 (setq text-match "#000000")
-(setq background-match "#bbbbbb")
+(setq background-match "#f0cdff")
 
 ;magit
 ;setq text-diff-added "#229506")
