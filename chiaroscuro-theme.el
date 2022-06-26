@@ -1,5 +1,4 @@
 ;;; chiaroscuro-theme.el --- Theme consisting of multiple themes
-
 ;;; Commentary:
 
 ;;; Code:
@@ -21,6 +20,7 @@
 (defvar background-6                         "#000000")
 (defvar background-7                         "#000000")
 (defvar background-mode-line-fringe          "#000000")
+(defvar background-mode-line-fringe-active   "#000000")
 (defvar background-match                     "#000000")
 (defvar background-cursor                    "#000000")
 (defvar background-diff-added                "#000000")
@@ -365,7 +365,7 @@
 `(diff-removed ((t (:foreground ,text-diff-removed :background ,background-diff-removed ))))
 
 ;mode-line
-`(mode-line                      ((t (:foreground ,text-1          :background ,background-mode-line-fringe                                              ))))
+`(mode-line                      ((t (:foreground ,text-1          :background ,background-mode-line-fringe-active                                       ))))
 `(mode-line-inactive             ((t (:foreground ,text-2          :background ,background-mode-line-fringe                                              ))))
 `(mode-line-buffer-id            ((t (:foreground ,green-1         :background ,green-2                     :box (:line-width 1 :color ,green-1)         ))))
 `(telephone-line-accent-active   ((t (:foreground ,text-1          :background ,background-mode-line-fringe                                              ))))
@@ -478,20 +478,19 @@
 `(treemacs-git-conflict-face        ((t (:foreground ,red-1                       :background ,nil                                 ))))
 `(treemacs-git-added-face           ((t (:foreground ,red-1                       :background ,nil                                 ))))
 
-;`(lsp-headerline-breadcrumb-deprecated-face             ((t (:foreground ,text-1 :background ,nil ))))
-;`(lsp-headerline-breadcrumb-path-error-face             ((t (:foreground ,text-1 :background ,nil ))))
-;`(lsp-headerline-breadcrumb-path-face                   ((t (:foreground ,text-1 :background ,nil ))))
-;`(lsp-headerline-breadcrumb-path-hint-face              ((t (:foreground ,text-1 :background ,nil ))))
-;`(lsp-headerline-breadcrumb-path-info-face              ((t (:foreground ,text-1 :background ,nil ))))
-`(lsp-headerline-breadcrumb-path-warning-face           ((t (:foreground ,text-1 :background ,nil ))))
-;`(lsp-headerline-breadcrumb-project-prefix-face         ((t (:foreground ,text-1 :background ,nil ))))
-;`(lsp-headerline-breadcrumb-separator-face              ((t (:foreground ,text-1 :background ,nil ))))
-;`(lsp-headerline-breadcrumb-symbols-error-face          ((t (:foreground ,text-1 :background ,nil ))))
-;`(lsp-headerline-breadcrumb-symbols-face                ((t (:foreground ,text-1 :background ,nil ))))
-;`(lsp-headerline-breadcrumb-symbols-hint-face           ((t (:foreground ,text-1 :background ,nil ))))
-;`(lsp-headerline-breadcrumb-symbols-info-face           ((t (:foreground ,text-1 :background ,nil ))))
-`(lsp-headerline-breadcrumb-symbols-warning-face        ((t (:foreground ,text-warning :background ,nil ))))
-;`(lsp-headerline-breadcrumb-unknown-project-prefix-face ((t (:foreground ,text-1 :background ,nil ))))
+;  ;`(lsp-headerline-breadcrumb-deprecated-face             ((t (:foreground ,text-1 :background ,nil ))))
+;  ;`(lsp-headerline-breadcrumb-path-error-face             ((t (:foreground ,text-1 :background ,nil ))))
+;  `(lsp-headerline-breadcrumb-path-face                   ((t (:foreground ,text-2 ))))
+;  ;`(lsp-headerline-breadcrumb-path-hint-face              ((t (:foreground ,text-1 :background ,nil ))))
+;  ;`(lsp-headerline-breadcrumb-path-info-face              ((t (:foreground ,text-1 :background ,nil ))))
+;  `(lsp-headerline-breadcrumb-path-warning-face           ((t (:foreground ,text-2 ))))
+;  ;`(lsp-headerline-breadcrumb-project-prefix-face         ((t (:foreground ,text-1 :background ,nil ))))
+;  `(lsp-headerline-breadcrumb-separator-face              ((t (:foreground ,text-2 ))))
+;  ;`(lsp-headerline-breadcrumb-symbols-error-face          ((t (:foreground ,text-1 :background ,nil ))))
+;  ;`(lsp-headerline-breadcrumb-symbols-face                ((t (:foreground ,text-1 :background ,nil ))))
+;  ;`(lsp-headerline-breadcrumb-symbols-hint-face           ((t (:foreground ,text-1 :background ,nil ))))
+;  ;`(lsp-headerline-breadcrumb-symbols-info-face           ((t (:foreground ,text-1 :background ,nil ))))
+;  `(lsp-headerline-breadcrumb-symbols-warning-face        ((t (:foreground ,text-warning ))))
 
 `(company-tooltip-selection        ((t (:foreground ,text-match :background ,background-match ))))
 

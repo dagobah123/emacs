@@ -19,6 +19,7 @@
 (defvar background-7)
 (defvar background-cursor)
 (defvar background-mode-line-fringe)
+(defvar background-mode-line-fringe-active)
 (defvar line-number-1)
 (defvar line-number-2)
 (defvar line-number-3)
@@ -36,12 +37,13 @@
 (setq background-2 "#222222") ;dark gray
 (setq background-3 "#49604b") ;green
 (setq background-4 "#735825") ;yellow ochre
-(setq background-5 "#084706") ;higher chroma green
+(setq background-5 "#343434") ;lighter gray
 (setq background-6 "#1d2b4f") ;dark blue
 (setq background-7 "#000000")
 
 (setq background-cursor "#d7b269")
 (setq background-mode-line-fringe "#433b33")
+(setq background-mode-line-fringe-active "#475f5e")
 
 (setq line-number-1 "#f8ce8d")
 (setq line-number-2 "#95722f")

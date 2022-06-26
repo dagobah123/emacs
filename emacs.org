@@ -41,6 +41,7 @@
                        ox-jira
                        company
                        company-box
+                       all-the-icons
                        )
         )
 
@@ -85,7 +86,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
 
   (setq blink-cursor-blinks 0)
 
-  (setq display-line-numbers-type 'relative)
+  (setq display-line-numbers-type 'absolute)
   (global-set-key (kbd "C-7") 'global-display-line-numbers-mode)
 
   (global-hl-line-mode 1)
@@ -117,7 +118,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
       )
       ((string-equal system-type "gnu/linux")
           (progn
-              (set-face-attribute 'default nil :font "DejaVu Sans Mono-18")
+              (set-face-attribute 'default nil :font "DejaVu Sans Mono-16")
           )
       )
   )
@@ -546,6 +547,10 @@ This is the package that handles server installation and session management.
 ;(use-package lsp-treemacs)
 
 (setq lsp-print-io t)
+
+;https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
+(setq lsp-modeline-code-actions-enable nil)
+(setq lsp-headerline-breadcrumb-enable nil)
 #+END_SRC
 ** lsp c++
 #+BEGIN_SRC emacs-lisp
@@ -1003,7 +1008,7 @@ This is the package that handles server installation and session management.
   ;(global-set-key (kbd "C-0") 'helm-grep-do-git-grep)
   (global-set-key (kbd "C-9") 'helm-imenu)
   (global-set-key (kbd "C-0") 'treemacs)
-  (global-set-key (kbd "C-=") 'dired-jump)
+  (global-set-key (kbd "C-=") 'lsp-headerline-breadcrumb-mode)
   (global-set-key (kbd "C-`") 'my:helm-grep-do-git-grep)
   (global-set-key (kbd "C-8") 'whitespace-mode)
   (global-set-key (kbd "C-x t") 'bookmark-bmenu-list)
