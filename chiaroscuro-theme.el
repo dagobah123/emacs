@@ -100,8 +100,11 @@
 (if (eq CHIAROSCURO-INDEX 5) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
 (if (eq CHIAROSCURO-INDEX 5) (progn (load-file "~/.emacs.d/theme_terminal.el")))
 
-(if (> CHIAROSCURO-INDEX 4) (progn (setq CHIAROSCURO-INDEX 0)))
-(if (< CHIAROSCURO-INDEX 0) (progn (setq CHIAROSCURO-INDEX 4)))
+(if (eq CHIAROSCURO-INDEX 6) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
+(if (eq CHIAROSCURO-INDEX 6) (progn (load-file "~/.emacs.d/theme_neon.el")))
+
+(if (> CHIAROSCURO-INDEX 5) (progn (setq CHIAROSCURO-INDEX 0)))
+(if (< CHIAROSCURO-INDEX 0) (progn (setq CHIAROSCURO-INDEX 5)))
 
 (deftheme chiaroscuro)
 

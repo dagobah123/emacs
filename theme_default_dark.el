@@ -75,7 +75,7 @@
 (setq gray-2 "#222222")
 
 (setq text-constant "#cb6a30")
-(setq text-function "#799a75")
+(setq text-function "#2e9621")
 (setq text-keyword "#d091ff")
 (setq text-preprocessor "#04bcc0")
 (setq text-type "#bb4f80")
