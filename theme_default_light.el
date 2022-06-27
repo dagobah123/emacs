@@ -1,7 +1,5 @@
 ;;; theme_default_light --- common light theme
-
 ;;; Commentary:
-
 ;;; Code:
 
 (defvar green-1)
@@ -20,7 +18,6 @@
 (defvar gray-2)
 (defvar text-constant)
 (defvar text-function)
-(defvar background-function)
 (defvar text-keyword)
 (defvar text-preprocessor)
 (defvar text-type)
@@ -78,12 +75,11 @@
 (setq gray-2 "#dddddd")
 
 (setq text-constant "#994410")
-(setq text-function "#113e00")
-(setq background-function "#d6ffc7")
-(setq text-keyword "#85089e")
+(setq text-function "#258800")
+(setq text-keyword "#af06d0")
 (setq text-preprocessor "#04bcc0")
-(setq text-type "#991010")
-(setq text-variable "#386df5")
+(setq text-type "#bb0606")
+(setq text-variable "#0e4ae5")
 (setq text-warning "#ff0000")
  
 ;match

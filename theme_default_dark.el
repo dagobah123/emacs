@@ -1,7 +1,5 @@
 ;;; theme_default_dark --- common dark theme
-
 ;;; Commentary:
-
 ;;; Code:
 
 (defvar green-1)
@@ -20,7 +18,6 @@
 (defvar gray-2)
 (defvar text-constant)
 (defvar text-function)
-(defvar background-function)
 (defvar text-keyword)
 (defvar text-preprocessor)
 (defvar text-type)
@@ -78,8 +75,7 @@
 (setq gray-2 "#222222")
 
 (setq text-constant "#cb6a30")
-(setq text-function "#1ad600")
-(setq background-function "#004400")
+(setq text-function "#799a75")
 (setq text-keyword "#d091ff")
 (setq text-preprocessor "#04bcc0")
 (setq text-type "#bb4f80")

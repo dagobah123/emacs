@@ -1,7 +1,5 @@
 ;;; eclipse --- theme
-
 ;;; Commentary:
-
 ;;; Code:
 
 (defvar text-hl)

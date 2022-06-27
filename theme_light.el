@@ -1,7 +1,5 @@
 ;;; light --- theme
-
 ;;; Commentary:
-
 ;;; Code:
 
 (defvar text-hl)

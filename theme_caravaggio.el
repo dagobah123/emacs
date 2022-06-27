@@ -1,7 +1,5 @@
 ;;; caravaggio --- theme
-
 ;;; Commentary:
-
 ;;; Code:
 
 (defvar text-hl)

@@ -1,6 +1,5 @@
 ;;; chiaroscuro-theme.el --- Theme consisting of multiple themes
 ;;; Commentary:
-
 ;;; Code:
 
 (defvar text-1                               "#000000")
@@ -49,7 +48,6 @@
 (defvar white-1                              "#ffffff")
 (defvar text-constant                        "#000000")
 (defvar text-function                        "#000000")
-(defvar background-function                  "#000000")
 (defvar text-keyword                         "#000000")
 (defvar text-preprocessor                    "#000000")
 (defvar text-type                            "#000000")
@@ -140,7 +138,7 @@
 `(font-lock-comment-face              ((t (:foreground ,text-2                                             ))))
 `(font-lock-constant-face             ((t (:foreground ,text-constant                                      ))))
 `(font-lock-doc-face                  ((t (:foreground ,text-2                                             ))))
-`(font-lock-function-name-face        ((t (:foreground ,text-function     :background ,background-function ))))
+`(font-lock-function-name-face        ((t (:foreground ,text-function     :bold t                          ))))
 `(font-lock-keyword-face              ((t (:foreground ,text-keyword                                       ))))
 `(font-lock-negation-char-face        ((t (:foreground ,text-1                                             ))))
 `(font-lock-preprocessor-face         ((t (:foreground ,text-preprocessor                                  ))))
