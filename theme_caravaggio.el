@@ -22,6 +22,8 @@
 (defvar line-number-2)
 (defvar line-number-3)
 (defvar line-number-4)
+(defvar text-mode-line)
+(defvar background-mode-line)
 
 (setq text-hl "#f8ce8d")
 (setq background-hl "#2d2d2d")
@@ -40,12 +42,15 @@
 (setq background-7 "#000000")
 
 (setq background-cursor "#d7b269")
-(setq background-mode-line-fringe "#433b33")
-(setq background-mode-line-fringe-active "#475f5e")
+(setq background-mode-line-fringe "#33302c")
+(setq background-mode-line-fringe-active "#4e4942")
 
 (setq line-number-1 "#f8ce8d")
-(setq line-number-2 "#95722f")
-(setq line-number-3 "#89918f")
-(setq line-number-4 "#475f5e")
+(setq line-number-2 "#2d2d2d")
+(setq line-number-3 "#666666")
+(setq line-number-4 "#333333")
+
+(setq text-mode-line "#f8ce8d")
+(setq background-mode-line "#4e4942")
 
 ;;; theme_caravaggio.el ends here

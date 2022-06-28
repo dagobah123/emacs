@@ -22,7 +22,9 @@
 (defvar line-number-2)
 (defvar line-number-3)
 (defvar line-number-4)
- 
+(defvar text-mode-line)
+(defvar background-mode-line)
+
 (setq text-hl "#000000")
 (setq background-hl "#fffdb7")
  
@@ -41,11 +43,14 @@
  
 (setq background-cursor "#000000")
 (setq background-mode-line-fringe "#eeeeee")
-(setq background-mode-line-fringe-active "#bcbcbc")
+(setq background-mode-line-fringe-active "#aaaaaa")
  
 (setq line-number-1 "#000000")
-(setq line-number-2 "#afff9c")
+(setq line-number-2 "#fffdb7")
 (setq line-number-3 "#999999")
 (setq line-number-4 "#ffffff")
+
+(setq text-mode-line "#000000")
+(setq background-mode-line "#fffdb7")
 
 ;;; theme_light.el ends here

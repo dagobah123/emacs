@@ -22,12 +22,14 @@
 (defvar line-number-2)
 (defvar line-number-3)
 (defvar line-number-4)
+(defvar text-mode-line)
+(defvar background-mode-line)
 
 (setq text-hl "#00ff00")
 (setq background-hl "#002200")
 
 (setq text-1 "#009900")
-(setq text-2 "#006600")
+(setq text-2 "#004400")
 (setq text-3 "#003300")
 (setq text-4 "#001100")
 
@@ -40,12 +42,15 @@
 (setq background-7 "#003300")
 
 (setq background-cursor "#00ff00")
-(setq background-mode-line-fringe "#003300")
-(setq background-mode-line-fringe-active "#005500")
+(setq background-mode-line-fringe "#001100")
+(setq background-mode-line-fringe-active "#002200")
 
 (setq line-number-1 "#00ff00")
-(setq line-number-2 "#006600")
+(setq line-number-2 "#002200")
 (setq line-number-3 "#003300")
 (setq line-number-4 "#000000")
+
+(setq text-mode-line "#00ff00")
+(setq background-mode-line "#004400")
 
 ;;; theme_terminal.el ends here

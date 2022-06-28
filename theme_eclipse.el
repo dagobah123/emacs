@@ -38,6 +38,8 @@
 (defvar background-fine-diff-B)
 (defvar background-fine-diff-C)
 (defvar background-ediff)
+(defvar text-mode-line)
+(defvar background-mode-line)
 
 (setq text-constant "000000")
 (setq text-function "#000000")
@@ -78,11 +80,14 @@
 
 (setq background-cursor "#000000")
 (setq background-mode-line-fringe "#eeeeee")
-(setq background-mode-line-fringe-active "#bbbbbb")
+(setq background-mode-line-fringe-active "#aaaaaa")
 
-(setq line-number-1 "#787878")
-(setq line-number-2 "#ffffff")
+(setq line-number-1 "#7f0055")
+(setq line-number-2 "#e8f2fe")
 (setq line-number-3 "#787878")
 (setq line-number-4 "#ffffff")
+
+(setq text-mode-line "#000000")
+(setq background-mode-line "#cddaff")
 
 ;;; theme_eclipse.el ends here

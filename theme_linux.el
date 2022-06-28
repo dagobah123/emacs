@@ -22,6 +22,8 @@
 (defvar line-number-2)
 (defvar line-number-3)
 (defvar line-number-4)
+(defvar text-mode-line)
+(defvar background-mode-line)
 
 (setq text-hl "#f8ce8d")
 (setq background-hl "#450e34")
@@ -30,8 +32,6 @@
 (setq text-2 "#5c6361")
 (setq text-3 "#943632")
 (setq text-4 "#999999")
-
-;840071
 
 (setq background-1 "#380c2a") ;ubuntu
 (setq background-2 "#380c2a") ;ubuntu
@@ -42,12 +42,15 @@
 (setq background-7 "#000000")
 
 (setq background-cursor "#d7b269")
-(setq background-mode-line-fringe "#5b1244")
+(setq background-mode-line-fringe "#4a0e37")
 (setq background-mode-line-fringe-active "#821961")
 
 (setq line-number-1 "#f8ce8d")
-(setq line-number-2 "#700060")
+(setq line-number-2 "#450e34")
 (setq line-number-3 "#7f0e5b")
 (setq line-number-4 "#310a25")
+
+(setq text-mode-line "#f8ce8d")
+(setq background-mode-line "#821961")
 
 ;;; theme_linux.el ends here
