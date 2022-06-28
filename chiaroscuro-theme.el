@@ -371,8 +371,8 @@
 ;mode-line
 `(mode-line                      ((t (:foreground ,text-1          :background ,background-mode-line-fringe-active                                               ))))
 `(mode-line-inactive             ((t (:foreground ,text-2          :background ,background-mode-line-fringe                                                      ))))
-`(mode-line-buffer-id            ((t (:foreground ,text-mode-line  :background ,background-mode-line        :box (:line-width 1 :color ,text-mode-line)  :bold t ))))
-`(telephone-line-projectile      ((t (:foreground ,text-mode-line  :background ,background-mode-line        :box (:line-width 1 :color ,text-mode-line)  :bold t ))))
+`(mode-line-buffer-id            ((t (:foreground ,text-mode-line  :background ,nil                                                                      :bold t ))))
+`(telephone-line-projectile      ((t (:foreground ,text-mode-line  :background ,nil                                                                      :bold t ))))
 `(telephone-line-accent-active   ((t (:foreground ,text-1          :background ,background-mode-line-fringe                                                      ))))
 `(telephone-line-accent-inactive ((t (:foreground ,text-2          :background ,background-mode-line-fringe                                                      ))))
 `(telephone-line-evil-emacs      ((t (:foreground ,evil-emacs-1    :background ,evil-emacs-2                :box (:line-width 1 :color ,evil-emacs-1)            ))))
