@@ -63,29 +63,32 @@ Load emacs-lisp file for linux or windows.
 ** look
 #+BEGIN_SRC emacs-lisp
   ; disable menu bar
-  (menu-bar-mode -1)
+  (menu-bar-mode 0)
 
   ; disable tool bar
-  (tool-bar-mode -1)
+  (tool-bar-mode 0)
 
   ; disable scroll bar
-  (scroll-bar-mode -1)
+  (scroll-bar-mode 0)
 
   ; set width of fringe
   (fringe-mode '(20 . 20))
 
   ; setup cache folder to prevent temporary files to clutter projects
   (setq user-cache-directory (concat EMACS-HOME "cache"))
-  (setq backup-directory-alist `(("." . ,(expand-file-name "backups" user-cache-directory)))
-        url-history-file (expand-file-name "url/history" user-cache-directory)
-        auto-save-list-file-prefix (expand-file-name "auto-save-list/.saves-" user-cache-directory)
-        projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-directory))
+  (setq backup-directory-alist '(("." . '(expand-file-name "backups" user-cache-directory))))
+  (setq url-history-file (expand-file-name "url/history" user-cache-directory))
+  (setq auto-save-list-file-prefix (expand-file-name "auto-save-list/.saves-" user-cache-directory))
+  (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-directory))
 
+  ; cursor blinks forever
   (setq blink-cursor-blinks 0)
 
+  ; set line number mode and kbd to show them
   (setq display-line-numbers-type 'absolute)
   (global-set-key (kbd "C-7") 'global-display-line-numbers-mode)
 
+  ; use hl line
   (global-hl-line-mode 1)
 
   ; 4 spaces indentation
@@ -108,22 +111,17 @@ Load emacs-lisp file for linux or windows.
 
   ; font size
   (cond
-      ((string-equal system-type "windows-nt")
-          (progn
-              (set-face-attribute 'default nil :height 150)
-          )
-      )
-      ((string-equal system-type "gnu/linux")
-          (progn
-              (set-face-attribute 'default nil :font "DejaVu Sans Mono-16")
-          )
-      )
-  )
+   ((string-equal system-type "windows-nt")
+    (progn (set-face-attribute 'default nil :height 150)))
+   ((string-equal system-type "gnu/linux")
+    (progn (set-face-attribute 'default nil :font "DejaVu Sans Mono-16"))))
 
+  ; do not show start-up screen
   (setq inhibit-startup-screen t)
 #+END_SRC
 ** behavior
 #+BEGIN_SRC emacs-lisp
+  ; use regular copy paste commands
   (cua-mode t)
 
   ; scrolling up and down one line
@@ -145,7 +143,6 @@ Load emacs-lisp file for linux or windows.
 
   ; switch split buffers
   (global-set-key (kbd "M-o") 'other-window)
-  ;(windmove-default-keybindings)
 
   ; disable bell
   (setq ring-bell-function 'ignore)
@@ -164,10 +161,11 @@ Load emacs-lisp file for linux or windows.
   ; truncate lines
   (setq-default truncate-lines t)
 
+  ; in camel case jump from subword to subword
   (add-hook 'c-mode-common-hook
-          (lambda () (subword-mode 1)))
+          (lambda () (subword-mode t)))
   (add-hook 'java-mode-common-hook
-          (lambda () (subword-mode 1)))
+          (lambda () (subword-mode t)))
 #+END_SRC
 ** org mode
 #+BEGIN_SRC emacs-lisp
@@ -177,25 +175,20 @@ Load emacs-lisp file for linux or windows.
   (global-set-key (kbd "C-c c") 'org-capture)
   (global-set-key (kbd "C-c s") 'org-schedule)
   (global-set-key (kbd "C-c l") 'org-store-link)
-  (global-set-key (kbd "C-c b") 'org-switchb)
+  (global-set-key (kbd "C-c o") 'org-switchb)
 
   (load (concat EMACS-HOME "agenda"))
 
-  (setq org-priority-faces '((?A . (:foreground "white" :background "red3"    :weight 'bold))
+  (setq org-priority-faces '((?A . (:foreground "white" :background "red3"        :weight 'bold))
                              (?B . (:foreground "white" :background "DarkOrange1" :weight 'bold))
-                             (?C . (:foreground "white" :background "green4"  :weight 'bold))))
+                             (?C . (:foreground "white" :background "green4"      :weight 'bold))))
 
-  ; fold/overview
-  ; nofold/showall
-  ; content
-  ; showeverything
   (setq org-startup-folded 'showeverything)
 
   (setq org-support-shift-select 'always)
   (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "|" "DONE")))
   (setq org-tags-column 0)
   (setq org-adapt-indentation nil)
-  (org-reload)
 
   (setq org-latex-pdf-process '("latexmk -f -pdf %f"))
 
