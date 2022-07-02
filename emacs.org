@@ -1,5 +1,6 @@
 * emacs
 ** global variables
+The index of the current chiaroscuro theme.
 #+BEGIN_SRC emacs-lisp
   (setq CHIAROSCURO-INDEX 0)
 #+END_SRC
@@ -12,13 +13,10 @@
 #+END_SRC
 ** package initialize
 #+BEGIN_SRC emacs-lisp
-  ; Initialize
   (package-initialize)
 
-  ; Refresh available packages
   (unless package-archive-contents (package-refresh-contents))
 
-  ; Set package list
   (setq package-list '(use-package
                        all-the-icons
                        helm-swoop
@@ -46,23 +44,21 @@
         )
 
   (dolist (package package-list)
-    (unless (package-installed-p package) (package-install package)
-            )
-    )
+    (unless (package-installed-p package) (package-install package)))
 #+END_SRC
 ** environment setup
-Load environment variables properly by installing =exec-path-from-shell=.
+Load environment variables properly by installing *exec-path-from-shell*.
 #+BEGIN_SRC emacs-lisp
   (use-package exec-path-from-shell :ensure t)
   (exec-path-from-shell-initialize)
 #+END_SRC
 ** os specific settings
+Load emacs-lisp file for linux or windows.
 #+BEGIN_SRC emacs-lisp
   (cond
-   ((eq system-type 'windows-nt) (load (concat EMACS-HOME "windows")))
    ((eq system-type 'gnu/linux) (load (concat EMACS-HOME "linux")))
-   (t (load-library "default"))
-   )
+   ((eq system-type 'windows-nt) (load (concat EMACS-HOME "windows")))
+   (t (load-library "default")))
 #+END_SRC
 ** look
 #+BEGIN_SRC emacs-lisp
@@ -75,6 +71,7 @@ Load environment variables properly by installing =exec-path-from-shell=.
   ; disable scroll bar
   (scroll-bar-mode -1)
 
+  ; set width of fringe
   (fringe-mode '(20 . 20))
 
   ; setup cache folder to prevent temporary files to clutter projects
@@ -662,6 +659,10 @@ This is the package that handles server installation and session management.
                                           ;shr-width 80 ; Fold ;TODO: ext to 70 columns
         eww-search-prefix "https://wiby.me/?q=") ; Use another engine for searching
  #+END_SRC
+** company
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'after-init-hook 'global-company-mode)
+#+END_SRC
 ** nov
 #+BEGIN_SRC emacs-lisp
   (defun my:nov-visual-line-mode()
