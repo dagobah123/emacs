@@ -7,7 +7,6 @@
 (defvar text-1)
 (defvar text-2)
 (defvar text-3)
-(defvar text-4)
 (defvar background-1)
 (defvar background-2)
 (defvar background-3)
@@ -25,19 +24,18 @@
 (defvar text-mode-line)
 (defvar background-mode-line)
 
-(setq text-hl "#40e0d0")
 (setq background-hl "#031513")
 
-(setq text-1 "#00b1b1")
-(setq text-2 "#004646")
-(setq text-3 "#004d4d")
-(setq text-4 "#002e2e")
+(setq text-hl "#40e0d0")
+(setq text-1  "#00b1b1")
+(setq text-2  "#9336a2")
+(setq text-3  "#40e0d0")
 
 (setq background-1 "#000000")
 (setq background-2 "#000000")
 (setq background-3 "#240033")
 (setq background-4 "#240033")
-(setq background-5 "#240033")
+(setq background-5 "#135d5d")
 (setq background-6 "#250034")
 (setq background-7 "#240033")
 
@@ -50,7 +48,7 @@
 (setq line-number-3 "#004c4c")
 (setq line-number-4 "#000000")
 
-(setq text-mode-line "#97fff5")
-(setq background-mode-line "#08433e")
+(setq text-mode-line "#40e0d0")
+(setq background-mode-line "#135d5d")
 
 ;;; theme_neon.el ends here

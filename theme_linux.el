@@ -7,7 +7,6 @@
 (defvar text-1)
 (defvar text-2)
 (defvar text-3)
-(defvar text-4)
 (defvar background-1)
 (defvar background-2)
 (defvar background-3)
@@ -25,13 +24,12 @@
 (defvar text-mode-line)
 (defvar background-mode-line)
 
-(setq text-hl "#f8ce8d")
 (setq background-hl "#450e34")
 
-(setq text-1 "#c3ac88")
-(setq text-2 "#5c6361")
-(setq text-3 "#943632")
-(setq text-4 "#999999")
+(setq text-hl "#f8ce8d")
+(setq text-1  "#c3ac88")
+(setq text-2  "#7f8b87")
+(setq text-3  "#f8ce8d")
 
 (setq background-1 "#380c2a") ;ubuntu
 (setq background-2 "#380c2a") ;ubuntu
@@ -48,9 +46,9 @@
 (setq line-number-1 "#f8ce8d")
 (setq line-number-2 "#450e34")
 (setq line-number-3 "#7f0e5b")
-(setq line-number-4 "#310a25")
+(setq line-number-4 "#380c2a")
 
-(setq text-mode-line "#f8ce8d")
-(setq background-mode-line "#821961")
+(setq text-mode-line "#00ff00")
+(setq background-mode-line "#004400")
 
 ;;; theme_linux.el ends here

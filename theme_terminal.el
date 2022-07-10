@@ -7,7 +7,6 @@
 (defvar text-1)
 (defvar text-2)
 (defvar text-3)
-(defvar text-4)
 (defvar background-1)
 (defvar background-2)
 (defvar background-3)
@@ -25,19 +24,18 @@
 (defvar text-mode-line)
 (defvar background-mode-line)
 
-(setq text-hl "#00ff00")
 (setq background-hl "#002200")
 
-(setq text-1 "#009900")
-(setq text-2 "#004400")
-(setq text-3 "#003300")
-(setq text-4 "#001100")
+(setq text-hl "#00ff00")
+(setq text-1  "#009900")
+(setq text-2  "#555555")
+(setq text-3  "#00ff00")
 
 (setq background-1 "#000000")
 (setq background-2 "#000000")
 (setq background-3 "#003300")
 (setq background-4 "#003300")
-(setq background-5 "#003300")
+(setq background-5 "#006600")
 (setq background-6 "#001100")
 (setq background-7 "#003300")
 
@@ -51,6 +49,6 @@
 (setq line-number-4 "#000000")
 
 (setq text-mode-line "#00ff00")
-(setq background-mode-line "#004400")
+(setq background-mode-line "#006600")
 
 ;;; theme_terminal.el ends here

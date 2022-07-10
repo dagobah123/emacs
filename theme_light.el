@@ -7,7 +7,6 @@
 (defvar text-1)
 (defvar text-2)
 (defvar text-3)
-(defvar text-4)
 (defvar background-1)
 (defvar background-2)
 (defvar background-3)
@@ -25,13 +24,12 @@
 (defvar text-mode-line)
 (defvar background-mode-line)
 
-(setq text-hl "#000000")
 (setq background-hl "#fffdb7")
  
-(setq text-1 "#000000")
-(setq text-2 "#999999")
-(setq text-3 "#000000")
-(setq text-4 "#bbbbbb")
+(setq text-hl "#000000")
+(setq text-1  "#000000")
+(setq text-2  "#999999")
+(setq text-3  "#000000")
  
 (setq background-1 "#ffffff")
 (setq background-2 "#ffffff")
@@ -51,6 +49,6 @@
 (setq line-number-4 "#ffffff")
 
 (setq text-mode-line "#000000")
-(setq background-mode-line "#fffdb7")
+(setq background-mode-line "#ffff00")
 
 ;;; theme_light.el ends here

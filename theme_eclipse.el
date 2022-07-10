@@ -7,7 +7,6 @@
 (defvar text-1)
 (defvar text-2)
 (defvar text-3)
-(defvar text-4)
 (defvar background-1)
 (defvar background-2)
 (defvar background-3)
@@ -62,13 +61,12 @@
 (setq background-fine-diff-C "#ffff55")
 (setq background-ediff "#bbcaff")
 
-(setq text-hl "#000000")
 (setq background-hl "#e8f2fe")
 
-(setq text-1 "#000000")
-(setq text-2 "#3f5fbf")
-(setq text-3 "#943632")
-(setq text-4 "#999999")
+(setq text-hl "#000000")
+(setq text-1  "#000000")
+(setq text-2  "#3f5fbf")
+(setq text-3  "#000000")
 
 (setq background-1 "#ffffff")
 (setq background-2 "#ffffff")
@@ -88,6 +86,6 @@
 (setq line-number-4 "#ffffff")
 
 (setq text-mode-line "#000000")
-(setq background-mode-line "#cddaff")
+(setq background-mode-line "#1aff00")
 
 ;;; theme_eclipse.el ends here
