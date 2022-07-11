@@ -21,10 +21,8 @@
 (defvar line-number-2)
 (defvar line-number-3)
 (defvar line-number-4)
-(defvar text-mode-line)
-(defvar background-mode-line)
 
-(setq background-hl "#031513")
+(setq background-hl "#042825")
 
 (setq text-hl "#40e0d0")
 (setq text-1  "#00b1b1")
@@ -44,11 +42,8 @@
 (setq background-mode-line-fringe-active "#08433e")
 
 (setq line-number-1 "#40e0d0")
-(setq line-number-2 "#031513")
+(setq line-number-2 "#042825")
 (setq line-number-3 "#004c4c")
 (setq line-number-4 "#000000")
-
-(setq text-mode-line "#40e0d0")
-(setq background-mode-line "#135d5d")
 
 ;;; theme_neon.el ends here

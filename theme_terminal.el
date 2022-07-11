@@ -21,8 +21,6 @@
 (defvar line-number-2)
 (defvar line-number-3)
 (defvar line-number-4)
-(defvar text-mode-line)
-(defvar background-mode-line)
 
 (setq background-hl "#002200")
 
@@ -47,8 +45,5 @@
 (setq line-number-2 "#002200")
 (setq line-number-3 "#003300")
 (setq line-number-4 "#000000")
-
-(setq text-mode-line "#00ff00")
-(setq background-mode-line "#006600")
 
 ;;; theme_terminal.el ends here

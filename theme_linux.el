@@ -21,8 +21,6 @@
 (defvar line-number-2)
 (defvar line-number-3)
 (defvar line-number-4)
-(defvar text-mode-line)
-(defvar background-mode-line)
 
 (setq background-hl "#450e34")
 
@@ -47,8 +45,5 @@
 (setq line-number-2 "#450e34")
 (setq line-number-3 "#7f0e5b")
 (setq line-number-4 "#380c2a")
-
-(setq text-mode-line "#00ff00")
-(setq background-mode-line "#004400")
 
 ;;; theme_linux.el ends here
