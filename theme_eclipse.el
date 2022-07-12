@@ -38,7 +38,7 @@
 (defvar background-fine-diff-C)
 (defvar background-ediff)
 
-(setq text-constant "000000")
+(setq text-constant "#000000")
 (setq text-function "#000000")
 (setq text-keyword "#7f0055")
 (setq text-preprocessor "#afafaf")
