@@ -1,4 +1,4 @@
-;;; caravaggio --- theme
+;;; blue --- theme
 ;;; Commentary:
 ;;; Code:
 
@@ -22,28 +22,28 @@
 (defvar line-number-3)
 (defvar line-number-4)
 
-(setq background-hl "#2d2d2d")
+(setq background-hl "#081c58")
 
 (setq text-hl "#f8ce8d")
 (setq text-1  "#c3ac88")
-(setq text-2  "#6a716f")
+(setq text-2  "#667c74")
 (setq text-3  "#f8ce8d")
 
-(setq background-1 "#222222") ;dark gray
-(setq background-2 "#222222") ;dark gray
-(setq background-3 "#417c46") ;green
-(setq background-4 "#735825") ;yellow ochre
-(setq background-5 "#5c5c5c") ;lighter gray
-(setq background-6 "#1d2b4f") ;dark blue
-(setq background-7 "#181818")
+(setq background-1 "#0a246f") ;blue
+(setq background-2 "#0a246f") ;blue
+(setq background-3 "#008346") ;paren match
+(setq background-4 "#163181") ;lightest blue
+(setq background-5 "#254abf") ;region
+(setq background-6 "#071a51")
+(setq background-7 "#051239")
 
 (setq background-cursor "#d7b269")
-(setq background-mode-line-fringe "#33302c")
-(setq background-mode-line-fringe-active "#4e4942")
+(setq background-mode-line-fringe "#132b71")
+(setq background-mode-line-fringe-active "#02195d")
 
 (setq line-number-1 "#f8ce8d")
-(setq line-number-2 "#2d2d2d")
-(setq line-number-3 "#666666")
-(setq line-number-4 "#222222")
+(setq line-number-2 "#081c58")
+(setq line-number-3 "#667c74")
+(setq line-number-4 "#0a246f")
 
-;;; theme_caravaggio.el ends here
+;;; theme_blue.el ends here

@@ -105,8 +105,11 @@
 (if (eq CHIAROSCURO-INDEX 6) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
 (if (eq CHIAROSCURO-INDEX 6) (progn (load-file "~/.emacs.d/theme_neon.el")))
 
-(if (> CHIAROSCURO-INDEX 5) (progn (setq CHIAROSCURO-INDEX 0)))
-(if (< CHIAROSCURO-INDEX 0) (progn (setq CHIAROSCURO-INDEX 5)))
+(if (eq CHIAROSCURO-INDEX 7) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
+(if (eq CHIAROSCURO-INDEX 7) (progn (load-file "~/.emacs.d/theme_blue.el")))
+
+(if (> CHIAROSCURO-INDEX 6) (progn (setq CHIAROSCURO-INDEX 0)))
+(if (< CHIAROSCURO-INDEX 0) (progn (setq CHIAROSCURO-INDEX 6)))
 
 (deftheme chiaroscuro)
 
@@ -118,7 +121,7 @@
 `(link                     ((t (:foreground ,text-1   :underline t                             ))))
 `(highlight                ((t (:foreground ,text-1   :background ,nil                         ))))
 
-`(show-paren-match         ((t (:foreground ,text-3   :background ,background-5                ))))
+`(show-paren-match         ((t (:foreground ,text-3   :background ,background-3                ))))
 `(region                   ((t (:foreground ,text-3   :background ,background-5                ))))
 `(cua-rectangle            ((t (:foreground ,text-3   :background ,background-5                ))))
 
@@ -265,9 +268,9 @@
 `(magit-diff-added                  ((t (:foreground ,green-1                  :background ,nil                                                                                          ))))
 `(magit-diff-removed                ((t (:foreground ,red-1                    :background ,nil                                                                                          ))))
 
-`(magit-blame-heading               ((t (:foreground ,text-1                   :background ,background-3 :bold t                                                                         ))))
-`(magit-blame-highlight             ((t (:foreground ,text-1                   :background ,background-3 :bold t                                                                         ))))
-`(magit-blame-margin                ((t (:foreground ,text-1                   :background ,background-3 :bold t                                                                         ))))
+`(magit-blame-heading               ((t (:foreground ,text-1                   :background ,background-2 :bold t                                                                         ))))
+`(magit-blame-highlight             ((t (:foreground ,text-1                   :background ,background-2 :bold t                                                                         ))))
+`(magit-blame-margin                ((t (:foreground ,text-1                   :background ,background-2 :bold t                                                                         ))))
 
 ;ediff
 `(ediff-current-diff-A        ((t (:foreground ,text-ediff :background ,background-current-diff-A ))))

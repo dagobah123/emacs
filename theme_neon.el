@@ -31,11 +31,11 @@
 
 (setq background-1 "#000000")
 (setq background-2 "#000000")
-(setq background-3 "#240033")
+(setq background-3 "#450361")
 (setq background-4 "#240033")
 (setq background-5 "#135d5d")
-(setq background-6 "#250034")
-(setq background-7 "#240033")
+(setq background-6 "#032e2a")
+(setq background-7 "#031c1a")
 
 (setq background-cursor "#40e0d0")
 (setq background-mode-line-fringe "#020f0e")

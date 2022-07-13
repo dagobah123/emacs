@@ -1036,6 +1036,7 @@ This is the package that handles server installation and session management.
                       chiaroscuro
                       chiaroscuro
                       chiaroscuro
+                      chiaroscuro
                       )
         )
 
@@ -1046,6 +1047,7 @@ This is the package that handles server installation and session management.
                             "caravaggio"
                             "terminal"
                             "neon"
+                            "blue"
                             )
         )
 

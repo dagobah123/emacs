@@ -68,7 +68,7 @@
 
 (setq background-1 "#ffffff")
 (setq background-2 "#ffffff")
-(setq background-3 "#bbbbbb")
+(setq background-3 "#da98c4")
 (setq background-4 "#e8f2fe")
 (setq background-5 "#bbbbbb")
 (setq background-6 "#dddddd")
