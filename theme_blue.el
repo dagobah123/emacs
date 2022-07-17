@@ -26,7 +26,7 @@
 
 (setq text-hl "#f8ce8d")
 (setq text-1  "#c3ac88")
-(setq text-2  "#667c74")
+(setq text-2  "#208b64")
 (setq text-3  "#f8ce8d")
 
 (setq background-1 "#0a246f") ;blue
