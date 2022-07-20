@@ -59,6 +59,7 @@
 (defvar evil-operator-1)
 (defvar evil-operator-2)
 (defvar text-mode-line)
+(defvar text-mode-line-border)
 (defvar background-mode-line)
 
 (setq green-1 "#1ad600")
@@ -125,9 +126,9 @@
 (setq evil-motion-2 "#202055") ;blue
 (setq evil-operator-1 "#1e90ff") ;blue
 (setq evil-operator-2 "#202055") ;blue
-(setq text-mode-line "#ffffff")
 
 (setq text-mode-line "#ffff00")
+(setq text-mode-line-border "#838300")
 (setq background-mode-line "#2a1f00")
 
 ;;; theme_default_dark.el ends here

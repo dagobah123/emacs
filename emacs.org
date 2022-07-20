@@ -114,7 +114,7 @@ Load emacs-lisp file for linux or windows.
    ((string-equal system-type "windows-nt")
     (progn (set-face-attribute 'default nil :height 150)))
    ((string-equal system-type "gnu/linux")
-    (progn (set-face-attribute 'default nil :font "DejaVu Sans Mono-16"))))
+    (progn (set-face-attribute 'default nil :font "DejaVu Sans Mono-24"))))
 
   ; do not show start-up screen
   (setq inhibit-startup-screen t)
