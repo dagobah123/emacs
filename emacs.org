@@ -167,9 +167,9 @@ Load emacs-lisp file for linux or windows.
 
   ; in camel case jump from subword to subword
   (add-hook 'c-mode-common-hook
-          (lambda () (subword-mode t)))
+            (lambda () (subword-mode t)))
   (add-hook 'java-mode-common-hook
-          (lambda () (subword-mode t)))
+            (lambda () (subword-mode t)))
 #+END_SRC
 ** org mode
 #+BEGIN_SRC emacs-lisp
@@ -200,43 +200,43 @@ Load emacs-lisp file for linux or windows.
 
   (setq org-publish-project-alist
       '(
-           ("org-mode-notes-emacs"
-            :base-directory "~/source/org-mode/notes/emacs/"
-            :base-extension "org"
-            :publishing-directory "~/publish/emacs/"
-            :recursive t
-            :publishing-function org-html-publish-to-html
-            :headline-levels 4
-            :auto-preamble t
-           )
-           ("org-mode-notes-emacs-static"
-            :base-directory "~/source/org-mode/notes/emacs/"
-            :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
-            :publishing-directory "~/publish/emacs/"
-            :recursive t
-            :publishing-function org-publish-attachment
-           )
-           ("org-mode-notes-development"
-            :base-directory "~/source/org-mode/notes/development/"
-            :base-extension "org"
-            :publishing-directory "~/publish/development/"
-            :recursive t
-            :publishing-function org-html-publish-to-html
-            :headline-levels 4
-            :auto-preamble t
-           )
-           ("org-mode-notes-development-static"
-            :base-directory "~/source/org-mode/notes/development/"
-            :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
-            :publishing-directory "~/publish/development/"
-            :recursive t
-            :publishing-function org-publish-attachment
-           )
-           ("org" :components ("org-mode-notes-emacs"
-                               "org-mode-notes-emacs-static"
-                               "org-mode-notes-development"
-                               "org-mode-notes-development-static"
-                              ))
+        ("org-mode-notes-emacs"
+         :base-directory "~/source/org-mode/notes/emacs/"
+         :base-extension "org"
+         :publishing-directory "~/publish/emacs/"
+         :recursive t
+         :publishing-function org-html-publish-to-html
+         :headline-levels 4
+         :auto-preamble t
+         )
+        ("org-mode-notes-emacs-static"
+         :base-directory "~/source/org-mode/notes/emacs/"
+         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+         :publishing-directory "~/publish/emacs/"
+         :recursive t
+         :publishing-function org-publish-attachment
+         )
+        ("org-mode-notes-development"
+         :base-directory "~/source/org-mode/notes/development/"
+         :base-extension "org"
+         :publishing-directory "~/publish/development/"
+         :recursive t
+         :publishing-function org-html-publish-to-html
+         :headline-levels 4
+         :auto-preamble t
+         )
+        ("org-mode-notes-development-static"
+         :base-directory "~/source/org-mode/notes/development/"
+         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+         :publishing-directory "~/publish/development/"
+         :recursive t
+         :publishing-function org-publish-attachment
+         )
+        ("org" :components ("org-mode-notes-emacs"
+                            "org-mode-notes-emacs-static"
+                            "org-mode-notes-development"
+                            "org-mode-notes-development-static"
+                            ))
         ))
 #+END_SRC
 ** evil
@@ -305,19 +305,19 @@ Load emacs-lisp file for linux or windows.
 ** helm
 #+BEGIN_SRC emacs-lisp
   (use-package helm
-  :ensure t
-  :init
-  (helm-mode 1)
-  (progn (setq helm-buffers-fuzzy-matching t))
-  :bind
-  (("M-x" . helm-M-x))
-  (("C-c k r" . helm-show-kill-ring))
-  (("C-c h" . helm-grep-do-git-grep))
-  (("C-s" . helm-swoop))
-  (("C-c b" . helm-buffers-list))
-  (("C-c r" . helm-bookmarks))
-  (("C-c i" . helm-mini))
-  (("C-c q" . helm-info)))
+    :ensure t
+    :init
+    (helm-mode 1)
+    (progn (setq helm-buffers-fuzzy-matching t))
+    :bind
+    (("M-x" . helm-M-x))
+    (("C-c k r" . helm-show-kill-ring))
+    (("C-c h" . helm-grep-do-git-grep))
+    (("C-s" . helm-swoop))
+    (("C-c b" . helm-buffers-list))
+    (("C-c r" . helm-bookmarks))
+    (("C-c i" . helm-mini))
+    (("C-c q" . helm-info)))
 #+END_SRC
 ** helm-projectile
 #+BEGIN_SRC emacs-lisp
@@ -341,9 +341,7 @@ Load emacs-lisp file for linux or windows.
   (use-package dired-narrow
     :ensure t
     :config
-    (bind-key "C-x f" #'dired-narrow)
-    ;(bind-key "C-f" #'dired-narrow-fuzzy)
-  )
+    (bind-key "C-x f" #'dired-narrow))
   (require 'dired-narrow)
 #+END_SRC
 ** lsp
@@ -354,7 +352,7 @@ Complete anything aka Company provides auto-completion. Company-capf is enabled 
   (use-package company-box :ensure t)
   (company-mode t)
   (require 'company-box)
-    (add-hook 'company-mode-hook 'company-box-mode)
+  (add-hook 'company-mode-hook 'company-box-mode)
 #+END_SRC
 
 *** Yasnippet
@@ -386,11 +384,11 @@ Emacs Debug Adapter Protocol aka DAP Mode allows us to debug your program. Below
     :config
     (require 'dap-java)
     :bind (:map lsp-mode-map
-           ("<f5>" . dap-debug)
-           ("M-<f5>" . dap-hydra))
+                ("<f5>" . dap-debug)
+                ("M-<f5>" . dap-hydra))
     :hook ((dap-mode . dap-ui-mode)
-      (dap-session-created . (lambda (&_rest) (dap-hydra)))
-      (dap-terminated . (lambda (&_rest) (dap-hydra/nil)))))
+           (dap-session-created . (lambda (&_rest) (dap-hydra)))
+           (dap-terminated . (lambda (&_rest) (dap-hydra/nil)))))
 
   (use-package dap-java :ensure nil)
 #+END_SRC
@@ -403,13 +401,12 @@ Treemacs provides UI elements used for LSP UI. Let's install lsp-treemacs and it
     :ensure t
     :commands lsp-treemacs-errors-list
     :bind (:map lsp-mode-map
-           ("M-9" . lsp-treemacs-errors-list)))
+                ("M-9" . lsp-treemacs-errors-list)))
 
   (use-package treemacs
     :ensure t
     :commands (treemacs)
-    :after (lsp-mode)
-    )
+    :after (lsp-mode))
 
   (setq treemacs-no-png-images t)
   (treemacs-project-follow-mode t)
@@ -427,9 +424,7 @@ LSP UI is used in various packages that require UI elements in LSP. E.g ~lsp-ui-
                 ([remap xref-find-references] . lsp-ui-peek-find-references))
     :init (setq lsp-ui-doc-delay 1.5
                 lsp-ui-doc-position 'bottom
-                lsp-ui-doc-max-width 100
-                )
-    )
+                lsp-ui-doc-max-width 100))
 #+END_SRC
 
 Go through this [[https://github.com/emacs-lsp/lsp-ui/blob/master/lsp-ui-doc.el][link]] to see what other parameters are provided.
@@ -444,8 +439,7 @@ LSP's built in symbol explorer uses ~xref-find-apropos~ to provide symbol naviga
     :ensure t
     :after (lsp-mode)
     :commands (helm-lsp-workspace-symbol)
-    :init (define-key lsp-mode-map [remap xref-find-apropos] #'helm-lsp-workspace-symbol)
-    )
+    :init (define-key lsp-mode-map [remap xref-find-apropos] #'helm-lsp-workspace-symbol))
 #+END_SRC
 
 *** Install LSP Package
@@ -456,22 +450,18 @@ Let's install the main package for lsp. Here we will integrate lsp with which-ke
     :ensure t
     :hook (
            (lsp-mode . lsp-enable-which-key-integration)
-           (java-mode . #'lsp-deferred)
-           )
+           (java-mode . #'lsp-deferred))
     :init (setq
            lsp-keymap-prefix "C-c l"              ; this is for which-key integration documentation, need to use lsp-mode-map
            lsp-enable-file-watchers nil
            read-process-output-max (* 1024 1024)  ; 1 mb
            lsp-completion-provider :capf
-           lsp-idle-delay 0.500
-           )
+           lsp-idle-delay 0.500)
     :config
     (setq lsp-intelephense-multi-root nil) ; don't scan unnecessary projects
     (with-eval-after-load 'lsp-intelephense
-      (setf (lsp--client-multi-root (gethash 'iph lsp-clients)) nil)
-      )
-    (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
-    )
+      (setf (lsp--client-multi-root (gethash 'iph lsp-clients)) nil))
+    (define-key lsp-mode-map (kbd "C-c l") lsp-command-map))
 #+END_SRC
 
 You can start LSP server in a java project by using ~C-c l s s~. Once you type ~C-c l~ ~which-key~ package should guide you through rest of the options. In above setting I have added some memory management settings as suggested in [[https://emacs-lsp.github.io/lsp-mode/page/performance/][this guide]]. Change them to higher numbers, if you find *lsp-mode* sluggish in your computer.
@@ -481,70 +471,52 @@ This is the package that handles server installation and session management.
 #+BEGIN_SRC  emacs-lisp
   (use-package lsp-java
     :ensure t
-    :config (add-hook 'java-mode-hook 'lsp)
-    )
+      :config (add-hook 'java-mode-hook 'lsp))
 
   (require 'lsp-java)
   (add-hook 'java-mode-hook #'lsp)
 
-(condition-case nil
-    (require 'use-package)
-  (file-error
-   (require 'package)
-   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-   (package-initialize)
-   (package-refresh-contents)
-   (package-install 'use-package)
-   (setq use-package-always-ensure t)
-   (require 'use-package)))
+  (condition-case nil
+      (require 'use-package)
+    (file-error
+     (require 'package)
+     (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+     (package-initialize)
+     (package-refresh-contents)
+     (package-install 'use-package)
+     (setq use-package-always-ensure t)
+     (require 'use-package)))
 
-(use-package projectile)
-(use-package flycheck)
-(use-package yasnippet :config (yas-global-mode))
+  (use-package projectile)
+  (use-package flycheck)
+  (use-package yasnippet :config (yas-global-mode))
 
-(use-package lsp-mode :hook ((lsp-mode . lsp-enable-which-key-integration))
-  :config (setq lsp-completion-enable-additional-text-edit nil))
-(use-package hydra)
-(use-package company)
-(use-package company-box)
-(use-package lsp-ui)
-(use-package which-key :config (which-key-mode))
-(use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
-(use-package dap-mode :after lsp-mode :config (dap-auto-configure-mode))
-(use-package dap-java :ensure nil)
-(use-package helm-lsp)
-(use-package helm
-  :config (helm-mode))
-(use-package lsp-treemacs)
+  (use-package lsp-mode :hook ((lsp-mode . lsp-enable-which-key-integration))
+    :config (setq lsp-completion-enable-additional-text-edit nil))
+  (use-package hydra)
+  (use-package company)
+  (use-package company-box)
+  (use-package lsp-ui)
+  (use-package which-key :config (which-key-mode))
+  (use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
+  (use-package dap-mode :after lsp-mode :config (dap-auto-configure-mode))
+  (use-package dap-java :ensure nil)
+  (use-package helm-lsp)
+  (use-package helm
+    :config (helm-mode))
+  (use-package lsp-treemacs)
 
-;show nice unit test results
-(add-hook 'compilation-filter-hook
-          (lambda() (ansi-color-apply-on-region (point-min) (point-max))))
+  ;show nice unit test results
+  (add-hook 'compilation-filter-hook
+            (lambda() (ansi-color-apply-on-region (point-min) (point-max))))
 #+END_SRC
 
 #+BEGIN_SRC  emacs-lisp
-;(use-package projectile)
-;(use-package flycheck)
-;(use-package yasnippet :config (yas-global-mode))
-;(use-package lsp-mode :hook ((lsp-mode . lsp-enable-which-key-integration))
-;  :config (setq lsp-completion-enable-additional-text-edit nil))
-;(use-package hydra)
-;(use-package company)
-;(use-package lsp-ui)
-;(use-package which-key :config (which-key-mode))
-;(use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
-;(use-package dap-mode :after lsp-mode :config (dap-auto-configure-mode))
-;(use-package dap-java :ensure nil)
-;(use-package helm-lsp)
-;(use-package helm
-;  :config (helm-mode))
-;(use-package lsp-treemacs)
+  (setq lsp-print-io t)
 
-(setq lsp-print-io t)
-
-;https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
-(setq lsp-modeline-code-actions-enable nil)
-(setq lsp-headerline-breadcrumb-enable nil)
+  ;https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
+  (setq lsp-modeline-code-actions-enable nil)
+  (setq lsp-headerline-breadcrumb-enable nil)
 #+END_SRC
 ** lsp c++
 #+BEGIN_SRC emacs-lisp
@@ -564,85 +536,78 @@ This is the package that handles server installation and session management.
 #+END_SRC
 ** bookmarks
 #+BEGIN_SRC emacs-lisp
-(use-package bm
-         :ensure t
-         :demand t
+  (use-package bm
+    :ensure t
+    :demand t
 
-         :init
-         ;; restore on load (even before you require bm)
-         (setq bm-restore-repository-on-load t)
+    :init
+    ;; restore on load (even before you require bm)
+    (setq bm-restore-repository-on-load t)
 
-         :config
-         ;; Allow cross-buffer 'next'
-         (setq bm-cycle-all-buffers t)
+    :config
+    ;; Allow cross-buffer 'next'
+    (setq bm-cycle-all-buffers t)
 
-         ;; where to store persistant files
-         (setq bm-repository-file "~/.emacs.d/bm-repository")
+    ;; where to store persistant files
+    (setq bm-repository-file "~/.emacs.d/bm-repository")
 
-         ;; save bookmarks
-         (setq-default bm-buffer-persistence t)
+    ;; save bookmarks
+    (setq-default bm-buffer-persistence t)
 
-         ;; Loading the repository from file when on start up.
-         (add-hook 'after-init-hook 'bm-repository-load)
+    ;; Loading the repository from file when on start up.
+    (add-hook 'after-init-hook 'bm-repository-load)
 
-         ;; Saving bookmarks
-         (add-hook 'kill-buffer-hook #'bm-buffer-save)
+    ;; Saving bookmarks
+    (add-hook 'kill-buffer-hook #'bm-buffer-save)
 
-         ;; Saving the repository to file when on exit.
-         ;; kill-buffer-hook is not called when Emacs is killed, so we
-         ;; must save all bookmarks first.
-         (add-hook 'kill-emacs-hook #'(lambda nil
-                                          (bm-buffer-save-all)
-                                          (bm-repository-save)))
+    ;; Saving the repository to file when on exit.
+    ;; kill-buffer-hook is not called when Emacs is killed, so we
+    ;; must save all bookmarks first.
+    (add-hook 'kill-emacs-hook #'(lambda nil
+                                   (bm-buffer-save-all)
+                                   (bm-repository-save)))
 
-         ;; The `after-save-hook' is not necessary to use to achieve persistence,
-         ;; but it makes the bookmark data in repository more in sync with the file
-         ;; state.
-         (add-hook 'after-save-hook #'bm-buffer-save)
+    ;; The `after-save-hook' is not necessary to use to achieve persistence,
+    ;; but it makes the bookmark data in repository more in sync with the file
+    ;; state.
+    (add-hook 'after-save-hook #'bm-buffer-save)
 
-         ;; Restoring bookmarks
-         (add-hook 'find-file-hooks   #'bm-buffer-restore)
-         (add-hook 'after-revert-hook #'bm-buffer-restore)
+    ;; Restoring bookmarks
+    (add-hook 'find-file-hooks   #'bm-buffer-restore)
+    (add-hook 'after-revert-hook #'bm-buffer-restore)
 
-         ;; The `after-revert-hook' is not necessary to use to achieve persistence,
-         ;; but it makes the bookmark data in repository more in sync with the file
-         ;; state. This hook might cause trouble when using packages
-         ;; that automatically reverts the buffer (like vc after a check-in).
-         ;; This can easily be avoided if the package provides a hook that is
-         ;; called before the buffer is reverted (like `vc-before-checkin-hook').
-         ;; Then new bookmarks can be saved before the buffer is reverted.
-         ;; Make sure bookmarks is saved before check-in (and revert-buffer)
-         (add-hook 'vc-before-checkin-hook #'bm-buffer-save)
+    ;; The `after-revert-hook' is not necessary to use to achieve persistence,
+    ;; but it makes the bookmark data in repository more in sync with the file
+    ;; state. This hook might cause trouble when using packages
+    ;; that automatically reverts the buffer (like vc after a check-in).
+    ;; This can easily be avoided if the package provides a hook that is
+    ;; called before the buffer is reverted (like `vc-before-checkin-hook').
+    ;; Then new bookmarks can be saved before the buffer is reverted.
+    ;; Make sure bookmarks is saved before check-in (and revert-buffer)
+    (add-hook 'vc-before-checkin-hook #'bm-buffer-save)
 
-         :bind (
-                ;("C-$" . bm-toggle)
-                ("C-%" . bm-next)
-                ("C-^" . bm-previous)
-                ("C-&" . bm-show-all)
-               )
-         )
+    :bind (("C-%" . bm-next)
+           ("C-^" . bm-previous)
+           ("C-&" . bm-show-all)))
 
-(require 'helm-bm)
-(global-set-key (kbd "C-*") 'helm-bm)
+  (require 'helm-bm)
+  (global-set-key (kbd "C-*") 'helm-bm)
 
-(global-set-key (kbd "C-!") 'bookmark-bmenu-list)
-(global-set-key (kbd "C-$") 'my:set-bookmark)
-(global-set-key (kbd "C-(") 'my:remove-bookmarks)
+  (global-set-key (kbd "C-!") 'bookmark-bmenu-list)
+  (global-set-key (kbd "C-$") 'my:set-bookmark)
+  (global-set-key (kbd "C-(") 'my:remove-bookmarks)
 
-(defun my:set-bookmark()
-  (interactive)
-  (bm-toggle)
-  (bookmark-set "")
-)
+  (defun my:set-bookmark()
+    (interactive)
+    (bm-toggle)
+    (bookmark-set ""))
 
-(defun my:remove-bookmarks()
-  (interactive)
-  (bookmark-delete-all)
-  (bm-remove-all-all-buffers)
-)
+  (defun my:remove-bookmarks()
+    (interactive)
+    (bookmark-delete-all)
+    (bm-remove-all-all-buffers))
 #+END_SRC
 ** magit
-(global-magit-file-mode t)
 #+BEGIN_SRC emacs-lisp
   (use-package magit)
   (use-package magit-find-file)
@@ -652,8 +617,6 @@ This is the package that handles server installation and session management.
   (setq browse-url-browser-function 'eww-browse-url ; Use eww as the default browser
         shr-use-fonts  nil ; No special fonts
         shr-use-colors nil ; No colors
-                                          ;shr-indentation 80 ; Left-side margin
-                                          ;shr-width 80 ; Fold ;TODO: ext to 70 columns
         eww-search-prefix "https://wiby.me/?q=") ; Use another engine for searching
  #+END_SRC
 ** company
@@ -664,8 +627,7 @@ This is the package that handles server installation and session management.
 #+BEGIN_SRC emacs-lisp
   (defun my:nov-visual-line-mode()
     (interactive)
-    (visual-line-mode)
-    )
+    (visual-line-mode))
 
   (add-hook 'nov-mode-hook 'my:nov-visual-line-mode)
 #+END_SRC
@@ -710,15 +672,12 @@ This is the package that handles server installation and session management.
         (list (list (openwith-make-extension-regexp '("pdf")) "qpdfview" '(file))
               (list (openwith-make-extension-regexp '("avi" "mp3" "mp4" "wav")) "vlc" '(file))
               (list (openwith-make-extension-regexp '("cr2")) "rawtherapee" '(file))
-              (list (openwith-make-extension-regexp '("sln")) "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\Common7\\IDE\\devenv.exe" '(file))
-              )
-        )
+              (list (openwith-make-extension-regexp '("sln")) "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\Common7\\IDE\\devenv.exe" '(file))))
 #+END_SRC
 ** winner mode
 #+BEGIN_SRC emacs-lisp
   (when (fboundp 'winner-mode)
-    (winner-mode 1)
-    )
+    (winner-mode 1))
 #+END_SRC
 ** ido
 #+BEGIN_SRC emacs-lisp
@@ -734,9 +693,6 @@ This is the package that handles server installation and session management.
   (require 'csharp-mode)
 #+END_SRC
 ** mood-line-mode
-#+BEGIN_SRC emacs-lisp
-;(mood-line-mode)
-#+END_SRC
 ** clock
 #+BEGIN_SRC emacs-lisp
   (setq display-time-world-list '(("Europe/Vienna" "Graz")))
@@ -744,19 +700,9 @@ This is the package that handles server installation and session management.
 ** elfeed
 #+BEGIN_SRC emacs-lisp
   (require 'elfeed)
-  (setq elfeed-feeds
-        '(
-          ;("https://rss.orf.at/news.xml" news)
-          ;("https://rss.orf.at/steiermark.xml" news graz)
-          ;("https://www.reddit.com/r/graz/.rss" news graz)
-
-          ;("https://screenrant.com/feed" movie film kino)
-
-          ("https://www.comicsrss.com/rss/dilbert.rss" comics dilbert)
-          ("https://www.comicsrss.com/rss/garfield.rss" comics garfield)
-          ("https://www.comicsrss.com/rss/peanuts.rss" comics peanuts)
-          )
-        )
+  (setq elfeed-feeds '(("https://www.comicsrss.com/rss/dilbert.rss" comics dilbert)
+                       ("https://www.comicsrss.com/rss/garfield.rss" comics garfield)
+                       ("https://www.comicsrss.com/rss/peanuts.rss" comics peanuts)))
 #+END_SRC
 ** counsel-web
 #+BEGIN_SRC emacs-lisp
@@ -767,9 +713,7 @@ This is the package that handles server installation and session management.
     (let ((map (make-sparse-keymap "counsel-web")))
       (define-key map (kbd "w") #'counsel-web-suggest)
       (define-key map (kbd "s") #'counsel-web-search)
-      (define-key map (kbd ".") #'counsel-web-thing-at-point)
-      map)
-    )
+      (define-key map (kbd ".") #'counsel-web-thing-at-point) map))
   (global-set-key (kbd "C-c w") counsel-web-map)
 #+END_SRC
 ** counsel-projectile
@@ -779,13 +723,6 @@ This is the package that handles server installation and session management.
   (counsel-projectile-mode t)
 #+END_SRC
 ** custom pop up
-#+BEGIN_SRC emacs-lisp
-;(setq temp-buffer-show-function t)
-
-;(with-output-to-temp-buffer "foo"
-;    (print 20)
-;    (print standard-output))
-#+END_SRC
 ** custom functions
 #+BEGIN_SRC emacs-lisp
   (defun my:switch-buffers-right()
@@ -794,8 +731,7 @@ This is the package that handles server installation and session management.
     (next-buffer)
     (org-shiftleft)
     (next-buffer)
-    (org-shiftright)
-    )
+    (org-shiftright))
 
   (defun my:switch-buffers-left()
     (interactive)
@@ -803,8 +739,7 @@ This is the package that handles server installation and session management.
     (next-buffer)
     (org-shiftright)
     (next-buffer)
-    (org-shiftleft)
-    )
+    (org-shiftleft))
 
   (defun my:duplicate-line()
     (interactive)
@@ -813,30 +748,25 @@ This is the package that handles server installation and session management.
     (yank)
     (open-line 1)
     (next-line 1)
-    (yank)
-    )
+    (yank))
 
   (defun eww-new ()
     (interactive)
     (let ((url (read-from-minibuffer "Enter URL or keywords: ")))
       (switch-to-buffer (generate-new-buffer "eww"))
       (eww-mode)
-      (eww url)
-      )
-    )
+      (eww url)))
 
   (defun my:copy-line-at-point()
     (interactive)
     (move-beginning-of-line 1)
     (kill-line)
-    (yank)
-    )
+    (yank))
 
   (defun my:trim-whitespace()
     (interactive)
     (move-beginning-of-line 1)
-    (fixup-whitespace)
-    )
+    (fixup-whitespace))
 
   (defvar java-function-regexp
     (concat
@@ -861,123 +791,90 @@ This is the package that handles server installation and session management.
      "[ \t\n\r]*,?\\)*"                          ; opt whitespace and comma
      "[ \t\n\r]*"                                ; optional whitespace
      ")"                                         ; end the param list
-     )
-    )
+     ))
 
   (defun my:next-java-method()
     (interactive)
     (re-search-forward java-function-regexp nil t)
-    (recenter)
-    )
+    (recenter))
 
   (defun my:prev-java-method()
     (interactive)
     (re-search-backward java-function-regexp nil t)
-    (recenter)
-    )
+    (recenter))
 
   (defvar next-method-regexp "\\(class\\|def\\|public\\|private\\|protected\\|defun\\|defvar\\|[a-zA-Z0-9_$]+(\\)")
 
   (defun my:next-method()
     (interactive)
     (re-search-forward next-method-regexp nil t)
-    (recenter)
-  )
+    (recenter))
 
   (defun my:prev-method()
     (interactive)
     (re-search-backward next-method-regexp nil t)
-    (recenter)
-  )
+    (recenter))
 
   (defun my:previous-link-center()
     (interactive)
     (Info-prev-reference)
-    (recenter)
-  )
+    (recenter))
 
   (defun my:next-link-center()
     (interactive)
     (Info-next-reference)
-    (recenter)
-  )
+    (recenter))
 
   (defun my:agenda-view()
     (interactive)
     (org-agenda t "a")
     (org-agenda-day-view)
     (delete-other-windows)
-    (org-agenda-redo-all)
-    )
+    (org-agenda-redo-all))
 
   (defun my:helm-grep-do-git-grep()
     (interactive)
     (let ((current-prefix-arg 4))
-    (call-interactively 'helm-grep-do-git-grep)
-    )
-    )
+    (call-interactively 'helm-grep-do-git-grep)))
 
   (defun my:replace-umlauts()
     (interactive)
     (beginning-of-buffer)
     (while (search-forward "ae" nil t)
-        (replace-match "ä" nil t)
-    )
+      (replace-match "ä" nil t))
     (beginning-of-buffer)
     (while (search-forward "oe" nil t)
-        (replace-match "ö" nil t)
-    )
+      (replace-match "ö" nil t))
     (beginning-of-buffer)
     (while (search-forward "ue" nil t)
-        (replace-match "ü" nil t)
-    )
-    )
+      (replace-match "ü" nil t)))
 
   (defun my:umlaut-a()
-   (interactive)
-    (insert "ä")
-    )
+    (interactive)
+    (insert "ä"))
   (global-set-key (kbd "C-c k a") 'my:umlaut-a)
 
   (defun my:umlaut-o()
     (interactive)
-    (insert "ö")
-    )
+    (insert "ö"))
   (global-set-key (kbd "C-c k o") 'my:umlaut-o)
 
   (defun my:umlaut-u()
     (interactive)
-    (insert "ü")
-    )
+    (insert "ü"))
   (global-set-key (kbd "C-c k u") 'my:umlaut-u)
 
   (defun my:umlaut-s()
     (interactive)
-    (insert "ß")
-    )
+    (insert "ß"))
   (global-set-key (kbd "C-c k s") 'my:umlaut-s)
 
   (defun my:get-filename()
     (interactive)
     (dired-jump)
     (dired-copy-filename-as-kill)
-    (kill-this-buffer)
-    )
+    (kill-this-buffer))
   (global-set-key (kbd "C-x y") 'my:get-filename)
-
-  ;(add-hook 'java-mode-hook
-  ;          (lambda ()
-  ;           (font-lock-add-keywords nil
-  ;            '(("\\<\\(\\sw+\\) ?(" 1
-  ;               'dired-special t)))))
-
-  ;  (add-hook 'java-mode-hook (lambda ()
-  ;                              (font-lock-add-keywords
-  ;                               'java-mode
-  ;                               '(("hello" 1 'font-lock-preprocessor-face)))
-  ;                              )
-  ;            )
-  ; '(("\\<\\(\\sw+\\) ?(" 1 'font-lock-function-name-face)))
 #+END_SRC
 ** key bindings
 #+BEGIN_SRC emacs-lisp
@@ -994,16 +891,11 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-c d") 'my:duplicate-line)
   (global-set-key (kbd "<C-iso-lefttab>") 'my:previous-link-center)
   (global-set-key (kbd "<C-tab>") 'completion-at-point)
-  ;(global-set-key (kbd "C-x 7") 'helm-world-time)
   (global-set-key (kbd "C-c m") 'my:agenda-view)
-  ;(global-set-key (kbd "C-S-<up>") 'my:prev-method)
-  ;(global-set-key (kbd "C-S-<down>") 'my:next-method)
   (global-set-key (kbd "C-S-<up>") 'my:prev-java-method)
   (global-set-key (kbd "C-S-<down>") 'my:next-java-method)
   (global-set-key (kbd "C-x <up>") 'my:switch-buffers-right)
   (global-set-key (kbd "C-x <down>") 'my:switch-buffers-left)
-  ;(global-set-key (kbd "C-9") 'helm-do-grep-ag)
-  ;(global-set-key (kbd "C-0") 'helm-grep-do-git-grep)
   (global-set-key (kbd "C-9") 'helm-imenu)
   (global-set-key (kbd "C-0") 'treemacs)
   (global-set-key (kbd "C-=") 'lsp-headerline-breadcrumb-mode)
@@ -1040,9 +932,7 @@ This is the package that handles server installation and session management.
                       chiaroscuro
                       chiaroscuro
                       chiaroscuro
-                      chiaroscuro
-                      )
-        )
+                      chiaroscuro))
 
   (setq themes-list-names '(
                             "eclipse"
@@ -1051,9 +941,7 @@ This is the package that handles server installation and session management.
                             "caravaggio"
                             "terminal"
                             "neon"
-                            "blue"
-                            )
-        )
+                            "blue"))
 
   (defvar theme-index 0 "Index representing the current theme")
   (setq theme-index 0)
@@ -1064,34 +952,27 @@ This is the package that handles server installation and session management.
     (setq loop-index 0)
     (while (< loop-index number-of-themes)
       (disable-theme (nth loop-index themes-list))
-      (setq loop-index (+ loop-index 1))
-      )
-    )
+      (setq loop-index (+ loop-index 1))))
 
   (defun my:reset-themes-index()
     (interactive)
     (setq theme-index 0)
     (setq CHIAROSCURO-INDEX 0)
-    (my:disable-themes)
-    )
+    (my:disable-themes))
   (global-set-key (kbd "C-5") 'my:reset-themes-index)
 
   (defun my:theme-down()
     (interactive)
     (setq theme-index (- theme-index 1))
     (setq CHIAROSCURO-INDEX (- CHIAROSCURO-INDEX 1))
-    ;(message "theme-down")
-    (my:toggle-themes)
-    )
+    (my:toggle-themes))
   (global-set-key (kbd "C-x 6") 'my:theme-down)
 
   (defun my:theme-up()
     (interactive)
     (setq theme-index (+ theme-index 1))
     (setq CHIAROSCURO-INDEX (+ CHIAROSCURO-INDEX 1))
-    ;(message "theme-up")
-    (my:toggle-themes)
-    )
+    (my:toggle-themes))
   (global-set-key (kbd "C-~") 'my:theme-up)
 
   (defun my:loop()
@@ -1102,43 +983,28 @@ This is the package that handles server installation and session management.
       (if (eq theme-index loop-index)
           (progn
             (load-theme (nth themes-list-index themes-list) t)
-            ;(message "%s" (nth themes-list-index themes-list))
-            (message "%s" (nth themes-list-index themes-list-names))
-            )
-        )
+            (message "%s" (nth themes-list-index themes-list-names))))
       (setq loop-index (+ loop-index 1))
-      (setq themes-list-index (+ themes-list-index 1))
-      )
-    )
+      (setq themes-list-index (+ themes-list-index 1))))
 
   (defun my:toggle-themes()
     (interactive)
     (my:disable-themes)
 
     (if (eq theme-index -1)
-        (progn
-          (setq theme-index number-of-themes)
-          )
-      )
+        (progn (setq theme-index number-of-themes)))
 
     (if (eq theme-index 0)
-        (progn
-          (message "emacs")
-          (setq theme-index 0)
-          (setq CHIAROSCURO-INDEX 0)
-          )
-      )
+        (progn (message "emacs")
+               (setq theme-index 0)
+               (setq CHIAROSCURO-INDEX 0)))
 
     (my:loop)
 
     (if (> theme-index number-of-themes)
-        (progn
-          (message "emacs")
-          (setq theme-index 0)
-          (setq CHIAROSCURO-INDEX 0)
-          )
-      )
-    )
+        (progn (message "emacs")
+               (setq theme-index 0)
+               (setq CHIAROSCURO-INDEX 0))))
 #+END_SRC
 ** dap-debug template
 #+BEGIN_SRC emacs-lisp
@@ -1149,9 +1015,7 @@ This is the package that handles server installation and session management.
                                      :vmArgs ""
                                      :projectName "maven_sandbox"
                                      :mainClass "org.sandbox.Main"
-                                     :env '(("DEV" . "1"))
-                                     )
-                               )
+                                     :env '(("DEV" . "1"))))
 
   (dap-register-debug-template "My Runner2"
                                (list :type "java"
@@ -1160,9 +1024,7 @@ This is the package that handles server installation and session management.
                                      :vmArgs ""
                                      :projectName "maven_sandbox"
                                      :mainClass "org.sandbox.Main"
-                                     :env '(("DEV" . "1"))
-                                     )
-                               )
+                                     :env '(("DEV" . "1"))))
 #+END_SRC
 ** change theme on startup
 #+BEGIN_SRC emacs-lisp
