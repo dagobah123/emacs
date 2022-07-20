@@ -114,7 +114,11 @@ Load emacs-lisp file for linux or windows.
    ((string-equal system-type "windows-nt")
     (progn (set-face-attribute 'default nil :height 150)))
    ((string-equal system-type "gnu/linux")
-    (progn (set-face-attribute 'default nil :font "DejaVu Sans Mono-24"))))
+    (cond
+     ((string-equal LINUX-VERSION "ubuntu")
+      (progn (set-face-attribute 'default nil :font "DejaVu Sans Mono-16")))
+     ((string-equal LINUX-VERSION "raspberrypi")
+      (progn (set-face-attribute 'default nil :font "DejaVu Sans Mono-24"))))))
 
   ; do not show start-up screen
   (setq inhibit-startup-screen t)
@@ -1069,7 +1073,6 @@ This is the package that handles server installation and session management.
     (setq theme-index 0)
     (setq CHIAROSCURO-INDEX 0)
     (my:disable-themes)
-    (my:set-mode-line-font)
     )
   (global-set-key (kbd "C-5") 'my:reset-themes-index)
 
@@ -1079,7 +1082,6 @@ This is the package that handles server installation and session management.
     (setq CHIAROSCURO-INDEX (- CHIAROSCURO-INDEX 1))
     ;(message "theme-down")
     (my:toggle-themes)
-    (my:set-mode-line-font)
     )
   (global-set-key (kbd "C-x 6") 'my:theme-down)
 
@@ -1089,7 +1091,6 @@ This is the package that handles server installation and session management.
     (setq CHIAROSCURO-INDEX (+ CHIAROSCURO-INDEX 1))
     ;(message "theme-up")
     (my:toggle-themes)
-    (my:set-mode-line-font)
     )
   (global-set-key (kbd "C-~") 'my:theme-up)
 
@@ -1138,43 +1139,6 @@ This is the package that handles server installation and session management.
           )
       )
     )
-
-  (defun my:set-mode-line-font()
-    (interactive)
-    (cond
-     ((string-equal system-type "windows-nt")
-      (progn
-        ;(set-face-attribute 'mode-line nil :font "Tw Cen MT-25")
-        ;(set-face-attribute 'mode-line-inactive nil :font "Tw Cen MT-25")
-        (set-face-attribute 'org-table nil :font "Courier New")
-        (set-face-attribute 'org-link nil :font "Courier New")
-        (set-face-attribute 'org-block nil :font "Courier New")
-        ;(set-face-attribute 'mode-line-buffer-id nil :font "Courier New")
-        ;(set-face-attribute 'telephone-line-projectile nil :font "Courier New")
-        )
-      )
-     ((string-equal system-type "gnu/linux")
-      (progn
-        ;(set-face-attribute 'mode-line nil :font "Comfortaa-20")
-        ;(set-face-attribute 'mode-line-inactive nil :font "Comfortaa-20")
-        (set-face-attribute 'org-table nil :font "FreeMono")
-        (set-face-attribute 'org-link nil :font "FreeMono")
-        (set-face-attribute 'org-block nil :font "FreeMono")
-        (set-face-attribute 'info-title-1 nil :font "FreeSerif")
-        (set-face-attribute 'info-title-2 nil :font "FreeSerif")
-        (set-face-attribute 'info-title-3 nil :font "FreeSerif")
-        (set-face-attribute 'info-title-4 nil :font "FreeSerif")
-        (set-face-attribute 'info-header-node nil :font "FreeSerif")
-        (set-face-attribute 'info-header-xref nil :font "FreeSerif")
-        (set-face-attribute 'info-menu-header nil :font "FreeSerif")
-        ;(set-face-attribute 'mode-line-buffer-id nil :font "FreeMono-24")
-        ;(set-face-attribute 'telephone-line-projectile nil :font "FreeMono-24")
-        )
-      )
-     )
-    )
-
-  (my:set-mode-line-font)
 #+END_SRC
 ** dap-debug template
 #+BEGIN_SRC emacs-lisp

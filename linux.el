@@ -9,8 +9,15 @@
 (defvar lsp-java-java-path)
 (defvar buffer-face-mode-face)
 
-(setenv "JAVA_HOME" "/usr/lib/jvm/java-18-openjdk-amd64")
-(setq lsp-java-java-path "/usr/lib/jvm/java-18-openjdk-amd64/bin/java")
+(cond
+ ((string-equal LINUX-VERSION "ubuntu")
+  (progn
+    (setenv "JAVA_HOME" "/usr/lib/jvm/java-18-openjdk-amd64")
+    (setq lsp-java-java-path "/usr/lib/jvm/java-18-openjdk-amd64/bin/java")))
+ ((string-equal LINUX-VERSION "raspberrypi")
+  (progn
+    (setenv "JAVA_HOME" "/usr/lib/jvm/java-11-openjdk-armhf")
+    (setq lsp-java-java-path "/usr/lib/jvm/java-11-openjdk-armhf/bin/java"))))
 
 (defun my:buffer-face-mode-mono()
   "Set font to mono."

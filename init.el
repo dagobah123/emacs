@@ -7,6 +7,10 @@
 (defvar EMACS-HOME)
 (setq EMACS-HOME "~/.emacs.d/")
 
+(defvar LINUX-VERSION)
+;(setq LINUX-VERSION "ubuntu")
+(setq LINUX-VERSION "raspberrypi")
+
 ; load emacs.org
 (org-babel-load-file "~/.emacs.d/emacs.org")
 
