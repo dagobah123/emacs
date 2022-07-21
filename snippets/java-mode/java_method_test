@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: java test method
+# key: <jmtest
+# --
+
+@Test
+public void $1Test() {
+
+    $0
+
+    assertEquals(null, null);
+}

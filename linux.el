@@ -38,7 +38,6 @@
   (buffer-face-mode))
 
 (add-hook 'eww-mode-hook 'my:buffer-face-mode-text)
-(add-hook 'Info-mode-hook 'my:buffer-face-mode-text)
 (add-hook 'dired-mode-hook 'my:buffer-face-mode-mono)
 (add-hook 'java-mode-hook 'my:buffer-face-mode-mono)
 (add-hook 'c++-mode-hook 'my:buffer-face-mode-mono)

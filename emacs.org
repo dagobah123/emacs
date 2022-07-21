@@ -916,7 +916,7 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-c y") 'my:copy-line-at-point)
   (global-set-key (kbd "C-c t") 'my:trim-whitespace)
   (global-set-key (kbd "C-c j") 'company-yasnippet)
-  (global-set-key (kbd "C-c SPC") 'company-capf)
+  (global-set-key (kbd "C-c SPC") 'company-complete)
   (global-set-key (kbd "C-x e") 'eval-buffer)
   (global-set-key (kbd "C-x a t") 'ert-run-tests-interactively)
 #+END_SRC
