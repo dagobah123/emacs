@@ -925,7 +925,7 @@ This is the package that handles server installation and session management.
   (defvar chiaroscuro-index 0 "Index representing the current theme")
   (setq chiaroscuro-index 0)
 
-  (setq themes-list '(
+  (setq themes-list '(chiaroscuro
                       chiaroscuro
                       chiaroscuro
                       chiaroscuro
@@ -934,14 +934,14 @@ This is the package that handles server installation and session management.
                       chiaroscuro
                       chiaroscuro))
 
-  (setq themes-list-names '(
-                            "eclipse"
+  (setq themes-list-names '("eclipse"
                             "light"
                             "linux"
                             "caravaggio"
                             "terminal"
                             "neon"
-                            "blue"))
+                            "blue"
+                            "dune"))
 
   (defvar theme-index 0 "Index representing the current theme")
   (setq theme-index 0)
