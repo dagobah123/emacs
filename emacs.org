@@ -336,8 +336,6 @@ Load emacs-lisp file for linux or windows.
             )
   )
 
-  (global-set-key (kbd "C-c f") 'find-name-dired)
-
   (use-package dired-narrow
     :ensure t
     :config
@@ -884,7 +882,6 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
   (global-set-key (kbd "C-<next>") 'next-buffer)
   (global-set-key (kbd "C-<prior>") 'previous-buffer)
-  (global-set-key (kbd "C-c f") 'find-name-dired)
   (global-set-key (kbd "C-x g") 'magit-status)
   (global-set-key (kbd "C-x p") 'projectile-switch-project)
   (global-set-key (kbd "C-x o") 'projectile-find-file)
@@ -919,6 +916,9 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-c SPC") 'company-complete)
   (global-set-key (kbd "C-x e") 'eval-buffer)
   (global-set-key (kbd "C-x a t") 'ert-run-tests-interactively)
+  (global-set-key (kbd "M-s s") 'swiper)
+  (global-set-key (kbd "M-s a") 'swiper-all)
+  (global-set-key (kbd "M-s d") 'swiper-helm)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp

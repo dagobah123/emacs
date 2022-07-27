@@ -478,6 +478,16 @@
 `(ivy-grep-info                  ((t (:foreground ,text-match :background ,background-match           ))))
 `(ivy-grep-line-number           ((t (:foreground ,text-match :background ,background-match           ))))
 
+`(swiper-background-match-face-1 ((t (:foreground ,green-1  :background ,green-2                      ))))
+`(swiper-background-match-face-2 ((t (:foreground ,red-1    :background ,red-2                        ))))
+`(swiper-background-match-face-3 ((t (:foreground ,blue-1   :background ,blue-2                       ))))
+`(swiper-background-match-face-4 ((t (:foreground ,yellow-1 :background ,yellow-2                     ))))
+`(swiper-line-face               ((t (:foreground ,green-1  :background ,green-2                      ))))
+`(swiper-match-face-1            ((t (:foreground ,green-1  :background ,green-2                      ))))
+`(swiper-match-face-2            ((t (:foreground ,red-1    :background ,red-2                        ))))
+`(swiper-match-face-3            ((t (:foreground ,blue-1   :background ,blue-2                       ))))
+`(swiper-match-face-4            ((t (:foreground ,yellow-1 :background ,yellow-2                     ))))
+
 `(treemacs-root-face                ((t (:foreground ,violet-1                    :background ,nil                         :bold t ))))
 `(treemacs-file-face                ((t (:foreground ,green-1                     :background ,green-2                             ))))
 `(treemacs-directory-collapsed-face ((t (:foreground ,text-2                      :background ,nil                                 ))))
