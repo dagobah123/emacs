@@ -61,6 +61,9 @@
 (defvar text-mode-line)
 (defvar text-mode-line-border)
 (defvar background-mode-line)
+(defvar ivy-text)
+(defvar ivy-background)
+(defvar alert-1)
 
 (setq green-1 "#113e00")
 (setq green-2 "#d6ffc7")
@@ -88,7 +91,9 @@
 ;match
 (setq text-match "#9b209b")
 (setq background-match "#ffe2ff")
- 
+(setq ivy-text "#000000")
+(setq ivy-background "#ffff00")
+
 ;magit
 (setq text-diff-added "#113e00")
 (setq background-diff-added "#d6ffc7")
@@ -130,5 +135,7 @@
 (setq text-mode-line "#000000")
 (setq text-mode-line-border "#000000")
 (setq background-mode-line "#ffff00")
+
+(setq alert-1 "#ff0000")
 
 ;;; theme_default_light.el ends here

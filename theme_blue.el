@@ -21,6 +21,7 @@
 (defvar line-number-2)
 (defvar line-number-3)
 (defvar line-number-4)
+(defvar alert-1)
 
 (setq background-hl "#081c58")
 

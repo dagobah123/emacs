@@ -61,6 +61,9 @@
 (defvar text-mode-line)
 (defvar text-mode-line-border)
 (defvar background-mode-line)
+(defvar ivy-text)
+(defvar ivy-background)
+(defvar alert-1)
 
 (setq green-1 "#113e00")
 (setq green-2 "#72ad5d")
@@ -75,7 +78,7 @@
 (setq orange-1 "#7b2d06")
 (setq orange-2 "#ad7e34")
 (setq gray-1 "#333333")
-(setq gray-2 "#838383")
+(setq gray-2 "#bbbbbb")
 
 (setq text-constant "#994410")
 (setq text-function "#1d6a00")
@@ -88,7 +91,9 @@
 ;match
 (setq text-match "#4e084e")
 (setq background-match "#ad73ad")
- 
+(setq ivy-text "#ffff00")
+(setq ivy-background "#514628")
+
 ;magit
 (setq text-diff-added "#113e00")
 (setq background-diff-added "#79a06b")
@@ -130,5 +135,7 @@
 (setq text-mode-line "#ffff00")
 (setq text-mode-line-border "#838300")
 (setq background-mode-line "#514628")
+
+(setq alert-1 "#bb0000")
 
 ;;; theme_default_middle.el ends here

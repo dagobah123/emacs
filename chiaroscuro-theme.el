@@ -86,7 +86,8 @@
 (defvar text-mode-line                       "#000000")
 (defvar text-mode-line-border                "#000000")
 (defvar background-mode-line                 "#000000")
-
+(defvar ivy-text                             "#000000")
+(defvar ivy-background                       "#eeeeee")
 
 (if (eq CHIAROSCURO-INDEX 1) (progn (load-file "~/.emacs.d/theme_default_light.el")))
 (if (eq CHIAROSCURO-INDEX 1) (progn (load-file "~/.emacs.d/theme_eclipse.el")))
@@ -464,18 +465,18 @@
 
 `(ansi-color-bold ((t (:foreground ,text-match :background ,background-match :bold t ))))
 
-`(ivy-current-match              ((t (:foreground ,text-match :background ,background-match :bold t   ))))
-`(ivy-highlight-face             ((t (:foreground ,text-match :background ,background-match :bold t   ))))
-`(ivy-minibuffer-match-face-1    ((t (:foreground ,text-match :background ,background-match :bold t   ))))
-`(ivy-minibuffer-match-face-2    ((t (:foreground ,text-match :background ,background-match :bold t   ))))
-`(ivy-minibuffer-match-face-3    ((t (:foreground ,text-match :background ,background-match :bold t   ))))
-`(ivy-minibuffer-match-face-4    ((t (:foreground ,text-match :background ,background-match :bold t   ))))
-`(ivy-minibuffer-match-highlight ((t (:foreground ,text-match :background ,background-match :bold t   ))))
+;`(ivy-minibuffer-match-highlight ((t (:foreground ,"#ff0000"        :background ,background-match           ))))
+
+`(ivy-current-match              ((t (:foreground ,ivy-text   :background ,ivy-background   :bold t   ))))
+`(ivy-minibuffer-match-face-1    ((t (:foreground ,green-1    :background ,green-2                    ))))
+`(ivy-minibuffer-match-face-2    ((t (:foreground ,red-1      :background ,red-2                      ))))
+`(ivy-minibuffer-match-face-3    ((t (:foreground ,blue-1     :background ,blue-2                     ))))
+`(ivy-minibuffer-match-face-4    ((t (:foreground ,yellow-1   :background ,yellow-2                   ))))
 `(ivy-org                        ((t (:foreground ,text-2     :background ,nil              :italic t ))))
 `(ivy-modified-buffer            ((t (:foreground ,text-2     :background ,nil              :italic t ))))
 `(ivy-modified-outside-buffer    ((t (:foreground ,text-2     :background ,nil              :italic t ))))
-`(ivy-grep-info                  ((t (:foreground ,text-match :background ,background-match :bold t   ))))
-`(ivy-grep-line-number           ((t (:foreground ,text-match :background ,background-match :bold t   ))))
+`(ivy-grep-info                  ((t (:foreground ,text-match :background ,background-match           ))))
+`(ivy-grep-line-number           ((t (:foreground ,text-match :background ,background-match           ))))
 
 `(treemacs-root-face                ((t (:foreground ,violet-1                    :background ,nil                         :bold t ))))
 `(treemacs-file-face                ((t (:foreground ,green-1                     :background ,green-2                             ))))

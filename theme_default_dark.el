@@ -61,6 +61,9 @@
 (defvar text-mode-line)
 (defvar text-mode-line-border)
 (defvar background-mode-line)
+(defvar ivy-text)
+(defvar ivy-background)
+(defvar alert-1)
 
 (setq green-1 "#1ad600")
 (setq green-2 "#004400")
@@ -75,7 +78,7 @@
 (setq orange-1 "#ff7f00")
 (setq orange-2 "#4e2700")
 (setq gray-1 "#999999")
-(setq gray-2 "#222222")
+(setq gray-2 "#444444")
 
 (setq text-constant "#cb6a30")
 (setq text-function "#109800")
@@ -88,6 +91,8 @@
 ;match
 (setq text-match "#f974f9")
 (setq background-match "#43006d")
+(setq ivy-text "#ffff00")
+(setq ivy-background "#2a1f00")
 
 ;magit
 (setq text-diff-added "#1ad600")
@@ -130,5 +135,7 @@
 (setq text-mode-line "#ffff00")
 (setq text-mode-line-border "#838300")
 (setq background-mode-line "#2a1f00")
+
+(setq alert-1 "#eb196b")
 
 ;;; theme_default_dark.el ends here
