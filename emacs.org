@@ -19,27 +19,30 @@ The index of the current chiaroscuro theme.
 
   (setq package-list '(use-package
                        all-the-icons
-                       helm-swoop
-                       move-text
-                       goto-last-change
-                       evil
-                       telephone-line
-                       projectile
-                       helm-projectile
-                       treemacs-projectile
-                       magit
-                       magit-find-file
-                       nov
-                       openwith
-                       powershell
-                       csharp-mode
-                       elfeed
-                       counsel-web
-                       counsel-projectile
-                       ox-jira
                        company
                        company-box
-                       all-the-icons
+                       counsel
+                       counsel-projectile
+                       counsel-web
+                       csharp-mode
+                       dired-narrow
+                       elfeed
+                       evil
+                       goto-last-change
+                       helm-projectile
+                       helm-swoop
+                       ivy
+                       magit
+                       magit-find-file
+                       move-text
+                       nov
+                       openwith
+                       ox-jira
+                       powershell
+                       projectile
+                       swiper-helm
+                       telephone-line
+                       treemacs-projectile
                        )
         )
 
@@ -199,23 +202,22 @@ Load emacs-lisp file for linux or windows.
   (setq org-image-actual-width (list 500))
 
   (setq org-publish-project-alist
-      '(
-        ("org-mode-notes-emacs"
+      '(("org-mode-notes-emacs"
          :base-directory "~/source/org-mode/notes/emacs/"
          :base-extension "org"
          :publishing-directory "~/publish/emacs/"
          :recursive t
          :publishing-function org-html-publish-to-html
          :headline-levels 4
-         :auto-preamble t
-         )
+         :auto-preamble t)
+
         ("org-mode-notes-emacs-static"
          :base-directory "~/source/org-mode/notes/emacs/"
          :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
          :publishing-directory "~/publish/emacs/"
          :recursive t
-         :publishing-function org-publish-attachment
-         )
+         :publishing-function org-publish-attachment)
+
         ("org-mode-notes-development"
          :base-directory "~/source/org-mode/notes/development/"
          :base-extension "org"
@@ -223,21 +225,19 @@ Load emacs-lisp file for linux or windows.
          :recursive t
          :publishing-function org-html-publish-to-html
          :headline-levels 4
-         :auto-preamble t
-         )
+         :auto-preamble t)
+
         ("org-mode-notes-development-static"
          :base-directory "~/source/org-mode/notes/development/"
          :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
          :publishing-directory "~/publish/development/"
          :recursive t
-         :publishing-function org-publish-attachment
-         )
+         :publishing-function org-publish-attachment)
+
         ("org" :components ("org-mode-notes-emacs"
                             "org-mode-notes-emacs-static"
                             "org-mode-notes-development"
-                            "org-mode-notes-development-static"
-                            ))
-        ))
+                            "org-mode-notes-development-static"))))
 #+END_SRC
 ** evil
 #+BEGIN_SRC emacs-lisp
@@ -251,39 +251,27 @@ Load emacs-lisp file for linux or windows.
   (use-package telephone-line)
   (require 'telephone-line)
 
-  (setq telephone-line-primary-left-separator 'telephone-line-flat
-        telephone-line-secondary-left-separator 'telephone-line-flat
-        telephone-line-primary-right-separator 'telephone-line-flat
+  (setq telephone-line-primary-left-separator    'telephone-line-flat
+        telephone-line-secondary-left-separator  'telephone-line-flat
+        telephone-line-primary-right-separator   'telephone-line-flat
         telephone-line-secondary-right-separator 'telephone-line-flat)
 
   (setq telephone-line-evil-use-short-tag t)
 
   (setq telephone-line-lhs
-      '(
-        (evil  . (telephone-line-evil-tag-segment
-        ))
-        (nil   . (telephone-line-buffer-segment
-        ))
+      '((evil  . (telephone-line-evil-tag-segment))
+        (nil   . (telephone-line-buffer-segment))
         (nil   . (telephone-line-vc-segment
-                  telephone-line-erc-modified-channels-segment
-        ))
-        (nil   . (telephone-line-projectile-segment
-        ))
-  ))
+                  telephone-line-erc-modified-channels-segment))
+        (nil   . (telephone-line-projectile-segment))))
+
   (setq telephone-line-rhs
-      '(
-        (nil   . (telephone-line-misc-info-segment
-        ))
-        (nil   . (telephone-line-major-mode-segment
-        ))
-        (nil   . (telephone-line-airline-position-segment
-        ))
-  ))
+      '((nil   . (telephone-line-misc-info-segment))
+        (nil   . (telephone-line-major-mode-segment))
+        (nil   . (telephone-line-airline-position-segment))))
 
-  ;(set-face-attribute 'mode-line nil :font "Tw Cen MT-25")
-
-  ;all configurations must be set before this line
-  ;https://github.com/dbordak/telephone-line/blob/master/examples.org
+  ; all configurations must be set before this line
+  ; https://github.com/dbordak/telephone-line/blob/master/examples.org
   (telephone-line-mode 1)
 #+END_SRC
 ** projectile
@@ -296,10 +284,9 @@ Load emacs-lisp file for linux or windows.
   (require 'projectile)
   (setq projectile-indexing-method 'alien)
   (projectile-global-mode)
-  (projectile-mode +1)
+  (projectile-mode t)
   (global-set-key (kbd "C-x p") 'helm-projectile-switch-project)
   (global-set-key (kbd "C-x o") 'helm-projectile-find-file)
-  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 #+END_SRC
 ** helm
@@ -307,7 +294,7 @@ Load emacs-lisp file for linux or windows.
   (use-package helm
     :ensure t
     :init
-    (helm-mode 1)
+    (helm-mode t)
     (progn (setq helm-buffers-fuzzy-matching t))
     :bind
     (("M-x" . helm-M-x))
@@ -321,7 +308,6 @@ Load emacs-lisp file for linux or windows.
 #+END_SRC
 ** helm-projectile
 #+BEGIN_SRC emacs-lisp
-  ;; (setq helm-projectile-fuzzy-match nil)
   (require 'helm-projectile)
   (helm-projectile-on)
 #+END_SRC
@@ -331,10 +317,7 @@ Load emacs-lisp file for linux or windows.
   (add-hook 'dired-mode-hook
             (lambda ()
               (define-key dired-mode-map (kbd "b")
-                (lambda () (interactive) (find-alternate-file ".."))
-                )
-            )
-  )
+                          (lambda () (interactive) (find-alternate-file "..")))))
 
   (use-package dired-narrow
     :ensure t
@@ -344,36 +327,44 @@ Load emacs-lisp file for linux or windows.
 #+END_SRC
 ** lsp
 *** Company
-Complete anything aka Company provides auto-completion. Company-capf is enabled by default when you start LSP on a project. You can also invoke ~M-x company-capf~ to enable capf (completion at point function).
+Complete anything aka Company provides auto-completion.
+Company-capf is enabled by default when you start LSP on a project.
+You can also invoke ~M-x company-capf~ to enable capf (completion at point function).
 #+BEGIN_SRC emacs-lisp
-  (use-package company :ensure t)
-  (use-package company-box :ensure t)
+  (use-package company
+    :ensure t)
+  (use-package company-box
+    :ensure t)
   (company-mode t)
   (require 'company-box)
   (add-hook 'company-mode-hook 'company-box-mode)
 #+END_SRC
-
 *** Yasnippet
-Yasnippet is a template system for Emacs. It allows you to type abbreviation and complete the associated text.
+Yasnippet is a template system for Emacs.
+It allows you to type abbreviation and complete the associated text.
 #+BEGIN_SRC emacs-lisp
-  (use-package yasnippet :config (yas-global-mode))
-  (use-package yasnippet-snippets :ensure t)
+  (use-package yasnippet
+    :config (yas-global-mode))
+  (use-package yasnippet-snippets
+    :ensure t)
   (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
 #+END_SRC
 
 E.g. In java mode, if you type ~pr~ and hit ~<TAB>~ it should complete to ~System.out.println("text");~
 
 To create a new snippet you can use ~yas-new-snippet~ command.
-
 *** FlyCheck
 FlyCheck checks for errors in code at run-time.
 #+BEGIN_SRC emacs-lisp
-  (use-package flycheck :ensure t :init (global-flycheck-mode))
+  (use-package flycheck
+    :ensure t
+    :init (global-flycheck-mode))
 #+END_SRC
-
 *** Dap Mode
-Emacs Debug Adapter Protocol aka DAP Mode allows us to debug your program. Below we will integrate ~dap-mode~ with ~dap-hydra~. ~Dap-hydra~ shows keys you can use to enable various options and jump through code at runtime. After we install dap-mode we will also install ~dap-java~.
-
+Emacs Debug Adapter Protocol aka DAP Mode allows us to debug your program.
+Below we will integrate ~dap-mode~ with ~dap-hydra~.
+~Dap-hydra~ shows keys you can use to enable various options and jump through code at runtime.
+After we install dap-mode we will also install ~dap-java~.
 #+BEGIN_SRC emacs-lisp
   (use-package dap-mode
     :ensure t
@@ -390,9 +381,10 @@ Emacs Debug Adapter Protocol aka DAP Mode allows us to debug your program. Below
 
   (use-package dap-java :ensure nil)
 #+END_SRC
-
 *** Treemacs
-Treemacs provides UI elements used for LSP UI. Let's install lsp-treemacs and its dependency treemacs. We will also Assign ~M-9~ to show error list.
+Treemacs provides UI elements used for LSP UI.
+Let's install lsp-treemacs and its dependency treemacs.
+We will also assign ~M-9~ to show error list.
 #+BEGIN_SRC emacs-lisp
   (use-package lsp-treemacs
     :after (lsp-mode treemacs)
@@ -409,10 +401,11 @@ Treemacs provides UI elements used for LSP UI. Let's install lsp-treemacs and it
   (setq treemacs-no-png-images t)
   (treemacs-project-follow-mode t)
 #+END_SRC
-
 *** LSP UI
-LSP UI is used in various packages that require UI elements in LSP. E.g ~lsp-ui-flycheck-list~ opens a windows where you can see various coding errors while you code. You can use ~C-c l T~ to toggle several UI elements. We have also remapped some of the xref-find functions, so that we can easily jump around between symbols using ~M-.~, ~M-,~ and ~M-?~ keys.
-
+LSP UI is used in various packages that require UI elements in LSP.
+E.g. ~lsp-ui-flycheck-list~ opens a window where you can see various coding errors while you code.
+You can use ~C-c l T~ to toggle several UI elements.
+We have also remapped some of the xref-find functions, so that we can easily jump around between symbols using ~M-.~, ~M-,~ and ~M-?~ keys.
 #+BEGIN_SRC emacs-lisp
   (use-package lsp-ui
     :ensure t
@@ -424,14 +417,14 @@ LSP UI is used in various packages that require UI elements in LSP. E.g ~lsp-ui-
                 lsp-ui-doc-position 'bottom
                 lsp-ui-doc-max-width 100))
 #+END_SRC
-
 Go through this [[https://github.com/emacs-lsp/lsp-ui/blob/master/lsp-ui-doc.el][link]] to see what other parameters are provided.
-
 *** Helm LSP
-Helm-lsp provides various functionality to work with the code. E.g Code actions like adding *getter, setter, toString*, refactoring etc. You can use ~helm-lsp-workspace-symbol~ to find various symbols (classes) within your workspace.
-
-LSP's built in symbol explorer uses ~xref-find-apropos~ to provide symbol navigation. Below we will replace that with helm version. After that you can use ~C-c l g a~ to find workspace symbols in a more intuitive way.
-
+Helm-lsp provides various functionality to work with the code.
+E.g. code actions like adding *getter, setter, toString*, refactoring etc.
+You can use ~helm-lsp-workspace-symbol~ to find various symbols (classes) within your workspace.
+LSP's built in symbol explorer uses ~xref-find-apropos~ to provide symbol navigation.
+Below we will replace that with helm version.
+After that you can use ~C-c l g a~ to find workspace symbols in a more intuitive way.
 #+BEGIN_SRC emacs-lisp
   (use-package helm-lsp
     :ensure t
@@ -439,37 +432,35 @@ LSP's built in symbol explorer uses ~xref-find-apropos~ to provide symbol naviga
     :commands (helm-lsp-workspace-symbol)
     :init (define-key lsp-mode-map [remap xref-find-apropos] #'helm-lsp-workspace-symbol))
 #+END_SRC
-
 *** Install LSP Package
-Let's install the main package for lsp. Here we will integrate lsp with which-key. This way, when we type the prefix key ~C-c l~ we get additional help for compliting the command.
-
+Let's install the main package for lsp.
+Here we will integrate lsp with which-key.
+This way, when we type the prefix key ~C-c l~ we get additional help for compliting the command.
 #+BEGIN_SRC emacs-lisp
   (use-package lsp-mode
     :ensure t
-    :hook (
-           (lsp-mode . lsp-enable-which-key-integration)
+    :hook ((lsp-mode . lsp-enable-which-key-integration)
            (java-mode . #'lsp-deferred))
-    :init (setq
-           lsp-keymap-prefix "C-c l"              ; this is for which-key integration documentation, need to use lsp-mode-map
-           lsp-enable-file-watchers nil
-           read-process-output-max (* 1024 1024)  ; 1 mb
-           lsp-completion-provider :capf
-           lsp-idle-delay 0.500)
-    :config
-    (setq lsp-intelephense-multi-root nil) ; don't scan unnecessary projects
+    :init (setq lsp-keymap-prefix "C-c l"              ; this is for which-key integration documentation, need to use lsp-mode-map
+                lsp-enable-file-watchers nil
+                read-process-output-max (* 1024 1024)  ; 1 mb
+                lsp-completion-provider :capf
+                lsp-idle-delay 0.500)
+    :config (setq lsp-intelephense-multi-root nil) ; don't scan unnecessary projects
     (with-eval-after-load 'lsp-intelephense
       (setf (lsp--client-multi-root (gethash 'iph lsp-clients)) nil))
     (define-key lsp-mode-map (kbd "C-c l") lsp-command-map))
 #+END_SRC
-
-You can start LSP server in a java project by using ~C-c l s s~. Once you type ~C-c l~ ~which-key~ package should guide you through rest of the options. In above setting I have added some memory management settings as suggested in [[https://emacs-lsp.github.io/lsp-mode/page/performance/][this guide]]. Change them to higher numbers, if you find *lsp-mode* sluggish in your computer.
-
+You can start LSP server in a java project by using ~C-c l s s~.
+Once you type ~C-c l~ ~which-key~ package should guide you through rest of the options.
+In above setting I have added some memory management settings as suggested in [[https://emacs-lsp.github.io/lsp-mode/page/performance/][this guide]].
+Change them to higher numbers, if you find *lsp-mode* sluggish in your computer.
 *** LSP Java
 This is the package that handles server installation and session management.
 #+BEGIN_SRC  emacs-lisp
   (use-package lsp-java
     :ensure t
-      :config (add-hook 'java-mode-hook 'lsp))
+    :config (add-hook 'java-mode-hook 'lsp))
 
   (require 'lsp-java)
   (add-hook 'java-mode-hook #'lsp)
@@ -489,7 +480,8 @@ This is the package that handles server installation and session management.
   (use-package flycheck)
   (use-package yasnippet :config (yas-global-mode))
 
-  (use-package lsp-mode :hook ((lsp-mode . lsp-enable-which-key-integration))
+  (use-package lsp-mode
+    :hook ((lsp-mode . lsp-enable-which-key-integration))
     :config (setq lsp-completion-enable-additional-text-edit nil))
   (use-package hydra)
   (use-package company)
@@ -504,7 +496,7 @@ This is the package that handles server installation and session management.
     :config (helm-mode))
   (use-package lsp-treemacs)
 
-  ;show nice unit test results
+  ; show nice unit test results
   (add-hook 'compilation-filter-hook
             (lambda() (ansi-color-apply-on-region (point-min) (point-max))))
 #+END_SRC
@@ -512,23 +504,21 @@ This is the package that handles server installation and session management.
 #+BEGIN_SRC  emacs-lisp
   (setq lsp-print-io t)
 
-  ;https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
+  ; https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
   (setq lsp-modeline-code-actions-enable nil)
   (setq lsp-headerline-breadcrumb-enable nil)
 #+END_SRC
 ** lsp c++
 #+BEGIN_SRC emacs-lisp
   (use-package lsp-mode
-    :hook
-    ((c++-mode . lsp)))
+    :hook ((c++-mode . lsp)))
   (use-package lsp-ui
     :commands lsp-ui-mode)
 #+END_SRC
 ** lsp python
 #+BEGIN_SRC emacs-lisp
   (use-package lsp-mode
-    :hook
-    ((python-mode . lsp)))
+    :hook ((python-mode . lsp)))
   (use-package lsp-ui
     :commands lsp-ui-mode)
 #+END_SRC
@@ -537,60 +527,33 @@ This is the package that handles server installation and session management.
   (use-package bm
     :ensure t
     :demand t
-
-    :init
-    ;; restore on load (even before you require bm)
-    (setq bm-restore-repository-on-load t)
-
+    :init (setq bm-restore-repository-on-load t) ; restore on load (even before you require bm)
     :config
-    ;; Allow cross-buffer 'next'
-    (setq bm-cycle-all-buffers t)
-
-    ;; where to store persistant files
-    (setq bm-repository-file "~/.emacs.d/bm-repository")
-
-    ;; save bookmarks
-    (setq-default bm-buffer-persistence t)
-
-    ;; Loading the repository from file when on start up.
-    (add-hook 'after-init-hook 'bm-repository-load)
-
-    ;; Saving bookmarks
-    (add-hook 'kill-buffer-hook #'bm-buffer-save)
-
-    ;; Saving the repository to file when on exit.
-    ;; kill-buffer-hook is not called when Emacs is killed, so we
-    ;; must save all bookmarks first.
+    (setq bm-cycle-all-buffers t) ; Allow cross-buffer 'next'
+    (setq bm-repository-file "~/.emacs.d/bm-repository") ; where to store persistant files
+    (setq-default bm-buffer-persistence t) ; save bookmarks
+    (add-hook 'after-init-hook 'bm-repository-load) ; Loading the repository from file when on start up.
+    (add-hook 'kill-buffer-hook #'bm-buffer-save) ; Saving bookmarks
     (add-hook 'kill-emacs-hook #'(lambda nil
                                    (bm-buffer-save-all)
-                                   (bm-repository-save)))
-
-    ;; The `after-save-hook' is not necessary to use to achieve persistence,
-    ;; but it makes the bookmark data in repository more in sync with the file
-    ;; state.
-    (add-hook 'after-save-hook #'bm-buffer-save)
-
-    ;; Restoring bookmarks
-    (add-hook 'find-file-hooks   #'bm-buffer-restore)
-    (add-hook 'after-revert-hook #'bm-buffer-restore)
-
-    ;; The `after-revert-hook' is not necessary to use to achieve persistence,
-    ;; but it makes the bookmark data in repository more in sync with the file
-    ;; state. This hook might cause trouble when using packages
-    ;; that automatically reverts the buffer (like vc after a check-in).
-    ;; This can easily be avoided if the package provides a hook that is
-    ;; called before the buffer is reverted (like `vc-before-checkin-hook').
-    ;; Then new bookmarks can be saved before the buffer is reverted.
-    ;; Make sure bookmarks is saved before check-in (and revert-buffer)
+                                   (bm-repository-save))) ; Saving the repository to file when on exit. kill-buffer-hook is not called when Emacs is killed, so we must save all bookmarks first.
+    (add-hook 'after-save-hook #'bm-buffer-save) ; The 'after-save-hook' is not necessary to use to achieve persistence, but it makes the bookmark data in repository more in sync with the file state.
+    (add-hook 'find-file-hooks   #'bm-buffer-restore) ; Restoring bookmarks
+    (add-hook 'after-revert-hook #'bm-buffer-restore) ; Restoring bookmarks
     (add-hook 'vc-before-checkin-hook #'bm-buffer-save)
-
+    ; The 'after-revert-hook' is not necessary to use to achieve persistence,
+    ; but it makes the bookmark data in repository more in sync with the file
+    ; state. This hook might cause trouble when using packages
+    ; that automatically reverts the buffer (like vc after a check-in).
+    ; This can easily be avoided if the package provides a hook that is
+    ; called before the buffer is reverted (like `vc-before-checkin-hook').
+    ; Then new bookmarks can be saved before the buffer is reverted.
+    ; Make sure bookmarks is saved before check-in (and revert-buffer)
     :bind (("C-%" . bm-next)
            ("C-^" . bm-previous)
            ("C-&" . bm-show-all)))
-
   (require 'helm-bm)
   (global-set-key (kbd "C-*") 'helm-bm)
-
   (global-set-key (kbd "C-!") 'bookmark-bmenu-list)
   (global-set-key (kbd "C-$") 'my:set-bookmark)
   (global-set-key (kbd "C-(") 'my:remove-bookmarks)
@@ -675,12 +638,12 @@ This is the package that handles server installation and session management.
 ** winner mode
 #+BEGIN_SRC emacs-lisp
   (when (fboundp 'winner-mode)
-    (winner-mode 1))
+    (winner-mode t))
 #+END_SRC
 ** ido
 #+BEGIN_SRC emacs-lisp
   (setq ido-enable-flex-matching t)
-  (ido-mode 1)
+  (ido-mode t)
 #+END_SRC
 ** windows
 #+BEGIN_SRC emacs-lisp
@@ -706,7 +669,6 @@ This is the package that handles server installation and session management.
 #+BEGIN_SRC emacs-lisp
   (require 'counsel-web)
 
-  ;; Define "C-c w" as a prefix key.
   (defvar counsel-web-map
     (let ((map (make-sparse-keymap "counsel-web")))
       (define-key map (kbd "w") #'counsel-web-suggest)
@@ -720,25 +682,8 @@ This is the package that handles server installation and session management.
   (use-package counsel-projectile)
   (counsel-projectile-mode t)
 #+END_SRC
-** custom pop up
 ** custom functions
 #+BEGIN_SRC emacs-lisp
-  (defun my:switch-buffers-right()
-    (interactive)
-    (org-shiftright)
-    (next-buffer)
-    (org-shiftleft)
-    (next-buffer)
-    (org-shiftright))
-
-  (defun my:switch-buffers-left()
-    (interactive)
-    (org-shiftleft)
-    (next-buffer)
-    (org-shiftright)
-    (next-buffer)
-    (org-shiftleft))
-
   (defun my:duplicate-line()
     (interactive)
     (move-beginning-of-line 1)
@@ -748,7 +693,7 @@ This is the package that handles server installation and session management.
     (next-line 1)
     (yank))
 
-  (defun eww-new ()
+  (defun eww-new()
     (interactive)
     (let ((url (read-from-minibuffer "Enter URL or keywords: ")))
       (switch-to-buffer (generate-new-buffer "eww"))
