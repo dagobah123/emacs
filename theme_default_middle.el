@@ -64,6 +64,7 @@
 (defvar ivy-text)
 (defvar ivy-background)
 (defvar alert-1)
+(defvar background-cursor)
 
 (setq green-1 "#113e00")
 (setq green-2 "#72ad5d")
@@ -137,5 +138,7 @@
 (setq background-mode-line "#514628")
 
 (setq alert-1 "#bb0000")
+
+(setq background-cursor "#00ff00")
 
 ;;; theme_default_middle.el ends here

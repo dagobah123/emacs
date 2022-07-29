@@ -300,11 +300,11 @@ Load emacs-lisp file for linux or windows.
     (("M-x" . helm-M-x))
     (("C-c k r" . helm-show-kill-ring))
     (("C-c h" . helm-grep-do-git-grep))
-    (("C-s" . helm-swoop))
     (("C-c b" . helm-buffers-list))
     (("C-c r" . helm-bookmarks))
     (("C-c i" . helm-mini))
     (("C-c q" . helm-info)))
+  ;(("C-s" . helm-swoop))
 #+END_SRC
 ** helm-projectile
 #+BEGIN_SRC emacs-lisp
@@ -858,6 +858,7 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "M-s s") 'swiper)
   (global-set-key (kbd "M-s a") 'swiper-all)
   (global-set-key (kbd "M-s d") 'swiper-helm)
+  (global-set-key (kbd "C-s") 'swiper)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp

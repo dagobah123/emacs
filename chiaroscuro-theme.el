@@ -523,6 +523,9 @@
 `(bm-fringe-face                   ((t (:foreground ,text-match :background ,background-match ))))
 `(bm-fringe-persistent-face        ((t (:foreground ,text-match :background ,background-match ))))
 `(bm-persistent-face               ((t (:foreground ,red-1      :background ,red-2            ))))
+
+`(help-key-binding                 ((t (:foreground ,yellow-1   :background ,yellow-2         ))))
+
 )
 
 ;;;###autoload

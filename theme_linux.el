@@ -14,7 +14,6 @@
 (defvar background-5)
 (defvar background-6)
 (defvar background-7)
-(defvar background-cursor)
 (defvar background-mode-line-fringe)
 (defvar background-mode-line-fringe-active)
 (defvar line-number-1)
@@ -31,13 +30,12 @@
 
 (setq background-1 "#380c2a") ;ubuntu
 (setq background-2 "#380c2a") ;ubuntu
-(setq background-3 "#6c7673") ;paren match
+(setq background-3 "#a81078") ;paren match
 (setq background-4 "#701654") ;lightest ubuntu
 (setq background-5 "#700060") ;region
 (setq background-6 "#561040")
 (setq background-7 "#4a0e37")
 
-(setq background-cursor "#d7b269")
 (setq background-mode-line-fringe "#4a0e37")
 (setq background-mode-line-fringe-active "#821961")
 
