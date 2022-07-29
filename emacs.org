@@ -300,11 +300,11 @@ Load emacs-lisp file for linux or windows.
     (("M-x" . helm-M-x))
     (("C-c k r" . helm-show-kill-ring))
     (("C-c h" . helm-grep-do-git-grep))
+    (("C-r"   . helm-swoop))
     (("C-c b" . helm-buffers-list))
     (("C-c r" . helm-bookmarks))
     (("C-c i" . helm-mini))
     (("C-c q" . helm-info)))
-  ;(("C-s" . helm-swoop))
 #+END_SRC
 ** helm-projectile
 #+BEGIN_SRC emacs-lisp
@@ -681,6 +681,10 @@ This is the package that handles server installation and session management.
   (require 'counsel-projectile)
   (use-package counsel-projectile)
   (counsel-projectile-mode t)
+#+END_SRC
+** ivy
+#+BEGIN_SRC emacs-lisp
+  (setq ivy-height 15)
 #+END_SRC
 ** custom functions
 #+BEGIN_SRC emacs-lisp
