@@ -130,16 +130,16 @@
 `(region                   ((t (:foreground ,text-3   :background ,background-5                ))))
 `(cua-rectangle            ((t (:foreground ,text-3   :background ,background-5                ))))
 
-`(hl-line                  ((t (:foreground ,text-hl  :background ,background-hl               ))))
-`(fringe                   ((t (:foreground ,text-1   :background ,background-mode-line-fringe ))))
-`(minibuffer-prompt        ((t (:foreground ,text-1   :background ,background-1                ))))
-`(ido-first-match          ((t (:foreground ,text-match :background ,background-match :bold t  ))))
-`(ido-only-match           ((t (:foreground ,text-match :background ,background-match :bold t  ))))
-`(lsp-face-highlight-read  ((t (:foreground ,text-match :background ,background-match :bold t  ))))
-`(lsp-face-highlight-write ((t (:foreground ,text-match :background ,background-match :bold t  ))))
-`(eshell-prompt            ((t (:foreground ,text-2   :background ,background-1 :bold t        ))))
-`(secondary-selection      ((t (:foreground ,blue-1   :background ,blue-2 :bold t              ))))
-`(git-commit-summary       ((t (:foreground ,blue-1   :background ,blue-2                      ))))
+`(hl-line                  ((t (:foreground ,text-hl    :background ,background-hl                        ))))
+`(fringe                   ((t (:foreground ,text-1     :background ,background-mode-line-fringe          ))))
+`(minibuffer-prompt        ((t (:foreground ,text-1     :background ,background-1                         ))))
+`(ido-first-match          ((t (:foreground ,text-match :background ,ivy-background              :bold t  ))))
+`(ido-only-match           ((t (:foreground ,text-match :background ,ivy-background              :bold t  ))))
+`(lsp-face-highlight-read  ((t (:foreground ,text-match :background ,background-match            :bold t  ))))
+`(lsp-face-highlight-write ((t (:foreground ,text-match :background ,background-match            :bold t  ))))
+`(eshell-prompt            ((t (:foreground ,text-2     :background ,background-1                :bold t  ))))
+`(secondary-selection      ((t (:foreground ,blue-1     :background ,blue-2                      :bold t  ))))
+`(git-commit-summary       ((t (:foreground ,blue-1     :background ,blue-2                               ))))
 
 ;line number
 `(line-number-current-line ((t (:foreground ,line-number-1 :background ,line-number-2 :bold t ))))
@@ -184,7 +184,7 @@
 `(helm-candidate-number             ((t (:foreground ,text-1                                                ))))
 `(helm-M-x-key                      ((t (:foreground ,text-1     :underline t                               ))))
 `(helm-source-header                ((t (:foreground ,text-1     :bold t                                    ))))
-`(helm-selection                    ((t (:foreground ,text-match :background ,background-match              ))))
+`(helm-selection                    ((t (:foreground ,ivy-text   :background ,ivy-background                ))))
 `(helm-swoop-target-line-face       ((t (:foreground ,text-match :background ,background-match              ))))
 `(helm-swoop-target-word-face       ((t (:foreground ,text-match :background ,background-match :bold t      ))))
 `(helm-swoop-line-number-face       ((t (:foreground ,text-1     :background ,background-1                  ))))
@@ -454,8 +454,6 @@
 `(bookmark-face ((t (:foreground ,text-1 :background ,nil ))))
 
 `(ansi-color-bold ((t (:foreground ,text-match :background ,background-match :bold t ))))
-
-;`(ivy-minibuffer-match-highlight ((t (:foreground ,"#ff0000"        :background ,background-match           ))))
 
 `(ivy-current-match              ((t (:foreground ,ivy-text   :background ,ivy-background   :bold t   ))))
 `(ivy-minibuffer-match-face-1    ((t (:foreground ,green-1    :background ,green-2                    ))))
