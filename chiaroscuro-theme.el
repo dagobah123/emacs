@@ -399,17 +399,7 @@
 `(lazy-highlight             ((t (:foreground ,text-match :background ,background-match ))))
 `(isearch                    ((t (:foreground ,text-match :background ,background-match ))))
 
-`(whitespace-big-indent       ((t (:foreground ,violet-1 :background ,violet-2     ))))
-`(whitespace-empty            ((t (:foreground ,violet-1 :background ,violet-2     ))))
-`(whitespace-hspace           ((t (:foreground ,violet-1 :background ,violet-2     ))))
-`(whitespace-indentation      ((t (:foreground ,violet-1 :background ,violet-2     ))))
-`(whitespace-line             ((t (:foreground ,violet-1 :background ,violet-2     ))))
-`(whitespace-newline          ((t (:foreground ,violet-1 :background ,violet-2     ))))
 `(whitespace-space            ((t (:foreground ,text-2   :background ,background-1 ))))
-`(whitespace-space-after-tab  ((t (:foreground ,violet-1 :background ,violet-2     ))))
-`(whitespace-space-before-tab ((t (:foreground ,violet-1 :background ,violet-2     ))))
-`(whitespace-tab              ((t (:foreground ,violet-1 :background ,violet-2     ))))
-`(whitespace-trailing         ((t (:foreground ,violet-1 :background ,violet-2     ))))
 
 `(error                                     ((t (:foreground ,text-error   :bold t :underline t ))))
 `(flycheck-error                            ((t (:foreground ,text-error   :bold t :underline t ))))
