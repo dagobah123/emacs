@@ -1,4 +1,9 @@
 ;;; org-agenda templates
+;;; Commentary:
+;;; Code:
+
+(defvar org-capture-templates)
+(defvar org-agenda-files)
 
 (setq org-capture-templates
       '(
@@ -37,3 +42,5 @@
         )
       )
 (setq org-agenda-files (list "~/source/org-mode/agenda"))
+
+;;; agenda.el ends here

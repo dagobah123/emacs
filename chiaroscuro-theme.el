@@ -422,35 +422,6 @@
 `(flycheck-error-list-line-number           ((t (:foreground ,text-1       :bold t              ))))
 `(flycheck-error-list-warning               ((t (:foreground ,text-warning :bold t              ))))
 
-;`(flycheck-error-list-info                  ((t (:foreground ,text-info    :bold t              ))))
-;`(flycheck-error-list-warning               ((t (:foreground ,text-warning :bold t              ))))
-;`(flycheck-error-list-error                 ((t (:foreground ,text-error   :bold t              ))))
-
-;lsp-headerline-breadcrumb-deprecated-face
-;lsp-headerline-breadcrumb-path-error-face
-;lsp-headerline-breadcrumb-path-face
-;lsp-headerline-breadcrumb-path-hint-face
-;lsp-headerline-breadcrumb-path-info-face
-;lsp-headerline-breadcrumb-path-warning-face
-;lsp-headerline-breadcrumb-project-prefix-face
-;lsp-headerline-breadcrumb-separator-face
-;lsp-headerline-breadcrumb-symbols-error-face
-;lsp-headerline-breadcrumb-symbols-face
-;lsp-headerline-breadcrumb-symbols-hint-face
-;lsp-headerline-breadcrumb-symbols-info-face
-;lsp-headerline-breadcrumb-symbols-warning-face
-;lsp-headerline-breadcrumb-unknown-project-prefix-face
-
-;`(which-key-command-description-face    ((t (:foreground ,text-function, :background ,nil ))))
-;`(which-key-docstring-face              ((t (:foreground ,text-match :background ,nil :bold t ))))
-;`(which-key-group-description-face      ((t (:foreground ,text-match :background ,nil :bold t ))))
-;`(which-key-highlighted-command-face    ((t (:foreground ,text-match :background ,nil :bold t ))))
-;`(which-key-key-face                    ((t (:foreground ,green-1 :background ,nil :bold t ))))
-;`(which-key-local-map-description-face  ((t (:foreground ,green-1 :background ,nil :bold t ))))
-;`(which-key-note-face                   ((t (:foreground ,text-match :background ,nil :bold t ))))
-;`(which-key-separator-face              ((t (:foreground ,text-match :background ,nil :bold t ))))
-;`(which-key-special-key-face            ((t (:foreground ,text-match :background ,nil :bold t ))))
-
 `(bookmark-face ((t (:foreground ,text-1 :background ,nil ))))
 
 `(ansi-color-bold ((t (:foreground ,text-match :background ,background-match :bold t ))))
@@ -488,20 +459,6 @@
 `(treemacs-git-added-face           ((t (:foreground ,red-1                       :background ,nil                                 ))))
 `(treemacs-git-conflict-face        ((t (:foreground ,red-1                       :background ,nil                                 ))))
 `(treemacs-git-added-face           ((t (:foreground ,red-1                       :background ,nil                                 ))))
-
-;  ;`(lsp-headerline-breadcrumb-deprecated-face             ((t (:foreground ,text-1 :background ,nil ))))
-;  ;`(lsp-headerline-breadcrumb-path-error-face             ((t (:foreground ,text-1 :background ,nil ))))
-;  `(lsp-headerline-breadcrumb-path-face                   ((t (:foreground ,text-2 ))))
-;  ;`(lsp-headerline-breadcrumb-path-hint-face              ((t (:foreground ,text-1 :background ,nil ))))
-;  ;`(lsp-headerline-breadcrumb-path-info-face              ((t (:foreground ,text-1 :background ,nil ))))
-;  `(lsp-headerline-breadcrumb-path-warning-face           ((t (:foreground ,text-2 ))))
-;  ;`(lsp-headerline-breadcrumb-project-prefix-face         ((t (:foreground ,text-1 :background ,nil ))))
-;  `(lsp-headerline-breadcrumb-separator-face              ((t (:foreground ,text-2 ))))
-;  ;`(lsp-headerline-breadcrumb-symbols-error-face          ((t (:foreground ,text-1 :background ,nil ))))
-;  ;`(lsp-headerline-breadcrumb-symbols-face                ((t (:foreground ,text-1 :background ,nil ))))
-;  ;`(lsp-headerline-breadcrumb-symbols-hint-face           ((t (:foreground ,text-1 :background ,nil ))))
-;  ;`(lsp-headerline-breadcrumb-symbols-info-face           ((t (:foreground ,text-1 :background ,nil ))))
-;  `(lsp-headerline-breadcrumb-symbols-warning-face        ((t (:foreground ,text-warning ))))
 
 `(company-tooltip-selection        ((t (:foreground ,text-match :background ,background-match ))))
 
