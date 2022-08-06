@@ -65,6 +65,7 @@
 (defvar ivy-background)
 (defvar alert-1)
 (defvar background-cursor)
+(defvar text-error)
 
 (setq green-1 "#2da21d")
 (setq green-2 "#004400")
@@ -140,5 +141,7 @@
 (setq alert-1 "#eb196b")
 
 (setq background-cursor "#009900")
+
+(setq text-error "#a6a600")
 
 ;;; theme_default_black.el ends here

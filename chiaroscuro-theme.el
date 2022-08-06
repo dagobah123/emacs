@@ -402,7 +402,7 @@
 `(lazy-highlight             ((t (:foreground ,text-match :background ,background-match ))))
 `(isearch                    ((t (:foreground ,text-match :background ,background-match ))))
 
-`(whitespace-space            ((t (:foreground ,text-2   :background ,background-1 ))))
+`(whitespace-space            ((t (:foreground ,text-2   :background ,nil ))))
 
 `(error                                     ((t (:foreground ,text-error   :bold t :underline t ))))
 `(flycheck-error                            ((t (:foreground ,text-error   :bold t :underline t ))))
