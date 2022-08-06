@@ -113,8 +113,11 @@
 (if (eq CHIAROSCURO-INDEX 8) (progn (load-file "~/.emacs.d/theme_default_middle.el")))
 (if (eq CHIAROSCURO-INDEX 8) (progn (load-file "~/.emacs.d/theme_dune.el")))
 
-(if (> CHIAROSCURO-INDEX 7) (progn (setq CHIAROSCURO-INDEX 0)))
-(if (< CHIAROSCURO-INDEX 0) (progn (setq CHIAROSCURO-INDEX 7)))
+(if (eq CHIAROSCURO-INDEX 9) (progn (load-file "~/.emacs.d/theme_default_black.el")))
+(if (eq CHIAROSCURO-INDEX 9) (progn (load-file "~/.emacs.d/theme_night.el")))
+
+(if (> CHIAROSCURO-INDEX 8) (progn (setq CHIAROSCURO-INDEX 0)))
+(if (< CHIAROSCURO-INDEX 0) (progn (setq CHIAROSCURO-INDEX 8)))
 
 (deftheme chiaroscuro)
 

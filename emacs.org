@@ -879,6 +879,7 @@ This is the package that handles server installation and session management.
                       chiaroscuro
                       chiaroscuro
                       chiaroscuro
+                      chiaroscuro
                       chiaroscuro))
 
   (setq themes-list-names '("eclipse"
@@ -888,7 +889,8 @@ This is the package that handles server installation and session management.
                             "terminal"
                             "neon"
                             "blue"
-                            "dune"))
+                            "dune"
+                            "night"))
 
   (defvar theme-index 0 "Index representing the current theme")
   (setq theme-index 0)
@@ -975,5 +977,14 @@ This is the package that handles server installation and session management.
 #+END_SRC
 ** change theme on startup
 #+BEGIN_SRC emacs-lisp
+  ;(my:theme-up)
+  ;(my:theme-up)
+  ;(my:theme-up)
+  ;(my:theme-up)
+  ;(my:theme-up)
+  ;(my:theme-up)
+  ;(my:theme-up)
+  ;(my:theme-up)
+  (setq CHIAROSCURO-INDEX 8)
   (my:theme-up)
 #+END_SRC
