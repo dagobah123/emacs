@@ -21,7 +21,7 @@
 (defvar line-number-3)
 (defvar line-number-4)
 
-(setq background-hl "#222222")
+(setq background-hl "#111111")
 
 (setq text-hl "#888888")
 (setq text-1  "#777777")
@@ -36,11 +36,11 @@
 (setq background-6 "#222255")
 (setq background-7 "#222222")
 
-(setq background-mode-line-fringe "#222222")
-(setq background-mode-line-fringe-active "#333333")
+(setq background-mode-line-fringe "#111111")
+(setq background-mode-line-fringe-active "#222222")
 
 (setq line-number-1 "#35bbae")
-(setq line-number-2 "#222222")
+(setq line-number-2 "#111111")
 (setq line-number-3 "#004c4c")
 (setq line-number-4 "#000000")
 

@@ -866,6 +866,8 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-c d") 'lsp-ui-peek-find-definitions)
   (global-set-key (kbd "C-c i") 'lsp-ui-peek-find-implementation)
   (global-set-key (kbd "C-c e") 'lsp-execute-code-action)
+  (global-set-key (kbd "C-x b") 'ido-switch-buffer)
+  (global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
