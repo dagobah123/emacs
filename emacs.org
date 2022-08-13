@@ -822,6 +822,12 @@ This is the package that handles server installation and session management.
     (dired-copy-filename-as-kill)
     (kill-this-buffer))
   (global-set-key (kbd "C-x y") 'my:get-filename)
+
+  (defun my:projectile-magit()
+    (interactive)
+    (projectile-vc)
+    (delete-other-windows))
+  (global-set-key (kbd "C-c v") 'my:projectile-magit)
 #+END_SRC
 ** key bindings, kbd
 #+BEGIN_SRC emacs-lisp
