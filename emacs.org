@@ -173,6 +173,8 @@ Load emacs-lisp file for linux or windows.
             (lambda () (subword-mode t)))
   (add-hook 'java-mode-common-hook
             (lambda () (subword-mode t)))
+
+  (setq sentence-end-double-space nil)
 #+END_SRC
 ** org mode
 #+BEGIN_SRC emacs-lisp
