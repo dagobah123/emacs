@@ -10,14 +10,17 @@
 (setenv "JAVA_HOME" "C:/Program Files/Java/openjdk-16.0.2_windows-x64_bin/jdk-16.0.2")
 (setq lsp-java-java-path "C:/Program Files/Java/openjdk-16.0.2_windows-x64_bin/jdk-16.0.2/bin/java.exe")
 
-; add powershell to exec-path
-(add-to-list 'exec-path "c:/Windows/system32/WindowsPowerShell/v1.0")
-(add-to-list 'exec-path "c:/Program Files/Git/bin")
-(add-to-list 'exec-path "c:/cygwin64/bin")
-(setenv "PATH" (mapconcat #'identity exec-path path-separator))
-
-; set font of mode-line
-(set-face-attribute 'mode-line nil :font "Tw Cen MT-20")
+(when (string-equal system-type "windows-nt")
+  (let ((xPaths
+         '(
+           "C:/Program Files/apache-maven-3.8.1/bin"
+           "C:/Program Files/Git/bin"
+           "C:/Program Files/Java/openjdk-16.0.2_windows-x64_bin/jdk-16.0.2/bin"
+           "C:/Windows/system32/WindowsPowerShell/v1.0"
+           "C:/cygwin64/bin"
+           )))
+    (setenv "PATH" (mapconcat 'identity xPaths ";"))
+    (setq exec-path (append xPaths (list "." exec-directory)))))
 
 (defun my:buffer-face-mode-mono()
   "Set font to mono."
