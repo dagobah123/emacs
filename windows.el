@@ -7,7 +7,7 @@
 (defvar lsp-java-java-path)
 (defvar buffer-face-mode-face)
 
-(setenv "JAVA_HOME"  "C:/Program Files/Java/openjdk-16.0.2_windows-x64_bin/jdk-16.0.2/bin")
+(setenv "JAVA_HOME" "C:/Program Files/Java/openjdk-16.0.2_windows-x64_bin/jdk-16.0.2")
 (setq lsp-java-java-path "C:/Program Files/Java/openjdk-16.0.2_windows-x64_bin/jdk-16.0.2/bin/java.exe")
 
 ; add powershell to exec-path

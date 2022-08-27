@@ -57,11 +57,13 @@ Load environment variables properly by installing *exec-path-from-shell*.
 #+END_SRC
 ** os specific settings
 Load emacs-lisp file for linux or windows.
+Load emacs-lisp file for custom changes.
 #+BEGIN_SRC emacs-lisp
   (cond
    ((eq system-type 'gnu/linux) (load (concat EMACS-HOME "linux")))
    ((eq system-type 'windows-nt) (load (concat EMACS-HOME "windows")))
    (t (load-library "default")))
+  (load (concat EMACS-HOME "custom"))
 #+END_SRC
 ** look
 #+BEGIN_SRC emacs-lisp
@@ -92,7 +94,7 @@ Load emacs-lisp file for linux or windows.
   (global-set-key (kbd "C-7") 'global-display-line-numbers-mode)
 
   ; use hl line
-  (global-hl-line-mode 1)
+  (global-hl-line-mode -1)
 
   ; 4 spaces indentation
   (setq c-default-style "linux" c-basic-offset 4)
