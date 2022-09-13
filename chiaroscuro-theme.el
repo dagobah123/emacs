@@ -292,6 +292,16 @@
 `(magit-blame-highlight             ((t (:foreground ,text-1            :background ,background-2 :bold t                         ))))
 `(magit-blame-margin                ((t (:foreground ,text-1            :background ,background-2 :bold t                         ))))
 
+`(magit-reflog-amend                ((t (:foreground ,text-1                                                                      ))))
+`(magit-reflog-checkout             ((t (:foreground ,text-1                                                                      ))))
+`(magit-reflog-cherry-pick          ((t (:foreground ,text-1                                                                      ))))
+`(magit-reflog-commit               ((t (:foreground ,text-1                                                                      ))))
+`(magit-reflog-merge                ((t (:foreground ,text-1                                                                      ))))
+`(magit-reflog-other                ((t (:foreground ,text-1                                                                      ))))
+`(magit-reflog-rebase               ((t (:foreground ,text-1                                                                      ))))
+`(magit-reflog-remote               ((t (:foreground ,text-1                                                                      ))))
+`(magit-reflog-reset                ((t (:foreground ,text-1                                                                      ))))
+
 ;ediff
 `(ediff-current-diff-A        ((t (:foreground ,text-ediff :background ,background-current-diff-A ))))
 `(ediff-current-diff-Ancestor ((t (:foreground ,text-ediff :background ,violet-2                  ))))
