@@ -832,6 +832,12 @@ This is the package that handles server installation and session management.
     (projectile-vc)
     (delete-other-windows))
   (global-set-key (kbd "C-c v") 'my:projectile-magit)
+
+  (defun my:magit-log()
+    (interactive)
+    (magit-log-current nil nil nil)
+    (delete-other-windows))
+  (global-set-key (kbd "C-c L") 'my:magit-log)
 #+END_SRC
 ** key bindings, kbd
 #+BEGIN_SRC emacs-lisp
