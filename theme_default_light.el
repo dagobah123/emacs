@@ -64,6 +64,8 @@
 (defvar ivy-text)
 (defvar ivy-background)
 (defvar alert-1)
+(defvar alert-2)
+(defvar alert-3)
 (defvar background-cursor)
 (defvar text-error)
 
@@ -138,7 +140,9 @@
 (setq text-mode-line-border "#000000")
 (setq background-mode-line "#ffff00")
 
-(setq alert-1 "#ff0000")
+(setq alert-1 "#ff6600")
+(setq alert-2 "#ee9966")
+(setq alert-3 "#cccccc")
 
 (setq background-cursor "#000000")
 
