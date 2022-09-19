@@ -34,10 +34,10 @@
 (setq background-3 "#008346") ;paren match
 (setq background-4 "#163181") ;lightest blue
 (setq background-5 "#254abf") ;region
-(setq background-6 "#132b71")
-(setq background-7 "#132b71")
+(setq background-6 "#02195d")
+(setq background-7 "#02195d")
 
-(setq background-mode-line-fringe "#132b71")
+(setq background-mode-line-fringe "#02195d")
 (setq background-mode-line-fringe-active "#02195d")
 
 (setq line-number-1 "#f8ce8d")

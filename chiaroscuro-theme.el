@@ -271,14 +271,14 @@
 `(magit-diff-context                ((t (:foreground ,text-2            :background ,nil                                          ))))
 `(magit-diff-context-highlight      ((t (:foreground ,text-1            :background ,background-6                                 ))))
 
-`(magit-diff-hunk-region            ((t (:foreground ,text-2            :background ,background-7                                 ))))
-`(magit-diff-conflict-heading       ((t (:foreground ,text-2            :background ,background-7                                 ))))
+`(magit-diff-hunk-region            ((t (:foreground ,text-1            :background ,background-7                                 ))))
+`(magit-diff-conflict-heading       ((t (:foreground ,text-1            :background ,background-7                                 ))))
 
-`(magit-diff-file-heading           ((t (:foreground ,text-2            :background ,background-7 :bold t                         ))))
+`(magit-diff-file-heading           ((t (:foreground ,text-1            :background ,background-7 :bold t                         ))))
 `(magit-diff-file-heading-selection ((t (:foreground ,green-1           :background ,background-7 :bold t                         ))))
 `(magit-diff-file-heading-highlight ((t (:foreground ,green-1           :background ,background-7 :bold t                         ))))
 
-`(magit-diff-hunk-heading           ((t (:foreground ,text-2            :background ,background-7                                 ))))
+`(magit-diff-hunk-heading           ((t (:foreground ,text-1            :background ,background-7                                 ))))
 `(magit-diff-hunk-heading-selection ((t (:foreground ,green-1           :background ,background-7                                 ))))
 `(magit-diff-hunk-heading-highlight ((t (:foreground ,green-1           :background ,background-7                                 ))))
 
