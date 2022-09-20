@@ -24,7 +24,7 @@
 (setq background-hl "#002200")
 
 (setq text-hl "#00ff00")
-(setq text-1  "#009900")
+(setq text-1  "#00bb00")
 (setq text-2  "#999999")
 (setq text-3  "#00ff00")
 
@@ -36,8 +36,8 @@
 (setq background-6 "#003300")
 (setq background-7 "#005500")
 
-(setq background-mode-line-fringe "#001100")
-(setq background-mode-line-fringe-active "#002200")
+(setq background-mode-line-fringe "#002200")
+(setq background-mode-line-fringe-active "#004400")
 
 (setq line-number-1 "#00ff00")
 (setq line-number-2 "#002200")
