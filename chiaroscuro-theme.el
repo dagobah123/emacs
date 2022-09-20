@@ -257,7 +257,7 @@
 ;magit
 `(magit-hash                        ((t (:foreground ,text-2                                                                      ))))
 `(magit-header-line                 ((t (:foreground ,text-1            :bold t                                                   ))))
-`(magit-section-heading             ((t (:foreground ,text-1                                                                      ))))
+`(magit-section-heading             ((t (:foreground ,text-2            :bold t                                                   ))))
 `(magit-branch-current              ((t (:foreground ,green-1           :background ,green-2 :box (:line-width 1 :color ,green-1) ))))
 `(magit-branch-local                ((t (:foreground ,green-1           :background ,green-2 :box (:line-width 1 :color ,green-1) ))))
 `(magit-branch-remote               ((t (:foreground ,red-1             :background ,red-2   :box (:line-width 1 :color ,red-1)   ))))
@@ -274,7 +274,7 @@
 `(magit-diff-hunk-region            ((t (:foreground ,text-1            :background ,background-7                                 ))))
 `(magit-diff-conflict-heading       ((t (:foreground ,text-1            :background ,background-7                                 ))))
 
-`(magit-diff-file-heading           ((t (:foreground ,text-1            :background ,background-7 :bold t                         ))))
+`(magit-diff-file-heading           ((t (:foreground ,text-1            :background ,nil          :bold t                         ))))
 `(magit-diff-file-heading-selection ((t (:foreground ,green-1           :background ,background-7 :bold t                         ))))
 `(magit-diff-file-heading-highlight ((t (:foreground ,green-1           :background ,background-7 :bold t                         ))))
 
@@ -428,10 +428,6 @@
 
 `(whitespace-space            ((t (:foreground ,text-2   :background ,nil ))))
 
-;`(error                                     ((t (:foreground ,text-error   :bold t :underline t ))))
-;`(flycheck-error                            ((t (:foreground ,text-error   :bold t :underline t ))))
-;`(flycheck-warning                          ((t (:foreground ,text-error   :bold t :underline t ))))
-;`(flycheck-info                             ((t (:foreground ,text-error   :bold t :underline t ))))
 `(lsp-lsp-flycheck-warning-unnecessary-face ((t (:foreground ,orange-1     :bold t :underline t ))))
 `(flycheck-fringe-info                      ((t (:foreground ,blue-1       :bold t              ))))
 `(flycheck-fringe-warning                   ((t (:foreground ,orange-1     :bold t              ))))

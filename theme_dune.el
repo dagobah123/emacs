@@ -25,16 +25,16 @@
 
 (setq text-hl "#000000")
 (setq text-1  "#362f23")
-(setq text-2  "#465d83")
+(setq text-2  "#2c4775")
 (setq text-3  "#f8ce8d")
 
-(setq background-1 "#ad9770") ;background
-(setq background-2 "#ad9770") ;background
-(setq background-3 "#b47339") ;paren match
-(setq background-4 "#9e8a67") ;
-(setq background-5 "#415aaa") ;region
+(setq background-1 "#ad9770")
+(setq background-2 "#ad9770")
+(setq background-3 "#b47339")
+(setq background-4 "#9e8a67")
+(setq background-5 "#415aaa")
 (setq background-6 "#9e8a67")
-(setq background-7 "#9e8a67")
+(setq background-7 "#8e7c5d")
 
 (setq background-mode-line-fringe "#9e8a67")
 (setq background-mode-line-fringe-active "#867352")

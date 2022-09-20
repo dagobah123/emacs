@@ -25,7 +25,7 @@
 
 (setq text-hl "#40e0d0")
 (setq text-1  "#00b1b1")
-(setq text-2  "#9336a2")
+(setq text-2  "#b080b7")
 (setq text-3  "#40e0d0")
 
 (setq background-1 "#000000")
@@ -33,8 +33,8 @@
 (setq background-3 "#7c33b2")
 (setq background-4 "#135d5d")
 (setq background-5 "#135d5d")
-(setq background-6 "#032e2a")
-(setq background-7 "#031c1a")
+(setq background-6 "#042926")
+(setq background-7 "#063c38")
 
 (setq background-mode-line-fringe "#020f0e")
 (setq background-mode-line-fringe-active "#08433e")

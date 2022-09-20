@@ -25,7 +25,7 @@
  
 (setq text-hl "#000000")
 (setq text-1  "#000000")
-(setq text-2  "#999999")
+(setq text-2  "#555555")
 (setq text-3  "#000000")
  
 (setq background-1 "#ffffff")

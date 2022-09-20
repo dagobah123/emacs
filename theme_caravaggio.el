@@ -25,16 +25,16 @@
 
 (setq text-hl "#f8ce8d")
 (setq text-1  "#c3ac88")
-(setq text-2  "#6a716f")
+(setq text-2  "#78807e")
 (setq text-3  "#f8ce8d")
 
-(setq background-1 "#222222") ;dark gray
-(setq background-2 "#222222") ;dark gray
-(setq background-3 "#417c46") ;green
-(setq background-4 "#735825") ;yellow ochre
-(setq background-5 "#5c5c5c") ;lighter gray
-(setq background-6 "#1d2b4f") ;dark blue
-(setq background-7 "#181818")
+(setq background-1 "#222222")
+(setq background-2 "#222222")
+(setq background-3 "#417c46")
+(setq background-4 "#735825")
+(setq background-5 "#5c5c5c")
+(setq background-6 "#1d2b4f")
+(setq background-7 "#253764")
 
 (setq background-mode-line-fringe "#33302c")
 (setq background-mode-line-fringe-active "#4e4942")

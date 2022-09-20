@@ -28,13 +28,13 @@
 (setq text-2  "#7f8b87")
 (setq text-3  "#f8ce8d")
 
-(setq background-1 "#380c2a") ;ubuntu
-(setq background-2 "#380c2a") ;ubuntu
-(setq background-3 "#a81078") ;paren match
-(setq background-4 "#701654") ;lightest ubuntu
-(setq background-5 "#700060") ;region
-(setq background-6 "#561040")
-(setq background-7 "#4a0e37")
+(setq background-1 "#380c2a")
+(setq background-2 "#380c2a")
+(setq background-3 "#a81078")
+(setq background-4 "#701654")
+(setq background-5 "#700060")
+(setq background-6 "#601247")
+(setq background-7 "#79175a")
 
 (setq background-mode-line-fringe "#4a0e37")
 (setq background-mode-line-fringe-active "#821961")
