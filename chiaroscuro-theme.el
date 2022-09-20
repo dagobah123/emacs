@@ -89,6 +89,9 @@
 (defvar background-mode-line                 )
 (defvar ivy-text                             )
 (defvar ivy-background                       )
+(defvar font-lock-green                      )
+(defvar font-lock-blue                       )
+(defvar font-lock-red                        )
 
 (if (eq CHIAROSCURO-INDEX 1) (progn (load-file "~/.emacs.d/theme_default_light.el")))
 (if (eq CHIAROSCURO-INDEX 1) (progn (load-file "~/.emacs.d/theme_eclipse.el")))
@@ -157,15 +160,34 @@
 `(font-lock-comment-face              ((t (:foreground ,text-2                                             ))))
 `(font-lock-constant-face             ((t (:foreground ,text-constant                                      ))))
 `(font-lock-doc-face                  ((t (:foreground ,text-2                                             ))))
-`(font-lock-function-name-face        ((t (:foreground ,text-function     :bold t                          ))))
+
+(if (eq CHIAROSCURO-INDEX 2)
+    (progn
+      `(font-lock-function-name-face        ((t (:foreground ,text-function :background ,font-lock-green     :bold t                          )))))
+  (progn
+    `(font-lock-function-name-face        ((t (:foreground ,text-function     :bold t                          )))))
+    )
+
+(if (eq CHIAROSCURO-INDEX 2)
+    (progn
+      `(font-lock-variable-name-face         ((t (:foreground ,text-variable :background ,font-lock-blue     :bold t                          )))))
+  (progn
+    `(font-lock-variable-name-face         ((t (:foreground ,text-variable     :bold t                          )))))
+    )
+
+(if (eq CHIAROSCURO-INDEX 2)
+    (progn
+      `(font-lock-type-face                 ((t (:foreground ,text-type :background ,font-lock-red               )))))
+  (progn
+    `(font-lock-type-face                 ((t (:foreground ,text-type         :bold t                          )))))
+    )
+
 `(font-lock-keyword-face              ((t (:foreground ,text-keyword                                       ))))
 `(font-lock-negation-char-face        ((t (:foreground ,text-1                                             ))))
 `(font-lock-preprocessor-face         ((t (:foreground ,text-preprocessor                                  ))))
 `(font-lock-regexp-grouping-backslash ((t (:foreground ,text-1                                             ))))
 `(font-lock-regexp-grouping-construct ((t (:foreground ,text-1                                             ))))
 `(font-lock-string-face               ((t (:foreground ,text-2                                             ))))
-`(font-lock-type-face                 ((t (:foreground ,text-type         :bold t                          ))))
-`(font-lock-variable-name-face        ((t (:foreground ,text-variable                                      ))))
 `(font-lock-warning-face              ((t (:foreground ,text-warning                                       ))))
 
 ;dired
@@ -366,14 +388,16 @@
 `(org-headline-todo             ((t (:foreground ,text-1   :background ,nil                               ))))
 `(org-hide                      ((t (:foreground ,text-1   :background ,nil                               ))))
 `(org-latex-and-related         ((t (:foreground ,text-1   :background ,nil                               ))))
-`(org-level-1                   ((t (:foreground ,green-1  :background ,nil          :bold t              ))))
-`(org-level-2                   ((t (:foreground ,red-1    :background ,nil          :bold t              ))))
-`(org-level-3                   ((t (:foreground ,blue-1   :background ,nil          :bold t              ))))
-`(org-level-4                   ((t (:foreground ,yellow-1 :background ,nil          :bold t              ))))
-`(org-level-5                   ((t (:foreground ,violet-1 :background ,nil          :bold t              ))))
-`(org-level-6                   ((t (:foreground ,orange-1 :background ,nil          :bold t              ))))
-`(org-level-7                   ((t (:foreground ,gray-1   :background ,nil          :bold t              ))))
-`(org-level-8                   ((t (:foreground ,green-1  :background ,nil          :bold t              ))))
+
+`(org-level-1                   ((t (:foreground ,text-2   :background ,nil          :bold t :height 400  ))))
+`(org-level-2                   ((t (:foreground ,text-2   :background ,nil          :bold t :height 350  ))))
+`(org-level-3                   ((t (:foreground ,text-2   :background ,nil          :bold t :height 300  ))))
+`(org-level-4                   ((t (:foreground ,text-2   :background ,nil          :bold t              ))))
+`(org-level-5                   ((t (:foreground ,text-2   :background ,nil          :bold t              ))))
+`(org-level-6                   ((t (:foreground ,text-2   :background ,nil          :bold t              ))))
+`(org-level-7                   ((t (:foreground ,text-2   :background ,nil          :bold t              ))))
+`(org-level-8                   ((t (:foreground ,text-2   :background ,nil          :bold t              ))))
+
 `(org-link                      ((t (:foreground ,blue-1   :background ,nil          :bold t :underline t ))))
 `(org-list-dt                   ((t (:foreground ,text-1   :background ,nil                               ))))
 `(org-macro                     ((t (:foreground ,text-1   :background ,nil                               ))))

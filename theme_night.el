@@ -25,23 +25,23 @@
 
 (setq text-hl "#888888")
 (setq text-1  "#777777")
-(setq text-2  "#775555")
+(setq text-2  "#997777")
 (setq text-3  "#888888")
 
 (setq background-1 "#000000")
 (setq background-2 "#000000")
-(setq background-3 "#552222")
+(setq background-3 "#644915")
 (setq background-4 "#111111")
-(setq background-5 "#222222")
-(setq background-6 "#111133")
-(setq background-7 "#212154")
+(setq background-5 "#5c1010")
+(setq background-6 "#4a3818")
+(setq background-7 "#644d20")
 
 (setq background-mode-line-fringe "#111111")
 (setq background-mode-line-fringe-active "#222222")
 
-(setq line-number-1 "#35bbae")
-(setq line-number-2 "#111111")
-(setq line-number-3 "#004c4c")
+(setq line-number-1 "#bb2626")
+(setq line-number-2 "#000000")
+(setq line-number-3 "#444444")
 (setq line-number-4 "#000000")
 
 ;;; theme_night.el ends here

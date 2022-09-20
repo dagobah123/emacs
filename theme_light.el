@@ -20,6 +20,9 @@
 (defvar line-number-2)
 (defvar line-number-3)
 (defvar line-number-4)
+(defvar font-lock-green)
+(defvar font-lock-blue)
+(defvar font-lock-red)
 
 (setq background-hl "#fffdb7")
  
@@ -40,8 +43,12 @@
 (setq background-mode-line-fringe-active "#aaaaaa")
  
 (setq line-number-1 "#000000")
-(setq line-number-2 "#fffdb7")
+(setq line-number-2 "#ffffff")
 (setq line-number-3 "#999999")
 (setq line-number-4 "#ffffff")
+
+(setq font-lock-green "#d6ffc7")
+(setq font-lock-blue "#c7cfff")
+(setq font-lock-red "#ffd9d9")
 
 ;;; theme_light.el ends here

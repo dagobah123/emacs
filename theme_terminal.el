@@ -40,7 +40,7 @@
 (setq background-mode-line-fringe-active "#004400")
 
 (setq line-number-1 "#00ff00")
-(setq line-number-2 "#002200")
+(setq line-number-2 "#000000")
 (setq line-number-3 "#003300")
 (setq line-number-4 "#000000")
 
