@@ -92,6 +92,7 @@
 (defvar font-lock-green                      )
 (defvar font-lock-blue                       )
 (defvar font-lock-red                        )
+(defvar number-of-themes                     )
 
 (if (eq CHIAROSCURO-INDEX 1) (progn (load-file "~/.emacs.d/theme_default_light.el")))
 (if (eq CHIAROSCURO-INDEX 1) (progn (load-file "~/.emacs.d/theme_eclipse.el")))
@@ -120,8 +121,8 @@
 (if (eq CHIAROSCURO-INDEX 9) (progn (load-file "~/.emacs.d/theme_default_black.el")))
 (if (eq CHIAROSCURO-INDEX 9) (progn (load-file "~/.emacs.d/theme_night.el")))
 
-(if (> CHIAROSCURO-INDEX 8) (progn (setq CHIAROSCURO-INDEX 0)))
-(if (< CHIAROSCURO-INDEX 0) (progn (setq CHIAROSCURO-INDEX 8)))
+(if (> CHIAROSCURO-INDEX number-of-themes) (progn (setq CHIAROSCURO-INDEX 0)))
+(if (< CHIAROSCURO-INDEX 0) (progn (setq CHIAROSCURO-INDEX number-of-themes)))
 
 (deftheme chiaroscuro)
 
