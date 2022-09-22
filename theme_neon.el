@@ -36,7 +36,7 @@
 (setq background-6 "#042926")
 (setq background-7 "#063c38")
 
-(setq background-mode-line-fringe "#063430")
+(setq background-mode-line-fringe "#052b28")
 (setq background-mode-line-fringe-active "#08433e")
 
 (setq line-number-1 "#40e0d0")
