@@ -995,14 +995,6 @@ This is the package that handles server installation and session management.
 #+END_SRC
 ** change theme on startup
 #+BEGIN_SRC emacs-lisp
-  ;(my:theme-up)
-  ;(my:theme-up)
-  ;(my:theme-up)
-  ;(my:theme-up)
-  ;(my:theme-up)
-  ;(my:theme-up)
-  ;(my:theme-up)
-  ;(my:theme-up)
-  (setq CHIAROSCURO-INDEX 8)
+  (setq CHIAROSCURO-INDEX 0)
   (my:theme-up)
 #+END_SRC
