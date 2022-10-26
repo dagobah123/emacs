@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: java test class
-# key: <jct
+# key: <uni
 # --
 
 package $1;

@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: java class
-# key: <jc
+# key: <cla
 # --
 
 package $1;

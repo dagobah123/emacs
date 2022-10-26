@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: java test method
-# key: <jmtest
+# key: <tes
 # --
 
 @Test
