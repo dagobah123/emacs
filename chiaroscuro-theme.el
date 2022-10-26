@@ -390,9 +390,9 @@
 `(org-hide                      ((t (:foreground ,text-1   :background ,nil                               ))))
 `(org-latex-and-related         ((t (:foreground ,text-1   :background ,nil                               ))))
 
-`(org-level-1                   ((t (:foreground ,text-2   :background ,nil          :bold t :height 400  ))))
-`(org-level-2                   ((t (:foreground ,text-2   :background ,nil          :bold t :height 350  ))))
-`(org-level-3                   ((t (:foreground ,text-2   :background ,nil          :bold t :height 300  ))))
+`(org-level-1                   ((t (:foreground ,text-2   :background ,nil          :bold t :height 275  ))))
+`(org-level-2                   ((t (:foreground ,text-2   :background ,nil          :bold t :height 250  ))))
+`(org-level-3                   ((t (:foreground ,text-2   :background ,nil          :bold t :height 225  ))))
 `(org-level-4                   ((t (:foreground ,text-2   :background ,nil          :bold t              ))))
 `(org-level-5                   ((t (:foreground ,text-2   :background ,nil          :bold t              ))))
 `(org-level-6                   ((t (:foreground ,text-2   :background ,nil          :bold t              ))))
