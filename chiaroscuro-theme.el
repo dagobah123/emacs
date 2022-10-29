@@ -310,8 +310,8 @@
 `(magit-diff-added-highlight        ((t (:foreground ,text-diff-added   :background ,background-diff-added                        ))))
 `(magit-diff-removed-highlight      ((t (:foreground ,text-diff-removed :background ,background-diff-removed                      ))))
 
-`(magit-diff-added                  ((t (:foreground ,green-1           :background ,nil                                          ))))
-`(magit-diff-removed                ((t (:foreground ,red-1             :background ,nil                                          ))))
+`(magit-diff-added                  ((t (:foreground ,text-diff-added   :background ,background-diff-added                        ))))
+`(magit-diff-removed                ((t (:foreground ,text-diff-removed :background ,background-diff-removed                      ))))
 
 `(magit-blame-heading               ((t (:foreground ,text-1            :background ,background-2 :bold t                         ))))
 `(magit-blame-highlight             ((t (:foreground ,text-1            :background ,background-2 :bold t                         ))))
