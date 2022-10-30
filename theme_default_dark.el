@@ -29,8 +29,10 @@
 (defvar background-match)
 (defvar text-diff-added)
 (defvar background-diff-added)
+(defvar background-diff-added-highlight)
 (defvar text-diff-removed)
 (defvar background-diff-removed)
+(defvar background-diff-removed-highlight)
 (defvar text-magit-branch-local)
 (defvar background-magit-branch-local)
 (defvar text-magit-branch-remote)
@@ -101,8 +103,10 @@
 ;magit
 (setq text-diff-added "#1ad600")
 (setq background-diff-added "#004400")
+(setq background-diff-added-highlight "#004400")
 (setq text-diff-removed "#ffb9b9")
 (setq background-diff-removed "#850d0d")
+(setq background-diff-removed-highlight "#850d0d")
 
 (setq text-magit-branch-local "#00bb00")
 (setq background-magit-branch-local "#003300")

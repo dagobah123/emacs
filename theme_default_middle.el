@@ -101,13 +101,13 @@
 (setq ivy-background "#514628")
 
 ;magit
-(setq text-diff-added "#22aa22")
-(setq background-diff-added "#ddffdd")
-(setq background-diff-added-highlight "#cceecc")
-(setq text-diff-removed "#aa2222")
-(setq background-diff-removed "#ffdddd")
-(setq background-diff-removed-highlight "#eecccc")
- 
+(setq text-diff-added "#113e00")
+(setq background-diff-added "#79a06b")
+(setq background-diff-added-highlight "#79a06b")
+(setq text-diff-removed "#850b0b")
+(setq background-diff-removed "#ca706e")
+(setq background-diff-removed-highlight "#ca706e")
+
 (setq text-magit-branch-local "#000000")
 (setq background-magit-branch-local "#00de00")
 (setq text-magit-branch-remote "#000000")
