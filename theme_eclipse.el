@@ -70,7 +70,7 @@
 (setq background-3 "#96c8ff")
 (setq background-4 "#e8f2fe")
 (setq background-5 "#bbbbbb")
-(setq background-6 "#dddddd")
+(setq background-6 "#f2f2f2")
 (setq background-7 "#e8f2fe")
 
 (setq background-mode-line-fringe "#eeeeee")
