@@ -21,6 +21,13 @@
 (defvar line-number-3)
 (defvar line-number-4)
 
+(defvar text-diff-added)
+(defvar background-diff-added)
+(defvar background-diff-added-highlight)
+(defvar text-diff-removed)
+(defvar background-diff-removed)
+(defvar background-diff-removed-highlight)
+
 (setq background-hl "#042825")
 
 (setq text-hl "#40e0d0")
@@ -43,5 +50,13 @@
 (setq line-number-2 "#000000")
 (setq line-number-3 "#004c4c")
 (setq line-number-4 "#000000")
+
+;magit
+(setq text-diff-added "#25dc90")
+(setq background-diff-added "#135d3e")
+(setq background-diff-added-highlight "#135d3e")
+(setq text-diff-removed "#ff8a97")
+(setq background-diff-removed "#7c2a33")
+(setq background-diff-removed-highlight "#7c2a33")
 
 ;;; theme_neon.el ends here

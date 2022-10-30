@@ -22,6 +22,13 @@
 (defvar line-number-4)
 (defvar alert-1)
 
+(defvar text-diff-added)
+(defvar background-diff-added)
+(defvar background-diff-added-highlight)
+(defvar text-diff-removed)
+(defvar background-diff-removed)
+(defvar background-diff-removed-highlight)
+
 (setq background-hl "#081c58")
 
 (setq text-hl "#f8ce8d")
@@ -44,5 +51,13 @@
 (setq line-number-2 "#0a246f")
 (setq line-number-3 "#667c74")
 (setq line-number-4 "#0a246f")
+
+;magit
+(setq text-diff-added "#1ad600")
+(setq background-diff-added "#0a246f")
+(setq background-diff-added-highlight "#02195d")
+(setq text-diff-removed "#d60024")
+(setq background-diff-removed "#0a246f")
+(setq background-diff-removed-highlight "#02195d")
 
 ;;; theme_blue.el ends here
