@@ -120,7 +120,7 @@
 (setq background-fine-diff-A "#680b0b") ;red
 (setq background-fine-diff-B "#073607") ;green
 (setq background-fine-diff-C "#584a00") ;yellow
-(setq background-ediff "#11235e")
+(setq background-ediff "#333333")
 (setq text-ediff "#999999")
 
 (setq evil-emacs-1 "#f974f9") ;violet

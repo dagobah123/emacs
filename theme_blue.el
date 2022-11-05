@@ -20,14 +20,16 @@
 (defvar line-number-2)
 (defvar line-number-3)
 (defvar line-number-4)
-(defvar alert-1)
-
 (defvar text-diff-added)
 (defvar background-diff-added)
 (defvar background-diff-added-highlight)
 (defvar text-diff-removed)
 (defvar background-diff-removed)
 (defvar background-diff-removed-highlight)
+(defvar background-ediff)
+
+;ediff
+(setq background-ediff "#172f7e")
 
 (setq background-hl "#081c58")
 

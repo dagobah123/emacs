@@ -56,7 +56,7 @@
 (setq background-fine-diff-A "#ffbbbb")
 (setq background-fine-diff-B "#aaffaa")
 (setq background-fine-diff-C "#ffff55")
-(setq background-ediff "#bbcaff")
+(setq background-ediff "#dddddd")
 
 (setq background-hl "#e8f2fe")
 
