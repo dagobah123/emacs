@@ -576,6 +576,8 @@ This is the package that handles server installation and session management.
 #+BEGIN_SRC emacs-lisp
   (use-package magit)
   (use-package magit-find-file)
+  (with-eval-after-load 'magit-mode
+    (add-hook 'after-save-hook 'magit-after-save-refresh-status t))
 #+END_SRC
 ** eww
 #+BEGIN_SRC emacs-lisp
@@ -884,6 +886,9 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-c e") 'lsp-execute-code-action)
   (global-set-key (kbd "C-x b") 'ido-switch-buffer)
   (global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
+  (global-set-key (kbd "C-<") '(lambda() (interactive) (scroll-right 10)))
+  (global-set-key (kbd "C->") '(lambda() (interactive) (scroll-left 10)))
+  (global-set-key (kbd "C-#") 'global-hl-line-mode)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
