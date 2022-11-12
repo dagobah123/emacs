@@ -99,29 +99,29 @@
 (if (eq CHIAROSCURO-INDEX 1) (progn (load-file "~/.emacs.d/theme_default_light.el")))
 (if (eq CHIAROSCURO-INDEX 1) (progn (load-file "~/.emacs.d/theme_eclipse.el")))
 
-(if (eq CHIAROSCURO-INDEX 2) (progn (load-file "~/.emacs.d/theme_default_light.el")))
-(if (eq CHIAROSCURO-INDEX 2) (progn (load-file "~/.emacs.d/theme_light.el")))
+(if (eq CHIAROSCURO-INDEX 2) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
+(if (eq CHIAROSCURO-INDEX 2) (progn (load-file "~/.emacs.d/theme_terminal.el")))
 
-(if (eq CHIAROSCURO-INDEX 3) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
-(if (eq CHIAROSCURO-INDEX 3) (progn (load-file "~/.emacs.d/theme_linux.el")))
+(if (eq CHIAROSCURO-INDEX 3) (progn (load-file "~/.emacs.d/theme_default_middle.el")))
+(if (eq CHIAROSCURO-INDEX 3) (progn (load-file "~/.emacs.d/theme_dune.el")))
 
-(if (eq CHIAROSCURO-INDEX 4) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
-(if (eq CHIAROSCURO-INDEX 4) (progn (load-file "~/.emacs.d/theme_caravaggio.el")))
+(if (eq CHIAROSCURO-INDEX 4) (progn (load-file "~/.emacs.d/theme_default_black.el")))
+(if (eq CHIAROSCURO-INDEX 4) (progn (load-file "~/.emacs.d/theme_night.el")))
 
 (if (eq CHIAROSCURO-INDEX 5) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
-(if (eq CHIAROSCURO-INDEX 5) (progn (load-file "~/.emacs.d/theme_terminal.el")))
+(if (eq CHIAROSCURO-INDEX 5) (progn (load-file "~/.emacs.d/theme_blue.el")))
 
 (if (eq CHIAROSCURO-INDEX 6) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
 (if (eq CHIAROSCURO-INDEX 6) (progn (load-file "~/.emacs.d/theme_neon.el")))
 
-(if (eq CHIAROSCURO-INDEX 7) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
-(if (eq CHIAROSCURO-INDEX 7) (progn (load-file "~/.emacs.d/theme_blue.el")))
+(if (eq CHIAROSCURO-INDEX 7) (progn (load-file "~/.emacs.d/theme_default_light.el")))
+(if (eq CHIAROSCURO-INDEX 7) (progn (load-file "~/.emacs.d/theme_light.el")))
 
-(if (eq CHIAROSCURO-INDEX 8) (progn (load-file "~/.emacs.d/theme_default_middle.el")))
-(if (eq CHIAROSCURO-INDEX 8) (progn (load-file "~/.emacs.d/theme_dune.el")))
+(if (eq CHIAROSCURO-INDEX 8) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
+(if (eq CHIAROSCURO-INDEX 8) (progn (load-file "~/.emacs.d/theme_linux.el")))
 
-(if (eq CHIAROSCURO-INDEX 9) (progn (load-file "~/.emacs.d/theme_default_black.el")))
-(if (eq CHIAROSCURO-INDEX 9) (progn (load-file "~/.emacs.d/theme_night.el")))
+(if (eq CHIAROSCURO-INDEX 9) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
+(if (eq CHIAROSCURO-INDEX 9) (progn (load-file "~/.emacs.d/theme_caravaggio.el")))
 
 (if (> CHIAROSCURO-INDEX number-of-themes) (progn (setq CHIAROSCURO-INDEX 0)))
 (if (< CHIAROSCURO-INDEX 0) (progn (setq CHIAROSCURO-INDEX number-of-themes)))

@@ -898,6 +898,8 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-#") 'global-hl-line-mode)
   (global-set-key (kbd "C-x r 1") 'copy-to-register)
   (global-set-key (kbd "C-x r 2") 'helm-register)
+  (global-set-key (kbd "C-@") 'helm-register)
+  (global-set-key (kbd "C-+") 'helm-filtered-bookmarks)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
@@ -915,14 +917,14 @@ This is the package that handles server installation and session management.
                       chiaroscuro))
 
   (setq themes-list-names '("eclipse"
+                            "terminal"
+                            "dune"
+                            "night"
+                            "blue"
+                            "neon"
                             "light"
                             "linux"
-                            "caravaggio"
-                            "terminal"
-                            "neon"
-                            "blue"
-                            "dune"
-                            "night"))
+                            "caravaggio"))
 
   (defvar theme-index 0 "Index representing the current theme")
   (setq theme-index 0)
