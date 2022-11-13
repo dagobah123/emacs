@@ -95,33 +95,54 @@
 (defvar font-lock-blue                       )
 (defvar font-lock-red                        )
 (defvar number-of-themes                     )
+(defvar ECLIPSE-INDEX                        )
+(defvar TERMINAL-INDEX                       )
+(defvar DUNE-INDEX                           )
+(defvar NIGHT-INDEX                          )
+(defvar BLUE-INDEX                           )
+(defvar NEON-INDEX                           )
+(defvar LIGHT-INDEX                          )
+(defvar LINUX-INDEX                          )
+(defvar CARAVAGGIO-INDEX                     )
 
-(if (eq CHIAROSCURO-INDEX 1) (progn (load-file "~/.emacs.d/theme_default_light.el")))
-(if (eq CHIAROSCURO-INDEX 1) (progn (load-file "~/.emacs.d/theme_eclipse.el")))
+(setq ECLIPSE-INDEX    1)
+(setq TERMINAL-INDEX   2)
+(setq DUNE-INDEX       3)
+(setq NIGHT-INDEX      4)
+(setq BLUE-INDEX       5)
+(setq NEON-INDEX       6)
+(setq LIGHT-INDEX      7)
+(setq LINUX-INDEX      8)
+(setq CARAVAGGIO-INDEX 9)
 
-(if (eq CHIAROSCURO-INDEX 2) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
-(if (eq CHIAROSCURO-INDEX 2) (progn (load-file "~/.emacs.d/theme_terminal.el")))
+(setq background-hl "#e8f2fe")
 
-(if (eq CHIAROSCURO-INDEX 3) (progn (load-file "~/.emacs.d/theme_default_middle.el")))
-(if (eq CHIAROSCURO-INDEX 3) (progn (load-file "~/.emacs.d/theme_dune.el")))
+(if (eq CHIAROSCURO-INDEX ECLIPSE-INDEX) (progn (load-file "~/.emacs.d/theme_default_light.el")))
+(if (eq CHIAROSCURO-INDEX ECLIPSE-INDEX) (progn (load-file "~/.emacs.d/theme_eclipse.el")))
 
-(if (eq CHIAROSCURO-INDEX 4) (progn (load-file "~/.emacs.d/theme_default_black.el")))
-(if (eq CHIAROSCURO-INDEX 4) (progn (load-file "~/.emacs.d/theme_night.el")))
+(if (eq CHIAROSCURO-INDEX TERMINAL-INDEX) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
+(if (eq CHIAROSCURO-INDEX TERMINAL-INDEX) (progn (load-file "~/.emacs.d/theme_terminal.el")))
 
-(if (eq CHIAROSCURO-INDEX 5) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
-(if (eq CHIAROSCURO-INDEX 5) (progn (load-file "~/.emacs.d/theme_blue.el")))
+(if (eq CHIAROSCURO-INDEX DUNE-INDEX) (progn (load-file "~/.emacs.d/theme_default_middle.el")))
+(if (eq CHIAROSCURO-INDEX DUNE-INDEX) (progn (load-file "~/.emacs.d/theme_dune.el")))
 
-(if (eq CHIAROSCURO-INDEX 6) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
-(if (eq CHIAROSCURO-INDEX 6) (progn (load-file "~/.emacs.d/theme_neon.el")))
+(if (eq CHIAROSCURO-INDEX NIGHT-INDEX) (progn (load-file "~/.emacs.d/theme_default_black.el")))
+(if (eq CHIAROSCURO-INDEX NIGHT-INDEX) (progn (load-file "~/.emacs.d/theme_night.el")))
 
-(if (eq CHIAROSCURO-INDEX 7) (progn (load-file "~/.emacs.d/theme_default_light.el")))
-(if (eq CHIAROSCURO-INDEX 7) (progn (load-file "~/.emacs.d/theme_light.el")))
+(if (eq CHIAROSCURO-INDEX BLUE-INDEX) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
+(if (eq CHIAROSCURO-INDEX BLUE-INDEX) (progn (load-file "~/.emacs.d/theme_blue.el")))
 
-(if (eq CHIAROSCURO-INDEX 8) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
-(if (eq CHIAROSCURO-INDEX 8) (progn (load-file "~/.emacs.d/theme_linux.el")))
+(if (eq CHIAROSCURO-INDEX NEON-INDEX) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
+(if (eq CHIAROSCURO-INDEX NEON-INDEX) (progn (load-file "~/.emacs.d/theme_neon.el")))
 
-(if (eq CHIAROSCURO-INDEX 9) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
-(if (eq CHIAROSCURO-INDEX 9) (progn (load-file "~/.emacs.d/theme_caravaggio.el")))
+(if (eq CHIAROSCURO-INDEX LIGHT-INDEX) (progn (load-file "~/.emacs.d/theme_default_light.el")))
+(if (eq CHIAROSCURO-INDEX LIGHT-INDEX) (progn (load-file "~/.emacs.d/theme_light.el")))
+
+(if (eq CHIAROSCURO-INDEX LINUX-INDEX) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
+(if (eq CHIAROSCURO-INDEX LINUX-INDEX) (progn (load-file "~/.emacs.d/theme_linux.el")))
+
+(if (eq CHIAROSCURO-INDEX CARAVAGGIO-INDEX) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
+(if (eq CHIAROSCURO-INDEX CARAVAGGIO-INDEX) (progn (load-file "~/.emacs.d/theme_caravaggio.el")))
 
 (if (> CHIAROSCURO-INDEX number-of-themes) (progn (setq CHIAROSCURO-INDEX 0)))
 (if (< CHIAROSCURO-INDEX 0) (progn (setq CHIAROSCURO-INDEX number-of-themes)))
@@ -164,21 +185,21 @@
 `(font-lock-constant-face             ((t (:foreground ,text-constant                                      ))))
 `(font-lock-doc-face                  ((t (:foreground ,text-2                                             ))))
 
-(if (eq CHIAROSCURO-INDEX 2)
+(if (eq CHIAROSCURO-INDEX LIGHT-INDEX)
   (progn
     `(font-lock-function-name-face ((t (:foreground ,text-function :background ,font-lock-green :bold t)))))
   (progn
     `(font-lock-function-name-face ((t (:foreground ,text-function :bold t                             )))))
   )
 
-(if (eq CHIAROSCURO-INDEX 2)
+(if (eq CHIAROSCURO-INDEX LIGHT-INDEX)
   (progn
     `(font-lock-variable-name-face ((t (:foreground ,text-variable :background ,font-lock-blue :bold t)))))
   (progn
     `(font-lock-variable-name-face ((t (:foreground ,text-variable :bold t                            )))))
   )
 
-(if (eq CHIAROSCURO-INDEX 2)
+(if (eq CHIAROSCURO-INDEX LIGHT-INDEX)
   (progn
     `(font-lock-type-face ((t (:foreground ,text-type :background ,font-lock-red)))))
   (progn
