@@ -90,7 +90,7 @@ Load emacs-lisp file for custom changes.
   (setq blink-cursor-blinks 0)
 
   ; set line number mode and kbd to show them
-  (setq display-line-numbers-type 'absolute)
+  (setq display-line-numbers-type 'relative)
   (global-set-key (kbd "C-7") 'global-display-line-numbers-mode)
 
   ; use hl line
@@ -537,7 +537,7 @@ This is the package that handles server installation and session management.
     :demand t
     :init (setq bm-restore-repository-on-load t) ; restore on load (even before you require bm)
     :config
-    (setq bm-cycle-all-buffers t) ; Allow cross-buffer 'next'
+    (setq bm-cycle-all-buffers nil) ; Allow cross-buffer 'next'
     (setq bm-repository-file "~/.emacs.d/bm-repository") ; where to store persistant files
     (setq-default bm-buffer-persistence t) ; save bookmarks
     (add-hook 'after-init-hook 'bm-repository-load) ; Loading the repository from file when on start up.
@@ -569,11 +569,12 @@ This is the package that handles server installation and session management.
   (defun my:set-bookmark()
     (interactive)
     (bm-toggle)
+    ;(bookmark-delete 'get-buffer)
     (bookmark-set ""))
 
   (defun my:remove-bookmarks()
     (interactive)
-    (bookmark-delete-all)
+    ;(bookmark-delete-all)
     (bm-remove-all-all-buffers))
 #+END_SRC
 ** magit
@@ -903,7 +904,7 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-x r 2") 'helm-register)
   (global-set-key (kbd "C-@") 'helm-register)
   (global-set-key (kbd "C-+") 'helm-filtered-bookmarks)
-  (global-set-key (kbd "C-^") 'hide-mode-line-mode)
+  (global-set-key (kbd "C-{") 'hide-mode-line-mode)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
