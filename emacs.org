@@ -249,7 +249,7 @@ Load emacs-lisp file for custom changes.
   (require 'evil)
   (evil-mode 1)
 
-  ;(evil-set-initial-state 'org-mode 'emacs)
+  (evil-set-initial-state 'Info-mode 'emacs)
   (setq-default evil-default-state 'emacs)
 
   (use-package telephone-line)
@@ -277,6 +277,10 @@ Load emacs-lisp file for custom changes.
   ; all configurations must be set before this line
   ; https://github.com/dbordak/telephone-line/blob/master/examples.org
   (telephone-line-mode 1)
+#+END_SRC
+** mode line
+#+BEGIN_SRC emacs-lisp
+  (require 'hide-mode-line)
 #+END_SRC
 ** projectile
 #+BEGIN_SRC emacs-lisp
@@ -554,7 +558,7 @@ This is the package that handles server installation and session management.
     ; Then new bookmarks can be saved before the buffer is reverted.
     ; Make sure bookmarks is saved before check-in (and revert-buffer)
     :bind (("C-%" . bm-next)
-           ("C-^" . bm-previous)
+           ;("C-^" . bm-previous)
            ("C-&" . bm-show-all)))
   (require 'helm-bm)
   (global-set-key (kbd "C-*") 'helm-bm)
@@ -659,7 +663,6 @@ This is the package that handles server installation and session management.
   (use-package csharp-mode)
   (require 'csharp-mode)
 #+END_SRC
-** mood-line-mode
 ** clock
 #+BEGIN_SRC emacs-lisp
   (setq display-time-world-list '(("Europe/Vienna" "Graz")))
@@ -900,6 +903,7 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-x r 2") 'helm-register)
   (global-set-key (kbd "C-@") 'helm-register)
   (global-set-key (kbd "C-+") 'helm-filtered-bookmarks)
+  (global-set-key (kbd "C-^") 'hide-mode-line-mode)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
@@ -1008,6 +1012,43 @@ This is the package that handles server installation and session management.
                                      :projectName "maven_sandbox"
                                      :mainClass "org.sandbox.Main"
                                      :env '(("DEV" . "1"))))
+#+END_SRC
+** custom minor logger mode
+#+BEGIN_SRC emacs-lisp
+  (define-minor-mode my-logger-mode
+    "Custom mode for following logs.")
+  (add-hook 'my-logger-mode-hook 'my:my-logger-colorize-background)
+
+  (defun my:my-logger-colorize-background()
+  (interactive)
+    (highlight-regexp "treemacs")
+    ;(setq buffer-face-mode-face '(:background "red"))
+    (buffer-face-mode 1))
+#+END_SRC
+** custom minor foo mode
+See https://nullprogram.com/blog/2013/02/06/
+#+BEGIN_SRC emacs-lisp
+(make-variable-buffer-local
+ (defvar foo-count 0
+   "Number of foos inserted into the current buffer."))
+
+(defun insert-foo ()
+  (interactive)
+  (setq foo-count (1+ foo-count))
+  (insert "foo"))
+
+;;;###autoload
+(define-minor-mode foo-mode
+  "Get your foos in the right places."
+  :lighter " foo"
+  :keymap (let ((map (make-sparse-keymap)))
+            (define-key map (kbd "C-c f") 'insert-foo)
+            map))
+
+;;;###autoload
+(add-hook 'text-mode-hook 'foo-mode)
+
+(provide 'foo-mode)
 #+END_SRC
 ** change theme on startup
 #+BEGIN_SRC emacs-lisp

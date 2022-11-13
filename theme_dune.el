@@ -20,6 +20,9 @@
 (defvar line-number-2)
 (defvar line-number-3)
 (defvar line-number-4)
+(defvar font-lock-green)
+(defvar font-lock-blue)
+(defvar font-lock-red)
 
 (setq background-hl "#9e8a67")
 
@@ -43,5 +46,9 @@
 (setq line-number-2 "#ad9770")
 (setq line-number-3 "#667c74")
 (setq line-number-4 "#ad9770")
+
+(setq font-lock-green "#ad9770")
+(setq font-lock-blue "#ad9770")
+(setq font-lock-red "#ad9770")
 
 ;;; theme_dune.el ends here

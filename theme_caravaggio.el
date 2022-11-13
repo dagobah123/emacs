@@ -20,13 +20,15 @@
 (defvar line-number-2)
 (defvar line-number-3)
 (defvar line-number-4)
-
 (defvar text-diff-added)
 (defvar background-diff-added)
 (defvar background-diff-added-highlight)
 (defvar text-diff-removed)
 (defvar background-diff-removed)
 (defvar background-diff-removed-highlight)
+(defvar font-lock-green)
+(defvar font-lock-blue)
+(defvar font-lock-red)
 
 (setq background-hl "#2d2d2d")
 
@@ -58,5 +60,9 @@
 (setq text-diff-removed "#d60024")
 (setq background-diff-removed "#222222")
 (setq background-diff-removed-highlight "#1d2b4f")
+
+(setq font-lock-green "#222222")
+(setq font-lock-blue "#222222")
+(setq font-lock-red "#222222")
 
 ;;; theme_caravaggio.el ends here

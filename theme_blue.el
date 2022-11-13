@@ -27,6 +27,9 @@
 (defvar background-diff-removed)
 (defvar background-diff-removed-highlight)
 (defvar background-ediff)
+(defvar font-lock-green)
+(defvar font-lock-blue)
+(defvar font-lock-red)
 
 ;ediff
 (setq background-ediff "#172f7e")
@@ -61,5 +64,9 @@
 (setq text-diff-removed "#d60024")
 (setq background-diff-removed "#0a246f")
 (setq background-diff-removed-highlight "#02195d")
+
+(setq font-lock-green "#0a246f")
+(setq font-lock-blue "#0a246f")
+(setq font-lock-red "#0a246f")
 
 ;;; theme_blue.el ends here

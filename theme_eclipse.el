@@ -36,6 +36,9 @@
 (defvar background-fine-diff-B)
 (defvar background-fine-diff-C)
 (defvar background-ediff)
+(defvar font-lock-green)
+(defvar font-lock-blue)
+(defvar font-lock-red)
 
 (setq text-constant "#000000")
 (setq text-function "#000000")
@@ -80,5 +83,9 @@
 (setq line-number-2 "#ffffff")
 (setq line-number-3 "#787878")
 (setq line-number-4 "#ffffff")
+
+(setq font-lock-green "#ffffff")
+(setq font-lock-blue "#ffffff")
+(setq font-lock-red "#ffffff")
 
 ;;; theme_eclipse.el ends here

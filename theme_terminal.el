@@ -20,13 +20,15 @@
 (defvar line-number-2)
 (defvar line-number-3)
 (defvar line-number-4)
-
 (defvar text-diff-added)
 (defvar background-diff-added)
 (defvar background-diff-added-highlight)
 (defvar text-diff-removed)
 (defvar background-diff-removed)
 (defvar background-diff-removed-highlight)
+(defvar font-lock-green)
+(defvar font-lock-blue)
+(defvar font-lock-red)
 
 (setq background-hl "#002200")
 
@@ -58,5 +60,9 @@
 (setq text-diff-removed "#ff6666")
 (setq background-diff-removed "#770000")
 (setq background-diff-removed-highlight "#880000")
+
+(setq font-lock-green "#000000")
+(setq font-lock-blue "#000000")
+(setq font-lock-red "#000000")
 
 ;;; theme_terminal.el ends here

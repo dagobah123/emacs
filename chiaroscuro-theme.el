@@ -165,25 +165,25 @@
 `(font-lock-doc-face                  ((t (:foreground ,text-2                                             ))))
 
 (if (eq CHIAROSCURO-INDEX 2)
-    (progn
-      `(font-lock-function-name-face        ((t (:foreground ,text-function :background ,font-lock-green     :bold t                          )))))
   (progn
-    `(font-lock-function-name-face        ((t (:foreground ,text-function     :bold t                          )))))
-    )
+    `(font-lock-function-name-face ((t (:foreground ,text-function :background ,font-lock-green :bold t)))))
+  (progn
+    `(font-lock-function-name-face ((t (:foreground ,text-function :bold t                             )))))
+  )
 
 (if (eq CHIAROSCURO-INDEX 2)
-    (progn
-      `(font-lock-variable-name-face         ((t (:foreground ,text-variable :background ,font-lock-blue     :bold t                          )))))
   (progn
-    `(font-lock-variable-name-face         ((t (:foreground ,text-variable     :bold t                          )))))
-    )
+    `(font-lock-variable-name-face ((t (:foreground ,text-variable :background ,font-lock-blue :bold t)))))
+  (progn
+    `(font-lock-variable-name-face ((t (:foreground ,text-variable :bold t                            )))))
+  )
 
 (if (eq CHIAROSCURO-INDEX 2)
-    (progn
-      `(font-lock-type-face                 ((t (:foreground ,text-type :background ,font-lock-red               )))))
   (progn
-    `(font-lock-type-face                 ((t (:foreground ,text-type         :bold t                          )))))
-    )
+    `(font-lock-type-face ((t (:foreground ,text-type :background ,font-lock-red)))))
+  (progn
+    `(font-lock-type-face ((t (:foreground ,text-type :bold t)))))
+  )
 
 `(font-lock-keyword-face              ((t (:foreground ,text-keyword                                       ))))
 `(font-lock-negation-char-face        ((t (:foreground ,text-1                                             ))))

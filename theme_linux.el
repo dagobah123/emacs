@@ -20,13 +20,15 @@
 (defvar line-number-2)
 (defvar line-number-3)
 (defvar line-number-4)
-
 (defvar text-diff-added)
 (defvar background-diff-added)
 (defvar background-diff-added-highlight)
 (defvar text-diff-removed)
 (defvar background-diff-removed)
 (defvar background-diff-removed-highlight)
+(defvar font-lock-green)
+(defvar font-lock-blue)
+(defvar font-lock-red)
 
 (setq background-hl "#450e34")
 
@@ -58,5 +60,9 @@
 (setq text-diff-removed "#d60024")
 (setq background-diff-removed "#380c2a")
 (setq background-diff-removed-highlight "#601247")
+
+(setq font-lock-green "#380c2a")
+(setq font-lock-blue "#380c2a")
+(setq font-lock-red "#380c2a")
 
 ;;; theme_linux.el ends here
