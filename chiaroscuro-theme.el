@@ -233,7 +233,7 @@
 `(helm-match                        ((t (:foreground ,text-1                                                ))))
 `(helm-candidate-number             ((t (:foreground ,text-1                                                ))))
 `(helm-M-x-key                      ((t (:foreground ,text-1     :underline t                               ))))
-`(helm-source-header                ((t (:foreground ,text-1     :bold t                                    ))))
+`(helm-source-header                ((t (:foreground ,blue-1     :bold t                       :height 300  ))))
 `(helm-selection                    ((t (:foreground ,ivy-text   :background ,ivy-background                ))))
 `(helm-swoop-target-line-face       ((t (:foreground ,text-match :background ,background-match              ))))
 `(helm-swoop-target-word-face       ((t (:foreground ,text-match :background ,background-match :bold t      ))))
@@ -261,6 +261,8 @@
 `(transient-red                     ((t (:foreground ,yellow-1   :background ,yellow-2                      ))))
 `(info-menu-star                    ((t (:foreground ,yellow-1   :background ,yellow-2                      ))))
 `(helm-ff-denied                    ((t (:foreground ,yellow-1   :background ,yellow-2                      ))))
+`(helm-bookmark-file                ((t (:foreground ,yellow-1                                              ))))
+`(helm-bookmark-directory           ((t (:foreground ,yellow-1                                              ))))
 
 ;(helm-lsp-diag-info                ((t (:foreground ,text-error   :bold t :underline t ))))
 ;(helm-lsp-diag-warning             ((t (:foreground ,text-error   :bold t :underline t ))))

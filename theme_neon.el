@@ -50,7 +50,7 @@
 
 (setq line-number-1 "#40e0d0")
 (setq line-number-2 "#000000")
-(setq line-number-3 "#004c4c")
+(setq line-number-3 "#b080b7")
 (setq line-number-4 "#000000")
 
 ;magit

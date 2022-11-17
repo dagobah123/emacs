@@ -35,22 +35,22 @@
 (setq text-hl "#00ff00")
 (setq text-1  "#00bb00")
 (setq text-2  "#999999")
-(setq text-3  "#00ff00")
+(setq text-3  "#00bb00")
 
 (setq background-1 "#000000")
 (setq background-2 "#000000")
-(setq background-3 "#008800")
-(setq background-4 "#003300")
-(setq background-5 "#006600")
+(setq background-3 "#004400")
+(setq background-4 "#005500")
+(setq background-5 "#003300")
 (setq background-6 "#003300")
 (setq background-7 "#005500")
 
 (setq background-mode-line-fringe "#002200")
 (setq background-mode-line-fringe-active "#004400")
 
-(setq line-number-1 "#00ff00")
+(setq line-number-1 "#00cc00")
 (setq line-number-2 "#000000")
-(setq line-number-3 "#003300")
+(setq line-number-3 "#009900")
 (setq line-number-4 "#000000")
 
 ;magit

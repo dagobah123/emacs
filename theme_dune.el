@@ -42,9 +42,9 @@
 (setq background-mode-line-fringe "#9e8a67")
 (setq background-mode-line-fringe-active "#867352")
 
-(setq line-number-1 "#394fbb")
+(setq line-number-1 "#b47339")
 (setq line-number-2 "#ad9770")
-(setq line-number-3 "#667c74")
+(setq line-number-3 "#b47339")
 (setq line-number-4 "#ad9770")
 
 (setq font-lock-green "#ad9770")
