@@ -262,7 +262,7 @@
 `(info-menu-star                    ((t (:foreground ,yellow-1   :background ,yellow-2                      ))))
 `(helm-ff-denied                    ((t (:foreground ,yellow-1   :background ,yellow-2                      ))))
 `(helm-bookmark-file                ((t (:foreground ,yellow-1                                              ))))
-`(helm-bookmark-directory           ((t (:foreground ,yellow-1   :background ,yellow-2                      ))))
+`(helm-bookmark-directory           ((t (:foreground ,violet-1   :background, violet-2         :bold t      ))))
 `(helm-bookmark-info                ((t (:foreground ,blue-1     :background ,blue-2                        ))))
 
 ;(helm-lsp-diag-info                ((t (:foreground ,text-error   :bold t :underline t ))))
