@@ -114,6 +114,10 @@ Load emacs-lisp file for custom changes.
   ; confirm before closing emacs
   (setq confirm-kill-emacs 'y-or-n-p)
 
+  ; increase height of which-key
+  (setq max-mini-window-height 0.9)
+  (setq which-key-side-window-max-height 0.9)
+
   ; font size
   (cond
    ((string-equal system-type "windows-nt")
@@ -443,7 +447,7 @@ After that you can use ~C-c l g a~ to find workspace symbols in a more intuitive
 *** Install LSP Package
 Let's install the main package for lsp.
 Here we will integrate lsp with which-key.
-This way, when we type the prefix key ~C-c l~ we get additional help for compliting the command.
+This way, when we type the prefix key ~C-c l~ we get additional help for completing the command.
 #+BEGIN_SRC emacs-lisp
   (use-package lsp-mode
     :ensure t
@@ -695,6 +699,11 @@ This is the package that handles server installation and session management.
 ** ivy
 #+BEGIN_SRC emacs-lisp
   (setq ivy-height 15)
+#+END_SRC
+** gnus
+#+BEGIN_SRC emacs-lisp
+  (setq gnus-select-method '(nnnil))
+  (setq gnus-secondary-select-methods '((nntp "news.gwene.org")))
 #+END_SRC
 ** custom functions
 #+BEGIN_SRC emacs-lisp
