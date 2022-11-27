@@ -334,7 +334,7 @@ Load emacs-lisp file for custom changes.
   (use-package dired-narrow
     :ensure t
     :config
-    (bind-key "C-x f" #'dired-narrow))
+    (bind-key "C-x f" #'dired-narrow-fuzzy))
   (require 'dired-narrow)
 #+END_SRC
 ** lsp
