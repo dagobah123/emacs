@@ -592,7 +592,7 @@ This is the package that handles server installation and session management.
     :bind (("M-n" . bookmark-in-project-jump-next)
            ("M-p" . bookmark-in-project-jump-previous)
            ("M-*" . bookmark-in-project-toggle)
-           ("M-o" . bookmark-in-project-jump)))
+           ("M-b" . bookmark-in-project-jump)))
 #+END_SRC
 ** magit
 #+BEGIN_SRC emacs-lisp
