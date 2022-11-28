@@ -43,6 +43,7 @@ The index of the current chiaroscuro theme.
                        swiper-helm
                        telephone-line
                        treemacs-projectile
+                       bookmark-in-project
                        )
         )
 
@@ -580,6 +581,18 @@ This is the package that handles server installation and session management.
     (interactive)
     ;(bookmark-delete-all)
     (bm-remove-all-all-buffers))
+
+  (use-package bookmark-in-project
+    :commands (bookmark-in-project-jump
+               bookmark-in-project-jump-next
+               bookmark-in-project-jump-previous
+               bookmark-in-project-delete-all)
+
+    ;; Example key bindings.
+    :bind (("M-n" . bookmark-in-project-jump-next)
+           ("M-p" . bookmark-in-project-jump-previous)
+           ("M-*" . bookmark-in-project-toggle)
+           ("M-o" . bookmark-in-project-jump)))
 #+END_SRC
 ** magit
 #+BEGIN_SRC emacs-lisp
