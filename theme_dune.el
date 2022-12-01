@@ -14,8 +14,9 @@
 (defvar background-5)
 (defvar background-6)
 (defvar background-7)
-(defvar background-mode-line-fringe)
-(defvar background-mode-line-fringe-active)
+(defvar background-mode-line)
+(defvar background-mode-line-active)
+(defvar background-fringe)
 (defvar line-number-1)
 (defvar line-number-2)
 (defvar line-number-3)
@@ -39,8 +40,9 @@
 (setq background-6 "#9e8a67")
 (setq background-7 "#8e7c5d")
 
-(setq background-mode-line-fringe "#9e8a67")
-(setq background-mode-line-fringe-active "#867352")
+(setq background-mode-line "#9e8a67")
+(setq background-mode-line-active "#867352")
+(setq background-fringe "#9e8a67")
 
 (setq line-number-1 "#b47339")
 (setq line-number-2 "#ad9770")

@@ -14,8 +14,9 @@
 (defvar background-5)
 (defvar background-6)
 (defvar background-7)
-(defvar background-mode-line-fringe)
-(defvar background-mode-line-fringe-active)
+(defvar background-mode-line)
+(defvar background-mode-line-active)
+(defvar background-fringe)
 (defvar line-number-1)
 (defvar line-number-2)
 (defvar line-number-3)
@@ -49,8 +50,9 @@
 (setq background-6 "#02195d")
 (setq background-7 "#19337f")
 
-(setq background-mode-line-fringe "#02195d")
-(setq background-mode-line-fringe-active "#02195d")
+(setq background-mode-line "#021c6a")
+(setq background-mode-line-active "#02195d")
+(setq background-fringe "#021c6a")
 
 (setq line-number-1 "#f8ce8d")
 (setq line-number-2 "#0a246f")
@@ -58,12 +60,12 @@
 (setq line-number-4 "#0a246f")
 
 ;magit
-(setq text-diff-added "#1ad600")
-(setq background-diff-added "#0a246f")
-(setq background-diff-added-highlight "#02195d")
-(setq text-diff-removed "#d60024")
-(setq background-diff-removed "#0a246f")
-(setq background-diff-removed-highlight "#02195d")
+(setq text-diff-added "#25dc90")
+(setq background-diff-added "#135d3e")
+(setq background-diff-added-highlight "#135d3e")
+(setq text-diff-removed "#ff8a97")
+(setq background-diff-removed "#7c2a33")
+(setq background-diff-removed-highlight "#7c2a33")
 
 (setq font-lock-green "#0a246f")
 (setq font-lock-blue "#0a246f")

@@ -14,8 +14,9 @@
 (defvar background-5)
 (defvar background-6)
 (defvar background-7)
-(defvar background-mode-line-fringe)
-(defvar background-mode-line-fringe-active)
+(defvar background-mode-line)
+(defvar background-mode-line-active)
+(defvar background-fringe)
 (defvar line-number-1)
 (defvar line-number-2)
 (defvar line-number-3)
@@ -45,12 +46,13 @@
 (setq background-6 "#042926")
 (setq background-7 "#063c38")
 
-(setq background-mode-line-fringe "#052b28")
-(setq background-mode-line-fringe-active "#08433e")
+(setq background-mode-line "#063c38")
+(setq background-mode-line-active "#8b008b")
+(setq background-fringe "#d16208")
 
-(setq line-number-1 "#40e0d0")
+(setq line-number-1 "#ef9d03")
 (setq line-number-2 "#000000")
-(setq line-number-3 "#b080b7")
+(setq line-number-3 "#d14808")
 (setq line-number-4 "#000000")
 
 ;magit

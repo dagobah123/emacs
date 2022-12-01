@@ -698,8 +698,6 @@ This is the package that handles server installation and session management.
                        ("https://rss.orf.at/help.xml" news orf help)
                        ("https://rss.orf.at/oe3.xml" news orf oe3)
                        ("https://rss.orf.at/fm4.xml" news orf fm4)
-                       ("https://rss.orf.at/orfeins.xml" news orf orf1)
-                       ("https://rss.orf.at/kultur.xml" news orf kultur)
                        ("https://www.derstandard.at/rss" derstandard)
                        ("https://www.derstandard.at/rss/international" derstandard international)
                        ("https://www.derstandard.at/rss/inland" derstandard inland)
@@ -1112,6 +1110,7 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-@") 'helm-register)
   (global-set-key (kbd "C-+") 'helm-filtered-bookmarks)
   (global-set-key (kbd "C-{") 'hide-mode-line-mode)
+  (global-set-key (kbd "C-t") 'counsel-projectile-switch-to-buffer)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp

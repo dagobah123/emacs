@@ -62,7 +62,7 @@
 (defvar evil-operator-2)
 (defvar text-mode-line)
 (defvar text-mode-line-border)
-(defvar background-mode-line)
+(defvar background-buffer-id-projectile)
 (defvar ivy-text)
 (defvar ivy-background)
 (defvar alert-1)
@@ -142,7 +142,7 @@
 
 (setq text-mode-line "#ffff00")
 (setq text-mode-line-border "#838300")
-(setq background-mode-line "#2a1f00")
+(setq background-buffer-id-projectile "#2a1f00")
 
 (setq alert-1 "#ee6666")
 (setq alert-2 "#aa6666")
