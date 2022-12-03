@@ -600,6 +600,23 @@ This is the package that handles server installation and session management.
   (use-package magit-find-file)
   (with-eval-after-load 'magit-mode
     (add-hook 'after-save-hook 'magit-after-save-refresh-status t))
+
+;  (setq magit-display-buffer-function
+;        (lambda (buffer)
+;          (display-buffer buffer '(display-buffer-same-window))))
+
+;  (defun magit-display-buffer-traditional (buffer)
+;    "Display BUFFER the way this has traditionally been done."
+;    (display-buffer
+;     buffer (if (and (derived-mode-p 'magit-mode)
+;                     (not (memq (with-current-buffer buffer major-mode)
+;                                '(magit-process-mode
+;                                  magit-revision-mode
+;                                  magit-diff-mode
+;                                  magit-stash-mode))))
+;                                  ;magit-status-mode))))
+;                '(display-buffer-same-window)
+;              nil)))
 #+END_SRC
 ** eww
 #+BEGIN_SRC emacs-lisp
@@ -1111,6 +1128,7 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-+") 'helm-filtered-bookmarks)
   (global-set-key (kbd "C-{") 'hide-mode-line-mode)
   (global-set-key (kbd "C-t") 'counsel-projectile-switch-to-buffer)
+  (global-set-key (kbd "C-p") 'counsel-projectile-switch-project)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
