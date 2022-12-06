@@ -351,6 +351,12 @@ You can also invoke ~M-x company-capf~ to enable capf (completion at point funct
   (company-mode t)
   (require 'company-box)
   (add-hook 'company-mode-hook 'company-box-mode)
+
+;  (setq company-box-backends-colors
+;  '((company-yasnippet . (:all "red" :selected (:background "red" :foreground "black")))))
+
+  (setq company-box-backends-colors
+  '((company-yasnippet . (:all ,text-2 :selected (:background "green" :foreground ,text-3)))))
 #+END_SRC
 *** Yasnippet
 Yasnippet is a template system for Emacs.
