@@ -79,6 +79,7 @@ Load emacs-lisp file for custom changes.
 
   ; set width of fringe
   (fringe-mode '(20 . 20))
+  (defvar my:fringe 1)
 
   ; setup cache folder to prevent temporary files to clutter projects
   (setq user-cache-directory (concat EMACS-HOME "cache"))
@@ -926,7 +927,7 @@ This is the package that handles server installation and session management.
 #+END_SRC
 ** custom functions
 #+BEGIN_SRC emacs-lisp
-  (defun my:duplicate-line()
+  (defun my:duplicate-line ()
     (interactive)
     (move-beginning-of-line 1)
     (kill-line)
@@ -935,20 +936,20 @@ This is the package that handles server installation and session management.
     (next-line 1)
     (yank))
 
-  (defun eww-new()
+  (defun eww-new ()
     (interactive)
     (let ((url (read-from-minibuffer "Enter URL or keywords: ")))
       (switch-to-buffer (generate-new-buffer "eww"))
       (eww-mode)
       (eww url)))
 
-  (defun my:copy-line-at-point()
+  (defun my:copy-line-at-point ()
     (interactive)
     (move-beginning-of-line 1)
     (kill-line)
     (yank))
 
-  (defun my:trim-whitespace()
+  (defun my:trim-whitespace ()
     (interactive)
     (move-beginning-of-line 1)
     (fixup-whitespace))
@@ -978,51 +979,51 @@ This is the package that handles server installation and session management.
      ")"                                         ; end the param list
      ))
 
-  (defun my:next-java-method()
+  (defun my:next-java-method ()
     (interactive)
     (re-search-forward java-function-regexp nil t)
     (recenter))
 
-  (defun my:prev-java-method()
+  (defun my:prev-java-method ()
     (interactive)
     (re-search-backward java-function-regexp nil t)
     (recenter))
 
   (defvar next-method-regexp "\\(class\\|def\\|public\\|private\\|protected\\|defun\\|defvar\\|[a-zA-Z0-9_$]+(\\)")
 
-  (defun my:next-method()
+  (defun my:next-method ()
     (interactive)
     (re-search-forward next-method-regexp nil t)
     (recenter))
 
-  (defun my:prev-method()
+  (defun my:prev-method ()
     (interactive)
     (re-search-backward next-method-regexp nil t)
     (recenter))
 
-  (defun my:previous-link-center()
+  (defun my:previous-link-center ()
     (interactive)
     (Info-prev-reference)
     (recenter))
 
-  (defun my:next-link-center()
+  (defun my:next-link-center ()
     (interactive)
     (Info-next-reference)
     (recenter))
 
-  (defun my:agenda-view()
+  (defun my:agenda-view ()
     (interactive)
     (org-agenda t "a")
     (org-agenda-day-view)
     (delete-other-windows)
     (org-agenda-redo-all))
 
-  (defun my:helm-grep-do-git-grep()
+  (defun my:helm-grep-do-git-grep ()
     (interactive)
     (let ((current-prefix-arg 4))
     (call-interactively 'helm-grep-do-git-grep)))
 
-  (defun my:replace-umlauts()
+  (defun my:replace-umlauts ()
     (interactive)
     (beginning-of-buffer)
     (while (search-forward "ae" nil t)
@@ -1034,51 +1035,63 @@ This is the package that handles server installation and session management.
     (while (search-forward "ue" nil t)
       (replace-match "ü" nil t)))
 
-  (defun my:umlaut-a()
+  (defun my:umlaut-a ()
     (interactive)
     (insert "ä"))
   (global-set-key (kbd "C-c k a") 'my:umlaut-a)
 
-  (defun my:umlaut-o()
+  (defun my:umlaut-o ()
     (interactive)
     (insert "ö"))
   (global-set-key (kbd "C-c k o") 'my:umlaut-o)
 
-  (defun my:umlaut-u()
+  (defun my:umlaut-u ()
     (interactive)
     (insert "ü"))
   (global-set-key (kbd "C-c k u") 'my:umlaut-u)
 
-  (defun my:umlaut-s()
+  (defun my:umlaut-s ()
     (interactive)
     (insert "ß"))
   (global-set-key (kbd "C-c k s") 'my:umlaut-s)
 
-  (defun my:get-filename()
+  (defun my:get-filename ()
     (interactive)
     (dired-jump)
     (dired-copy-filename-as-kill)
     (kill-this-buffer))
   (global-set-key (kbd "C-x y") 'my:get-filename)
 
-  (defun my:projectile-magit()
+  (defun my:projectile-magit ()
     (interactive)
     (projectile-vc)
     (delete-other-windows))
   (global-set-key (kbd "C-c v") 'my:projectile-magit)
 
-  (defun my:magit-log()
+  (defun my:magit-log ()
     (interactive)
     (magit-log-current nil nil nil)
     (delete-other-windows))
   (global-set-key (kbd "C-c L") 'my:magit-log)
 
-  (defun my:new-line()
+  (defun my:new-line ()
     (interactive)
     (move-end-of-line nil)
     (newline)
     (c-indent-line-or-region))
   (global-set-key (kbd "C-c n") 'my:new-line)
+
+  (defun my:toggle-fringe ()
+    (interactive)
+    (cond ((eq my:fringe 1)
+      (progn (fringe-mode '(0 . 0))
+             (setq my:fringe 0)
+             (message "fringe off")))
+    ((eq my:fringe 0)
+      (progn (fringe-mode '(20 . 20))
+             (setq my:fringe 1)
+             (message "fringe on")))))
+  (global-set-key (kbd "C-}") 'my:toggle-fringe)
 #+END_SRC
 ** key bindings, kbd
 #+BEGIN_SRC emacs-lisp
