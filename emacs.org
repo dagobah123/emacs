@@ -6,14 +6,16 @@ The index of the current chiaroscuro theme.
 #+END_SRC
 ** package archives
 #+BEGIN_SRC emacs-lisp
+  (package-initialize)
+
   (require 'package)
+
   (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                           ("elpa" . "https://elpa.gnu.org/packages/")
-                           ("org" . "https://orgmode.org/elpa/")))
+			   ("elpa" . "https://elpa.gnu.org/packages/")
+			   ("org" . "https://orgmode.org/elpa/")))
 #+END_SRC
 ** package initialize
 #+BEGIN_SRC emacs-lisp
-  (package-initialize)
 
   (unless package-archive-contents (package-refresh-contents))
 
@@ -29,8 +31,10 @@ The index of the current chiaroscuro theme.
                        elfeed
                        evil
                        goto-last-change
+					   helm-bm
                        helm-projectile
                        helm-swoop
+					   hide-mode-line
                        ivy
                        magit
                        magit-find-file
@@ -44,6 +48,7 @@ The index of the current chiaroscuro theme.
                        telephone-line
                        treemacs-projectile
                        bookmark-in-project
+					   which-key
                        )
         )
 
