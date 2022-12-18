@@ -285,16 +285,16 @@ Load emacs-lisp file for custom changes.
   (setq telephone-line-evil-use-short-tag t)
 
   (setq telephone-line-lhs
-      '((evil  . (telephone-line-evil-tag-segment))
-        (nil   . (telephone-line-buffer-segment))
-        (nil   . (telephone-line-vc-segment
-                  telephone-line-erc-modified-channels-segment))
-        (nil   . (telephone-line-projectile-segment))))
+      '((evil . (telephone-line-evil-tag-segment))
+        (nil  . (telephone-line-buffer-segment))
+        (nil  . (telephone-line-vc-segment
+                 telephone-line-erc-modified-channels-segment))
+        (nil  . (telephone-line-projectile-segment))))
 
   (setq telephone-line-rhs
-      '((nil   . (telephone-line-misc-info-segment))
-        (nil   . (telephone-line-major-mode-segment))
-        (nil   . (telephone-line-airline-position-segment))))
+      '((nil  . (telephone-line-misc-info-segment))
+        (nil  . (telephone-line-major-mode-segment))
+        (nil  . (telephone-line-airline-position-segment))))
 
   ; all configurations must be set before this line
   ; https://github.com/dbordak/telephone-line/blob/master/examples.org
@@ -698,7 +698,8 @@ This is the package that handles server installation and session management.
         (list (list (openwith-make-extension-regexp '("pdf")) "qpdfview" '(file))
               (list (openwith-make-extension-regexp '("avi" "mp3" "mp4" "wav")) "vlc" '(file))
               (list (openwith-make-extension-regexp '("cr2")) "rawtherapee" '(file))
-              (list (openwith-make-extension-regexp '("sln")) "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\Common7\\IDE\\devenv.exe" '(file))))
+              (list (openwith-make-extension-regexp '("sln")) "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\Common7\\IDE\\devenv.exe" '(file))
+              (list (openwith-make-extension-regexp '("csproj")) "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\Common7\\IDE\\devenv.exe" '(file))))
 #+END_SRC
 ** winner mode
 #+BEGIN_SRC emacs-lisp
@@ -767,14 +768,14 @@ This is the package that handles server installation and session management.
 #+BEGIN_SRC emacs-lisp
 ;; {{ If you'd like to compose mail outside of Gnus, below code should be moved into "~/.emacs.d/init.el",
 ;; Personal Information
-(setq user-full-name "Albert Likaj"
-      user-mail-address "dagobah123@gmx.net")
+(setq user-full-name MAIL-NAME
+      user-mail-address MAIL-MAIL)
 
 ;; Send email through SMTP
 (setq message-send-mail-function 'smtpmail-send-it
       smtpmail-default-smtp-server "mail.gmx.net"
       smtpmail-smtp-service 587
-      smtpmail-local-domain "dagobah123@gmx.net")
+      smtpmail-local-domain MAIL-MAIL)
 
 ;; auto-complete emacs address using bbdb command, optional
 ;(add-hook 'message-mode-hook
