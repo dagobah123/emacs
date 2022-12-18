@@ -11,48 +11,47 @@ The index of the current chiaroscuro theme.
   (require 'package)
 
   (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-			   ("elpa" . "https://elpa.gnu.org/packages/")
-			   ("org" . "https://orgmode.org/elpa/")))
+                           ("elpa" . "https://elpa.gnu.org/packages/")
+                           ("org" . "https://orgmode.org/elpa/")))
 #+END_SRC
 ** package initialize
 #+BEGIN_SRC emacs-lisp
+  (unless package-archive-contents (package-refresh-contents))
 
-    (unless package-archive-contents (package-refresh-contents))
+  (setq package-list '(use-package
+                       all-the-icons
+                       bookmark-in-project
+                       company
+                       company-box
+                       counsel
+                       counsel-projectile
+                       counsel-web
+                       dired-narrow
+                       elfeed
+                       evil
+                       goto-last-change
+                       helm-bm
+                       helm-projectile
+                       helm-swoop
+                       hide-mode-line
+                       ivy
+                       magit
+                       magit-find-file
+                       move-text
+                       nov
+                       openwith
+                       ox-jira
+                       powershell
+                       projectile
+                       swiper-helm
+                       telephone-line
+                       treemacs-projectile
+                       which-key
+                       )
+        )
 
-    (setq package-list '(use-package
-                         all-the-icons
-                         bookmark-in-project
-                         company
-                         company-box
-                         counsel
-                         counsel-projectile
-                         counsel-web
-                         dired-narrow
-                         elfeed
-                         evil
-                         goto-last-change
-                         helm-bm
-                         helm-projectile
-                         helm-swoop
-                         hide-mode-line
-                         ivy
-                         magit
-                         magit-find-file
-                         move-text
-                         nov
-                         openwith
-                         ox-jira
-                         powershell
-                         projectile
-                         swiper-helm
-                         telephone-line
-                         treemacs-projectile
-                         which-key
-                         )
-          )
-
-    (dolist (package package-list)
-      (unless (package-installed-p package) (package-install package)))
+  (dolist (package package-list)
+    (unless (package-installed-p package) (package-install package)))
 #+END_SRC
 ** environment setup
 Load environment variables properly by installing *exec-path-from-shell*.
