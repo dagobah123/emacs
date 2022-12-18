@@ -24,13 +24,15 @@ The index of the current chiaroscuro theme.
                        counsel
                        counsel-projectile
                        counsel-web
-                       csharp-mode
+                       ;csharp-mode
                        dired-narrow
                        elfeed
                        evil
                        goto-last-change
+                       helm-bm
                        helm-projectile
                        helm-swoop
+                       hide-mode-line
                        ivy
                        magit
                        magit-find-file
@@ -44,6 +46,7 @@ The index of the current chiaroscuro theme.
                        telephone-line
                        treemacs-projectile
                        bookmark-in-project
+                       which-key
                        )
         )
 
@@ -135,7 +138,17 @@ Load emacs-lisp file for custom changes.
   (setq inhibit-startup-screen t)
 
   ; hide default scratch message
-  (setq initial-scratch-message nil)
+  (setq initial-scratch-message "
+  ;8888888888 888b     d888        d8888  .d8888b.   .d8888b. 
+  ;888        8888b   d8888       d88888 d88P  Y88b d88P  Y88b
+  ;888        88888b.d88888      d88P888 888    888 Y88b.     
+  ;8888888    888Y88888P888     d88P 888 888         *Y888b.  
+  ;888        888 Y888P 888    d88P  888 888            *Y88b.
+  ;888        888  Y8P  888   d88P   888 888    888       *888
+  ;888        888   *   888  d8888888888 Y88b  d88P Y88b  d88P
+  ;8888888888 888       888 d88P     888  *Y8888P*   *Y8888P*
+  
+  ")
 #+END_SRC
 ** behavior
 #+BEGIN_SRC emacs-lisp
@@ -702,8 +715,8 @@ This is the package that handles server installation and session management.
   (use-package powershell)
   (require 'powershell)
 
-  (use-package csharp-mode)
-  (require 'csharp-mode)
+  ;(use-package csharp-mode)
+  ;(require 'csharp-mode)
 #+END_SRC
 ** clock
 #+BEGIN_SRC emacs-lisp
@@ -1297,5 +1310,10 @@ See https://nullprogram.com/blog/2013/02/06/
 ** change theme on startup
 #+BEGIN_SRC emacs-lisp
   (setq CHIAROSCURO-INDEX 0)
+  (my:theme-up)
+  (my:theme-up)
+  (my:theme-up)
+  (my:theme-up)
+  (my:theme-up)
   (my:theme-up)
 #+END_SRC

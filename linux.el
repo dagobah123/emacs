@@ -44,5 +44,6 @@
 (add-hook 'treemacs-mode-hook 'my:buffer-face-mode-mono)
 (add-hook 'org-mode-hook 'my:buffer-face-mode-mono)
 (add-hook 'lsp-mode-hook 'my:buffer-face-mode-mono)
+(add-hook 'lisp-mode-hook 'my:buffer-face-mode-mono)
 
 ;;; linux.el ends here
