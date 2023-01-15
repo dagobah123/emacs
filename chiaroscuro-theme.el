@@ -105,16 +105,18 @@
 (defvar LIGHT-INDEX                          )
 (defvar LINUX-INDEX                          )
 (defvar CARAVAGGIO-INDEX                     )
+(defvar RED-INDEX                            )
 
-(setq ECLIPSE-INDEX    1)
-(setq TERMINAL-INDEX   2)
-(setq DUNE-INDEX       3)
-(setq NIGHT-INDEX      4)
-(setq BLUE-INDEX       5)
-(setq NEON-INDEX       6)
-(setq LIGHT-INDEX      7)
-(setq LINUX-INDEX      8)
-(setq CARAVAGGIO-INDEX 9)
+(setq ECLIPSE-INDEX     1)
+(setq TERMINAL-INDEX    2)
+(setq DUNE-INDEX        3)
+(setq NIGHT-INDEX       4)
+(setq BLUE-INDEX        5)
+(setq NEON-INDEX        6)
+(setq LIGHT-INDEX       7)
+(setq LINUX-INDEX       8)
+(setq CARAVAGGIO-INDEX  9)
+(setq RED-INDEX        10)
 
 (setq background-hl "#e8f2fe")
 
@@ -144,6 +146,9 @@
 
 (if (eq CHIAROSCURO-INDEX CARAVAGGIO-INDEX) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
 (if (eq CHIAROSCURO-INDEX CARAVAGGIO-INDEX) (progn (load-file "~/.emacs.d/theme_caravaggio.el")))
+
+(if (eq CHIAROSCURO-INDEX RED-INDEX) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
+(if (eq CHIAROSCURO-INDEX RED-INDEX) (progn (load-file "~/.emacs.d/theme_red.el")))
 
 (if (> CHIAROSCURO-INDEX number-of-themes) (progn (setq CHIAROSCURO-INDEX 0)))
 (if (< CHIAROSCURO-INDEX 0) (progn (setq CHIAROSCURO-INDEX number-of-themes)))
