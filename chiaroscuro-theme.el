@@ -345,9 +345,9 @@
 `(magit-diff-added                  ((t (:foreground ,text-diff-added   :background ,background-diff-added                        ))))
 `(magit-diff-removed                ((t (:foreground ,text-diff-removed :background ,background-diff-removed                      ))))
 
-`(magit-blame-heading               ((t (:foreground ,text-1            :background ,background-3 :bold t                         ))))
-`(magit-blame-highlight             ((t (:foreground ,text-1            :background ,background-3 :bold t                         ))))
-`(magit-blame-margin                ((t (:foreground ,text-1            :background ,background-3 :bold t                         ))))
+`(magit-blame-heading               ((t (:foreground ,text-3            :background ,background-3 :bold t                         ))))
+`(magit-blame-highlight             ((t (:foreground ,text-3            :background ,background-3 :bold t                         ))))
+`(magit-blame-margin                ((t (:foreground ,text-3            :background ,background-3 :bold t                         ))))
 
 `(magit-reflog-amend                ((t (:foreground ,text-1                                                                      ))))
 `(magit-reflog-checkout             ((t (:foreground ,text-1                                                                      ))))
