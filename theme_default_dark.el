@@ -74,7 +74,7 @@
 (setq green-1 "#1ad600")
 (setq green-2 "#004400")
 (setq red-1 "#e52222")
-(setq red-2 "#850d0d")
+(setq red-2 "#6b0a0a")
 (setq blue-1 "#1e90ff")
 (setq blue-2 "#202055")
 (setq yellow-1 "#d6b400")

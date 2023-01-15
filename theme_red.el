@@ -44,7 +44,7 @@
 (setq background-4 "#550000")
 (setq background-5 "#330000")
 (setq background-6 "#330000")
-(setq background-7 "#550000")
+(setq background-7 "#770000")
 
 (setq background-mode-line "#220000")
 (setq background-mode-line-active "#440000")
