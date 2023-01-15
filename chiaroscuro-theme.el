@@ -359,6 +359,10 @@
 `(magit-reflog-remote               ((t (:foreground ,text-1                                                                      ))))
 `(magit-reflog-reset                ((t (:foreground ,text-1                                                                      ))))
 
+`(smerge-upper                      ((t (:foreground ,text-ediff :background ,background-current-diff-A                           ))))
+`(smerge-lower                      ((t (:foreground ,text-ediff :background ,background-current-diff-B                           ))))
+`(smerge-markers                    ((t (:foreground ,text-ediff :background ,background-current-diff-C                           ))))
+
 ;ediff
 `(ediff-current-diff-A        ((t (:foreground ,text-ediff :background ,background-current-diff-A ))))
 `(ediff-current-diff-Ancestor ((t (:foreground ,text-ediff :background ,violet-2                  ))))
