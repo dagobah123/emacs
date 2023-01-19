@@ -1160,6 +1160,8 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-{") 'hide-mode-line-mode)
   (global-set-key (kbd "C-t") 'counsel-projectile-switch-to-buffer)
   (global-set-key (kbd "C-p") 'counsel-projectile-switch-project)
+  (global-set-key (kbd "C-c u u") 'dap-java-run-test-class)
+  (global-set-key (kbd "C-c u t") 'dap-java-run-test-method)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
