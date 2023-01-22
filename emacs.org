@@ -354,206 +354,206 @@ Load emacs-lisp file for custom changes.
     (bind-key "C-x f" #'dired-narrow-fuzzy))
   (require 'dired-narrow)
 #+END_SRC
-** lsp
-*** Company
-Complete anything aka Company provides auto-completion.
-Company-capf is enabled by default when you start LSP on a project.
-You can also invoke ~M-x company-capf~ to enable capf (completion at point function).
-#+BEGIN_SRC emacs-lisp
-  (use-package company
-    :ensure t)
-  (use-package company-box
-    :ensure t)
-  (company-mode t)
-  (require 'company-box)
-  (add-hook 'company-mode-hook 'company-box-mode)
-
-  (setq company-box-backends-colors
-  '((company-yasnippet . (:all ,text-2 :selected (:background "green" :foreground "black")))))
-#+END_SRC
-*** Yasnippet
-Yasnippet is a template system for Emacs.
-It allows you to type abbreviation and complete the associated text.
-#+BEGIN_SRC emacs-lisp
-  (use-package yasnippet
-    :config (yas-global-mode))
-  (use-package yasnippet-snippets
-    :ensure t)
-  (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
-#+END_SRC
-
-E.g. In java mode, if you type ~pr~ and hit ~<TAB>~ it should complete to ~System.out.println("text");~
-
-To create a new snippet you can use ~yas-new-snippet~ command.
-*** FlyCheck
-FlyCheck checks for errors in code at run-time.
-#+BEGIN_SRC emacs-lisp
-  (use-package flycheck
-    :ensure t
-    :init (global-flycheck-mode))
-#+END_SRC
-*** Dap Mode
-Emacs Debug Adapter Protocol aka DAP Mode allows us to debug your program.
-Below we will integrate ~dap-mode~ with ~dap-hydra~.
-~Dap-hydra~ shows keys you can use to enable various options and jump through code at runtime.
-After we install dap-mode we will also install ~dap-java~.
-#+BEGIN_SRC emacs-lisp
-  (use-package dap-mode
-    :ensure t
-    :after (lsp-mode)
-    :functions dap-hydra/nil
-    :config
-    (require 'dap-java)
-    :bind (:map lsp-mode-map
-                ("<f5>" . dap-debug)
-                ("M-<f5>" . dap-hydra))
-    :hook ((dap-mode . dap-ui-mode)
-           (dap-session-created . (lambda (&_rest) (dap-hydra)))
-           (dap-terminated . (lambda (&_rest) (dap-hydra/nil)))))
-
-  (use-package dap-java :ensure nil)
-#+END_SRC
-*** Treemacs
-Treemacs provides UI elements used for LSP UI.
-Let's install lsp-treemacs and its dependency treemacs.
-We will also assign ~M-9~ to show error list.
-#+BEGIN_SRC emacs-lisp
-  (use-package lsp-treemacs
-    :after (lsp-mode treemacs)
-    :ensure t
-    :commands lsp-treemacs-errors-list
-    :bind (:map lsp-mode-map
-                ("M-9" . lsp-treemacs-errors-list)))
-
-  (use-package treemacs
-    :ensure t
-    :commands (treemacs)
-    :after (lsp-mode))
-
-  (setq treemacs-no-png-images t)
-  (treemacs-project-follow-mode t)
-#+END_SRC
-*** LSP UI
-LSP UI is used in various packages that require UI elements in LSP.
-E.g. ~lsp-ui-flycheck-list~ opens a window where you can see various coding errors while you code.
-You can use ~C-c l T~ to toggle several UI elements.
-We have also remapped some of the xref-find functions, so that we can easily jump around between symbols using ~M-.~, ~M-,~ and ~M-?~ keys.
-#+BEGIN_SRC emacs-lisp
-  (use-package lsp-ui
-    :ensure t
-    :after (lsp-mode)
-    :bind (:map lsp-ui-mode-map
-                ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
-                ([remap xref-find-references] . lsp-ui-peek-find-references))
-    :init (setq lsp-ui-doc-delay 1.5
-                lsp-ui-doc-position 'bottom
-                lsp-ui-doc-max-width 100))
-#+END_SRC
-Go through this [[https://github.com/emacs-lsp/lsp-ui/blob/master/lsp-ui-doc.el][link]] to see what other parameters are provided.
-*** Helm LSP
-Helm-lsp provides various functionality to work with the code.
-E.g. code actions like adding *getter, setter, toString*, refactoring etc.
-You can use ~helm-lsp-workspace-symbol~ to find various symbols (classes) within your workspace.
-LSP's built in symbol explorer uses ~xref-find-apropos~ to provide symbol navigation.
-Below we will replace that with helm version.
-After that you can use ~C-c l g a~ to find workspace symbols in a more intuitive way.
-#+BEGIN_SRC emacs-lisp
-  (use-package helm-lsp
-    :ensure t
-    :after (lsp-mode)
-    :commands (helm-lsp-workspace-symbol)
-    :init (define-key lsp-mode-map [remap xref-find-apropos] #'helm-lsp-workspace-symbol))
-#+END_SRC
-*** Install LSP Package
-Let's install the main package for lsp.
-Here we will integrate lsp with which-key.
-This way, when we type the prefix key ~C-c l~ we get additional help for completing the command.
-#+BEGIN_SRC emacs-lisp
-  (use-package lsp-mode
-    :ensure t
-    :hook ((lsp-mode . lsp-enable-which-key-integration)
-           (java-mode . #'lsp-deferred))
-    :init (setq lsp-keymap-prefix "C-c l"              ; this is for which-key integration documentation, need to use lsp-mode-map
-                lsp-enable-file-watchers nil
-                read-process-output-max (* 1024 1024)  ; 1 mb
-                lsp-completion-provider :capf
-                lsp-idle-delay 0.500)
-    :config (setq lsp-intelephense-multi-root nil) ; don't scan unnecessary projects
-    (with-eval-after-load 'lsp-intelephense
-      (setf (lsp--client-multi-root (gethash 'iph lsp-clients)) nil))
-    (define-key lsp-mode-map (kbd "C-c l") lsp-command-map))
-#+END_SRC
-You can start LSP server in a java project by using ~C-c l s s~.
-Once you type ~C-c l~ ~which-key~ package should guide you through rest of the options.
-In above setting I have added some memory management settings as suggested in [[https://emacs-lsp.github.io/lsp-mode/page/performance/][this guide]].
-Change them to higher numbers, if you find *lsp-mode* sluggish in your computer.
-*** LSP Java
-This is the package that handles server installation and session management.
-#+BEGIN_SRC  emacs-lisp
-  (use-package lsp-java
-    :ensure t
-    :config (add-hook 'java-mode-hook 'lsp))
-
-  (require 'lsp-java)
-  (add-hook 'java-mode-hook #'lsp)
-
-  (condition-case nil
-      (require 'use-package)
-    (file-error
-     (require 'package)
-     (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-     (package-initialize)
-     (package-refresh-contents)
-     (package-install 'use-package)
-     (setq use-package-always-ensure t)
-     (require 'use-package)))
-
-  (use-package projectile)
-  (use-package flycheck)
-  (use-package yasnippet :config (yas-global-mode))
-
-  (use-package lsp-mode
-    :hook ((lsp-mode . lsp-enable-which-key-integration))
-    :config (setq lsp-completion-enable-additional-text-edit nil))
-  (use-package hydra)
-  (use-package company)
-  (use-package company-box)
-  (use-package lsp-ui)
-  (use-package which-key :config (which-key-mode))
-  (use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
-  (use-package dap-mode :after lsp-mode :config (dap-auto-configure-mode))
-  (use-package dap-java :ensure nil)
-  (use-package helm-lsp)
-  (use-package helm
-    :config (helm-mode))
-  (use-package lsp-treemacs)
-
-  ; show nice unit test results
-  (add-hook 'compilation-filter-hook
-            (lambda() (ansi-color-apply-on-region (point-min) (point-max))))
-#+END_SRC
-
-#+BEGIN_SRC  emacs-lisp
-  (setq lsp-print-io t)
-
-  ; https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
-  (setq lsp-modeline-code-actions-enable nil)
-  (setq lsp-headerline-breadcrumb-enable nil)
-#+END_SRC
-** lsp c++
-#+BEGIN_SRC emacs-lisp
-  (use-package lsp-mode
-    :hook ((c++-mode . lsp)))
-  (use-package lsp-ui
-    :commands lsp-ui-mode)
-#+END_SRC
-** lsp python
-#+BEGIN_SRC emacs-lisp
-  (use-package lsp-mode
-    :hook ((python-mode . lsp)))
-  (use-package lsp-ui
-    :commands lsp-ui-mode)
-#+END_SRC
+;** lsp
+;*** Company
+;Complete anything aka Company provides auto-completion.
+;Company-capf is enabled by default when you start LSP on a project.
+;You can also invoke ~M-x company-capf~ to enable capf (completion at point function).
+;#+BEGIN_SRC emacs-lisp
+;  (use-package company
+;    :ensure t)
+;  (use-package company-box
+;    :ensure t)
+;  (company-mode t)
+;  (require 'company-box)
+;  (add-hook 'company-mode-hook 'company-box-mode)
+; 
+;  (setq company-box-backends-colors
+;  '((company-yasnippet . (:all ,text-2 :selected (:background "green" :foreground "black")))))
+;#+END_SRC
+;*** Yasnippet
+;Yasnippet is a template system for Emacs.
+;It allows you to type abbreviation and complete the associated text.
+;#+BEGIN_SRC emacs-lisp
+;  (use-package yasnippet
+;    :config (yas-global-mode))
+;  (use-package yasnippet-snippets
+;    :ensure t)
+;  (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+;#+END_SRC
+; 
+;E.g. In java mode, if you type ~pr~ and hit ~<TAB>~ it should complete to ~System.out.println("text");~
+; 
+;To create a new snippet you can use ~yas-new-snippet~ command.
+;*** FlyCheck
+;FlyCheck checks for errors in code at run-time.
+;#+BEGIN_SRC emacs-lisp
+;  (use-package flycheck
+;    :ensure t
+;    :init (global-flycheck-mode))
+;#+END_SRC
+;*** Dap Mode
+;Emacs Debug Adapter Protocol aka DAP Mode allows us to debug your program.
+;Below we will integrate ~dap-mode~ with ~dap-hydra~.
+;~Dap-hydra~ shows keys you can use to enable various options and jump through code at runtime.
+;After we install dap-mode we will also install ~dap-java~.
+;#+BEGIN_SRC emacs-lisp
+;  (use-package dap-mode
+;    :ensure t
+;    :after (lsp-mode)
+;    :functions dap-hydra/nil
+;    :config
+;    (require 'dap-java)
+;    :bind (:map lsp-mode-map
+;                ("<f5>" . dap-debug)
+;                ("M-<f5>" . dap-hydra))
+;    :hook ((dap-mode . dap-ui-mode)
+;           (dap-session-created . (lambda (&_rest) (dap-hydra)))
+;           (dap-terminated . (lambda (&_rest) (dap-hydra/nil)))))
+; 
+;  (use-package dap-java :ensure nil)
+;#+END_SRC
+;*** Treemacs
+;Treemacs provides UI elements used for LSP UI.
+;Let's install lsp-treemacs and its dependency treemacs.
+;We will also assign ~M-9~ to show error list.
+;#+BEGIN_SRC emacs-lisp
+;  (use-package lsp-treemacs
+;    :after (lsp-mode treemacs)
+;    :ensure t
+;    :commands lsp-treemacs-errors-list
+;    :bind (:map lsp-mode-map
+;                ("M-9" . lsp-treemacs-errors-list)))
+; 
+;  (use-package treemacs
+;    :ensure t
+;    :commands (treemacs)
+;    :after (lsp-mode))
+; 
+;  (setq treemacs-no-png-images t)
+;  (treemacs-project-follow-mode t)
+;#+END_SRC
+;*** LSP UI
+;LSP UI is used in various packages that require UI elements in LSP.
+;E.g. ~lsp-ui-flycheck-list~ opens a window where you can see various coding errors while you code.
+;You can use ~C-c l T~ to toggle several UI elements.
+;We have also remapped some of the xref-find functions, so that we can easily jump around between symbols using ~M-.~, ~M-,~ and ~M-?~ keys.
+;#+BEGIN_SRC emacs-lisp
+;  (use-package lsp-ui
+;    :ensure t
+;    :after (lsp-mode)
+;    :bind (:map lsp-ui-mode-map
+;                ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
+;                ([remap xref-find-references] . lsp-ui-peek-find-references))
+;    :init (setq lsp-ui-doc-delay 1.5
+;                lsp-ui-doc-position 'bottom
+;                lsp-ui-doc-max-width 100))
+;#+END_SRC
+;Go through this [[https://github.com/emacs-lsp/lsp-ui/blob/master/lsp-ui-doc.el][link]] to see what other parameters are provided.
+;*** Helm LSP
+;Helm-lsp provides various functionality to work with the code.
+;E.g. code actions like adding *getter, setter, toString*, refactoring etc.
+;You can use ~helm-lsp-workspace-symbol~ to find various symbols (classes) within your workspace.
+;LSP's built in symbol explorer uses ~xref-find-apropos~ to provide symbol navigation.
+;Below we will replace that with helm version.
+;After that you can use ~C-c l g a~ to find workspace symbols in a more intuitive way.
+;#+BEGIN_SRC emacs-lisp
+;  (use-package helm-lsp
+;    :ensure t
+;    :after (lsp-mode)
+;    :commands (helm-lsp-workspace-symbol)
+;    :init (define-key lsp-mode-map [remap xref-find-apropos] #'helm-lsp-workspace-symbol))
+;#+END_SRC
+;*** Install LSP Package
+;Let's install the main package for lsp.
+;Here we will integrate lsp with which-key.
+;This way, when we type the prefix key ~C-c l~ we get additional help for completing the command.
+;#+BEGIN_SRC emacs-lisp
+;  (use-package lsp-mode
+;    :ensure t
+;    :hook ((lsp-mode . lsp-enable-which-key-integration)
+;           (java-mode . #'lsp-deferred))
+;    :init (setq lsp-keymap-prefix "C-c l"              ; this is for which-key integration documentation, need to use lsp-mode-map
+;                lsp-enable-file-watchers nil
+;                read-process-output-max (* 1024 1024)  ; 1 mb
+;                lsp-completion-provider :capf
+;                lsp-idle-delay 0.500)
+;    :config (setq lsp-intelephense-multi-root nil) ; don't scan unnecessary projects
+;    (with-eval-after-load 'lsp-intelephense
+;      (setf (lsp--client-multi-root (gethash 'iph lsp-clients)) nil))
+;    (define-key lsp-mode-map (kbd "C-c l") lsp-command-map))
+;#+END_SRC
+;You can start LSP server in a java project by using ~C-c l s s~.
+;Once you type ~C-c l~ ~which-key~ package should guide you through rest of the options.
+;In above setting I have added some memory management settings as suggested in [[https://emacs-lsp.github.io/lsp-mode/page/performance/][this guide]].
+;Change them to higher numbers, if you find *lsp-mode* sluggish in your computer.
+;*** LSP Java
+;This is the package that handles server installation and session management.
+;#+BEGIN_SRC  emacs-lisp
+;  (use-package lsp-java
+;    :ensure t
+;    :config (add-hook 'java-mode-hook 'lsp))
+; 
+;  (require 'lsp-java)
+;  (add-hook 'java-mode-hook #'lsp)
+; 
+;  (condition-case nil
+;      (require 'use-package)
+;    (file-error
+;     (require 'package)
+;     (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+;     (package-initialize)
+;     (package-refresh-contents)
+;     (package-install 'use-package)
+;     (setq use-package-always-ensure t)
+;     (require 'use-package)))
+; 
+;  (use-package projectile)
+;  (use-package flycheck)
+;  (use-package yasnippet :config (yas-global-mode))
+; 
+;  (use-package lsp-mode
+;    :hook ((lsp-mode . lsp-enable-which-key-integration))
+;    :config (setq lsp-completion-enable-additional-text-edit nil))
+;  (use-package hydra)
+;  (use-package company)
+;  (use-package company-box)
+;  (use-package lsp-ui)
+;  (use-package which-key :config (which-key-mode))
+;  (use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
+;  (use-package dap-mode :after lsp-mode :config (dap-auto-configure-mode))
+;  (use-package dap-java :ensure nil)
+;  (use-package helm-lsp)
+;  (use-package helm
+;    :config (helm-mode))
+;  (use-package lsp-treemacs)
+; 
+;  ; show nice unit test results
+;  (add-hook 'compilation-filter-hook
+;            (lambda() (ansi-color-apply-on-region (point-min) (point-max))))
+;#+END_SRC
+; 
+;#+BEGIN_SRC  emacs-lisp
+;  (setq lsp-print-io t)
+; 
+;  ; https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
+;  (setq lsp-modeline-code-actions-enable nil)
+;  (setq lsp-headerline-breadcrumb-enable nil)
+;#+END_SRC
+;** lsp c++
+;#+BEGIN_SRC emacs-lisp
+;  (use-package lsp-mode
+;    :hook ((c++-mode . lsp)))
+;  (use-package lsp-ui
+;    :commands lsp-ui-mode)
+;#+END_SRC
+;** lsp python
+;#+BEGIN_SRC emacs-lisp
+;  (use-package lsp-mode
+;    :hook ((python-mode . lsp)))
+;  (use-package lsp-ui
+;    :commands lsp-ui-mode)
+;#+END_SRC
 ** bookmarks
 #+BEGIN_SRC emacs-lisp
   (use-package bm
@@ -1146,9 +1146,9 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "M-s a") 'swiper-all)
   (global-set-key (kbd "M-s d") 'swiper-helm)
   (global-set-key (kbd "C-s") 'swiper)
-  (global-set-key (kbd "C-c d") 'lsp-ui-peek-find-definitions)
-  (global-set-key (kbd "C-c i") 'lsp-ui-peek-find-implementation)
-  (global-set-key (kbd "C-c e") 'lsp-execute-code-action)
+  ;(global-set-key (kbd "C-c d") 'lsp-ui-peek-find-definitions)
+  ;(global-set-key (kbd "C-c i") 'lsp-ui-peek-find-implementation)
+  ;(global-set-key (kbd "C-c e") 'lsp-execute-code-action)
   (global-set-key (kbd "C-x b") 'ido-switch-buffer)
   (global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
   (global-set-key (kbd "C-<") '(lambda() (interactive) (scroll-right 10)))
@@ -1161,8 +1161,8 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-{") 'hide-mode-line-mode)
   (global-set-key (kbd "C-t") 'counsel-projectile-switch-to-buffer)
   (global-set-key (kbd "C-p") 'counsel-projectile-switch-project)
-  (global-set-key (kbd "C-c u u") 'dap-java-run-test-class)
-  (global-set-key (kbd "C-c u t") 'dap-java-run-test-method)
+  ;(global-set-key (kbd "C-c u u") 'dap-java-run-test-class)
+  ;(global-set-key (kbd "C-c u t") 'dap-java-run-test-method)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
@@ -1256,23 +1256,23 @@ This is the package that handles server installation and session management.
 #+END_SRC
 ** dap-debug template
 #+BEGIN_SRC emacs-lisp
-  (dap-register-debug-template "My Runner1"
-                               (list :type "java"
-                                     :request "launch"
-                                     :args "heeeeeeeeeello"
-                                     :vmArgs ""
-                                     :projectName "maven_sandbox"
-                                     :mainClass "org.sandbox.Main"
-                                     :env '(("DEV" . "1"))))
-
-  (dap-register-debug-template "My Runner2"
-                               (list :type "java"
-                                     :request "launch"
-                                     :args "1 2 3 4 5 6"
-                                     :vmArgs ""
-                                     :projectName "maven_sandbox"
-                                     :mainClass "org.sandbox.Main"
-                                     :env '(("DEV" . "1"))))
+;  (dap-register-debug-template "My Runner1"
+;                               (list :type "java"
+;                                     :request "launch"
+;                                     :args "heeeeeeeeeello"
+;                                     :vmArgs ""
+;                                     :projectName "maven_sandbox"
+;                                     :mainClass "org.sandbox.Main"
+;                                     :env '(("DEV" . "1"))))
+; 
+;  (dap-register-debug-template "My Runner2"
+;                               (list :type "java"
+;                                     :request "launch"
+;                                     :args "1 2 3 4 5 6"
+;                                     :vmArgs ""
+;                                     :projectName "maven_sandbox"
+;                                     :mainClass "org.sandbox.Main"
+;                                     :env '(("DEV" . "1"))))
 #+END_SRC
 ** custom minor logger mode
 #+BEGIN_SRC emacs-lisp
