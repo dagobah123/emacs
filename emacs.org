@@ -938,6 +938,10 @@ Load emacs-lisp file for custom changes.
      (gnus-topic-set-parameters "gmx" '((display . 200)))
 ))
 #+END_SRC
+** which-key
+#+BEGIN_SRC emacs-lisp
+  (which-key-mode)
+#+END_SRC
 ** custom functions
 #+BEGIN_SRC emacs-lisp
   (defun my:duplicate-line ()
