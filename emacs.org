@@ -1109,6 +1109,8 @@ This is the package that handles server installation and session management.
   (defun my:show-projects ()
     (interactive)
     (switch-to-buffer "*projects*")
+    (mark-whole-buffer)
+    (cua-delete-region)
     (org-mode)
     (insert "#+TITLE: Projects\n\n")
     (dolist (project (projectile-relevant-known-projects))
