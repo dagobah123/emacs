@@ -188,7 +188,7 @@
 `(font-lock-builtin-face              ((t (:foreground ,text-1                                             ))))
 `(font-lock-comment-delimiter-face    ((t (:foreground ,text-2                                             ))))
 `(font-lock-comment-face              ((t (:foreground ,text-2                                             ))))
-`(font-lock-constant-face             ((t (:foreground ,text-constant                                      ))))
+`(font-lock-constant-face             ((t (:foreground ,text-constant                 :bold t              ))))
 `(font-lock-doc-face                  ((t (:foreground ,text-2                                             ))))
 
 (if (eq CHIAROSCURO-INDEX LIGHT-INDEX)

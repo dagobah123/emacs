@@ -41,7 +41,7 @@
 (defvar font-lock-blue)
 (defvar font-lock-red)
 
-(setq text-constant "#000000")
+(setq text-constant "#0000c0")
 (setq text-function "#000000")
 (setq text-keyword "#7f0055")
 (setq text-preprocessor "#afafaf")

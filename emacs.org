@@ -18,8 +18,7 @@ The index of the current chiaroscuro theme.
 #+BEGIN_SRC emacs-lisp
   (unless package-archive-contents (package-refresh-contents))
 
-  (setq package-list '(use-package
-                       all-the-icons
+  (setq package-list '(all-the-icons
                        bookmark-in-project
                        company
                        company-box
@@ -47,6 +46,7 @@ The index of the current chiaroscuro theme.
                        swiper-helm
                        telephone-line
                        treemacs-projectile
+                       use-package
                        which-key))
 
   (dolist (package package-list)
@@ -137,17 +137,10 @@ Load emacs-lisp file for custom changes.
   (setq inhibit-startup-screen t)
 
   ; hide default scratch message
-  (setq initial-scratch-message "
-  ;8888888888 888b     d888        d8888  .d8888b.   .d8888b.
-  ;888        8888b   d8888       d88888 d88P  Y88b d88P  Y88b
-  ;888        88888b.d88888      d88P888 888    888 Y88b.
-  ;8888888    888Y88888P888     d88P 888 888         *Y888b.
-  ;888        888 Y888P 888    d88P  888 888            *Y88b.
-  ;888        888  Y8P  888   d88P   888 888    888       *888
-  ;888        888   *   888  d8888888888 Y88b  d88P Y88b  d88P
-  ;8888888888 888       888 d88P     888  *Y8888P*   *Y8888P*
+  (setq initial-scratch-message "")
 
-  ")
+  ;(setq initial-buffer-choice 'my:agenda-view)
+  (setq initial-buffer-choice 'my:start-screen)
 #+END_SRC
 ** behavior
 #+BEGIN_SRC emacs-lisp
@@ -1105,6 +1098,22 @@ This is the package that handles server installation and session management.
              (setq my:fringe 1)
              (message "fringe on")))))
   (global-set-key (kbd "C-}") 'my:toggle-fringe)
+
+  (defun my:start-screen ()
+    (interactive)
+    (my:agenda-view)
+    (org-agenda-redo-all)
+    (split-window-below)
+    (my:show-projects))
+
+  (defun my:show-projects ()
+    (interactive)
+    (switch-to-buffer "*projects*")
+    (org-mode)
+    (insert "#+TITLE: Projects\n\n")
+    (dolist (project (projectile-relevant-known-projects))
+      (insert (concat "* " " [[" project "]] " "\n")))
+    (goto-char (point-min)))
 #+END_SRC
 ** key bindings, kbd
 #+BEGIN_SRC emacs-lisp
@@ -1314,10 +1323,5 @@ See https://nullprogram.com/blog/2013/02/06/
 ** change theme on startup
 #+BEGIN_SRC emacs-lisp
   (setq CHIAROSCURO-INDEX 0)
-  (my:theme-up)
-  (my:theme-up)
-  (my:theme-up)
-  (my:theme-up)
-  (my:theme-up)
   (my:theme-up)
 #+END_SRC
