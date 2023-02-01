@@ -632,10 +632,16 @@ This is the package that handles server installation and session management.
 #+END_SRC
 ** eww
 #+BEGIN_SRC emacs-lisp
-  (setq browse-url-browser-function 'eww-browse-url ; Use eww as the default browser
-        shr-use-fonts  nil ; No special fonts
-        shr-use-colors nil ; No colors
-        eww-search-prefix "https://wiby.me/?q=") ; Use another engine for searching
+  ;(setq browse-url-browser-function 'eww-browse-url ; Use eww as the default browser
+  ;      shr-use-fonts  nil ; No special fonts
+  ;      shr-use-colors nil ; No colors
+  ;      eww-search-prefix "https://wiby.me/?q=") ; Use another engine for searching
+
+  (cond
+   ((string-equal system-type "windows-nt")
+    (progn (setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe") (message "windows-nt")))
+   ((string-equal system-type "gnu/linux")
+    (progn (setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "chromium-browser") (message "linux"))))
  #+END_SRC
 ** company
 #+BEGIN_SRC emacs-lisp
