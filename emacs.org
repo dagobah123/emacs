@@ -141,6 +141,18 @@ Load emacs-lisp file for custom changes.
 
   ;(setq initial-buffer-choice 'my:agenda-view)
   (setq initial-buffer-choice 'my:start-screen)
+
+  ; https://www.masteringemacs.org/article/maximizing-emacs-startup
+  ; The code will only execute on Windows, and it works by sending a WM_SYSCOMMAND window message to
+  ; itself, telling it to maximize. The magic number 61488 is a constant declared as SC_MAXIMIZED.
+  (defun my:maximize-frame ()
+    "Maximizes the active frame in Windows"
+    (interactive)
+    ;; Send a `WM_SYSCOMMAND' message to the active frame with the
+    ;; `SC_MAXIMIZE' parameter.
+    (when (eq system-type 'windows-nt)
+      (w32-send-sys-command 61488)))
+  (add-hook 'window-setup-hook 'maximize-frame t)
 #+END_SRC
 ** behavior
 #+BEGIN_SRC emacs-lisp
@@ -1328,8 +1340,11 @@ See https://nullprogram.com/blog/2013/02/06/
 
 (provide 'foo-mode)
 #+END_SRC
-** change theme on startup
+** change theme on startup and maximize the frame in Windows
 #+BEGIN_SRC emacs-lisp
   (setq CHIAROSCURO-INDEX 0)
   (my:theme-up)
+  (my:theme-up)
+  (my:maximize-frame)
+  (toggle-frame-maximized)
 #+END_SRC
