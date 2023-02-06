@@ -136,9 +136,6 @@ Load emacs-lisp file for custom changes.
   ; do not show start-up screen
   (setq inhibit-startup-screen t)
 
-  ; hide default scratch message
-  (setq initial-scratch-message "")
-
   ;(setq initial-buffer-choice 'my:agenda-view)
   (setq initial-buffer-choice 'my:start-screen)
 
