@@ -1340,8 +1340,17 @@ See https://nullprogram.com/blog/2013/02/06/
 ** change theme on startup and maximize the frame in Windows
 #+BEGIN_SRC emacs-lisp
   (setq CHIAROSCURO-INDEX 0)
-  (my:theme-up)
-  (my:theme-up)
   (my:maximize-frame)
   (toggle-frame-maximized)
+
+  (defun my:night-theme()
+    (interactive)
+    (my:theme-up)
+    (my:theme-up))
+
+  (defun my:day-theme()
+    (interactive)
+    (my:theme-up))
+
+  (if (> (string-to-number (format-time-string "%H")) 16) (my:night-theme) (my:day-theme))
 #+END_SRC

@@ -39,6 +39,9 @@
 
         ("v" "Event" entry (file+headline "~/source/org-mode/agenda/events.org" "Event")
          "* TODO %? :event:")
+
+        ("r" "Remember" checkitem (file+headline "~/source/org-mode/agenda/remember.org" "Remember")
+         "- %?")
         )
       )
 (setq org-agenda-files (list "~/source/org-mode/agenda"))
