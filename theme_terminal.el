@@ -55,14 +55,6 @@
 (setq line-number-3 "#009900")
 (setq line-number-4 "#000000")
 
-;magit
-(setq text-diff-added "#1ad600")
-(setq background-diff-added "#007700")
-(setq background-diff-added-highlight "#008800")
-(setq text-diff-removed "#ff6666")
-(setq background-diff-removed "#770000")
-(setq background-diff-removed-highlight "#880000")
-
 (setq font-lock-green "#000000")
 (setq font-lock-blue "#000000")
 (setq font-lock-red "#000000")

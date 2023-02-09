@@ -47,21 +47,13 @@
 (setq background-7 "#02575c")
 
 (setq background-mode-line "#491a6e")
-(setq background-mode-line-active "#8b008b")
-(setq background-fringe "#d16208")
+(setq background-mode-line-active "#851085")
+(setq background-fringe "#3d165c")
 
 (setq line-number-1 "#ef9d03")
 (setq line-number-2 "#000000")
 (setq line-number-3 "#d14808")
 (setq line-number-4 "#000000")
-
-;magit
-(setq text-diff-added "#25dc90")
-(setq background-diff-added "#135d3e")
-(setq background-diff-added-highlight "#135d3e")
-(setq text-diff-removed "#ff8a97")
-(setq background-diff-removed "#7c2a33")
-(setq background-diff-removed-highlight "#7c2a33")
 
 (setq font-lock-green "#000000")
 (setq font-lock-blue "#000000")

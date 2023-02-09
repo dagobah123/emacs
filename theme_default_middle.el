@@ -114,11 +114,11 @@
 (setq background-magit-branch-remote "#ff2f2f")
  
 ;ediff
-(setq background-current-diff-A "#c16969")
-(setq background-current-diff-B "#72ad5d")
+(setq background-current-diff-A "#e83434")
+(setq background-current-diff-B "#62ac48")
 (setq background-current-diff-C "#bcaa31")
-(setq background-fine-diff-A "#e87e7e")
-(setq background-fine-diff-B "#87cc6e")
+(setq background-fine-diff-A "#fc6c6c")
+(setq background-fine-diff-B "#82c36b")
 (setq background-fine-diff-C "#e0ca3b")
 (setq background-ediff "#888888")
 (setq text-ediff "#000000")

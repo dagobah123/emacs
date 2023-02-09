@@ -101,12 +101,12 @@
 (setq ivy-background "#2a1f00")
 
 ;magit
-(setq text-diff-added "#1ad600")
-(setq background-diff-added "#004400")
-(setq background-diff-added-highlight "#004400")
-(setq text-diff-removed "#ffb9b9")
-(setq background-diff-removed "#850d0d")
-(setq background-diff-removed-highlight "#850d0d")
+(setq text-diff-added "#20bb7a")
+(setq background-diff-added "#135d3e")
+(setq background-diff-added-highlight "#135d3e")
+(setq text-diff-removed "#ef818d")
+(setq background-diff-removed "#7c2a33")
+(setq background-diff-removed-highlight "#7c2a33")
 
 (setq text-magit-branch-local "#00bb00")
 (setq background-magit-branch-local "#003300")
@@ -114,14 +114,14 @@
 (setq background-magit-branch-remote "#330000")
 
 ;ediff
-(setq background-current-diff-A "#a21c1c") ;red
-(setq background-current-diff-B "#226622") ;green
-(setq background-current-diff-C "#887400") ;yellow
-(setq background-fine-diff-A "#830e0e") ;red
-(setq background-fine-diff-B "#094309") ;green
-(setq background-fine-diff-C "#726000") ;yellow
-(setq background-ediff "#333333")
-(setq text-ediff "#dddddd")
+(setq background-current-diff-A "#e83434")
+(setq background-current-diff-B "#62ac48")
+(setq background-current-diff-C "#bcaa31")
+(setq background-fine-diff-A "#fc6c6c")
+(setq background-fine-diff-B "#82c36b")
+(setq background-fine-diff-C "#e0ca3b")
+(setq background-ediff "#888888")
+(setq text-ediff "#000000")
 
 (setq evil-emacs-1 "#f974f9") ;violet
 (setq evil-emacs-2 "#43006d") ;violet
