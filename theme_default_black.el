@@ -71,17 +71,17 @@
 (defvar background-cursor)
 (defvar text-error)
 
-(setq green-1 "#2da21d")
+(setq green-1 "#1ad600")
 (setq green-2 "#004400")
-(setq red-1 "#bb5f5f")
-(setq red-2 "#850d0d")
-(setq blue-1 "#145fa8")
+(setq red-1 "#e52222")
+(setq red-2 "#6b0a0a")
+(setq blue-1 "#1e90ff")
 (setq blue-2 "#202055")
-(setq yellow-1 "#9f8500")
+(setq yellow-1 "#d6b400")
 (setq yellow-2 "#554804")
-(setq violet-1 "#9d4a9d")
+(setq violet-1 "#f974f9")
 (setq violet-2 "#43006d")
-(setq orange-1 "#aa5500")
+(setq orange-1 "#ff7f00")
 (setq orange-2 "#4e2700")
 (setq gray-1 "#999999")
 (setq gray-2 "#444444")
@@ -101,16 +101,16 @@
 (setq ivy-background "#2a1f00")
 
 ;magit
-(setq text-diff-added "#20bb7a")
-(setq background-diff-added "#135d3e")
-(setq background-diff-added-highlight "#135d3e")
-(setq text-diff-removed "#ef818d")
-(setq background-diff-removed "#7c2a33")
-(setq background-diff-removed-highlight "#7c2a33")
+(setq text-diff-added "#000000")
+(setq background-diff-added "#386329")
+(setq background-diff-added-highlight "#62ac48")
+(setq text-diff-removed "#000000")
+(setq background-diff-removed "#a32424")
+(setq background-diff-removed-highlight "#e83434")
 
-(setq text-magit-branch-local "#006f00")
+(setq text-magit-branch-local "#00bb00")
 (setq background-magit-branch-local "#003300")
-(setq text-magit-branch-remote "#740000")
+(setq text-magit-branch-remote "#bb0000")
 (setq background-magit-branch-remote "#330000")
 
 ;ediff
@@ -150,6 +150,6 @@
 
 (setq background-cursor "#009900")
 
-(setq text-error "#a6a600")
+(setq text-error "#ffff00")
 
 ;;; theme_default_black.el ends here
