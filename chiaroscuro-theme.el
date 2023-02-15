@@ -381,6 +381,12 @@
 `(ediff-odd-diff-B            ((t (:foreground ,text-ediff :background ,background-ediff          ))))
 `(ediff-odd-diff-C            ((t (:foreground ,text-ediff :background ,background-ediff          ))))
 
+;diff
+`(diff-added                  ((t (:foreground ,text-diff-added   :background ,background-diff-added-highlight   ))))
+`(diff-removed                ((t (:foreground ,text-diff-removed :background ,background-diff-removed-highlight ))))
+`(diff-indicator-added        ((t (:foreground ,text-diff-added   :background ,background-diff-added-highlight   ))))
+`(diff-indicator-removed      ((t (:foreground ,text-diff-removed :background ,background-diff-removed-highlight ))))
+
 ;org
 `(org-agenda-calendar-event     ((t (:foreground ,blue-1                                                  ))))
 `(org-agenda-calendar-sexp      ((t (:foreground ,blue-1                                                  ))))

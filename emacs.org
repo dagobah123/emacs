@@ -646,6 +646,8 @@ This is the package that handles server installation and session management.
   ;;      shr-use-colors nil ;; No colors
   ;;      eww-search-prefix "https://wiby.me/?q=") ;; Use another engine for searching
 
+  (setq eww-search-prefix "https://www.google.com/search?q=")
+
   (cond
    ((string-equal system-type "windows-nt")
     (progn (setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe") (message "windows-nt")))
