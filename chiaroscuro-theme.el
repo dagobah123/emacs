@@ -96,6 +96,7 @@
 (defvar font-lock-blue                       )
 (defvar font-lock-red                        )
 (defvar number-of-themes                     )
+(defvar CONSOLE-INDEX                        )
 (defvar ECLIPSE-INDEX                        )
 (defvar TERMINAL-INDEX                       )
 (defvar DUNE-INDEX                           )
@@ -107,18 +108,31 @@
 (defvar CARAVAGGIO-INDEX                     )
 (defvar RED-INDEX                            )
 
-(setq ECLIPSE-INDEX     1)
-(setq TERMINAL-INDEX    2)
-(setq DUNE-INDEX        3)
-(setq NIGHT-INDEX       4)
-(setq BLUE-INDEX        5)
-(setq NEON-INDEX        6)
-(setq LIGHT-INDEX       7)
-(setq LINUX-INDEX       8)
-(setq CARAVAGGIO-INDEX  9)
-(setq RED-INDEX        10)
+(setq CONSOLE-INDEX     1)
+(setq ECLIPSE-INDEX     2)
+(setq TERMINAL-INDEX    3)
+(setq DUNE-INDEX        4)
+(setq NIGHT-INDEX       5)
+(setq BLUE-INDEX        6)
+(setq NEON-INDEX        7)
+(setq LIGHT-INDEX       8)
+(setq LINUX-INDEX       9)
+(setq CARAVAGGIO-INDEX 10)
+(setq RED-INDEX        11)
 
 (setq background-hl "#e8f2fe")
+
+(if (not ((eq CHIAROSCURO-INDEX CONSOLE-INDEX)))
+    (progn ()))
+
+(cond (if (not ((eq CHIAROSCURO-INDEX CONSOLE-INDEX)))
+  (progn (fringe-mode '(0 . 0))
+         (setq my:fringe 0)
+         (message "fringe off")))
+((eq my:fringe 0)
+  (progn (fringe-mode '(20 . 20))
+         (setq my:fringe 1)
+         (message "fringe on"))))
 
 (if (eq CHIAROSCURO-INDEX ECLIPSE-INDEX) (progn (load-file "~/.emacs.d/theme_default_light.el")))
 (if (eq CHIAROSCURO-INDEX ECLIPSE-INDEX) (progn (load-file "~/.emacs.d/theme_eclipse.el")))
@@ -156,6 +170,8 @@
 (deftheme chiaroscuro)
 
 (custom-theme-set-faces 'chiaroscuro
+
+(if 
 
 ;base
 `(default                  ((t (:foreground ,text-1   :background ,background-1                ))))
