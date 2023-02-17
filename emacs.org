@@ -1211,9 +1211,11 @@ This is the package that handles server installation and session management.
                       chiaroscuro
                       chiaroscuro
                       chiaroscuro
+                      chiaroscuro
                       chiaroscuro))
 
-  (setq themes-list-names '("eclipse"
+  (setq themes-list-names '("console"
+                            "eclipse"
                             "terminal"
                             "dune"
                             "night"
