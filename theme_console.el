@@ -22,6 +22,14 @@
 (defvar text-mode-line)
 (defvar text-mode-line-border)
 (defvar background-buffer-id-projectile)
+(defvar background-mode-line)
+(defvar background-mode-line-active)
+
+(defvar text-1)
+(defvar text-2)
+
+(setq text-1  "#000000")
+(setq text-2  "#000000")
 
 (setq evil-emacs-1 "#611481") ;violet
 (setq evil-emacs-2 "#f0cdff") ;violet
@@ -43,5 +51,7 @@
 (setq text-mode-line "#000000")
 (setq text-mode-line-border "#000000")
 (setq background-buffer-id-projectile "#ffff00")
+(setq background-mode-line "#eeeeee")
+(setq background-mode-line-active "#aaaaaa")
 
 ;;; theme_console.el ends here

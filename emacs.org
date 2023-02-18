@@ -138,19 +138,19 @@ Load emacs-lisp file for custom changes.
   (setq inhibit-startup-screen t)
 
   ;;(setq initial-buffer-choice 'my:agenda-view)
-  (setq initial-buffer-choice 'my:start-screen)
+  ;;(setq initial-buffer-choice 'my:start-screen)
 
   ;; https://www.masteringemacs.org/article/maximizing-emacs-startup
   ;; The code will only execute on Windows, and it works by sending a WM_SYSCOMMAND window message to
   ;; itself, telling it to maximize. The magic number 61488 is a constant declared as SC_MAXIMIZED.
-  (defun my:maximize-frame ()
-    "Maximizes the active frame in Windows"
-    (interactive)
-    ;; Send a `WM_SYSCOMMAND' message to the active frame with the
-    ;; `SC_MAXIMIZE' parameter.
-    (when (eq system-type 'windows-nt)
-      (w32-send-sys-command 61488)))
-  (add-hook 'window-setup-hook 'maximize-frame t)
+  ;(defun my:maximize-frame ()
+  ;  "Maximizes the active frame in Windows"
+  ;  (interactive)
+  ;  ;; Send a `WM_SYSCOMMAND' message to the active frame with the
+  ;  ;; `SC_MAXIMIZE' parameter.
+  ;  (when (eq system-type 'windows-nt)
+  ;    (w32-send-sys-command 61488)))
+  ;(add-hook 'window-setup-hook 'maximize-frame t)
 #+END_SRC
 ** behavior
 #+BEGIN_SRC emacs-lisp
@@ -786,178 +786,178 @@ This is the package that handles server installation and session management.
 #+END_SRC
 ** gnus
 #+BEGIN_SRC emacs-lisp
-;; {{ If you'd like to compose mail outside of Gnus, below code should be moved into "~/.emacs.d/init.el",
-;; Personal Information
-(setq user-full-name MAIL-NAME
-      user-mail-address MAIL-MAIL)
-
-;; Send email through SMTP
-(setq message-send-mail-function 'smtpmail-send-it
-      smtpmail-default-smtp-server "mail.gmx.net"
-      smtpmail-smtp-service 587
-      smtpmail-local-domain MAIL-MAIL)
-
-;; auto-complete emacs address using bbdb command, optional
-;;(add-hook 'message-mode-hook
-;;          '(lambda ()
-;;             (flyspell-mode t)
-;;             (local-set-key (kbd "TAB") 'bbdb-complete-name)))
-;; }}
-
-(require 'nnir)
-
-;; Please note mail folders in `gnus-select-method' have NO prefix like "nnimap+hotmail:" or "nnimap+gmail:"
-(setq gnus-select-method '(nntp "news.gwene.org")) ;; Read feeds/atom through gwene
-
-;; ask encryption password once
-(setq epa-file-cache-passphrase-for-symmetric-encryption t)
-
-(add-to-list 'gnus-secondary-select-methods
-             '(nnimap "gmx"
-                      (nnimap-address "imap.gmx.net")
-                      (nnimap-server-port 993)
-                      (nnimap-stream ssl)
-                      (nnir-search-engine imap)
-                      (nnmail-expiry-wait 90)))
-
-;; @see http://gnus.org/manual/gnus_397.html
-;;(add-to-list 'gnus-secondary-select-methods
-;;             '(nnimap "gmail"
-;;                      (nnimap-address "imap.gmail.com")
-;;                      (nnimap-server-port 993)
-;;                      (nnimap-stream ssl)
-;;                      (nnir-search-engine imap)
-;;                      ;; @see http://www.gnu.org/software/emacs/manual/html_node/gnus/Expiring-Mail.html
-;;                      ;; press 'E' to expire email
-;;                      (nnmail-expiry-target "nnimap+gmail:[Gmail]/Trash")
-;;                      (nnmail-expiry-wait 90)))
-
-;; OPTIONAL, the setup for Microsoft Hotmail
-;;(add-to-list 'gnus-secondary-select-methods
-;;             '(nnimap "hotmail"
-;;                      (nnimap-address "imap-mail.outlook.com")
-;;                      (nnimap-server-port 993)
-;;                      (nnimap-stream ssl)
-;;                      (nnir-search-engine imap)
-;;                      (nnmail-expiry-wait 90)))
-
-(setq gnus-thread-sort-functions
-      '(gnus-thread-sort-by-most-recent-date
-        (not gnus-thread-sort-by-number)))
-
-;; NO 'passive
-(setq gnus-use-cache t)
-
-;; {{ press "o" to view all groups
-(defun my-gnus-group-list-subscribed-groups ()
-  "List all subscribed groups with or without un-read messages"
-  (interactive)
-  (gnus-group-list-all-groups 5))
-
-(define-key gnus-group-mode-map
-  ;; list all the subscribed groups even they contain zero un-read messages
-  (kbd "o") 'my-gnus-group-list-subscribed-groups)
-;; }}
-
-;; BBDB: Address list
-;;(add-to-list 'load-path "/where/you/place/bbdb/")
-;;(require 'bbdb)
-;;(bbdb-initialize 'message 'gnus 'sendmail)
-;;(add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus)
-;;(setq bbdb/mail-auto-create-p t
-;;      bbdb/news-auto-create-p t)
-
-;; Fetch only part of the article if we can.
-;; I saw this in someone's .gnus
-(setq gnus-read-active-file 'some)
-
-;; open attachment
-(eval-after-load 'mailcap
-  '(progn
-     (cond
-      ;; on macOS, maybe change mailcap-mime-data?
-      ((eq system-type 'darwin))
-      ;; on Windows, maybe change mailcap-mime-data?
-      ((eq system-type 'windows-nt))
-      (t
-       ;; Linux, read ~/.mailcap
-       (mailcap-parse-mailcaps)))))
-
-;; Tree view for groups.
-(add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
-
-;; Threads!  I hate reading un-threaded email -- especially mailing
-;; lists.  This helps a ton!
-(setq gnus-summary-thread-gathering-function 'gnus-gather-threads-by-subject)
-
-;; Also, I prefer to see only the top level message.  If a message has
-;; several replies or is part of a thread, only show the first message.
-;; `gnus-thread-ignore-subject' will ignore the subject and
-;; look at 'In-Reply-To:' and 'References:' headers.
-(setq gnus-thread-hide-subtree t)
-(setq gnus-thread-ignore-subject t)
-
-;; Read HTML mail:
-;; You need install the command line web browser 'w3m' and Emacs plugin 'w3m'
-;; manually. It specify the html render as w3m so my setup works on all versions
-;; of Emacs.
-;;
-;; Since Emacs 24+, a default html rendering engine `shr' is provided:
-;;   - It works out of box without any cli program dependency or setup
-;;   - It can render html color
-;; So below line is optional.
-(setq mm-text-html-renderer 'w3m) ;; OPTIONAL
-
-;; http://www.gnu.org/software/emacs/manual/html_node/gnus/_005b9_002e2_005d.html
-(setq gnus-use-correct-string-widths nil)
-
-;; Sample on how to organize mail folders.
-;; It's dependent on `gnus-topic-mode'.
-(eval-after-load 'gnus-topic
-  '(progn
-     (setq gnus-message-archive-group '((format-time-string "sent.%Y")))
-     (setq gnus-server-alist '(("archive" nnfolder "archive" (nnfolder-directory "~/Mail/archive")
-                                (nnfolder-active-file "~/Mail/archive/active")
-                                (nnfolder-get-new-mail nil)
-                                (nnfolder-inhibit-expiry t))))
-
-     ;; "Gnus" is the root folder, and there are three mail accounts, "misc", "hotmail", "gmail"
-     (setq gnus-topic-topology '(("Gnus" visible)
-                                 (("misc" visible))
-                                 ;;(("hotmail" visible nil nil))
-                                 ;;(("gmail" visible nil nil))))
-                                 (("gmx" visible nil nil))))
-
-     ;; each topic corresponds to a public imap folder
-     (setq gnus-topic-alist '(
-                              ("gmx" ;; the key of topic
-                               "nnimap+gmx:Inbox"
-                               "nnimap+gmx:Drafts"
-                               "nnimap+gmx:Sent"
-                               "nnimap+gmx:Junk"
-                               "nnimap+gmx:Deleted")
-                              ;;("hotmail" ;; the key of topic
-                              ;; "nnimap+hotmail:Inbox"
-                              ;; "nnimap+hotmail:Drafts"
-                              ;; "nnimap+hotmail:Sent"
-                              ;; "nnimap+hotmail:Junk"
-                              ;; "nnimap+hotmail:Deleted")
-                              ;;("gmail" ;; the key of topic
-                              ;; "nnimap+gmail:INBOX"
-                              ;; "nnimap+gmail:[Gmail]/Sent Mail"
-                              ;; "nnimap+gmail:[Gmail]/Trash"
-                              ;; "nnimap+gmail:Drafts")
-                              ("misc" ;; the key of topic
-                               "nnfolder+archive:sent.2018"
-                               "nnfolder+archive:sent.2019"
-                               "nndraft:drafts")
-                              ("Gnus")))
-
-     ;; see latest 200 mails in topic then press Enter on any group
-     ;;(gnus-topic-set-parameters "gmail" '((display . 200)))
-     ;;(gnus-topic-set-parameters "hotmail" '((display . 200)))
-     (gnus-topic-set-parameters "gmx" '((display . 200)))
-))
+;;; {{ If you'd like to compose mail outside of Gnus, below code should be moved into "~/.emacs.d/init.el",
+;;; Personal Information
+;(setq user-full-name MAIL-NAME
+;      user-mail-address MAIL-MAIL)
+; 
+;;; Send email through SMTP
+;(setq message-send-mail-function 'smtpmail-send-it
+;      smtpmail-default-smtp-server "mail.gmx.net"
+;      smtpmail-smtp-service 587
+;      smtpmail-local-domain MAIL-MAIL)
+; 
+;;; auto-complete emacs address using bbdb command, optional
+;;;(add-hook 'message-mode-hook
+;;;          '(lambda ()
+;;;             (flyspell-mode t)
+;;;             (local-set-key (kbd "TAB") 'bbdb-complete-name)))
+;;; }}
+; 
+;(require 'nnir)
+; 
+;;; Please note mail folders in `gnus-select-method' have NO prefix like "nnimap+hotmail:" or "nnimap+gmail:"
+;(setq gnus-select-method '(nntp "news.gwene.org")) ;; Read feeds/atom through gwene
+; 
+;;; ask encryption password once
+;(setq epa-file-cache-passphrase-for-symmetric-encryption t)
+; 
+;(add-to-list 'gnus-secondary-select-methods
+;             '(nnimap "gmx"
+;                      (nnimap-address "imap.gmx.net")
+;                      (nnimap-server-port 993)
+;                      (nnimap-stream ssl)
+;                      (nnir-search-engine imap)
+;                      (nnmail-expiry-wait 90)))
+; 
+;;; @see http://gnus.org/manual/gnus_397.html
+;;;(add-to-list 'gnus-secondary-select-methods
+;;;             '(nnimap "gmail"
+;;;                      (nnimap-address "imap.gmail.com")
+;;;                      (nnimap-server-port 993)
+;;;                      (nnimap-stream ssl)
+;;;                      (nnir-search-engine imap)
+;;;                      ;; @see http://www.gnu.org/software/emacs/manual/html_node/gnus/Expiring-Mail.html
+;;;                      ;; press 'E' to expire email
+;;;                      (nnmail-expiry-target "nnimap+gmail:[Gmail]/Trash")
+;;;                      (nnmail-expiry-wait 90)))
+; 
+;;; OPTIONAL, the setup for Microsoft Hotmail
+;;;(add-to-list 'gnus-secondary-select-methods
+;;;             '(nnimap "hotmail"
+;;;                      (nnimap-address "imap-mail.outlook.com")
+;;;                      (nnimap-server-port 993)
+;;;                      (nnimap-stream ssl)
+;;;                      (nnir-search-engine imap)
+;;;                      (nnmail-expiry-wait 90)))
+; 
+;(setq gnus-thread-sort-functions
+;      '(gnus-thread-sort-by-most-recent-date
+;        (not gnus-thread-sort-by-number)))
+; 
+;;; NO 'passive
+;(setq gnus-use-cache t)
+; 
+;;; {{ press "o" to view all groups
+;(defun my-gnus-group-list-subscribed-groups ()
+;  "List all subscribed groups with or without un-read messages"
+;  (interactive)
+;  (gnus-group-list-all-groups 5))
+; 
+;(define-key gnus-group-mode-map
+;  ;; list all the subscribed groups even they contain zero un-read messages
+;  (kbd "o") 'my-gnus-group-list-subscribed-groups)
+;;; }}
+; 
+;;; BBDB: Address list
+;;;(add-to-list 'load-path "/where/you/place/bbdb/")
+;;;(require 'bbdb)
+;;;(bbdb-initialize 'message 'gnus 'sendmail)
+;;;(add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus)
+;;;(setq bbdb/mail-auto-create-p t
+;;;      bbdb/news-auto-create-p t)
+; 
+;;; Fetch only part of the article if we can.
+;;; I saw this in someone's .gnus
+;(setq gnus-read-active-file 'some)
+; 
+;;; open attachment
+;(eval-after-load 'mailcap
+;  '(progn
+;     (cond
+;      ;; on macOS, maybe change mailcap-mime-data?
+;      ((eq system-type 'darwin))
+;      ;; on Windows, maybe change mailcap-mime-data?
+;      ((eq system-type 'windows-nt))
+;      (t
+;       ;; Linux, read ~/.mailcap
+;       (mailcap-parse-mailcaps)))))
+; 
+;;; Tree view for groups.
+;(add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
+; 
+;;; Threads!  I hate reading un-threaded email -- especially mailing
+;;; lists.  This helps a ton!
+;(setq gnus-summary-thread-gathering-function 'gnus-gather-threads-by-subject)
+; 
+;;; Also, I prefer to see only the top level message.  If a message has
+;;; several replies or is part of a thread, only show the first message.
+;;; `gnus-thread-ignore-subject' will ignore the subject and
+;;; look at 'In-Reply-To:' and 'References:' headers.
+;(setq gnus-thread-hide-subtree t)
+;(setq gnus-thread-ignore-subject t)
+; 
+;;; Read HTML mail:
+;;; You need install the command line web browser 'w3m' and Emacs plugin 'w3m'
+;;; manually. It specify the html render as w3m so my setup works on all versions
+;;; of Emacs.
+;;;
+;;; Since Emacs 24+, a default html rendering engine `shr' is provided:
+;;;   - It works out of box without any cli program dependency or setup
+;;;   - It can render html color
+;;; So below line is optional.
+;(setq mm-text-html-renderer 'w3m) ;; OPTIONAL
+; 
+;;; http://www.gnu.org/software/emacs/manual/html_node/gnus/_005b9_002e2_005d.html
+;(setq gnus-use-correct-string-widths nil)
+; 
+;;; Sample on how to organize mail folders.
+;;; It's dependent on `gnus-topic-mode'.
+;(eval-after-load 'gnus-topic
+;  '(progn
+;     (setq gnus-message-archive-group '((format-time-string "sent.%Y")))
+;     (setq gnus-server-alist '(("archive" nnfolder "archive" (nnfolder-directory "~/Mail/archive")
+;                                (nnfolder-active-file "~/Mail/archive/active")
+;                                (nnfolder-get-new-mail nil)
+;                                (nnfolder-inhibit-expiry t))))
+; 
+;     ;; "Gnus" is the root folder, and there are three mail accounts, "misc", "hotmail", "gmail"
+;     (setq gnus-topic-topology '(("Gnus" visible)
+;                                 (("misc" visible))
+;                                 ;;(("hotmail" visible nil nil))
+;                                 ;;(("gmail" visible nil nil))))
+;                                 (("gmx" visible nil nil))))
+; 
+;     ;; each topic corresponds to a public imap folder
+;     (setq gnus-topic-alist '(
+;                              ("gmx" ;; the key of topic
+;                               "nnimap+gmx:Inbox"
+;                               "nnimap+gmx:Drafts"
+;                               "nnimap+gmx:Sent"
+;                               "nnimap+gmx:Junk"
+;                               "nnimap+gmx:Deleted")
+;                              ;;("hotmail" ;; the key of topic
+;                              ;; "nnimap+hotmail:Inbox"
+;                              ;; "nnimap+hotmail:Drafts"
+;                              ;; "nnimap+hotmail:Sent"
+;                              ;; "nnimap+hotmail:Junk"
+;                              ;; "nnimap+hotmail:Deleted")
+;                              ;;("gmail" ;; the key of topic
+;                              ;; "nnimap+gmail:INBOX"
+;                              ;; "nnimap+gmail:[Gmail]/Sent Mail"
+;                              ;; "nnimap+gmail:[Gmail]/Trash"
+;                              ;; "nnimap+gmail:Drafts")
+;                              ("misc" ;; the key of topic
+;                               "nnfolder+archive:sent.2018"
+;                               "nnfolder+archive:sent.2019"
+;                               "nndraft:drafts")
+;                              ("Gnus")))
+; 
+;     ;; see latest 200 mails in topic then press Enter on any group
+;     ;;(gnus-topic-set-parameters "gmail" '((display . 200)))
+;     ;;(gnus-topic-set-parameters "hotmail" '((display . 200)))
+;     (gnus-topic-set-parameters "gmx" '((display . 200)))
+;))
 #+END_SRC
 ** custom functions
 #+BEGIN_SRC emacs-lisp
@@ -1350,11 +1350,12 @@ See https://nullprogram.com/blog/2013/02/06/
 ** change theme on startup and maximize the frame in Windows
 #+BEGIN_SRC emacs-lisp
   (setq CHIAROSCURO-INDEX 0)
-  (my:maximize-frame)
+  ;(my:maximize-frame)
   (toggle-frame-maximized)
 
   (defun my:night-theme()
     (interactive)
+    (my:theme-up)
     (my:theme-up)
     (my:theme-up))
 
