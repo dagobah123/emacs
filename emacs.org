@@ -776,12 +776,13 @@ This is the package that handles server installation and session management.
 #+END_SRC
 ** google-translate
 #+BEGIN_SRC emacs-lisp
-(require 'google-translate)
-(require 'google-translate-default-ui)
-(global-set-key (kbd "C-c P") 'google-translate-at-point)
-(global-set-key (kbd "C-c T") 'google-translate-query-translate)
-(setq google-translate-default-source-language "fr")
-(setq google-translate-default-target-language "en")
+  (require 'google-translate)
+  (require 'google-translate-default-ui)
+  (global-set-key (kbd "C-c P") 'google-translate-at-point)
+  (global-set-key (kbd "C-c T") 'google-translate-query-translate)
+  (global-set-key (kbd "C-c R") 'google-translate-query-translate-reverse)
+  (setq google-translate-default-source-language "fr")
+  (setq google-translate-default-target-language "en")
 #+END_SRC
 ** gnus
 #+BEGIN_SRC emacs-lisp
