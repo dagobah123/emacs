@@ -25,20 +25,11 @@
         ("s" "Shopping List" checkitem (file+headline "~/source/org-mode/agenda/shopping_list.org" "Shopping List")
          "- [ ] %?")
 
-        ("h" "Haushalt" entry (file+headline "~/source/org-mode/agenda/haushalt.org" "Haushalt")
-         "* TODO %? :haushalt:")
+        ("h" "Chores" entry (file+headline "~/source/org-mode/agenda/chores.org" "chores")
+         "* TODO %? :chores:")
 
-        ("x" "Business" entry (file+headline "~/source/org-mode/agenda/mission.org" "Mission")
+        ("x" "Mission" entry (file+headline "~/source/org-mode/agenda/mission.org" "Mission")
          "* TODO %? :mission:")
-
-        ("j" "Journal" entry (file+headline "~/source/org-mode/agenda/journal.org" "Journal")
-         "* %?\n")
-
-        ("l" "Log" entry (file+headline "~/source/org-mode/agenda/log.org" "Log")
-         "* %?\nEntered on %U\n  %i\n  %a")
-
-        ("v" "Event" entry (file+headline "~/source/org-mode/agenda/events.org" "Event")
-         "* TODO %? :event:")
 
         ("r" "Remember" checkitem (file+headline "~/source/org-mode/agenda/remember.org" "Remember")
          "- %?")
