@@ -28,8 +28,8 @@
         ("h" "Haushalt" entry (file+headline "~/source/org-mode/agenda/haushalt.org" "Haushalt")
          "* TODO %? :haushalt:")
 
-        ("x" "Business" entry (file+headline "~/source/org-mode/agenda/business.org" "Business")
-         "* TODO %? :business:")
+        ("x" "Business" entry (file+headline "~/source/org-mode/agenda/mission.org" "Mission")
+         "* TODO %? :mission:")
 
         ("j" "Journal" entry (file+headline "~/source/org-mode/agenda/journal.org" "Journal")
          "* %?\n")
