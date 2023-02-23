@@ -30,6 +30,7 @@ The index of the current chiaroscuro theme.
                        evil
                        google-translate
                        goto-last-change
+                       gnuplot
                        helm-bm
                        helm-projectile
                        helm-swoop
