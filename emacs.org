@@ -1159,7 +1159,7 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-9") 'helm-imenu)
   (global-set-key (kbd "C-0") 'treemacs)
   (global-set-key (kbd "C-=") 'lsp-headerline-breadcrumb-mode)
-  (global-set-key (kbd "C-`") 'helm-grep-do-git-grep)
+  (global-set-key (kbd "C-`") 'counsel-git-grep)
   (global-set-key (kbd "C-8") 'whitespace-mode)
   (global-set-key (kbd "C-x t") 'bookmark-bmenu-list)
   (global-set-key (kbd "C-x 5 5") 'magit-blame)
