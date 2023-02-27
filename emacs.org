@@ -334,7 +334,7 @@ Load emacs-lisp file for custom changes.
     (("C-c k r" . helm-show-kill-ring))
     (("C-c h" . helm-grep-do-git-grep))
     (("C-r"   . helm-swoop))
-    (("C-c b" . helm-buffers-list))
+    ;;(("C-c b" . helm-buffers-list))
     (("C-c r" . helm-bookmarks))
     (("C-c i" . helm-mini))
     (("C-c q" . helm-info)))
@@ -1159,7 +1159,8 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-9") 'helm-imenu)
   (global-set-key (kbd "C-0") 'treemacs)
   (global-set-key (kbd "C-=") 'lsp-headerline-breadcrumb-mode)
-  (global-set-key (kbd "C-`") 'counsel-git-grep)
+  (global-set-key (kbd "C-`") 'projectile-grep)
+  (global-set-key (kbd "C-M-`") 'helm-projectile-grep)
   (global-set-key (kbd "C-8") 'whitespace-mode)
   (global-set-key (kbd "C-x t") 'bookmark-bmenu-list)
   (global-set-key (kbd "C-x 5 5") 'magit-blame)
@@ -1198,6 +1199,7 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-p") 'counsel-projectile-switch-project)
   (global-set-key (kbd "C-c u u") 'dap-java-run-test-class)
   (global-set-key (kbd "C-c u t") 'dap-java-run-test-method)
+  (global-set-key (kbd "C-c b") 'ibuffer)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
