@@ -334,7 +334,7 @@ Load emacs-lisp file for custom changes.
     (("C-c k r" . helm-show-kill-ring))
     (("C-c h" . helm-grep-do-git-grep))
     (("C-r"   . helm-swoop))
-    ;;(("C-c b" . helm-buffers-list))
+    (("C-c b" . helm-buffers-list))
     (("C-c r" . helm-bookmarks))
     (("C-c i" . helm-mini))
     (("C-c q" . helm-info)))
@@ -1183,7 +1183,7 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "M-s d") 'swiper-helm)
   (global-set-key (kbd "C-s") 'swiper)
   (global-set-key (kbd "C-c d") 'lsp-ui-peek-find-definitions)
-  (global-set-key (kbd "C-c i") 'lsp-ui-peek-find-implementation)
+  ;;(global-set-key (kbd "C-c i") 'lsp-ui-peek-find-implementation)
   (global-set-key (kbd "C-c e") 'lsp-execute-code-action)
   (global-set-key (kbd "C-x b") 'ido-switch-buffer)
   (global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
@@ -1199,7 +1199,7 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-p") 'counsel-projectile-switch-project)
   (global-set-key (kbd "C-c u u") 'dap-java-run-test-class)
   (global-set-key (kbd "C-c u t") 'dap-java-run-test-method)
-  (global-set-key (kbd "C-c b") 'ibuffer)
+  (global-set-key (kbd "C-c i") 'ibuffer)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
