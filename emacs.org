@@ -1140,6 +1140,17 @@ This is the package that handles server installation and session management.
     (dolist (project (projectile-relevant-known-projects))
       (insert (concat "* " " [[" project "]] " "\n")))
     (goto-char (point-min)))
+
+  (defun my:dired-projectile-main-folder ()
+    (projectile-dired)
+    (dired-up-directory))
+
+  (defun my:dired-projectile-search (regexp search-in-subdirs)
+    (interactive "sRegexp: \nP")
+    (my:dired-projectile-main-folder)
+    (message regexp)
+    (dired-do-find-regexp regexp)
+    (delete-other-windows))
 #+END_SRC
 ** key bindings, kbd
 #+BEGIN_SRC emacs-lisp
@@ -1159,7 +1170,7 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-9") 'helm-imenu)
   (global-set-key (kbd "C-0") 'treemacs)
   (global-set-key (kbd "C-=") 'lsp-headerline-breadcrumb-mode)
-  (global-set-key (kbd "C-`") 'projectile-grep)
+  (global-set-key (kbd "C-`") 'my:dired-projectile-search)
   (global-set-key (kbd "C-M-`") 'helm-projectile-grep)
   (global-set-key (kbd "C-8") 'whitespace-mode)
   (global-set-key (kbd "C-x t") 'bookmark-bmenu-list)
