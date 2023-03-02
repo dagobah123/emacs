@@ -240,10 +240,10 @@
     `(dired-warning      ((t (:foreground ,text-1   :background, background-1         ))))
     `(dired-special      ((t (:foreground ,violet-1                                   ))))
 
-    `(xref-file-header   ((t (:foreground ,text-2                                     ))))
-    `(xref-line-number   ((t (:foreground ,text-2                                     ))))
-    `(xref-match         ((t (:foreground ,text-match :background ,background-5       ))))
-    `(match              ((t (:foreground ,text-match :background ,background-5       ))))
+    `(xref-file-header   ((t (:foreground ,line-number-3                                     ))))
+    `(xref-line-number   ((t (:foreground ,line-number-1                                     ))))
+    `(xref-match         ((t (:foreground ,"#000000" :background ,"#ff0000"       ))))
+    `(match              ((t (:foreground ,"#000000" :background ,"#00ff00"       ))))
 
     ;helm
     `(helm-minibuffer-prompt            ((t (:foreground ,text-1     :background ,background-1                  ))))

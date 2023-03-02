@@ -83,7 +83,8 @@
 
 (setq line-number-1 "#7f0055")
 (setq line-number-2 "#ffffff")
-(setq line-number-3 "#787878")
+;;(setq line-number-3 "#96c8ff")
+(setq line-number-3 "#3f5fbf")
 (setq line-number-4 "#ffffff")
 
 (setq font-lock-green "#ffffff")
