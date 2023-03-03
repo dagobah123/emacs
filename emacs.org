@@ -35,6 +35,7 @@ The index of the current chiaroscuro theme.
                        helm-projectile
                        helm-swoop
                        hide-mode-line
+                       ibuffer-vc
                        ivy
                        json-mode
                        magit
@@ -321,6 +322,14 @@ Load emacs-lisp file for custom changes.
   (global-set-key (kbd "C-x p") 'helm-projectile-switch-project)
   (global-set-key (kbd "C-x o") 'helm-projectile-find-file)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+#+END_SRC
+** ibuffer-vc
+#+BEGIN_SRC emacs-lisp
+   (add-hook 'ibuffer-hook
+     (lambda ()
+       (ibuffer-vc-set-filter-groups-by-vc-root)
+       (unless (eq ibuffer-sorting-mode 'alphabetic)
+         (ibuffer-do-sort-by-alphabetic))))
 #+END_SRC
 ** helm
 #+BEGIN_SRC emacs-lisp
@@ -1369,6 +1378,10 @@ See https://nullprogram.com/blog/2013/02/06/
 
   (defun my:night-theme()
     (interactive)
+    (my:theme-up)
+    (my:theme-up)
+    (my:theme-up)
+    (my:theme-up)
     (my:theme-up)
     (my:theme-up)
     (my:theme-up))
