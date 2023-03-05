@@ -109,6 +109,10 @@ Load emacs-lisp file for custom changes.
   ;; disable tabs
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 4)
+  (defun my:indent-tabs-mode ()
+    (setq indent-tabs-mode nil))
+  (add-hook 'c++-mode-hook #'my:indent-tabs-mode)
+  (add-hook 'java-mode-hook #'my:indent-tabs-mode)
 
   (setq whitespace-line-column 1000)
 
