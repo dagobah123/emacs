@@ -1394,5 +1394,6 @@ See https://nullprogram.com/blog/2013/02/06/
     (interactive)
     (my:theme-up))
 
-  (if (> (string-to-number (format-time-string "%H")) 16) (my:night-theme) (my:day-theme))
+  (if (and (< (string-to-number (format-time-string "%H")) 8)
+           (> (string-to-number (format-time-string "%H")) 16)) (my:night-theme) (my:day-theme))
 #+END_SRC
