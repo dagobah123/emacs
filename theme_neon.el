@@ -31,7 +31,7 @@
 (defvar font-lock-blue)
 (defvar font-lock-red)
 
-(setq background-hl "#042825")
+(setq background-hl "#d16208")
 
 (setq text-hl "#40e0d0")
 (setq text-1  "#00b1b1")

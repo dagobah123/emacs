@@ -35,6 +35,6 @@
          "- %?")
         )
       )
-(setq org-agenda-files (list "~/source/org-mode/agenda"))
+(setq org-agenda-files (list "~/source/org-mode/agenda" "~/source/org-mode/notes/general/data.org"))
 
 ;;; agenda.el ends here
