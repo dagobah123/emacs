@@ -1244,11 +1244,11 @@ This is the package that handles server installation and session management.
 
   (setq themes-list-names '("console"
                             "eclipse"
+                            "neon"
                             "terminal"
                             "dune"
                             "night"
                             "blue"
-                            "neon"
                             "light"
                             "linux"
                             "caravaggio"
@@ -1382,10 +1382,6 @@ See https://nullprogram.com/blog/2013/02/06/
 
   (defun my:night-theme()
     (interactive)
-    (my:theme-up)
-    (my:theme-up)
-    (my:theme-up)
-    (my:theme-up)
     (my:theme-up)
     (my:theme-up)
     (my:theme-up))

@@ -110,11 +110,11 @@
 
 (setq CONSOLE-INDEX     1)
 (setq ECLIPSE-INDEX     2)
-(setq TERMINAL-INDEX    3)
-(setq DUNE-INDEX        4)
-(setq NIGHT-INDEX       5)
-(setq BLUE-INDEX        6)
-(setq NEON-INDEX        7)
+(setq NEON-INDEX        3)
+(setq TERMINAL-INDEX    4)
+(setq DUNE-INDEX        5)
+(setq NIGHT-INDEX       6)
+(setq BLUE-INDEX        7)
 (setq LIGHT-INDEX       8)
 (setq LINUX-INDEX       9)
 (setq CARAVAGGIO-INDEX 10)
@@ -129,6 +129,9 @@
     (if (eq CHIAROSCURO-INDEX ECLIPSE-INDEX) (progn (load-file "~/.emacs.d/theme_default_light.el")))
     (if (eq CHIAROSCURO-INDEX ECLIPSE-INDEX) (progn (load-file "~/.emacs.d/theme_eclipse.el")))
 
+    (if (eq CHIAROSCURO-INDEX NEON-INDEX) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
+    (if (eq CHIAROSCURO-INDEX NEON-INDEX) (progn (load-file "~/.emacs.d/theme_neon.el")))
+
     (if (eq CHIAROSCURO-INDEX TERMINAL-INDEX) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
     (if (eq CHIAROSCURO-INDEX TERMINAL-INDEX) (progn (load-file "~/.emacs.d/theme_terminal.el")))
 
@@ -140,9 +143,6 @@
 
     (if (eq CHIAROSCURO-INDEX BLUE-INDEX) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
     (if (eq CHIAROSCURO-INDEX BLUE-INDEX) (progn (load-file "~/.emacs.d/theme_blue.el")))
-
-    (if (eq CHIAROSCURO-INDEX NEON-INDEX) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
-    (if (eq CHIAROSCURO-INDEX NEON-INDEX) (progn (load-file "~/.emacs.d/theme_neon.el")))
 
     (if (eq CHIAROSCURO-INDEX LIGHT-INDEX) (progn (load-file "~/.emacs.d/theme_default_light.el")))
     (if (eq CHIAROSCURO-INDEX LIGHT-INDEX) (progn (load-file "~/.emacs.d/theme_light.el")))
