@@ -38,6 +38,7 @@ The index of the current chiaroscuro theme.
                        ibuffer-vc
                        ivy
                        json-mode
+                       logview
                        magit
                        magit-find-file
                        move-text
@@ -966,12 +967,31 @@ This is the package that handles server installation and session management.
 ;                               "nnfolder+archive:sent.2019"
 ;                               "nndraft:drafts")
 ;                              ("Gnus")))
-; 
+;
 ;     ;; see latest 200 mails in topic then press Enter on any group
 ;     ;;(gnus-topic-set-parameters "gmail" '((display . 200)))
 ;     ;;(gnus-topic-set-parameters "hotmail" '((display . 200)))
 ;     (gnus-topic-set-parameters "gmx" '((display . 200)))
 ;))
+#+END_SRC
+** logview
+#+BEGIN_SRC emacs-lisp
+  (require 'logview)
+  (setq log-view-update-interval 1)
+
+;;  (defface my:logview-highlight
+;;    '((t :foreground "white" :background "blue"))
+;;    "Face for highlighting custom string in logview mode")
+;;
+;;  (defun my:logview-filter ()
+;;    "Filter log messages by keyword and highlight matches"
+;;    (interactive)
+;;    (let ((keyword (read-string "Enter keyword: ")))
+;;      (log-view-filter-apply
+;;       (lambda ()
+;;         (when (search-forward keyword nil t)
+;;           (add-text-properties (match-beginning 0) (match-end 0)
+;;                                '(face my:logview-highlight)))))))
 #+END_SRC
 ** custom functions
 #+BEGIN_SRC emacs-lisp
