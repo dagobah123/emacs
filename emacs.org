@@ -1164,6 +1164,13 @@ This is the package that handles server installation and session management.
     (message regexp)
     (dired-do-find-regexp regexp)
     (delete-other-windows))
+
+  (defun my:vc-git-grep ()
+    "my:vc-git-grep"
+    (interactive)
+    (vc-git-grep (read-from-minibuffer "Search for: ")
+      "\*"
+      "\*"))
 #+END_SRC
 ** key bindings, kbd
 #+BEGIN_SRC emacs-lisp
@@ -1184,7 +1191,7 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-0") 'treemacs)
   (global-set-key (kbd "C-=") 'lsp-headerline-breadcrumb-mode)
   (global-set-key (kbd "C-`") 'my:dired-projectile-search)
-  (global-set-key (kbd "C-\\") 'vc-git-grep)
+  (global-set-key (kbd "C-\\") 'my:vc-git-grep)
   (global-set-key (kbd "C-M-`") 'helm-projectile-grep)
   (global-set-key (kbd "C-8") 'whitespace-mode)
   (global-set-key (kbd "C-x t") 'bookmark-bmenu-list)
