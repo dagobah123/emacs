@@ -36,6 +36,7 @@ The index of the current chiaroscuro theme.
                        helm-swoop
                        hide-mode-line
                        ibuffer-vc
+                       itail
                        ivy
                        json-mode
                        logview
@@ -978,6 +979,7 @@ This is the package that handles server installation and session management.
 #+BEGIN_SRC emacs-lisp
   (require 'logview)
   (setq log-view-update-interval 1)
+  (setq auto-revert-tail-mode 1)
 
 ;;  (defface my:logview-highlight
 ;;    '((t :foreground "white" :background "blue"))
@@ -992,6 +994,10 @@ This is the package that handles server installation and session management.
 ;;         (when (search-forward keyword nil t)
 ;;           (add-text-properties (match-beginning 0) (match-end 0)
 ;;                                '(face my:logview-highlight)))))))
+#+END_SRC
+** itail
+#+BEGIN_SRC emacs-lisp
+  (require 'itail)
 #+END_SRC
 ** custom functions
 #+BEGIN_SRC emacs-lisp
