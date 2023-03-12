@@ -975,29 +975,24 @@ This is the package that handles server installation and session management.
 ;     (gnus-topic-set-parameters "gmx" '((display . 200)))
 ;))
 #+END_SRC
-** logview
+** logview, itail
 #+BEGIN_SRC emacs-lisp
   (require 'logview)
   (setq log-view-update-interval 1)
   (setq auto-revert-tail-mode 1)
 
-;;  (defface my:logview-highlight
-;;    '((t :foreground "white" :background "blue"))
-;;    "Face for highlighting custom string in logview mode")
-;;
-;;  (defun my:logview-filter ()
-;;    "Filter log messages by keyword and highlight matches"
-;;    (interactive)
-;;    (let ((keyword (read-string "Enter keyword: ")))
-;;      (log-view-filter-apply
-;;       (lambda ()
-;;         (when (search-forward keyword nil t)
-;;           (add-text-properties (match-beginning 0) (match-end 0)
-;;                                '(face my:logview-highlight)))))))
-#+END_SRC
-** itail
-#+BEGIN_SRC emacs-lisp
   (require 'itail)
+
+  (defun my:set-highlight-regexp ()
+    ;;highlight-matching-lines-regexp
+    (highlight-regexp "gui" 'hi-yellow)
+    (highlight-regexp "client" 'hi-green)
+    (highlight-regexp "xxx" 'hi-salmon)
+    (highlight-regexp "error" 'hi-pink)
+    (highlight-regexp "state" 'hi-blue))
+
+  (add-hook 'itail-mode-hook 'my:set-highlight-regexp)
+  (add-hook 'logview-mode-hook 'my:set-highlight-regexp)
 #+END_SRC
 ** custom functions
 #+BEGIN_SRC emacs-lisp
