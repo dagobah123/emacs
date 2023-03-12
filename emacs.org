@@ -988,7 +988,7 @@ This is the package that handles server installation and session management.
     (highlight-regexp "gui" 'hi-yellow)
     (highlight-regexp "client" 'hi-green)
     (highlight-regexp "xxx" 'hi-salmon)
-    (highlight-regexp "error" 'hi-pink)
+    (highlight-matching-lines-regexp "crash" 'hi-pink)
     (highlight-regexp "state" 'hi-blue))
 
   (add-hook 'itail-mode-hook 'my:set-highlight-regexp)
