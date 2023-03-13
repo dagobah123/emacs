@@ -977,22 +977,37 @@ This is the package that handles server installation and session management.
 #+END_SRC
 ** logview, itail
 #+BEGIN_SRC emacs-lisp
+  (defun my:set-highlight-regexp ()
+    (highlight-regexp "gui" 'hi-green)
+    (highlight-regexp "client" 'hi-green)
+    (highlight-lines-matching-regexp "xxx" 'hi-aquamarine)
+    (highlight-lines-matching-regexp "memode" 'hi-blue-b)
+    (highlight-lines-matching-regexp "\"state\"" 'hi-blue-b)
+    (highlight-lines-matching-regexp "error" 'my:custom-face-alert)
+    (highlight-lines-matching-regexp "crash" 'my:custom-face-alert)
+    (highlight-lines-matching-regexp "->" 'hi-yellow)
+
+    ;;hi-aquamarine
+    ;;hi-black-b
+    ;;hi-black-hb
+    ;;hi-blue
+    ;;hi-blue-b
+    ;;hi-green
+    ;;hi-green-b
+    ;;hi-pink
+    ;;hi-red-b
+    ;;hi-salmon
+    ;;hi-yellow
+  )
+
   (require 'logview)
   (setq log-view-update-interval 1)
-  (setq auto-revert-tail-mode 1)
+  (add-hook 'logview-mode-hook 'my:set-highlight-regexp)
+  (add-hook 'logview-mode-hook 'auto-revert-tail-mode)
 
   (require 'itail)
-
-  (defun my:set-highlight-regexp ()
-    ;;highlight-matching-lines-regexp
-    (highlight-regexp "gui" 'hi-yellow)
-    (highlight-regexp "client" 'hi-green)
-    (highlight-regexp "xxx" 'hi-salmon)
-    (highlight-matching-lines-regexp "crash" 'hi-pink)
-    (highlight-regexp "state" 'hi-blue))
-
   (add-hook 'itail-mode-hook 'my:set-highlight-regexp)
-  (add-hook 'logview-mode-hook 'my:set-highlight-regexp)
+  (add-hook 'itail-mode-hook 'auto-revert-tail-mode)
 #+END_SRC
 ** custom functions
 #+BEGIN_SRC emacs-lisp
@@ -1192,6 +1207,14 @@ This is the package that handles server installation and session management.
     (vc-git-grep (read-from-minibuffer "Search for: ")
       "\*"
       "\*"))
+#+END_SRC
+** custom faces
+#+BEGIN_SRC emacs-lisp
+  (defface my:custom-face-alert
+    '((((class color)) (:foreground "white" :background "red" :bold t))
+      (t (:bold t)))
+    "Face description for my custom face"
+    :group 'my:faces)
 #+END_SRC
 ** key bindings, kbd
 #+BEGIN_SRC emacs-lisp
