@@ -39,7 +39,6 @@ The index of the current chiaroscuro theme.
                        itail
                        ivy
                        json-mode
-                       logview
                        magit
                        magit-find-file
                        move-text
@@ -975,7 +974,7 @@ This is the package that handles server installation and session management.
 ;     (gnus-topic-set-parameters "gmx" '((display . 200)))
 ;))
 #+END_SRC
-** logview, itail
+** itail
 #+BEGIN_SRC emacs-lisp
   (defun my:set-highlight-regexp ()
     (highlight-regexp "gui" 'hi-green)
@@ -1000,14 +999,8 @@ This is the package that handles server installation and session management.
     ;;hi-yellow
   )
 
-  (require 'logview)
-  (setq log-view-update-interval 1)
-  (add-hook 'logview-mode-hook 'my:set-highlight-regexp)
-  (add-hook 'logview-mode-hook 'auto-revert-tail-mode)
-
   (require 'itail)
   (add-hook 'itail-mode-hook 'my:set-highlight-regexp)
-  (add-hook 'itail-mode-hook 'auto-revert-tail-mode)
 #+END_SRC
 ** custom functions
 #+BEGIN_SRC emacs-lisp
