@@ -19,6 +19,8 @@ The index of the current chiaroscuro theme.
   (unless package-archive-contents (package-refresh-contents))
 
   (setq package-list '(all-the-icons
+                       arduino-cli-mode
+                       arduino-mode
                        bookmark-in-project
                        company
                        company-box
@@ -28,9 +30,10 @@ The index of the current chiaroscuro theme.
                        dired-narrow
                        elfeed
                        evil
+                       gnuplot
+                       go-mode
                        google-translate
                        goto-last-change
-                       gnuplot
                        helm-bm
                        helm-projectile
                        helm-swoop
