@@ -1204,6 +1204,15 @@ This is the package that handles server installation and session management.
       "\*"
       "\*"))
 #+END_SRC
+** ediff
+#+BEGIN_SRC emacs-lisp
+(setq ediff-split-window-function 'split-window-horizontally)
+#+END_SRC
+** chess
+#+BEGIN_SRC emacs-lisp
+(setq chess-default-piece-style 'xboard)
+(add-hook 'chess-mode-hook #'chess-graphics-mode)
+#+END_SRC
 ** custom faces
 #+BEGIN_SRC emacs-lisp
   (defface my:custom-face-alert
