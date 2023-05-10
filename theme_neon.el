@@ -31,24 +31,28 @@
 (defvar font-lock-blue)
 (defvar font-lock-red)
 
-(setq background-hl "#ff7f00")
+(setq background-hl "#491a6e")
 
-(setq text-hl "#40e0d0")
-(setq text-1  "#00b1b1")
-(setq text-2  "#b080b7")
-(setq text-3  "#40e0d0")
+(setq text-hl "#ef9d03")
+(setq text-1  "#999999")
+(setq text-2  "#997777")
+(setq text-3  "#24cbbb")
 
 (setq background-1 "#000000")
 (setq background-2 "#000000")
 (setq background-3 "#8b008b")
 (setq background-4 "#135d5d")
-(setq background-5 "#d16208")
+(setq background-5 "#5a4646")
 (setq background-6 "#042926")
 (setq background-7 "#02575c")
 
-(setq background-mode-line "#491a6e")
-(setq background-mode-line-active "#851085")
-(setq background-fringe "#3d165c")
+;;;(setq background-mode-line "#491a6e")
+;;;(setq background-mode-line-active "#851085")
+;;;(setq background-fringe "#3d165c")
+
+(setq background-mode-line "#332222")
+(setq background-mode-line-active "#332222")
+(setq background-fringe "#332222")
 
 (setq line-number-1 "#ef9d03")
 (setq line-number-2 "#000000")
