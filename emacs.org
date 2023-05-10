@@ -1281,7 +1281,7 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-x r 2") 'helm-register)
   (global-set-key (kbd "C-@") 'helm-register)
   (global-set-key (kbd "C-+") 'helm-filtered-bookmarks)
-  (global-set-key (kbd "C-{") 'hide-mode-line-mode)
+  (global-set-key (kbd "C-{") 'global-hide-mode-line-mode)
   (global-set-key (kbd "C-t") 'counsel-projectile-switch-to-buffer)
   (global-set-key (kbd "C-p") 'counsel-projectile-switch-project)
   (global-set-key (kbd "C-c u u") 'dap-java-run-test-class)
