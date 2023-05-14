@@ -1203,6 +1203,8 @@ This is the package that handles server installation and session management.
     (vc-git-grep (read-from-minibuffer "Search for: ")
       "\*"
       "\*"))
+
+  ;;;(grep-apply-setting 'grep-command "grep --color=auto -nH --null -e -r . --include *.java")
 #+END_SRC
 ** ediff
 #+BEGIN_SRC emacs-lisp

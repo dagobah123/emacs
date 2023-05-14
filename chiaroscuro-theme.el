@@ -16,8 +16,8 @@
 (defvar background-3                        "")
 (defvar background-4                        "")
 (defvar background-5                        "")
-(defvar background-magit-dark                        "")
-(defvar background-magit                        "")
+(defvar background-magit-dark               "")
+(defvar background-magit                    "")
 (defvar background-mode-line                "")
 (defvar background-mode-line-active         "")
 (defvar background-fringe                   "")
@@ -165,18 +165,18 @@
     (custom-theme-set-faces 'chiaroscuro
 
     ;base
-    `(default                  ((t (:foreground ,text-normal   :background ,background-1                ))))
-    `(cursor                   ((t (                      :background ,background-cursor           ))))
-    `(link                     ((t (:foreground ,text-normal   :underline t                             ))))
-    `(highlight                ((t (:foreground ,text-normal   :background unspecified                  ))))
+    `(default                  ((t (:foreground ,text-normal       :background ,background-1 ))))
+    `(cursor                   ((t (:background ,background-cursor                           ))))
+    `(link                     ((t (:foreground ,text-normal       :underline t              ))))
+    `(highlight                ((t (:foreground ,text-normal       :background unspecified   ))))
 
-    `(show-paren-match         ((t (:foreground ,text-highlight-1   :background unspecified                ))))
-    `(region                   ((t (:foreground ,text-highlight-1   :background ,background-5                ))))
-    `(cua-rectangle            ((t (:foreground ,text-highlight-1   :background ,background-5                ))))
+    `(show-paren-match         ((t (:foreground ,green-1           :background ,green-2      ))))
+    `(region                   ((t (:foreground ,yellow-1          :background ,yellow-2     ))))
+    `(cua-rectangle            ((t (:foreground ,red-1             :background ,red-2        ))))
 
     `(hl-line                  ((t (:foreground ,text-hl    :background ,background-hl                        ))))
-    `(fringe                   ((t (:foreground ,text-normal     :background ,background-fringe                    ))))
-    `(minibuffer-prompt        ((t (:foreground ,text-normal     :background ,background-1                         ))))
+    `(fringe                   ((t (:foreground ,text-normal     :background ,background-fringe               ))))
+    `(minibuffer-prompt        ((t (:foreground ,text-normal     :background ,background-1                    ))))
     `(ido-first-match          ((t (:foreground ,ivy-text   :background ,ivy-background              :bold t  ))))
     `(ido-only-match           ((t (:foreground ,ivy-text   :background ,ivy-background              :bold t  ))))
     `(lsp-face-highlight-read  ((t (:foreground ,text-match :background ,background-match            :bold t  ))))
