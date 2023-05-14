@@ -25,11 +25,15 @@
 (defvar background-mode-line)
 (defvar background-mode-line-active)
 
-(defvar text-1)
-(defvar text-2)
+(defvar text-normal)
+(defvar text-low)
+(defvar text-highlight-1)
+(defvar text-highlight-2)
 
-(setq text-1  "#000000")
-(setq text-2  "#000000")
+(setq text-normal "#000000")
+(setq text-low "#000000")
+(setq text-highlight-1 "#000000")
+(setq text-highlight-2 "#000000")
 
 (setq evil-emacs-1 "#611481") ;violet
 (setq evil-emacs-2 "#f0cdff") ;violet
