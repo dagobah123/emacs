@@ -54,7 +54,8 @@ The index of the current chiaroscuro theme.
                        telephone-line
                        treemacs-projectile
                        use-package
-                       which-key))
+                       which-key
+                       ztree))
 
   (dolist (package package-list)
     (unless (package-installed-p package) (package-install package)))
@@ -1209,6 +1210,10 @@ This is the package that handles server installation and session management.
 ** ediff
 #+BEGIN_SRC emacs-lisp
 (setq ediff-split-window-function 'split-window-horizontally)
+#+END_SRC
+** ztree
+#+BEGIN_SRC emacs-lisp
+(require 'ztree)
 #+END_SRC
 ** chess
 #+BEGIN_SRC emacs-lisp

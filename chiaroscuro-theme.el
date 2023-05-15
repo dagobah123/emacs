@@ -393,6 +393,13 @@
     `(ediff-odd-diff-B            ((t (:foreground ,text-ediff :background ,background-ediff          ))))
     `(ediff-odd-diff-C            ((t (:foreground ,text-ediff :background ,background-ediff          ))))
 
+    ;ztree
+    `(ztreep-diff-model-add-face       ((t (:foreground ,violet-1    :background ,violet-2                     ))))
+    `(ztreep-diff-model-diff-face      ((t (:foreground ,yellow-1    :background ,yellow-2                     ))))
+    `(ztreep-diff-model-ignored-face   ((t (:foreground ,blue-1      :background unspecified :strike-through t ))))
+    `(ztreep-diff-model-normal-face    ((t (:foreground ,text-normal :background unspecified                   ))))
+    `(ztreep-expand-sign-face          ((t (:foreground ,yellow-1    :background unspecified                   ))))
+
     ;diff
     `(diff-added                  ((t (:foreground ,text-diff-added   :background ,background-diff-added-highlight   ))))
     `(diff-removed                ((t (:foreground ,text-diff-removed :background ,background-diff-removed-highlight ))))
