@@ -336,7 +336,7 @@
     `(magit-keyword-squash              ((t (:foreground ,text-normal                                                                      ))))
 
     `(magit-diff-context                ((t (:foreground ,text-low            :background unspecified                                   ))))
-    `(magit-diff-context-highlight      ((t (:foreground ,text-normal            :background ,background-magit-dark                                 ))))
+    `(magit-diff-context-highlight      ((t (:foreground ,text-highlight-2            :background ,background-magit-dark                                 ))))
 
     `(magit-diff-hunk-region            ((t (:foreground ,text-normal            :background ,background-magit                                 ))))
     `(magit-diff-conflict-heading       ((t (:foreground ,text-normal            :background ,background-magit                                 ))))
@@ -473,7 +473,7 @@
     `(org-scheduled-today           ((t (:foreground ,green-1        :background unspecified                                                                              ))))
     `(org-sexp-date                 ((t (:foreground ,text-normal         :background unspecified                                                                              ))))
     `(org-special-keyword           ((t (:foreground ,blue-1         :background unspecified                                                                              ))))
-    `(org-table                     ((t (:foreground ,text-normal         :background ,background-4                                                                            ))))
+    `(org-table                     ((t (:foreground ,yellow-1       :background ,yellow-2                                                                            ))))
     `(org-table-header              ((t (:foreground ,green-1        :background ,green-2                                                                                 ))))
     `(org-tag                       ((t (:foreground ,blue-1         :background unspecified                                                                              ))))
     `(org-tag-group                 ((t (:foreground ,text-normal         :background unspecified                                                                              ))))
