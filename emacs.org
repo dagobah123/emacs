@@ -135,15 +135,20 @@ Load emacs-lisp file for custom changes.
   (setq which-key-side-window-max-height 0.9)
 
   ;; font size
+  (defvar default-font-size 0 "Global Emacs default font size")
+  (defvar font-size 0 "Global Emacs font size")
+  (setq font-size 200)
+  (setq default-font-size 200)
   (cond
    ((string-equal system-type "windows-nt")
-    (progn (set-face-attribute 'default nil :height 150)))
+    (progn (setq default-font-size 150) (setq font-size 150)))
    ((string-equal system-type "gnu/linux")
     (cond
      ((string-equal LINUX-VERSION "ubuntu")
-      (progn (set-face-attribute 'default nil :font "DejaVu Sans Mono-16")))
+      (progn (setq default-font-size 200) (setq font-size 200)))
      ((string-equal LINUX-VERSION "raspberrypi")
-      (progn (set-face-attribute 'default nil :font "DejaVu Sans Mono-24"))))))
+      (progn (setq default-font-size 300) (setq font-size 300))))))
+  (set-face-attribute 'default nil :height font-size)
 
   ;; do not show start-up screen
   (setq inhibit-startup-screen t)
@@ -608,7 +613,7 @@ This is the package that handles server installation and session management.
            ("C-&" . bm-show-all)))
   (require 'helm-bm)
   (global-set-key (kbd "C-*") 'helm-bm)
-  (global-set-key (kbd "C-!") 'bookmark-bmenu-list)
+  ;;;(global-set-key (kbd "C-!") 'bookmark-bmenu-list)
   (global-set-key (kbd "C-$") 'my:set-bookmark)
   (global-set-key (kbd "C-(") 'my:remove-bookmarks)
 
@@ -1205,6 +1210,24 @@ This is the package that handles server installation and session management.
       "\*"
       "\*"))
 
+  (defun my:reset-font-size ()
+    (interactive)
+    (setq font-size default-font-size)
+    (set-face-attribute 'default nil :height font-size))
+  (global-set-key (kbd "C-S-o") 'my:reset-font-size)
+
+  (defun my:decrease-font-size ()
+    (interactive)
+    (setq font-size (- font-size 20))
+    (set-face-attribute 'default nil :height font-size))
+  (global-set-key (kbd "C-!") 'my:decrease-font-size)
+
+  (defun my:increase-font-size ()
+    (interactive)
+    (setq font-size (+ font-size 20))
+    (set-face-attribute 'default nil :height font-size))
+  (global-set-key (kbd "C-@") 'my:increase-font-size)
+
   ;;;(grep-apply-setting 'grep-command "grep --color=auto -nH --null -e -r . --include *.java")
 #+END_SRC
 ** ediff
@@ -1251,7 +1274,7 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-S-<down>") 'my:next-java-method)
   (global-set-key (kbd "C-9") 'helm-imenu)
   (global-set-key (kbd "C-0") 'treemacs)
-  (global-set-key (kbd "C-=") 'lsp-headerline-breadcrumb-mode)
+  ;;;(global-set-key (kbd "C-=") 'lsp-headerline-breadcrumb-mode)
   (global-set-key (kbd "C-`") 'my:dired-projectile-search)
   (global-set-key (kbd "C-\\") 'my:vc-git-grep)
   (global-set-key (kbd "C-M-`") 'helm-projectile-grep)
@@ -1277,16 +1300,16 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "M-s d") 'swiper-helm)
   (global-set-key (kbd "C-s") 'swiper)
   (global-set-key (kbd "C-c d") 'lsp-ui-peek-find-definitions)
-  ;;(global-set-key (kbd "C-c i") 'lsp-ui-peek-find-implementation)
+  ;;;(global-set-key (kbd "C-c i") 'lsp-ui-peek-find-implementation)
   (global-set-key (kbd "C-c e") 'lsp-execute-code-action)
   (global-set-key (kbd "C-x b") 'ido-switch-buffer)
   (global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
   (global-set-key (kbd "C-<") '(lambda() (interactive) (scroll-right 10)))
   (global-set-key (kbd "C->") '(lambda() (interactive) (scroll-left 10)))
-  (global-set-key (kbd "C-#") 'global-hl-line-mode)
+  ;;;(global-set-key (kbd "C-#") 'global-hl-line-mode)
   (global-set-key (kbd "C-x r 1") 'copy-to-register)
   (global-set-key (kbd "C-x r 2") 'helm-register)
-  (global-set-key (kbd "C-@") 'helm-register)
+  ;;;(global-set-key (kbd "C-@") 'helm-register)
   (global-set-key (kbd "C-+") 'helm-filtered-bookmarks)
   (global-set-key (kbd "C-{") 'global-hide-mode-line-mode)
   (global-set-key (kbd "C-t") 'counsel-projectile-switch-to-buffer)
