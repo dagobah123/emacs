@@ -50,6 +50,7 @@ The index of the current chiaroscuro theme.
                        ox-jira
                        powershell
                        projectile
+                       rainbow-mode
                        swiper-helm
                        telephone-line
                        treemacs-projectile
@@ -760,6 +761,12 @@ This is the package that handles server installation and session management.
 
   ;;(use-package csharp-mode)
   ;;(require 'csharp-mode)
+#+END_SRC
+** rainbow-mode
+#+BEGIN_SRC emacs-lisp
+  (use-package rainbow-mode)
+  (require 'rainbow-mode)
+  (add-hook 'emacs-lisp-mode-hook 'rainbow-mode)
 #+END_SRC
 ** clock
 #+BEGIN_SRC emacs-lisp
