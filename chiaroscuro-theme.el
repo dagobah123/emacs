@@ -433,7 +433,7 @@
     `(org-headline-todo             ((t (:foreground ,text-normal    :background unspecified                                                                       ))))
     `(org-hide                      ((t (:foreground ,text-normal    :background unspecified                                                                       ))))
     `(org-latex-and-related         ((t (:foreground ,text-normal    :background unspecified                                                                       ))))
-                                                                                                                                                                    
+
     `(org-level-1                   ((t (:foreground ,text-low       :background unspecified           :bold t                                                     ))))
     `(org-level-2                   ((t (:foreground ,text-low       :background unspecified           :bold t                                                     ))))
     `(org-level-3                   ((t (:foreground ,text-low       :background unspecified           :bold t                                                     ))))
@@ -442,7 +442,7 @@
     `(org-level-6                   ((t (:foreground ,text-low       :background unspecified           :bold t                                                     ))))
     `(org-level-7                   ((t (:foreground ,text-low       :background unspecified           :bold t                                                     ))))
     `(org-level-8                   ((t (:foreground ,text-low       :background unspecified           :bold t                                                     ))))
-                                                                                                                                                                    
+
     `(org-link                      ((t (:foreground ,blue-1         :background unspecified           :bold t :underline t                                        ))))
     `(org-list-dt                   ((t (:foreground ,text-normal    :background unspecified                                                                       ))))
     `(org-macro                     ((t (:foreground ,text-normal    :background unspecified                                                                       ))))
@@ -561,6 +561,26 @@
     `(bm-persistent-face        ((t (:foreground ,red-1      :background ,red-2            ))))
 
     `(help-key-binding          ((t (:foreground ,yellow-1   :background ,yellow-2         ))))
+    `(error                     ((t (:foreground ,"#ff0000"                                ))))
+    ;;;`(warning                   ((t (:foreground ,"#ff0000"                                ))))
+    ;;;`(info                      ((t (:foreground ,"#ff0000"                                ))))
+    ;;;`(lsp-face-highlight        ((t (:foreground ,"#ff0000"                                ))))
+    ;;;`(lsp-face-highlight-read           ((t (:foreground ,"#ff0000"                                ))))
+    ;;;`(lsp-face-highlight-textual ((t (:foreground ,"#ff0000"                                ))))
+    ;;;`(lsp-face-highlight-write ((t (:foreground ,"#ff0000"                                ))))
+    ;;;`(lsp-face-highlight-symbol ((t (:foreground ,"#ff0000"                                ))))
+    ;;;`(lsp-face-highlight-readwrite ((t (:foreground ,"#ff0000"                                ))))
+    ;;;`(lsp-face-highlight-declaration ((t (:foreground ,"#ff0000"                                ))))
+    ;;;`(lsp-face-highlight-operator ((t (:foreground ,"#ff0000"                                ))))
+    ;;;`(lsp-face-highlight-type ((t (:foreground ,"#ff0000"                                ))))
+    ;;;`(lsp-face-highlight-reference ((t (:foreground ,"#ff0000"                                ))))
+    ;;;`(lsp-face-highlight-call ((t (:foreground ,"#ff0000"                                ))))
+    ;;;`(lsp-face-highlight-warning ((t (:foreground ,"#ff0000"                                ))))
+    ;;;`(lsp-face-highlight-error ((t (:foreground ,"#ff0000"                                ))))
+    ;;;`(lsp-face-highlight-inactive ((t (:foreground ,"#ff0000"                                ))))
+    ;;;`(lsp-flycheck-warning-deprecated-face ((t (:foreground ,"#ff0000"                                ))))
+    ;;;`(tooltip ((t (:foreground ,"#ff0000"                                ))))
+    ;;;`(lsp-diagnostics-header-face ((t (:foreground ,"#ff0000"                                ))))
 
   )
 

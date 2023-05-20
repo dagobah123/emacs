@@ -35,7 +35,7 @@
 (setq background-hl "#491a6e")
 
 (setq text-hl "#ef9d03")
-(setq text-normal "#999999")
+(setq text-normal "#bb9999") ;;;#ff9999
 (setq text-low "#997777")
 (setq text-highlight-1 "#24cbbb")
 (setq text-highlight-2 "#1e90ff")
