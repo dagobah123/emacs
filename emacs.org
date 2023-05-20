@@ -573,6 +573,14 @@ This is the package that handles server installation and session management.
     :hook ((c++-mode . lsp)))
   (use-package lsp-ui
     :commands lsp-ui-mode)
+  (require 'lsp-mode)
+  (add-hook 'c-mode-hook #'lsp)
+  (add-hook 'c++-mode-hook #'lsp)
+  (setq lsp-clients-clangd-executable "clangd-13")
+  ;;;sudo apt-get install clangd-13
+  ;;;sudo apt-get install clang-13
+  ;;;M-x compile
+  ;;;clang++-13 -Wall -std=c++11 -o output-file main.cpp
 #+END_SRC
 ** lsp python
 #+BEGIN_SRC emacs-lisp
