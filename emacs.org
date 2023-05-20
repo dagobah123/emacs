@@ -1306,7 +1306,7 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
   (global-set-key (kbd "C-<") '(lambda() (interactive) (scroll-right 10)))
   (global-set-key (kbd "C->") '(lambda() (interactive) (scroll-left 10)))
-  ;;;(global-set-key (kbd "C-#") 'global-hl-line-mode)
+  (global-set-key (kbd "C-#") 'global-hl-line-mode)
   (global-set-key (kbd "C-x r 1") 'copy-to-register)
   (global-set-key (kbd "C-x r 2") 'helm-register)
   ;;;(global-set-key (kbd "C-@") 'helm-register)
