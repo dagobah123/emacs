@@ -4,16 +4,16 @@
 
 (load-file "~/.emacs.d/theme_variables.el")
 
-(defvar gray-1)
-(defvar gray-2)
-(defvar green-1)
-(defvar green-2)
+(defvar color-gray-1)
+(defvar color-gray-2)
+(defvar color-green-1)
+(defvar color-green-2)
 (defvar ivy-background)
 (defvar ivy-text)
-(defvar orange-1)
-(defvar orange-2)
-(defvar red-1)
-(defvar red-2)
+(defvar color-orange-1)
+(defvar color-orange-2)
+(defvar color-red-1)
+(defvar color-red-2)
 (defvar text-buffer-id)
 (defvar text-constant)
 (defvar text-diff-added)
@@ -31,10 +31,10 @@
 (defvar text-type)
 (defvar text-variable)
 (defvar text-warning)
-(defvar violet-1)
-(defvar violet-2)
-(defvar yellow-1)
-(defvar yellow-2)
+(defvar color-violet-1)
+(defvar color-violet-2)
+(defvar color-yellow-1)
+(defvar color-yellow-2)
 (setq alert-1 "#ff6600")
 (setq alert-2 "#ee9966")
 (setq alert-3 "#cccccc")
@@ -54,34 +54,34 @@
 (setq background-magit-branch-local "#00de00")
 (setq background-magit-branch-remote "#ff2f2f")
 (setq background-match "#ffe2ff")
-(setq blue-1 "#1111ca")
-(setq blue-2 "#bcdfff")
-(setq evil-emacs-1 "#611481") ;violet
-(setq evil-emacs-2 "#f0cdff") ;violet
-(setq evil-insert-1 "#850b0b") ;red
-(setq evil-insert-2 "#ffc8c8") ;red
-(setq evil-motion-1 "#1111ca") ;blue
-(setq evil-motion-2 "#bcdfff") ;blue
-(setq evil-normal-1 "#113e00") ;green
-(setq evil-normal-2 "#d6ffc7") ;green
-(setq evil-operator-1 "#1111ca") ;blue
-(setq evil-operator-2 "#bcdfff") ;blue
-(setq evil-replace-1 "#7b2d06") ;orange
-(setq evil-replace-1 "#d6ffc7") ;red
-(setq evil-replace-2 "#850b0b") ;red
-(setq evil-replace-2 "#ffce82") ;orange
-(setq evil-visual-1 "#645900") ;yellow
-(setq evil-visual-2 "#fff190") ;yellow
-(setq gray-1 "#333333")
-(setq gray-2 "#dddddd")
-(setq green-1 "#113e00")
-(setq green-2 "#d6ffc7")
+(setq color-blue-1 "#1111ca")
+(setq color-blue-2 "#bcdfff")
+(setq evil-emacs-1 "#611481")
+(setq evil-emacs-2 "#f0cdff")
+(setq evil-insert-1 "#850b0b")
+(setq evil-insert-2 "#ffc8c8")
+(setq evil-motion-1 "#1111ca")
+(setq evil-motion-2 "#bcdfff")
+(setq evil-normal-1 "#113e00")
+(setq evil-normal-2 "#d6ffc7")
+(setq evil-operator-1 "#1111ca")
+(setq evil-operator-2 "#bcdfff")
+(setq evil-replace-1 "#7b2d06")
+(setq evil-replace-1 "#d6ffc7")
+(setq evil-replace-2 "#850b0b")
+(setq evil-replace-2 "#ffce82")
+(setq evil-visual-1 "#645900")
+(setq evil-visual-2 "#fff190")
+(setq color-gray-1 "#333333")
+(setq color-gray-2 "#dddddd")
+(setq color-green-1 "#113e00")
+(setq color-green-2 "#d6ffc7")
 (setq ivy-background "#ffff00")
 (setq ivy-text "#000000")
-(setq orange-1 "#7b2d06")
-(setq orange-2 "#ffce82")
-(setq red-1 "#850b0b")
-(setq red-2 "#ffc8c8")
+(setq color-orange-1 "#7b2d06")
+(setq color-orange-2 "#ffce82")
+(setq color-red-1 "#850b0b")
+(setq color-red-2 "#ffc8c8")
 (setq text-constant "#994410")
 (setq text-diff-added "#22aa22")
 (setq text-diff-removed "#aa2222")
@@ -98,9 +98,9 @@
 (setq text-type "#bb0606")
 (setq text-variable "#0e4ae5")
 (setq text-warning "#ff0000")
-(setq violet-1 "#611481")
-(setq violet-2 "#f0cdff")
-(setq yellow-1 "#645900")
-(setq yellow-2 "#fff190")
+(setq color-violet-1 "#611481")
+(setq color-violet-2 "#f0cdff")
+(setq color-yellow-1 "#645900")
+(setq color-yellow-2 "#fff190")
 
 ;;; theme_default_light.el ends here

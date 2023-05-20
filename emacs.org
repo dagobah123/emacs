@@ -2,7 +2,7 @@
 ** global variables
 The index of the current chiaroscuro theme.
 #+BEGIN_SRC emacs-lisp
-  (setq CHIAROSCURO-INDEX 0)
+  (setq INDEX-CHIAROSCURO 0)
 #+END_SRC
 ** package archives
 #+BEGIN_SRC emacs-lisp
@@ -1376,21 +1376,21 @@ This is the package that handles server installation and session management.
   (defun my:reset-themes-index()
     (interactive)
     (setq theme-index 0)
-    (setq CHIAROSCURO-INDEX 0)
+    (setq INDEX-CHIAROSCURO 0)
     (my:disable-themes))
   (global-set-key (kbd "C-5") 'my:reset-themes-index)
 
   (defun my:theme-down()
     (interactive)
     (setq theme-index (- theme-index 1))
-    (setq CHIAROSCURO-INDEX (- CHIAROSCURO-INDEX 1))
+    (setq INDEX-CHIAROSCURO (- INDEX-CHIAROSCURO 1))
     (my:toggle-themes))
   (global-set-key (kbd "C-x 6") 'my:theme-down)
 
   (defun my:theme-up()
     (interactive)
     (setq theme-index (+ theme-index 1))
-    (setq CHIAROSCURO-INDEX (+ CHIAROSCURO-INDEX 1))
+    (setq INDEX-CHIAROSCURO (+ INDEX-CHIAROSCURO 1))
     (my:toggle-themes))
   (global-set-key (kbd "C-~") 'my:theme-up)
 
@@ -1416,14 +1416,14 @@ This is the package that handles server installation and session management.
     (if (eq theme-index 0)
         (progn (message "emacs")
                (setq theme-index 0)
-               (setq CHIAROSCURO-INDEX 0)))
+               (setq INDEX-CHIAROSCURO 0)))
 
     (my:loop)
 
     (if (> theme-index number-of-themes)
         (progn (message "emacs")
                (setq theme-index 0)
-               (setq CHIAROSCURO-INDEX 0))))
+               (setq INDEX-CHIAROSCURO 0))))
 #+END_SRC
 ** dap-debug template
 #+BEGIN_SRC emacs-lisp
@@ -1484,7 +1484,7 @@ See https://nullprogram.com/blog/2013/02/06/
 #+END_SRC
 ** change theme on startup and maximize the frame in Windows
 #+BEGIN_SRC emacs-lisp
-  (setq CHIAROSCURO-INDEX 0)
+  (setq INDEX-CHIAROSCURO 0)
   ;(my:maximize-frame)
   (toggle-frame-maximized)
 
