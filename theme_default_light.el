@@ -42,7 +42,7 @@
 (setq background-current-diff-A "#ffdddd")
 (setq background-current-diff-B "#ddffdd")
 (setq background-current-diff-C "#ffffaa")
-(setq background-cursor "#000000")
+(setq background-cursor "#00ff00")
 (setq background-diff-added "#ddffdd")
 (setq background-diff-added-highlight "#cceecc")
 (setq background-diff-removed "#ffdddd")

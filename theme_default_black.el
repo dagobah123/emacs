@@ -11,7 +11,7 @@
 (setq background-current-diff-A "#e83434")
 (setq background-current-diff-B "#62ac48")
 (setq background-current-diff-C "#bcaa31")
-(setq background-cursor "#009900")
+(setq background-cursor "#00ff00")
 (setq background-diff-added "#386329")
 (setq background-diff-added-highlight "#62ac48")
 (setq background-diff-removed "#a32424")

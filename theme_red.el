@@ -5,7 +5,6 @@
 (load-file "~/.emacs.d/theme_variables.el")
 
 (setq background-1 "#000000")
-(setq background-2 "#000000")
 (setq background-3 "#440000")
 (setq background-4 "#550000")
 (setq background-5 "#330000")

@@ -16,7 +16,7 @@
 (setq INDEX-CARAVAGGIO 10)
 (setq INDEX-RED        11)
 
-(setq background-hl "#e8f2fe")
+;;;(setq background-hl "#e8f2fe")
 
 (if (> INDEX-CHIAROSCURO INDEX-CONSOLE)
 
@@ -76,7 +76,8 @@
     `(ido-only-match           ((t (:foreground ,ivy-text          :background ,ivy-background    :bold t ))))
     `(lsp-face-highlight-read  ((t (:foreground ,text-match        :background ,background-match  :bold t ))))
     `(lsp-face-highlight-write ((t (:foreground ,text-match        :background ,background-match  :bold t ))))
-    `(eshell-prompt            ((t (:foreground ,text-low          :background ,background-1      :bold t ))))
+    `(eshell-prompt            ((t (:foreground ,color-violet-1    :background ,background-1      :bold t ))))
+    `(comint-highlight-prompt  ((t (:foreground ,color-violet-1    :background ,background-1      :bold t ))))
     `(secondary-selection      ((t (:foreground ,color-blue-1      :background ,color-blue-2      :bold t ))))
     `(git-commit-summary       ((t (:foreground ,color-blue-1      :background ,color-blue-2              ))))
 
@@ -248,7 +249,7 @@
     `(magit-reflog-rebase               ((t (:foreground ,text-normal                                                                                                 ))))
     `(magit-reflog-remote               ((t (:foreground ,text-normal                                                                                                 ))))
     `(magit-reflog-reset                ((t (:foreground ,text-normal                                                                                                 ))))
-
+ 
     `(smerge-upper                      ((t (:foreground ,text-ediff        :background ,background-current-diff-A                                                    ))))
     `(smerge-lower                      ((t (:foreground ,text-ediff        :background ,background-current-diff-B                                                    ))))
     `(smerge-markers                    ((t (:foreground ,text-ediff        :background ,background-current-diff-C                                                    ))))
@@ -303,7 +304,7 @@
     `(org-agenda-restriction-lock   ((t (:foreground ,text-normal                                                                                                  ))))
     `(org-agenda-structure          ((t (:foreground ,text-low                                                                                                     ))))
     `(org-archived                  ((t (:foreground ,text-normal    :background ,background-1                                                                     ))))
-    `(org-block                     ((t (:foreground ,text-normal    :background ,background-2                                                                     ))))
+    `(org-block                     ((t (:foreground ,text-normal    :background unspecified                                                                       ))))
     `(org-block-begin-line          ((t (:foreground ,text-low       :background unspecified                                                                       ))))
     `(org-block-end-line            ((t (:foreground ,text-low       :background unspecified                                                                       ))))
     `(org-checkbox                  ((t (:foreground ,color-green-1  :background unspecified                                                                       ))))
