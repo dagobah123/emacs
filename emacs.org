@@ -1255,8 +1255,8 @@ This is the package that handles server installation and session management.
 #+END_SRC
 ** chess
 #+BEGIN_SRC emacs-lisp
-(setq chess-default-piece-directory "/home/pi/source/emacs/xboard/")
-(setq chess-default-piece-size 25)
+(setq chess-images-directory "/home/pi/source/emacs/xboard/")
+(setq chess-images-default-size 50)
 #+END_SRC
 ** plantuml
 #+BEGIN_SRC emacs-lisp
