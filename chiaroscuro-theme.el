@@ -227,6 +227,8 @@
     `(magit-diff-hunk-heading           ((t (:foreground ,text-normal       :background ,background-magit                                                             ))))
     `(magit-diff-hunk-heading-selection ((t (:foreground ,text-highlight-2  :background ,background-magit                                                             ))))
     `(magit-diff-hunk-heading-highlight ((t (:foreground ,text-highlight-2  :background ,background-magit                                                             ))))
+    `(diff-header                       ((t (:foreground ,text-highlight-2  :background ,background-magit                                                             ))))
+    `(diff-file-header                  ((t (:foreground ,text-highlight-1  :background ,background-magit                  :bold t                                    ))))
 
     `(magit-diff-whitespace-warning     ((t (:foreground ,text-normal       :background ,text-error                                                                   ))))
 
@@ -281,7 +283,9 @@
 
     ;diff
     `(diff-added             ((t (:foreground ,text-diff-added   :background ,background-diff-added-highlight   ))))
+    `(diff-refine-added      ((t (:foreground ,text-diff-added   :background ,background-diff-added-highlight   ))))
     `(diff-removed           ((t (:foreground ,text-diff-removed :background ,background-diff-removed-highlight ))))
+    `(diff-refine-removed    ((t (:foreground ,text-diff-removed :background ,background-diff-removed-highlight ))))
     `(diff-indicator-added   ((t (:foreground ,text-diff-added   :background ,background-diff-added-highlight   ))))
     `(diff-indicator-removed ((t (:foreground ,text-diff-removed :background ,background-diff-removed-highlight ))))
 
