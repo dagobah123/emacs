@@ -146,9 +146,9 @@ Load emacs-lisp file for custom changes.
    ((string-equal system-type "gnu/linux")
     (cond
      ((string-equal LINUX-VERSION "ubuntu")
-      (progn (setq default-font-size 200) (setq font-size 200)))
+      (progn (setq default-font-size 180) (setq font-size 180)))
      ((string-equal LINUX-VERSION "raspberrypi")
-      (progn (setq default-font-size 300) (setq font-size 300))))))
+      (progn (setq default-font-size 200) (setq font-size 200))))))
   (set-face-attribute 'default nil :height font-size)
 
   ;; do not show start-up screen
@@ -290,8 +290,7 @@ Load emacs-lisp file for custom changes.
   (require 'evil)
   (evil-mode 1)
 
-  (evil-set-initial-state 'Info-mode 'emacs)
-  (setq-default evil-default-state 'emacs)
+  (setq evil-default-state 'emacs)
 
   (use-package telephone-line)
   (require 'telephone-line)
@@ -1288,8 +1287,8 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-S-<up>") 'my:prev-java-method)
   (global-set-key (kbd "C-S-<down>") 'my:next-java-method)
   (global-set-key (kbd "C-9") 'helm-imenu)
+  (global-set-key (kbd "C-=") 'lsp-ui-imenu)
   (global-set-key (kbd "C-0") 'treemacs)
-  ;;;(global-set-key (kbd "C-=") 'lsp-headerline-breadcrumb-mode)
   (global-set-key (kbd "C-`") 'my:dired-projectile-search)
   (global-set-key (kbd "C-\\") 'my:vc-git-grep)
   (global-set-key (kbd "C-M-`") 'helm-projectile-grep)
