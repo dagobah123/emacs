@@ -30,6 +30,7 @@ The index of the current chiaroscuro theme.
                        dired-narrow
                        elfeed
                        evil
+                       evil-mc
                        git-gutter
                        gnuplot
                        go-mode
@@ -699,7 +700,7 @@ This is the package that handles server installation and session management.
 #+END_SRC
 ** nov
 #+BEGIN_SRC emacs-lisp
-  (defun my:nov-visual-line-mode()
+  (defun my:nov-visual-line-mode ()
     (interactive)
     (visual-line-mode))
 
@@ -1269,6 +1270,11 @@ This is the package that handles server installation and session management.
 (add-to-list 'org-src-lang-modes '("plantuml" . plantuml))
 (org-babel-do-load-languages 'org-babel-load-languages '((plantuml . t)))
 #+END_SRC
+** evil-mc
+#+BEGIN_SRC emacs-lisp
+  (require 'evil-mc)
+  (global-evil-mc-mode 1)
+#+END_SRC
 ** custom faces
 #+BEGIN_SRC emacs-lisp
   (defface my:custom-face-alert
@@ -1374,35 +1380,35 @@ This is the package that handles server installation and session management.
   (setq theme-index 0)
   (setq number-of-themes (length themes-list))
 
-  (defun my:disable-themes()
+  (defun my:disable-themes ()
     (interactive)
     (setq loop-index 0)
     (while (< loop-index number-of-themes)
       (disable-theme (nth loop-index themes-list))
       (setq loop-index (+ loop-index 1))))
 
-  (defun my:reset-themes-index()
+  (defun my:reset-themes-index ()
     (interactive)
     (setq theme-index 0)
     (setq INDEX-CHIAROSCURO 0)
     (my:disable-themes))
   (global-set-key (kbd "C-5") 'my:reset-themes-index)
 
-  (defun my:theme-down()
+  (defun my:theme-down ()
     (interactive)
     (setq theme-index (- theme-index 1))
     (setq INDEX-CHIAROSCURO (- INDEX-CHIAROSCURO 1))
     (my:toggle-themes))
   (global-set-key (kbd "C-x 6") 'my:theme-down)
 
-  (defun my:theme-up()
+  (defun my:theme-up ()
     (interactive)
     (setq theme-index (+ theme-index 1))
     (setq INDEX-CHIAROSCURO (+ INDEX-CHIAROSCURO 1))
     (my:toggle-themes))
   (global-set-key (kbd "C-~") 'my:theme-up)
 
-  (defun my:loop()
+  (defun my:loop ()
     (interactive)
     (setq loop-index 1)
     (setq themes-list-index 0)
@@ -1414,7 +1420,7 @@ This is the package that handles server installation and session management.
       (setq loop-index (+ loop-index 1))
       (setq themes-list-index (+ themes-list-index 1))))
 
-  (defun my:toggle-themes()
+  (defun my:toggle-themes ()
     (interactive)
     (my:disable-themes)
 
@@ -1459,7 +1465,7 @@ This is the package that handles server installation and session management.
     "Custom mode for following logs.")
   (add-hook 'my-logger-mode-hook 'my:my-logger-colorize-background)
 
-  (defun my:my-logger-colorize-background()
+  (defun my:my-logger-colorize-background ()
   (interactive)
     (highlight-regexp "treemacs")
     ;;(setq buffer-face-mode-face '(:background "red"))
@@ -1496,13 +1502,13 @@ See https://nullprogram.com/blog/2013/02/06/
   ;(my:maximize-frame)
   (toggle-frame-maximized)
 
-  (defun my:night-theme()
+  (defun my:night-theme ()
     (interactive)
     (my:theme-up)
     (my:theme-up)
     (my:theme-up))
 
-  (defun my:day-theme()
+  (defun my:day-theme ()
     (interactive)
     (my:theme-up))
 
