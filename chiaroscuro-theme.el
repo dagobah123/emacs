@@ -251,7 +251,13 @@
     `(magit-reflog-rebase               ((t (:foreground ,text-normal                                                                                                 ))))
     `(magit-reflog-remote               ((t (:foreground ,text-normal                                                                                                 ))))
     `(magit-reflog-reset                ((t (:foreground ,text-normal                                                                                                 ))))
- 
+
+    `(git-gutter:added                  ((t (:foreground ,color-green-1     :background ,color-green-2                     :bold t                                    ))))
+    `(git-gutter:deleted                ((t (:foreground ,color-red-1       :background ,color-red-2                       :bold t                                    ))))
+    `(git-gutter:modified               ((t (:foreground ,color-green-1     :background ,color-green-2                     :bold t                                    ))))
+    `(git-gutter:separator              ((t (:foreground ,color-violet-1    :background ,color-violet-2                    :bold t                                    ))))
+    `(git-gutter:unchanged              ((t (:foreground ,color-blue-1      :background ,color-blue-2                      :bold t                                    ))))
+
     `(smerge-upper                      ((t (:foreground ,text-ediff        :background ,background-current-diff-A                                                    ))))
     `(smerge-lower                      ((t (:foreground ,text-ediff        :background ,background-current-diff-B                                                    ))))
     `(smerge-markers                    ((t (:foreground ,text-ediff        :background ,background-current-diff-C                                                    ))))
