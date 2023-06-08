@@ -38,6 +38,7 @@ The index of the current chiaroscuro theme.
                        helm-projectile
                        helm-swoop
                        hide-mode-line
+                       highlight
                        ibuffer-vc
                        itail
                        ivy
@@ -172,7 +173,7 @@ Load emacs-lisp file for custom changes.
 ** behavior
 #+BEGIN_SRC emacs-lisp
   ;; use regular copy paste commands
-  (cua-mode t)
+  (cua-mode 0)
 
   ;; scrolling up and down one line
   (global-set-key (kbd "C-<down>") 'scroll-up-line)
@@ -1331,6 +1332,9 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-c u u") 'dap-java-run-test-class)
   (global-set-key (kbd "C-c u t") 'dap-java-run-test-method)
   (global-set-key (kbd "C-c i") 'ibuffer)
+  (global-set-key (kbd "C-c 1") 'hlt-highlight)
+  (global-set-key (kbd "C-c 2") 'hlt-unhighlight-region)
+  (global-set-key (kbd "C-c 3") 'hlt-highlight-symbol)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp

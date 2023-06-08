@@ -63,7 +63,7 @@
     `(default                  ((t (:foreground ,text-normal       :background ,background-1              ))))
     `(cursor                   ((t (:background ,background-cursor                                        ))))
     `(link                     ((t (:foreground ,text-normal                                 :underline t ))))
-    `(highlight                ((t (:foreground ,text-normal       :background unspecified                ))))
+    `(highlight                ((t (:foreground ,color-yellow-1    :background ,color-yellow-2            ))))
 
     `(show-paren-match         ((t (:foreground ,color-green-1     :background ,color-green-2             ))))
     `(region                   ((t (:foreground ,color-yellow-1    :background ,color-yellow-2            ))))
