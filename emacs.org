@@ -1,11 +1,8 @@
 * emacs
-** global variables
-The index of the current chiaroscuro theme.
+** archives
 #+BEGIN_SRC emacs-lisp
   (setq INDEX-CHIAROSCURO 0)
-#+END_SRC
-** package archives
-#+BEGIN_SRC emacs-lisp
+
   (package-initialize)
 
   (require 'package)
@@ -13,164 +10,6 @@ The index of the current chiaroscuro theme.
   (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                            ("elpa" . "https://elpa.gnu.org/packages/")
                            ("org" . "https://orgmode.org/elpa/")))
-#+END_SRC
-** package initialize
-#+BEGIN_SRC emacs-lisp
-  (unless package-archive-contents (package-refresh-contents))
-
-  (setq package-list '(all-the-icons
-                       arduino-cli-mode
-                       arduino-mode
-                       bookmark-in-project
-                       company
-                       company-box
-                       counsel
-                       counsel-projectile
-                       counsel-web
-                       dired-narrow
-                       elfeed
-                       evil
-                       evil-mc
-                       git-gutter
-                       gnuplot
-                       go-mode
-                       google-translate
-                       goto-last-change
-                       helm-bm
-                       helm-projectile
-                       helm-swoop
-                       hide-mode-line
-                       highlight
-                       ibuffer-vc
-                       itail
-                       ivy
-                       json-mode
-                       magit
-                       magit-find-file
-                       move-text
-                       nov
-                       openwith
-                       ox-jira
-                       powershell
-                       projectile
-                       rainbow-mode
-                       swiper-helm
-                       telephone-line
-                       treemacs-projectile
-                       use-package
-                       which-key
-                       ztree))
-
-  (dolist (package package-list)
-    (unless (package-installed-p package) (package-install package)))
-#+END_SRC
-** environment setup
-Load environment variables properly by installing *exec-path-from-shell*.
-#+BEGIN_SRC emacs-lisp
-  (use-package exec-path-from-shell :ensure t)
-  (exec-path-from-shell-initialize)
-#+END_SRC
-** os specific settings
-Load emacs-lisp file for linux or windows.
-Load emacs-lisp file for custom changes.
-#+BEGIN_SRC emacs-lisp
-  (cond
-   ((eq system-type 'gnu/linux) (load (concat EMACS-HOME "linux")))
-   ((eq system-type 'windows-nt) (load (concat EMACS-HOME "windows")))
-   (t (load-library "default")))
-  (load (concat EMACS-HOME "custom"))
-#+END_SRC
-** look
-#+BEGIN_SRC emacs-lisp
-  ;; disable menu bar
-  (menu-bar-mode 0)
-
-  ;; disable tool bar
-  (tool-bar-mode 0)
-
-  ;; disable scroll bar
-  (scroll-bar-mode 0)
-
-  ;; set width of fringe
-  (fringe-mode '(20 . 20))
-  (defvar my:fringe 1)
-
-  ;; setup cache folder to prevent temporary files to clutter projects
-  (setq user-cache-directory (concat EMACS-HOME "cache"))
-  ;;(setq backup-directory-alist '(("." . '(expand-file-name "backups" user-cache-directory))))
-  ;;(setq url-history-file (expand-file-name "url/history" user-cache-directory))
-  ;;(setq auto-save-list-file-prefix (expand-file-name "auto-save-list/.saves-" user-cache-directory))
-  ;;(setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-directory))
-
-  ;; cursor blinks forever
-  (setq blink-cursor-blinks 0)
-
-  ;; set line number mode and kbd to show them
-  (setq display-line-numbers-type 'relative)
-  (global-set-key (kbd "C-7") 'global-display-line-numbers-mode)
-
-  ;; use hl line
-  (global-hl-line-mode -1)
-
-  ;; 4 spaces indentation
-  (setq c-default-style "linux" c-basic-offset 4)
-
-  ;; disable tabs
-  (setq-default indent-tabs-mode nil)
-  (setq-default tab-width 4)
-  (defun my:indent-tabs-mode ()
-    (setq indent-tabs-mode nil))
-  (add-hook 'c++-mode-hook #'my:indent-tabs-mode)
-  (add-hook 'java-mode-hook #'my:indent-tabs-mode)
-
-  (setq whitespace-line-column 1000)
-
-  ;; clock
-  (display-time)
-
-  ;; ask for y/n instead of yes/no
-  (fset 'yes-or-no-p 'y-or-n-p)
-
-  ;; confirm before closing emacs
-  (setq confirm-kill-emacs 'y-or-n-p)
-
-  ;; increase height of which-key
-  (setq max-mini-window-height 0.9)
-  (setq which-key-side-window-max-height 0.9)
-
-  ;; font size
-  (defvar default-font-size 0 "Global Emacs default font size")
-  (defvar font-size 0 "Global Emacs font size")
-  (setq font-size 200)
-  (setq default-font-size 200)
-  (cond
-   ((string-equal system-type "windows-nt")
-    (progn (setq default-font-size 150) (setq font-size 150)))
-   ((string-equal system-type "gnu/linux")
-    (cond
-     ((string-equal LINUX-VERSION "ubuntu")
-      (progn (setq default-font-size 180) (setq font-size 180)))
-     ((string-equal LINUX-VERSION "raspberrypi")
-      (progn (setq default-font-size 200) (setq font-size 200))))))
-  (set-face-attribute 'default nil :height font-size)
-
-  ;; do not show start-up screen
-  (setq inhibit-startup-screen t)
-
-  ;;(setq initial-buffer-choice 'my:agenda-view)
-  ;;(setq initial-buffer-choice 'my:start-screen)
-
-  ;; https://www.masteringemacs.org/article/maximizing-emacs-startup
-  ;; The code will only execute on Windows, and it works by sending a WM_SYSCOMMAND window message to
-  ;; itself, telling it to maximize. The magic number 61488 is a constant declared as SC_MAXIMIZED.
-  ;(defun my:maximize-frame ()
-  ;  "Maximizes the active frame in Windows"
-  ;  (interactive)
-  ;  ;; Send a `WM_SYSCOMMAND' message to the active frame with the
-  ;  ;; `SC_MAXIMIZE' parameter.
-  ;  (when (eq system-type 'windows-nt)
-  ;    (w32-send-sys-command 61488)))
-  ;(add-hook 'window-setup-hook 'maximize-frame t)
 #+END_SRC
 ** behavior
 #+BEGIN_SRC emacs-lisp
@@ -222,597 +61,57 @@ Load emacs-lisp file for custom changes.
 
   (setq sentence-end-double-space nil)
 #+END_SRC
-** org mode
+** bookmark-in-project
 #+BEGIN_SRC emacs-lisp
-  (setq org-directory "~/source/org-mode/")
-  (setq org-default-notes-file (concat org-directory "/org-capture.org"))
-  (global-set-key (kbd "C-c a") 'org-agenda)
-  (global-set-key (kbd "C-c c") 'org-capture)
-  (global-set-key (kbd "C-c s") 'org-schedule)
-  (global-set-key (kbd "C-c l") 'org-store-link)
-  (global-set-key (kbd "C-c o") 'org-switchb)
-
-  (load (concat EMACS-HOME "agenda"))
-
-  (setq org-priority-faces '((?A . (:foreground "white" :background "red3"        :weight 'bold))
-                             (?B . (:foreground "white" :background "DarkOrange1" :weight 'bold))
-                             (?C . (:foreground "white" :background "green4"      :weight 'bold))))
-
-  (setq org-startup-folded 'showeverything)
-
-;;;  (setq org-agenda-custom-commands
-;;;        '(("x" agenda)
-;;;          ("y" agenda*)
-;;;          ("w" todo "TODO")
-;;;          ("W" todo-tree "TODO")
-;;;          ("1" todo-tree "DONE")
-;;;          ("2" todo-tree "IN-PROGRESS")
-;;;          ("u" tags "+boss-urgent")
-;;;          ("v" tags-todo "+boss-urgent")
-;;;          ("U" tags-tree "+boss-urgent")
-;;;          ("f" occur-tree "\\<FIXME\\>")
-;;;          ("h" . "HOME+Name tags searches") ;description for "h" prefix
-;;;          ("hl" tags "+home+Lisa")
-;;;          ("hp" tags "+home+Peter")
-;;;          ("hk" tags "+home+Kim")))
-
-  (setq org-support-shift-select 'always)
-  (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "|" "DONE")))
-  (setq org-tags-column 0)
-  (setq org-adapt-indentation nil)
-
-  (setq org-latex-pdf-process '("latexmk -f -pdf %f"))
-
-  (setq org-image-actual-width (list 500))
-
-  (setq org-publish-project-alist
-      '(("org-mode-notes-emacs"
-         :base-directory "~/source/org-mode/notes/emacs/"
-         :base-extension "org"
-         :publishing-directory "~/publish/emacs/"
-         :recursive t
-         :publishing-function org-html-publish-to-html
-         :headline-levels 4
-         :auto-preamble t)
-
-        ("org-mode-notes-emacs-static"
-         :base-directory "~/source/org-mode/notes/emacs/"
-         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
-         :publishing-directory "~/publish/emacs/"
-         :recursive t
-         :publishing-function org-publish-attachment)
-
-        ("org-mode-notes-development"
-         :base-directory "~/source/org-mode/notes/development/"
-         :base-extension "org"
-         :publishing-directory "~/publish/development/"
-         :recursive t
-         :publishing-function org-html-publish-to-html
-         :headline-levels 4
-         :auto-preamble t)
-
-        ("org-mode-notes-development-static"
-         :base-directory "~/source/org-mode/notes/development/"
-         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
-         :publishing-directory "~/publish/development/"
-         :recursive t
-         :publishing-function org-publish-attachment)
-
-        ("org" :components ("org-mode-notes-emacs"
-                            "org-mode-notes-emacs-static"
-                            "org-mode-notes-development"
-                            "org-mode-notes-development-static"))))
-#+END_SRC
-** evil
-#+BEGIN_SRC emacs-lisp
-  (use-package evil)
-  (require 'evil)
-  (evil-mode 1)
-
-  (setq evil-default-state 'emacs)
-
-  (use-package telephone-line)
-  (require 'telephone-line)
-
-  (setq telephone-line-primary-left-separator    'telephone-line-flat
-        telephone-line-secondary-left-separator  'telephone-line-flat
-        telephone-line-primary-right-separator   'telephone-line-flat
-        telephone-line-secondary-right-separator 'telephone-line-flat)
-
-  (setq telephone-line-evil-use-short-tag t)
-
-  (setq telephone-line-lhs
-      '((evil . (telephone-line-evil-tag-segment))
-        (nil  . (telephone-line-buffer-segment))
-        (nil  . (telephone-line-vc-segment
-                 telephone-line-erc-modified-channels-segment))
-        (nil  . (telephone-line-projectile-segment))))
-
-  (setq telephone-line-rhs
-      '((nil  . (telephone-line-misc-info-segment))
-        (nil  . (telephone-line-major-mode-segment))
-        (nil  . (telephone-line-airline-position-segment))))
-
-  ;; all configurations must be set before this line
-  ;; https://github.com/dbordak/telephone-line/blob/master/examples.org
-  (telephone-line-mode 1)
-#+END_SRC
-** mode line
-#+BEGIN_SRC emacs-lisp
-  (require 'hide-mode-line)
-#+END_SRC
-** projectile
-#+BEGIN_SRC emacs-lisp
-  (use-package projectile)
-
-  (unless (package-installed-p 'projectile)
-  (package-install 'projectile))
-
-  (require 'projectile)
-  (setq projectile-indexing-method 'alien)
-  (projectile-global-mode)
-  (projectile-mode t)
-  (global-set-key (kbd "C-x p") 'helm-projectile-switch-project)
-  (global-set-key (kbd "C-x o") 'helm-projectile-find-file)
-  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-#+END_SRC
-** ibuffer-vc
-#+BEGIN_SRC emacs-lisp
-   (add-hook 'ibuffer-hook
-     (lambda ()
-       (ibuffer-vc-set-filter-groups-by-vc-root)
-       (unless (eq ibuffer-sorting-mode 'alphabetic)
-         (ibuffer-do-sort-by-alphabetic))))
-#+END_SRC
-** helm
-#+BEGIN_SRC emacs-lisp
-  (use-package helm
-    :ensure t
-    :init
-    (helm-mode t)
-    (progn (setq helm-buffers-fuzzy-matching t))
-    :bind
-    (("M-x" . helm-M-x))
-    (("C-c k r" . helm-show-kill-ring))
-    (("C-c h" . helm-grep-do-git-grep))
-    (("C-r"   . helm-swoop))
-    (("C-c b" . helm-buffers-list))
-    (("C-c r" . helm-bookmarks))
-    (("C-c i" . helm-mini))
-    (("C-c q" . helm-info)))
-#+END_SRC
-** helm-projectile
-#+BEGIN_SRC emacs-lisp
-  (require 'helm-projectile)
-  (helm-projectile-on)
-#+END_SRC
-** dired
-#+BEGIN_SRC emacs-lisp
-  ;; dired move up folder with "b"
-  (add-hook 'dired-mode-hook
-            (lambda ()
-              (define-key dired-mode-map (kbd "b")
-                          (lambda () (interactive) (find-alternate-file "..")))))
-
-  (use-package dired-narrow
-    :ensure t
-    :config
-    (bind-key "C-x f" #'dired-narrow-fuzzy))
-  (require 'dired-narrow)
-#+END_SRC
-** lsp
-*** Company
-Complete anything aka Company provides auto-completion.
-Company-capf is enabled by default when you start LSP on a project.
-You can also invoke ~M-x company-capf~ to enable capf (completion at point function).
-#+BEGIN_SRC emacs-lisp
-  (use-package company
-    :ensure t)
-  (use-package company-box
-    :ensure t)
-  (company-mode t)
-  (require 'company-box)
-  (add-hook 'company-mode-hook 'company-box-mode)
-
-  (setq company-box-backends-colors
-  '((company-yasnippet . (:all ,text-2 :selected (:background "green" :foreground "black")))))
-#+END_SRC
-*** Yasnippet
-Yasnippet is a template system for Emacs.
-It allows you to type abbreviation and complete the associated text.
-#+BEGIN_SRC emacs-lisp
-  (use-package yasnippet
-    :config (yas-global-mode))
-  (use-package yasnippet-snippets
-    :ensure t)
-  (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
-#+END_SRC
-
-E.g. In java mode, if you type ~pr~ and hit ~<TAB>~ it should complete to ~System.out.println("text");~
-
-To create a new snippet you can use ~yas-new-snippet~ command.
-*** FlyCheck
-FlyCheck checks for errors in code at run-time.
-#+BEGIN_SRC emacs-lisp
-  (use-package flycheck
-    :ensure t
-    :init (global-flycheck-mode))
-#+END_SRC
-*** Dap Mode
-Emacs Debug Adapter Protocol aka DAP Mode allows us to debug your program.
-Below we will integrate ~dap-mode~ with ~dap-hydra~.
-~Dap-hydra~ shows keys you can use to enable various options and jump through code at runtime.
-After we install dap-mode we will also install ~dap-java~.
-#+BEGIN_SRC emacs-lisp
-  (use-package dap-mode
-    :ensure t
-    :after (lsp-mode)
-    :functions dap-hydra/nil
-    :config
-    (require 'dap-java)
-    :bind (:map lsp-mode-map
-                ("<f5>" . dap-debug)
-                ("M-<f5>" . dap-hydra))
-    :hook ((dap-mode . dap-ui-mode)
-           (dap-session-created . (lambda (&_rest) (dap-hydra)))
-           (dap-terminated . (lambda (&_rest) (dap-hydra/nil)))))
-
-  (use-package dap-java :ensure nil)
-#+END_SRC
-*** Treemacs
-Treemacs provides UI elements used for LSP UI.
-Let's install lsp-treemacs and its dependency treemacs.
-We will also assign ~M-9~ to show error list.
-#+BEGIN_SRC emacs-lisp
-  (use-package lsp-treemacs
-    :after (lsp-mode treemacs)
-    :ensure t
-    :commands lsp-treemacs-errors-list
-    :bind (:map lsp-mode-map
-                ("M-9" . lsp-treemacs-errors-list)))
-
-  (use-package treemacs
-    :ensure t
-    :commands (treemacs)
-    :after (lsp-mode))
-
-  (setq treemacs-no-png-images t)
-  (treemacs-project-follow-mode t)
-#+END_SRC
-*** LSP UI
-LSP UI is used in various packages that require UI elements in LSP.
-E.g. ~lsp-ui-flycheck-list~ opens a window where you can see various coding errors while you code.
-You can use ~C-c l T~ to toggle several UI elements.
-We have also remapped some of the xref-find functions, so that we can easily jump around between symbols using ~M-.~, ~M-,~ and ~M-?~ keys.
-#+BEGIN_SRC emacs-lisp
-  (use-package lsp-ui
-    :ensure t
-    :after (lsp-mode)
-    :bind (:map lsp-ui-mode-map
-                ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
-                ([remap xref-find-references] . lsp-ui-peek-find-references))
-    :init (setq lsp-ui-doc-delay 1.5
-                lsp-ui-doc-position 'bottom
-                lsp-ui-doc-max-width 100))
-#+END_SRC
-Go through this [[https://github.com/emacs-lsp/lsp-ui/blob/master/lsp-ui-doc.el][link]] to see what other parameters are provided.
-*** Helm LSP
-Helm-lsp provides various functionality to work with the code.
-E.g. code actions like adding *getter, setter, toString*, refactoring etc.
-You can use ~helm-lsp-workspace-symbol~ to find various symbols (classes) within your workspace.
-LSP's built in symbol explorer uses ~xref-find-apropos~ to provide symbol navigation.
-Below we will replace that with helm version.
-After that you can use ~C-c l g a~ to find workspace symbols in a more intuitive way.
-#+BEGIN_SRC emacs-lisp
-  (use-package helm-lsp
-    :ensure t
-    :after (lsp-mode)
-    :commands (helm-lsp-workspace-symbol)
-    :init (define-key lsp-mode-map [remap xref-find-apropos] #'helm-lsp-workspace-symbol))
-#+END_SRC
-*** Install LSP Package
-Let's install the main package for lsp.
-Here we will integrate lsp with which-key.
-This way, when we type the prefix key ~C-c l~ we get additional help for completing the command.
-#+BEGIN_SRC emacs-lisp
-  (use-package lsp-mode
-    :ensure t
-    :hook ((lsp-mode . lsp-enable-which-key-integration)
-           (java-mode . #'lsp-deferred))
-    :init (setq lsp-keymap-prefix "C-c l"              ; this is for which-key integration documentation, need to use lsp-mode-map
-                lsp-enable-file-watchers nil
-                read-process-output-max (* 1024 1024)  ; 1 mb
-                lsp-completion-provider :capf
-                lsp-idle-delay 0.500)
-    :config (setq lsp-intelephense-multi-root nil) ; don't scan unnecessary projects
-    (with-eval-after-load 'lsp-intelephense
-      (setf (lsp--client-multi-root (gethash 'iph lsp-clients)) nil))
-    (define-key lsp-mode-map (kbd "C-c l") lsp-command-map))
-#+END_SRC
-You can start LSP server in a java project by using ~C-c l s s~.
-Once you type ~C-c l~ ~which-key~ package should guide you through rest of the options.
-In above setting I have added some memory management settings as suggested in [[https://emacs-lsp.github.io/lsp-mode/page/performance/][this guide]].
-Change them to higher numbers, if you find *lsp-mode* sluggish in your computer.
-*** LSP Java
-This is the package that handles server installation and session management.
-#+BEGIN_SRC  emacs-lisp
-  (use-package lsp-java
-    :ensure t
-    :config (add-hook 'java-mode-hook 'lsp))
-
-  (require 'lsp-java)
-  (add-hook 'java-mode-hook #'lsp)
-
-  (condition-case nil
-      (require 'use-package)
-    (file-error
-     (require 'package)
-     (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-     (package-initialize)
-     (package-refresh-contents)
-     (package-install 'use-package)
-     (setq use-package-always-ensure t)
-     (require 'use-package)))
-
-  (use-package projectile)
-  (use-package flycheck)
-  (use-package yasnippet :config (yas-global-mode))
-
-  (use-package lsp-mode
-    :hook ((lsp-mode . lsp-enable-which-key-integration))
-    :config (setq lsp-completion-enable-additional-text-edit nil))
-  (use-package hydra)
-  (use-package company)
-  (use-package company-box)
-  (use-package lsp-ui)
-  (use-package which-key :config (which-key-mode))
-  (use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
-  (use-package dap-mode :after lsp-mode :config (dap-auto-configure-mode))
-  (use-package dap-java :ensure nil)
-  (use-package helm-lsp)
-  (use-package helm
-    :config (helm-mode))
-  (use-package lsp-treemacs)
-
-  ;; show nice unit test results
-  (add-hook 'compilation-filter-hook
-            (lambda() (ansi-color-apply-on-region (point-min) (point-max))))
-#+END_SRC
-
-#+BEGIN_SRC  emacs-lisp
-  (setq lsp-print-io t)
-
-  ;; https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
-  (setq lsp-modeline-code-actions-enable nil)
-  (setq lsp-headerline-breadcrumb-enable nil)
-#+END_SRC
-** lsp c++
-#+BEGIN_SRC emacs-lisp
-  (use-package lsp-mode
-    :hook ((c++-mode . lsp)))
-  (use-package lsp-ui
-    :commands lsp-ui-mode)
-  (require 'lsp-mode)
-  (add-hook 'c-mode-hook #'lsp)
-  (add-hook 'c++-mode-hook #'lsp)
-  (setq lsp-clients-clangd-executable "clangd-13")
-  ;;;sudo apt-get install clangd-13
-  ;;;sudo apt-get install clang-13
-  ;;;M-x compile
-  ;;;clang++-13 -Wall -std=c++11 -o output-file main.cpp
-#+END_SRC
-** lsp python
-#+BEGIN_SRC emacs-lisp
-  (use-package lsp-mode
-    :hook ((python-mode . lsp)))
-  (use-package lsp-ui
-    :commands lsp-ui-mode)
-#+END_SRC
-** bookmarks
-#+BEGIN_SRC emacs-lisp
-  (use-package bm
-    :ensure t
-    :demand t
-    :init (setq bm-restore-repository-on-load t) ; restore on load (even before you require bm)
-    :config
-    (setq bm-cycle-all-buffers nil) ; Allow cross-buffer 'next'
-    (setq bm-repository-file "~/.emacs.d/bm-repository") ; where to store persistant files
-    (setq-default bm-buffer-persistence t) ; save bookmarks
-    (add-hook 'after-init-hook 'bm-repository-load) ; Loading the repository from file when on start up.
-    (add-hook 'kill-buffer-hook #'bm-buffer-save) ; Saving bookmarks
-    (add-hook 'kill-emacs-hook #'(lambda nil
-                                   (bm-buffer-save-all)
-                                   (bm-repository-save))) ; Saving the repository to file when on exit. kill-buffer-hook is not called when Emacs is killed, so we must save all bookmarks first.
-    (add-hook 'after-save-hook #'bm-buffer-save) ; The 'after-save-hook' is not necessary to use to achieve persistence, but it makes the bookmark data in repository more in sync with the file state.
-    (add-hook 'find-file-hooks   #'bm-buffer-restore) ; Restoring bookmarks
-    (add-hook 'after-revert-hook #'bm-buffer-restore) ; Restoring bookmarks
-    (add-hook 'vc-before-checkin-hook #'bm-buffer-save)
-    ;; The 'after-revert-hook' is not necessary to use to achieve persistence,
-    ;; but it makes the bookmark data in repository more in sync with the file
-    ;; state. This hook might cause trouble when using packages
-    ;; that automatically reverts the buffer (like vc after a check-in).
-    ;; This can easily be avoided if the package provides a hook that is
-    ;; called before the buffer is reverted (like `vc-before-checkin-hook').
-    ;; Then new bookmarks can be saved before the buffer is reverted.
-    ;; Make sure bookmarks is saved before check-in (and revert-buffer)
-    :bind (("C-%" . bm-next)
-           ;("C-^" . bm-previous)
-           ("C-&" . bm-show-all)))
-  (require 'helm-bm)
-  (global-set-key (kbd "C-*") 'helm-bm)
-  ;;;(global-set-key (kbd "C-!") 'bookmark-bmenu-list)
-;;;  (global-set-key (kbd "C-$") 'my:set-bookmark)
-;;;  (global-set-key (kbd "C-(") 'my:remove-bookmarks)
-
-;;;  (defun my:set-bookmark ()
-;;;    (interactive)
-;;;    (bm-toggle)
-;;;    ;;(bookmark-delete 'get-buffer)
-;;;    (bookmark-set ""))
-
-;;;  (defun my:remove-bookmarks ()
-;;;    (interactive)
-;;;    ;;(bookmark-delete-all)
-;;;    (bm-remove-all-all-buffers))
-
   (use-package bookmark-in-project
     :commands (bookmark-in-project-jump
                bookmark-in-project-jump-next
                bookmark-in-project-jump-previous
                bookmark-in-project-delete-all)
-
+   
     ;; Example key bindings.
-    :bind (("M-n" . bookmark-in-project-jump-next)
-           ("M-p" . bookmark-in-project-jump-previous)
-           ("M-*" . bookmark-in-project-toggle)
-           ("M-b" . bookmark-in-project-jump)))
+    :bind (("C-^" . bookmark-in-project-jump-next)
+           ("C-%" . bookmark-in-project-jump-previous)
+           ("C-$" . bookmark-in-project-toggle)
+           ("C-&" . bookmark-in-project-jump)))
 #+END_SRC
-** magit
+** change theme on startup and maximize the frame in Windows
 #+BEGIN_SRC emacs-lisp
-  (use-package magit)
-  (use-package magit-find-file)
-  (with-eval-after-load 'magit-mode
-    (add-hook 'after-save-hook 'magit-after-save-refresh-status t))
+  (setq INDEX-CHIAROSCURO 0)
+  ;(my:maximize-frame)
+  (toggle-frame-maximized)
 
-;;  (setq magit-display-buffer-function
-;;        (lambda (buffer)
-;;          (display-buffer buffer '(display-buffer-same-window))))
-
-;;  (defun magit-display-buffer-traditional (buffer)
-;;    "Display BUFFER the way this has traditionally been done."
-;;    (display-buffer
-;;     buffer (if (and (derived-mode-p 'magit-mode)
-;;                     (not (memq (with-current-buffer buffer major-mode)
-;;                                '(magit-process-mode
-;;                                  magit-revision-mode
-;;                                  magit-diff-mode
-;;                                  magit-stash-mode))))
-;;                                  ;;magit-status-mode))))
-;;                '(display-buffer-same-window)
-;;              nil)))
-#+END_SRC
-** eww
-#+BEGIN_SRC emacs-lisp
-  ;;(setq browse-url-browser-function 'eww-browse-url ;; Use eww as the default browser
-  ;;      shr-use-fonts  nil ;; No special fonts
-  ;;      shr-use-colors nil ;; No colors
-  ;;      eww-search-prefix "https://wiby.me/?q=") ;; Use another engine for searching
-
-  (setq eww-search-prefix "https://www.google.com/search?q=")
-
-  (cond
-   ((string-equal system-type "windows-nt")
-    (progn (setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe") (message "windows-nt")))
-   ((string-equal system-type "gnu/linux")
-    (progn (setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "chromium-browser") (message "linux"))))
- #+END_SRC
-** git-gutter
-#+BEGIN_SRC emacs-lisp
-  (global-git-gutter-mode t)
-#+END_SRC
-** company
-#+BEGIN_SRC emacs-lisp
-  (add-hook 'after-init-hook 'global-company-mode)
-#+END_SRC
-** nov
-#+BEGIN_SRC emacs-lisp
-  (defun my:nov-visual-line-mode ()
+  (defun my:night-theme ()
     (interactive)
-    (visual-line-mode))
+    (my:theme-up)
+    (my:theme-up)
+    (my:theme-up))
 
-  (add-hook 'nov-mode-hook 'my:nov-visual-line-mode)
+  (defun my:day-theme ()
+    (interactive)
+    (my:theme-up))
+
+  (if (or (< (string-to-number (format-time-string "%H")) 8)
+          (> (string-to-number (format-time-string "%H")) 16)) (my:night-theme) (my:day-theme))
 #+END_SRC
-** engine mode
+** chess
 #+BEGIN_SRC emacs-lisp
-;;(require 'engine-mode)
-;;(engine-mode t)
-
-;;(defengine duckduckgo
-;;  "https://duckduckgo.com/?q=%s"
-;;  :keybinding "d")
-
-;;(defengine google
-;;  "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
-;;  :keybinding "g")
-
-;;(defengine google-images
-;;  "http://www.google.com/images?hl=en&source=hp&biw=1440&bih=795&gbv=2&aq=f&aqi=&aql=&oq=&q=%s"
-;;  :keybinding "i")
-
-;;(defengine google-maps
-;;  "http://maps.google.com/maps?q=%s"
-;;  :keybinding "m")
-
-;;(defengine stack-overflow
-;;  "https://stackoverflow.com/search?q=%s"
-;;  :keybinding "o")
-
-;;(defengine wikipedia
-;;  "http://www.wikipedia.org/search-redirect.php?language=en&go=Go&search=%s"
-;;  :keybinding "w")
-
-;;(defengine youtube
-;;  "http://www.youtube.com/results?aq=f&oq=&search_query=%s"
-;;  :keybinding "y")
-#+END_SRC
-** openwith
-#+BEGIN_SRC emacs-lisp
-  (require 'openwith)
-  (openwith-mode t)
-  (setq openwith-associations
-        (list (list (openwith-make-extension-regexp '("pdf")) "qpdfview" '(file))
-              (list (openwith-make-extension-regexp '("avi" "mp3" "mp4" "wav")) "vlc" '(file))
-              (list (openwith-make-extension-regexp '("cr2")) "rawtherapee" '(file))
-              (list (openwith-make-extension-regexp '("sln")) "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\Common7\\IDE\\devenv.exe" '(file))
-              (list (openwith-make-extension-regexp '("csproj")) "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\Common7\\IDE\\devenv.exe" '(file))))
-#+END_SRC
-** winner mode
-#+BEGIN_SRC emacs-lisp
-  (when (fboundp 'winner-mode)
-    (winner-mode t))
-#+END_SRC
-** ido
-#+BEGIN_SRC emacs-lisp
-  (setq ido-enable-flex-matching t)
-  (ido-mode t)
-#+END_SRC
-** windows
-#+BEGIN_SRC emacs-lisp
-  (use-package powershell)
-  (require 'powershell)
-
-  ;;(use-package csharp-mode)
-  ;;(require 'csharp-mode)
-#+END_SRC
-** rainbow-mode
-#+BEGIN_SRC emacs-lisp
-  (use-package rainbow-mode)
-  (require 'rainbow-mode)
-  (add-hook 'emacs-lisp-mode-hook 'rainbow-mode)
+(setq chess-images-directory "/home/pi/source/emacs/xboard/")
+(setq chess-images-default-size 50)
 #+END_SRC
 ** clock
 #+BEGIN_SRC emacs-lisp
   (setq display-time-world-list '(("Europe/Vienna" "Graz")))
 #+END_SRC
-** elfeed
+** company
 #+BEGIN_SRC emacs-lisp
-  (require 'elfeed)
-  (setq elfeed-feeds '(("https://www.comicsrss.com/rss/dilbert.rss" comics dilbert)
-                       ("https://www.comicsrss.com/rss/garfield.rss" comics garfield)
-                       ("https://www.comicsrss.com/rss/peanuts.rss" comics peanuts)
-                       ("https://rss.orf.at/news.xml" news orf)
-                       ("https://rss.orf.at/steiermark.xml" news orf steiermark)
-                       ("https://rss.orf.at/science.xml" news orf science)
-                       ("https://rss.orf.at/sport.xml" news orf sport)
-                       ("https://rss.orf.at/help.xml" news orf help)
-                       ("https://rss.orf.at/oe3.xml" news orf oe3)
-                       ("https://rss.orf.at/fm4.xml" news orf fm4)
-                       ("https://www.derstandard.at/rss" derstandard)
-                       ("https://www.derstandard.at/rss/international" derstandard international)
-                       ("https://www.derstandard.at/rss/inland" derstandard inland)
-                       ("https://www.derstandard.at/rss/web" derstandard web)
-                       ("https://www.derstandard.at/rss/live" derstandard live)
-  ))
+  (add-hook 'after-init-hook 'global-company-mode)
+#+END_SRC
+** counsel-projectile
+#+BEGIN_SRC emacs-lisp
+  (require 'counsel-projectile)
+  (use-package counsel-projectile)
+  (counsel-projectile-mode t)
 #+END_SRC
 ** counsel-web
 #+BEGIN_SRC emacs-lisp
@@ -825,228 +124,13 @@ This is the package that handles server installation and session management.
       (define-key map (kbd ".") #'counsel-web-thing-at-point) map))
   (global-set-key (kbd "C-c w") counsel-web-map)
 #+END_SRC
-** counsel-projectile
+** custom faces
 #+BEGIN_SRC emacs-lisp
-  (require 'counsel-projectile)
-  (use-package counsel-projectile)
-  (counsel-projectile-mode t)
-#+END_SRC
-** ivy
-#+BEGIN_SRC emacs-lisp
-  (setq ivy-height 15)
-#+END_SRC
-** google-translate
-#+BEGIN_SRC emacs-lisp
-  (require 'google-translate)
-  (require 'google-translate-default-ui)
-  (global-set-key (kbd "C-c P") 'google-translate-at-point)
-  (global-set-key (kbd "C-c T") 'google-translate-query-translate)
-  (global-set-key (kbd "C-c R") 'google-translate-query-translate-reverse)
-  (setq google-translate-default-source-language "fr")
-  (setq google-translate-default-target-language "en")
-#+END_SRC
-** gnus
-#+BEGIN_SRC emacs-lisp
-;;; {{ If you'd like to compose mail outside of Gnus, below code should be moved into "~/.emacs.d/init.el",
-;;; Personal Information
-;(setq user-full-name MAIL-NAME
-;      user-mail-address MAIL-MAIL)
-; 
-;;; Send email through SMTP
-;(setq message-send-mail-function 'smtpmail-send-it
-;      smtpmail-default-smtp-server "mail.gmx.net"
-;      smtpmail-smtp-service 587
-;      smtpmail-local-domain MAIL-MAIL)
-; 
-;;; auto-complete emacs address using bbdb command, optional
-;;;(add-hook 'message-mode-hook
-;;;          '(lambda ()
-;;;             (flyspell-mode t)
-;;;             (local-set-key (kbd "TAB") 'bbdb-complete-name)))
-;;; }}
-; 
-;(require 'nnir)
-; 
-;;; Please note mail folders in `gnus-select-method' have NO prefix like "nnimap+hotmail:" or "nnimap+gmail:"
-;(setq gnus-select-method '(nntp "news.gwene.org")) ;; Read feeds/atom through gwene
-; 
-;;; ask encryption password once
-;(setq epa-file-cache-passphrase-for-symmetric-encryption t)
-; 
-;(add-to-list 'gnus-secondary-select-methods
-;             '(nnimap "gmx"
-;                      (nnimap-address "imap.gmx.net")
-;                      (nnimap-server-port 993)
-;                      (nnimap-stream ssl)
-;                      (nnir-search-engine imap)
-;                      (nnmail-expiry-wait 90)))
-; 
-;;; @see http://gnus.org/manual/gnus_397.html
-;;;(add-to-list 'gnus-secondary-select-methods
-;;;             '(nnimap "gmail"
-;;;                      (nnimap-address "imap.gmail.com")
-;;;                      (nnimap-server-port 993)
-;;;                      (nnimap-stream ssl)
-;;;                      (nnir-search-engine imap)
-;;;                      ;; @see http://www.gnu.org/software/emacs/manual/html_node/gnus/Expiring-Mail.html
-;;;                      ;; press 'E' to expire email
-;;;                      (nnmail-expiry-target "nnimap+gmail:[Gmail]/Trash")
-;;;                      (nnmail-expiry-wait 90)))
-; 
-;;; OPTIONAL, the setup for Microsoft Hotmail
-;;;(add-to-list 'gnus-secondary-select-methods
-;;;             '(nnimap "hotmail"
-;;;                      (nnimap-address "imap-mail.outlook.com")
-;;;                      (nnimap-server-port 993)
-;;;                      (nnimap-stream ssl)
-;;;                      (nnir-search-engine imap)
-;;;                      (nnmail-expiry-wait 90)))
-; 
-;(setq gnus-thread-sort-functions
-;      '(gnus-thread-sort-by-most-recent-date
-;        (not gnus-thread-sort-by-number)))
-; 
-;;; NO 'passive
-;(setq gnus-use-cache t)
-; 
-;;; {{ press "o" to view all groups
-;(defun my-gnus-group-list-subscribed-groups ()
-;  "List all subscribed groups with or without un-read messages"
-;  (interactive)
-;  (gnus-group-list-all-groups 5))
-; 
-;(define-key gnus-group-mode-map
-;  ;; list all the subscribed groups even they contain zero un-read messages
-;  (kbd "o") 'my-gnus-group-list-subscribed-groups)
-;;; }}
-; 
-;;; BBDB: Address list
-;;;(add-to-list 'load-path "/where/you/place/bbdb/")
-;;;(require 'bbdb)
-;;;(bbdb-initialize 'message 'gnus 'sendmail)
-;;;(add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus)
-;;;(setq bbdb/mail-auto-create-p t
-;;;      bbdb/news-auto-create-p t)
-; 
-;;; Fetch only part of the article if we can.
-;;; I saw this in someone's .gnus
-;(setq gnus-read-active-file 'some)
-; 
-;;; open attachment
-;(eval-after-load 'mailcap
-;  '(progn
-;     (cond
-;      ;; on macOS, maybe change mailcap-mime-data?
-;      ((eq system-type 'darwin))
-;      ;; on Windows, maybe change mailcap-mime-data?
-;      ((eq system-type 'windows-nt))
-;      (t
-;       ;; Linux, read ~/.mailcap
-;       (mailcap-parse-mailcaps)))))
-; 
-;;; Tree view for groups.
-;(add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
-; 
-;;; Threads!  I hate reading un-threaded email -- especially mailing
-;;; lists.  This helps a ton!
-;(setq gnus-summary-thread-gathering-function 'gnus-gather-threads-by-subject)
-; 
-;;; Also, I prefer to see only the top level message.  If a message has
-;;; several replies or is part of a thread, only show the first message.
-;;; `gnus-thread-ignore-subject' will ignore the subject and
-;;; look at 'In-Reply-To:' and 'References:' headers.
-;(setq gnus-thread-hide-subtree t)
-;(setq gnus-thread-ignore-subject t)
-; 
-;;; Read HTML mail:
-;;; You need install the command line web browser 'w3m' and Emacs plugin 'w3m'
-;;; manually. It specify the html render as w3m so my setup works on all versions
-;;; of Emacs.
-;;;
-;;; Since Emacs 24+, a default html rendering engine `shr' is provided:
-;;;   - It works out of box without any cli program dependency or setup
-;;;   - It can render html color
-;;; So below line is optional.
-;(setq mm-text-html-renderer 'w3m) ;; OPTIONAL
-; 
-;;; http://www.gnu.org/software/emacs/manual/html_node/gnus/_005b9_002e2_005d.html
-;(setq gnus-use-correct-string-widths nil)
-; 
-;;; Sample on how to organize mail folders.
-;;; It's dependent on `gnus-topic-mode'.
-;(eval-after-load 'gnus-topic
-;  '(progn
-;     (setq gnus-message-archive-group '((format-time-string "sent.%Y")))
-;     (setq gnus-server-alist '(("archive" nnfolder "archive" (nnfolder-directory "~/Mail/archive")
-;                                (nnfolder-active-file "~/Mail/archive/active")
-;                                (nnfolder-get-new-mail nil)
-;                                (nnfolder-inhibit-expiry t))))
-; 
-;     ;; "Gnus" is the root folder, and there are three mail accounts, "misc", "hotmail", "gmail"
-;     (setq gnus-topic-topology '(("Gnus" visible)
-;                                 (("misc" visible))
-;                                 ;;(("hotmail" visible nil nil))
-;                                 ;;(("gmail" visible nil nil))))
-;                                 (("gmx" visible nil nil))))
-; 
-;     ;; each topic corresponds to a public imap folder
-;     (setq gnus-topic-alist '(
-;                              ("gmx" ;; the key of topic
-;                               "nnimap+gmx:Inbox"
-;                               "nnimap+gmx:Drafts"
-;                               "nnimap+gmx:Sent"
-;                               "nnimap+gmx:Junk"
-;                               "nnimap+gmx:Deleted")
-;                              ;;("hotmail" ;; the key of topic
-;                              ;; "nnimap+hotmail:Inbox"
-;                              ;; "nnimap+hotmail:Drafts"
-;                              ;; "nnimap+hotmail:Sent"
-;                              ;; "nnimap+hotmail:Junk"
-;                              ;; "nnimap+hotmail:Deleted")
-;                              ;;("gmail" ;; the key of topic
-;                              ;; "nnimap+gmail:INBOX"
-;                              ;; "nnimap+gmail:[Gmail]/Sent Mail"
-;                              ;; "nnimap+gmail:[Gmail]/Trash"
-;                              ;; "nnimap+gmail:Drafts")
-;                              ("misc" ;; the key of topic
-;                               "nnfolder+archive:sent.2018"
-;                               "nnfolder+archive:sent.2019"
-;                               "nndraft:drafts")
-;                              ("Gnus")))
-;
-;     ;; see latest 200 mails in topic then press Enter on any group
-;     ;;(gnus-topic-set-parameters "gmail" '((display . 200)))
-;     ;;(gnus-topic-set-parameters "hotmail" '((display . 200)))
-;     (gnus-topic-set-parameters "gmx" '((display . 200)))
-;))
-#+END_SRC
-** itail
-#+BEGIN_SRC emacs-lisp
-  (defun my:set-highlight-regexp ()
-    (highlight-regexp "gui" 'hi-green)
-    (highlight-regexp "client" 'hi-green)
-    (highlight-lines-matching-regexp "xxx" 'hi-aquamarine)
-    (highlight-lines-matching-regexp "memode" 'hi-blue-b)
-    (highlight-lines-matching-regexp "\"state\"" 'hi-blue-b)
-    (highlight-lines-matching-regexp "error" 'my:custom-face-alert)
-    (highlight-lines-matching-regexp "crash" 'my:custom-face-alert)
-    (highlight-lines-matching-regexp "->" 'hi-yellow)
-
-    ;;hi-aquamarine
-    ;;hi-black-b
-    ;;hi-black-hb
-    ;;hi-blue
-    ;;hi-blue-b
-    ;;hi-green
-    ;;hi-green-b
-    ;;hi-pink
-    ;;hi-red-b
-    ;;hi-salmon
-    ;;hi-yellow
-  )
-
-  (require 'itail)
-  (add-hook 'itail-mode-hook 'my:set-highlight-regexp)
+  (defface my:custom-face-alert
+    '((((class color)) (:foreground "white" :background "red" :bold t))
+      (t (:bold t)))
+    "Face description for my custom face"
+    :group 'my:faces)
 #+END_SRC
 ** custom functions
 #+BEGIN_SRC emacs-lisp
@@ -1267,42 +351,468 @@ This is the package that handles server installation and session management.
 
   ;;;(grep-apply-setting 'grep-command "grep --color=auto -nH --null -e -r . --include *.java")
 #+END_SRC
+** custom minor foo mode
+See https://nullprogram.com/blog/2013/02/06/
+#+BEGIN_SRC emacs-lisp
+(make-variable-buffer-local
+ (defvar foo-count 0
+   "Number of foos inserted into the current buffer."))
+
+(defun insert-foo ()
+  (interactive)
+  (setq foo-count (1+ foo-count))
+  (insert "foo"))
+
+;;;###autoload
+(define-minor-mode foo-mode
+  "Get your foos in the right places."
+  :lighter " foo"
+  :keymap (let ((map (make-sparse-keymap)))
+            (define-key map (kbd "C-c f") 'insert-foo)
+            map))
+
+;;;###autoload
+(add-hook 'text-mode-hook 'foo-mode)
+
+(provide 'foo-mode)
+#+END_SRC
+** custom minor logger mode
+#+BEGIN_SRC emacs-lisp
+  (define-minor-mode my-logger-mode
+    "Custom mode for following logs.")
+  (add-hook 'my-logger-mode-hook 'my:my-logger-colorize-background)
+
+  (defun my:my-logger-colorize-background ()
+  (interactive)
+    (highlight-regexp "treemacs")
+    ;;(setq buffer-face-mode-face '(:background "red"))
+    (buffer-face-mode 1))
+#+END_SRC
+** dap-debug template
+#+BEGIN_SRC emacs-lisp
+  (dap-register-debug-template "My Runner1"
+                               (list :type "java"
+                                     :request "launch"
+                                     :args "heeeeeeeeeello"
+                                     :vmArgs ""
+                                     :projectName "maven_sandbox"
+                                     :mainClass "org.sandbox.Main"
+                                     :env '(("DEV" . "1"))))
+
+  (dap-register-debug-template "My Runner2"
+                               (list :type "java"
+                                     :request "launch"
+                                     :args "1 2 3 4 5 6"
+                                     :vmArgs ""
+                                     :projectName "maven_sandbox"
+                                     :mainClass "org.sandbox.Main"
+                                     :env '(("DEV" . "1"))))
+#+END_SRC
+** dired
+#+BEGIN_SRC emacs-lisp
+  ;; dired move up folder with "b"
+  (add-hook 'dired-mode-hook
+            (lambda ()
+              (define-key dired-mode-map (kbd "b")
+                          (lambda () (interactive) (find-alternate-file "..")))))
+
+  (use-package dired-narrow
+    :ensure t
+    :config
+    (bind-key "C-x f" #'dired-narrow-fuzzy))
+  (require 'dired-narrow)
+#+END_SRC
 ** ediff
 #+BEGIN_SRC emacs-lisp
 (setq ediff-split-window-function 'split-window-horizontally)
 #+END_SRC
-** ztree
+** elfeed
 #+BEGIN_SRC emacs-lisp
-(require 'ztree)
+  (require 'elfeed)
+  (setq elfeed-feeds '(("https://www.comicsrss.com/rss/dilbert.rss" comics dilbert)
+                       ("https://www.comicsrss.com/rss/garfield.rss" comics garfield)
+                       ("https://www.comicsrss.com/rss/peanuts.rss" comics peanuts)
+                       ("https://rss.orf.at/news.xml" news orf)
+                       ("https://rss.orf.at/steiermark.xml" news orf steiermark)
+                       ("https://rss.orf.at/science.xml" news orf science)
+                       ("https://rss.orf.at/sport.xml" news orf sport)
+                       ("https://rss.orf.at/help.xml" news orf help)
+                       ("https://rss.orf.at/oe3.xml" news orf oe3)
+                       ("https://rss.orf.at/fm4.xml" news orf fm4)
+                       ("https://www.derstandard.at/rss" derstandard)
+                       ("https://www.derstandard.at/rss/international" derstandard international)
+                       ("https://www.derstandard.at/rss/inland" derstandard inland)
+                       ("https://www.derstandard.at/rss/web" derstandard web)
+                       ("https://www.derstandard.at/rss/live" derstandard live)
+  ))
 #+END_SRC
-** chess
+** engine mode
 #+BEGIN_SRC emacs-lisp
-(setq chess-images-directory "/home/pi/source/emacs/xboard/")
-(setq chess-images-default-size 50)
+;;(require 'engine-mode)
+;;(engine-mode t)
+
+;;(defengine duckduckgo
+;;  "https://duckduckgo.com/?q=%s"
+;;  :keybinding "d")
+
+;;(defengine google
+;;  "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
+;;  :keybinding "g")
+
+;;(defengine google-images
+;;  "http://www.google.com/images?hl=en&source=hp&biw=1440&bih=795&gbv=2&aq=f&aqi=&aql=&oq=&q=%s"
+;;  :keybinding "i")
+
+;;(defengine google-maps
+;;  "http://maps.google.com/maps?q=%s"
+;;  :keybinding "m")
+
+;;(defengine stack-overflow
+;;  "https://stackoverflow.com/search?q=%s"
+;;  :keybinding "o")
+
+;;(defengine wikipedia
+;;  "http://www.wikipedia.org/search-redirect.php?language=en&go=Go&search=%s"
+;;  :keybinding "w")
+
+;;(defengine youtube
+;;  "http://www.youtube.com/results?aq=f&oq=&search_query=%s"
+;;  :keybinding "y")
 #+END_SRC
-** plantuml
+** environment setup
+Load environment variables properly by installing *exec-path-from-shell*.
 #+BEGIN_SRC emacs-lisp
-(setq org-plantuml-jar-path (expand-file-name "/usr/share/plantuml/plantuml.jar"))
-(add-to-list 'org-src-lang-modes '("plantuml" . plantuml))
-(org-babel-do-load-languages 'org-babel-load-languages '((plantuml . t)))
+  (use-package exec-path-from-shell :ensure t)
+  (exec-path-from-shell-initialize)
+#+END_SRC
+** evil
+#+BEGIN_SRC emacs-lisp
+  (use-package evil)
+  (require 'evil)
+  (evil-mode 1)
+
+  (setq evil-default-state 'emacs)
+
+  (use-package telephone-line)
+  (require 'telephone-line)
+
+  (setq telephone-line-primary-left-separator    'telephone-line-flat
+        telephone-line-secondary-left-separator  'telephone-line-flat
+        telephone-line-primary-right-separator   'telephone-line-flat
+        telephone-line-secondary-right-separator 'telephone-line-flat)
+
+  (setq telephone-line-evil-use-short-tag t)
+
+  (setq telephone-line-lhs
+      '((evil . (telephone-line-evil-tag-segment))
+        (nil  . (telephone-line-buffer-segment))
+        (nil  . (telephone-line-vc-segment
+                 telephone-line-erc-modified-channels-segment))
+        (nil  . (telephone-line-projectile-segment))))
+
+  (setq telephone-line-rhs
+      '((nil  . (telephone-line-misc-info-segment))
+        (nil  . (telephone-line-major-mode-segment))
+        (nil  . (telephone-line-airline-position-segment))))
+
+  ;; all configurations must be set before this line
+  ;; https://github.com/dbordak/telephone-line/blob/master/examples.org
+  (telephone-line-mode 1)
 #+END_SRC
 ** evil-mc
 #+BEGIN_SRC emacs-lisp
   (require 'evil-mc)
   (global-evil-mc-mode 1)
 #+END_SRC
-** custom faces
+** eww
 #+BEGIN_SRC emacs-lisp
-  (defface my:custom-face-alert
-    '((((class color)) (:foreground "white" :background "red" :bold t))
-      (t (:bold t)))
-    "Face description for my custom face"
-    :group 'my:faces)
+  ;;(setq browse-url-browser-function 'eww-browse-url ;; Use eww as the default browser
+  ;;      shr-use-fonts  nil ;; No special fonts
+  ;;      shr-use-colors nil ;; No colors
+  ;;      eww-search-prefix "https://wiby.me/?q=") ;; Use another engine for searching
+
+  (setq eww-search-prefix "https://www.google.com/search?q=")
+
+  (cond
+   ((string-equal system-type "windows-nt")
+    (progn (setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe") (message "windows-nt")))
+   ((string-equal system-type "gnu/linux")
+    (progn (setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "chromium-browser") (message "linux"))))
+ #+END_SRC
+** git-gutter
+#+BEGIN_SRC emacs-lisp
+  (global-git-gutter-mode t)
+#+END_SRC
+** gnus
+#+BEGIN_SRC emacs-lisp
+;;; {{ If you'd like to compose mail outside of Gnus, below code should be moved into "~/.emacs.d/init.el",
+;;; Personal Information
+;(setq user-full-name MAIL-NAME
+;      user-mail-address MAIL-MAIL)
+; 
+;;; Send email through SMTP
+;(setq message-send-mail-function 'smtpmail-send-it
+;      smtpmail-default-smtp-server "mail.gmx.net"
+;      smtpmail-smtp-service 587
+;      smtpmail-local-domain MAIL-MAIL)
+; 
+;;; auto-complete emacs address using bbdb command, optional
+;;;(add-hook 'message-mode-hook
+;;;          '(lambda ()
+;;;             (flyspell-mode t)
+;;;             (local-set-key (kbd "TAB") 'bbdb-complete-name)))
+;;; }}
+; 
+;(require 'nnir)
+; 
+;;; Please note mail folders in `gnus-select-method' have NO prefix like "nnimap+hotmail:" or "nnimap+gmail:"
+;(setq gnus-select-method '(nntp "news.gwene.org")) ;; Read feeds/atom through gwene
+; 
+;;; ask encryption password once
+;(setq epa-file-cache-passphrase-for-symmetric-encryption t)
+; 
+;(add-to-list 'gnus-secondary-select-methods
+;             '(nnimap "gmx"
+;                      (nnimap-address "imap.gmx.net")
+;                      (nnimap-server-port 993)
+;                      (nnimap-stream ssl)
+;                      (nnir-search-engine imap)
+;                      (nnmail-expiry-wait 90)))
+; 
+;;; @see http://gnus.org/manual/gnus_397.html
+;;;(add-to-list 'gnus-secondary-select-methods
+;;;             '(nnimap "gmail"
+;;;                      (nnimap-address "imap.gmail.com")
+;;;                      (nnimap-server-port 993)
+;;;                      (nnimap-stream ssl)
+;;;                      (nnir-search-engine imap)
+;;;                      ;; @see http://www.gnu.org/software/emacs/manual/html_node/gnus/Expiring-Mail.html
+;;;                      ;; press 'E' to expire email
+;;;                      (nnmail-expiry-target "nnimap+gmail:[Gmail]/Trash")
+;;;                      (nnmail-expiry-wait 90)))
+; 
+;;; OPTIONAL, the setup for Microsoft Hotmail
+;;;(add-to-list 'gnus-secondary-select-methods
+;;;             '(nnimap "hotmail"
+;;;                      (nnimap-address "imap-mail.outlook.com")
+;;;                      (nnimap-server-port 993)
+;;;                      (nnimap-stream ssl)
+;;;                      (nnir-search-engine imap)
+;;;                      (nnmail-expiry-wait 90)))
+; 
+;(setq gnus-thread-sort-functions
+;      '(gnus-thread-sort-by-most-recent-date
+;        (not gnus-thread-sort-by-number)))
+; 
+;;; NO 'passive
+;(setq gnus-use-cache t)
+; 
+;;; {{ press "o" to view all groups
+;(defun my-gnus-group-list-subscribed-groups ()
+;  "List all subscribed groups with or without un-read messages"
+;  (interactive)
+;  (gnus-group-list-all-groups 5))
+; 
+;(define-key gnus-group-mode-map
+;  ;; list all the subscribed groups even they contain zero un-read messages
+;  (kbd "o") 'my-gnus-group-list-subscribed-groups)
+;;; }}
+; 
+;;; BBDB: Address list
+;;;(add-to-list 'load-path "/where/you/place/bbdb/")
+;;;(require 'bbdb)
+;;;(bbdb-initialize 'message 'gnus 'sendmail)
+;;;(add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus)
+;;;(setq bbdb/mail-auto-create-p t
+;;;      bbdb/news-auto-create-p t)
+; 
+;;; Fetch only part of the article if we can.
+;;; I saw this in someone's .gnus
+;(setq gnus-read-active-file 'some)
+; 
+;;; open attachment
+;(eval-after-load 'mailcap
+;  '(progn
+;     (cond
+;      ;; on macOS, maybe change mailcap-mime-data?
+;      ((eq system-type 'darwin))
+;      ;; on Windows, maybe change mailcap-mime-data?
+;      ((eq system-type 'windows-nt))
+;      (t
+;       ;; Linux, read ~/.mailcap
+;       (mailcap-parse-mailcaps)))))
+; 
+;;; Tree view for groups.
+;(add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
+; 
+;;; Threads!  I hate reading un-threaded email -- especially mailing
+;;; lists.  This helps a ton!
+;(setq gnus-summary-thread-gathering-function 'gnus-gather-threads-by-subject)
+; 
+;;; Also, I prefer to see only the top level message.  If a message has
+;;; several replies or is part of a thread, only show the first message.
+;;; `gnus-thread-ignore-subject' will ignore the subject and
+;;; look at 'In-Reply-To:' and 'References:' headers.
+;(setq gnus-thread-hide-subtree t)
+;(setq gnus-thread-ignore-subject t)
+; 
+;;; Read HTML mail:
+;;; You need install the command line web browser 'w3m' and Emacs plugin 'w3m'
+;;; manually. It specify the html render as w3m so my setup works on all versions
+;;; of Emacs.
+;;;
+;;; Since Emacs 24+, a default html rendering engine `shr' is provided:
+;;;   - It works out of box without any cli program dependency or setup
+;;;   - It can render html color
+;;; So below line is optional.
+;(setq mm-text-html-renderer 'w3m) ;; OPTIONAL
+; 
+;;; http://www.gnu.org/software/emacs/manual/html_node/gnus/_005b9_002e2_005d.html
+;(setq gnus-use-correct-string-widths nil)
+; 
+;;; Sample on how to organize mail folders.
+;;; It's dependent on `gnus-topic-mode'.
+;(eval-after-load 'gnus-topic
+;  '(progn
+;     (setq gnus-message-archive-group '((format-time-string "sent.%Y")))
+;     (setq gnus-server-alist '(("archive" nnfolder "archive" (nnfolder-directory "~/Mail/archive")
+;                                (nnfolder-active-file "~/Mail/archive/active")
+;                                (nnfolder-get-new-mail nil)
+;                                (nnfolder-inhibit-expiry t))))
+; 
+;     ;; "Gnus" is the root folder, and there are three mail accounts, "misc", "hotmail", "gmail"
+;     (setq gnus-topic-topology '(("Gnus" visible)
+;                                 (("misc" visible))
+;                                 ;;(("hotmail" visible nil nil))
+;                                 ;;(("gmail" visible nil nil))))
+;                                 (("gmx" visible nil nil))))
+; 
+;     ;; each topic corresponds to a public imap folder
+;     (setq gnus-topic-alist '(
+;                              ("gmx" ;; the key of topic
+;                               "nnimap+gmx:Inbox"
+;                               "nnimap+gmx:Drafts"
+;                               "nnimap+gmx:Sent"
+;                               "nnimap+gmx:Junk"
+;                               "nnimap+gmx:Deleted")
+;                              ;;("hotmail" ;; the key of topic
+;                              ;; "nnimap+hotmail:Inbox"
+;                              ;; "nnimap+hotmail:Drafts"
+;                              ;; "nnimap+hotmail:Sent"
+;                              ;; "nnimap+hotmail:Junk"
+;                              ;; "nnimap+hotmail:Deleted")
+;                              ;;("gmail" ;; the key of topic
+;                              ;; "nnimap+gmail:INBOX"
+;                              ;; "nnimap+gmail:[Gmail]/Sent Mail"
+;                              ;; "nnimap+gmail:[Gmail]/Trash"
+;                              ;; "nnimap+gmail:Drafts")
+;                              ("misc" ;; the key of topic
+;                               "nnfolder+archive:sent.2018"
+;                               "nnfolder+archive:sent.2019"
+;                               "nndraft:drafts")
+;                              ("Gnus")))
+;
+;     ;; see latest 200 mails in topic then press Enter on any group
+;     ;;(gnus-topic-set-parameters "gmail" '((display . 200)))
+;     ;;(gnus-topic-set-parameters "hotmail" '((display . 200)))
+;     (gnus-topic-set-parameters "gmx" '((display . 200)))
+;))
+#+END_SRC
+** golden-ratio
+#+BEGIN_SRC emacs-lis
+  (require 'golden-ratio)
+  (golden-ratio-mode 1)
+#+END_SRC
+** google-translate
+#+BEGIN_SRC emacs-lisp
+  (require 'google-translate)
+  (require 'google-translate-default-ui)
+  (global-set-key (kbd "C-c P") 'google-translate-at-point)
+  (global-set-key (kbd "C-c T") 'google-translate-query-translate)
+  (global-set-key (kbd "C-c R") 'google-translate-query-translate-reverse)
+  (setq google-translate-default-source-language "fr")
+  (setq google-translate-default-target-language "en")
+#+END_SRC
+** helm
+#+BEGIN_SRC emacs-lisp
+  (use-package helm
+    :ensure t
+    :init
+    (helm-mode t)
+    (progn (setq helm-buffers-fuzzy-matching t))
+    :bind
+    (("M-x" . helm-M-x))
+    (("C-c k r" . helm-show-kill-ring))
+    (("C-c h" . helm-grep-do-git-grep))
+    (("C-r"   . helm-swoop))
+    (("C-c b" . helm-buffers-list))
+    (("C-c r" . helm-bookmarks))
+    (("C-c i" . helm-mini))
+    (("C-c q" . helm-info)))
+#+END_SRC
+** helm-projectile
+#+BEGIN_SRC emacs-lisp
+  (require 'helm-projectile)
+  (helm-projectile-on)
+#+END_SRC
+** highlight
+#+BEGIN_SRC emacs-lisp
+;;;(defun my:hlt-highlight (beg end &optional face)
+;;;  "Highlight the region between BEG and END using FACE."
+;;;  (when (null face)
+;;;    (setq face 'highlight)) ; Use 'highlight' face if no face is specified
+;;;  (put-text-property beg end 'face face))
+;;; 
+;;;(advice-add 'hlt-highlight-symbol :override #'my:hlt-highlight)
+#+END_SRC
+** ibuffer-vc
+#+BEGIN_SRC emacs-lisp
+   (add-hook 'ibuffer-hook
+     (lambda ()
+       (ibuffer-vc-set-filter-groups-by-vc-root)
+       (unless (eq ibuffer-sorting-mode 'alphabetic)
+         (ibuffer-do-sort-by-alphabetic))))
+#+END_SRC
+** ido
+#+BEGIN_SRC emacs-lisp
+  (setq ido-enable-flex-matching t)
+  (ido-mode t)
+#+END_SRC
+** itail
+#+BEGIN_SRC emacs-lisp
+  (defun my:set-highlight-regexp ()
+    (highlight-regexp "gui" 'hi-green)
+    (highlight-regexp "client" 'hi-green)
+    (highlight-lines-matching-regexp "xxx" 'hi-aquamarine)
+    (highlight-lines-matching-regexp "memode" 'hi-blue-b)
+    (highlight-lines-matching-regexp "\"state\"" 'hi-blue-b)
+    (highlight-lines-matching-regexp "error" 'my:custom-face-alert)
+    (highlight-lines-matching-regexp "crash" 'my:custom-face-alert)
+    (highlight-lines-matching-regexp "->" 'hi-yellow)
+
+    ;;hi-aquamarine
+    ;;hi-black-b
+    ;;hi-black-hb
+    ;;hi-blue
+    ;;hi-blue-b
+    ;;hi-green
+    ;;hi-green-b
+    ;;hi-pink
+    ;;hi-red-b
+    ;;hi-salmon
+    ;;hi-yellow
+  )
+
+  (require 'itail)
+  (add-hook 'itail-mode-hook 'my:set-highlight-regexp)
+#+END_SRC
+** ivy
+#+BEGIN_SRC emacs-lisp
+  (setq ivy-height 15)
 #+END_SRC
 ** key bindings, kbd
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "<f10>") 'tmm-menubar)
-  (global-set-key (kbd "C-x q") 'goto-last-change)
   (global-set-key (kbd "C-<next>") 'next-buffer)
   (global-set-key (kbd "C-<prior>") 'previous-buffer)
   (global-set-key (kbd "C-x g") 'magit-status)
@@ -1362,6 +872,522 @@ This is the package that handles server installation and session management.
   (global-set-key (kbd "C-c 1") 'hlt-highlight)
   (global-set-key (kbd "C-c 2") 'hlt-unhighlight-region)
   (global-set-key (kbd "C-c 3") 'hlt-highlight-symbol)
+#+END_SRC
+** look
+#+BEGIN_SRC emacs-lisp
+  ;; disable menu bar
+  (menu-bar-mode 0)
+
+  ;; disable tool bar
+  (tool-bar-mode 0)
+
+  ;; disable scroll bar
+  (scroll-bar-mode 0)
+
+  ;; set width of fringe
+  (fringe-mode '(20 . 20))
+  (defvar my:fringe 1)
+
+  ;; setup cache folder to prevent temporary files to clutter projects
+  (setq user-cache-directory (concat EMACS-HOME "cache"))
+  ;;(setq backup-directory-alist '(("." . '(expand-file-name "backups" user-cache-directory))))
+  ;;(setq url-history-file (expand-file-name "url/history" user-cache-directory))
+  ;;(setq auto-save-list-file-prefix (expand-file-name "auto-save-list/.saves-" user-cache-directory))
+  ;;(setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-directory))
+
+  ;; cursor blinks forever
+  (setq blink-cursor-blinks 0)
+
+  ;; set line number mode and kbd to show them
+  (setq display-line-numbers-type 'relative)
+  (global-set-key (kbd "C-7") 'global-display-line-numbers-mode)
+
+  ;; use hl line
+  (global-hl-line-mode -1)
+
+  ;; 4 spaces indentation
+  (setq c-default-style "linux" c-basic-offset 4)
+
+  ;; disable tabs
+  (setq-default indent-tabs-mode nil)
+  (setq-default tab-width 4)
+  (defun my:indent-tabs-mode ()
+    (setq indent-tabs-mode nil))
+  (add-hook 'c++-mode-hook #'my:indent-tabs-mode)
+  (add-hook 'java-mode-hook #'my:indent-tabs-mode)
+
+  (setq whitespace-line-column 1000)
+
+  ;; clock
+  (display-time)
+
+  ;; ask for y/n instead of yes/no
+  (fset 'yes-or-no-p 'y-or-n-p)
+
+  ;; confirm before closing emacs
+  (setq confirm-kill-emacs 'y-or-n-p)
+
+  ;; increase height of which-key
+  (setq max-mini-window-height 0.9)
+  (setq which-key-side-window-max-height 0.9)
+
+  ;; font size
+  (defvar default-font-size 0 "Global Emacs default font size")
+  (defvar font-size 0 "Global Emacs font size")
+  (setq font-size 200)
+  (setq default-font-size 200)
+  (cond
+   ((string-equal system-type "windows-nt")
+    (progn (setq default-font-size 150) (setq font-size 150)))
+   ((string-equal system-type "gnu/linux")
+    (cond
+     ((string-equal LINUX-VERSION "ubuntu")
+      (progn (setq default-font-size 180) (setq font-size 180)))
+     ((string-equal LINUX-VERSION "raspberrypi")
+      (progn (setq default-font-size 200) (setq font-size 200))))))
+  (set-face-attribute 'default nil :height font-size)
+
+  ;; do not show start-up screen
+  (setq inhibit-startup-screen t)
+
+  ;;(setq initial-buffer-choice 'my:agenda-view)
+  ;;(setq initial-buffer-choice 'my:start-screen)
+
+  ;; https://www.masteringemacs.org/article/maximizing-emacs-startup
+  ;; The code will only execute on Windows, and it works by sending a WM_SYSCOMMAND window message to
+  ;; itself, telling it to maximize. The magic number 61488 is a constant declared as SC_MAXIMIZED.
+  ;(defun my:maximize-frame ()
+  ;  "Maximizes the active frame in Windows"
+  ;  (interactive)
+  ;  ;; Send a `WM_SYSCOMMAND' message to the active frame with the
+  ;  ;; `SC_MAXIMIZE' parameter.
+  ;  (when (eq system-type 'windows-nt)
+  ;    (w32-send-sys-command 61488)))
+  ;(add-hook 'window-setup-hook 'maximize-frame t)
+#+END_SRC
+** lsp
+*** Company
+Complete anything aka Company provides auto-completion.
+Company-capf is enabled by default when you start LSP on a project.
+You can also invoke ~M-x company-capf~ to enable capf (completion at point function).
+#+BEGIN_SRC emacs-lisp
+  (use-package company
+    :ensure t)
+  (use-package company-box
+    :ensure t)
+  (company-mode t)
+  (require 'company-box)
+  (add-hook 'company-mode-hook 'company-box-mode)
+
+  (setq company-box-backends-colors
+  '((company-yasnippet . (:all ,text-2 :selected (:background "green" :foreground "black")))))
+#+END_SRC
+*** Yasnippet
+Yasnippet is a template system for Emacs.
+It allows you to type abbreviation and complete the associated text.
+#+BEGIN_SRC emacs-lisp
+  (use-package yasnippet
+    :config (yas-global-mode))
+  (use-package yasnippet-snippets
+    :ensure t)
+  (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+#+END_SRC
+
+E.g. In java mode, if you type ~pr~ and hit ~<TAB>~ it should complete to ~System.out.println("text");~
+
+To create a new snippet you can use ~yas-new-snippet~ command.
+*** FlyCheck
+FlyCheck checks for errors in code at run-time.
+#+BEGIN_SRC emacs-lisp
+  (use-package flycheck
+    :ensure t
+    :init (global-flycheck-mode))
+#+END_SRC
+*** Dap Mode
+Emacs Debug Adapter Protocol aka DAP Mode allows us to debug your program.
+Below we will integrate ~dap-mode~ with ~dap-hydra~.
+~Dap-hydra~ shows keys you can use to enable various options and jump through code at runtime.
+After we install dap-mode we will also install ~dap-java~.
+#+BEGIN_SRC emacs-lisp
+  (use-package dap-mode
+    :ensure t
+    :after (lsp-mode)
+    :functions dap-hydra/nil
+    :config
+    (require 'dap-java)
+    :bind (:map lsp-mode-map
+                ("<f5>" . dap-debug)
+                ("M-<f5>" . dap-hydra))
+    :hook ((dap-mode . dap-ui-mode)
+           (dap-session-created . (lambda (&_rest) (dap-hydra)))
+           (dap-terminated . (lambda (&_rest) (dap-hydra/nil)))))
+
+  (use-package dap-java :ensure nil)
+#+END_SRC
+*** Treemacs
+Treemacs provides UI elements used for LSP UI.
+Let's install lsp-treemacs and its dependency treemacs.
+We will also assign ~M-9~ to show error list.
+#+BEGIN_SRC emacs-lisp
+  (use-package lsp-treemacs
+    :after (lsp-mode treemacs)
+    :ensure t
+    :commands lsp-treemacs-errors-list
+    :bind (:map lsp-mode-map
+                ("M-9" . lsp-treemacs-errors-list)))
+
+  (use-package treemacs
+    :ensure t
+    :commands (treemacs)
+    :after (lsp-mode))
+
+  (setq treemacs-no-png-images t)
+  (treemacs-project-follow-mode t)
+#+END_SRC
+*** LSP UI
+LSP UI is used in various packages that require UI elements in LSP.
+E.g. ~lsp-ui-flycheck-list~ opens a window where you can see various coding errors while you code.
+You can use ~C-c l T~ to toggle several UI elements.
+We have also remapped some of the xref-find functions, so that we can easily jump around between symbols using ~M-.~, ~M-,~ and ~M-?~ keys.
+#+BEGIN_SRC emacs-lisp
+  (use-package lsp-ui
+    :ensure t
+    :after (lsp-mode)
+    :bind (:map lsp-ui-mode-map
+                ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
+                ([remap xref-find-references] . lsp-ui-peek-find-references))
+    :init (setq lsp-ui-doc-delay 1.5
+                lsp-ui-doc-position 'bottom
+                lsp-ui-doc-max-width 100))
+#+END_SRC
+Go through this [[https://github.com/emacs-lsp/lsp-ui/blob/master/lsp-ui-doc.el][link]] to see what other parameters are provided.
+*** Helm LSP
+Helm-lsp provides various functionality to work with the code.
+E.g. code actions like adding *getter, setter, toString*, refactoring etc.
+You can use ~helm-lsp-workspace-symbol~ to find various symbols (classes) within your workspace.
+LSP's built in symbol explorer uses ~xref-find-apropos~ to provide symbol navigation.
+Below we will replace that with helm version.
+After that you can use ~C-c l g a~ to find workspace symbols in a more intuitive way.
+#+BEGIN_SRC emacs-lisp
+  (use-package helm-lsp
+    :ensure t
+    :after (lsp-mode)
+    :commands (helm-lsp-workspace-symbol)
+    :init (define-key lsp-mode-map [remap xref-find-apropos] #'helm-lsp-workspace-symbol))
+#+END_SRC
+*** Install LSP Package
+Let's install the main package for lsp.
+Here we will integrate lsp with which-key.
+This way, when we type the prefix key ~C-c l~ we get additional help for completing the command.
+#+BEGIN_SRC emacs-lisp
+  (use-package lsp-mode
+    :ensure t
+    :hook ((lsp-mode . lsp-enable-which-key-integration)
+           (java-mode . #'lsp-deferred))
+    :init (setq lsp-keymap-prefix "C-c l"              ; this is for which-key integration documentation, need to use lsp-mode-map
+                lsp-enable-file-watchers nil
+                read-process-output-max (* 1024 1024)  ; 1 mb
+                lsp-completion-provider :capf
+                lsp-idle-delay 0.500)
+    :config (setq lsp-intelephense-multi-root nil) ; don't scan unnecessary projects
+    (with-eval-after-load 'lsp-intelephense
+      (setf (lsp--client-multi-root (gethash 'iph lsp-clients)) nil))
+    (define-key lsp-mode-map (kbd "C-c l") lsp-command-map))
+#+END_SRC
+You can start LSP server in a java project by using ~C-c l s s~.
+Once you type ~C-c l~ ~which-key~ package should guide you through rest of the options.
+In above setting I have added some memory management settings as suggested in [[https://emacs-lsp.github.io/lsp-mode/page/performance/][this guide]].
+Change them to higher numbers, if you find *lsp-mode* sluggish in your computer.
+*** LSP Java
+This is the package that handles server installation and session management.
+#+BEGIN_SRC  emacs-lisp
+  (use-package lsp-java
+    :ensure t
+    :config (add-hook 'java-mode-hook 'lsp))
+
+  (require 'lsp-java)
+  (add-hook 'java-mode-hook #'lsp)
+
+  (condition-case nil
+      (require 'use-package)
+    (file-error
+     (require 'package)
+     (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+     (package-initialize)
+     (package-refresh-contents)
+     (package-install 'use-package)
+     (setq use-package-always-ensure t)
+     (require 'use-package)))
+
+  (use-package projectile)
+  (use-package flycheck)
+  (use-package yasnippet :config (yas-global-mode))
+
+  (use-package lsp-mode
+    :hook ((lsp-mode . lsp-enable-which-key-integration))
+    :config (setq lsp-completion-enable-additional-text-edit nil))
+  (use-package hydra)
+  (use-package company)
+  (use-package company-box)
+  (use-package lsp-ui)
+  (use-package which-key :config (which-key-mode))
+  (use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
+  (use-package dap-mode :after lsp-mode :config (dap-auto-configure-mode))
+  (use-package dap-java :ensure nil)
+  (use-package helm-lsp)
+  (use-package helm
+    :config (helm-mode))
+  (use-package lsp-treemacs)
+
+  ;; show nice unit test results
+  (add-hook 'compilation-filter-hook
+            (lambda() (ansi-color-apply-on-region (point-min) (point-max))))
+#+END_SRC
+
+#+BEGIN_SRC  emacs-lisp
+  (setq lsp-print-io t)
+
+  ;; https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
+  (setq lsp-modeline-code-actions-enable nil)
+  (setq lsp-headerline-breadcrumb-enable nil)
+#+END_SRC
+** lsp c++
+#+BEGIN_SRC emacs-lisp
+  (use-package lsp-mode
+    :hook ((c++-mode . lsp)))
+  (use-package lsp-ui
+    :commands lsp-ui-mode)
+  (require 'lsp-mode)
+  (add-hook 'c-mode-hook #'lsp)
+  (add-hook 'c++-mode-hook #'lsp)
+  (setq lsp-clients-clangd-executable "clangd-13")
+  ;;;sudo apt-get install clangd-13
+  ;;;sudo apt-get install clang-13
+  ;;;M-x compile
+  ;;;clang++-13 -Wall -std=c++11 -o output-file main.cpp
+#+END_SRC
+** lsp python
+#+BEGIN_SRC emacs-lisp
+  (use-package lsp-mode
+    :hook ((python-mode . lsp)))
+  (use-package lsp-ui
+    :commands lsp-ui-mode)
+#+END_SRC
+** magit
+#+BEGIN_SRC emacs-lisp
+  (use-package magit)
+  (use-package magit-find-file)
+  (with-eval-after-load 'magit-mode
+    (add-hook 'after-save-hook 'magit-after-save-refresh-status t))
+
+;;  (setq magit-display-buffer-function
+;;        (lambda (buffer)
+;;          (display-buffer buffer '(display-buffer-same-window))))
+
+;;  (defun magit-display-buffer-traditional (buffer)
+;;    "Display BUFFER the way this has traditionally been done."
+;;    (display-buffer
+;;     buffer (if (and (derived-mode-p 'magit-mode)
+;;                     (not (memq (with-current-buffer buffer major-mode)
+;;                                '(magit-process-mode
+;;                                  magit-revision-mode
+;;                                  magit-diff-mode
+;;                                  magit-stash-mode))))
+;;                                  ;;magit-status-mode))))
+;;                '(display-buffer-same-window)
+;;              nil)))
+#+END_SRC
+** mode line
+#+BEGIN_SRC emacs-lisp
+  (require 'hide-mode-line)
+#+END_SRC
+** nov
+#+BEGIN_SRC emacs-lisp
+  (defun my:nov-visual-line-mode ()
+    (interactive)
+    (visual-line-mode))
+
+  (add-hook 'nov-mode-hook 'my:nov-visual-line-mode)
+#+END_SRC
+** openwith
+#+BEGIN_SRC emacs-lisp
+  (require 'openwith)
+  (openwith-mode t)
+  (setq openwith-associations
+        (list (list (openwith-make-extension-regexp '("pdf")) "qpdfview" '(file))
+              (list (openwith-make-extension-regexp '("avi" "mp3" "mp4" "wav")) "vlc" '(file))
+              (list (openwith-make-extension-regexp '("cr2")) "rawtherapee" '(file))
+              (list (openwith-make-extension-regexp '("sln")) "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\Common7\\IDE\\devenv.exe" '(file))
+              (list (openwith-make-extension-regexp '("csproj")) "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\Common7\\IDE\\devenv.exe" '(file))))
+#+END_SRC
+** org mode
+#+BEGIN_SRC emacs-lisp
+  (setq org-directory "~/source/org-mode/")
+  (setq org-default-notes-file (concat org-directory "/org-capture.org"))
+  (global-set-key (kbd "C-c a") 'org-agenda)
+  (global-set-key (kbd "C-c c") 'org-capture)
+  (global-set-key (kbd "C-c s") 'org-schedule)
+  (global-set-key (kbd "C-c l") 'org-store-link)
+  (global-set-key (kbd "C-c o") 'org-switchb)
+
+  (load (concat EMACS-HOME "agenda"))
+
+  (setq org-priority-faces '((?A . (:foreground "white" :background "red3"        :weight 'bold))
+                             (?B . (:foreground "white" :background "DarkOrange1" :weight 'bold))
+                             (?C . (:foreground "white" :background "green4"      :weight 'bold))))
+
+  (setq org-startup-folded 'showeverything)
+
+;;;  (setq org-agenda-custom-commands
+;;;        '(("x" agenda)
+;;;          ("y" agenda*)
+;;;          ("w" todo "TODO")
+;;;          ("W" todo-tree "TODO")
+;;;          ("1" todo-tree "DONE")
+;;;          ("2" todo-tree "IN-PROGRESS")
+;;;          ("u" tags "+boss-urgent")
+;;;          ("v" tags-todo "+boss-urgent")
+;;;          ("U" tags-tree "+boss-urgent")
+;;;          ("f" occur-tree "\\<FIXME\\>")
+;;;          ("h" . "HOME+Name tags searches") ;description for "h" prefix
+;;;          ("hl" tags "+home+Lisa")
+;;;          ("hp" tags "+home+Peter")
+;;;          ("hk" tags "+home+Kim")))
+
+  (setq org-support-shift-select 'always)
+  (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "|" "DONE")))
+  (setq org-tags-column 0)
+  (setq org-adapt-indentation nil)
+
+  (setq org-latex-pdf-process '("latexmk -f -pdf %f"))
+
+  (setq org-image-actual-width (list 500))
+
+  (setq org-publish-project-alist
+      '(("org-mode-notes-emacs"
+         :base-directory "~/source/org-mode/notes/emacs/"
+         :base-extension "org"
+         :publishing-directory "~/publish/emacs/"
+         :recursive t
+         :publishing-function org-html-publish-to-html
+         :headline-levels 4
+         :auto-preamble t)
+
+        ("org-mode-notes-emacs-static"
+         :base-directory "~/source/org-mode/notes/emacs/"
+         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+         :publishing-directory "~/publish/emacs/"
+         :recursive t
+         :publishing-function org-publish-attachment)
+
+        ("org-mode-notes-development"
+         :base-directory "~/source/org-mode/notes/development/"
+         :base-extension "org"
+         :publishing-directory "~/publish/development/"
+         :recursive t
+         :publishing-function org-html-publish-to-html
+         :headline-levels 4
+         :auto-preamble t)
+
+        ("org-mode-notes-development-static"
+         :base-directory "~/source/org-mode/notes/development/"
+         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+         :publishing-directory "~/publish/development/"
+         :recursive t
+         :publishing-function org-publish-attachment)
+
+        ("org" :components ("org-mode-notes-emacs"
+                            "org-mode-notes-emacs-static"
+                            "org-mode-notes-development"
+                            "org-mode-notes-development-static"))))
+#+END_SRC
+** os specific settings
+Load emacs-lisp file for linux or windows.
+Load emacs-lisp file for custom changes.
+#+BEGIN_SRC emacs-lisp
+  (cond
+   ((eq system-type 'gnu/linux) (load (concat EMACS-HOME "linux")))
+   ((eq system-type 'windows-nt) (load (concat EMACS-HOME "windows")))
+   (t (load-library "default")))
+  (load (concat EMACS-HOME "custom"))
+#+END_SRC
+** package initialize
+#+BEGIN_SRC emacs-lisp
+  (unless package-archive-contents (package-refresh-contents))
+
+  (setq package-list '(all-the-icons
+                       arduino-cli-mode
+                       arduino-mode
+                       bookmark-in-project
+                       company
+                       company-box
+                       counsel
+                       counsel-projectile
+                       counsel-web
+                       dired-narrow
+                       elfeed
+                       evil
+                       evil-mc
+                       git-gutter
+                       gnuplot
+                       go-mode
+                       golden-ratio
+                       google-translate
+                       goto-last-change
+                       helm-bm
+                       helm-projectile
+                       helm-swoop
+                       hide-mode-line
+                       highlight
+                       ibuffer-vc
+                       itail
+                       ivy
+                       json-mode
+                       magit
+                       magit-find-file
+                       move-text
+                       nov
+                       openwith
+                       ox-jira
+                       powershell
+                       projectile
+                       rainbow-mode
+                       swiper-helm
+                       telephone-line
+                       treemacs-projectile
+                       use-package
+                       which-key
+                       ztree))
+
+  (dolist (package package-list)
+    (unless (package-installed-p package) (package-install package)))
+#+END_SRC
+** plantuml
+#+BEGIN_SRC emacs-lisp
+(setq org-plantuml-jar-path (expand-file-name "/usr/share/plantuml/plantuml.jar"))
+(add-to-list 'org-src-lang-modes '("plantuml" . plantuml))
+(org-babel-do-load-languages 'org-babel-load-languages '((plantuml . t)))
+#+END_SRC
+** projectile
+#+BEGIN_SRC emacs-lisp
+  (use-package projectile)
+
+  (unless (package-installed-p 'projectile)
+  (package-install 'projectile))
+
+  (require 'projectile)
+  (setq projectile-indexing-method 'alien)
+  (projectile-global-mode)
+  (projectile-mode t)
+  (global-set-key (kbd "C-x p") 'helm-projectile-switch-project)
+  (global-set-key (kbd "C-x o") 'helm-projectile-find-file)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+#+END_SRC
+** rainbow-mode
+#+BEGIN_SRC emacs-lisp
+  (use-package rainbow-mode)
+  (require 'rainbow-mode)
+  (add-hook 'emacs-lisp-mode-hook 'rainbow-mode)
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
@@ -1455,79 +1481,20 @@ This is the package that handles server installation and session management.
                (setq theme-index 0)
                (setq INDEX-CHIAROSCURO 0))))
 #+END_SRC
-** dap-debug template
+** windows
 #+BEGIN_SRC emacs-lisp
-  (dap-register-debug-template "My Runner1"
-                               (list :type "java"
-                                     :request "launch"
-                                     :args "heeeeeeeeeello"
-                                     :vmArgs ""
-                                     :projectName "maven_sandbox"
-                                     :mainClass "org.sandbox.Main"
-                                     :env '(("DEV" . "1"))))
+  (use-package powershell)
+  (require 'powershell)
 
-  (dap-register-debug-template "My Runner2"
-                               (list :type "java"
-                                     :request "launch"
-                                     :args "1 2 3 4 5 6"
-                                     :vmArgs ""
-                                     :projectName "maven_sandbox"
-                                     :mainClass "org.sandbox.Main"
-                                     :env '(("DEV" . "1"))))
+  ;;(use-package csharp-mode)
+  ;;(require 'csharp-mode)
 #+END_SRC
-** custom minor logger mode
+** winner mode
 #+BEGIN_SRC emacs-lisp
-  (define-minor-mode my-logger-mode
-    "Custom mode for following logs.")
-  (add-hook 'my-logger-mode-hook 'my:my-logger-colorize-background)
-
-  (defun my:my-logger-colorize-background ()
-  (interactive)
-    (highlight-regexp "treemacs")
-    ;;(setq buffer-face-mode-face '(:background "red"))
-    (buffer-face-mode 1))
+  (when (fboundp 'winner-mode)
+    (winner-mode t))
 #+END_SRC
-** custom minor foo mode
-See https://nullprogram.com/blog/2013/02/06/
+** ztree
 #+BEGIN_SRC emacs-lisp
-(make-variable-buffer-local
- (defvar foo-count 0
-   "Number of foos inserted into the current buffer."))
-
-(defun insert-foo ()
-  (interactive)
-  (setq foo-count (1+ foo-count))
-  (insert "foo"))
-
-;;;###autoload
-(define-minor-mode foo-mode
-  "Get your foos in the right places."
-  :lighter " foo"
-  :keymap (let ((map (make-sparse-keymap)))
-            (define-key map (kbd "C-c f") 'insert-foo)
-            map))
-
-;;;###autoload
-(add-hook 'text-mode-hook 'foo-mode)
-
-(provide 'foo-mode)
-#+END_SRC
-** change theme on startup and maximize the frame in Windows
-#+BEGIN_SRC emacs-lisp
-  (setq INDEX-CHIAROSCURO 0)
-  ;(my:maximize-frame)
-  (toggle-frame-maximized)
-
-  (defun my:night-theme ()
-    (interactive)
-    (my:theme-up)
-    (my:theme-up)
-    (my:theme-up))
-
-  (defun my:day-theme ()
-    (interactive)
-    (my:theme-up))
-
-  (if (or (< (string-to-number (format-time-string "%H")) 8)
-          (> (string-to-number (format-time-string "%H")) 16)) (my:night-theme) (my:day-theme))
+(require 'ztree)
 #+END_SRC
