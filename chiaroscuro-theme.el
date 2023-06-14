@@ -64,6 +64,7 @@
     `(cursor                   ((t (:background ,background-cursor                                        ))))
     `(link                     ((t (:foreground ,text-normal                                 :underline t ))))
     `(highlight                ((t (:foreground ,color-yellow-1    :background ,color-yellow-2            ))))
+    `(lazy-highlight           ((t (:foreground ,color-yellow-1    :background ,color-yellow-2            ))))
 
     `(show-paren-match         ((t (:foreground ,color-green-1     :background ,color-green-2             ))))
     `(region                   ((t (:foreground ,color-yellow-1    :background ,color-yellow-2            ))))
