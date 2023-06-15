@@ -1,5 +1,5 @@
 * emacs
-** archives
+** archives and startup
 #+BEGIN_SRC emacs-lisp
   (setq INDEX-CHIAROSCURO 0)
 
@@ -10,6 +10,54 @@
   (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                            ("elpa" . "https://elpa.gnu.org/packages/")
                            ("org" . "https://orgmode.org/elpa/")))
+
+  (unless package-archive-contents (package-refresh-contents))
+
+  (setq package-list '(arduino-cli-mode
+                       arduino-mode
+                       bookmark-in-project
+                       company
+                       company-box
+                       counsel
+                       counsel-projectile
+                       counsel-web
+                       dired-narrow
+                       elfeed
+                       evil
+                       evil-mc
+                       git-gutter
+                       gnuplot
+                       go-mode
+                       golden-ratio
+                       google-translate
+                       goto-last-change
+                       helm-bm
+                       helm-projectile
+                       helm-swoop
+                       hide-mode-line
+                       highlight
+                       ibuffer-vc
+                       itail
+                       ivy
+                       json-mode
+                       magit
+                       magit-find-file
+                       move-text
+                       nov
+                       openwith
+                       ox-jira
+                       powershell
+                       projectile
+                       rainbow-mode
+                       swiper-helm
+                       telephone-line
+                       treemacs-projectile
+                       use-package
+                       which-key
+                       ztree))
+
+  (dolist (package package-list)
+    (unless (package-installed-p package) (package-install package)))
 #+END_SRC
 ** behavior
 #+BEGIN_SRC emacs-lisp
@@ -60,39 +108,21 @@
             (lambda () (subword-mode t)))
 
   (setq sentence-end-double-space nil)
+
+  (toggle-frame-maximized)
 #+END_SRC
 ** bookmark-in-project
 #+BEGIN_SRC emacs-lisp
   (use-package bookmark-in-project
     :commands (bookmark-in-project-jump
-               bookmark-in-project-jump-next
                bookmark-in-project-jump-previous
+               bookmark-in-project-jump-next
                bookmark-in-project-delete-all)
-   
-    ;; Example key bindings.
-    :bind (("C-^" . bookmark-in-project-jump-next)
+
+    :bind (("C-$" . bookmark-in-project-toggle)
            ("C-%" . bookmark-in-project-jump-previous)
-           ("C-$" . bookmark-in-project-toggle)
+           ("C-^" . bookmark-in-project-jump-next)
            ("C-&" . bookmark-in-project-jump)))
-#+END_SRC
-** change theme on startup and maximize the frame in Windows
-#+BEGIN_SRC emacs-lisp
-  (setq INDEX-CHIAROSCURO 0)
-  ;(my:maximize-frame)
-  (toggle-frame-maximized)
-
-  (defun my:night-theme ()
-    (interactive)
-    (my:theme-up)
-    (my:theme-up)
-    (my:theme-up))
-
-  (defun my:day-theme ()
-    (interactive)
-    (my:theme-up))
-
-  (if (or (< (string-to-number (format-time-string "%H")) 8)
-          (> (string-to-number (format-time-string "%H")) 16)) (my:night-theme) (my:day-theme))
 #+END_SRC
 ** chess
 #+BEGIN_SRC emacs-lisp
@@ -390,23 +420,23 @@ See https://nullprogram.com/blog/2013/02/06/
 #+END_SRC
 ** dap-debug template
 #+BEGIN_SRC emacs-lisp
-  (dap-register-debug-template "My Runner1"
-                               (list :type "java"
-                                     :request "launch"
-                                     :args "heeeeeeeeeello"
-                                     :vmArgs ""
-                                     :projectName "maven_sandbox"
-                                     :mainClass "org.sandbox.Main"
-                                     :env '(("DEV" . "1"))))
-
-  (dap-register-debug-template "My Runner2"
-                               (list :type "java"
-                                     :request "launch"
-                                     :args "1 2 3 4 5 6"
-                                     :vmArgs ""
-                                     :projectName "maven_sandbox"
-                                     :mainClass "org.sandbox.Main"
-                                     :env '(("DEV" . "1"))))
+;  (dap-register-debug-template "My Runner1"
+;                               (list :type "java"
+;                                     :request "launch"
+;                                     :args "heeeeeeeeeello"
+;                                     :vmArgs ""
+;                                     :projectName "maven_sandbox"
+;                                     :mainClass "org.sandbox.Main"
+;                                     :env '(("DEV" . "1"))))
+; 
+;  (dap-register-debug-template "My Runner2"
+;                               (list :type "java"
+;                                     :request "launch"
+;                                     :args "1 2 3 4 5 6"
+;                                     :vmArgs ""
+;                                     :projectName "maven_sandbox"
+;                                     :mainClass "org.sandbox.Main"
+;                                     :env '(("DEV" . "1"))))
 #+END_SRC
 ** dired
 #+BEGIN_SRC emacs-lisp
@@ -872,6 +902,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (global-set-key (kbd "C-c 1") 'hlt-highlight)
   (global-set-key (kbd "C-c 2") 'hlt-unhighlight-region)
   (global-set-key (kbd "C-c 3") 'hlt-highlight-symbol)
+  (global-set-key (kbd "C-t") 'avy-goto-line)
 #+END_SRC
 ** look
 #+BEGIN_SRC emacs-lisp
@@ -1311,57 +1342,7 @@ Load emacs-lisp file for custom changes.
    (t (load-library "default")))
   (load (concat EMACS-HOME "custom"))
 #+END_SRC
-** package initialize
-#+BEGIN_SRC emacs-lisp
-  (unless package-archive-contents (package-refresh-contents))
 
-  (setq package-list '(all-the-icons
-                       arduino-cli-mode
-                       arduino-mode
-                       bookmark-in-project
-                       company
-                       company-box
-                       counsel
-                       counsel-projectile
-                       counsel-web
-                       dired-narrow
-                       elfeed
-                       evil
-                       evil-mc
-                       git-gutter
-                       gnuplot
-                       go-mode
-                       golden-ratio
-                       google-translate
-                       goto-last-change
-                       helm-bm
-                       helm-projectile
-                       helm-swoop
-                       hide-mode-line
-                       highlight
-                       ibuffer-vc
-                       itail
-                       ivy
-                       json-mode
-                       magit
-                       magit-find-file
-                       move-text
-                       nov
-                       openwith
-                       ox-jira
-                       powershell
-                       projectile
-                       rainbow-mode
-                       swiper-helm
-                       telephone-line
-                       treemacs-projectile
-                       use-package
-                       which-key
-                       ztree))
-
-  (dolist (package package-list)
-    (unless (package-installed-p package) (package-install package)))
-#+END_SRC
 ** plantuml
 #+BEGIN_SRC emacs-lisp
 (setq org-plantuml-jar-path (expand-file-name "/usr/share/plantuml/plantuml.jar"))
@@ -1436,20 +1417,6 @@ Load emacs-lisp file for custom changes.
     (my:disable-themes))
   (global-set-key (kbd "C-5") 'my:reset-themes-index)
 
-  (defun my:theme-down ()
-    (interactive)
-    (setq theme-index (- theme-index 1))
-    (setq INDEX-CHIAROSCURO (- INDEX-CHIAROSCURO 1))
-    (my:toggle-themes))
-  (global-set-key (kbd "C-x 6") 'my:theme-down)
-
-  (defun my:theme-up ()
-    (interactive)
-    (setq theme-index (+ theme-index 1))
-    (setq INDEX-CHIAROSCURO (+ INDEX-CHIAROSCURO 1))
-    (my:toggle-themes))
-  (global-set-key (kbd "C-~") 'my:theme-up)
-
   (defun my:loop ()
     (interactive)
     (setq loop-index 1)
@@ -1480,6 +1447,33 @@ Load emacs-lisp file for custom changes.
         (progn (message "emacs")
                (setq theme-index 0)
                (setq INDEX-CHIAROSCURO 0))))
+
+  (defun my:theme-down ()
+    (interactive)
+    (setq theme-index (- theme-index 1))
+    (setq INDEX-CHIAROSCURO (- INDEX-CHIAROSCURO 1))
+    (my:toggle-themes))
+  (global-set-key (kbd "C-x 6") 'my:theme-down)
+
+  (defun my:theme-up ()
+    (interactive)
+    (setq theme-index (+ theme-index 1))
+    (setq INDEX-CHIAROSCURO (+ INDEX-CHIAROSCURO 1))
+    (my:toggle-themes))
+  (global-set-key (kbd "C-~") 'my:theme-up)
+
+  (defun my:night-theme ()
+    (interactive)
+    (my:theme-up)
+    (my:theme-up)
+    (my:theme-up))
+
+  (defun my:day-theme ()
+    (interactive)
+    (my:theme-up))
+
+  (if (or (< (string-to-number (format-time-string "%H")) 8)
+          (> (string-to-number (format-time-string "%H")) 16)) (my:night-theme) (my:day-theme))
 #+END_SRC
 ** windows
 #+BEGIN_SRC emacs-lisp
