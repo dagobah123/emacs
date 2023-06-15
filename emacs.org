@@ -903,6 +903,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (global-set-key (kbd "C-c 2") 'hlt-unhighlight-region)
   (global-set-key (kbd "C-c 3") 'hlt-highlight-symbol)
   (global-set-key (kbd "C-t") 'avy-goto-line)
+  (global-set-key (kbd "C-.") 'avy-goto-symbol-1)
 #+END_SRC
 ** look
 #+BEGIN_SRC emacs-lisp
