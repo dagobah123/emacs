@@ -25,6 +25,7 @@
 (setq text-highlight-2 "#1e90ff")
 (setq text-hl "#ef9d03")
 (setq text-low "#997777")
+(setq text-lower "#775555")
 (setq text-normal "#bb9999") ;;;#ff9999
 
 ;;; theme_neon.el ends here

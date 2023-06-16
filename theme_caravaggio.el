@@ -25,6 +25,7 @@
 (setq text-highlight-2 "#f8ce8d")
 (setq text-hl "#f8ce8d")
 (setq text-low "#78807e")
+(setq text-lower "#666666")
 (setq text-normal "#c3ac88")
 
 ;;; theme_caravaggio.el ends here

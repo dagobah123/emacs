@@ -25,6 +25,7 @@
 (setq text-highlight-2 "#bb0000")
 (setq text-hl "#ff0000")
 (setq text-low "#990000")
+(setq text-lower "#770000")
 (setq text-normal "#dd0000")
 
 ;;; theme_red.el ends here

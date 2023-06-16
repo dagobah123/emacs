@@ -90,6 +90,7 @@
 (defvar text-hl nil ".")
 (defvar text-keyword nil ".")
 (defvar text-low nil ".")
+(defvar text-lower nil ".")
 (defvar text-magit-branch-local nil ".")
 (defvar text-magit-branch-remote nil ".")
 (defvar text-match nil ".")

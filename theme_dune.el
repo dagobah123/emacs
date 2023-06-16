@@ -25,6 +25,7 @@
 (setq text-highlight-2 "#f8ce8d")
 (setq text-hl "#000000")
 (setq text-low "#2c4775")
+(setq text-lower "#867352")
 (setq text-normal "#362f23")
 
 ;;; theme_dune.el ends here

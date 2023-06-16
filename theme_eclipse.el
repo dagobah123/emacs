@@ -29,6 +29,7 @@
 (setq text-hl "#000000")
 (setq text-keyword "#7f0055")
 (setq text-low "#3f5fbf")
+(setq text-lower "#aaaaaa")
 (setq text-match "#000000")
 (setq text-normal "#000000")
 (setq text-preprocessor "#afafaf")

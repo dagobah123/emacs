@@ -25,6 +25,7 @@
 (setq text-highlight-2 "#00bb00")
 (setq text-hl "#00ff00")
 (setq text-low "#999999")
+(setq text-lower "#666666")
 (setq text-normal "#00bb00")
 
 ;;; theme_terminal.el ends here

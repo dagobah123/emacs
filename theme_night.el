@@ -25,6 +25,7 @@
 (setq text-highlight-2 "#888888")
 (setq text-hl "#888888")
 (setq text-low "#997777")
+(setq text-lower "#444444")
 (setq text-normal "#777777")
 
 ;;; theme_night.el ends here

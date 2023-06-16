@@ -468,6 +468,8 @@
 
     `(helm-ff-executable        ((t (:foreground ,text-match :background ,background-match ))))
 
+    `(focus-unfocused           ((t (:foreground ,text-lower ))))
+
     `(bm-face                   ((t (:foreground ,color-green-1  :background ,color-green-2    ))))
     `(bm-fringe-face            ((t (:foreground ,text-match     :background ,background-match ))))
     `(bm-fringe-persistent-face ((t (:foreground ,text-match     :background ,background-match ))))

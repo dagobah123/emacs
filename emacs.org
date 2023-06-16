@@ -25,6 +25,7 @@
                        elfeed
                        evil
                        evil-mc
+                       focus
                        git-gutter
                        gnuplot
                        go-mode
@@ -44,6 +45,7 @@
                        magit-find-file
                        move-text
                        nov
+                       olivetti
                        openwith
                        ox-jira
                        powershell
@@ -53,6 +55,7 @@
                        telephone-line
                        treemacs-projectile
                        use-package
+                       visual-regexp
                        which-key
                        ztree))
 
@@ -569,6 +572,10 @@ Load environment variables properly by installing *exec-path-from-shell*.
    ((string-equal system-type "gnu/linux")
     (progn (setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "chromium-browser") (message "linux"))))
  #+END_SRC
+** focus
+#+BEGIN_SRC emacs-lisp
+(require 'focus)
+#+END_SRC
 ** git-gutter
 #+BEGIN_SRC emacs-lisp
   (global-git-gutter-mode t)
@@ -902,8 +909,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (global-set-key (kbd "C-c 1") 'hlt-highlight)
   (global-set-key (kbd "C-c 2") 'hlt-unhighlight-region)
   (global-set-key (kbd "C-c 3") 'hlt-highlight-symbol)
-  (global-set-key (kbd "C-t") 'avy-goto-line)
-  (global-set-key (kbd "C-.") 'avy-goto-symbol-1)
+  (global-set-key (kbd "C-.") 'avy-goto-line)
+  (global-set-key (kbd "C-t") 'avy-goto-symbol-1)
 #+END_SRC
 ** look
 #+BEGIN_SRC emacs-lisp
@@ -1241,6 +1248,10 @@ This is the package that handles server installation and session management.
 
   (add-hook 'nov-mode-hook 'my:nov-visual-line-mode)
 #+END_SRC
+** olivetti
+#+BEGIN_SRC emacs-lisp
+  (require 'olivetti)
+#+END_SRC
 ** openwith
 #+BEGIN_SRC emacs-lisp
   (require 'openwith)
@@ -1475,6 +1486,15 @@ Load emacs-lisp file for custom changes.
 
   (if (or (< (string-to-number (format-time-string "%H")) 8)
           (> (string-to-number (format-time-string "%H")) 16)) (my:night-theme) (my:day-theme))
+#+END_SRC
+** visual-regexp
+#+BEGIN_SRC java
+  ;; (add-to-list 'load-path "folder-in-which-visual-regexp-files-are-in/") ;; if the files are not already in the load path
+  (require 'visual-regexp)
+  ;; (define-key global-map (kbd "C-c r") 'vr/replace)
+  ;; (define-key global-map (kbd "C-c q") 'vr/query-replace)
+  ;; if you use multiple-cursors, this is for you:
+  ;; (define-key global-map (kbd "C-c m") 'vr/mc-mark)
 #+END_SRC
 ** windows
 #+BEGIN_SRC emacs-lisp

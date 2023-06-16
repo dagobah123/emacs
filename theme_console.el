@@ -29,6 +29,7 @@
 (setq text-highlight-1 "#000000")
 (setq text-highlight-2 "#000000")
 (setq text-low "#000000")
+(setq text-lower "#000000")
 (setq text-mode-line "#000000")
 (setq text-mode-line-border "#000000")
 (setq text-normal "#000000")

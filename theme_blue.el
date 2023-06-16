@@ -25,6 +25,7 @@
 (setq text-highlight-2 "#f8ce8d")
 (setq text-hl "#f8ce8d")
 (setq text-low "#1ea574")
+(setq text-lower "#00688b")
 (setq text-normal "#c3ac88")
 
 ;;; theme_blue.el ends here
