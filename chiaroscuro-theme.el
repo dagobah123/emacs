@@ -435,11 +435,11 @@
     `(ivy-grep-info                  ((t (:foreground ,text-match     :background ,background-match           ))))
     `(ivy-grep-line-number           ((t (:foreground ,text-match     :background ,background-match           ))))
 
-    `(avy-goto-char-timer-face       ((t (:foreground ,color-red-1    :background ,color-red-2    ))))
-    `(avy-lead-face                  ((t (:foreground ,color-yellow-1 :background ,color-yellow-2 ))))
-    `(avy-lead-face-0                ((t (:foreground ,color-blue-1   :background ,color-blue-2   ))))
-    `(avy-lead-face-1                ((t (:foreground ,color-violet-1 :background ,color-violet-2 ))))
-    `(avy-lead-face-2                ((t (:foreground ,color-green-1  :background ,color-green-2  ))))
+;;;    `(avy-goto-char-timer-face       ((t (:foreground ,color-red-1    :background ,color-red-2    ))))
+;;;    `(avy-lead-face                  ((t (:foreground ,avy-1          :background ,avy-2 ))))
+;;;    `(avy-lead-face-0                ((t (:foreground ,color-blue-1   :background ,color-blue-2   ))))
+;;;    `(avy-lead-face-1                ((t (:foreground ,color-violet-1 :background ,color-violet-2 ))))
+;;;    `(avy-lead-face-2                ((t (:foreground ,color-green-1  :background ,color-green-2  ))))
 
     `(swiper-background-match-face-1 ((t (:foreground ,color-green-1  :background ,color-green-2  ))))
     `(swiper-background-match-face-2 ((t (:foreground ,color-red-1    :background ,color-red-2    ))))

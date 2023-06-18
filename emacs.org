@@ -382,6 +382,12 @@
     (set-face-attribute 'default nil :height font-size))
   (global-set-key (kbd "C-@") 'my:increase-font-size)
 
+  (defun my:avy-goto-line ()
+    (interactive)
+    (avy-goto-line)
+    (evil-first-non-blank))
+  (global-set-key (kbd "C-t") 'my:avy-goto-line)
+
   ;;;(grep-apply-setting 'grep-command "grep --color=auto -nH --null -e -r . --include *.java")
 #+END_SRC
 ** custom minor foo mode
@@ -909,8 +915,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (global-set-key (kbd "C-c 1") 'hlt-highlight)
   (global-set-key (kbd "C-c 2") 'hlt-unhighlight-region)
   (global-set-key (kbd "C-c 3") 'hlt-highlight-symbol)
-  (global-set-key (kbd "C-.") 'avy-goto-line)
-  (global-set-key (kbd "C-t") 'avy-goto-symbol-1)
+  (global-set-key (kbd "C-.") 'avy-goto-char-2)
 #+END_SRC
 ** look
 #+BEGIN_SRC emacs-lisp
