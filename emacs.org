@@ -13,7 +13,9 @@
 
   (unless package-archive-contents (package-refresh-contents))
 
-  (setq package-list '(arduino-cli-mode
+  (setq package-list '(ace-window
+                       ag
+                       arduino-cli-mode
                        arduino-mode
                        bookmark-in-project
                        company
@@ -85,7 +87,7 @@
   (setq make-backup-files nil)
 
   ;; switch split buffers
-  (global-set-key (kbd "M-o") 'other-window)
+  (global-set-key (kbd "M-o") 'ace-window)
 
   ;; disable bell
   (setq ring-bell-function 'ignore)
@@ -916,6 +918,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (global-set-key (kbd "C-c 2") 'hlt-unhighlight-region)
   (global-set-key (kbd "C-c 3") 'hlt-highlight-symbol)
   (global-set-key (kbd "C-.") 'avy-goto-char-2)
+  (global-set-key (kbd "C-c f") 'focus-mode)
 #+END_SRC
 ** look
 #+BEGIN_SRC emacs-lisp
