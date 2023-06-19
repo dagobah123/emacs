@@ -41,7 +41,7 @@
 (setq color-yellow-2 "#554804")
 (setq evil-emacs-1 "#f974f9")
 (setq evil-emacs-2 "#43006d")
-(setq evil-insert-1 "#ffb9b9")
+(setq evil-insert-1 "#ff0000")
 (setq evil-insert-2 "#850d0d")
 (setq evil-motion-1 "#1e90ff")
 (setq evil-motion-2 "#202055")
