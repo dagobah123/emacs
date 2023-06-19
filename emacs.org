@@ -764,9 +764,9 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;))
 #+END_SRC
 ** golden-ratio
-#+BEGIN_SRC emacs-lis
+#+BEGIN_SRC emacs-lisp
   (require 'golden-ratio)
-  (golden-ratio-mode 1)
+  (golden-ratio-mode t)
 #+END_SRC
 ** google-translate
 #+BEGIN_SRC emacs-lisp
@@ -1519,5 +1519,5 @@ Load emacs-lisp file for custom changes.
 #+END_SRC
 ** ztree
 #+BEGIN_SRC emacs-lisp
-(require 'ztree)
+  (require 'ztree)
 #+END_SRC
