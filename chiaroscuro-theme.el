@@ -70,7 +70,7 @@
     `(region                   ((t (:foreground ,color-yellow-1    :background ,color-yellow-2            ))))
     `(cua-rectangle            ((t (:foreground ,color-red-1       :background ,color-red-2               ))))
 
-    `(hl-line                  ((t (:foreground ,text-hl           :background ,background-hl             ))))
+    `(hl-line                  ((t (:foreground unspecified        :background ,background-hl             ))))
     `(fringe                   ((t (:foreground ,text-normal       :background ,background-fringe         ))))
     `(minibuffer-prompt        ((t (:foreground ,text-normal       :background ,background-1              ))))
     `(ido-first-match          ((t (:foreground ,ivy-text          :background ,ivy-background    :bold t ))))
