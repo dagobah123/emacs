@@ -9,7 +9,7 @@
 (setq background-4 "#135d5d")
 (setq background-5 "#5a4646")
 (setq background-fringe "#332222")
-(setq background-hl "#433232")
+(setq background-hl "#442044")
 (setq background-magit "#202055")
 (setq background-magit-dark "#1a1a44")
 (setq background-mode-line "#332222")
