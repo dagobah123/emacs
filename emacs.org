@@ -390,7 +390,15 @@
     (evil-first-non-blank))
   (global-set-key (kbd "C-t") 'my:avy-goto-line)
 
-  ;;;(grep-apply-setting 'grep-command "grep --color=auto -nH --null -e -r . --include *.java")
+  (defun my:disable-golden-ratio-mode ()
+    "Disable golden-ratio-mode in ediff."
+    (golden-ratio-mode -1))
+  (add-hook 'ediff-mode-hook #'my:disable-golden-ratio-mode)
+
+  (defun my:enable-golden-ratio-mode ()
+    "Enable golden-ratio-mode after ediff."
+    (golden-ratio-mode 1))
+  (add-hook 'ediff-quit-hook #'my:enable-golden-ratio-mode)
 #+END_SRC
 ** custom minor foo mode
 See https://nullprogram.com/blog/2013/02/06/
