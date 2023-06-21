@@ -363,7 +363,7 @@
     `(org-scheduled-today           ((t (:foreground ,color-green-1  :background unspecified                                                                       ))))
     `(org-sexp-date                 ((t (:foreground ,text-normal    :background unspecified                                                                       ))))
     `(org-special-keyword           ((t (:foreground ,color-blue-1   :background unspecified                                                                       ))))
-    `(org-table                     ((t (:foreground ,color-yellow-1 :background ,color-yellow-2                                                                   ))))
+    `(org-table                     ((t (:foreground ,color-blue-1   :background ,color-blue-2                                                                     ))))
     `(org-table-header              ((t (:foreground ,color-green-1  :background ,color-green-2                                                                    ))))
     `(org-tag                       ((t (:foreground ,color-blue-1   :background unspecified                                                                       ))))
     `(org-tag-group                 ((t (:foreground ,text-normal    :background unspecified                                                                       ))))
