@@ -470,6 +470,7 @@ See https://nullprogram.com/blog/2013/02/06/
     :config
     (bind-key "C-x f" #'dired-narrow-fuzzy))
   (require 'dired-narrow)
+  (setq dired-dwim-target t)
 #+END_SRC
 ** ediff
 #+BEGIN_SRC emacs-lisp
