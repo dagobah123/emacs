@@ -39,7 +39,7 @@
     (if (eq INDEX-CHIAROSCURO INDEX-BLUE) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
     (if (eq INDEX-CHIAROSCURO INDEX-BLUE) (progn (load-file "~/.emacs.d/theme_blue.el")))
 
-    (if (eq INDEX-CHIAROSCURO INDEX-YELLOW) (progn (load-file "~/.emacs.d/theme_default_middle.el")))
+    (if (eq INDEX-CHIAROSCURO INDEX-YELLOW) (progn (load-file "~/.emacs.d/theme_default_light_middle.el")))
     (if (eq INDEX-CHIAROSCURO INDEX-YELLOW) (progn (load-file "~/.emacs.d/theme_yellow.el")))
 
     (if (eq INDEX-CHIAROSCURO INDEX-LIGHT) (progn (load-file "~/.emacs.d/theme_default_light.el")))
