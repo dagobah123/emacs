@@ -36,7 +36,7 @@
 (setq color-violet-1 "#611481")
 (setq color-violet-2 "#f0cdff")
 (setq color-yellow-1 "#645900")
-(setq color-yellow-2 "#fff190")
+(setq color-yellow-2 "#ffff00")
 (setq evil-emacs-1 "#f974f9")
 (setq evil-emacs-2 "#43006d")
 (setq evil-insert-1 "#ffb9b9")
