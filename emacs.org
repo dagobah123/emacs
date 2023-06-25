@@ -43,6 +43,7 @@
                        itail
                        ivy
                        json-mode
+                       luwak
                        magit
                        magit-find-file
                        move-text
