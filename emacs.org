@@ -1414,6 +1414,7 @@ Load emacs-lisp file for custom changes.
                       chiaroscuro
                       chiaroscuro
                       chiaroscuro
+                      chiaroscuro
                       chiaroscuro))
 
   (setq themes-list-names '("console"
@@ -1423,6 +1424,7 @@ Load emacs-lisp file for custom changes.
                             "dune"
                             "night"
                             "blue"
+                            "yellow"
                             "light"
                             "linux"
                             "caravaggio"

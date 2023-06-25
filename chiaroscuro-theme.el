@@ -11,12 +11,11 @@
 (setq INDEX-DUNE        5)
 (setq INDEX-NIGHT       6)
 (setq INDEX-BLUE        7)
-(setq INDEX-LIGHT       8)
-(setq INDEX-LINUX       9)
-(setq INDEX-CARAVAGGIO 10)
-(setq INDEX-RED        11)
-
-;;;(setq background-hl "#e8f2fe")
+(setq INDEX-YELLOW      8)
+(setq INDEX-LIGHT       9)
+(setq INDEX-LINUX      10)
+(setq INDEX-CARAVAGGIO 11)
+(setq INDEX-RED        12)
 
 (if (> INDEX-CHIAROSCURO INDEX-CONSOLE)
 
@@ -39,6 +38,9 @@
 
     (if (eq INDEX-CHIAROSCURO INDEX-BLUE) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
     (if (eq INDEX-CHIAROSCURO INDEX-BLUE) (progn (load-file "~/.emacs.d/theme_blue.el")))
+
+    (if (eq INDEX-CHIAROSCURO INDEX-YELLOW) (progn (load-file "~/.emacs.d/theme_default_middle.el")))
+    (if (eq INDEX-CHIAROSCURO INDEX-YELLOW) (progn (load-file "~/.emacs.d/theme_yellow.el")))
 
     (if (eq INDEX-CHIAROSCURO INDEX-LIGHT) (progn (load-file "~/.emacs.d/theme_default_light.el")))
     (if (eq INDEX-CHIAROSCURO INDEX-LIGHT) (progn (load-file "~/.emacs.d/theme_light.el")))
