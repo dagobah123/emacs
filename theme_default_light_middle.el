@@ -6,7 +6,7 @@
 
 (setq alert-1 "#ff6600")
 (setq alert-2 "#ee9966")
-(setq alert-3 "#cccccc")
+(setq alert-3 "#999999")
 (setq background-buffer-id-projectile "#ffff00")
 (setq background-current-diff-A "#ee9666")
 (setq background-current-diff-B "#99de66")
