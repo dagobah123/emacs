@@ -53,8 +53,6 @@
 (setq evil-replace-2 "#850d0d")
 (setq evil-visual-1 "#d6b400")
 (setq evil-visual-2 "#554804")
-(setq ivy-background "#514628")
-(setq ivy-text "#ffff00")
 (setq text-constant "#994410")
 (setq text-diff-added "#113e00")
 (setq text-diff-removed "#850b0b")

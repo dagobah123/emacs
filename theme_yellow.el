@@ -13,7 +13,7 @@
 (setq background-hl "#ddca69")
 (setq background-magit "#eedb7a")
 (setq background-magit-dark "#ddca69")
-(setq background-match "#ffff00")
+(setq background-match "#ddca69")
 (setq background-mode-line "#ddca69")
 (setq background-mode-line-active "#ddca69")
 (setq font-lock-blue "#ffec8b")
