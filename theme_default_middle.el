@@ -57,8 +57,10 @@
 (setq text-diff-added "#113e00")
 (setq text-diff-removed "#850b0b")
 (setq text-ediff "#000000")
+(setq text-error "#ff0000")
 (setq text-error "#ffff00")
 (setq text-function "#1d6a00")
+(setq text-info "#ffffff")
 (setq text-keyword "#7f3195")
 (setq text-magit-branch-local "#000000")
 (setq text-magit-branch-remote "#000000")
@@ -68,6 +70,6 @@
 (setq text-preprocessor "#04bcc0")
 (setq text-type "#bb0606")
 (setq text-variable "#0438bf")
-(setq text-warning "#ff0000")
+(setq text-warning "#ff9900")
 
 ;;; theme_default_middle.el ends here

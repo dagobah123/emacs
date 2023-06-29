@@ -4,15 +4,14 @@
 
 (load-file "~/.emacs.d/theme_variables.el")
 
-(setq background-1 "#ffffff")
-(setq background-3 "#96c8ff")
-(setq background-4 "#e8f2fe")
-(setq background-5 "#bbbbbb")
+;;;#bbbbbb
+
+(setq background "#ffffff")
 (setq background-fringe "#eeeeee")
 (setq background-hl "#e8f2fe")
 (setq background-magit "#e8f2fe")
 (setq background-magit-dark "#f2f2f2")
-(setq background-match "#f0cdff")
+(setq background-match "#96c8ff")
 (setq background-mode-line "#eeeeee")
 (setq background-mode-line-active "#aaaaaa")
 (setq font-lock-blue "#ffffff")
@@ -35,6 +34,5 @@
 (setq text-preprocessor "#afafaf")
 (setq text-type "#7f0055")
 (setq text-variable "#6a3e3e")
-(setq text-warning "#6a3e3e")
 
 ;;; theme_eclipse.el ends here

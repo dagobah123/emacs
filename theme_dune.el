@@ -4,10 +4,7 @@
 
 (load-file "~/.emacs.d/theme_variables.el")
 
-(setq background-1 "#ad9770")
-(setq background-3 "#b47339")
-(setq background-4 "#9e8a67")
-(setq background-5 "#415aaa")
+(setq background "#ad9770")
 (setq background-fringe "#9e8a67")
 (setq background-hl "#9e8a67")
 (setq background-magit "#8e7c5d")

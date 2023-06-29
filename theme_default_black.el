@@ -57,8 +57,10 @@
 (setq text-diff-added "#000000")
 (setq text-diff-removed "#000000")
 (setq text-ediff "#000000")
+(setq text-error "#ff0000")
 (setq text-error "#ffff00")
 (setq text-function "#084e00")
+(setq text-info "#ffffff")
 (setq text-keyword "#593e6d")
 (setq text-magit-branch-local "#00bb00")
 (setq text-magit-branch-remote "#bb0000")
@@ -68,6 +70,6 @@
 (setq text-preprocessor "#026a6c")
 (setq text-type "#85385a")
 (setq text-variable "#455887")
-(setq text-warning "#770000")
+(setq text-warning "#ff9900")
 
 ;;; theme_default_black.el ends here

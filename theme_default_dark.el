@@ -4,7 +4,7 @@
 
 (load-file "~/.emacs.d/theme_variables.el")
 
-(setq alert-1 "#ee6666")
+(setq alert-1 "#ff0000")
 (setq alert-2 "#aa6666")
 (setq alert-3 "#555555")
 (setq avy-1 "#000000")
@@ -59,8 +59,9 @@
 (setq text-diff-added "#000000")
 (setq text-diff-removed "#000000")
 (setq text-ediff "#000000")
-(setq text-error "#ffff00")
+(setq text-error "#ff0000")
 (setq text-function "#109800")
+(setq text-info "#ffffff")
 (setq text-keyword "#d091ff")
 (setq text-magit-branch-local "#00bb00")
 (setq text-magit-branch-remote "#bb0000")
@@ -70,6 +71,6 @@
 (setq text-preprocessor "#04bcc0")
 (setq text-type "#bb4f80")
 (setq text-variable "#7ea0f7")
-(setq text-warning "#ff0000")
+(setq text-warning "#ff9900")
 
 ;;; theme_default_dark.el ends here

@@ -957,7 +957,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (setq blink-cursor-blinks 0)
 
   ;; set line number mode and kbd to show them
-  (setq display-line-numbers-type 'relative)
+  (setq display-line-numbers-type 'absolute)
   (global-set-key (kbd "C-7") 'global-display-line-numbers-mode)
 
   ;; use hl line

@@ -4,7 +4,7 @@
 
 (load-file "~/.emacs.d/theme_variables.el")
 
-(setq alert-1 "#ff6600")
+(setq alert-1 "#ff0000")
 (setq alert-2 "#ee9966")
 (setq alert-3 "#999999")
 (setq background-buffer-id-projectile "#ffff00")
@@ -16,7 +16,7 @@
 (setq background-diff-added-highlight "#99de66")
 (setq background-diff-removed "#dd8555")
 (setq background-diff-removed-highlight "#ee9666")
-(setq background-ediff "#ddca69")
+(setq background-ediff "#ddca69") ;;;move to theme
 (setq background-fine-diff-A "#ee9666")
 (setq background-fine-diff-B "#99de66")
 (setq background-fine-diff-C "#ffff00")
@@ -59,7 +59,9 @@
 (setq text-diff-removed "#aa2222")
 (setq text-ediff "#000000")
 (setq text-error "#ff0000")
+(setq text-error "#ff0000")
 (setq text-function "#258800")
+(setq text-info "#ffffff")
 (setq text-keyword "#af06d0")
 (setq text-magit-branch-local "#000000")
 (setq text-magit-branch-remote "#000000")
@@ -70,5 +72,6 @@
 (setq text-type "#bb0606")
 (setq text-variable "#0e4ae5")
 (setq text-warning "#ff0000")
+(setq text-warning "#ff9900")
 
 ;;; theme_default_light_middle.el ends here
