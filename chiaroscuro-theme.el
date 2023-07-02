@@ -205,9 +205,9 @@
 
     ;magit
     `(magit-hash                        ((t (:foreground ,text-low                                                                                                    ))))
-    `(magit-header-line                 ((t (:foreground ,text-normal                                                      :bold t                                    ))))
+    `(magit-header-line                 ((t (:foreground ,text-low                                                      :bold t                                    ))))
     `(magit-section-heading             ((t (:foreground ,text-low                                                         :bold t                                    ))))
-    `(magit-branch-current              ((t (:foreground ,text-match        :background ,background-match                  :box (:line-width 1 :color ,text-match)    ))))
+    `(magit-branch-current              ((t (:foreground ,text-branch-current        :background ,background-branch-current                  :box (:line-width 1 :color ,text-branch-current)    ))))
     `(magit-branch-local                ((t (:foreground ,color-green-1     :background ,color-green-2                     :box (:line-width 1 :color ,color-green-1) ))))
     `(magit-branch-remote               ((t (:foreground ,color-red-1       :background ,color-red-2                       :box (:line-width 1 :color ,color-red-1)   ))))
     `(magit-branch-remote-head          ((t (:foreground ,color-red-1       :background ,color-red-2                       :box (:line-width 1 :color ,color-red-1)   ))))
@@ -223,11 +223,11 @@
     `(magit-diff-hunk-region            ((t (:foreground ,text-normal       :background ,background-magit                                                             ))))
     `(magit-diff-conflict-heading       ((t (:foreground ,text-normal       :background ,background-magit                                                             ))))
 
-    `(magit-diff-file-heading           ((t (:foreground ,text-normal       :background unspecified                        :bold t                                    ))))
+    `(magit-diff-file-heading           ((t (:foreground ,text-low       :background unspecified                        :bold t                                    ))))
     `(magit-diff-file-heading-selection ((t (:foreground ,text-highlight-2  :background ,background-magit                  :bold t                                    ))))
     `(magit-diff-file-heading-highlight ((t (:foreground ,text-highlight-2  :background ,background-magit                  :bold t                                    ))))
 
-    `(magit-diff-hunk-heading           ((t (:foreground ,text-normal       :background ,background-magit                                                             ))))
+    `(magit-diff-hunk-heading           ((t (:foreground ,text-low       :background ,background-magit                                                             ))))
     `(magit-diff-hunk-heading-selection ((t (:foreground ,text-highlight-2  :background ,background-magit                                                             ))))
     `(magit-diff-hunk-heading-highlight ((t (:foreground ,text-highlight-2  :background ,background-magit                                                             ))))
     `(diff-header                       ((t (:foreground ,text-highlight-2  :background ,background-magit                                                             ))))
@@ -266,22 +266,25 @@
     `(smerge-markers                    ((t (:foreground ,text-ediff        :background ,background-current-diff-C                                                    ))))
 
     ;ediff
-    `(ediff-current-diff-A        ((t (:foreground ,text-ediff :background ,background-current-diff-A ))))
-    `(ediff-current-diff-Ancestor ((t (:foreground ,text-ediff :background ,background-match            ))))
-    `(ediff-current-diff-B        ((t (:foreground ,text-ediff :background ,background-current-diff-B ))))
-    `(ediff-current-diff-C        ((t (:foreground ,text-ediff :background ,background-current-diff-C ))))
-    `(ediff-even-diff-A           ((t (:foreground ,text-ediff :background ,background-ediff          ))))
-    `(ediff-even-diff-Ancestor    ((t (:foreground ,text-ediff :background ,background-match            ))))
-    `(ediff-even-diff-B           ((t (:foreground ,text-ediff :background ,background-ediff          ))))
-    `(ediff-even-diff-C           ((t (:foreground ,text-ediff :background ,background-ediff          ))))
-    `(ediff-fine-diff-A           ((t (:foreground ,text-ediff :background ,background-fine-diff-A    ))))
-    `(ediff-fine-diff-Ancestor    ((t (:foreground ,text-ediff :background ,background-match            ))))
-    `(ediff-fine-diff-B           ((t (:foreground ,text-ediff :background ,background-fine-diff-B    ))))
-    `(ediff-fine-diff-C           ((t (:foreground ,text-ediff :background ,background-fine-diff-C    ))))
-    `(ediff-odd-diff-A            ((t (:foreground ,text-ediff :background ,background-ediff          ))))
-    `(ediff-odd-diff-Ancestor     ((t (:foreground ,text-ediff :background ,background-ediff          ))))
-    `(ediff-odd-diff-B            ((t (:foreground ,text-ediff :background ,background-ediff          ))))
-    `(ediff-odd-diff-C            ((t (:foreground ,text-ediff :background ,background-ediff          ))))
+    `(ediff-current-diff-A        ((t (:foreground ,text-ediff :background ,background-diff-current-A ))))
+    `(ediff-current-diff-Ancestor ((t (:foreground ,text-ediff :background ,background-diff-current-Ancestor            ))))
+    `(ediff-current-diff-B        ((t (:foreground ,text-ediff :background ,background-diff-current-B ))))
+    `(ediff-current-diff-C        ((t (:foreground ,text-ediff :background ,background-diff-current-C ))))
+
+    `(ediff-even-diff-A           ((t (:foreground ,text-ediff :background ,background-diff-even-A          ))))
+    `(ediff-even-diff-Ancestor    ((t (:foreground ,text-ediff :background ,background-diff-even-Ancestor            ))))
+    `(ediff-even-diff-B           ((t (:foreground ,text-ediff :background ,background-diff-even-B            ))))
+    `(ediff-even-diff-C           ((t (:foreground ,text-ediff :background ,background-diff-even-C            ))))
+
+    `(ediff-fine-diff-A           ((t (:foreground ,text-ediff :background ,background-diff-fine-A    ))))
+    `(ediff-fine-diff-Ancestor    ((t (:foreground ,text-ediff :background ,background-diff-fine-Ancestor            ))))
+    `(ediff-fine-diff-B           ((t (:foreground ,text-ediff :background ,background-diff-fine-B    ))))
+    `(ediff-fine-diff-C           ((t (:foreground ,text-ediff :background ,background-diff-fine-C    ))))
+
+    `(ediff-odd-diff-A            ((t (:foreground ,text-ediff :background ,background-diff-odd-A              ))))
+    `(ediff-odd-diff-Ancestor     ((t (:foreground ,text-ediff :background ,background-diff-odd-Ancestor              ))))
+    `(ediff-odd-diff-B            ((t (:foreground ,text-ediff :background ,background-diff-odd-B              ))))
+    `(ediff-odd-diff-C            ((t (:foreground ,text-ediff :background ,background-diff-odd-C              ))))
 
     ;ztree
     `(ztreep-diff-model-add-face     ((t (:foreground ,text-match :background ,background-match               ))))
