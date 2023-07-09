@@ -57,15 +57,16 @@ Emacs
 ^^^^^^^^----------------------------------------------------------------------
 _a_: emacs          _g_: cp .emacs.d       _k_: Reset         ^ ^
 _s_: .emacs.d       _h_: eval init.el      _l_: Up            ^ ^
-_d_: emacs.org      _j_: fullscreen        _q_: Down TODO     ^ ^
+_d_: emacs.org      _j_: fullscreen        _r_: Down TODO     ^ ^
 _f_: chiaro...el    ^ ^                    _w_: Eclipse TODO  ^ ^
-^ ^                 ^ ^                    _e_: Yellow TODO   ^ ^
+_t_: linux.el       ^ ^                    _e_: Yellow TODO   ^ ^
 "
 
   ("a" (dired "~/source/emacs"))
   ("s" (dired "~/.emacs.d"))
   ("d" (find-file "~/source/emacs/emacs.org"))
   ("f" (find-file "~/source/emacs/chiaroscuro-theme.el"))
+  ("t" (find-file "~/source/emacs/linux.el"))
 
   ("g" (lambda () (interactive)
          (shell-command "cd ~/.emacs.d ; cp -r ~/source/emacs/* .")))
@@ -74,33 +75,67 @@ _f_: chiaro...el    ^ ^                    _w_: Eclipse TODO  ^ ^
 
   ("k" (my:reset-themes-index))
   ("l" (my:theme-up))
-  ("q" (dired "/home/q/"))
+  ("r" (dired "/home/q/"))
   ("w" (dired "/home/w/"))
   ("e" (dired "/home/e/"))
 
-  ("r" nil "Quit" :color blue))
+  ("q" nil "Quit" :color blue))
 
-(global-set-key (kbd "C-;") 'hydra-navigation/body)
+(defhydra hydra-code (:hint nil :color red)
+
+  "
+Code
+
+^File^               ^Git^            ^Search^              ^Project^          ^Diff
+^^^^^^^^-----------------------------------------------------------------------------------------
+_a_: line numbers    _g_: status      _w_: dired project    _t_: main folder  _y_: buffers
+_s_: whitespace      _h_: log         _e_: vc-git-grep      ^ ^               _u_: directories
+_d_: imenu           _j_: log file    _r_: helm-git-grep    ^ ^               ^ ^
+_f_: treemacs        _k_: blame       ^ ^                   ^ ^               ^ ^
+_i_: delete windows  ^ ^              ^ ^                   ^ ^               ^ ^
+"
+
+  ("a" (my:toggle-line-numbers))
+  ("s" (my:toggle-whitespace))
+  ("d" (helm-imenu))
+  ("f" (treemacs))
+  ("i" (delete-other-windows))
+
+  ("g" (my:projectile-magit
+))
+  ("h" (magit-log))
+  ("j" (magit-log-buffer-file))
+  ("k" (magit-blame))
+
+  ("w" my:dired-projectile-search)
+  ("e" (my:vc-git-grep))
+  ("r" helm-grep-do-git-grep)
+
+  ("t" (project-dired))
+
+  ("y" ediff-buffers)
+  ("u" ediff-directories)
+
+  ("q" nil "Quit" :color blue))
 
 (defhydra hydra-master (:color blue)
-  "Master Hydra"
-  ("a" hydra-sub1/body "Sub-Hydra 1")
-  ("b" hydra-sub2/body "Sub-Hydra 2")
-  ("c" hydra-navigation/body "Emacs")
+  ""
+  ("a" hydra-navigation/body "Emacs")
+  ("s" hydra-code/body "Code")
   ("q" nil "Quit" :color red))
 
-(defhydra hydra-sub1 (:color red)
-  "Sub-Hydra 1"
-  ("x" command1 "Command 1")
-  ("y" command2 "Command 2")
-  ("q" nil "Quit" :color blue))
+;(defhydra hydra-sub1 (:color red)
+;  "Sub-Hydra 1"
+;  ("x" command1 "Command 1")
+;  ("y" command2 "Command 2")
+;  ("q" nil "Quit" :color blue))
+; 
+;(defhydra hydra-sub2 (:color red)
+;  "Sub-Hydra 2"
+;  ("z" command3 "Command 3")
+;  ("q" nil "Quit" :color blue))
 
-(defhydra hydra-sub2 (:color red)
-  "Sub-Hydra 2"
-  ("z" command3 "Command 3")
-  ("q" nil "Quit" :color blue))
-
-(global-set-key (kbd "C-,") 'hydra-master/body)
+(global-set-key (kbd "C-;") 'hydra-master/body)
 
 
 (defun my:open-and-eval-init-file ()
@@ -118,5 +153,21 @@ _f_: chiaro...el    ^ ^                    _w_: Eclipse TODO  ^ ^
   (let ((buffer-name "init.el"))
     (when (get-buffer buffer-name)
       (kill-buffer buffer-name))))
+
+(defun my:toggle-line-numbers ()
+  "Toggle line numbers."
+  (if global-display-line-numbers-mode
+      (progn
+        (global-display-line-numbers-mode -1))
+    (progn
+      (global-display-line-numbers-mode t))))
+
+(defun my:toggle-whitespace ()
+  "Toggle whitespace."
+  (if whitespace-mode
+      (progn
+        (whitespace-mode -1))
+    (progn
+      (whitespace-mode t))))
 
 ;;; linux.el ends here
