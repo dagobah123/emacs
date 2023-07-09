@@ -1,4 +1,4 @@
-;;; org-agenda templates
+;;; agenda.el --- org mode agenda files
 ;;; Commentary:
 ;;; Code:
 

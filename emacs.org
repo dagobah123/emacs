@@ -1363,17 +1363,6 @@ This is the package that handles server installation and session management.
                             "org-mode-notes-development"
                             "org-mode-notes-development-static"))))
 #+END_SRC
-** os specific settings
-Load emacs-lisp file for linux or windows.
-Load emacs-lisp file for custom changes.
-#+BEGIN_SRC emacs-lisp
-  (cond
-   ((eq system-type 'gnu/linux) (load (concat EMACS-HOME "linux")))
-   ((eq system-type 'windows-nt) (load (concat EMACS-HOME "windows")))
-   (t (load-library "default")))
-  (load (concat EMACS-HOME "custom"))
-#+END_SRC
-
 ** plantuml
 #+BEGIN_SRC emacs-lisp
 (setq org-plantuml-jar-path (expand-file-name "/usr/share/plantuml/plantuml.jar"))
@@ -1495,18 +1484,23 @@ Load emacs-lisp file for custom changes.
     (my:toggle-themes))
   (global-set-key (kbd "C-~") 'my:theme-up)
 
-  (defun my:night-theme ()
-    (interactive)
-    (my:theme-up)
-    (my:theme-up)
-    (my:theme-up))
-
-  (defun my:day-theme ()
-    (interactive)
-    (my:theme-up))
-
-  (if (or (< (string-to-number (format-time-string "%H")) 8)
-          (> (string-to-number (format-time-string "%H")) 16)) (my:night-theme) (my:day-theme))
+;  (defun my:night-theme ()
+;    (interactive)
+;    (my:theme-up)
+;    (my:theme-up)
+;    (my:theme-up)
+;    (my:theme-up)
+;    (my:theme-up)
+;    (my:theme-up)
+;    (my:theme-up)
+;    (my:theme-up))
+; 
+;  (defun my:day-theme ()
+;    (interactive)
+;    (my:theme-up))
+; 
+;  (if (or (< (string-to-number (format-time-string "%H")) 8)
+;          (> (string-to-number (format-time-string "%H")) 16)) (my:night-theme) (my:day-theme))
 #+END_SRC
 ** visual-regexp
 #+BEGIN_SRC java
@@ -1530,6 +1524,17 @@ Load emacs-lisp file for custom changes.
   (when (fboundp 'winner-mode)
     (winner-mode t))
 #+END_SRC
+** z os specific settings
+Load emacs-lisp file for linux or windows.
+Load emacs-lisp file for custom changes.
+#+BEGIN_SRC emacs-lisp
+  (cond
+   ((eq system-type 'gnu/linux) (load (concat EMACS-HOME "linux")))
+   ((eq system-type 'windows-nt) (load (concat EMACS-HOME "windows")))
+   (t (load-library "default")))
+  (load (concat EMACS-HOME "custom"))
+#+END_SRC
+
 ** ztree
 #+BEGIN_SRC emacs-lisp
   (require 'ztree)
