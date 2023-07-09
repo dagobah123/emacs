@@ -93,6 +93,7 @@ _s_: whitespace      _h_: log         _e_: vc-git-grep      ^ ^               _u
 _d_: imenu           _j_: log file    _r_: helm-git-grep    ^ ^               ^ ^
 _f_: treemacs        _k_: blame       ^ ^                   ^ ^               ^ ^
 _i_: delete windows  ^ ^              ^ ^                   ^ ^               ^ ^
+_o_: toggle focus    ^ ^              ^ ^                   ^ ^               ^ ^
 "
 
   ("a" (my:toggle-line-numbers))
@@ -100,6 +101,7 @@ _i_: delete windows  ^ ^              ^ ^                   ^ ^               ^ 
   ("d" (helm-imenu))
   ("f" (treemacs))
   ("i" (delete-other-windows))
+  ("o" (my:toggle-focus-mode))
 
   ("g" (my:projectile-magit
 ))
@@ -169,5 +171,13 @@ _i_: delete windows  ^ ^              ^ ^                   ^ ^               ^ 
         (whitespace-mode -1))
     (progn
       (whitespace-mode t))))
+
+(defun my:toggle-focus-mode ()
+  "Toggle focus-mode."
+  (if focus-mode
+      (progn
+        (focus-mode -1))
+    (progn
+      (focus-mode t))))
 
 ;;; linux.el ends here
