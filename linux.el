@@ -116,6 +116,26 @@ _f_: chiaro...el    ^ ^                    _w_: Eclipse TODO  ^ ^
 
 (global-set-key (kbd "C-;") 'hydra-navigation/body)
 
+(defhydra hydra-master (:color blue)
+  "Master Hydra"
+  ("a" hydra-sub1/body "Sub-Hydra 1")
+  ("b" hydra-sub2/body "Sub-Hydra 2")
+  ("q" nil "Quit" :color red))
+
+(defhydra hydra-sub1 (:color red)
+  "Sub-Hydra 1"
+  ("x" command1 "Command 1")
+  ("y" command2 "Command 2")
+  ("q" nil "Quit" :color blue))
+
+(defhydra hydra-sub2 (:color red)
+  "Sub-Hydra 2"
+  ("z" command3 "Command 3")
+  ("q" nil "Quit" :color blue))
+
+(global-set-key (kbd "C-c m") 'hydra-master/body)
+
+
 (defun my:open-and-eval-init-file ()
   "Open and eval init file."
   (interactive)
