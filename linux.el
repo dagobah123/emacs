@@ -53,13 +53,16 @@
   "
 Emacs
 
-^Files^             ^Update^               ^Themes^           ^ ^
-^^^^^^^^----------------------------------------------------------------------
-_a_: emacs          _g_: cp .emacs.d       _k_: Reset         ^ ^
-_s_: .emacs.d       _h_: eval init.el      _l_: Up            ^ ^
-_d_: emacs.org      _j_: fullscreen        _r_: Down TODO     ^ ^
-_f_: chiaro...el    ^ ^                    _w_: Eclipse TODO  ^ ^
-_t_: linux.el       ^ ^                    _e_: Yellow TODO   ^ ^
+^Files^             ^Update^               ^Themes^           ^Window^
+^^^^^^^^------------------------------------------------------------------------
+_a_: emacs          _g_: cp .emacs.d       _k_: Reset         _1_ enlarge hor
+_s_: .emacs.d       _h_: eval init.el      _l_: Up            _2_ shrink hor
+_d_: emacs.org      _j_: fullscreen        _r_: Down TODO     _3_ enlarge ver
+_f_: chiaro...el    ^ ^                    _w_: Eclipse TODO  _4_ shrink ver
+_t_: linux.el       ^ ^                    _e_: Yellow TODO   _5_ ace-window
+^ ^                 ^ ^                    ^ ^                _6_ increase font
+^ ^                 ^ ^                    ^ ^                _7_ decrease font
+^ ^                 ^ ^                    ^ ^                _8_ reset font
 "
 
   ("a" (dired "~/source/emacs"))
@@ -78,6 +81,15 @@ _t_: linux.el       ^ ^                    _e_: Yellow TODO   ^ ^
   ("r" (dired "/home/q/"))
   ("w" (dired "/home/w/"))
   ("e" (dired "/home/e/"))
+
+  ("1" enlarge-window-horizontally)
+  ("2" shrink-window-horizontally)
+  ("3" enlarge-window)
+  ("4" shrink-window)
+  ("5" ace-window)
+  ("6" my:increase-font-size)
+  ("7" my:decrease-font-size)
+  ("8" my:reset-font-size)
 
   ("q" nil "Quit" :color blue))
 
