@@ -48,7 +48,7 @@
 
 
 
-(defhydra hydra-navigation (:hint nil :color red)
+(defhydra hydra-emacs (:hint nil :color red)
 
   "
 Emacs
@@ -115,8 +115,7 @@ _o_: toggle focus    ^ ^              ^ ^                   ^ ^               ^ 
   ("i" (delete-other-windows))
   ("o" (my:toggle-focus-mode))
 
-  ("g" (my:projectile-magit
-))
+  ("g" (my:projectile-magit))
   ("h" (magit-log))
   ("j" (magit-log-buffer-file))
   ("k" (magit-blame))
@@ -134,8 +133,9 @@ _o_: toggle focus    ^ ^              ^ ^                   ^ ^               ^ 
 
 (defhydra hydra-master (:color blue)
   ""
-  ("a" hydra-navigation/body "Emacs")
+  ("a" hydra-emacs/body "Emacs")
   ("s" hydra-code/body "Code")
+  ("d" hydra-window/body "Window")
   ("q" nil "Quit" :color red))
 
 ;(defhydra hydra-sub1 (:color red)
@@ -191,5 +191,42 @@ _o_: toggle focus    ^ ^              ^ ^                   ^ ^               ^ 
         (focus-mode -1))
     (progn
       (focus-mode t))))
+
+(defun my:toggle-golden-ratio-mode ()
+  "Toggle focus-mode."
+  (if golden-ratio-mode
+      (progn
+        (golden-ratio-mode -1))
+    (progn
+      (golden-ratio-mode t))))
+
+(defhydra hydra-window (:hint nil :color red)
+
+  "
+Window
+
+^Delete^             ^Split^         ^Enlarge^           ^Shrink^             ^Jump^            ^Golden Ratio^
+^^^^^^^^----------------------------------------------------------------------------------------------------------
+_1_: other windows   _3_: below      _5_: window         _7_: window         _9_: ?            _-_: toggle
+_2_: window          _4_: right      _6_: horizontally   _8_: horizontally   _0_: ace-window
+"
+  ("1" delete-other-windows)
+  ("2" delete-window)
+
+  ("3" split-window-below)
+  ("4" split-window-right)
+
+  ("5" enlarge-window)
+  ("6" enlarge-window-horizontally)
+
+  ("7" shrink-window)
+  ("8" shrink-window-horizontally)
+
+  ("9" ace-window)
+  ("0" ace-window)
+
+  ("-" (my:toggle-golden-ratio-mode))
+
+  ("q" nil "Quit" :color blue))
 
 ;;; linux.el ends here

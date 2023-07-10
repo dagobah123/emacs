@@ -88,7 +88,7 @@
   (setq make-backup-files nil)
 
   ;; switch split buffers
-  (global-set-key (kbd "M-o") 'ace-window)
+  ;(global-set-key (kbd "M-o") 'ace-window)
 
   ;; disable bell
   (setq ring-bell-function 'ignore)
@@ -776,7 +776,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ** golden-ratio
 #+BEGIN_SRC emacs-lisp
   (require 'golden-ratio)
-  (golden-ratio-mode t)
+  (golden-ratio-mode -1)
 #+END_SRC
 ** google-translate
 #+BEGIN_SRC emacs-lisp
