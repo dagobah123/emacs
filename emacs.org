@@ -116,6 +116,8 @@
   (setq sentence-end-double-space nil)
 
   (toggle-frame-maximized)
+
+  (whitespace-mode -1)
 #+END_SRC
 ** bookmark-in-project
 #+BEGIN_SRC emacs-lisp
@@ -1437,7 +1439,6 @@ This is the package that handles server installation and session management.
     (setq theme-index 0)
     (setq INDEX-CHIAROSCURO 0)
     (my:disable-themes))
-  (global-set-key (kbd "C-5") 'my:reset-themes-index)
 
   (defun my:loop ()
     (interactive)
@@ -1483,6 +1484,12 @@ This is the package that handles server installation and session management.
     (setq INDEX-CHIAROSCURO (+ INDEX-CHIAROSCURO 1))
     (my:toggle-themes))
   (global-set-key (kbd "C-~") 'my:theme-up)
+
+  (defun my:set-theme (index)
+    (interactive)
+    (setq theme-index index)
+    (setq INDEX-CHIAROSCURO index)
+    (my:toggle-themes))
 
 ;  (defun my:night-theme ()
 ;    (interactive)

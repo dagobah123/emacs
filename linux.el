@@ -67,9 +67,9 @@ Emacs
 
 ^Folders^        ^Files^             ^Update^             ^Themes^
 ^^^^^^^^-----------------------------------------------------------------------------
-_a_: emacs       _d_: emacs.org      _g_: cp .emacs.d     _k_: reset    _w_: Eclipse
-_s_: .emacs.d    _f_: chiaro...el    _h_: fullscreen      _l_: up       _e_: Yellow
-^ ^              _t_: linux.el       ^ ^                  _r_: down
+_a_: emacs       _d_: emacs.org      _h_: cp .emacs.d     _k_: reset    _1_: Eclipse
+_s_: .emacs.d    _f_: chiaro...el    _j_: fullscreen      _l_: up       _2_: Yellow
+^ ^              _g_: linux.el       ^ ^                  _;_: down     _3_: Neon
 "
 
   ("a" (dired "~/source/emacs"))
@@ -77,30 +77,22 @@ _s_: .emacs.d    _f_: chiaro...el    _h_: fullscreen      _l_: up       _e_: Yel
 
   ("d" (find-file "~/source/emacs/emacs.org"))
   ("f" (find-file "~/source/emacs/chiaroscuro-theme.el"))
-  ("t" (find-file "~/source/emacs/linux.el"))
+  ("g" (find-file "~/source/emacs/linux.el"))
 
-  ("g" (lambda () (interactive)
+  ("h" (lambda () (interactive)
          (progn
            (shell-command "cd ~/.emacs.d ; cp -r ~/source/emacs/* .")
            (my:open-and-eval-init-file)
            (toggle-frame-fullscreen))))
-  ("h" (my:open-and-eval-init-file))
   ("j" (toggle-frame-fullscreen))
 
   ("k" (my:reset-themes-index))
   ("l" (my:theme-up))
-  ("r" (my:theme-down))
-  ("w" (dired "/home/w/"))
-  ("e" (dired "/home/e/"))
+  (";" (my:theme-down))
 
-  ("1" enlarge-window-horizontally)
-  ("2" shrink-window-horizontally)
-  ("3" enlarge-window)
-  ("4" shrink-window)
-  ("5" ace-window)
-  ("6" my:increase-font-size)
-  ("7" my:decrease-font-size)
-  ("8" my:reset-font-size)
+  ("1" (my:set-theme INDEX-ECLIPSE))
+  ("2" (my:set-theme INDEX-YELLOW))
+  ("3" (my:set-theme INDEX-NEON))
 
   ("q" nil "Quit" :color blue))
 
@@ -109,27 +101,27 @@ _s_: .emacs.d    _f_: chiaro...el    _h_: fullscreen      _l_: up       _e_: Yel
   "
 Code
 
-^File^               ^Git^            ^Search^              ^Project^          ^Diff
-^^^^^^^^-----------------------------------------------------------------------------------------
-_a_: line numbers    _g_: status      _w_: dired project    _t_: main folder  _y_: buffers
-_s_: whitespace      _h_: log         _e_: vc-git-grep      ^ ^               _u_: directories
-_d_: imenu           _j_: log file    _r_: helm-git-grep    ^ ^               ^ ^
-_f_: treemacs        _k_: blame       ^ ^                   ^ ^               ^ ^
-_i_: delete windows  ^ ^              ^ ^                   ^ ^               ^ ^
-_o_: toggle focus    ^ ^              ^ ^                   ^ ^               ^ ^
+^File^              ^Edit^       ^Git^            ^Search^              ^Project^      ^Diff
+^^^^^^^^------------------------------------------------------------------------------------------------
+_a_: line numbers   _h_ cua      _j_: status      _w_: dired project    _t_: root     _y_: buffers
+_s_: whitespace     ^ ^          _k_: log         _e_: vc-git-grep      ^ ^           _u_: directories
+_d_: imenu          ^ ^          _l_: log file    _r_: helm-git-grep    ^ ^           ^ ^
+_f_: treemacs       ^ ^          _;_: blame       ^ ^                   ^ ^           ^ ^
+_g_: focus          ^ ^          ^ ^              ^ ^                   ^ ^           ^ ^
 "
 
   ("a" (my:toggle-line-numbers))
   ("s" (my:toggle-whitespace))
   ("d" (helm-imenu))
   ("f" (treemacs))
-  ("i" (delete-other-windows))
-  ("o" (my:toggle-focus-mode))
+  ("g" (my:toggle-focus-mode))
 
-  ("g" (my:projectile-magit))
-  ("h" (magit-log))
-  ("j" (magit-log-buffer-file))
-  ("k" (magit-blame))
+  ("h" (my:toggle-cua-mode))
+
+  ("j" (my:projectile-magit))
+  ("k" (magit-log))
+  ("l" (magit-log-buffer-file))
+  (";" (magit-blame))
 
   ("w" my:dired-projectile-search)
   ("e" (my:vc-git-grep))
@@ -168,6 +160,22 @@ _2_: window          _4_: right      _6_: horizontally   _8_: horizontally   _0_
   ("0" ace-window)
 
   ("-" (my:toggle-golden-ratio-mode))
+
+  ("q" nil "Quit" :color blue))
+
+
+(defhydra hydra-project (:hint nil :color red)
+
+  "
+Project
+
+^Files^         ^Build^
+^^^^^^^^-----------------------------
+_a_: root       _s_: compile
+"
+  ("a" project-dired)
+
+  ("s" compile)
 
   ("q" nil "Quit" :color blue))
 
@@ -220,5 +228,13 @@ _2_: window          _4_: right      _6_: horizontally   _8_: horizontally   _0_
         (golden-ratio-mode -1))
     (progn
       (golden-ratio-mode t))))
+
+(defun my:toggle-cua-mode ()
+  "Toggle cua-mode."
+  (if cua-mode
+      (progn
+        (cua-mode -1))
+    (progn
+      (cua-mode t))))
 
 ;;; linux.el ends here
