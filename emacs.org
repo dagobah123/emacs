@@ -882,7 +882,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (global-set-key (kbd "C-9") 'helm-imenu)
   (global-set-key (kbd "C-=") 'lsp-ui-imenu)
   (global-set-key (kbd "C-0") 'treemacs)
-  (global-set-key (kbd "C-`") 'my:dired-projectile-search)
+  ;(global-set-key (kbd "C-`") 'my:dired-projectile-search)
   (global-set-key (kbd "C-\\") 'my:vc-git-grep)
   (global-set-key (kbd "C-M-`") 'helm-projectile-grep)
   (global-set-key (kbd "C-8") 'whitespace-mode)

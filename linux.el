@@ -48,37 +48,48 @@
 
 
 
+(defhydra hydra-master (:color blue)
+  ""
+  ("a" hydra-emacs/body "Emacs")
+  ("s" hydra-code/body "Code")
+  ("d" hydra-window/body "Window")
+  ("f" hydra-project/body "Project")
+  ("q" nil "Quit" :color red))
+
+(global-set-key (kbd "C-`") 'hydra-master/body)
+
+
+
 (defhydra hydra-emacs (:hint nil :color red)
 
   "
 Emacs
 
-^Files^             ^Update^               ^Themes^           ^Window^
-^^^^^^^^------------------------------------------------------------------------
-_a_: emacs          _g_: cp .emacs.d       _k_: Reset         _1_ enlarge hor
-_s_: .emacs.d       _h_: eval init.el      _l_: Up            _2_ shrink hor
-_d_: emacs.org      _j_: fullscreen        _r_: Down TODO     _3_ enlarge ver
-_f_: chiaro...el    ^ ^                    _w_: Eclipse TODO  _4_ shrink ver
-_t_: linux.el       ^ ^                    _e_: Yellow TODO   _5_ ace-window
-^ ^                 ^ ^                    ^ ^                _6_ increase font
-^ ^                 ^ ^                    ^ ^                _7_ decrease font
-^ ^                 ^ ^                    ^ ^                _8_ reset font
+^Folders^        ^Files^             ^Update^             ^Themes^
+^^^^^^^^-----------------------------------------------------------------------------
+_a_: emacs       _d_: emacs.org      _g_: cp .emacs.d     _k_: reset    _w_: Eclipse
+_s_: .emacs.d    _f_: chiaro...el    _h_: fullscreen      _l_: up       _e_: Yellow
+^ ^              _t_: linux.el       ^ ^                  _r_: down
 "
 
   ("a" (dired "~/source/emacs"))
   ("s" (dired "~/.emacs.d"))
+
   ("d" (find-file "~/source/emacs/emacs.org"))
   ("f" (find-file "~/source/emacs/chiaroscuro-theme.el"))
   ("t" (find-file "~/source/emacs/linux.el"))
 
   ("g" (lambda () (interactive)
-         (shell-command "cd ~/.emacs.d ; cp -r ~/source/emacs/* .")))
+         (progn
+           (shell-command "cd ~/.emacs.d ; cp -r ~/source/emacs/* .")
+           (my:open-and-eval-init-file)
+           (toggle-frame-fullscreen))))
   ("h" (my:open-and-eval-init-file))
   ("j" (toggle-frame-fullscreen))
 
   ("k" (my:reset-themes-index))
   ("l" (my:theme-up))
-  ("r" (dired "/home/q/"))
+  ("r" (my:theme-down))
   ("w" (dired "/home/w/"))
   ("e" (dired "/home/e/"))
 
@@ -131,25 +142,35 @@ _o_: toggle focus    ^ ^              ^ ^                   ^ ^               ^ 
 
   ("q" nil "Quit" :color blue))
 
-(defhydra hydra-master (:color blue)
-  ""
-  ("a" hydra-emacs/body "Emacs")
-  ("s" hydra-code/body "Code")
-  ("d" hydra-window/body "Window")
-  ("q" nil "Quit" :color red))
+(defhydra hydra-window (:hint nil :color red)
 
-;(defhydra hydra-sub1 (:color red)
-;  "Sub-Hydra 1"
-;  ("x" command1 "Command 1")
-;  ("y" command2 "Command 2")
-;  ("q" nil "Quit" :color blue))
-; 
-;(defhydra hydra-sub2 (:color red)
-;  "Sub-Hydra 2"
-;  ("z" command3 "Command 3")
-;  ("q" nil "Quit" :color blue))
+  "
+Window
 
-(global-set-key (kbd "C-;") 'hydra-master/body)
+^Delete^             ^Split^         ^Enlarge^           ^Shrink^             ^Jump^            ^Golden Ratio^
+^^^^^^^^----------------------------------------------------------------------------------------------------------
+_1_: other windows   _3_: below      _5_: window         _7_: window         _9_: ?            _-_: toggle
+_2_: window          _4_: right      _6_: horizontally   _8_: horizontally   _0_: ace-window
+"
+  ("1" delete-other-windows)
+  ("2" delete-window)
+
+  ("3" split-window-below)
+  ("4" split-window-right)
+
+  ("5" enlarge-window)
+  ("6" enlarge-window-horizontally)
+
+  ("7" shrink-window)
+  ("8" shrink-window-horizontally)
+
+  ("9" ace-window)
+  ("0" ace-window)
+
+  ("-" (my:toggle-golden-ratio-mode))
+
+  ("q" nil "Quit" :color blue))
+
 
 
 (defun my:open-and-eval-init-file ()
@@ -199,34 +220,5 @@ _o_: toggle focus    ^ ^              ^ ^                   ^ ^               ^ 
         (golden-ratio-mode -1))
     (progn
       (golden-ratio-mode t))))
-
-(defhydra hydra-window (:hint nil :color red)
-
-  "
-Window
-
-^Delete^             ^Split^         ^Enlarge^           ^Shrink^             ^Jump^            ^Golden Ratio^
-^^^^^^^^----------------------------------------------------------------------------------------------------------
-_1_: other windows   _3_: below      _5_: window         _7_: window         _9_: ?            _-_: toggle
-_2_: window          _4_: right      _6_: horizontally   _8_: horizontally   _0_: ace-window
-"
-  ("1" delete-other-windows)
-  ("2" delete-window)
-
-  ("3" split-window-below)
-  ("4" split-window-right)
-
-  ("5" enlarge-window)
-  ("6" enlarge-window-horizontally)
-
-  ("7" shrink-window)
-  ("8" shrink-window-horizontally)
-
-  ("9" ace-window)
-  ("0" ace-window)
-
-  ("-" (my:toggle-golden-ratio-mode))
-
-  ("q" nil "Quit" :color blue))
 
 ;;; linux.el ends here
