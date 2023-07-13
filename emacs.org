@@ -78,12 +78,6 @@
   (global-set-key (kbd "M-<down>") 'move-text-down)
   (global-set-key (kbd "M-<up>") 'move-text-up)
 
-  ;; change window size
-  (global-set-key (kbd "C-1") 'enlarge-window-horizontally)
-  (global-set-key (kbd "C-2") 'shrink-window-horizontally)
-  (global-set-key (kbd "C-3") 'enlarge-window)
-  (global-set-key (kbd "C-4") 'shrink-window)
-
   ;; do not create backup files
   (setq make-backup-files nil)
 
@@ -932,6 +926,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (global-set-key (kbd "C-.") 'avy-goto-char-2)
   (global-set-key (kbd "M-~") 'avy-goto-char-2)
   (global-set-key (kbd "C-c f") 'focus-mode)
+  (global-set-key (kbd "M-o") 'other-window)
+  (global-set-key (kbd "C-1") 'delete-other-windows)
 #+END_SRC
 ** look
 #+BEGIN_SRC emacs-lisp
@@ -1394,6 +1390,20 @@ This is the package that handles server installation and session management.
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
+
+  (setq INDEX-CONSOLE     1)
+  (setq INDEX-ECLIPSE     2)
+  (setq INDEX-NEON        3)
+  (setq INDEX-TERMINAL    4)
+  (setq INDEX-DUNE        5)
+  (setq INDEX-NIGHT       6)
+  (setq INDEX-BLUE        7)
+  (setq INDEX-YELLOW      8)
+  (setq INDEX-LIGHT       9)
+  (setq INDEX-LINUX      10)
+  (setq INDEX-CARAVAGGIO 11)
+  (setq INDEX-RED        12)
+
   (defvar chiaroscuro-index 0 "Index representing the current theme")
   (setq chiaroscuro-index 0)
 

@@ -4,19 +4,6 @@
 
 (load-file "~/.emacs.d/theme_variables.el")
 
-(setq INDEX-CONSOLE     1)
-(setq INDEX-ECLIPSE     2)
-(setq INDEX-NEON        3)
-(setq INDEX-TERMINAL    4)
-(setq INDEX-DUNE        5)
-(setq INDEX-NIGHT       6)
-(setq INDEX-BLUE        7)
-(setq INDEX-YELLOW      8)
-(setq INDEX-LIGHT       9)
-(setq INDEX-LINUX      10)
-(setq INDEX-CARAVAGGIO 11)
-(setq INDEX-RED        12)
-
 (if (> INDEX-CHIAROSCURO INDEX-CONSOLE)
 
   (progn

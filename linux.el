@@ -141,14 +141,14 @@ Window
 
 ^Delete^             ^Split^         ^Enlarge^           ^Shrink^             ^Jump^            ^Golden Ratio^
 ^^^^^^^^----------------------------------------------------------------------------------------------------------
-_1_: other windows   _3_: below      _5_: window         _7_: window         _9_: ?            _-_: toggle
-_2_: window          _4_: right      _6_: horizontally   _8_: horizontally   _0_: ace-window
+_1_: other windows   _3_: right      _5_: window         _7_: window         _9_: other window  _-_: toggle
+_2_: window          _4_: below      _6_: horizontally   _8_: horizontally   _0_: ace
 "
   ("1" delete-other-windows)
   ("2" delete-window)
 
-  ("3" split-window-below)
-  ("4" split-window-right)
+  ("3" split-window-right)
+  ("4" split-window-below)
 
   ("5" enlarge-window)
   ("6" enlarge-window-horizontally)
@@ -156,7 +156,7 @@ _2_: window          _4_: right      _6_: horizontally   _8_: horizontally   _0_
   ("7" shrink-window)
   ("8" shrink-window-horizontally)
 
-  ("9" ace-window)
+  ("9" other-window)
   ("0" ace-window)
 
   ("-" (my:toggle-golden-ratio-mode))
@@ -230,11 +230,44 @@ _a_: root       _s_: compile
       (golden-ratio-mode t))))
 
 (defun my:toggle-cua-mode ()
-  "Toggle cua-mode."
+  "Toggle 'cua-mode'."
   (if cua-mode
       (progn
         (cua-mode -1))
     (progn
       (cua-mode t))))
+
+(defun greet (name)
+  "Greet the specified NAME."
+  (message "Hello, %s!" name))
+
+(greet "Alice")
+
+(defun my:enable-mode (mode-name)
+  "Enable the major mode specified by the MODE-NAME string for the current buffer."
+  (let ((mode-symbol (intern mode-name)))
+    (if (fboundp mode-symbol)
+        (funcall mode-symbol t)
+      (message "Mode not found: %s" mode-name))))
+
+(defun my:disable-mode (mode-name)
+  "Enable the major mode specified by the MODE-NAME string for the current buffer."
+  (let ((mode-symbol (intern mode-name)))
+    (message "Mode value: %s" mode-symbol)
+    (if (fboundp mode-symbol)
+        (funcall mode-symbol -1)
+      (message "Mode not found: %s" mode-name))))
+
+(defun my:new-toggle-mode (mode-name)
+  "Toggle mode by MODE-NAME."
+  (let ((mode-symbol (intern mode-name)))
+    (if (fboundp mode-symbol)
+        (let ((mode-function (symbol-function mode-symbol)))
+          (if (commandp mode-function)
+              (if (derived-mode-p mode-symbol)
+                  (funcall mode-function -1)
+                (funcall mode-function t))
+            (message "Mode function not found: %s" mode-name)))
+      (message "Mode not found: %s" mode-name))))
 
 ;;; linux.el ends here
