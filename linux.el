@@ -185,14 +185,16 @@ _a_: root       _s_: compile
   "
 Programs
 
-^Web Surfing^
+^Web Surfing^    ^Reading^
 ^^^^^^^^-----------------------------
-_a_: eww
-_s_: luwak
+_a_: eww         _d_: elfeed
+_s_: luwak       _f_: gnus
 "
   ("a" eww)
+  ("s" luwak-search)
 
-  ("s" luwak)
+  ("d" elfeed)
+  ("f" gnus)
 
   ("q" nil "Quit" :color blue))
 

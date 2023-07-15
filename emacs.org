@@ -617,7 +617,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;(require 'nnir)
 ; 
 ;;; Please note mail folders in `gnus-select-method' have NO prefix like "nnimap+hotmail:" or "nnimap+gmail:"
-;(setq gnus-select-method '(nntp "news.gwene.org")) ;; Read feeds/atom through gwene
+(setq gnus-select-method '(nntp "news.gwene.org")) ;; Read feeds/atom through gwene
 ; 
 ;;; ask encryption password once
 ;(setq epa-file-cache-passphrase-for-symmetric-encryption t)
@@ -1541,7 +1541,11 @@ This is the package that handles server installation and session management.
   (when (fboundp 'winner-mode)
     (winner-mode t))
 #+END_SRC
-** z os specific settings
+** ztree
+#+BEGIN_SRC emacs-lisp
+  (require 'ztree)
+#+END_SRC
+** zzz os specific settings
 Load emacs-lisp file for linux or windows.
 Load emacs-lisp file for custom changes.
 #+BEGIN_SRC emacs-lisp
@@ -1552,7 +1556,3 @@ Load emacs-lisp file for custom changes.
   (load (concat EMACS-HOME "custom"))
 #+END_SRC
 
-** ztree
-#+BEGIN_SRC emacs-lisp
-  (require 'ztree)
-#+END_SRC
