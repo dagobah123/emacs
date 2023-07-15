@@ -54,6 +54,7 @@
   ("s" hydra-code/body "Code")
   ("d" hydra-window/body "Window")
   ("f" hydra-project/body "Project")
+  ("g" hydra-programs/body "Programs")
   ("q" nil "Quit" :color red))
 
 (global-set-key (kbd "C-`") 'hydra-master/body)
@@ -176,6 +177,22 @@ _a_: root       _s_: compile
   ("a" project-dired)
 
   ("s" compile)
+
+  ("q" nil "Quit" :color blue))
+
+(defhydra hydra-programs (:hint nil :color red)
+
+  "
+Programs
+
+^Web Surfing^
+^^^^^^^^-----------------------------
+_a_: eww
+_s_: luwak
+"
+  ("a" eww)
+
+  ("s" luwak)
 
   ("q" nil "Quit" :color blue))
 
