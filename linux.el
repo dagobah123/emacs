@@ -53,8 +53,6 @@
   ("a" hydra-emacs/body "Emacs")
   ("s" hydra-code/body "Code")
   ("d" hydra-window/body "Window")
-  ("f" hydra-project/body "Project")
-  ("g" hydra-programs/body "Programs")
   ("q" nil "Quit" :color red))
 
 (global-set-key (kbd "C-`") 'hydra-master/body)
@@ -102,13 +100,13 @@ _s_: .emacs.d    _f_: chiaro...el    _j_: fullscreen      _l_: up       _2_: Yel
   "
 Code
 
-^File^              ^Edit^       ^Git^            ^Search^              ^Project^      ^Diff
-^^^^^^^^------------------------------------------------------------------------------------------------
-_a_: line numbers   _h_ cua      _j_: status      _w_: dired project    _t_: root     _y_: buffers
-_s_: whitespace     ^ ^          _k_: log         _e_: vc-git-grep      ^ ^           _u_: directories
-_d_: imenu          ^ ^          _l_: log file    _r_: helm-git-grep    ^ ^           ^ ^
-_f_: treemacs       ^ ^          _;_: blame       ^ ^                   ^ ^           ^ ^
-_g_: focus          ^ ^          ^ ^              ^ ^                   ^ ^           ^ ^
+^File^              ^Edit^          ^Git^           ^Search^             ^Project^      ^Diff^              ^Build^
+^^^^^-------------------------------------------------------------------------------------------------------------------
+_a_: line numbers   _h_ cua         _k_: status     _q_: dired project   _r_: root      _t_: buffers        _u_: compile
+_s_: whitespace     _j_ overwrite   _l_: log        _w_: vc-git-grep     ^ ^            _y_: directories
+_d_: imenu          ^ ^             _;_: log file   _e_: helm-git-grep   ^ ^            ^ ^
+_f_: treemacs       ^ ^             _'_: blame      ^ ^                  ^ ^            ^ ^
+_g_: focus          ^ ^             ^ ^             ^ ^                  ^ ^            ^ ^
 "
 
   ("a" (my:toggle-line-numbers))
@@ -118,20 +116,23 @@ _g_: focus          ^ ^          ^ ^              ^ ^                   ^ ^     
   ("g" (my:toggle-focus-mode))
 
   ("h" (my:toggle-cua-mode))
+  ("j" (overwrite-mode))
 
-  ("j" (my:projectile-magit))
-  ("k" (magit-log))
-  ("l" (magit-log-buffer-file))
-  (";" (magit-blame))
+  ("k" (my:projectile-magit))
+  ("l" (magit-log))
+  (";" (magit-log-buffer-file))
+  ("'" (magit-blame))
 
-  ("w" my:dired-projectile-search)
-  ("e" (my:vc-git-grep))
-  ("r" helm-grep-do-git-grep)
+  ("q" my:dired-projectile-search)
+  ("w" (my:vc-git-grep))
+  ("e" helm-grep-do-git-grep)
 
-  ("t" (project-dired))
+  ("r" (project-dired))
 
-  ("y" ediff-buffers)
-  ("u" ediff-directories)
+  ("t" ediff-buffers)
+  ("y" ediff-directories)
+
+  ("u" compile)
 
   ("q" nil "Quit" :color blue))
 
@@ -161,22 +162,6 @@ _2_: window          _4_: below      _6_: horizontally   _8_: horizontally   _0_
   ("0" ace-window)
 
   ("-" (my:toggle-golden-ratio-mode))
-
-  ("q" nil "Quit" :color blue))
-
-
-(defhydra hydra-project (:hint nil :color red)
-
-  "
-Project
-
-^Files^         ^Build^
-^^^^^^^^-----------------------------
-_a_: root       _s_: compile
-"
-  ("a" project-dired)
-
-  ("s" compile)
 
   ("q" nil "Quit" :color blue))
 
