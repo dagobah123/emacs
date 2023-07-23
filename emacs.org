@@ -391,7 +391,7 @@
   ;  "Disable golden-ratio-mode in ediff."
   ;  (golden-ratio-mode -1))
   ;(add-hook 'ediff-mode-hook #'my:disable-golden-ratio-mode)
-  ; 
+  ;
   ;(defun my:enable-golden-ratio-mode ()
   ;  "Enable golden-ratio-mode after ediff."
   ;  (golden-ratio-mode 1))
@@ -444,7 +444,7 @@ See https://nullprogram.com/blog/2013/02/06/
 ;                                     :projectName "maven_sandbox"
 ;                                     :mainClass "org.sandbox.Main"
 ;                                     :env '(("DEV" . "1"))))
-; 
+;
 ;  (dap-register-debug-template "My Runner2"
 ;                               (list :type "java"
 ;                                     :request "launch"
@@ -600,28 +600,28 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;;; Personal Information
 ;(setq user-full-name MAIL-NAME
 ;      user-mail-address MAIL-MAIL)
-; 
+;
 ;;; Send email through SMTP
 ;(setq message-send-mail-function 'smtpmail-send-it
 ;      smtpmail-default-smtp-server "mail.gmx.net"
 ;      smtpmail-smtp-service 587
 ;      smtpmail-local-domain MAIL-MAIL)
-; 
+;
 ;;; auto-complete emacs address using bbdb command, optional
 ;;;(add-hook 'message-mode-hook
 ;;;          '(lambda ()
 ;;;             (flyspell-mode t)
 ;;;             (local-set-key (kbd "TAB") 'bbdb-complete-name)))
 ;;; }}
-; 
+;
 ;(require 'nnir)
-; 
+;
 ;;; Please note mail folders in `gnus-select-method' have NO prefix like "nnimap+hotmail:" or "nnimap+gmail:"
 (setq gnus-select-method '(nntp "news.gwene.org")) ;; Read feeds/atom through gwene
-; 
+;
 ;;; ask encryption password once
 ;(setq epa-file-cache-passphrase-for-symmetric-encryption t)
-; 
+;
 ;(add-to-list 'gnus-secondary-select-methods
 ;             '(nnimap "gmx"
 ;                      (nnimap-address "imap.gmx.net")
@@ -629,7 +629,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;                      (nnimap-stream ssl)
 ;                      (nnir-search-engine imap)
 ;                      (nnmail-expiry-wait 90)))
-; 
+;
 ;;; @see http://gnus.org/manual/gnus_397.html
 ;;;(add-to-list 'gnus-secondary-select-methods
 ;;;             '(nnimap "gmail"
@@ -641,7 +641,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;;;                      ;; press 'E' to expire email
 ;;;                      (nnmail-expiry-target "nnimap+gmail:[Gmail]/Trash")
 ;;;                      (nnmail-expiry-wait 90)))
-; 
+;
 ;;; OPTIONAL, the setup for Microsoft Hotmail
 ;;;(add-to-list 'gnus-secondary-select-methods
 ;;;             '(nnimap "hotmail"
@@ -650,25 +650,25 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;;;                      (nnimap-stream ssl)
 ;;;                      (nnir-search-engine imap)
 ;;;                      (nnmail-expiry-wait 90)))
-; 
+;
 ;(setq gnus-thread-sort-functions
 ;      '(gnus-thread-sort-by-most-recent-date
 ;        (not gnus-thread-sort-by-number)))
-; 
+;
 ;;; NO 'passive
 ;(setq gnus-use-cache t)
-; 
+;
 ;;; {{ press "o" to view all groups
 ;(defun my-gnus-group-list-subscribed-groups ()
 ;  "List all subscribed groups with or without un-read messages"
 ;  (interactive)
 ;  (gnus-group-list-all-groups 5))
-; 
+;
 ;(define-key gnus-group-mode-map
 ;  ;; list all the subscribed groups even they contain zero un-read messages
 ;  (kbd "o") 'my-gnus-group-list-subscribed-groups)
 ;;; }}
-; 
+;
 ;;; BBDB: Address list
 ;;;(add-to-list 'load-path "/where/you/place/bbdb/")
 ;;;(require 'bbdb)
@@ -676,11 +676,11 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;;;(add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus)
 ;;;(setq bbdb/mail-auto-create-p t
 ;;;      bbdb/news-auto-create-p t)
-; 
+;
 ;;; Fetch only part of the article if we can.
 ;;; I saw this in someone's .gnus
 ;(setq gnus-read-active-file 'some)
-; 
+;
 ;;; open attachment
 ;(eval-after-load 'mailcap
 ;  '(progn
@@ -692,21 +692,21 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;      (t
 ;       ;; Linux, read ~/.mailcap
 ;       (mailcap-parse-mailcaps)))))
-; 
+;
 ;;; Tree view for groups.
 ;(add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
-; 
+;
 ;;; Threads!  I hate reading un-threaded email -- especially mailing
 ;;; lists.  This helps a ton!
 ;(setq gnus-summary-thread-gathering-function 'gnus-gather-threads-by-subject)
-; 
+;
 ;;; Also, I prefer to see only the top level message.  If a message has
 ;;; several replies or is part of a thread, only show the first message.
 ;;; `gnus-thread-ignore-subject' will ignore the subject and
 ;;; look at 'In-Reply-To:' and 'References:' headers.
 ;(setq gnus-thread-hide-subtree t)
 ;(setq gnus-thread-ignore-subject t)
-; 
+;
 ;;; Read HTML mail:
 ;;; You need install the command line web browser 'w3m' and Emacs plugin 'w3m'
 ;;; manually. It specify the html render as w3m so my setup works on all versions
@@ -717,10 +717,10 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;;;   - It can render html color
 ;;; So below line is optional.
 ;(setq mm-text-html-renderer 'w3m) ;; OPTIONAL
-; 
+;
 ;;; http://www.gnu.org/software/emacs/manual/html_node/gnus/_005b9_002e2_005d.html
 ;(setq gnus-use-correct-string-widths nil)
-; 
+;
 ;;; Sample on how to organize mail folders.
 ;;; It's dependent on `gnus-topic-mode'.
 ;(eval-after-load 'gnus-topic
@@ -730,14 +730,14 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;                                (nnfolder-active-file "~/Mail/archive/active")
 ;                                (nnfolder-get-new-mail nil)
 ;                                (nnfolder-inhibit-expiry t))))
-; 
+;
 ;     ;; "Gnus" is the root folder, and there are three mail accounts, "misc", "hotmail", "gmail"
 ;     (setq gnus-topic-topology '(("Gnus" visible)
 ;                                 (("misc" visible))
 ;                                 ;;(("hotmail" visible nil nil))
 ;                                 ;;(("gmail" visible nil nil))))
 ;                                 (("gmx" visible nil nil))))
-; 
+;
 ;     ;; each topic corresponds to a public imap folder
 ;     (setq gnus-topic-alist '(
 ;                              ("gmx" ;; the key of topic
@@ -813,8 +813,237 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;;;  (when (null face)
 ;;;    (setq face 'highlight)) ; Use 'highlight' face if no face is specified
 ;;;  (put-text-property beg end 'face face))
-;;; 
+;;;
 ;;;(advice-add 'hlt-highlight-symbol :override #'my:hlt-highlight)
+#+END_SRC
+** hydra
+#+BEGIN_SRC emacs-lisp
+  (defhydra hydra-master (:color blue)
+    ""
+    ("a" hydra-emacs/body "Emacs")
+    ("s" hydra-code/body "Code")
+    ("d" hydra-window/body "Window")
+    ("f" hydra-custom/body "Custom")
+    ("q" nil "Quit" :color red))
+
+  (global-set-key (kbd "C-`") 'hydra-master/body)
+
+
+
+  (defhydra hydra-emacs (:hint nil :color red)
+
+    "
+  Emacs
+
+  ^Folders^        ^Files^             ^Update^             ^Themes^
+  ^^^^^^^^-----------------------------------------------------------------------------
+  _a_: emacs       _d_: emacs.org      _h_: cp .emacs.d     _k_: reset    _1_: Eclipse
+  _s_: .emacs.d    _f_: chiaro...el    _j_: fullscreen      _l_: up       _2_: Yellow
+  ^ ^              _g_: linux.el       ^ ^                  _;_: down     _3_: Neon
+  "
+
+    ("a" (dired "~/source/emacs"))
+    ("s" (dired "~/.emacs.d"))
+
+    ("d" (find-file "~/source/emacs/emacs.org"))
+    ("f" (find-file "~/source/emacs/chiaroscuro-theme.el"))
+    ("g" (find-file "~/source/emacs/linux.el"))
+
+    ("h" (lambda () (interactive)
+           (progn
+             (shell-command "cd ~/.emacs.d ; cp -r ~/source/emacs/* .")
+             (my:open-and-eval-init-file)
+             (toggle-frame-fullscreen))))
+    ("j" (toggle-frame-fullscreen))
+
+    ("k" (my:reset-themes-index))
+    ("l" (my:theme-up))
+    (";" (my:theme-down))
+
+    ("1" (my:set-theme INDEX-ECLIPSE))
+    ("2" (my:set-theme INDEX-YELLOW))
+    ("3" (my:set-theme INDEX-NEON))
+
+    ("q" nil "Quit" :color blue))
+
+  (defhydra hydra-code (:hint nil :color red)
+
+    "
+  Code
+
+  ^File^              ^Edit^          ^Git^           ^Search^             ^Project^      ^Diff^              ^Build^
+  ^^^^^-------------------------------------------------------------------------------------------------------------------
+  _a_: line numbers   _h_ cua         _k_: status     _q_: dired project   _t_: root      _y_: buffers        _o_: compile
+  _s_: whitespace     _j_ overwrite   _l_: log        _w_: vc-git-grep     ^ ^            _u_: directories
+  _d_: imenu          ^ ^             _;_: log file   _e_: helm-git-grep   ^ ^            _i_: branches
+  _f_: treemacs       ^ ^             _'_: blame      _r_: buffers         ^ ^            ^ ^
+  _g_: focus          ^ ^             ^ ^             ^ ^                  ^ ^            ^ ^
+  "
+
+    ("a" (my:toggle-line-numbers))
+    ("s" (my:toggle-whitespace))
+    ("d" (helm-imenu))
+    ("f" (treemacs))
+    ("g" (my:toggle-focus-mode))
+
+    ("h" (my:toggle-cua-mode))
+    ("j" (overwrite-mode))
+
+    ("k" (my:projectile-magit))
+    ("l" (magit-log))
+    (";" (magit-log-buffer-file))
+    ("'" (magit-blame))
+
+    ("q" my:dired-projectile-search)
+    ("w" (my:vc-git-grep))
+    ("e" helm-grep-do-git-grep)
+    ("r" swiper-all)
+
+    ("t" (project-dired))
+
+    ("y" ediff-buffers)
+    ("u" ediff-directories)
+    ("i" magit-diff-range)
+
+    ("o" compile)
+
+    ("q" nil "Quit" :color blue))
+
+  (defhydra hydra-window (:hint nil :color red)
+
+    "
+  Window
+
+  ^Delete^             ^Split^         ^Enlarge^           ^Shrink^            ^Jump^             ^Golden Ratio^
+  ^^^^^^^^----------------------------------------------------------------------------------------------------------
+  _1_: other windows   _3_: right      _5_: window         _7_: window         _9_: other window  _-_: toggle
+  _2_: window          _4_: below      _6_: horizontally   _8_: horizontally   _0_: ace
+  "
+    ("1" delete-other-windows)
+    ("2" delete-window)
+
+    ("3" split-window-right)
+    ("4" split-window-below)
+
+    ("5" enlarge-window)
+    ("6" enlarge-window-horizontally)
+
+    ("7" shrink-window)
+    ("8" shrink-window-horizontally)
+
+    ("9" other-window)
+    ("0" ace-window)
+
+    ("-" (my:toggle-golden-ratio-mode))
+
+    ("q" nil "Quit" :color blue))
+
+  (defhydra hydra-programs (:hint nil :color red)
+
+    "
+  Programs
+
+  ^Web Surfing^    ^Reading^
+  ^^^^^^^^-----------------------------
+  _a_: eww         _d_: elfeed
+  _s_: luwak       _f_: gnus
+  "
+    ("a" eww)
+    ("s" luwak-search)
+
+    ("d" elfeed)
+    ("f" gnus)
+
+    ("q" nil "Quit" :color blue))
+
+  (defun my:open-and-eval-init-file ()
+    "Open and eval init file."
+    (interactive)
+    (my:kill-init-buffer)
+    (find-file "~/.emacs.d/init.el")
+    (eval-buffer)
+    (toggle-frame-fullscreen)
+    (kill-buffer))
+
+  (defun my:kill-init-buffer ()
+    "Kill init buffer."
+    (interactive)
+    (let ((buffer-name "init.el"))
+      (when (get-buffer buffer-name)
+        (kill-buffer buffer-name))))
+
+  (defun my:toggle-line-numbers ()
+    "Toggle line numbers."
+    (if global-display-line-numbers-mode
+        (progn
+          (global-display-line-numbers-mode -1))
+      (progn
+        (global-display-line-numbers-mode t))))
+
+  (defun my:toggle-whitespace ()
+    "Toggle whitespace."
+    (if whitespace-mode
+        (progn
+          (whitespace-mode -1))
+      (progn
+        (whitespace-mode t))))
+
+  (defun my:toggle-focus-mode ()
+    "Toggle focus-mode."
+    (if focus-mode
+        (progn
+          (focus-mode -1))
+      (progn
+        (focus-mode t))))
+
+  (defun my:toggle-golden-ratio-mode ()
+    "Toggle focus-mode."
+    (if golden-ratio-mode
+        (progn
+          (golden-ratio-mode -1))
+      (progn
+        (golden-ratio-mode t))))
+
+  (defun my:toggle-cua-mode ()
+    "Toggle 'cua-mode'."
+    (if cua-mode
+        (progn
+          (cua-mode -1))
+      (progn
+        (cua-mode t))))
+
+  (defun greet (name)
+    "Greet the specified NAME."
+    (message "Hello, %s!" name))
+
+  (greet "Alice")
+
+  (defun my:enable-mode (mode-name)
+    "Enable the major mode specified by the MODE-NAME string for the current buffer."
+    (let ((mode-symbol (intern mode-name)))
+      (if (fboundp mode-symbol)
+          (funcall mode-symbol t)
+        (message "Mode not found: %s" mode-name))))
+
+  (defun my:disable-mode (mode-name)
+    "Enable the major mode specified by the MODE-NAME string for the current buffer."
+    (let ((mode-symbol (intern mode-name)))
+      (message "Mode value: %s" mode-symbol)
+      (if (fboundp mode-symbol)
+          (funcall mode-symbol -1)
+        (message "Mode not found: %s" mode-name))))
+
+  (defun my:new-toggle-mode (mode-name)
+    "Toggle mode by MODE-NAME."
+    (let ((mode-symbol (intern mode-name)))
+      (if (fboundp mode-symbol)
+          (let ((mode-function (symbol-function mode-symbol)))
+            (if (commandp mode-function)
+                (if (derived-mode-p mode-symbol)
+                    (funcall mode-function -1)
+                  (funcall mode-function t))
+              (message "Mode function not found: %s" mode-name)))
+        (message "Mode not found: %s" mode-name))))
 #+END_SRC
 ** ibuffer-vc
 #+BEGIN_SRC emacs-lisp
@@ -1511,11 +1740,11 @@ This is the package that handles server installation and session management.
 ;    (my:theme-up)
 ;    (my:theme-up)
 ;    (my:theme-up))
-; 
+;
 ;  (defun my:day-theme ()
 ;    (interactive)
 ;    (my:theme-up))
-; 
+;
 ;  (if (or (< (string-to-number (format-time-string "%H")) 8)
 ;          (> (string-to-number (format-time-string "%H")) 16)) (my:night-theme) (my:day-theme))
 #+END_SRC
@@ -1555,4 +1784,3 @@ Load emacs-lisp file for custom changes.
    (t (load-library "default")))
   (load (concat EMACS-HOME "custom"))
 #+END_SRC
-

@@ -7,8 +7,6 @@
 (setq alert-1 "#ff7373")
 (setq alert-2 "#fba676")
 (setq alert-3 "#ddca69")
-(setq avy-1 "#000000")
-(setq avy-2 "#ffff00")
 (setq background-branch-current "#ffff00")
 (setq background-buffer-id-projectile "#ffff00")
 (setq background-cursor "#ff0000")
