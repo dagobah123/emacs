@@ -1,4 +1,4 @@
-* emacs
+* emacs ;;;test2
 ** archives and startup
 #+BEGIN_SRC emacs-lisp
   (setq INDEX-CHIAROSCURO 0)
