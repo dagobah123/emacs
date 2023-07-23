@@ -12,7 +12,7 @@
 (setq background-cursor "#ff0000")
 (setq background-diff-added "#b5de88")
 (setq background-diff-added-highlight "#99de66")
-(setq background-diff-current-A "#eeef7a")
+(setq background-diff-current-A "#fba676")
 (setq background-diff-current-Ancestor "#9bc1ca")
 (setq background-diff-current-B "#b5de88")
 (setq background-diff-current-C "#efef00")
