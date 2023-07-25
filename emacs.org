@@ -835,9 +835,9 @@ Load environment variables properly by installing *exec-path-from-shell*.
     "
   Emacs
 
-  ^Folders^        ^Files^             ^Update^             ^Themes^
-  ^^^^^^^^-----------------------------------------------------------------------------
-  _a_: emacs       _d_: emacs.org      _h_: cp .emacs.d     _k_: reset    _1_: Eclipse
+  ^Folders^        ^Files^             ^Update^             ^Themes^                    ^Buffers^
+  ^^^^^^^^-------------------------------------------------------------------------------------------
+  _a_: emacs       _d_: emacs.org      _h_: cp .emacs.d     _k_: reset    _1_: Eclipse  _'_ ibuffers
   _s_: .emacs.d    _f_: chiaro...el    _j_: fullscreen      _l_: up       _2_: Yellow
   ^ ^              _g_: linux.el       ^ ^                  _;_: down     _3_: Neon
   "
@@ -864,6 +864,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("2" (my:set-theme INDEX-YELLOW))
     ("3" (my:set-theme INDEX-NEON))
 
+    ("'" (ibuffer0:00:00 ))
+
     ("q" nil "Quit" :color blue))
 
   (defhydra hydra-code (:hint nil :color red)
@@ -871,13 +873,13 @@ Load environment variables properly by installing *exec-path-from-shell*.
     "
   Code
 
-  ^File^              ^Edit^          ^Git^           ^Search^             ^Project^      ^Diff^              ^Build^
-  ^^^^^-------------------------------------------------------------------------------------------------------------------
-  _a_: line numbers   _h_ cua         _k_: status     _q_: dired project   _t_: root      _y_: buffers        _o_: compile
-  _s_: whitespace     _j_ overwrite   _l_: log        _w_: vc-git-grep     ^ ^            _u_: directories
-  _d_: imenu          ^ ^             _;_: log file   _e_: helm-git-grep   ^ ^            _i_: branches
-  _f_: treemacs       ^ ^             _'_: blame      _r_: buffers         ^ ^            ^ ^
-  _g_: focus          ^ ^             ^ ^             ^ ^                  ^ ^            ^ ^
+  ^File^              ^Edit^          ^Git^           ^Search^             ^Project^   ^Diff^            ^Build^
+  ^^^^^--------------------------------------------------------------------------------------------------------------
+  _a_: line numbers   _h_ cua         _k_: status     _q_: dired project   _t_: root   _y_: buffers      _p_: compile
+  _s_: whitespace     _j_ overwrite   _l_: log        _w_: vc-git-grep     ^ ^         _u_: directories
+  _d_: imenu          ^ ^             _;_: log file   _e_: helm-git-grep   ^ ^         _i_: branches
+  _f_: treemacs       ^ ^             _'_: blame      _r_: buffers         ^ ^         _o_: magit-diff
+  _g_: focus          ^ ^             ^ ^             ^ ^                  ^ ^         ^ ^
   "
 
     ("a" (my:toggle-line-numbers))
@@ -904,8 +906,9 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("y" ediff-buffers)
     ("u" ediff-directories)
     ("i" magit-diff-range)
+    ("o" magit-diff)
 
-    ("o" compile)
+    ("p" compile)
 
     ("q" nil "Quit" :color blue))
 
