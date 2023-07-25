@@ -1050,11 +1050,23 @@ Load environment variables properly by installing *exec-path-from-shell*.
 #+END_SRC
 ** ibuffer-vc
 #+BEGIN_SRC emacs-lisp
-   (add-hook 'ibuffer-hook
-     (lambda ()
-       (ibuffer-vc-set-filter-groups-by-vc-root)
-       (unless (eq ibuffer-sorting-mode 'alphabetic)
-         (ibuffer-do-sort-by-alphabetic))))
+  (add-hook 'ibuffer-hook
+            (lambda ()
+              (ibuffer-vc-set-filter-groups-by-vc-root)
+              (unless (eq ibuffer-sorting-mode 'alphabetic)
+                (ibuffer-do-sort-by-alphabetic))))
+
+  (setq ibuffer-formats
+        '((mark modified read-only " "
+                (name 75 75 :left :elide)
+                " "
+                (size 9 -1 :right)
+                " "
+                (mode 16 16 :left :elide)
+                " " filename-and-process)
+          (mark " "
+                (name 16 -1)
+                " " filename)))
 #+END_SRC
 ** ido
 #+BEGIN_SRC emacs-lisp
