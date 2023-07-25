@@ -1605,6 +1605,21 @@ This is the package that handles server installation and session management.
                             "org-mode-notes-development"
                             "org-mode-notes-development-static"))))
 #+END_SRC
+** org-timer
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'org-timer-done-hook 'my:org-timer-finished)
+
+  (defun my:org-timer-finished ()
+    "Function to be called when an org-timer finishes."
+    (my:set-theme INDEX-RED)
+    (message "TIMER FINISHED"))
+
+  (defun my:start-org-timer ()
+    "Start custom org-timer."
+    (interactive)
+    (org-timer-set-timer "0:20:00"))
+  (global-set-key (kbd "C-c t") 'my:start-org-timer)
+#+END_SRC
 ** plantuml
 #+BEGIN_SRC emacs-lisp
 (setq org-plantuml-jar-path (expand-file-name "/usr/share/plantuml/plantuml.jar"))
