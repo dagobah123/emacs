@@ -7,8 +7,8 @@
 (setq background "#000000")
 (setq background-fringe "#440000")
 (setq background-hl "#660000")
-(setq background-magit "#770000")
-(setq background-magit-dark "#330000")
+(setq background-magit "#090909")
+(setq background-magit-dark "#000000")
 (setq background-mode-line "#220000")
 (setq background-mode-line-active "#440000")
 (setq font-lock-blue "#000000")
@@ -23,7 +23,7 @@
 (setq text-hl "#ff0000")
 (setq text-info "#ff9900")
 (setq text-low "#990000")
-(setq text-lower "#770000")
+(setq text-lower "#550000")
 (setq text-normal "#dd0000")
 
 ;;; theme_red.el ends here

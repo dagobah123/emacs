@@ -14,29 +14,29 @@
     (if (eq INDEX-CHIAROSCURO INDEX-NEON) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
     (if (eq INDEX-CHIAROSCURO INDEX-NEON) (progn (load-file "~/.emacs.d/theme_neon.el")))
 
-    (if (eq INDEX-CHIAROSCURO INDEX-TERMINAL) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
-    (if (eq INDEX-CHIAROSCURO INDEX-TERMINAL) (progn (load-file "~/.emacs.d/theme_terminal.el")))
-
-    (if (eq INDEX-CHIAROSCURO INDEX-DUNE) (progn (load-file "~/.emacs.d/theme_default_middle.el")))
-    (if (eq INDEX-CHIAROSCURO INDEX-DUNE) (progn (load-file "~/.emacs.d/theme_dune.el")))
-
-    (if (eq INDEX-CHIAROSCURO INDEX-NIGHT) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
-    (if (eq INDEX-CHIAROSCURO INDEX-NIGHT) (progn (load-file "~/.emacs.d/theme_night.el")))
-
-    (if (eq INDEX-CHIAROSCURO INDEX-BLUE) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
-    (if (eq INDEX-CHIAROSCURO INDEX-BLUE) (progn (load-file "~/.emacs.d/theme_blue.el")))
+;    (if (eq INDEX-CHIAROSCURO INDEX-TERMINAL) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
+;    (if (eq INDEX-CHIAROSCURO INDEX-TERMINAL) (progn (load-file "~/.emacs.d/theme_terminal.el")))
+; 
+;    (if (eq INDEX-CHIAROSCURO INDEX-DUNE) (progn (load-file "~/.emacs.d/theme_default_middle.el")))
+;    (if (eq INDEX-CHIAROSCURO INDEX-DUNE) (progn (load-file "~/.emacs.d/theme_dune.el")))
+; 
+;    (if (eq INDEX-CHIAROSCURO INDEX-NIGHT) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
+;    (if (eq INDEX-CHIAROSCURO INDEX-NIGHT) (progn (load-file "~/.emacs.d/theme_night.el")))
+; 
+;    (if (eq INDEX-CHIAROSCURO INDEX-BLUE) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
+;    (if (eq INDEX-CHIAROSCURO INDEX-BLUE) (progn (load-file "~/.emacs.d/theme_blue.el")))
 
     (if (eq INDEX-CHIAROSCURO INDEX-YELLOW) (progn (load-file "~/.emacs.d/theme_default_light_middle.el")))
     (if (eq INDEX-CHIAROSCURO INDEX-YELLOW) (progn (load-file "~/.emacs.d/theme_yellow.el")))
 
-    (if (eq INDEX-CHIAROSCURO INDEX-LIGHT) (progn (load-file "~/.emacs.d/theme_default_light.el")))
-    (if (eq INDEX-CHIAROSCURO INDEX-LIGHT) (progn (load-file "~/.emacs.d/theme_light.el")))
-
-    (if (eq INDEX-CHIAROSCURO INDEX-LINUX) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
-    (if (eq INDEX-CHIAROSCURO INDEX-LINUX) (progn (load-file "~/.emacs.d/theme_linux.el")))
-
-    (if (eq INDEX-CHIAROSCURO INDEX-CARAVAGGIO) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
-    (if (eq INDEX-CHIAROSCURO INDEX-CARAVAGGIO) (progn (load-file "~/.emacs.d/theme_caravaggio.el")))
+;    (if (eq INDEX-CHIAROSCURO INDEX-LIGHT) (progn (load-file "~/.emacs.d/theme_default_light.el")))
+;    (if (eq INDEX-CHIAROSCURO INDEX-LIGHT) (progn (load-file "~/.emacs.d/theme_light.el")))
+; 
+;    (if (eq INDEX-CHIAROSCURO INDEX-LINUX) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
+;    (if (eq INDEX-CHIAROSCURO INDEX-LINUX) (progn (load-file "~/.emacs.d/theme_linux.el")))
+; 
+;    (if (eq INDEX-CHIAROSCURO INDEX-CARAVAGGIO) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
+;    (if (eq INDEX-CHIAROSCURO INDEX-CARAVAGGIO) (progn (load-file "~/.emacs.d/theme_caravaggio.el")))
 
     (if (eq INDEX-CHIAROSCURO INDEX-RED) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
     (if (eq INDEX-CHIAROSCURO INDEX-RED) (progn (load-file "~/.emacs.d/theme_red.el")))
@@ -204,17 +204,17 @@
     `(magit-log-date                    ((t (:foreground ,text-low                                                                                                    ))))
     `(magit-keyword-squash              ((t (:foreground ,text-normal                                                                                                 ))))
 
-    `(magit-diff-context                ((t (:foreground ,text-low          :background unspecified                                                                   ))))
-    `(magit-diff-context-highlight      ((t (:foreground ,text-highlight-2  :background ,background-magit-dark                                                        ))))
+    `(magit-diff-context                ((t (:foreground ,text-lower        :background unspecified                                                                   ))))
+    `(magit-diff-context-highlight      ((t (:foreground ,text-low          :background ,background-magit-dark                                                        ))))
 
     `(magit-diff-hunk-region            ((t (:foreground ,text-normal       :background ,background-magit                                                             ))))
     `(magit-diff-conflict-heading       ((t (:foreground ,text-normal       :background ,background-magit                                                             ))))
 
-    `(magit-diff-file-heading           ((t (:foreground ,text-low       :background unspecified                        :bold t                                    ))))
+    `(magit-diff-file-heading           ((t (:foreground ,text-low          :background ,background-magit                        :bold t                                    ))))
     `(magit-diff-file-heading-selection ((t (:foreground ,text-highlight-2  :background ,background-magit                  :bold t                                    ))))
     `(magit-diff-file-heading-highlight ((t (:foreground ,text-highlight-2  :background ,background-magit                  :bold t                                    ))))
 
-    `(magit-diff-hunk-heading           ((t (:foreground ,text-low       :background ,background-magit                                                             ))))
+    `(magit-diff-hunk-heading           ((t (:foreground ,text-low          :background ,background-magit                                                             ))))
     `(magit-diff-hunk-heading-selection ((t (:foreground ,text-highlight-2  :background ,background-magit                                                             ))))
     `(magit-diff-hunk-heading-highlight ((t (:foreground ,text-highlight-2  :background ,background-magit                                                             ))))
     `(diff-header                       ((t (:foreground ,text-highlight-2  :background ,background-magit                                                             ))))

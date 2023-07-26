@@ -860,9 +860,11 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("l" (my:theme-up))
     (";" (my:theme-down))
 
-    ("1" (my:set-theme INDEX-ECLIPSE))
-    ("2" (my:set-theme INDEX-YELLOW))
+    ("1" (my:set-theme INDEX-CONSOLE))
+    ("2" (my:set-theme INDEX-ECLIPSE))
     ("3" (my:set-theme INDEX-NEON))
+    ("4" (my:set-theme INDEX-YELLOW))
+    ("5" (my:set-theme INDEX-RED))
 
     ("'" (ibuffer0:00:00 ))
 
@@ -1653,15 +1655,21 @@ This is the package that handles server installation and session management.
   (setq INDEX-CONSOLE     1)
   (setq INDEX-ECLIPSE     2)
   (setq INDEX-NEON        3)
-  (setq INDEX-TERMINAL    4)
-  (setq INDEX-DUNE        5)
-  (setq INDEX-NIGHT       6)
-  (setq INDEX-BLUE        7)
-  (setq INDEX-YELLOW      8)
-  (setq INDEX-LIGHT       9)
-  (setq INDEX-LINUX      10)
-  (setq INDEX-CARAVAGGIO 11)
-  (setq INDEX-RED        12)
+  (setq INDEX-YELLOW      4)
+  (setq INDEX-RED         5)
+
+  ;(setq INDEX-CONSOLE     1)
+  ;(setq INDEX-ECLIPSE     2)
+  ;(setq INDEX-NEON        3)
+  ;(setq INDEX-TERMINAL    4)
+  ;(setq INDEX-DUNE        5)
+  ;(setq INDEX-NIGHT       6)
+  ;(setq INDEX-BLUE        7)
+  ;(setq INDEX-YELLOW      8)
+  ;(setq INDEX-LIGHT       9)
+  ;(setq INDEX-LINUX      10)
+  ;(setq INDEX-CARAVAGGIO 11)
+  ;(setq INDEX-RED        12)
 
   (defvar chiaroscuro-index 0 "Index representing the current theme")
   (setq chiaroscuro-index 0)
@@ -1670,26 +1678,12 @@ This is the package that handles server installation and session management.
                       chiaroscuro
                       chiaroscuro
                       chiaroscuro
-                      chiaroscuro
-                      chiaroscuro
-                      chiaroscuro
-                      chiaroscuro
-                      chiaroscuro
-                      chiaroscuro
-                      chiaroscuro
                       chiaroscuro))
 
   (setq themes-list-names '("console"
                             "eclipse"
                             "neon"
-                            "terminal"
-                            "dune"
-                            "night"
-                            "blue"
                             "yellow"
-                            "light"
-                            "linux"
-                            "caravaggio"
                             "red"))
 
   (defvar theme-index 0 "Index representing the current theme")
