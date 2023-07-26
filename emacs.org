@@ -835,11 +835,13 @@ Load environment variables properly by installing *exec-path-from-shell*.
     "
   Emacs
 
-  ^Folders^        ^Files^             ^Update^             ^Themes^                    ^Buffers^
+  ^Folders^        ^Files^             ^Update^             ^Themes^                 ^Buffers^
   ^^^^^^^^-------------------------------------------------------------------------------------------
-  _a_: emacs       _d_: emacs.org      _h_: cp .emacs.d     _k_: reset    _1_: Eclipse  _'_ ibuffers
-  _s_: .emacs.d    _f_: chiaro...el    _j_: fullscreen      _l_: up       _2_: Yellow
-  ^ ^              _g_: linux.el       ^ ^                  _;_: down     _3_: Neon
+  _a_: emacs       _d_: emacs.org      _h_: cp .emacs.d     _k_: reset   _1_: Console  _'_: ibuffers
+  _s_: .emacs.d    _f_: chiaro...el    _j_: fullscreen      _l_: up      _2_: Eclipse  ^ ^
+  ^ ^              _g_: linux.el       ^ ^                  _;_: down    _3_: Neon     ^ ^
+  ^ ^              ^ ^                 ^ ^                  ^ ^          _4_: Yellow   ^ ^
+  ^ ^              ^ ^                 ^ ^                  ^ ^          _5_: Red      ^ ^
   "
 
     ("a" (dired "~/source/emacs"))
