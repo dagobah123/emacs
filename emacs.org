@@ -877,13 +877,15 @@ Load environment variables properly by installing *exec-path-from-shell*.
     "
   Code
 
-  ^File^              ^Edit^          ^Git^           ^Search^             ^Project^   ^Diff^            ^Build^
+  ^File^              ^Lsp^           ^Git^           ^Search^             ^Project^   ^Diff^            ^Build^
   ^^^^^--------------------------------------------------------------------------------------------------------------
-  _a_: line numbers   _h_ cua         _k_: status     _q_: dired project   _t_: root   _y_: buffers      _p_: compile
-  _s_: whitespace     _j_ overwrite   _l_: log        _w_: vc-git-grep     ^ ^         _u_: directories
-  _d_: imenu          ^ ^             _;_: log file   _e_: helm-git-grep   ^ ^         _i_: branches
-  _f_: treemacs       ^ ^             _'_: blame      _r_: buffers         ^ ^         _o_: magit-diff
-  _g_: focus          ^ ^             ^ ^             ^ ^                  ^ ^         ^ ^
+  _a_: line numbers   _1_: ui-imenu   _k_: status     _q_: dired project   _t_: root   _y_: buffers      _p_: compile
+  _s_: whitespace     ^ ^             _l_: log        _w_: vc-git-grep     ^ ^         _u_: directories  _[_: build
+  _d_: imenu          ^ ^             _;_: log file   _e_: helm-git-grep   ^ ^         _i_: branches     ^ ^
+  _f_: treemacs       ^ ^             _'_: blame      _r_: buffers         ^ ^         _o_: magit-diff   ^ ^
+  _g_: focus          ^ ^             ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
+  _h_: cua            ^ ^             ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
+  _j_: overwrite      ^ ^             ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
   "
 
     ("a" (my:toggle-line-numbers))
@@ -891,9 +893,10 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("d" (helm-imenu))
     ("f" (treemacs))
     ("g" (my:toggle-focus-mode))
-
     ("h" (my:toggle-cua-mode))
     ("j" (overwrite-mode))
+
+    ("1" (lsp-ui-imenu))
 
     ("k" (my:projectile-magit))
     ("l" (magit-log))
@@ -913,6 +916,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("o" magit-diff)
 
     ("p" compile)
+    ("[" lsp-java-build-project)
 
     ("q" nil "Quit" :color blue))
 
