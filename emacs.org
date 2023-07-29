@@ -816,7 +816,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;;;
 ;;;(advice-add 'hlt-highlight-symbol :override #'my:hlt-highlight)
 #+END_SRC
-** hydra
+** hydra master
 #+BEGIN_SRC emacs-lisp
   (defhydra hydra-master (:color blue)
     ""
@@ -827,9 +827,9 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("q" nil "Quit" :color red))
 
   (global-set-key (kbd "C-`") 'hydra-master/body)
-
-
-
+#+END_SRC
+** hydra emacs
+#+BEGIN_SRC emacs-lisp
   (defhydra hydra-emacs (:hint nil :color red)
 
     "
@@ -871,21 +871,23 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("'" (ibuffer0:00:00 ))
 
     ("q" nil "Quit" :color blue))
-
+#+END_SRC
+** hydra code
+#+BEGIN_SRC emacs-lisp
   (defhydra hydra-code (:hint nil :color red)
 
     "
   Code
 
-  ^File^              ^Lsp^           ^Git^           ^Search^             ^Project^   ^Diff^            ^Build^
-  ^^^^^--------------------------------------------------------------------------------------------------------------
-  _a_: line numbers   _1_: ui-imenu   _k_: status     _q_: dired project   _t_: root   _y_: buffers      _p_: compile
-  _s_: whitespace     ^ ^             _l_: log        _w_: vc-git-grep     ^ ^         _u_: directories  _[_: build
-  _d_: imenu          ^ ^             _;_: log file   _e_: helm-git-grep   ^ ^         _i_: branches     ^ ^
-  _f_: treemacs       ^ ^             _'_: blame      _r_: buffers         ^ ^         _o_: magit-diff   ^ ^
-  _g_: focus          ^ ^             ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
-  _h_: cua            ^ ^             ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
-  _j_: overwrite      ^ ^             ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
+  ^File^              ^Lsp^             ^Git^           ^Search^             ^Project^   ^Diff^            ^Build^
+  ^^^^^----------------------------------------------------------------------------------------------------------------
+  _a_: line numbers   _1_: ui-imenu     _k_: status     _q_: dired project   _t_: root   _y_: buffers      _p_: compile
+  _s_: whitespace     _2_: references   _l_: log        _w_: vc-git-grep     _]_: files  _u_: directories  _[_: build
+  _d_: imenu          _3_: definition   _;_: log file   _e_: helm-git-grep   ^ ^         _i_: branches     ^ ^
+  _f_: treemacs       ^ ^               _'_: blame      _r_: buffers         ^ ^         _o_: magit-diff   ^ ^
+  _g_: focus          ^ ^               ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
+  _h_: cua            ^ ^               ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
+  _j_: overwrite      ^ ^               ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
   "
 
     ("a" (my:toggle-line-numbers))
@@ -897,6 +899,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("j" (overwrite-mode))
 
     ("1" (lsp-ui-imenu))
+    ("2" (lsp-find-references))
+    ("3" (lsp-find-definition))
 
     ("k" (my:projectile-magit))
     ("l" (magit-log))
@@ -909,6 +913,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("r" swiper-all)
 
     ("t" (project-dired))
+    ("]" (counsel-projectile))
 
     ("y" ediff-buffers)
     ("u" ediff-directories)
@@ -919,7 +924,9 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("[" lsp-java-build-project)
 
     ("q" nil "Quit" :color blue))
-
+#+END_SRC
+** hydra window
+#+BEGIN_SRC emacs-lisp
   (defhydra hydra-window (:hint nil :color red)
 
     "
@@ -948,7 +955,9 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("-" (my:toggle-golden-ratio-mode))
 
     ("q" nil "Quit" :color blue))
-
+#+END_SRC
+** hydra programs
+#+BEGIN_SRC emacs-lisp
   (defhydra hydra-programs (:hint nil :color red)
 
     "
