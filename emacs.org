@@ -887,48 +887,48 @@ Load environment variables properly by installing *exec-path-from-shell*.
 
   ^File^              ^Lsp^             ^Git^           ^Search^             ^Project^   ^Diff^            ^Build^
   ^^^^^----------------------------------------------------------------------------------------------------------------
-  _a_: line numbers   _1_: ui-imenu     _k_: status     _q_: dired project   _t_: root   _y_: buffers      _p_: compile
-  _s_: whitespace     _2_: references   _l_: log        _w_: vc-git-grep     _]_: files  _u_: directories  _[_: build
-  _d_: imenu          _3_: definition   _;_: log file   _e_: helm-git-grep   ^ ^         _i_: branches     ^ ^
-  _f_: treemacs       _4_: restart      _'_: blame      _r_: buffers         ^ ^         _o_: magit-diff   ^ ^
-  _g_: focus          ^ ^               ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
-  _h_: cua            ^ ^               ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
-  _j_: overwrite      ^ ^               ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
+  _l_: line numbers   _1_: ui-imenu     _s_: status     _d_: dired project   _r_: root   _e_: buffers      _-_: compile
+  _w_: whitespace     _2_: references   _l_: log        _v_: vc-git-grep     _f_: files  _D_: directories  _=_: build
+  _i_: imenu          _3_: definition   _L_: log file   _h_: helm-git-grep   ^ ^         _B_: branches     ^ ^
+  _t_: treemacs       _4_: restart      _b_: blame      _u_: buffers         ^ ^         _m_: magit-diff   ^ ^
+  _C_: focus          ^ ^               ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
+  _c_: cua            ^ ^               ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
+  _o_: overwrite      ^ ^               ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
   "
 
-    ("a" (my:toggle-line-numbers))
-    ("s" (my:toggle-whitespace))
-    ("d" (helm-imenu))
-    ("f" (treemacs))
-    ("g" (my:toggle-focus-mode))
-    ("h" (my:toggle-cua-mode))
-    ("j" (overwrite-mode))
+    ("l" (my:toggle-line-numbers))
+    ("w" (my:toggle-whitespace))
+    ("i" (helm-imenu))
+    ("t" (treemacs))
+    ("C" (my:toggle-focus-mode))
+    ("c" (my:toggle-cua-mode))
+    ("o" (overwrite-mode))
 
     ("1" (lsp-ui-imenu))
     ("2" (lsp-find-references))
     ("3" (lsp-find-definition))
     ("4" (lsp-workspace-restart))
 
-    ("k" (my:projectile-magit))
+    ("s" (my:projectile-magit))
     ("l" (magit-log))
-    (";" (magit-log-buffer-file))
-    ("'" (magit-blame))
+    ("L" (magit-log-buffer-file))
+    ("b" (magit-blame))
 
-    ("q" my:dired-projectile-search)
-    ("w" (my:vc-git-grep))
-    ("e" helm-grep-do-git-grep)
-    ("r" swiper-all)
+    ("d" my:dired-projectile-search)
+    ("v" (my:vc-git-grep))
+    ("h" helm-grep-do-git-grep)
+    ("u" swiper-all)
 
-    ("t" (project-dired))
-    ("]" (counsel-projectile))
+    ("r" (project-dired))
+    ("f" (counsel-projectile))
 
-    ("y" ediff-buffers)
-    ("u" ediff-directories)
-    ("i" magit-diff-range)
-    ("o" magit-diff)
+    ("e" ediff-buffers)
+    ("D" ediff-directories)
+    ("B" magit-diff-range)
+    ("m" magit-diff)
 
-    ("p" compile)
-    ("[" lsp-java-build-project)
+    ("-" compile)
+    ("=" lsp-java-build-project)
 
     ("q" nil "Quit" :color blue))
 #+END_SRC
@@ -1144,7 +1144,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (global-set-key (kbd "C-S-<up>") 'my:prev-java-method)
   (global-set-key (kbd "C-S-<down>") 'my:next-java-method)
   (global-set-key (kbd "C-9") 'helm-imenu)
-  (global-set-key (kbd "C-=") 'lsp-ui-imenu)
   (global-set-key (kbd "C-0") 'delete-window)
   ;(global-set-key (kbd "C-`") 'my:dired-projectile-search)
   (global-set-key (kbd "C-\\") 'my:vc-git-grep)
@@ -1185,6 +1184,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (global-set-key (kbd "C-{") 'global-hide-mode-line-mode)
   (global-set-key (kbd "C-t") 'counsel-projectile-switch-to-buffer)
   (global-set-key (kbd "C-p") 'counsel-projectile-switch-project)
+  (global-set-key (kbd "C-=") 'counsel-projectile)
   (global-set-key (kbd "C-c u u") 'dap-java-run-test-class)
   (global-set-key (kbd "C-c u t") 'dap-java-run-test-method)
   (global-set-key (kbd "C-c i") 'ibuffer)
@@ -1663,6 +1663,7 @@ This is the package that handles server installation and session management.
   (projectile-mode t)
   (global-set-key (kbd "C-x p") 'helm-projectile-switch-project)
   (global-set-key (kbd "C-x o") 'helm-projectile-find-file)
+  (global-set-key (kbd "C-~") 'helm-projectile-switch-to-buffer)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 #+END_SRC
 ** rainbow-mode
@@ -1768,7 +1769,6 @@ This is the package that handles server installation and session management.
     (setq theme-index (+ theme-index 1))
     (setq INDEX-CHIAROSCURO (+ INDEX-CHIAROSCURO 1))
     (my:toggle-themes))
-  (global-set-key (kbd "C-~") 'my:theme-up)
 
   (defun my:set-theme (index)
     (interactive)

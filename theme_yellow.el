@@ -13,6 +13,7 @@
 (setq background-mode-line "#ddca69")
 (setq background-mode-line-active "#ddca69")
 (setq font-lock-blue "#ffec8b")
+(setq background-region "#eddb80")
 (setq font-lock-green "#ffec8b")
 (setq font-lock-red "#ffec8b")
 (setq line-number-1 "#bbaa00")

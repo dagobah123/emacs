@@ -55,9 +55,9 @@
     `(highlight                ((t (:foreground ,text-match        :background ,background-match          ))))
     `(lazy-highlight           ((t (:foreground ,text-match        :background ,background-match          ))))
 
-    `(show-paren-match         ((t (:foreground unspecified        :background ,background-match          ))))
-    `(region                   ((t (:foreground unspecified        :background ,background-match          ))))
-    `(cua-rectangle            ((t (:foreground unspecified        :background ,background-match          ))))
+    `(show-paren-match         ((t (:foreground unspecified       :background ,background-region          ))))
+    `(region                   ((t (:foreground unspecified       :background ,background-region          ))))
+    `(cua-rectangle            ((t (:foreground unspecified       :background ,background-region          ))))
 
     `(hl-line                  ((t (:foreground unspecified        :background ,background-hl             ))))
     `(fringe                   ((t (:foreground ,text-normal       :background ,background-fringe         ))))
@@ -199,7 +199,7 @@
     `(magit-branch-remote               ((t (:foreground ,color-red-1       :background ,color-red-2                       :box (:line-width 1 :color ,color-red-1)   ))))
     `(magit-branch-remote-head          ((t (:foreground ,color-red-1       :background ,color-red-2                       :box (:line-width 1 :color ,color-red-1)  :bold t :italic t ))))
     `(magit-branch-upstream             ((t (:foreground ,color-blue-1      :background ,color-blue-2                       :box (:line-width 1 :color ,color-blue-1)   ))))
-    `(magit-section-highlight           ((t (:foreground ,text-highlight-2  :background unspecified                        :bold t                                    ))))
+    `(magit-section-highlight           ((t (:foreground unspecified        :background unspecified                        :bold t                                    ))))
     `(magit-log-author                  ((t (:foreground ,text-low                                                                                                    ))))
     `(magit-log-date                    ((t (:foreground ,text-low                                                                                                    ))))
     `(magit-keyword-squash              ((t (:foreground ,text-normal                                                                                                 ))))

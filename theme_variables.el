@@ -53,6 +53,7 @@
 (defvar background-match nil ".")
 (defvar background-mode-line nil ".")
 (defvar background-mode-line-active nil ".")
+(defvar background-region nil ".")
 (defvar color-blue-1 nil ".")
 (defvar color-blue-2 nil ".")
 (defvar color-gray-1 nil ".")
@@ -114,7 +115,6 @@
 (defvar text-preprocessor nil ".")
 (defvar text-type nil ".")
 (defvar text-variable nil ".")
-(defvar text-warning nil ".")
 (defvar text-warning nil ".")
 
 ;;; theme_variables.el ends here
