@@ -199,18 +199,18 @@
     `(magit-branch-remote               ((t (:foreground ,color-red-1       :background ,color-red-2                       :box (:line-width 1 :color ,color-red-1)   ))))
     `(magit-branch-remote-head          ((t (:foreground ,color-red-1       :background ,color-red-2                       :box (:line-width 1 :color ,color-red-1)  :bold t :italic t ))))
     `(magit-branch-upstream             ((t (:foreground ,color-blue-1      :background ,color-blue-2                       :box (:line-width 1 :color ,color-blue-1)   ))))
-    `(magit-section-highlight           ((t (:foreground unspecified        :background unspecified                        :bold t                                    ))))
+    `(magit-section-highlight           ((t (:foreground ,text-highlight-2  :background unspecified                        :bold t                                    ))))
     `(magit-log-author                  ((t (:foreground ,text-low                                                                                                    ))))
     `(magit-log-date                    ((t (:foreground ,text-low                                                                                                    ))))
     `(magit-keyword-squash              ((t (:foreground ,text-normal                                                                                                 ))))
 
     `(magit-diff-context                ((t (:foreground ,text-lower        :background unspecified                                                                   ))))
-    `(magit-diff-context-highlight      ((t (:foreground ,text-low          :background ,background-magit-dark                                                        ))))
+    `(magit-diff-context-highlight      ((t (:foreground ,text-normal       :background ,background-magit-dark                                                        ))))
 
     `(magit-diff-hunk-region            ((t (:foreground ,text-normal       :background ,background-magit                                                             ))))
     `(magit-diff-conflict-heading       ((t (:foreground ,text-normal       :background ,background-magit                                                             ))))
 
-    `(magit-diff-file-heading           ((t (:foreground ,text-low          :background ,background-magit                        :bold t                                    ))))
+    `(magit-diff-file-heading           ((t (:foreground ,text-lower        :background ,background-magit                        :bold t                                    ))))
     `(magit-diff-file-heading-selection ((t (:foreground ,text-highlight-2  :background ,background-magit                  :bold t                                    ))))
     `(magit-diff-file-heading-highlight ((t (:foreground ,text-highlight-2  :background ,background-magit                  :bold t                                    ))))
 
@@ -228,9 +228,9 @@
     `(magit-diff-added                  ((t (:foreground ,text-diff-added   :background ,background-diff-added                                                        ))))
     `(magit-diff-removed                ((t (:foreground ,text-diff-removed :background ,background-diff-removed                                                      ))))
 
-    `(magit-blame-heading               ((t (:foreground ,color-blue-1      :background ,color-blue-2                      :bold t                                    ))))
-    `(magit-blame-highlight             ((t (:foreground ,color-blue-1      :background ,color-blue-2                      :bold t                                    ))))
-    `(magit-blame-margin                ((t (:foreground ,color-blue-1      :background ,color-blue-2                      :bold t                                    ))))
+    `(magit-blame-heading               ((t (:foreground ,text-low          :background ,background-fringe                                                            ))))
+    `(magit-blame-highlight             ((t (:foreground ,text-low          :background ,background-fringe                                                            ))))
+    `(magit-blame-margin                ((t (:foreground ,text-low          :background ,background-fringe                                                            ))))
 
     `(magit-reflog-amend                ((t (:foreground ,text-normal                                                                                                 ))))
     `(magit-reflog-checkout             ((t (:foreground ,text-normal                                                                                                 ))))
@@ -457,6 +457,9 @@
     `(helm-ff-executable        ((t (:foreground ,text-match :background ,background-match ))))
 
     `(focus-unfocused           ((t (:foreground ,text-lower ))))
+
+    `(hydra-face-red            ((t (:foreground ,text-highlight-2 :bold t))))
+    `(hydra-face-blue           ((t (:foreground ,text-highlight-2 :bold t))))
 
     `(bm-face                   ((t (:foreground ,color-green-1  :background ,color-green-2    ))))
     `(bm-fringe-face            ((t (:foreground ,text-match     :background ,background-match ))))

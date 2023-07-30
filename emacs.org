@@ -477,8 +477,14 @@ See https://nullprogram.com/blog/2013/02/06/
 #+BEGIN_SRC emacs-lisp
   (require 'elfeed)
   (setq elfeed-feeds '(("https://www.comicsrss.com/rss/dilbert.rss" comics dilbert)
+                       ("https://www.comicsrss.com/rss/dilbert-classics.rss" comics dilbert classics)
                        ("https://www.comicsrss.com/rss/garfield.rss" comics garfield)
+                       ("https://www.comicsrss.com/rss/garfield-classics.rss" comics garfield classics)
                        ("https://www.comicsrss.com/rss/peanuts.rss" comics peanuts)
+                       ("https://www.comicsrss.com/rss/furbabies.rss" comics furbabies)
+                       ("https://www.comicsrss.com/rss/flash-gordon.rss" comics flashgordon)
+                       ("https://www.comicsrss.com/rss/eek.rss" comics eek)
+                       ("https://sachachua.com/blog/category/emacs-news/feed/" emacs)
                        ("https://rss.orf.at/news.xml" news orf)
                        ("https://rss.orf.at/steiermark.xml" news orf steiermark)
                        ("https://rss.orf.at/science.xml" news orf science)
@@ -884,7 +890,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   _a_: line numbers   _1_: ui-imenu     _k_: status     _q_: dired project   _t_: root   _y_: buffers      _p_: compile
   _s_: whitespace     _2_: references   _l_: log        _w_: vc-git-grep     _]_: files  _u_: directories  _[_: build
   _d_: imenu          _3_: definition   _;_: log file   _e_: helm-git-grep   ^ ^         _i_: branches     ^ ^
-  _f_: treemacs       ^ ^               _'_: blame      _r_: buffers         ^ ^         _o_: magit-diff   ^ ^
+  _f_: treemacs       _4_: restart      _'_: blame      _r_: buffers         ^ ^         _o_: magit-diff   ^ ^
   _g_: focus          ^ ^               ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
   _h_: cua            ^ ^               ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
   _j_: overwrite      ^ ^               ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
@@ -901,6 +907,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("1" (lsp-ui-imenu))
     ("2" (lsp-find-references))
     ("3" (lsp-find-definition))
+    ("4" (lsp-workspace-restart))
 
     ("k" (my:projectile-magit))
     ("l" (magit-log))
