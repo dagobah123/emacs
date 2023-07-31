@@ -4,6 +4,8 @@
 
 (load-file "~/.emacs.d/theme_variables.el")
 
+;
+
 (if (> INDEX-CHIAROSCURO INDEX-CONSOLE)
 
   (progn
@@ -83,6 +85,8 @@
     `(font-lock-comment-face           ((t (:foreground ,text-low              ))))
     `(font-lock-constant-face          ((t (:foreground ,text-constant :bold t ))))
     `(font-lock-doc-face               ((t (:foreground ,text-low              ))))
+
+;sd;flksdf;l
 
     (if (eq INDEX-CHIAROSCURO INDEX-LIGHT)
       (progn `(font-lock-function-name-face ((t (:foreground ,text-function :background ,font-lock-green :bold t )))))
@@ -222,8 +226,8 @@
 
     `(magit-diff-whitespace-warning     ((t (:foreground ,text-normal       :background ,text-error                                                                   ))))
 
-    `(magit-diff-added-highlight        ((t (:foreground ,text-diff-added   :background ,background-diff-added-highlight                                              ))))
-    `(magit-diff-removed-highlight      ((t (:foreground ,text-diff-removed :background ,background-diff-removed-highlight                                            ))))
+    `(magit-diff-added-highlight        ((t (:foreground ,text-diff-added-highlight   :background ,background-diff-added-highlight                                              ))))
+    `(magit-diff-removed-highlight      ((t (:foreground ,text-diff-removed-highlight :background ,background-diff-removed-highlight                                            ))))
 
     `(magit-diff-added                  ((t (:foreground ,text-diff-added   :background ,background-diff-added                                                        ))))
     `(magit-diff-removed                ((t (:foreground ,text-diff-removed :background ,background-diff-removed                                                      ))))
@@ -489,10 +493,6 @@
     `(mode-line-inactive             ((t (:foreground ,text-low        :background ,background-mode-line                    ))))
     `(mode-line-buffer-id            ((t (:foreground ,text-mode-line  :background ,background-buffer-id-projectile :bold t ))))
     `(telephone-line-projectile      ((t (:foreground ,text-mode-line  :background ,background-buffer-id-projectile :bold t ))))
-    `(telephone-line-accent-active   ((t (:foreground ,text-normal     :background ,background-mode-line                    ))))
-    `(telephone-line-accent-inactive ((t (:foreground ,text-low        :background ,background-mode-line                    ))))
-    `(telephone-line-evil-emacs      ((t (:foreground ,evil-emacs-1    :background ,evil-emacs-2                            ))))
-    `(telephone-line-evil-insert     ((t (:foreground ,evil-insert-1   :background ,evil-insert-2                           ))))
     `(telephone-line-evil-motion     ((t (:foreground ,evil-motion-1   :background ,evil-motion-2                           ))))
     `(telephone-line-evil-normal     ((t (:foreground ,evil-normal-1   :background ,evil-normal-2                           ))))
     `(telephone-line-evil-operator   ((t (:foreground ,evil-operator-1 :background ,evil-operator-2                         ))))

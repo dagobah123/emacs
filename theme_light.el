@@ -22,7 +22,7 @@
 (setq text-highlight-1 "#000000")
 (setq text-hl "#000000")
 (setq text-low "#555555")
-(setq text-lower "#999999")
+(setq text-lower "#777777")
 (setq text-normal "#000000")
 
 ;;; theme_light.el ends here
