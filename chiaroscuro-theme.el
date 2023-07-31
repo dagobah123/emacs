@@ -4,8 +4,6 @@
 
 (load-file "~/.emacs.d/theme_variables.el")
 
-;
-
 (if (> INDEX-CHIAROSCURO INDEX-CONSOLE)
 
   (progn
@@ -493,6 +491,10 @@
     `(mode-line-inactive             ((t (:foreground ,text-low        :background ,background-mode-line                    ))))
     `(mode-line-buffer-id            ((t (:foreground ,text-mode-line  :background ,background-buffer-id-projectile :bold t ))))
     `(telephone-line-projectile      ((t (:foreground ,text-mode-line  :background ,background-buffer-id-projectile :bold t ))))
+    `(telephone-line-accent-active   ((t (:foreground ,text-normal     :background ,background-mode-line                    ))))
+    `(telephone-line-accent-inactive ((t (:foreground ,text-low        :background ,background-mode-line                    ))))
+    `(telephone-line-evil-emacs      ((t (:foreground ,evil-emacs-1    :background ,evil-emacs-2                            ))))
+    `(telephone-line-evil-insert     ((t (:foreground ,evil-insert-1   :background ,evil-insert-2                           ))))
     `(telephone-line-evil-motion     ((t (:foreground ,evil-motion-1   :background ,evil-motion-2                           ))))
     `(telephone-line-evil-normal     ((t (:foreground ,evil-normal-1   :background ,evil-normal-2                           ))))
     `(telephone-line-evil-operator   ((t (:foreground ,evil-operator-1 :background ,evil-operator-2                         ))))
