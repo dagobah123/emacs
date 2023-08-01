@@ -315,7 +315,7 @@
     `(org-checkbox                  ((t (:foreground ,color-green-1  :background unspecified                                                                       ))))
     `(org-checkbox-statistics-done  ((t (:foreground ,text-low       :background unspecified                                                                       ))))
     `(org-checkbox-statistics-todo  ((t (:foreground ,color-green-1  :background unspecified                                                                       ))))
-    `(org-clock-overlay             ((t (:foreground ,text-normal    :background unspecified                                                                       ))))
+    `(org-clock-overlay             ((t (:foreground ,color-yellow-1 :background unspecified                                                                       ))))
     `(org-code                      ((t (:foreground ,color-blue-1   :background unspecified           :bold t :italic t :underline t                              ))))
     `(org-column                    ((t (:foreground ,text-normal    :background unspecified                                                                       ))))
     `(org-column-title              ((t (:foreground ,text-normal    :background unspecified                                                                       ))))

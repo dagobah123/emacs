@@ -11,7 +11,7 @@
 (setq background-magit-dark "#000000")
 (setq background-mode-line "#220000")
 (setq background-mode-line-active "#440000")
-(setq background-region "#000033")
+(setq background-region "#333377")
 (setq font-lock-blue "#000000")
 (setq font-lock-green "#000000")
 (setq font-lock-red "#000000")
