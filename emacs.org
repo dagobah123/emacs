@@ -2,6 +2,7 @@
 ** archives and startup
 #+BEGIN_SRC emacs-lisp
   (setq INDEX-CHIAROSCURO 0)
+  (setq iterations 1)
 
   (package-initialize)
 
@@ -1635,8 +1636,11 @@ This is the package that handles server installation and session management.
 
   (defun my:org-timer-finished ()
     "Function to be called when an org-timer finishes."
-    (my:set-theme INDEX-RED)
-    (message "TIMER FINISHED"))
+    (with-output-to-temp-buffer "*break*"
+      (print "TIMER FINISHED")
+      (print (make-string iterations ?*))
+      (print iterations))
+    (setq iterations (+ iterations 1)))
 
   (defun my:start-org-timer ()
     "Start custom org-timer."
