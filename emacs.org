@@ -4,6 +4,8 @@
   (setq INDEX-CHIAROSCURO 0)
   (setq iterations 1)
 
+  (setq warning-minimum-level :emergency)
+
   (package-initialize)
 
   (require 'package)
@@ -827,10 +829,11 @@ Load environment variables properly by installing *exec-path-from-shell*.
 #+BEGIN_SRC emacs-lisp
   (defhydra hydra-master (:color blue)
     ""
-    ("a" hydra-emacs/body "Emacs")
-    ("s" hydra-code/body "Code")
-    ("d" hydra-window/body "Window")
-    ("f" hydra-custom/body "Custom")
+    ("e" hydra-emacs/body "Emacs")
+    ("f" hydra-file/body "File")
+    ("c" hydra-code/body "Code")
+    ("w" hydra-window/body "Window")
+    ("k" hydra-custom/body "Custom")
     ("q" nil "Quit" :color red))
 
   (global-set-key (kbd "C-`") 'hydra-master/body)
@@ -879,22 +882,17 @@ Load environment variables properly by installing *exec-path-from-shell*.
 
     ("q" nil "Quit" :color blue))
 #+END_SRC
-** hydra code
+** hydra file
 #+BEGIN_SRC emacs-lisp
-  (defhydra hydra-code (:hint nil :color red)
+  (defhydra hydra-file (:hint nil :color red)
 
     "
-  Code
+  File
 
-  ^File^              ^Lsp^             ^Git^           ^Search^             ^Project^   ^Diff^            ^Build^
+  ^File^              ^Lsp^             ^Git^           ^Search^             ^Project^
   ^^^^^----------------------------------------------------------------------------------------------------------------
-  _l_: line numbers   _1_: ui-imenu     _s_: status     _d_: dired project   _r_: root   _e_: buffers      _-_: compile
-  _w_: whitespace     _2_: references   _l_: log        _v_: vc-git-grep     _f_: files  _D_: directories  _=_: build
-  _i_: imenu          _3_: definition   _L_: log file   _h_: helm-git-grep   ^ ^         _B_: branches     ^ ^
-  _t_: treemacs       _4_: restart      _b_: blame      _u_: buffers         ^ ^         _m_: magit-diff   ^ ^
-  _C_: focus          ^ ^               ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
-  _c_: cua            ^ ^               ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
-  _o_: overwrite      ^ ^               ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
+  _l_: line numbers   _i_: imenu        _C_: focuss     _c_: cua             _{_: highlight on
+  _w_: whitespace     _t_: treemacs     _l_: log        _o_: overwrite       _}_: highlights off
   "
 
     ("l" (my:toggle-line-numbers))
@@ -904,6 +902,26 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("C" (my:toggle-focus-mode))
     ("c" (my:toggle-cua-mode))
     ("o" (overwrite-mode))
+    ("{" (hlt-highlight))
+    ("}" (hlt-unhighlight-region))
+
+    ("q" nil "Quit" :color blue))
+#+END_SRC
+** hydra code
+#+BEGIN_SRC emacs-lisp
+  (defhydra hydra-code (:hint nil :color red)
+
+    "
+  Code
+
+  ^Git^           ^Search^             ^Project^   ^Diff^            ^Build^
+  ^^^^^----------------------------------------------------------------------------------------------------------------
+  _1_: ui-imenu     _s_: status     _d_: dired project   _r_: root   _e_: buffers      _-_: compile
+  _2_: references   _l_: log        _v_: vc-git-grep     _f_: files  _D_: directories  _=_: build
+  _3_: definition   _L_: log file   _h_: helm-git-grep   ^ ^         _B_: branches     ^ ^
+  _4_: restart      _b_: blame      _u_: buffers         ^ ^         _m_: magit-diff   ^ ^
+  ^ ^               _g_: file       ^ ^                  ^ ^         ^ ^               ^ ^
+  "
 
     ("1" (lsp-ui-imenu))
     ("2" (lsp-find-references))
@@ -914,6 +932,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("l" (magit-log))
     ("L" (magit-log-buffer-file))
     ("b" (magit-blame))
+    ("g" (magit-file-dispatch)) ;show which commits modified a region
 
     ("d" my:dired-projectile-search)
     ("v" (my:vc-git-grep))
