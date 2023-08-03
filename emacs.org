@@ -115,6 +115,8 @@
   (toggle-frame-maximized)
 
   (whitespace-mode -1)
+
+  (setq compile-command "mvn install")
 #+END_SRC
 ** bookmark-in-project
 #+BEGIN_SRC emacs-lisp
@@ -829,7 +831,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 #+BEGIN_SRC emacs-lisp
   (defhydra hydra-master (:color blue)
     ""
-    ("e" hydra-emacs/body "Emacs")
+    ("a" hydra-emacs/body "Emacs")
     ("f" hydra-file/body "File")
     ("c" hydra-code/body "Code")
     ("w" hydra-window/body "Window")
@@ -846,7 +848,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   Emacs
 
   ^Folders^        ^Files^             ^Update^             ^Themes^                 ^Buffers^
-  ^^^^^^^^-------------------------------------------------------------------------------------------
+  ^^^^^^^^-------------------------------------------------------------------------------------------------
   _a_: emacs       _d_: emacs.org      _h_: cp .emacs.d     _k_: reset   _1_: Console  _'_: ibuffers
   _s_: .emacs.d    _f_: chiaro...el    _j_: fullscreen      _l_: up      _2_: Eclipse  ^ ^
   ^ ^              _g_: linux.el       ^ ^                  _;_: down    _3_: Neon     ^ ^
@@ -890,7 +892,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   File
 
   ^File^              ^Lsp^             ^Git^           ^Search^             ^Project^
-  ^^^^^----------------------------------------------------------------------------------------------------------------
+  ^^^^^-------------------------------------------------------------------------------------------------
   _l_: line numbers   _i_: imenu        _C_: focuss     _c_: cua             _{_: highlight on
   _w_: whitespace     _t_: treemacs     _l_: log        _o_: overwrite       _}_: highlights off
   "
@@ -914,13 +916,13 @@ Load environment variables properly by installing *exec-path-from-shell*.
     "
   Code
 
-  ^Git^           ^Search^             ^Project^   ^Diff^            ^Build^
-  ^^^^^----------------------------------------------------------------------------------------------------------------
+  ^Lsp^             ^Git^           ^Search^             ^Project^   ^Diff^            ^Build^
+  ^^^^^-------------------------------------------------------------------------------------------------
   _1_: ui-imenu     _s_: status     _d_: dired project   _r_: root   _e_: buffers      _-_: compile
-  _2_: references   _l_: log        _v_: vc-git-grep     _f_: files  _D_: directories  _=_: build
+  _2_: references   _l_: log        _v_: vc-git-grep     _f_: files  _D_: directories  _=_: lsp
   _3_: definition   _L_: log file   _h_: helm-git-grep   ^ ^         _B_: branches     ^ ^
-  _4_: restart      _b_: blame      _u_: buffers         ^ ^         _m_: magit-diff   ^ ^
-  ^ ^               _g_: file       ^ ^                  ^ ^         ^ ^               ^ ^
+  ^ ^               _b_: blame      _u_: buffers         ^ ^         _m_: magit-diff   ^ ^
+  ^ ^               _g_: region     ^ ^                  ^ ^         ^ ^               ^ ^
   "
 
     ("1" (lsp-ui-imenu))
