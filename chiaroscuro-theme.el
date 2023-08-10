@@ -79,8 +79,8 @@
 
     ;font-lock
     `(font-lock-builtin-face           ((t (:foreground ,text-normal           ))))
-    `(font-lock-comment-delimiter-face ((t (:foreground ,text-low              ))))
-    `(font-lock-comment-face           ((t (:foreground ,text-low              ))))
+    `(font-lock-comment-delimiter-face ((t (:foreground ,text-lower            ))))
+    `(font-lock-comment-face           ((t (:foreground ,text-lower            ))))
     `(font-lock-constant-face          ((t (:foreground ,text-constant :bold t ))))
     `(font-lock-doc-face               ((t (:foreground ,text-low              ))))
 

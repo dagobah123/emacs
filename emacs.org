@@ -21,6 +21,7 @@
                        arduino-cli-mode
                        arduino-mode
                        bookmark-in-project
+                       chess
                        company
                        company-box
                        counsel
@@ -63,6 +64,7 @@
                        use-package
                        visual-regexp
                        which-key
+                       ;xterm-color
                        ztree))
 
   (dolist (package package-list)
@@ -543,6 +545,16 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (use-package exec-path-from-shell :ensure t)
   (exec-path-from-shell-initialize)
 #+END_SRC
+** eshell
+#+BEGIN_SRC emacs-lisp
+;  (add-hook 'eshell-mode-hook
+;            (lambda ()
+;              (setenv "TERM" "xterm-256color")))
+;  (add-hook 'eshell-before-prompt-hook (setq xterm-color-preserve-properties t))
+;  (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
+;  (setq eshell-output-filter-functions
+;        (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
+#+END_SRC
 ** evil
 #+BEGIN_SRC emacs-lisp
   (use-package evil)
@@ -894,12 +906,14 @@ Load environment variables properly by installing *exec-path-from-shell*.
   ^File^              ^Lsp^             ^Git^           ^Search^             ^Project^
   ^^^^^-------------------------------------------------------------------------------------------------
   _l_: line numbers   _i_: imenu        _C_: focuss     _c_: cua             _{_: highlight on
-  _w_: whitespace     _t_: treemacs     _l_: log        _o_: overwrite       _}_: highlights off
+  _w_: whitespace     _b_: breadcrumb   _l_: log        _o_: overwrite       _}_: highlights off
+  ^ ^                 _t_: treemacs     ^ ^             ^ ^                  ^ ^
   "
 
     ("l" (my:toggle-line-numbers))
     ("w" (my:toggle-whitespace))
     ("i" (helm-imenu))
+    ("b" (breadcrumb-jump))
     ("t" (treemacs))
     ("C" (my:toggle-focus-mode))
     ("c" (my:toggle-cua-mode))
@@ -1165,7 +1179,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (global-set-key (kbd "C-c m") 'my:agenda-view)
   (global-set-key (kbd "C-S-<up>") 'my:prev-java-method)
   (global-set-key (kbd "C-S-<down>") 'my:next-java-method)
-  (global-set-key (kbd "C-9") 'helm-imenu)
+  ;(global-set-key (kbd "C-9") 'helm-imenu)
+  (global-set-key (kbd "C-9") 'breadcrumb-jump)
   (global-set-key (kbd "C-0") 'delete-window)
   ;(global-set-key (kbd "C-`") 'my:dired-projectile-search)
   (global-set-key (kbd "C-\\") 'my:vc-git-grep)
@@ -1854,4 +1869,6 @@ Load emacs-lisp file for custom changes.
    ((eq system-type 'windows-nt) (load (concat EMACS-HOME "windows")))
    (t (load-library "default")))
   (load (concat EMACS-HOME "custom"))
+  (load (concat EMACS-HOME "breadcrumb"))
+  (breadcrumb-mode t)
 #+END_SRC
