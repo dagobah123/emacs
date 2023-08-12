@@ -229,26 +229,31 @@
      ))
 
   (defun my:next-java-method ()
+    "Jump to next Java method."
     (interactive)
     (re-search-forward java-function-regexp nil t)
     (recenter))
 
   (defun my:prev-java-method ()
+    "Jump to previous Java method."
     (interactive)
     (re-search-backward java-function-regexp nil t)
     (recenter))
 
-  (defvar next-method-regexp "\\(class\\|def\\|public\\|private\\|protected\\|defun\\|defvar\\|[a-zA-Z0-9_$]+(\\)")
-
-  (defun my:next-method ()
-    (interactive)
-    (re-search-forward next-method-regexp nil t)
-    (recenter))
+  ;(defvar next-method-regexp "\\(class\\|def\\|public\\|private\\|protected\\|defun\\|defvar\\|[a-zA-Z0-9_$]+(\\)")
+  ;(defvar next-method-regexp "class\\|def\\|public\\|private\\|protected\\|defun\\|defvar")
+  (defvar next-method-regexp "class\\|def\\|public\\|private\\|protected\\|defun\\|defvar")
+  ;(defvar next-method-regexp "public")
 
   (defun my:prev-method ()
     (interactive)
-    (re-search-backward next-method-regexp nil t)
-    (recenter))
+    (re-search-backward next-method-regexp nil t))
+  (global-set-key (kbd "C-3") 'my:prev-method)
+
+  (defun my:next-method ()
+    (interactive)
+    (re-search-forward next-method-regexp nil t))
+  (global-set-key (kbd "C-4") 'my:next-method)
 
   (defun my:previous-link-center ()
     (interactive)
@@ -631,10 +636,10 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (setq shr-max-image-proportion 0.3)
 
   (cond
-   ((string-equal system-type "windows-nt")
-    (progn (setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe") (message "windows-nt")))
-   ((string-equal system-type "gnu/linux")
-    (progn (setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "chromium-browser") (message "linux"))))
+    ((string-equal system-type "windows-nt")
+      (progn (setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe") (message "windows-nt")))
+    ((string-equal system-type "gnu/linux")
+      (progn (setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "chromium-browser") (message "linux"))))
  #+END_SRC
 ** focus
 #+BEGIN_SRC emacs-lisp
@@ -1203,8 +1208,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (global-set-key (kbd "<C-iso-lefttab>") 'my:previous-link-center)
   (global-set-key (kbd "<C-tab>") 'completion-at-point)
   (global-set-key (kbd "C-c m") 'my:agenda-view)
-  (global-set-key (kbd "C-S-<up>") 'my:prev-java-method)
-  (global-set-key (kbd "C-S-<down>") 'my:next-java-method)
   ;(global-set-key (kbd "C-9") 'helm-imenu)
   (global-set-key (kbd "C-9") 'breadcrumb-jump)
   (global-set-key (kbd "C-0") 'delete-window)
