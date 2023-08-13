@@ -136,8 +136,8 @@
 #+END_SRC
 ** chess
 #+BEGIN_SRC emacs-lisp
-(setq chess-images-directory "/home/pi/source/emacs/xboard/")
-(setq chess-images-default-size 50)
+  (setq chess-images-directory "~/source/emacs/xboard/")
+  (setq chess-images-default-size 50)
 #+END_SRC
 ** clock
 #+BEGIN_SRC emacs-lisp
@@ -335,10 +335,8 @@
     (interactive)
     (if (eq mode-line-fringe-breadcrumb t)
         (progn
-          (message "-1")
           (setq mode-line-fringe-breadcrumb -1))
       (progn
-        (message "t")
         (setq mode-line-fringe-breadcrumb t)))
 
     (if (eq mode-line-fringe-breadcrumb t)
@@ -1109,38 +1107,32 @@ Load environment variables properly by installing *exec-path-from-shell*.
       (progn
         (cua-mode t))))
 
-  (defun greet (name)
-    "Greet the specified NAME."
-    (message "Hello, %s!" name))
-
-  (greet "Alice")
-
-  (defun my:enable-mode (mode-name)
-    "Enable the major mode specified by the MODE-NAME string for the current buffer."
-    (let ((mode-symbol (intern mode-name)))
-      (if (fboundp mode-symbol)
-          (funcall mode-symbol t)
-        (message "Mode not found: %s" mode-name))))
-
-  (defun my:disable-mode (mode-name)
-    "Enable the major mode specified by the MODE-NAME string for the current buffer."
-    (let ((mode-symbol (intern mode-name)))
-      (message "Mode value: %s" mode-symbol)
-      (if (fboundp mode-symbol)
-          (funcall mode-symbol -1)
-        (message "Mode not found: %s" mode-name))))
-
-  (defun my:new-toggle-mode (mode-name)
-    "Toggle mode by MODE-NAME."
-    (let ((mode-symbol (intern mode-name)))
-      (if (fboundp mode-symbol)
-          (let ((mode-function (symbol-function mode-symbol)))
-            (if (commandp mode-function)
-                (if (derived-mode-p mode-symbol)
-                    (funcall mode-function -1)
-                  (funcall mode-function t))
-              (message "Mode function not found: %s" mode-name)))
-        (message "Mode not found: %s" mode-name))))
+;  (defun my:enable-mode (mode-name)
+;    "Enable the major mode specified by the MODE-NAME string for the current buffer."
+;    (let ((mode-symbol (intern mode-name)))
+;      (if (fboundp mode-symbol)
+;          (funcall mode-symbol t)
+;        (message "Mode not found: %s" mode-name))))
+; 
+;  (defun my:disable-mode (mode-name)
+;    "Enable the major mode specified by the MODE-NAME string for the current buffer."
+;    (let ((mode-symbol (intern mode-name)))
+;      (message "Mode value: %s" mode-symbol)
+;      (if (fboundp mode-symbol)
+;          (funcall mode-symbol -1)
+;        (message "Mode not found: %s" mode-name))))
+; 
+;  (defun my:new-toggle-mode (mode-name)
+;    "Toggle mode by MODE-NAME."
+;    (let ((mode-symbol (intern mode-name)))
+;      (if (fboundp mode-symbol)
+;          (let ((mode-function (symbol-function mode-symbol)))
+;            (if (commandp mode-function)
+;                (if (derived-mode-p mode-symbol)
+;                    (funcall mode-function -1)
+;                  (funcall mode-function t))
+;              (message "Mode function not found: %s" mode-name)))
+;        (message "Mode not found: %s" mode-name))))
 #+END_SRC
 ** ibuffer-vc
 #+BEGIN_SRC emacs-lisp
