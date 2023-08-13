@@ -898,6 +898,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   ^ ^              _g_: linux.el       ^ ^                  _;_: down    _3_: Neon     ^ ^
   ^ ^              ^ ^                 ^ ^                  ^ ^          _4_: Yellow   ^ ^
   ^ ^              ^ ^                 ^ ^                  ^ ^          _5_: Red      ^ ^
+  ^ ^              ^ ^                 ^ ^                  ^ ^          _6_: High C.  ^ ^
   "
 
     ("a" (dired "~/source/emacs"))
@@ -923,6 +924,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("3" (my:set-theme INDEX-NEON))
     ("4" (my:set-theme INDEX-YELLOW))
     ("5" (my:set-theme INDEX-RED))
+    ("6" (my:set-theme INDEX-HIGH-CONTRAST))
 
     ("'" (ibuffer0:00:00 ))
 
@@ -1745,29 +1747,18 @@ This is the package that handles server installation and session management.
 ** themes
 #+BEGIN_SRC emacs-lisp
 
-  (setq INDEX-CONSOLE     1)
-  (setq INDEX-ECLIPSE     2)
-  (setq INDEX-NEON        3)
-  (setq INDEX-YELLOW      4)
-  (setq INDEX-RED         5)
-
-  ;(setq INDEX-CONSOLE     1)
-  ;(setq INDEX-ECLIPSE     2)
-  ;(setq INDEX-NEON        3)
-  ;(setq INDEX-TERMINAL    4)
-  ;(setq INDEX-DUNE        5)
-  ;(setq INDEX-NIGHT       6)
-  ;(setq INDEX-BLUE        7)
-  ;(setq INDEX-YELLOW      8)
-  ;(setq INDEX-LIGHT       9)
-  ;(setq INDEX-LINUX      10)
-  ;(setq INDEX-CARAVAGGIO 11)
-  ;(setq INDEX-RED        12)
+  (setq INDEX-CONSOLE       1)
+  (setq INDEX-ECLIPSE       2)
+  (setq INDEX-NEON          3)
+  (setq INDEX-YELLOW        4)
+  (setq INDEX-RED           5)
+  (setq INDEX-HIGH-CONTRAST 6)
 
   (defvar chiaroscuro-index 0 "Index representing the current theme")
   (setq chiaroscuro-index 0)
 
   (setq themes-list '(chiaroscuro
+                      chiaroscuro
                       chiaroscuro
                       chiaroscuro
                       chiaroscuro
@@ -1777,7 +1768,8 @@ This is the package that handles server installation and session management.
                             "eclipse"
                             "neon"
                             "yellow"
-                            "red"))
+                            "red"
+                            "high contrast"))
 
   (defvar theme-index 0 "Index representing the current theme")
   (setq theme-index 0)

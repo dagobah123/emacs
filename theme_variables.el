@@ -2,18 +2,13 @@
 ;;; Commentary:
 ;;; Code:
 
-(defvar INDEX-BLUE nil ".")
-(defvar INDEX-CARAVAGGIO nil ".")
 (defvar INDEX-CHIAROSCURO nil ".")
 (defvar INDEX-CONSOLE nil ".")
-(defvar INDEX-DUNE nil ".")
 (defvar INDEX-ECLIPSE nil ".")
-(defvar INDEX-LIGHT nil ".")
-(defvar INDEX-LINUX nil ".")
+(defvar INDEX-HIGH-CONTRAST nil ".")
 (defvar INDEX-NEON nil ".")
-(defvar INDEX-NIGHT nil ".")
 (defvar INDEX-RED nil ".")
-(defvar INDEX-TERMINAL nil ".")
+(defvar INDEX-YELLOW nil ".")
 (defvar alert-1 nil ".")
 (defvar alert-2 nil ".")
 (defvar alert-3 nil ".")

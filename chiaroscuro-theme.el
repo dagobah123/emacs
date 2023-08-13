@@ -8,38 +8,25 @@
 
   (progn
 
-    (if (eq INDEX-CHIAROSCURO INDEX-ECLIPSE) (progn (load-file "~/.emacs.d/theme_default_light.el")))
-    (if (eq INDEX-CHIAROSCURO INDEX-ECLIPSE) (progn (load-file "~/.emacs.d/theme_eclipse.el")))
+    (if (eq INDEX-CHIAROSCURO INDEX-ECLIPSE)
+        (progn (load-file "~/.emacs.d/theme_default_light.el")
+               (load-file "~/.emacs.d/theme_eclipse.el")))
 
-    (if (eq INDEX-CHIAROSCURO INDEX-NEON) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
-    (if (eq INDEX-CHIAROSCURO INDEX-NEON) (progn (load-file "~/.emacs.d/theme_neon.el")))
+    (if (eq INDEX-CHIAROSCURO INDEX-NEON)
+        (progn (load-file "~/.emacs.d/theme_default_dark.el")
+               (load-file "~/.emacs.d/theme_neon.el")))
 
-;    (if (eq INDEX-CHIAROSCURO INDEX-TERMINAL) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
-;    (if (eq INDEX-CHIAROSCURO INDEX-TERMINAL) (progn (load-file "~/.emacs.d/theme_terminal.el")))
-; 
-;    (if (eq INDEX-CHIAROSCURO INDEX-DUNE) (progn (load-file "~/.emacs.d/theme_default_middle.el")))
-;    (if (eq INDEX-CHIAROSCURO INDEX-DUNE) (progn (load-file "~/.emacs.d/theme_dune.el")))
-; 
-;    (if (eq INDEX-CHIAROSCURO INDEX-NIGHT) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
-;    (if (eq INDEX-CHIAROSCURO INDEX-NIGHT) (progn (load-file "~/.emacs.d/theme_night.el")))
-; 
-;    (if (eq INDEX-CHIAROSCURO INDEX-BLUE) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
-;    (if (eq INDEX-CHIAROSCURO INDEX-BLUE) (progn (load-file "~/.emacs.d/theme_blue.el")))
+    (if (eq INDEX-CHIAROSCURO INDEX-YELLOW)
+        (progn (load-file "~/.emacs.d/theme_default_light_middle.el")
+              (load-file "~/.emacs.d/theme_yellow.el")))
 
-    (if (eq INDEX-CHIAROSCURO INDEX-YELLOW) (progn (load-file "~/.emacs.d/theme_default_light_middle.el")))
-    (if (eq INDEX-CHIAROSCURO INDEX-YELLOW) (progn (load-file "~/.emacs.d/theme_yellow.el")))
+    (if (eq INDEX-CHIAROSCURO INDEX-RED)
+        (progn (load-file "~/.emacs.d/theme_default_dark.el")
+               (load-file "~/.emacs.d/theme_red.el")))
 
-;    (if (eq INDEX-CHIAROSCURO INDEX-LIGHT) (progn (load-file "~/.emacs.d/theme_default_light.el")))
-;    (if (eq INDEX-CHIAROSCURO INDEX-LIGHT) (progn (load-file "~/.emacs.d/theme_light.el")))
-; 
-;    (if (eq INDEX-CHIAROSCURO INDEX-LINUX) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
-;    (if (eq INDEX-CHIAROSCURO INDEX-LINUX) (progn (load-file "~/.emacs.d/theme_linux.el")))
-; 
-;    (if (eq INDEX-CHIAROSCURO INDEX-CARAVAGGIO) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
-;    (if (eq INDEX-CHIAROSCURO INDEX-CARAVAGGIO) (progn (load-file "~/.emacs.d/theme_caravaggio.el")))
-
-    (if (eq INDEX-CHIAROSCURO INDEX-RED) (progn (load-file "~/.emacs.d/theme_default_dark.el")))
-    (if (eq INDEX-CHIAROSCURO INDEX-RED) (progn (load-file "~/.emacs.d/theme_red.el")))
+    (if (eq INDEX-CHIAROSCURO INDEX-HIGH-CONTRAST)
+        (progn (load-file "~/.emacs.d/theme_default_light.el")
+               (load-file "~/.emacs.d/theme_high_contrast.el")))
 
     (if (> INDEX-CHIAROSCURO number-of-themes) (progn (setq INDEX-CHIAROSCURO 0)))
     (if (< INDEX-CHIAROSCURO 0) (progn (setq INDEX-CHIAROSCURO number-of-themes)))
@@ -50,6 +37,11 @@
 
     ;base
     `(default                  ((t (:foreground ,text-normal       :background ,background              ))))
+
+    (if (eq INDEX-CHIAROSCURO INDEX-HIGH-CONTRAST)
+        (progn
+          `(default                  ((t (:foreground ,text-normal       :background ,background   :bold t           ))))))
+
     `(cursor                   ((t (:background ,background-cursor                                        ))))
     `(link                     ((t (:foreground ,text-normal                                 :underline t ))))
     `(highlight                ((t (:foreground ,text-match        :background ,background-match          ))))
@@ -84,19 +76,17 @@
     `(font-lock-constant-face          ((t (:foreground ,text-constant :bold t ))))
     `(font-lock-doc-face               ((t (:foreground ,text-low              ))))
 
-;sd;flksdf;l
-
-    (if (eq INDEX-CHIAROSCURO INDEX-LIGHT)
-      (progn `(font-lock-function-name-face ((t (:foreground ,text-function :background ,font-lock-green :bold t )))))
-      (progn `(font-lock-function-name-face ((t (:foreground ,text-function :bold t                              ))))))
-
-    (if (eq INDEX-CHIAROSCURO INDEX-LIGHT)
-      (progn `(font-lock-variable-name-face ((t (:foreground ,text-variable :background ,font-lock-blue :bold t )))))
-      (progn `(font-lock-variable-name-face ((t (:foreground ,text-variable :bold t                             ))))))
-
-    (if (eq INDEX-CHIAROSCURO INDEX-LIGHT)
-      (progn `(font-lock-type-face ((t (:foreground ,text-type :background ,font-lock-red)))))
-      (progn `(font-lock-type-face ((t (:foreground ,text-type :bold t))))))
+;    (if (eq INDEX-CHIAROSCURO INDEX-LIGHT)
+;      (progn `(font-lock-function-name-face ((t (:foreground ,text-function :background ,font-lock-green :bold t )))))
+;      (progn `(font-lock-function-name-face ((t (:foreground ,text-function :bold t                              ))))))
+; 
+;    (if (eq INDEX-CHIAROSCURO INDEX-LIGHT)
+;      (progn `(font-lock-variable-name-face ((t (:foreground ,text-variable :background ,font-lock-blue :bold t )))))
+;      (progn `(font-lock-variable-name-face ((t (:foreground ,text-variable :bold t                             ))))))
+; 
+;    (if (eq INDEX-CHIAROSCURO INDEX-LIGHT)
+;      (progn `(font-lock-type-face ((t (:foreground ,text-type :background ,font-lock-red)))))
+;      (progn `(font-lock-type-face ((t (:foreground ,text-type :bold t))))))
 
     `(font-lock-keyword-face              ((t (:foreground ,text-keyword      ))))
     `(font-lock-negation-char-face        ((t (:foreground ,text-normal       ))))
