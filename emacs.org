@@ -378,8 +378,7 @@
     (goto-char (point-min)))
 
   (defun my:dired-projectile-main-folder ()
-    (projectile-dired)
-    (dired-up-directory))
+    (projectile-dired))
 
   (defun my:dired-projectile-search (regexp search-in-subdirs)
     (interactive "sRegexp: \nP")
@@ -391,9 +390,15 @@
   (defun my:vc-git-grep ()
     "my:vc-git-grep"
     (interactive)
+    (my:dired-projectile-main-folder)
     (vc-git-grep (read-from-minibuffer "Search for: ")
       "\*"
       "\*"))
+
+  (defun my:helm-projectile-grep ()
+    "my:helm-projectile-grep"
+    (interactive)
+    (helm-projectile-grep))
 
   (defun my:reset-font-size ()
     (interactive)
@@ -959,15 +964,15 @@ Load environment variables properly by installing *exec-path-from-shell*.
 
   ^Lsp^             ^Git^           ^Search^             ^Project^   ^Diff^            ^Build^
   ^^^^^-------------------------------------------------------------------------------------------------
-  _i_: imenu        _g_: status     _d_: dired project   _p_: root   _e_: buffers      _-_: compile
-  _s_: symbols      _l_: log        _v_: vc-git-grep     _f_: files  _A_: directories  _=_: lsp
-  _r_: references   _L_: log file   _h_: helm-git-grep   ^ ^         _B_: branches     ^ ^
-  _d_: definition   _b_: blame      _u_: buffers         ^ ^         _m_: magit-diff   ^ ^
-  _E_: errors       _B_: region     ^ ^                  ^ ^         ^ ^               ^ ^
+  _i_: imenu        _g_: status     _1_: dired project   _p_: root   _E_: buffers      _-_: compile
+  _s_: symbols      _l_: log        _2_: vc-git-grep     _f_: files  _A_: directories  _=_: lsp
+  _r_: references   _L_: log file   _3_: helm-projectile ^ ^         _n_: branches     ^ ^
+  _d_: definition   _b_: blame      _4_: helm-git-grep   ^ ^         _m_: magit-diff   ^ ^
+  _e_: errors       _B_: region     _5_: buffers         ^ ^         ^ ^               ^ ^
   _R_: references   ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
   _I_: implemen.    ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
-  _C_: call hier.   ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
-  _T_: type hier.   ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
+  _c_: call hier.   ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
+  _t_: type hier.   ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
   _D_: deps list    ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
   "
 
@@ -975,11 +980,11 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("s" (lsp-treemacs-symbols))
     ("r" (lsp-find-references))
     ("d" (lsp-find-definition))
-    ("E" (lsp-treemacs-errors-list))
+    ("e" (lsp-treemacs-errors-list))
     ("R" (lsp-treemacs-references (isearch-forward-symbol-at-point)))
     ("I" (lsp-treemacs-implementations (isearch-forward-symbol-at-point)))
-    ("C" (lsp-treemacs-call-hierarchy (isearch-forward-symbol-at-point)))
-    ("T" (lsp-treemacs-type-hierarchy (isearch-forward-symbol-at-point)))
+    ("c" (lsp-treemacs-call-hierarchy (isearch-forward-symbol-at-point)))
+    ("t" (lsp-treemacs-type-hierarchy (isearch-forward-symbol-at-point)))
     ("D" (lsp-treemacs-java-deps-list))
 
     ("g" (my:projectile-magit))
@@ -988,17 +993,18 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("b" (magit-blame))
     ("B" (magit-file-dispatch)) ;show which commits modified a region
 
-    ("d" my:dired-projectile-search)
-    ("v" (my:vc-git-grep))
-    ("h" helm-grep-do-git-grep)
-    ("u" swiper-all)
+    ("1" my:dired-projectile-search)
+    ("2" my:vc-git-grep)
+    ("3" my:helm-projectile-grep)
+    ("4" helm-grep-do-git-grep)
+    ("5" swiper-all)
 
     ("p" (project-dired))
     ("f" (counsel-projectile))
 
-    ("e" ediff-buffers)
+    ("E" ediff-buffers)
     ("A" ediff-directories)
-    ("B" magit-diff-range)
+    ("n" magit-diff-range)
     ("m" magit-diff)
 
     ("-" compile)
