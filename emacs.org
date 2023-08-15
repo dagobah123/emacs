@@ -959,45 +959,45 @@ Load environment variables properly by installing *exec-path-from-shell*.
 
   ^Lsp^             ^Git^           ^Search^             ^Project^   ^Diff^            ^Build^
   ^^^^^-------------------------------------------------------------------------------------------------
-  _1_: ui-imenu     _s_: status     _d_: dired project   _r_: root   _e_: buffers      _-_: compile
-  _2_: references   _l_: log        _v_: vc-git-grep     _f_: files  _D_: directories  _=_: lsp
-  _3_: definition   _L_: log file   _h_: helm-git-grep   ^ ^         _B_: branches     ^ ^
-  _4_: errors       _b_: blame      _u_: buffers         ^ ^         _m_: magit-diff   ^ ^
-  _5_: symbols      _g_: region     ^ ^                  ^ ^         ^ ^               ^ ^
-  _6_: references   ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
-  _7_: implement.   ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
-  _8_: call hier.   ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
-  _9_: type hier.   ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
-  _0_: deps list    ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
+  _i_: imenu        _g_: status     _d_: dired project   _p_: root   _e_: buffers      _-_: compile
+  _s_: symbols      _l_: log        _v_: vc-git-grep     _f_: files  _A_: directories  _=_: lsp
+  _r_: references   _L_: log file   _h_: helm-git-grep   ^ ^         _B_: branches     ^ ^
+  _d_: definition   _b_: blame      _u_: buffers         ^ ^         _m_: magit-diff   ^ ^
+  _E_: errors       _B_: region     ^ ^                  ^ ^         ^ ^               ^ ^
+  _R_: references   ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
+  _I_: implemen.    ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
+  _C_: call hier.   ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
+  _T_: type hier.   ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
+  _D_: deps list    ^ ^             ^ ^                  ^ ^         ^ ^               ^ ^
   "
 
-    ("1" (lsp-ui-imenu))
-    ("2" (lsp-find-references))
-    ("3" (lsp-find-definition))
-    ("4" (lsp-treemacs-errors-list))
-    ("5" (lsp-treemacs-symbols))
-    ("6" (lsp-treemacs-references))
-    ("7" (lsp-treemacs-implementations))
-    ("8" (lsp-treemacs-call-hierarchy))
-    ("9" (lsp-treemacs-type-hierarchy))
-    ("0" (lsp-treemacs-deps-list))
+    ("i" (lsp-ui-imenu))
+    ("s" (lsp-treemacs-symbols))
+    ("r" (lsp-find-references))
+    ("d" (lsp-find-definition))
+    ("E" (lsp-treemacs-errors-list))
+    ("R" (lsp-treemacs-references (isearch-forward-symbol-at-point)))
+    ("I" (lsp-treemacs-implementations (isearch-forward-symbol-at-point)))
+    ("C" (lsp-treemacs-call-hierarchy (isearch-forward-symbol-at-point)))
+    ("T" (lsp-treemacs-type-hierarchy (isearch-forward-symbol-at-point)))
+    ("D" (lsp-treemacs-java-deps-list))
 
-    ("s" (my:projectile-magit))
+    ("g" (my:projectile-magit))
     ("l" (magit-log))
     ("L" (magit-log-buffer-file))
     ("b" (magit-blame))
-    ("g" (magit-file-dispatch)) ;show which commits modified a region
+    ("B" (magit-file-dispatch)) ;show which commits modified a region
 
     ("d" my:dired-projectile-search)
     ("v" (my:vc-git-grep))
     ("h" helm-grep-do-git-grep)
     ("u" swiper-all)
 
-    ("r" (project-dired))
+    ("p" (project-dired))
     ("f" (counsel-projectile))
 
     ("e" ediff-buffers)
-    ("D" ediff-directories)
+    ("A" ediff-directories)
     ("B" magit-diff-range)
     ("m" magit-diff)
 
@@ -1838,6 +1838,14 @@ This is the package that handles server installation and session management.
   (use-package rainbow-mode)
   (require 'rainbow-mode)
   (add-hook 'emacs-lisp-mode-hook 'rainbow-mode)
+#+END_SRC
+** sandbox
+#+BEGIN_SRC emacs-lisp
+  (defun sandbox ()
+    "Sandbox function to test various code snippets."
+    (interactive)
+    (isearch-forward-symbol-at-point)
+    )
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp

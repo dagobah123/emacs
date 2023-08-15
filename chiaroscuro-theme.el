@@ -53,13 +53,13 @@
     `(hl-line                  ((t (:foreground unspecified        :background ,background-hl             ))))
     `(fringe                   ((t (:foreground ,text-normal       :background ,background-fringe         ))))
     `(minibuffer-prompt        ((t (:foreground ,text-normal       :background ,background                ))))
-    `(ido-first-match          ((t (:foreground ,text-match        :background ,background-match  :bold t ))))
-    `(ido-only-match           ((t (:foreground ,text-match        :background ,background-match  :bold t ))))
-    `(lsp-face-highlight-read  ((t (:foreground ,text-match        :background ,background-match  :bold t ))))
-    `(lsp-face-highlight-write ((t (:foreground ,text-match        :background ,background-match  :bold t ))))
-    `(eshell-prompt            ((t (:foreground ,text-match        :background ,background        :bold t ))))
-    `(comint-highlight-prompt  ((t (:foreground ,text-match        :background ,background        :bold t ))))
-    `(secondary-selection      ((t (:foreground ,color-blue-1      :background ,color-blue-2      :bold t ))))
+    `(ido-first-match          ((t (:foreground ,text-match        :background ,background-match          ))))
+    `(ido-only-match           ((t (:foreground ,text-match        :background ,background-match          ))))
+    `(lsp-face-highlight-read  ((t (:foreground ,text-match        :background ,background-match          ))))
+    `(lsp-face-highlight-write ((t (:foreground ,text-match        :background ,background-match          ))))
+    `(eshell-prompt            ((t (:foreground ,text-match        :background ,background                ))))
+    `(comint-highlight-prompt  ((t (:foreground ,text-match        :background ,background                ))))
+    `(secondary-selection      ((t (:foreground ,color-blue-1      :background ,color-blue-2              ))))
     `(git-commit-summary       ((t (:foreground ,color-blue-1      :background ,color-blue-2              ))))
 
     ;line number
@@ -96,8 +96,8 @@
     ;`(font-lock-regexp-grouping-construct ((t (:foreground ,text-normal           ))))
     `(font-lock-string-face               ((t (:foreground ,text-low              ))))
     `(font-lock-type-face                 ((t (:foreground ,text-type :bold t     ))))
-    `(font-lock-variable-name-face        ((t (:foreground ,text-type             ))))
-    `(font-lock-variable-use-face         ((t (:foreground ,text-type             ))))
+    `(font-lock-variable-name-face        ((t (:foreground ,text-constant         ))))
+    `(font-lock-variable-use-face         ((t (:foreground ,text-constant         ))))
     `(font-lock-warning-face              ((t (:foreground ,text-warning          ))))
 
     ;dired
