@@ -848,6 +848,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
     (("M-x" . helm-M-x))
     (("C-c k r" . helm-show-kill-ring))
     (("C-c h" . helm-grep-do-git-grep))
+    (("C-c g" . helm-projectile-grep))
     (("C-r"   . helm-swoop))
     (("C-c b" . helm-buffers-list))
     (("C-c r" . helm-bookmarks))
