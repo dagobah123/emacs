@@ -16,7 +16,7 @@
 (setq font-lock-blue "#ffffff")
 (setq font-lock-green "#ffffff")
 (setq font-lock-red "#ffffff")
-(setq line-number-1 "#7f0055")
+(setq line-number-1 "#3f5fbf")
 (setq line-number-2 "#ffffff")
 (setq line-number-3 "#3f5fbf")
 (setq line-number-4 "#ffffff")

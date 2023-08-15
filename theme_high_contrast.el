@@ -4,6 +4,9 @@
 
 (load-file "~/.emacs.d/theme_variables.el")
 
+(setq alert-1 "#000000")
+(setq alert-2 "#000000")
+(setq alert-3 "#000000")
 (setq background "#ffffff")
 (setq background-fringe "#eeeeee")
 (setq background-hl "#cccccc")
@@ -44,7 +47,6 @@
 (setq text-highlight-2 "#000000")
 (setq text-hl "#000000")
 (setq text-info "#000000")
-(setq text-keyword "#000000")
 (setq text-keyword "#000000")
 (setq text-low "#000000")
 (setq text-lower "#000000")
