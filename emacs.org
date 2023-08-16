@@ -124,7 +124,7 @@
   (defun my:scroll-line-to-top ()
     (evil-scroll-line-to-top (line-number-at-pos))
     (move-beginning-of-line 1))
-  (add-hook 'helm-after-action-hook #'my:scroll-line-to-top)
+  ;(add-hook 'helm-after-action-hook #'my:scroll-line-to-top)
 #+END_SRC
 ** bookmark-in-project
 #+BEGIN_SRC emacs-lisp
