@@ -371,18 +371,7 @@
     ;mode-line
     `(mode-line                      ((t (:foreground ,text-normal     :background ,background-mode-line-active             ))))
     `(mode-line-inactive             ((t (:foreground ,text-low        :background ,background-mode-line                    ))))
-    `(mode-line-buffer-id            ((t (:foreground ,text-mode-line  :background ,background-buffer-id-projectile :bold t ))))
-    `(telephone-line-projectile      ((t (:foreground ,text-mode-line  :background ,background-buffer-id-projectile :bold t ))))
-    `(telephone-line-accent-active   ((t (:foreground ,text-normal     :background ,background-mode-line                    ))))
-    `(telephone-line-accent-inactive ((t (:foreground ,text-low        :background ,background-mode-line                    ))))
-    `(telephone-line-evil-emacs      ((t (:foreground ,evil-emacs-1    :background ,evil-emacs-2                            ))))
-    `(telephone-line-evil-insert     ((t (:foreground ,evil-insert-1   :background ,evil-insert-2                           ))))
-    `(telephone-line-evil-motion     ((t (:foreground ,evil-motion-1   :background ,evil-motion-2                           ))))
-    `(telephone-line-evil-normal     ((t (:foreground ,evil-normal-1   :background ,evil-normal-2                           ))))
-    `(telephone-line-evil-operator   ((t (:foreground ,evil-operator-1 :background ,evil-operator-2                         ))))
-    `(telephone-line-evil-replace    ((t (:foreground ,evil-replace-1  :background ,evil-replace-2                          ))))
-    `(telephone-line-evil-visual     ((t (:foreground ,evil-visual-1   :background ,evil-visual-2                           ))))
-    `(telephone-line-warning         ((t (:foreground ,text-low                                                             ))))
+    `(mode-line-buffer-id            ((t (:foreground ,text-mode-line  :bold t ))))
 
     `(evil-ex-lazy-highlight     ((t (:foreground ,text-match :background ,background-match ))))
     `(evil-ex-search             ((t (:foreground ,text-match :background ,background-match ))))
@@ -481,23 +470,6 @@
     (custom-theme-set-faces 'chiaroscuro
 
     `(default ((t (:bold nil ))))
-
-    ;mode-line
-    `(mode-line                      ((t (:foreground ,text-normal     :background ,background-mode-line-active             ))))
-    `(mode-line-inactive             ((t (:foreground ,text-low        :background ,background-mode-line                    ))))
-    `(mode-line-buffer-id            ((t (:foreground ,text-mode-line  :background ,background-buffer-id-projectile :bold t ))))
-    `(telephone-line-projectile      ((t (:foreground ,text-mode-line  :background ,background-buffer-id-projectile :bold t ))))
-    `(telephone-line-accent-active   ((t (:foreground ,text-normal     :background ,background-mode-line                    ))))
-    `(telephone-line-accent-inactive ((t (:foreground ,text-low        :background ,background-mode-line                    ))))
-    `(telephone-line-evil-emacs      ((t (:foreground ,evil-emacs-1    :background ,evil-emacs-2                            ))))
-    `(telephone-line-evil-insert     ((t (:foreground ,evil-insert-1   :background ,evil-insert-2                           ))))
-    `(telephone-line-evil-motion     ((t (:foreground ,evil-motion-1   :background ,evil-motion-2                           ))))
-    `(telephone-line-evil-normal     ((t (:foreground ,evil-normal-1   :background ,evil-normal-2                           ))))
-    `(telephone-line-evil-operator   ((t (:foreground ,evil-operator-1 :background ,evil-operator-2                         ))))
-    `(telephone-line-evil-replace    ((t (:foreground ,evil-replace-1  :background ,evil-replace-2                          ))))
-    `(telephone-line-evil-visual     ((t (:foreground ,evil-visual-1   :background ,evil-visual-2                           ))))
-    `(telephone-line-warning         ((t (:foreground ,text-low                                                             ))))
-
   )
 
 ))

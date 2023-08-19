@@ -60,7 +60,6 @@
                        projectile
                        rainbow-mode
                        swiper-helm
-                       telephone-line
                        treemacs-projectile
                        use-package
                        visual-regexp
@@ -579,35 +578,9 @@ Load environment variables properly by installing *exec-path-from-shell*.
 #+BEGIN_SRC emacs-lisp
   (use-package evil)
   (require 'evil)
-  (evil-mode 1)
+  (evil-mode nil)
 
   (setq evil-default-state 'emacs)
-
-  (use-package telephone-line)
-  (require 'telephone-line)
-
-  (setq telephone-line-primary-left-separator    'telephone-line-flat
-        telephone-line-secondary-left-separator  'telephone-line-flat
-        telephone-line-primary-right-separator   'telephone-line-flat
-        telephone-line-secondary-right-separator 'telephone-line-flat)
-
-  (setq telephone-line-evil-use-short-tag t)
-
-  (setq telephone-line-lhs
-      '((evil . (telephone-line-evil-tag-segment))
-        (nil  . (telephone-line-buffer-segment))
-        (nil  . (telephone-line-vc-segment
-                 telephone-line-erc-modified-channels-segment))
-        (nil  . (telephone-line-projectile-segment))))
-
-  (setq telephone-line-rhs
-      '((nil  . (telephone-line-misc-info-segment))
-        (nil  . (telephone-line-major-mode-segment))
-        (nil  . (telephone-line-airline-position-segment))))
-
-  ;; all configurations must be set before this line
-  ;; https://github.com/dbordak/telephone-line/blob/master/examples.org
-  (telephone-line-mode 1)
 #+END_SRC
 ** evil-mc
 #+BEGIN_SRC emacs-lisp
@@ -2003,6 +1976,41 @@ Load emacs-lisp file for custom changes.
    ((eq system-type 'windows-nt) (load (concat EMACS-HOME "windows")))
    (t (load-library "default")))
   (load (concat EMACS-HOME "custom"))
-  (load (concat EMACS-HOME "breadcrumb"))
-  (breadcrumb-mode t)
+  ;(load (concat EMACS-HOME "breadcrumb"))
+  ;(breadcrumb-mode t)
+#+END_SRC
+** mode-line
+#+BEGIN_SRC emacs-lisp
+;(setq-default mode-line-format (delq 'mode-line-modes mode-line-format))
+
+(setq-default mode-line-format '("%e"
+                                 mode-line-front-space
+                                 mode-line-mule-info
+                                 mode-line-client
+                                 mode-line-modified
+                                 mode-line-remote
+                                 mode-line-frame-identification
+                                 mode-line-buffer-identification
+                                 mode-line-position
+                                 ;(vc-mode vc-mode)
+                                 (:propertize (vc-mode vc-mode) face (:foreground "red"))
+                                 " "
+                                 ;mode-line-modes
+                                 mode-line-misc-info
+                                 mode-line-end-spaces))
+
+;(setq-default mode-line-format (mode-line-format))
+
+;(setq-default mode-line-format
+;              '("%e"
+;                (:eval
+;                 (format "BUFFER: %s"
+;                         (propertize (buffer-name) 'face 'error)))))
+; 
+;(setq-default mode-line-format
+;              '("%e"
+;                (:eval
+;                 (format "BUFFER: %s"
+;                         (propertize (buffer-name) 'face 'error)))))
+
 #+END_SRC
