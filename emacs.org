@@ -1288,7 +1288,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (setq whitespace-line-column 1000)
 
   ;; clock
-  (display-time)
+  ;(display-time)
 
   ;; ask for y/n instead of yes/no
   (fset 'yes-or-no-p 'y-or-n-p)
@@ -1990,10 +1990,12 @@ Load emacs-lisp file for custom changes.
                                  mode-line-modified
                                  mode-line-remote
                                  mode-line-frame-identification
+                                 (:eval (format "%s" (propertize (projectile-project-name) 'face 'bold)))
+                                 " "
                                  mode-line-buffer-identification
+                                 (:propertize (vc-mode vc-mode) face (:foreground "green"))
+                                 " "
                                  mode-line-position
-                                 ;(vc-mode vc-mode)
-                                 (:propertize (vc-mode vc-mode) face (:foreground "red"))
                                  " "
                                  ;mode-line-modes
                                  mode-line-misc-info
