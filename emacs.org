@@ -1288,7 +1288,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (setq whitespace-line-column 1000)
 
   ;; clock
-  ;(display-time)
+  (display-time)
+  (setq display-time-default-load-average nil)
 
   ;; ask for y/n instead of yes/no
   (fset 'yes-or-no-p 'y-or-n-p)
@@ -1983,23 +1984,30 @@ Load emacs-lisp file for custom changes.
 #+BEGIN_SRC emacs-lisp
 ;(setq-default mode-line-format (delq 'mode-line-modes mode-line-format))
 
-(setq-default mode-line-format '("%e"
-                                 mode-line-front-space
-                                 mode-line-mule-info
-                                 mode-line-client
-                                 mode-line-modified
-                                 mode-line-remote
-                                 mode-line-frame-identification
-                                 (:eval (format "%s" (propertize (projectile-project-name) 'face 'bold)))
-                                 " "
-                                 mode-line-buffer-identification
-                                 (:propertize (vc-mode vc-mode) face (:foreground "green"))
-                                 " "
-                                 mode-line-position
-                                 " "
-                                 ;mode-line-modes
-                                 mode-line-misc-info
-                                 mode-line-end-spaces))
+(setq-default mode-line-format
+              '("%e"
+                mode-line-front-space
+                mode-line-mule-info
+                mode-line-client
+                mode-line-modified
+                mode-line-remote
+                mode-line-frame-identification
+                (:eval (format "%s" (propertize (projectile-project-name) 'face 'bold)))
+                " "
+                mode-line-buffer-identification
+                (:propertize (vc-mode vc-mode) face (:foreground "green"))
+                " "
+                (:eval (format "%s" (propertize (capitalize (symbol-name major-mode)) 'face 'bold)))
+                " "
+                mode-line-position
+                " "
+                ;mode-line-modes
+                ;"\n"
+                mode-line-misc-info
+                mode-line-end-spaces))
+
+; Revert file when branch was changed
+(setq auto-revert-check-vc-info t)
 
 ;(setq-default mode-line-format (mode-line-format))
 
