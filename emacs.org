@@ -2012,8 +2012,8 @@ Load emacs-lisp file for custom changes.
       "")))
 
 (defun my:vc-mode-icon ()
-  ;(let ((icon (all-the-icons-octicon "git-branch" :height 0.7 :v-adjust 0.05 :face 'my:branch-face)))
-  (let ((icon (all-the-icons-alltheicon "git" :height 0.7 :v-adjust 0.05 :face 'my:branch-face)))
+  (let ((icon (all-the-icons-octicon "git-branch" :height 0.7 :v-adjust 0.05 :face 'my:branch-face)))
+  ;(let ((icon (all-the-icons-alltheicon "git" :height 0.7 :v-adjust 0.05 :face 'my:branch-face)))
     (if (> (length icon) 0)
         (concat icon "")
       "")))
