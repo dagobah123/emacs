@@ -2042,6 +2042,7 @@ Load emacs-lisp file for custom changes.
                 " "
                 (:eval (list (my:major-mode-icon)
                         mode-line-buffer-identification))
+                " "
                 (:eval (if vc-mode (list (my:vc-mode-icon)
                                          (propertize vc-mode 'face 'my:branch-face))))
                 " "
