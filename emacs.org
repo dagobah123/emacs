@@ -1985,17 +1985,12 @@ Load emacs-lisp file for custom changes.
 ;(setq-default mode-line-format (delq 'mode-line-modes mode-line-format))
 
 (defface my:project-face
-  '((t :foreground "red"))
+  '((t :foreground "black"))
   "Custom face for projectile-project-name in mode-line."
   :group 'my)
 
-;(defface my:buffer-face
-;  '((t :foreground "yellow"))
-;  "Custom face for mode-line-buffer-identification in mode-line."
-;  :group 'my)
-
 (defface my:branch-face
-  '((t :foreground "green"))
+  '((t :foreground "black"))
   "Custom face for vc-mode in mode-line."
   :group 'my)
 

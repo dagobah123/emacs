@@ -24,6 +24,10 @@
 (setq text-hl "#ef9d03")
 (setq text-low "#997777")
 (setq text-lower "#553333")
+(setq text-mode-line "#bb9999")
+(setq text-mode-line-branch "#00ff00")
+(setq text-mode-line-buffer "#ffff00")
+(setq text-mode-line-project "#ff00ff")
 (setq text-normal "#bb9999") ;;;#ff9999
 
 ;;; theme_neon.el ends here

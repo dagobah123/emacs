@@ -25,6 +25,10 @@
 (setq text-info "#ff9900")
 (setq text-low "#993333")
 (setq text-lower "#553333")
+(setq text-mode-line "#bb9999")
+(setq text-mode-line-branch "#00ff00")
+(setq text-mode-line-buffer "#ffff00")
+(setq text-mode-line-project "#ffffff")
 (setq text-normal "#aa0000")
 
 ;;; theme_red.el ends here
