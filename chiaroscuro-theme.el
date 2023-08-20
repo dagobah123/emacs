@@ -368,11 +368,6 @@
     `(diff-added   ((t (:foreground ,text-diff-added   :background ,background-diff-added   ))))
     `(diff-removed ((t (:foreground ,text-diff-removed :background ,background-diff-removed ))))
 
-    ;mode-line
-    `(mode-line                      ((t (:foreground ,text-normal     :background ,background-mode-line-active             ))))
-    `(mode-line-inactive             ((t (:foreground ,text-low        :background ,background-mode-line                    ))))
-    `(mode-line-buffer-id            ((t (:foreground ,text-mode-line  :bold t ))))
-
     `(evil-ex-lazy-highlight     ((t (:foreground ,text-match :background ,background-match ))))
     `(evil-ex-search             ((t (:foreground ,text-match :background ,background-match ))))
     `(evil-ex-substitute-matches ((t (:foreground ,text-match :background ,background-match ))))
@@ -454,6 +449,12 @@
     `(help-key-binding          ((t (:foreground ,color-yellow-1 :background ,color-yellow-2   ))))
     `(error                     ((t (:foreground ,"#ff0000"                                    ))))
 
+     ;mode-line
+    `(mode-line                 ((t (:foreground ,text-normal            :background ,background-mode-line-active ))))
+    `(mode-line-inactive        ((t (:foreground ,text-low               :background ,background-mode-line        ))))
+    `(mode-line-buffer-id       ((t (:foreground ,text-mode-line-buffer  :bold t                                  ))))
+    `(my:project-face           ((t (:foreground ,text-mode-line-project                                          ))))
+    `(my:branch-face            ((t (:foreground ,text-mode-line-branch                                           ))))
   )
 
 ))

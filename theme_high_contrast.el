@@ -55,7 +55,6 @@
 (setq text-match "#000000")
 (setq text-match "#000000")
 (setq text-mode-line "#000000")
-(setq text-mode-line-border "#000000")
 (setq text-normal "#000000")
 (setq text-preprocessor "#000000")
 (setq text-preprocessor "#000000")

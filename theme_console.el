@@ -31,7 +31,6 @@
 (setq text-low "#000000")
 (setq text-lower "#000000")
 (setq text-mode-line "#000000")
-(setq text-mode-line-border "#000000")
 (setq text-normal "#000000")
 
 ;;; theme_console.el ends here

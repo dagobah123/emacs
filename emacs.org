@@ -1288,8 +1288,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (setq whitespace-line-column 1000)
 
   ;; clock
-  (display-time)
-  (setq display-time-default-load-average nil)
+  ;(display-time)
+  ;(setq display-time-default-load-average nil)
 
   ;; ask for y/n instead of yes/no
   (fset 'yes-or-no-p 'y-or-n-p)
@@ -1984,6 +1984,21 @@ Load emacs-lisp file for custom changes.
 #+BEGIN_SRC emacs-lisp
 ;(setq-default mode-line-format (delq 'mode-line-modes mode-line-format))
 
+(defface my:project-face
+  '((t :foreground "red"))
+  "Custom face for projectile-project-name in mode-line."
+  :group 'my)
+
+;(defface my:buffer-face
+;  '((t :foreground "yellow"))
+;  "Custom face for mode-line-buffer-identification in mode-line."
+;  :group 'my)
+
+(defface my:branch-face
+  '((t :foreground "green"))
+  "Custom face for vc-mode in mode-line."
+  :group 'my)
+
 (setq-default mode-line-format
               '("%e"
                 mode-line-front-space
@@ -1992,10 +2007,11 @@ Load emacs-lisp file for custom changes.
                 mode-line-modified
                 mode-line-remote
                 mode-line-frame-identification
-                (:eval (format "%s" (propertize (projectile-project-name) 'face 'bold)))
+                (:eval (format "%s" (propertize (projectile-project-name) 'face 'my:project-face)))
                 " "
                 mode-line-buffer-identification
-                (:propertize (vc-mode vc-mode) face (:foreground "green"))
+                ;(:propertize (mode-line-buffer-identification) face my:buffer-face)
+                (:propertize (vc-mode vc-mode) face my:branch-face)
                 " "
                 (:eval (format "%s" (propertize (capitalize (symbol-name major-mode)) 'face 'bold)))
                 " "
@@ -2005,6 +2021,17 @@ Load emacs-lisp file for custom changes.
                 ;"\n"
                 mode-line-misc-info
                 mode-line-end-spaces))
+
+
+;(setq-default mode-line-format
+;              (list
+;               ;; Other mode-line elements here
+;               '(:eval (if vc-mode
+;                           (propertize (substring vc-mode (+ 2 (length " Git")))
+;                                       'face 'custom-vc-mode-face)
+;                         ""))))
+
+
 
 ; Revert file when branch was changed
 (setq auto-revert-check-vc-info t)
