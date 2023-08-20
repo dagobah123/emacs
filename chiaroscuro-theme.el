@@ -455,6 +455,10 @@
     `(mode-line-buffer-id       ((t (:foreground ,text-mode-line-buffer  :bold t                                  ))))
     `(my:project-face           ((t (:foreground ,text-mode-line-project                                          ))))
     `(my:branch-face            ((t (:foreground ,text-mode-line-branch                                           ))))
+    `(mode-line-misc-info       ((t (:foreground ,text-mode-line-branch                                           ))))
+    `(my:buffer-face            ((t (:foreground ,text-mode-line-buffer  t                                        ))))
+    
+    `(custom-mode-line-icon     ((t (:foreground ,text-mode-line-buffer                                           ))))
   )
 
 ))

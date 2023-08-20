@@ -1989,10 +1989,46 @@ Load emacs-lisp file for custom changes.
   "Custom face for projectile-project-name in mode-line."
   :group 'my)
 
+(defface my:buffer-face
+  '((t :foreground "black"))
+  "Custom face for buffer in mode-line."
+  :group 'my)
+
 (defface my:branch-face
   '((t :foreground "black"))
   "Custom face for vc-mode in mode-line."
   :group 'my)
+
+(defun my:project-mode-icon ()
+  (let ((icon (all-the-icons-octicon "bug" :height 0.7 :v-adjust 0.05 :face 'my:project-face)))
+    (if (> (length icon) 0)
+        (concat icon "")
+      "")))
+
+(defun my:major-mode-icon ()
+  (let ((icon (all-the-icons-icon-for-mode major-mode :height 0.7 :v-adjust -0.05 :face 'my:buffer-face)))
+    (if (> (length icon) 0)
+        (concat icon " ")
+      "")))
+
+(defun my:vc-mode-icon ()
+  ;(let ((icon (all-the-icons-octicon "git-branch" :height 0.7 :v-adjust 0.05 :face 'my:branch-face)))
+  (let ((icon (all-the-icons-alltheicon "git" :height 0.7 :v-adjust 0.05 :face 'my:branch-face)))
+    (if (> (length icon) 0)
+        (concat icon "")
+      "")))
+
+;(defun my:vc-mode-string ()
+;  (let ((icon (all-the-icons-octicon "git-branch" :face 'my:branch-face)))
+;    (concat icon (format " %s" '(vc-mode vc-mode)))))
+
+;(setq-default mode-line-format
+;              (list
+;               ;; Other mode-line elements here
+;               '(:eval (if vc-mode
+;                           (propertize (substring vc-mode (+ 2 (length " Git")))
+;                                       'face 'custom-vc-mode-face)
+;                         ""))))
 
 (setq-default mode-line-format
               '("%e"
@@ -2004,45 +2040,16 @@ Load emacs-lisp file for custom changes.
                 mode-line-frame-identification
                 (:eval (format "%s" (propertize (projectile-project-name) 'face 'my:project-face)))
                 " "
-                mode-line-buffer-identification
-                ;(:propertize (mode-line-buffer-identification) face my:buffer-face)
-                (:propertize (vc-mode vc-mode) face my:branch-face)
-                " "
-                (:eval (format "%s" (propertize (capitalize (symbol-name major-mode)) 'face 'bold)))
+                (:eval (list (my:major-mode-icon)
+                        mode-line-buffer-identification))
+                (:eval (if vc-mode (list (my:vc-mode-icon)
+                                         (propertize vc-mode 'face 'my:branch-face))))
                 " "
                 mode-line-position
-                " "
                 ;mode-line-modes
-                ;"\n"
                 mode-line-misc-info
                 mode-line-end-spaces))
 
-
-;(setq-default mode-line-format
-;              (list
-;               ;; Other mode-line elements here
-;               '(:eval (if vc-mode
-;                           (propertize (substring vc-mode (+ 2 (length " Git")))
-;                                       'face 'custom-vc-mode-face)
-;                         ""))))
-
-
-
 ; Revert file when branch was changed
 (setq auto-revert-check-vc-info t)
-
-;(setq-default mode-line-format (mode-line-format))
-
-;(setq-default mode-line-format
-;              '("%e"
-;                (:eval
-;                 (format "BUFFER: %s"
-;                         (propertize (buffer-name) 'face 'error)))))
-; 
-;(setq-default mode-line-format
-;              '("%e"
-;                (:eval
-;                 (format "BUFFER: %s"
-;                         (propertize (buffer-name) 'face 'error)))))
-
 #+END_SRC
