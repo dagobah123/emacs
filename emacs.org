@@ -2013,43 +2013,31 @@ Load emacs-lisp file for custom changes.
 
 (defun my:vc-mode-icon ()
   (let ((icon (all-the-icons-octicon "git-branch" :height 0.7 :v-adjust 0.05 :face 'my:branch-face)))
-  ;(let ((icon (all-the-icons-alltheicon "git" :height 0.7 :v-adjust 0.05 :face 'my:branch-face)))
     (if (> (length icon) 0)
         (concat icon "")
       "")))
 
-;(defun my:vc-mode-string ()
-;  (let ((icon (all-the-icons-octicon "git-branch" :face 'my:branch-face)))
-;    (concat icon (format " %s" '(vc-mode vc-mode)))))
-
-;(setq-default mode-line-format
-;              (list
-;               ;; Other mode-line elements here
-;               '(:eval (if vc-mode
-;                           (propertize (substring vc-mode (+ 2 (length " Git")))
-;                                       'face 'custom-vc-mode-face)
-;                         ""))))
-
 (setq-default mode-line-format
-              '("%e"
-                mode-line-front-space
-                mode-line-mule-info
-                mode-line-client
-                mode-line-modified
-                mode-line-remote
-                mode-line-frame-identification
-                (:eval (format "%s" (propertize (projectile-project-name) 'face 'my:project-face)))
-                " "
-                (:eval (list (my:major-mode-icon)
-                        mode-line-buffer-identification))
-                " "
-                (:eval (if vc-mode (list (my:vc-mode-icon)
-                                         (propertize vc-mode 'face 'my:branch-face))))
-                " "
-                mode-line-position
-                ;mode-line-modes
-                mode-line-misc-info
-                mode-line-end-spaces))
+    '("%e"
+      mode-line-front-space
+      mode-line-mule-info
+      mode-line-client
+      mode-line-modified
+      mode-line-remote
+      mode-line-frame-identification
+      (:eval (format "[%s]" (propertize (projectile-project-name) 'face 'my:project-face)))
+      " "
+      mode-line-buffer-identification
+      " "
+      (:eval (format "<%s>" (propertize (car (vc-git-branches)) 'face 'my:branch-face)))
+      " "
+      ;mode-line-position
+      ;mode-line-modes
+      mode-line-misc-info
+      mode-line-end-spaces))
+
+;(:eval (list (my:major-mode-icon) mode-line-buffer-identification))
+;(:eval (if vc-mode (list (my:vc-mode-icon) (propertize vc-mode 'face 'my:branch-face))))
 
 ; Revert file when branch was changed
 (setq auto-revert-check-vc-info t)

@@ -11,7 +11,7 @@
 (setq background-magit-dark "#f2f2f2")
 (setq background-match "#ecdba7")
 (setq background-mode-line "#eeeeee")
-(setq background-mode-line-active "#aaaaaa")
+(setq background-mode-line-active "#cccccc")
 (setq background-region "#dedede")
 (setq font-lock-blue "#ffffff")
 (setq font-lock-green "#ffffff")
