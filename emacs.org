@@ -3,7 +3,7 @@
 #+BEGIN_SRC emacs-lisp
   (setq INDEX-CHIAROSCURO 0)
   (setq iterations 1)
-  (setq mode-line-fringe-breadcrumb t)
+  (setq mode-line-fringe t)
 
   (setq warning-minimum-level :emergency)
 
@@ -28,6 +28,7 @@
                        counsel
                        counsel-projectile
                        counsel-web
+                       diminish
                        dired-narrow
                        elfeed
                        evil
@@ -124,6 +125,9 @@
     (evil-scroll-line-to-top (line-number-at-pos))
     (move-beginning-of-line 1))
   ;(add-hook 'helm-after-action-hook #'my:scroll-line-to-top)
+
+  ; Revert file when branch was changed
+  (setq auto-revert-check-vc-info t)
 #+END_SRC
 ** bookmark-in-project
 #+BEGIN_SRC emacs-lisp
@@ -334,25 +338,24 @@
     (c-indent-line-or-region))
   (global-set-key (kbd "C-c n") 'my:new-line)
 
-  (defun my:toggle-mode-line-fringe-breadcrumb ()
-    "Toggle mode line, fringe and breadcrumb."
+  (defun my:toggle-mode-line-fringe ()
+    "Toggle mode line and fringe."
     (interactive)
-    (if (eq mode-line-fringe-breadcrumb t)
+    (if (eq mode-line-fringe t)
         (progn
-          (setq mode-line-fringe-breadcrumb -1))
+          (setq mode-line-fringe -1))
       (progn
-        (setq mode-line-fringe-breadcrumb t)))
+        (setq mode-line-fringe t)))
 
-    (if (eq mode-line-fringe-breadcrumb t)
+    (if (eq mode-line-fringe t)
         (global-hide-mode-line-mode -1)
       (global-hide-mode-line-mode t))
-    (breadcrumb-mode mode-line-fringe-breadcrumb)
     (my:toggle-fringe))
 
-  (global-set-key (kbd "C-{") 'my:toggle-mode-line-fringe-breadcrumb)
+  (global-set-key (kbd "C-{") 'my:toggle-mode-line-fringe)
 
   (defun my:toggle-fringe ()
-    (if (eq mode-line-fringe-breadcrumb -1)
+    (if (eq mode-line-fringe -1)
       (progn (fringe-mode '(0 . 0))
              (setq my:fringe 0))
       (progn (fringe-mode '(20 . 20))
@@ -843,92 +846,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;;;
 ;;;(advice-add 'hlt-highlight-symbol :override #'my:hlt-highlight)
 #+END_SRC
-** hydra master
-#+BEGIN_SRC emacs-lisp
-  (defhydra hydra-master (:color blue)
-    ""
-    ("a" hydra-emacs/body "Emacs")
-    ("f" hydra-file/body "File")
-    ("c" hydra-code/body "Code")
-    ("w" hydra-window/body "Window")
-    ("k" hydra-custom/body "Custom")
-    ("q" nil "Quit" :color red))
-
-  (global-set-key (kbd "C-`") 'hydra-master/body)
-#+END_SRC
-** hydra emacs
-#+BEGIN_SRC emacs-lisp
-  (defhydra hydra-emacs (:hint nil :color red)
-
-    "
-  Emacs
-
-  ^Folders^        ^Files^             ^Update^             ^Themes^                 ^Buffers^
-  ^^^^^^^^-------------------------------------------------------------------------------------------------
-  _a_: emacs       _d_: emacs.org      _h_: cp .emacs.d     _k_: reset   _1_: Console  _'_: ibuffers
-  _s_: .emacs.d    _f_: chiaro...el    _j_: fullscreen      _l_: up      _2_: Eclipse  ^ ^
-  ^ ^              _g_: linux.el       ^ ^                  _;_: down    _3_: Neon     ^ ^
-  ^ ^              ^ ^                 ^ ^                  ^ ^          _4_: Yellow   ^ ^
-  ^ ^              ^ ^                 ^ ^                  ^ ^          _5_: Red      ^ ^
-  ^ ^              ^ ^                 ^ ^                  ^ ^          _6_: High C.  ^ ^
-  "
-
-    ("a" (dired "~/source/emacs"))
-    ("s" (dired "~/.emacs.d"))
-
-    ("d" (find-file "~/source/emacs/emacs.org"))
-    ("f" (find-file "~/source/emacs/chiaroscuro-theme.el"))
-    ("g" (find-file "~/source/emacs/linux.el"))
-
-    ("h" (lambda () (interactive)
-           (progn
-             (shell-command "cd ~/.emacs.d ; cp -r ~/source/emacs/* .")
-             (my:open-and-eval-init-file)
-             (toggle-frame-fullscreen))))
-    ("j" (toggle-frame-fullscreen))
-
-    ("k" (my:reset-themes-index))
-    ("l" (my:theme-up))
-    (";" (my:theme-down))
-
-    ("1" (my:set-theme INDEX-CONSOLE))
-    ("2" (my:set-theme INDEX-ECLIPSE))
-    ("3" (my:set-theme INDEX-NEON))
-    ("4" (my:set-theme INDEX-YELLOW))
-    ("5" (my:set-theme INDEX-RED))
-    ("6" (my:set-theme INDEX-HIGH-CONTRAST))
-
-    ("'" (ibuffer0:00:00 ))
-
-    ("q" nil "Quit" :color blue))
-#+END_SRC
-** hydra file
-#+BEGIN_SRC emacs-lisp
-  (defhydra hydra-file (:hint nil :color red)
-
-    "
-  File
-
-  ^File^              ^Lsp^             ^Git^           ^Search^             ^Project^
-  ^^^^^-------------------------------------------------------------------------------------------------
-  _l_: line numbers   _i_: imenu        _C_: focuss     _c_: cua             _{_: highlight on
-  _w_: whitespace     _b_: breadcrumb   _l_: log        _o_: overwrite       _}_: highlights off
-  ^ ^                 _t_: treemacs     ^ ^             ^ ^                  ^ ^
-  "
-
-    ("l" (my:toggle-line-numbers))
-    ("w" (my:toggle-whitespace))
-    ("i" (helm-imenu))
-    ("b" (breadcrumb-jump))
-    ("t" (treemacs))
-    ("C" (my:toggle-focus-mode))
-    ("c" (my:toggle-cua-mode))
-    ("o" (overwrite-mode))
-    ("{" (hlt-highlight))
-    ("}" (hlt-unhighlight-region))
-
-    ("q" nil "Quit" :color blue))
-#+END_SRC
 ** hydra code
 #+BEGIN_SRC emacs-lisp
   (defhydra hydra-code (:hint nil :color red)
@@ -986,36 +903,90 @@ Load environment variables properly by installing *exec-path-from-shell*.
 
     ("q" nil "Quit" :color blue))
 #+END_SRC
-** hydra window
+** hydra emacs
 #+BEGIN_SRC emacs-lisp
-  (defhydra hydra-window (:hint nil :color red)
+  (defhydra hydra-emacs (:hint nil :color red)
 
     "
-  Window
+  Emacs
 
-  ^Delete^             ^Split^         ^Enlarge^           ^Shrink^            ^Jump^             ^Golden Ratio^
-  ^^^^^^^^----------------------------------------------------------------------------------------------------------
-  _1_: other windows   _3_: right      _5_: window         _7_: window         _9_: other window  _-_: toggle
-  _2_: window          _4_: below      _6_: horizontally   _8_: horizontally   _0_: ace
+  ^Folders^        ^Files^             ^Update^             ^Themes^                 ^Buffers^
+  ^^^^^^^^-------------------------------------------------------------------------------------------------
+  _a_: emacs       _d_: emacs.org      _h_: cp .emacs.d     _k_: reset   _1_: Console  _'_: ibuffers
+  _s_: .emacs.d    _f_: chiaro...el    _j_: fullscreen      _l_: up      _2_: Eclipse  ^ ^
+  ^ ^              _g_: linux.el       ^ ^                  _;_: down    _3_: Neon     ^ ^
+  ^ ^              ^ ^                 ^ ^                  ^ ^          _4_: Yellow   ^ ^
+  ^ ^              ^ ^                 ^ ^                  ^ ^          _5_: Red      ^ ^
+  ^ ^              ^ ^                 ^ ^                  ^ ^          _6_: High C.  ^ ^
   "
-    ("1" delete-other-windows)
-    ("2" delete-window)
 
-    ("3" split-window-right)
-    ("4" split-window-below)
+    ("a" (dired "~/source/emacs"))
+    ("s" (dired "~/.emacs.d"))
 
-    ("5" enlarge-window)
-    ("6" enlarge-window-horizontally)
+    ("d" (find-file "~/source/emacs/emacs.org"))
+    ("f" (find-file "~/source/emacs/chiaroscuro-theme.el"))
+    ("g" (find-file "~/source/emacs/linux.el"))
 
-    ("7" shrink-window)
-    ("8" shrink-window-horizontally)
+    ("h" (lambda () (interactive)
+           (progn
+             (shell-command "cd ~/.emacs.d ; cp -r ~/source/emacs/* .")
+             (my:open-and-eval-init-file)
+             (toggle-frame-fullscreen))))
+    ("j" (toggle-frame-fullscreen))
 
-    ("9" other-window)
-    ("0" ace-window)
+    ("k" (my:reset-themes-index))
+    ("l" (my:theme-up))
+    (";" (my:theme-down))
 
-    ("-" (my:toggle-golden-ratio-mode))
+    ("1" (my:set-theme INDEX-CONSOLE))
+    ("2" (my:set-theme INDEX-ECLIPSE))
+    ("3" (my:set-theme INDEX-NEON))
+    ("4" (my:set-theme INDEX-YELLOW))
+    ("5" (my:set-theme INDEX-RED))
+    ("6" (my:set-theme INDEX-HIGH-CONTRAST))
+
+    ("'" (ibuffer0:00:00 ))
 
     ("q" nil "Quit" :color blue))
+#+END_SRC
+** hydra file
+#+BEGIN_SRC emacs-lisp
+  (defhydra hydra-file (:hint nil :color red)
+
+    "
+  File
+
+  ^File^              ^Lsp^             ^Git^           ^Search^             ^Project^
+  ^^^^^-------------------------------------------------------------------------------------------------
+  _l_: line numbers   _i_: imenu        _C_: focuss     _c_: cua             _{_: highlight on
+  _w_: whitespace     _t_: treemacs     _l_: log        _o_: overwrite       _}_: highlights off
+  ^ ^                 ^ ^               ^ ^             ^ ^                  ^ ^
+  "
+
+    ("l" (my:toggle-line-numbers))
+    ("w" (my:toggle-whitespace))
+    ("i" (helm-imenu))
+    ("t" (treemacs))
+    ("C" (my:toggle-focus-mode))
+    ("c" (my:toggle-cua-mode))
+    ("o" (overwrite-mode))
+    ("{" (hlt-highlight))
+    ("}" (hlt-unhighlight-region))
+
+    ("q" nil "Quit" :color blue))
+#+END_SRC
+** hydra master
+#+BEGIN_SRC emacs-lisp
+  (defhydra hydra-master (:color blue)
+    ""
+    ("a" hydra-emacs/body "Emacs")
+    ("f" hydra-file/body "File")
+    ("c" hydra-code/body "Code")
+    ("w" hydra-window/body "Window")
+    ("k" hydra-custom/body "Custom")
+    ("q" nil "Quit" :color red))
+
+  (global-set-key (kbd "C-`") 'hydra-master/body)
 #+END_SRC
 ** hydra programs
 #+BEGIN_SRC emacs-lisp
@@ -1119,6 +1090,37 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;                  (funcall mode-function t))
 ;              (message "Mode function not found: %s" mode-name)))
 ;        (message "Mode not found: %s" mode-name))))
+#+END_SRC
+** hydra window
+#+BEGIN_SRC emacs-lisp
+  (defhydra hydra-window (:hint nil :color red)
+
+    "
+  Window
+
+  ^Delete^             ^Split^         ^Enlarge^           ^Shrink^            ^Jump^             ^Golden Ratio^
+  ^^^^^^^^----------------------------------------------------------------------------------------------------------
+  _1_: other windows   _3_: right      _5_: window         _7_: window         _9_: other window  _-_: toggle
+  _2_: window          _4_: below      _6_: horizontally   _8_: horizontally   _0_: ace
+  "
+    ("1" delete-other-windows)
+    ("2" delete-window)
+
+    ("3" split-window-right)
+    ("4" split-window-below)
+
+    ("5" enlarge-window)
+    ("6" enlarge-window-horizontally)
+
+    ("7" shrink-window)
+    ("8" shrink-window-horizontally)
+
+    ("9" other-window)
+    ("0" ace-window)
+
+    ("-" (my:toggle-golden-ratio-mode))
+
+    ("q" nil "Quit" :color blue))
 #+END_SRC
 ** ibuffer-vc
 #+BEGIN_SRC emacs-lisp
@@ -1665,9 +1667,12 @@ This is the package that handles server installation and session management.
 ;;                '(display-buffer-same-window)
 ;;              nil)))
 #+END_SRC
-** mode line
+** mode-line
 #+BEGIN_SRC emacs-lisp
   (require 'hide-mode-line)
+  (setq-default mode-line-format (delq 'mode-line-modes mode-line-format))
+  (column-number-mode)
+  (display-time-mode 1)
 #+END_SRC
 ** nov
 #+BEGIN_SRC emacs-lisp
@@ -1977,68 +1982,4 @@ Load emacs-lisp file for custom changes.
    ((eq system-type 'windows-nt) (load (concat EMACS-HOME "windows")))
    (t (load-library "default")))
   (load (concat EMACS-HOME "custom"))
-  ;(load (concat EMACS-HOME "breadcrumb"))
-  ;(breadcrumb-mode t)
-#+END_SRC
-** mode-line
-#+BEGIN_SRC emacs-lisp
-;(setq-default mode-line-format (delq 'mode-line-modes mode-line-format))
-
-(defface my:project-face
-  '((t :foreground "black"))
-  "Custom face for projectile-project-name in mode-line."
-  :group 'my)
-
-(defface my:buffer-face
-  '((t :foreground "black"))
-  "Custom face for buffer in mode-line."
-  :group 'my)
-
-(defface my:branch-face
-  '((t :foreground "black"))
-  "Custom face for vc-mode in mode-line."
-  :group 'my)
-
-(defun my:project-mode-icon ()
-  (let ((icon (all-the-icons-octicon "bug" :height 0.7 :v-adjust 0.05 :face 'my:project-face)))
-    (if (> (length icon) 0)
-        (concat icon "")
-      "")))
-
-(defun my:major-mode-icon ()
-  (let ((icon (all-the-icons-icon-for-mode major-mode :height 0.7 :v-adjust -0.05 :face 'my:buffer-face)))
-    (if (> (length icon) 0)
-        (concat icon " ")
-      "")))
-
-(defun my:vc-mode-icon ()
-  (let ((icon (all-the-icons-octicon "git-branch" :height 0.7 :v-adjust 0.05 :face 'my:branch-face)))
-    (if (> (length icon) 0)
-        (concat icon "")
-      "")))
-
-(setq-default mode-line-format
-    '("%e"
-      mode-line-front-space
-      mode-line-mule-info
-      mode-line-client
-      mode-line-modified
-      mode-line-remote
-      mode-line-frame-identification
-      (:eval (format "[%s]" (propertize (projectile-project-name) 'face 'my:project-face)))
-      " "
-      mode-line-buffer-identification
-      " "
-      (:eval (format "<%s>" (propertize (car (vc-git-branches)) 'face 'my:branch-face)))
-      " "
-      ;mode-line-position
-      ;mode-line-modes
-      mode-line-misc-info
-      mode-line-end-spaces))
-
-;(:eval (list (my:major-mode-icon) mode-line-buffer-identification))
-;(:eval (if vc-mode (list (my:vc-mode-icon) (propertize vc-mode 'face 'my:branch-face))))
-
-; Revert file when branch was changed
-(setq auto-revert-check-vc-info t)
 #+END_SRC

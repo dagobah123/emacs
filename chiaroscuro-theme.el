@@ -459,6 +459,7 @@
     `(my:buffer-face            ((t (:foreground ,text-mode-line-buffer  t                                        ))))
     
     `(custom-mode-line-icon     ((t (:foreground ,text-mode-line-buffer                                           ))))
+    `(lsp-treemacs-file-error   ((t (:foreground ,"#ffffff"                                           ))))
   )
 
 ))
