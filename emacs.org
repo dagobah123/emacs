@@ -1673,7 +1673,7 @@ This is the package that handles server installation and session management.
   (setq-default mode-line-format (delq 'mode-line-modes mode-line-format))
   (column-number-mode)
   (display-time-mode 1)
-  (display-time-24hr-format t)
+  (setq display-time-24hr-format t)
 #+END_SRC
 ** nov
 #+BEGIN_SRC emacs-lisp
