@@ -30,6 +30,7 @@
                        counsel-web
                        diminish
                        dired-narrow
+                       eglot
                        elfeed
                        evil
                        evil-mc
@@ -501,6 +502,13 @@ See https://nullprogram.com/blog/2013/02/06/
 ** ediff
 #+BEGIN_SRC emacs-lisp
 (setq ediff-split-window-function 'split-window-horizontally)
+#+END_SRC
+** eglot clangd
+#+BEGIN_SRC emacs-lisp
+  (require 'eglot)
+  (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
+  (add-hook 'c-mode-hook 'eglot-ensure)
+  (add-hook 'c++-mode-hook 'eglot-ensure)
 #+END_SRC
 ** elfeed
 #+BEGIN_SRC emacs-lisp
