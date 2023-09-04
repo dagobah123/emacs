@@ -1421,3 +1421,13 @@ This is the package that handles server installation and session management.
   (setq lsp-modeline-code-actions-enable nil)
   (setq lsp-headerline-breadcrumb-enable nil)
 #+END_SRC
+** zzz os specific settings
+Load emacs-lisp file for linux or windows.
+Load emacs-lisp file for custom changes.
+#+BEGIN_SRC emacs-lisp
+  (cond
+   ((eq system-type 'gnu/linux) (load (concat EMACS-HOME "linux")))
+   ((eq system-type 'windows-nt) (load (concat EMACS-HOME "windows")))
+   (t (load-library "default")))
+  (load (concat EMACS-HOME "custom"))
+#+END_SRC
