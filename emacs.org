@@ -18,59 +18,59 @@
   (unless package-archive-contents (package-refresh-contents))
 
   (setq package-list '(ace-window
-                       ;ag
-                       ;arduino-cli-mode
-                       ;arduino-mode
-                       ;bookmark-in-project
-                       ;chess
-                       ;clang-format
+                       ag
+                       arduino-cli-mode
+                       arduino-mode
+                       bookmark-in-project
+                       chess
+                       clang-format
                        company
-                       ;company-box
+                       company-box
                        counsel
                        counsel-projectile
-                       ;counsel-web
-                       ;diminish
-                       ;dired-narrow
+                       counsel-web
+                       diminish
+                       dired-narrow
                        eglot
                        eglot-java
                        elfeed
                        engine-mode
                        evil
-                       ;evil-mc
-                       ;focus
-                       ;git-gutter
-                       ;gnuplot
-                       ;go-mode
-                       ;golden-ratio
+                       evil-mc
+                       focus
+                       git-gutter
+                       gnuplot
+                       go-mode
+                       golden-ratio
                        google-translate
-                       ;goto-last-change
-                       ;helm-bm
+                       goto-last-change
+                       helm-bm
                        helm-projectile
                        helm-swoop
-                       ;hide-mode-line
-                       ;highlight
-                       ;ibuffer-vc
-                       ;itail
-                       ;ivy
-                       ;json-mode
-                       ;luwak
-                       ;magit
-                       ;magit-find-file
-                       ;move-text
-                       ;nov
-                       ;olivetti
-                       ;openwith
-                       ;ox-jira
-                       ;powershell
-                       ;projectile
-                       ;rainbow-mode
-                       ;swiper-helm
-                       ;treemacs-projectile
-                       ;use-package
-                       ;visual-regexp
+                       hide-mode-line
+		       highlight
+		       ibuffer-vc
+		       itail
+		       ivy
+		       json-mode
+		       luwak
+		       magit
+		       magit-find-file
+		       move-text
+		       nov
+		       olivetti
+		       openwith
+		       ox-jira
+		       powershell
+		       projectile
+		       rainbow-mode
+		       swiper-helm
+		       treemacs-projectile
+                       use-package
+                       visual-regexp
                        which-key
-                       ;xterm-color
-                       ;ztree
+                       xterm-color
+                       ztree
                        ))
 
   (dolist (package package-list)
