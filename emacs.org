@@ -590,7 +590,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 
   ^LSP^             ^Git^           ^Search^              ^Project^   ^Diff^            ^Build^
   ^^^^^-------------------------------------------------------------------------------------------------
-  _!_: Lsp on       _g_: status     _1_: dired project    _p_: root   _E_: buffers      _-_: compile
+  _!_: Lsp on       _g_: status     _1_: dired project    _r_: root   _E_: buffers      _-_: compile
   _@_: Lsp off      _l_: log        _2_: vc-git-grep      _f_: files  _A_: directories  _=_: lsp
   _#_: Eglot on     _L_: log file   _3_: helm-projectile  ^ ^         _n_: branches     ^ ^
   _$_: Eglot off    _b_: blame      _4_: helm-git-grep    ^ ^         _m_: magit-diff   ^ ^
@@ -617,7 +617,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("4" helm-grep-do-git-grep)
     ("5" swiper-all)
 
-    ("p" (project-dired))
+    ("r" (project-dired))
     ("f" (counsel-projectile))
 
     ("E" ediff-buffers)
@@ -640,7 +640,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   ^Folders^        ^Files^             ^Update^             ^Themes^                 ^Buffers^
   ^^^^^^^^-------------------------------------------------------------------------------------------------
   _a_: emacs       _d_: emacs.org      _h_: cp .emacs.d     _k_: reset   _1_: Console  _'_: ibuffers
-  _s_: .emacs.d    _f_: chiaro...el    _j_: fullscreen      _l_: up      _2_: Eclipse  ^ ^
+  _s_: .emacs.d    _f_: chiaro...el    _j_: fullscreen      _l_: up      _2_: Eclipse  _b_: bookmarks
   ^ ^              _g_: linux.el       ^ ^                  _;_: down    _3_: Neon     ^ ^
   ^ ^              ^ ^                 ^ ^                  ^ ^          _4_: Yellow   ^ ^
   ^ ^              ^ ^                 ^ ^                  ^ ^          _5_: Red      ^ ^
@@ -672,7 +672,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("5" (my:set-theme INDEX-RED))
     ("6" (my:set-theme INDEX-HIGH-CONTRAST))
 
-    ("'" (ibuffer0:00:00 ))
+    ("'" (ibuffer))
+    ("b" list-bookmarks)
 
     ("q" nil "Quit" :color blue))
 #+END_SRC
@@ -930,6 +931,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (global-set-key (kbd "M-n") 'evil-first-non-blank)
   (global-set-key (kbd "C-.") 'avy-goto-char-2)
   (global-set-key (kbd "C-1") 'delete-other-windows)
+  (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
 #+END_SRC
 ** look
 #+BEGIN_SRC emacs-lisp
