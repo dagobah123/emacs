@@ -22,7 +22,7 @@
 (setq text-highlight-1 "#666666")
 (setq text-highlight-2 "#9999ff")
 (setq text-hl "#ef9d03")
-(setq text-low "#997777")
+(setq text-low "#aa9999")
 (setq text-lower "#553333")
 (setq text-mode-line "#bb9999")
 (setq text-mode-line-branch "#00ff00")

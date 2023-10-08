@@ -1448,6 +1448,12 @@ This is the package that handles server installation and session management.
   (setq lsp-modeline-code-actions-enable nil)
   (setq lsp-headerline-breadcrumb-enable nil)
 #+END_SRC
+** rainbow-mode
+#+BEGIN_SRC emacs-lisp
+  (use-package rainbow-mode)
+  (require 'rainbow-mode)
+  (add-hook 'emacs-lisp-mode-hook 'rainbow-mode)
+#+END_SRC
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.
 Load emacs-lisp file for custom changes.
