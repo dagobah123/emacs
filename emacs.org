@@ -494,14 +494,14 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ** mode-line
 #+BEGIN_SRC emacs-lisp
   (require 'hide-mode-line)
-  ;(setq-default mode-line-format (delq 'mode-line-modes mode-line-format))
   (column-number-mode)
   (display-time-mode 1)
   (setq display-time-24hr-format t)
-  (setq-default mode-line-modes
-    (list
-      (list (propertize "<%m" 'face 'mode-line-mode-face) "> ")))
 
+  (setq-default mode-line-format (delq 'mode-line-modes mode-line-format))
+  ;(setq-default mode-line-modes
+  ;  (list
+  ;    (list (propertize "<%m" 'face 'mode-line-mode-face) "> ")))
 #+END_SRC
 ** org mode
 #+BEGIN_SRC emacs-lisp
