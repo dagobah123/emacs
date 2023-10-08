@@ -48,24 +48,24 @@
                        helm-projectile
                        helm-swoop
                        hide-mode-line
-		       highlight
-		       ibuffer-vc
-		       itail
-		       ivy
-		       json-mode
-		       luwak
-		       magit
-		       magit-find-file
-		       move-text
-		       nov
-		       olivetti
-		       openwith
-		       ox-jira
-		       powershell
-		       projectile
-		       rainbow-mode
-		       swiper-helm
-		       treemacs-projectile
+                       highlight
+                       ibuffer-vc
+                       itail
+                       ivy
+                       json-mode
+                       luwak
+                       magit
+                       magit-find-file
+                       move-text
+                       nov
+                       olivetti
+                       openwith
+                       ox-jira
+                       powershell
+                       projectile
+                       rainbow-mode
+                       swiper-helm
+                       treemacs-projectile
                        use-package
                        visual-regexp
                        which-key
@@ -95,9 +95,9 @@
   (setq-default truncate-lines t)
 
   (add-hook 'c-mode-common-hook
-	    (lambda () (subword-mode t)))
+        (lambda () (subword-mode t)))
   (add-hook 'java-mode-common-hook
-	    (lambda () (subword-mode t)))
+        (lambda () (subword-mode t)))
 
   (setq sentence-end-double-space nil)
 
@@ -368,9 +368,9 @@
 #+END_SRC
 #+BEGIN_SRC emacs-lisp
   (add-hook 'dired-mode-hook
-	    (lambda ()
-	      (define-key dired-mode-map (kbd "b")
-			  (lambda () (interactive) (find-alternate-file "..")))))
+        (lambda ()
+          (define-key dired-mode-map (kbd "b")
+              (lambda () (interactive) (find-alternate-file "..")))))
 
   (use-package dired-narrow
     :ensure t
@@ -494,10 +494,14 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ** mode-line
 #+BEGIN_SRC emacs-lisp
   (require 'hide-mode-line)
-  (setq-default mode-line-format (delq 'mode-line-modes mode-line-format))
+  ;(setq-default mode-line-format (delq 'mode-line-modes mode-line-format))
   (column-number-mode)
   (display-time-mode 1)
   (setq display-time-24hr-format t)
+  (setq-default mode-line-modes
+    (list
+      (list (propertize "<%m" 'face 'mode-line-mode-face) "> ")))
+
 #+END_SRC
 ** org mode
 #+BEGIN_SRC emacs-lisp
@@ -684,20 +688,27 @@ Load environment variables properly by installing *exec-path-from-shell*.
     "
   File
 
-  ^File^              ^Lsp^             ^Git^           ^Modify^             ^Project^
+  ^File^              ^Lsp^             ^Misc^         ^Modify^             ^Project^
   ^^^^^-------------------------------------------------------------------------------------------------
   _l_: line numbers   _i_: imenu        _C_: focus      _c_: cua             _{_: highlight on
-  _w_: whitespace     _t_: treemacs     _l_: log        _o_: overwrite       _}_: highlights off
-  ^ ^                 ^ ^               ^ ^             ^ ^                  ^ ^
+  _w_: whitespace     _T_: treemacs     ^ ^             _o_: overwrite       _}_: highlights off
+  _s_: spaces         ^ ^               ^ ^             ^ ^                  ^ ^
+  _t_: tabs           ^ ^               ^ ^             ^ ^                  ^ ^
   "
 
     ("l" (my:toggle-line-numbers))
     ("w" (my:toggle-whitespace))
+    ("s" (my:enable-spaces))
+    ("t" (my:enable-tabs))
+
     ("i" (helm-imenu))
-    ("t" (treemacs))
+    ("T" (treemacs))
+
     ("C" (my:toggle-focus-mode))
+
     ("c" (my:toggle-cua-mode))
     ("o" (overwrite-mode))
+
     ("{" (hlt-highlight))
     ("}" (hlt-unhighlight-region))
 
@@ -750,47 +761,47 @@ Load environment variables properly by installing *exec-path-from-shell*.
     (interactive)
     (let ((buffer-name "init.el"))
       (when (get-buffer buffer-name)
-	(kill-buffer buffer-name))))
+    (kill-buffer buffer-name))))
 
   (defun my:toggle-line-numbers ()
     "Toggle line numbers."
     (if global-display-line-numbers-mode
-	(progn
-	  (global-display-line-numbers-mode -1))
+    (progn
+      (global-display-line-numbers-mode -1))
       (progn
-	(global-display-line-numbers-mode t))))
+    (global-display-line-numbers-mode t))))
 
   (defun my:toggle-whitespace ()
     "Toggle whitespace."
     (if whitespace-mode
-	(progn
-	  (whitespace-mode -1))
+    (progn
+      (whitespace-mode -1))
       (progn
-	(whitespace-mode t))))
+    (whitespace-mode t))))
 
   (defun my:toggle-focus-mode ()
     "Toggle focus-mode."
     (if focus-mode
-	(progn
-	  (focus-mode -1))
+    (progn
+      (focus-mode -1))
       (progn
-	(focus-mode t))))
+    (focus-mode t))))
 
   (defun my:toggle-golden-ratio-mode ()
     "Toggle focus-mode."
     (if golden-ratio-mode
-	(progn
-	  (golden-ratio-mode -1))
+    (progn
+      (golden-ratio-mode -1))
       (progn
-	(golden-ratio-mode t))))
+    (golden-ratio-mode t))))
 
   (defun my:toggle-cua-mode ()
     "Toggle 'cua-mode'."
     (if cua-mode
-	(progn
-	  (cua-mode -1))
+    (progn
+      (cua-mode -1))
       (progn
-	(cua-mode t))))
+    (cua-mode t))))
 
   (defun my:company-on ()
     "Company on."
@@ -798,14 +809,14 @@ Load environment variables properly by installing *exec-path-from-shell*.
       (message "Company on")
       (global-company-mode t)
   ))
-  
+
   (defun my:company-off ()
     "Company off."
     (progn
       (message "Company off")
       (global-company-mode -1)
   ))
-  
+
   (defun my:eglot-on ()
     "Eglot on."
     (progn (message "Eglot on")
@@ -831,6 +842,20 @@ Load environment variables properly by installing *exec-path-from-shell*.
 
            (remove-hook 'java-mode-hook (lambda () 'lsp))
   ))
+
+  (defun my:enable-spaces ()
+    "Enable spaces."
+    (progn (message "Enable spaces")
+           (setq-default indent-tabs-mode nil)
+  ))
+
+  (defun my:enable-tabs ()
+    "Enable tabs."
+    (progn (message "Enable tabs")
+           (setq-default indent-tabs-mode t)
+           (setq-default tab-width 4)
+  ))
+
 #+END_SRC
 ** hydra window
 #+BEGIN_SRC emacs-lisp
@@ -993,7 +1018,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 #+BEGIN_SRC emacs-lisp
   ;(require 'lsp-java)
   ;(add-hook 'java-mode-hook #'lsp)
-  ; 
+  ;
   ;(condition-case nil
   ;    (require 'use-package)
   ;  (file-error
@@ -1004,7 +1029,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   ;   (package-install 'use-package)
   ;   (setq use-package-always-ensure t)
   ;   (require 'use-package)))
-  ; 
+  ;
   ;(use-package projectile)
   ;(use-package flycheck)
   ;(use-package yasnippet :config (yas-global-mode))
@@ -1039,7 +1064,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (global-set-key (kbd "C-t") 'counsel-projectile-switch-to-buffer)
   (global-set-key (kbd "C-p") 'counsel-projectile-switch-project)
   (global-set-key (kbd "C-=") 'counsel-projectile)
-  
+
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 #+END_SRC
 ** themes
