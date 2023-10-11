@@ -1489,6 +1489,10 @@ This is the package that handles server installation and session management.
   (when (fboundp 'winner-mode)
     (winner-mode t))
 #+END_SRC
+** focus
+#+BEGIN_SRC emacs-lisp
+  (require 'focus)
+#+END_SRC
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.
 Load emacs-lisp file for custom changes.
