@@ -96,15 +96,18 @@
   (setq-default truncate-lines t)
 
   (add-hook 'c-mode-common-hook
-        (lambda () (subword-mode t)))
+            (lambda () (subword-mode t)))
   (add-hook 'java-mode-common-hook
-        (lambda () (subword-mode t)))
+            (lambda () (subword-mode t)))
 
   (setq sentence-end-double-space nil)
 
   (whitespace-mode -1)
 
   (setq compile-command "mvn install")
+
+  (setq-default indent-tabs-mode nil)
+  (setq-default tab-width 4)
 #+END_SRC
 ** chess
 #+BEGIN_SRC emacs-lisp
@@ -518,8 +521,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
     :bind
     (("M-x" . helm-M-x))
     (("C-c k r" . helm-show-kill-ring))
-    ;(("C-c h" . helm-grep-do-git-grep))
-    ;(("C-c g" . helm-projectile-grep))
+    (("C-c h" . helm-grep-do-git-grep))
+    (("C-c g" . helm-projectile-grep))
     (("C-r"   . helm-swoop))
     (("C-c b" . helm-buffers-list))
     (("C-c r" . helm-bookmarks))
@@ -634,7 +637,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 
   ^LSP^             ^Git^           ^Search^              ^Project^   ^Diff^            ^Build^
   ^^^^^-------------------------------------------------------------------------------------------------
-  _!_: Lsp on       _g_: status     _1_: dired project    _r_: root   _E_: buffers      _-_: compile
+  _!_: Lsp on       _g_: status     _1_: dired project    _c_: root   _E_: buffers      _-_: compile
   _@_: Lsp off      _l_: log        _2_: vc-git-grep      _f_: files  _A_: directories  _=_: lsp
   _#_: Eglot on     _L_: log file   _3_: helm-projectile  ^ ^         _n_: branches     ^ ^
   _$_: Eglot off    _b_: blame      _4_: helm-git-grep    ^ ^         _m_: magit-diff   ^ ^
@@ -661,7 +664,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("4" helm-grep-do-git-grep)
     ("5" swiper-all)
 
-    ("r" (project-dired))
+    ("c" (project-dired))
     ("f" (counsel-projectile))
 
     ("E" ediff-buffers)
