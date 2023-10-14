@@ -422,6 +422,18 @@
         (copy-region-as-kill beg end)))
     (subword-mode t))
   (global-set-key (kbd "C-c e") 'my:backward-copy-word)
+
+  (defun my:grep-in-project ()
+    "Search for a string using vc-git-grep from the project root."
+    (interactive)
+    (let ((search-string (read-from-minibuffer "Search for: ")))
+      (project-dired)
+      (vc-git-grep search-string "\*" "\*"))
+    (quit-window)
+    (switch-to-buffer "*grep*")
+    (delete-other-windows)
+    (beginning-of-buffer))
+  (global-set-key (kbd "C-c f") 'my:grep-in-project)
 #+END_SRC
 ** ediff
 #+BEGIN_SRC emacs-lisp
