@@ -58,6 +58,7 @@
                        ivy
                        json-mode
                        lsp-java
+                       lsp-ui
                        luwak
                        magit
                        magit-find-file
