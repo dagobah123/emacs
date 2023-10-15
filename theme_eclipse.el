@@ -22,11 +22,11 @@
 (setq line-number-4 "#ffffff")
 (setq text-constant "#0000c0")
 (setq text-function "#000000")
-(setq text-highlight-1 "#96c8ff")
+(setq text-highlight-1 "#3f5fbf")
 (setq text-highlight-2 "#7f0055")
 (setq text-hl "#000000")
 (setq text-keyword "#7f0055")
-(setq text-low "#afafaf");#3f5fbf
+(setq text-low "#afafaf")
 (setq text-lower "#aaaaaa")
 (setq text-match "#000000")
 (setq text-mode-line "#000000")

@@ -157,7 +157,7 @@
     `(helm-bookmark-info                ((t (:foreground ,color-blue-1   :background ,color-blue-2                          ))))
 
     `(compilation-error                 ((t (:foreground ,text-error :bold t :underline t ))))
-    `(compilation-info                  ((t (:foreground ,text-error :bold t :underline t ))))
+    `(compilation-info                  ((t (:foreground ,text-highlight-1 :bold t :underline t ))))
     `(helm-lsp-diag-error               ((t (:foreground ,text-error :bold t :underline t ))))
     `(helm-lsp-diag-info                ((t (:foreground ,text-error :bold t :underline t ))))
 
@@ -457,9 +457,21 @@
     `(my:branch-face            ((t (:foreground ,text-mode-line-branch                                           ))))
     `(mode-line-misc-info       ((t (:foreground ,text-mode-line-branch                                           ))))
     `(my:buffer-face            ((t (:foreground ,text-mode-line-buffer  t                                        ))))
-    
+
     `(custom-mode-line-icon     ((t (:foreground ,text-mode-line-buffer                                           ))))
     `(lsp-treemacs-file-error   ((t (:foreground ,"#ffffff"                                           ))))
+
+    `(popup-face                        ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
+    `(popup-isearch-match               ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
+    `(popup-menu-face                   ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
+    `(popup-menu-mouse-face             ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
+    `(popup-menu-selection-face         ((t (:foreground ,text-normal :background ,background-match     :bold nil :italic nil )))) 
+    `(popup-menu-summary-face           ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
+    `(popup-scroll-bar-background-face  ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
+    `(popup-scroll-bar-foreground-face  ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
+    `(popup-summary-face                ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
+    `(popup-tip-face                    ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
+
   )
 
 ))

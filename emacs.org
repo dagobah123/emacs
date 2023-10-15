@@ -21,6 +21,7 @@
                        ag
                        arduino-cli-mode
                        arduino-mode
+                       auto-complete
                        bookmark-in-project
                        chess
                        clang-format
@@ -117,6 +118,8 @@
 ** company
 #+BEGIN_SRC emacs-lisp
   ;(add-hook 'after-init-hook 'global-company-mode)
+  ;(global-set-key (kbd "C-c j") 'company-yasnippet)
+  ;(global-set-key (kbd "C-c SPC") 'company-complete)
 #+END_SRC
 ** counsel-projectile
 #+BEGIN_SRC emacs-lisp
@@ -654,7 +657,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   _#_: Eglot on     _L_: log file   _3_: helm-projectile  ^ ^         _n_: branches     ^ ^
   _$_: Eglot off    _b_: blame      _4_: helm-git-grep    ^ ^         _m_: magit-diff   ^ ^
   _%_: Company on   _B_: region     _5_: buffers          ^ ^         ^ ^               ^ ^
-  _&_: Company off  ^ ^             ^ ^                   ^ ^         ^ ^               ^ ^
+  _&_: Company off  ^ ^             _6_: grep-in-project  ^ ^         ^ ^               ^ ^
   "
 
     ("!" (my:lsp-on))
@@ -675,6 +678,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("3" my:helm-projectile-grep)
     ("4" helm-grep-do-git-grep)
     ("5" swiper-all)
+    ("6" my:grep-in-project)
 
     ("c" (project-dired))
     ("f" (counsel-projectile))
@@ -1523,6 +1527,12 @@ Load environment variables properly by installing *exec-path-from-shell*.
 #+BEGIN_SRC emacs-lisp
   (require 'expand-region)
   (global-set-key (kbd "C-=") 'er/expand-region)
+#+END_SRC
+** auto-complete
+#+BEGIN_SRC emacs-lisp
+  (global-auto-complete-mode t)
+  (setq ac-auto-show-menu nil)
+  (global-set-key (kbd "C-<tab>") 'auto-complete)
 #+END_SRC
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.

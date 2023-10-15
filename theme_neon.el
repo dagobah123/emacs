@@ -19,7 +19,7 @@
 (setq line-number-2 "#000000")
 (setq line-number-3 "#d14808")
 (setq line-number-4 "#000000")
-(setq text-highlight-1 "#666666")
+(setq text-highlight-1 "#ef9d03")
 (setq text-highlight-2 "#9999ff")
 (setq text-hl "#ef9d03")
 (setq text-low "#aa9999")
