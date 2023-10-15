@@ -472,6 +472,9 @@
     `(popup-summary-face                ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
     `(popup-tip-face                    ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
 
+    `(org-block-begin-line ((t (:foreground ,text-lower :background unspecified ))))
+    `(org-block-end-line   ((t (:foreground ,text-lower :background unspecified ))))
+
   )
 
 ))
