@@ -540,6 +540,28 @@
   ;  (interactive)
   ;  (setq vc-git-grep-template "git --no-pager grep -n -i -e <R> -- <F>")
   ;  (call-interactively #'vc-git-grep))
+
+  (defun my:shift-line-down ()
+    "Shift line down."
+    (interactive)
+    (beginning-of-line)
+    (kill-whole-line)
+    (end-of-line)
+    (next-line 1)
+    (beginning-of-line)
+    (yank)
+    (previous-line 1))
+  (global-set-key (kbd "M-<down>") 'my:shift-line-down)
+
+  (defun my:shift-line-up ()
+    "Shift line up."
+    (interactive)
+    (beginning-of-line)
+    (kill-whole-line)
+    (previous-line 1)
+    (yank)
+    (previous-line 1))
+  (global-set-key (kbd "M-<up>") 'my:shift-line-up)
 #+END_SRC
 ** ediff
 #+BEGIN_SRC emacs-lisp
