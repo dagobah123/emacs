@@ -544,23 +544,23 @@
   (defun my:shift-line-down ()
     "Shift line down."
     (interactive)
-    (beginning-of-line)
+    (let ((col (current-column)))
     (kill-whole-line)
-    (end-of-line)
     (next-line 1)
-    (beginning-of-line)
     (yank)
-    (previous-line 1))
+    (previous-line 1)
+    (move-to-column col)))
   (global-set-key (kbd "M-<down>") 'my:shift-line-down)
 
   (defun my:shift-line-up ()
     "Shift line up."
     (interactive)
-    (beginning-of-line)
+    (let ((col (current-column)))
     (kill-whole-line)
     (previous-line 1)
     (yank)
-    (previous-line 1))
+    (previous-line 1)
+    (move-to-column col)))
   (global-set-key (kbd "M-<up>") 'my:shift-line-up)
 #+END_SRC
 ** ediff
