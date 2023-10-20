@@ -242,8 +242,18 @@
     (save-excursion
       (let ((begin (line-beginning-position))
             (end (line-end-position)))
-        (copy-region-as-kill begin end))))
+        (copy-region-as-kill begin end)))
+    (message "Copied line."))
   (global-set-key (kbd "C-c y") 'my:copy-line-at-point)
+
+  (defun my:yank-line-at-point ()
+    "Yank line at point."
+    (interactive)
+    (fixup-whitespace)
+    (yank)
+    (c-indent-line-or-region)
+    (message "Yanked line."))
+  (global-set-key (kbd "C-c u") 'my:yank-line-at-point)
 
   (defun my:trim-whitespace ()
     "Trim whitespace."
@@ -562,6 +572,32 @@
     (previous-line 1)
     (move-to-column col)))
   (global-set-key (kbd "M-<up>") 'my:shift-line-up)
+
+  (defun my:find-file-at-point-in-project ()
+    "Find file at point in project."
+    (interactive)
+    (subword-mode 0)
+    (save-excursion
+      (let ((end (progn (right-word) (point)))
+            (beg (progn (backward-word) (point))))
+        (copy-region-as-kill beg end)
+
+        (find-file (my:find-file-recursively (projectile-project-root) (concat (current-kill 0) ".java")))))
+    (subword-mode t))
+  (global-set-key (kbd "C-c t") 'my:find-file-at-point-in-project)
+
+  (defun my:find-file-recursively (directory filename)
+    "Recursively search for FILENAME in DIRECTORY and its subdirectories."
+    (let ((files (directory-files directory t)))
+      (dolist (file files)
+        (if (file-directory-p file)
+            (when (not (member (file-name-nondirectory file) '("." "..")))
+              (setq found (my:find-file-recursively file filename))
+              (when found
+                (setq result found)))
+          (when (string= (file-name-nondirectory file) filename)
+            (setq result file))))
+      result))
 #+END_SRC
 ** ediff
 #+BEGIN_SRC emacs-lisp
@@ -1140,6 +1176,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (global-set-key (kbd "C-1") 'delete-other-windows)
   (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
   (global-set-key (kbd "C-c b") 'helm-filtered-bookmarks)
+  ;(global-set-key (kbd "<tab>") 'evil-shift-right)
+  ;(global-set-key (kbd "<backtab>") 'evil-shift-left)
 #+END_SRC
 ** look
 #+BEGIN_SRC emacs-lisp
