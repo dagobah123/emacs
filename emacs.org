@@ -574,16 +574,19 @@
   (global-set-key (kbd "M-<up>") 'my:shift-line-up)
 
   (defun my:find-file-recursively (directory filename)
-    "Recursively search for FILENAME in DIRECTORY and its subdirectories."
-    (let ((files (directory-files directory t)))
+    "Recursively search for FILENAME in DIRECTORY and its subdirectories, ignoring hidden files and directories."
+    (let ((files (directory-files directory t))
+          (result nil))
       (dolist (file files)
-        (if (file-directory-p file)
-            (when (not (member (file-name-nondirectory file) '("." "..")))
-              (setq found (my:find-file-recursively file filename))
-              (when found
-                (setq result found)))
-          (when (string= (file-name-nondirectory file) filename)
-            (setq result file))))
+        (let ((file-name (file-name-nondirectory file)))
+          (unless (string-prefix-p "." file-name)  ; Ignore hidden files/dirs
+            (if (file-directory-p file)
+                (when (not (member file-name '("." "..")))
+                  (setq found (my:find-file-recursively file filename))
+                  (when found
+                    (setq result found)))
+              (when (string= file-name filename)
+                (setq result file))))))
       result))
 
   (defun my:find-file-at-point-in-project ()
