@@ -573,19 +573,6 @@
     (move-to-column col)))
   (global-set-key (kbd "M-<up>") 'my:shift-line-up)
 
-  (defun my:find-file-at-point-in-project ()
-    "Find file at point in project."
-    (interactive)
-    (subword-mode 0)
-    (save-excursion
-      (let ((end (progn (right-word) (point)))
-            (beg (progn (backward-word) (point))))
-        (copy-region-as-kill beg end)
-
-        (find-file (my:find-file-recursively (projectile-project-root) (concat (current-kill 0) ".java")))))
-    (subword-mode t))
-  (global-set-key (kbd "C-c t") 'my:find-file-at-point-in-project)
-
   (defun my:find-file-recursively (directory filename)
     "Recursively search for FILENAME in DIRECTORY and its subdirectories."
     (let ((files (directory-files directory t)))
@@ -598,6 +585,19 @@
           (when (string= (file-name-nondirectory file) filename)
             (setq result file))))
       result))
+
+  (defun my:find-file-at-point-in-project ()
+    "Find file at point in project."
+    (interactive)
+    (subword-mode 0)
+    (save-excursion
+      (let ((end (progn (right-word) (point)))
+            (beg (progn (backward-word) (point))))
+        (copy-region-as-kill beg end)
+
+        (find-file (my:find-file-recursively (projectile-project-root) (concat (current-kill 0) ".java")))))
+    (subword-mode t))
+  (global-set-key (kbd "C-c t") 'my:find-file-at-point-in-project)
 #+END_SRC
 ** ediff
 #+BEGIN_SRC emacs-lisp
