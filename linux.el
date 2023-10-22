@@ -38,12 +38,12 @@
   (buffer-face-mode))
 
 ;(add-hook 'eww-mode-hook 'my:buffer-face-mode-text)
-(add-hook 'eww-mode-hook 'my:buffer-face-mode-mono)
-(add-hook 'dired-mode-hook 'my:buffer-face-mode-mono)
+;(add-hook 'eww-mode-hook 'my:buffer-face-mode-mono)
+;(add-hook 'dired-mode-hook 'my:buffer-face-mode-mono)
 ;(add-hook 'java-mode-hook 'my:buffer-face-mode-mono)
 ;(add-hook 'c++-mode-hook 'my:buffer-face-mode-mono)
-(add-hook 'treemacs-mode-hook 'my:buffer-face-mode-mono)
-(add-hook 'org-mode-hook 'my:buffer-face-mode-mono)
+;(add-hook 'treemacs-mode-hook 'my:buffer-face-mode-mono)
+;(add-hook 'org-mode-hook 'my:buffer-face-mode-mono)
 ;(add-hook 'lsp-mode-hook 'my:buffer-face-mode-mono)
 ;(add-hook 'lisp-mode-hook 'my:buffer-face-mode-mono)
 
