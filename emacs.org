@@ -601,6 +601,20 @@
         (find-file (my:find-file-recursively (projectile-project-root) (concat (current-kill 0) ".java")))))
     (subword-mode t))
   (global-set-key (kbd "C-c t") 'my:find-file-at-point-in-project)
+
+  (defun my:grep-backward-copy-word-in-project ()
+    "Search for a string using vc-git-grep from the project root."
+    (interactive)
+    (my:backward-copy-word)
+    (let ((search-string (current-kill 0)))
+      (setq search-string (replace-regexp-in-string "\\s-+" ".*" search-string))
+      (project-dired)
+      (vc-git-grep search-string "\*" "\*"))
+    (quit-window)
+    (switch-to-buffer "*grep*")
+    (delete-other-windows)
+    (beginning-of-buffer))
+  (global-set-key (kbd "C-c T") 'my:grep-backward-copy-word-in-project)
 #+END_SRC
 ** ediff
 #+BEGIN_SRC emacs-lisp
@@ -685,7 +699,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (require 'google-translate)
   (require 'google-translate-default-ui)
   (global-set-key (kbd "C-c P") 'google-translate-at-point)
-  (global-set-key (kbd "C-c T") 'google-translate-query-translate)
+  ;(global-set-key (kbd "C-c T") 'google-translate-query-translate)
   (global-set-key (kbd "C-c R") 'google-translate-query-translate-reverse)
   (setq google-translate-default-source-language "fr")
   (setq google-translate-default-target-language "en")
