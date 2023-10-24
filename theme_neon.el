@@ -19,14 +19,14 @@
 (setq line-number-2 "#000000")
 (setq line-number-3 "#d14808")
 (setq line-number-4 "#000000")
-(setq text-highlight-1 "#ef9d03")
-(setq text-highlight-2 "#9999ff")
+(setq text-highlight-1 "#99ff99")
+(setq text-highlight-2 "#ef9d03")
 (setq text-hl "#ef9d03")
 (setq text-low "#775555")
 (setq text-lower "#553333")
 (setq text-mode-line "#bb9999")
 (setq text-mode-line-branch "#00ff00")
-(setq text-mode-line-buffer "#ffffff")
+(setq text-mode-line-buffer "#ddbbbb")
 (setq text-mode-line-project "#bb4f80")
 (setq text-normal "#bb9999") ;;;#ff9999
 
