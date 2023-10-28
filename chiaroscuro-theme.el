@@ -63,27 +63,27 @@
     `(git-commit-summary       ((t (:foreground ,color-blue-1      :background ,color-blue-2              ))))
 
     ;line number
-    `(line-number-current-line ((t (:foreground ,line-number-1 :background ,line-number-2 :bold t ))))
-    `(line-number              ((t (:foreground ,line-number-3 :background ,line-number-4         ))))
-    `(line-number-major-tick   ((t (:foreground ,line-number-3 :background ,line-number-4         ))))
-    `(line-number-minor-tick   ((t (:foreground ,line-number-3 :background ,line-number-4         ))))
+    `(line-number-current-line ((t (:foreground ,text-low   :background unspecified :bold t ))))
+    `(line-number              ((t (:foreground ,text-lower :background unspecified         ))))
+    `(line-number-major-tick   ((t (:foreground ,text-lower :background unspecified         ))))
+    `(line-number-minor-tick   ((t (:foreground ,text-lower :background unspecified         ))))
 
     ;font-lock
-    ;`(font-lock-bracket-face              ((t (:foreground ,text-normal           ))))
-    ;`(font-lock-builtin-face              ((t (:foreground ,text-normal           ))))
+    `(font-lock-bracket-face              ((t (:foreground ,text-highlight-1      ))))
+    `(font-lock-builtin-face              ((t (:foreground ,text-highlight-1 :bold t ))))
     `(font-lock-comment-delimiter-face    ((t (:foreground ,text-lower            ))))
     `(font-lock-comment-face              ((t (:foreground ,text-lower            ))))
     `(font-lock-constant-face             ((t (:foreground ,text-constant :bold t ))))
     ;`(font-lock-delimiter-face            ((t (:foreground ,text-normal           ))))
-     `(font-lock-doc-face                  ((t (:foreground ,text-low              ))))
+    `(font-lock-doc-face                  ((t (:foreground ,text-low              ))))
     ;`(font-lock-doc-markup-face           ((t (:foreground ,text-normal           ))))
     ;`(font-lock-escape-face               ((t (:foreground ,text-normal           ))))
-    ;`(font-lock-function-call-face        ((t (:foreground ,text-normal           ))))
+    `(font-lock-function-call-face        ((t (:foreground ,text-highlight-1      ))))
     `(font-lock-function-name-face        ((t (:foreground ,text-normal           ))))
     `(font-lock-keyword-face              ((t (:foreground ,text-keyword :bold t  ))))
     ;`(font-lock-misc-punctuation-face     ((t (:foreground ,text-normal           ))))
     ;`(font-lock-negation-char-face        ((t (:foreground ,text-normal           ))))
-    ;`(font-lock-number-face               ((t (:foreground ,text-normal           ))))
+    `(font-lock-number-face               ((t (:foreground ,text-highlight-1      ))))
     ;`(font-lock-operator-face             ((t (:foreground ,text-normal           ))))
     `(font-lock-preprocessor-face         ((t (:foreground ,text-preprocessor     ))))
     ;`(font-lock-property-name-face        ((t (:foreground ,text-normal           ))))
@@ -188,7 +188,9 @@
 
     ;magit
     `(magit-hash                        ((t (:foreground ,text-low                                                                                              ))))
-    `(magit-header-line                 ((t (:foreground ,text-low                                   :bold t                                                    ))))
+    `(magit-header-line                 ((t (:foreground ,text-highlight-1                           :bold t                                                    ))))
+    `(magit-header-line-key             ((t (:foreground ,text-highlight-1                           :bold t                                                    ))))
+    `(magit-sequence-head               ((t (:foreground ,text-highlight-1                           :bold t                                                    ))))
     `(magit-section-heading             ((t (:foreground ,text-low                                   :bold t                                                    ))))
     `(magit-branch-current              ((t (:foreground ,color-yellow-1 :background ,color-yellow-2 :box (:line-width 1 :color ,color-yellow-1)                ))))
     `(magit-branch-local                ((t (:foreground ,color-green-1  :background ,color-green-2  :box (:line-width 1 :color ,color-green-1)                 ))))
@@ -374,8 +376,8 @@
     `(lazy-highlight             ((t (:foreground ,text-match :background ,background-match ))))
     `(isearch                    ((t (:foreground ,text-match :background ,background-match ))))
 
-    `(whitespace-space   ((t (:foreground ,text-low :background unspecified ))))
-    `(whitespace-newline ((t (:foreground ,text-low :background unspecified ))))
+    `(whitespace-space   ((t (:foreground ,text-lower :background unspecified ))))
+    `(whitespace-newline ((t (:foreground ,text-lower :background unspecified ))))
 
     `(lsp-flycheck-warning-unnecessary-face     ((t (:foreground ,text-warning   :bold t :underline t ))))
     `(flycheck-error                            ((t (:foreground ,text-error     :bold t :underline t ))))
