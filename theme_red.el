@@ -11,12 +11,12 @@
 (setq background-magit-dark "#000000")
 (setq background-mode-line "#220000")
 (setq background-mode-line-active "#440000")
-(setq background-region "#333377")
+(setq background-region "#332222")
 (setq font-lock-blue "#000000")
 (setq font-lock-green "#000000")
 (setq font-lock-red "#000000")
-(setq text-highlight-1 "#bb0000")
-(setq text-highlight-2 "#6666dd")
+(setq text-highlight-1 "#ff9933")
+(setq text-highlight-2 "#339933")
 (setq text-hl "#ff0000")
 (setq text-info "#ff9900")
 (setq text-low "#993333")
@@ -24,7 +24,6 @@
 (setq text-mode-line "#aa0000")
 (setq text-mode-line-branch "#00ff00")
 (setq text-mode-line-buffer "#aa0000")
-(setq text-mode-line-project "#ffffff")
 (setq text-normal "#aa0000")
 
 ;;; theme_red.el ends here

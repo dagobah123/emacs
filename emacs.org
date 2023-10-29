@@ -34,6 +34,7 @@
                        counsel-web
                        diminish
                        dired-narrow
+                       drag-stuff
                        eglot
                        eglot-java
                        expand-region
@@ -84,7 +85,7 @@
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
-  (setq INDEX-CONSOLE       1)
+  (setq INDEX-DEFAULT       1)
   (setq INDEX-ECLIPSE       2)
   (setq INDEX-NEON          3)
   (setq INDEX-YELLOW        4)
@@ -101,7 +102,7 @@
                       chiaroscuro
                       chiaroscuro))
 
-  (setq themes-list-names '("console"
+  (setq themes-list-names '("default"
                             "eclipse"
                             "neon"
                             "yellow"
@@ -551,27 +552,27 @@
   ;  (setq vc-git-grep-template "git --no-pager grep -n -i -e <R> -- <F>")
   ;  (call-interactively #'vc-git-grep))
 
-  (defun my:shift-line-down ()
-    "Shift line down."
-    (interactive)
-    (let ((col (current-column)))
-    (kill-whole-line)
-    (next-line 1)
-    (yank)
-    (previous-line 1)
-    (move-to-column col)))
-  (global-set-key (kbd "M-<down>") 'my:shift-line-down)
-
-  (defun my:shift-line-up ()
-    "Shift line up."
-    (interactive)
-    (let ((col (current-column)))
-    (kill-whole-line)
-    (previous-line 1)
-    (yank)
-    (previous-line 1)
-    (move-to-column col)))
-  (global-set-key (kbd "M-<up>") 'my:shift-line-up)
+;  (defun my:shift-line-down ()
+;    "Shift line down."
+;    (interactive)
+;    (let ((col (current-column)))
+;    (kill-whole-line)
+;    (next-line 1)
+;    (yank)
+;    (previous-line 1)
+;    (move-to-column col)))
+;  (global-set-key (kbd "M-<down>") 'my:shift-line-down)
+; 
+;  (defun my:shift-line-up ()
+;    "Shift line up."
+;    (interactive)
+;    (let ((col (current-column)))
+;    (kill-whole-line)
+;    (previous-line 1)
+;    (yank)
+;    (previous-line 1)
+;    (move-to-column col)))
+;  (global-set-key (kbd "M-<up>") 'my:shift-line-up)
 
   (defun my:find-file-recursively (directory filename)
     "Recursively search for FILENAME in DIRECTORY and its subdirectories, ignoring hidden files and directories."
@@ -878,7 +879,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 
   ^Folders^        ^Files^             ^Update^             ^Themes^                 ^Buffers^
   ^^^^^^^^-------------------------------------------------------------------------------------------------
-  _a_: emacs       _d_: emacs.org      _h_: cp .emacs.d     _k_: reset   _1_: Console  _'_: ibuffers
+  _a_: emacs       _d_: emacs.org      _h_: cp .emacs.d     _k_: reset   _1_: Default  _'_: ibuffers
   _s_: .emacs.d    _f_: chiaro...el    _j_: fullscreen      _l_: up      _2_: Eclipse  _b_: bookmarks
   ^ ^              _g_: linux.el       ^ ^                  _;_: down    _3_: Neon     ^ ^
   ^ ^              ^ ^                 ^ ^                  ^ ^          _4_: Yellow   ^ ^
@@ -904,7 +905,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("l" (my:theme-up))
     (";" (my:theme-down))
 
-    ("1" (my:set-theme INDEX-CONSOLE))
+    ("1" (my:set-theme INDEX-DEFAULT))
     ("2" (my:set-theme INDEX-ECLIPSE))
     ("3" (my:set-theme INDEX-NEON))
     ("4" (my:set-theme INDEX-YELLOW))
@@ -1640,6 +1641,21 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (global-auto-complete-mode t)
   (setq ac-auto-show-menu nil)
   (global-set-key (kbd "C-<tab>") 'auto-complete)
+#+END_SRC
+** drag-stuff
+#+BEGIN_SRC emacs-lisp
+  (require 'drag-stuff)
+   
+  (drag-stuff-mode t)
+  (global-set-key (kbd "M-<up>") 'drag-stuff-up)
+  (global-set-key (kbd "M-<down>") 'drag-stuff-down)
+  (global-set-key (kbd "C-S-M-<left>") 'drag-stuff-left)
+  (global-set-key (kbd "C-S-M-<right>") 'drag-stuff-right)
+#+END_SRC
+** indent-rigidly
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "S-M-<left>") 'indent-rigidly-left)
+  (global-set-key (kbd "S-M-<right>") 'indent-rigidly-right)
 #+END_SRC
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.

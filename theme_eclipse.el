@@ -28,7 +28,6 @@
 (setq text-mode-line "#000000")
 (setq text-mode-line-branch "#113e00")
 (setq text-mode-line-buffer "#1111ca")
-(setq text-mode-line-project "#611481")
 (setq text-normal "#000000")
 (setq text-preprocessor "#afafaf")
 (setq text-type "#7f0055")

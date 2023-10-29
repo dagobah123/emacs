@@ -4,7 +4,7 @@
 
 (load-file "~/.emacs.d/theme_variables.el")
 
-(if (> INDEX-CHIAROSCURO INDEX-CONSOLE)
+(if (> INDEX-CHIAROSCURO INDEX-DEFAULT)
 
   (progn
 
@@ -101,18 +101,18 @@
     `(font-lock-warning-face              ((t (:foreground ,text-warning          ))))
 
     ;dired
-    `(dired-directory    ((t (:foreground ,text-match  :background, background-match :bold t ))))
-    `(dired-flagged      ((t (:foreground ,color-red-1 :background, color-red-2              ))))
-    `(dired-header       ((t (:foreground ,text-normal :background, background               ))))
-    `(dired-ignored      ((t (:foreground ,text-normal :background, background               ))))
-    `(dired-mark         ((t (:foreground ,color-red-1 :background, color-red-2              ))))
-    `(dired-marked       ((t (:foreground ,color-red-1 :background, color-red-2              ))))
-    `(dired-narrow-blink ((t (:foreground ,text-normal :background, background               ))))
-    `(dired-perm-write   ((t (:foreground ,text-normal :background, background               ))))
-    `(dired-set-id       ((t (:foreground ,text-normal :background, background               ))))
-    `(dired-symlink      ((t (:foreground ,text-normal :background, background               ))))
-    `(dired-warning      ((t (:foreground ,text-normal :background, background               ))))
-    `(dired-special      ((t (:foreground ,text-match                                        ))))
+    `(dired-directory    ((t (:foreground ,text-highlight-2 :background unspecified :bold t ))))
+    `(dired-flagged      ((t (:foreground ,color-red-1      :background ,color-red-2        ))))
+    `(dired-header       ((t (:foreground ,text-normal      :background unspecified         ))))
+    `(dired-ignored      ((t (:foreground ,text-normal      :background unspecified         ))))
+    `(dired-mark         ((t (:foreground ,color-red-1      :background ,color-red-2        ))))
+    `(dired-marked       ((t (:foreground ,color-red-1      :background ,color-red-2        ))))
+    `(dired-narrow-blink ((t (:foreground ,text-normal      :background unspecified         ))))
+    `(dired-perm-write   ((t (:foreground ,text-normal      :background unspecified         ))))
+    `(dired-set-id       ((t (:foreground ,text-normal      :background unspecified         ))))
+    `(dired-symlink      ((t (:foreground ,text-normal      :background unspecified         ))))
+    `(dired-warning      ((t (:foreground ,text-normal      :background unspecified         ))))
+    `(dired-special      ((t (:foreground ,text-match                                       ))))
 
     `(xref-file-header   ((t (:foreground ,line-number-3                               ))))
     `(xref-line-number   ((t (:foreground ,line-number-1                               ))))
@@ -455,7 +455,6 @@
     `(mode-line                 ((t (:foreground ,text-normal            :background ,background-mode-line-active ))))
     `(mode-line-inactive        ((t (:foreground ,text-low               :background ,background-mode-line        ))))
     `(mode-line-buffer-id       ((t (:foreground ,text-mode-line-buffer  :bold t                                  ))))
-    `(my:project-face           ((t (:foreground ,text-mode-line-project                                          ))))
     `(my:branch-face            ((t (:foreground ,text-mode-line-branch                                           ))))
     `(mode-line-misc-info       ((t (:foreground ,text-mode-line-branch                                           ))))
     `(my:buffer-face            ((t (:foreground ,text-mode-line-buffer  t                                        ))))
@@ -477,22 +476,6 @@
     `(org-block-begin-line ((t (:foreground ,text-lower :background unspecified ))))
     `(org-block-end-line   ((t (:foreground ,text-lower :background unspecified ))))
 
-  )
-
-))
-
-;; Use the regular emacs theme except of the console
-(if (= INDEX-CHIAROSCURO INDEX-CONSOLE)
-
-  (progn
-
-    (if (eq INDEX-CHIAROSCURO INDEX-CONSOLE) (progn (load-file "~/.emacs.d/theme_console.el")))
-
-    (deftheme chiaroscuro)
-
-    (custom-theme-set-faces 'chiaroscuro
-
-    `(default ((t (:bold nil ))))
   )
 
 ))

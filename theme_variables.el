@@ -3,7 +3,7 @@
 ;;; Code:
 
 (defvar INDEX-CHIAROSCURO nil ".")
-(defvar INDEX-CONSOLE nil ".")
+(defvar INDEX-DEFAULT nil ".")
 (defvar INDEX-ECLIPSE nil ".")
 (defvar INDEX-HIGH-CONTRAST nil ".")
 (defvar INDEX-NEON nil ".")
@@ -109,7 +109,6 @@
 (defvar text-mode-line nil ".")
 (defvar text-mode-line-branch nil ".")
 (defvar text-mode-line-buffer nil ".")
-(defvar text-mode-line-project nil ".")
 (defvar text-normal nil ".")
 (defvar text-preprocessor nil ".")
 (defvar text-type nil ".")
