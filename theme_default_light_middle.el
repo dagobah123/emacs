@@ -4,9 +4,9 @@
 
 (load-file "~/.emacs.d/theme_variables.el")
 
-(setq alert-1 "#ff7373")
-(setq alert-2 "#fba676")
-(setq alert-3 "#ddca69")
+(setq alert-1 "#be2e2e")
+(setq alert-2 "#be6d3f")
+(setq alert-3 "#aa9d5f")
 (setq background-branch-current "#ffff00")
 (setq background-buffer-id-projectile "#ffff00")
 (setq background-cursor "#ff0000")

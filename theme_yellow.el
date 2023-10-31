@@ -4,27 +4,25 @@
 
 (load-file "~/.emacs.d/theme_variables.el")
 
-(setq background "#ffec8b")
-(setq background-fringe "#ddca69")
-(setq background-hl "#eddb80")
-(setq background-magit "#eddb80")
-(setq background-magit-dark "#ffec8b")
-(setq background-match "#ffca69")
-(setq background-mode-line "#ddca69")
-(setq background-mode-line-active "#ddca69")
-(setq font-lock-blue "#ffec8b")
-(setq background-region "#eddb80")
-(setq font-lock-green "#ffec8b")
-(setq font-lock-red "#ffec8b")
-(setq text-constant "#aabb00") ;bbaa00
+(setq background "#e1d9af");ok
+(setq background-fringe "#cac39a");ok
+(setq background-hl "#eddb80");ok
+(setq background-magit "#cac39a");ok
+(setq background-magit-dark "#c0b478");ok
+(setq background-match "#e2b35d");ok
+(setq background-mode-line "#cac39a");ok
+(setq background-mode-line-active "#cac39a");ok
+;(setq background-region "#c0b478")
+(setq background-region "#edcb8c")
+(setq text-constant "#767f1c")
 (setq text-error "#ff0000")
 (setq text-function "#ee7700")
-(setq text-highlight-1 "#dd9900")
-(setq text-highlight-2 "#aabb00")
+(setq text-highlight-1 "#a77e23")
+(setq text-highlight-2 "#767f1c")
 (setq text-hl "#000000")
-(setq text-keyword "#dd9900")
-(setq text-low "#bbaa00")
-(setq text-lower "#c9bb72")
+(setq text-keyword "#a77e23")
+(setq text-low "#796e00")
+(setq text-lower "#928753")
 (setq text-match "#000000")
 (setq text-mode-line "#ffff00")
 (setq text-mode-line-branch "#113e00")
