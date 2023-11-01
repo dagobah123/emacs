@@ -41,7 +41,7 @@
           `(default ((t (:foreground ,text-normal :background ,background :bold t )))))
       (progn `(default ((t (:foreground ,text-normal :background ,background :bold nil ))))))
 
-    `(cursor                   ((t (:background ,background-cursor                                        ))))
+    ;`(cursor                   ((t (:background ,background-cursor                                        ))))
     `(link                     ((t (:foreground ,text-normal       :underline t                           ))))
     `(highlight                ((t (:foreground ,text-match        :background ,background-match          ))))
     `(lazy-highlight           ((t (:foreground ,text-match        :background ,background-match          ))))
@@ -475,6 +475,8 @@
 
     `(org-block-begin-line ((t (:foreground ,text-lower :background unspecified ))))
     `(org-block-end-line   ((t (:foreground ,text-lower :background unspecified ))))
+
+    `(eww-form-submit ((t (:foreground ,text-normal :background ,background-region ))))
 
   )
 

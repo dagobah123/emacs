@@ -616,6 +616,32 @@
     (delete-other-windows)
     (beginning-of-buffer))
   (global-set-key (kbd "C-c T") 'my:grep-backward-copy-word-in-project)
+
+  ;(defun my:forward-paragraph-recenter-top-bottom ()
+  ;  "Go to the next paragraph and recenter top bottom."
+  ;  (interactive)
+  ;  (forward-paragraph)
+  ;  (recenter-top-bottom))
+  ;(global-set-key (kbd "C-}") 'my:forward-paragraph-recenter-top-bottom)
+
+  (defun my:change-cursor-color ()
+    "Change cursor color when switching between evil-mode modes."
+    (if (eq evil-state 'emacs)
+        (progn (set-cursor-color "red")))
+    (if (eq evil-state 'normal)
+        (progn (set-cursor-color "green")))
+    (if (eq evil-state 'insert)
+        (progn (set-cursor-color "red")))
+    (if (eq evil-state 'visual)
+        (progn (set-cursor-color "yellow")))
+    (if (eq evil-state 'operator)
+        (progn (set-cursor-color "orange")))
+    (if (eq evil-state 'replace)
+        (progn (set-cursor-color "deep pink")))
+    (if (eq evil-state 'motion)
+        (progn (set-cursor-color "blue"))))
+
+  (add-hook 'evil-change-state-hook 'my-change-cursor-color)
 #+END_SRC
 ** ediff
 #+BEGIN_SRC emacs-lisp
@@ -1196,6 +1222,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (global-set-key (kbd "C-c b") 'helm-filtered-bookmarks)
   ;(global-set-key (kbd "<tab>") 'evil-shift-right)
   ;(global-set-key (kbd "<backtab>") 'evil-shift-left)
+  (global-set-key (kbd "<f9> b") 'ibuffer)
 #+END_SRC
 ** look
 #+BEGIN_SRC emacs-lisp
