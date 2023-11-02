@@ -641,7 +641,8 @@
     (if (eq evil-state 'motion)
         (progn (set-cursor-color "blue"))))
 
-  (add-hook 'evil-change-state-hook 'my-change-cursor-color)
+  (add-hook 'evil-change-state-hook 'my:change-cursor-color)
+  (add-hook 'post-command-hook 'my:change-cursor-color)
 #+END_SRC
 ** ediff
 #+BEGIN_SRC emacs-lisp
