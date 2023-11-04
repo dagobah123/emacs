@@ -58,6 +58,7 @@
                        itail
                        ivy
                        json-mode
+                       json-snatcher
                        lsp-java
                        lsp-ui
                        luwak
@@ -643,6 +644,36 @@
 
   ;(add-hook 'evil-change-state-hook 'my:change-cursor-color)
   (add-hook 'post-command-hook 'my:change-cursor-color)
+
+  (require 'helm)
+  (defun my:helm-xml-tags ()
+    (interactive)
+    (with-helm-default-directory default-directory
+      (helm :sources
+            (helm-build-sync-source "XML Tags"
+              :candidates
+              (save-excursion
+                (goto-char (point-min))
+                (let (tags)
+                  (while (re-search-forward "<\\([^/!?][^ >]+\\)\\s-?[^>]*>" nil t)
+                    (push (match-string 1) tags))
+                  (reverse tags)))
+              :action (helm-make-actions
+                       "Jump to Tag" (lambda (candidate)
+                                       (goto-char (point-min))
+                                       (search-forward (format "<%s" candidate))))
+              :fuzzy-match t)
+            :buffer "*helm XML Tags*")))
+  (defun my:setup-xml-mode-keybindings ()
+    (define-key nxml-mode-map (kbd "C-9") 'my:helm-xml-tags))
+  (add-hook 'nxml-mode-hook 'my:setup-xml-mode-keybindings)
+
+  (defun my:expand-region-with-negative-arg ()
+    "Expand the region with a negative argument."
+    (interactive)
+    (let ((prefix-arg '-))
+      (call-interactively 'er/expand-region)))
+  (global-set-key (kbd "C-+") 'my:expand-region-with-negative-arg)
 #+END_SRC
 ** ediff
 #+BEGIN_SRC emacs-lisp
@@ -1237,6 +1268,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (setq user-cache-directory (concat EMACS-HOME "cache"))
 
   (setq blink-cursor-blinks 0)
+  ;(blink-cursor-mode -1)
 
   (setq display-line-numbers-type 'absolute)
   (global-set-key (kbd "C-7") 'global-display-line-numbers-mode)
@@ -1684,6 +1716,17 @@ Load environment variables properly by installing *exec-path-from-shell*.
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "S-M-<left>") 'indent-rigidly-left)
   (global-set-key (kbd "S-M-<right>") 'indent-rigidly-right)
+#+END_SRC
+** json-snatcher
+#+BEGIN_SRC emacs-lisp
+  (require 'json-snatcher)
+
+  (defun js-mode-bindings ()
+  "Sets a hotkey for using the json-snatcher plugin"
+       (when (string-match  "\\.json$" (buffer-name))
+          (local-set-key (kbd "C-c C-g") 'jsons-print-path)))
+  (add-hook 'js-mode-hook 'js-mode-bindings)
+  (add-hook 'js2-mode-hook 'js-mode-bindings)
 #+END_SRC
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.
