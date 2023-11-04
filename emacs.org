@@ -667,13 +667,6 @@
   (defun my:setup-xml-mode-keybindings ()
     (define-key nxml-mode-map (kbd "C-9") 'my:helm-xml-tags))
   (add-hook 'nxml-mode-hook 'my:setup-xml-mode-keybindings)
-
-  (defun my:expand-region-with-negative-arg ()
-    "Expand the region with a negative argument."
-    (interactive)
-    (let ((prefix-arg '-))
-      (call-interactively 'er/expand-region)))
-  (global-set-key (kbd "C-+") 'my:expand-region-with-negative-arg)
 #+END_SRC
 ** ediff
 #+BEGIN_SRC emacs-lisp
