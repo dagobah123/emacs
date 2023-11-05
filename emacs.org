@@ -640,7 +640,9 @@
     (if (eq evil-state 'replace)
         (progn (set-cursor-color "deep pink")))
     (if (eq evil-state 'motion)
-        (progn (set-cursor-color "blue"))))
+        (progn (set-cursor-color "blue")))
+    (if (bound-and-true-p cua-mode)
+        (progn (set-cursor-color "dark turquoise"))))
 
   ;(add-hook 'evil-change-state-hook 'my:change-cursor-color)
   (add-hook 'post-command-hook 'my:change-cursor-color)
