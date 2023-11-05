@@ -563,7 +563,7 @@
 ;    (previous-line 1)
 ;    (move-to-column col)))
 ;  (global-set-key (kbd "M-<down>") 'my:shift-line-down)
-; 
+;
 ;  (defun my:shift-line-up ()
 ;    "Shift line up."
 ;    (interactive)
@@ -923,6 +923,33 @@ Load environment variables properly by installing *exec-path-from-shell*.
 
     ("q" nil "Quit" :color blue))
 #+END_SRC
+** hydra registers
+#+BEGIN_SRC emacs-lisp
+  (defhydra hydra-registers (:hint nil :color red)
+
+    "
+  Registers
+
+  ^Registers^
+  ^^^^^---------------------
+  _1_: Point to register
+  _2_: Jump to register
+  _3_: Copy to register
+  _4_: Insert register
+  _5_: List
+  _6_: Helm
+  ^ ^
+  "
+
+    ("1" point-to-register)
+    ("2" jump-to-register)
+    ("3" copy-to-register)
+    ("4" insert-register)
+    ("5" list-registers)
+    ("6" (helm-register))
+
+    ("q" nil "Quit" :color blue))
+#+END_SRC
 ** hydra emacs
 #+BEGIN_SRC emacs-lisp
   (defhydra hydra-emacs (:hint nil :color red)
@@ -977,7 +1004,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
     "
   File
 
-  ^File^              ^Lsp^             ^Misc^         ^Modify^             ^Project^
+  ^File^              ^Lsp^             ^Misc^          ^Modify^             ^Project^
   ^^^^^-------------------------------------------------------------------------------------------------
   _l_: line numbers   _i_: imenu        _C_: focus      _c_: cua             _{_: highlight on
   _w_: whitespace     _T_: treemacs     ^ ^             _o_: overwrite       _}_: highlights off
@@ -1009,6 +1036,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ""
     ("a" hydra-emacs/body "Emacs")
     ("f" hydra-file/body "File")
+    ("r" hydra-registers/body "Registers")
     ("c" hydra-code/body "Code")
     ("w" hydra-window/body "Window")
     ("k" hydra-custom/body "Custom")
@@ -1400,7 +1428,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;  (company-mode t)
 ;  (require 'company-box)
 ;  (add-hook 'company-mode-hook 'company-box-mode)
-; 
+;
 ;  (setq company-box-backends-colors
 ;  '((company-yasnippet . (:all ,text-2 :selected (:background "green" :foreground "black")))))
 ;#+END_SRC
@@ -1414,9 +1442,9 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;    :ensure t)
 ;  (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
 ;#+END_SRC
-; 
+;
 ;E.g. In java mode, if you type ~pr~ and hit ~<TAB>~ it should complete to ~System.out.println("text");~
-; 
+;
 ;To create a new snippet you can use ~yas-new-snippet~ command.
 ;*** FlyCheck
 ;FlyCheck checks for errors in code at run-time.
@@ -1443,7 +1471,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;    :hook ((dap-mode . dap-ui-mode)
 ;           (dap-session-created . (lambda (&_rest) (dap-hydra)))
 ;           (dap-terminated . (lambda (&_rest) (dap-hydra/nil)))))
-; 
+;
 ;  (use-package dap-java :ensure nil)
 ;#+END_SRC
 ;*** Treemacs
@@ -1457,7 +1485,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;    :commands lsp-treemacs-errors-list
 ;    :bind (:map lsp-mode-map
 ;                ("M-9" . lsp-treemacs-errors-list)))
-; 
+;
 ;  (use-package treemacs
 ;    :ensure t
 ;    :defer t
@@ -1518,21 +1546,21 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;            treemacs-width-increment                 1
 ;            treemacs-width-is-initially-locked       t
 ;            treemacs-workspace-switch-cleanup        t)
-; 
+;
 ;      (treemacs-follow-mode t)
 ;      (treemacs-project-follow-mode t)
 ;      (treemacs-filewatch-mode t)
 ;      (treemacs-fringe-indicator-mode 'always)
 ;      (when treemacs-python-executable
 ;        (treemacs-git-commit-diff-mode t))
-; 
+;
 ;      (pcase (cons (not (null (executable-find "git")))
 ;                   (not (null treemacs-python-executable)))
 ;        (`(t . t)
 ;         (treemacs-git-mode 'deferred))
 ;        (`(t . _)
 ;         (treemacs-git-mode 'simple)))
-; 
+;
 ;      (treemacs-hide-gitignored-files-mode nil))
 ;    :bind
 ;    (:map global-map
@@ -1543,24 +1571,24 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;          ("C-x t B"   . treemacs-bookmark)
 ;          ("C-x t C-t" . treemacs-find-file)
 ;          ("C-x t M-t" . treemacs-find-tag)))
-; 
+;
 ;  (use-package treemacs-evil
 ;    :after (treemacs evil)
 ;    :ensure t)
-; 
+;
 ;  (use-package treemacs-projectile
 ;    :after (treemacs projectile)
 ;    :ensure t)
-; 
+;
 ;  (use-package treemacs-magit
 ;    :after (treemacs magit)
 ;    :ensure t)
-; 
+;
 ;  (use-package treemacs-persp ;;treemacs-perspective if you use perspective.el vs. persp-mode
 ;    :after (treemacs persp-mode) ;;or perspective vs. persp-mode
 ;    :ensure t
 ;    :config (treemacs-set-scope-type 'Perspectives))
-; 
+;
 ;  (use-package treemacs-tab-bar ;;treemacs-tab-bar if you use tab-bar-mode
 ;    :after (treemacs)
 ;    :ensure t
@@ -1626,10 +1654,10 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;  (use-package lsp-java
 ;    :ensure t
 ;    :config (add-hook 'java-mode-hook 'lsp))
-; 
+;
 ;  (require 'lsp-java)
 ;  (add-hook 'java-mode-hook #'lsp)
-; 
+;
 ;  (condition-case nil
 ;      (require 'use-package)
 ;    (file-error
@@ -1640,11 +1668,11 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;     (package-install 'use-package)
 ;     (setq use-package-always-ensure t)
 ;     (require 'use-package)))
-; 
+;
 ;  (use-package projectile)
 ;  (use-package flycheck)
 ;  (use-package yasnippet :config (yas-global-mode))
-; 
+;
 ;  (use-package lsp-mode
 ;    :hook ((lsp-mode . lsp-enable-which-key-integration))
 ;    :config (setq lsp-completion-enable-additional-text-edit nil))
@@ -1660,13 +1688,13 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;  (use-package helm
 ;    :config (helm-mode))
 ;  (use-package lsp-treemacs)
-; 
+;
 ;  ;; show nice unit test results
 ;  (add-hook 'compilation-filter-hook
 ;            (lambda() (ansi-color-apply-on-region (point-min) (point-max))))
-; 
+;
 ;  (setq lsp-print-io t)
-; 
+;
 ;  ;; https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
 ;  (setq lsp-modeline-code-actions-enable nil)
 ;  (setq lsp-headerline-breadcrumb-enable nil)
@@ -1700,7 +1728,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ** drag-stuff
 #+BEGIN_SRC emacs-lisp
   (require 'drag-stuff)
-   
+
   (drag-stuff-mode t)
   (global-set-key (kbd "M-<up>") 'drag-stuff-up)
   (global-set-key (kbd "M-<down>") 'drag-stuff-down)
