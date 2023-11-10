@@ -96,7 +96,7 @@
     ;`(font-lock-regexp-grouping-construct ((t (:foreground ,text-normal           ))))
     `(font-lock-string-face               ((t (:foreground ,text-low              ))))
     `(font-lock-type-face                 ((t (:foreground ,text-type :bold t     ))))
-    `(font-lock-variable-name-face        ((t (:foreground ,text-constant         ))))
+    `(font-lock-variable-name-face        ((t (:foreground ,text-variable         ))))
     `(font-lock-variable-use-face         ((t (:foreground ,text-constant         ))))
     `(font-lock-warning-face              ((t (:foreground ,text-warning          ))))
 
@@ -455,8 +455,6 @@
     `(mode-line                 ((t (:foreground ,text-normal            :background ,background-mode-line-active ))))
     `(mode-line-inactive        ((t (:foreground ,text-low               :background ,background-mode-line        ))))
     `(mode-line-buffer-id       ((t (:foreground ,text-mode-line-buffer  :bold t                                  ))))
-    `(my:branch-face            ((t (:foreground ,text-mode-line-branch                                           ))))
-    `(mode-line-misc-info       ((t (:foreground ,text-mode-line-branch                                           ))))
     `(my:buffer-face            ((t (:foreground ,text-mode-line-buffer  t                                        ))))
 
     `(custom-mode-line-icon     ((t (:foreground ,text-mode-line-buffer                                           ))))

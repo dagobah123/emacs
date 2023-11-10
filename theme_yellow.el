@@ -25,11 +25,10 @@
 (setq text-lower "#928753")
 (setq text-match "#000000")
 (setq text-mode-line "#ffff00")
-(setq text-mode-line-branch "#113e00")
 (setq text-mode-line-buffer "#000000")
-(setq text-normal "#000000")
+(setq text-normal "#50532b")
 (setq text-preprocessor "#afafaf")
 (setq text-type "#aaaa00")
-(setq text-variable "#6a3e3e")
+(setq text-variable "#50a723")
 
 ;;; theme_yellow.el ends here

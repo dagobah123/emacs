@@ -23,7 +23,6 @@
 (setq text-lower "#aaaaaa")
 (setq text-match "#000000")
 (setq text-mode-line "#000000")
-(setq text-mode-line-branch "#113e00")
 (setq text-mode-line-buffer "#1111ca")
 (setq text-normal "#000000")
 (setq text-preprocessor "#afafaf")
