@@ -80,7 +80,7 @@
 (setq text-match "#f974f9")
 (setq text-preprocessor "#04bcc0")
 (setq text-type "#bb4f80")
-(setq text-variable "#7ea0f7")
+(setq text-variable "#ff9900")
 (setq text-warning "#ff9900")
 
 ;;; theme_default_dark.el ends here
