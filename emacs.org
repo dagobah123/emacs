@@ -2,6 +2,7 @@
 ** archives and startup
 #+BEGIN_SRC emacs-lisp
   (setq INDEX-CHIAROSCURO 0)
+
   (setq theme-index 0)
 
   (setq iterations 1)
@@ -86,17 +87,21 @@
 #+END_SRC
 ** themes
 #+BEGIN_SRC emacs-lisp
-  (setq INDEX-DEFAULT       1)
-  (setq INDEX-ECLIPSE       2)
-  (setq INDEX-NEON          3)
-  (setq INDEX-YELLOW        4)
-  (setq INDEX-RED           5)
-  (setq INDEX-HIGH-CONTRAST 6)
+  (setq INDEX-DEFAULT            1)
+  (setq INDEX-ECLIPSE            2)
+  (setq INDEX-NEON               3)
+  (setq INDEX-YELLOW             4)
+  (setq INDEX-RED                5)
+  (setq INDEX-HIGH-CONTRAST      6)
+  (setq INDEX-COLOR-CHANGE-LIGHT 7)
+  (setq INDEX-COLOR-CHANGE-DARK  8)
 
   (defvar chiaroscuro-index 0 "Index representing the current theme")
   (setq chiaroscuro-index 0)
 
   (setq themes-list '(chiaroscuro
+                      chiaroscuro
+                      chiaroscuro
                       chiaroscuro
                       chiaroscuro
                       chiaroscuro
@@ -108,7 +113,9 @@
                             "neon"
                             "yellow"
                             "red"
-                            "high contrast"))
+                            "high contrast"
+                            "light"
+                            "dark"))
 
   (defvar theme-index 0 "Index representing the current theme")
   (setq number-of-themes (length themes-list))
@@ -957,7 +964,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
     "
   Emacs
 
-  ^Folders^        ^Files^             ^Update^             ^Themes^                 ^Buffers^
+  ^Folders^        ^Files^             ^Update^             ^Themes^                   ^Buffers^
   ^^^^^^^^-------------------------------------------------------------------------------------------------
   _a_: emacs       _d_: emacs.org      _h_: cp .emacs.d     _k_: reset   _1_: Default  _'_: ibuffers
   _s_: .emacs.d    _f_: chiaro...el    _j_: fullscreen      _l_: up      _2_: Eclipse  _b_: bookmarks
@@ -965,6 +972,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
   ^ ^              ^ ^                 ^ ^                  ^ ^          _4_: Yellow   ^ ^
   ^ ^              ^ ^                 ^ ^                  ^ ^          _5_: Red      ^ ^
   ^ ^              ^ ^                 ^ ^                  ^ ^          _6_: High C.  ^ ^
+  ^ ^              ^ ^                 ^ ^                  ^ ^          _7_: Light    ^ ^
+  ^ ^              ^ ^                 ^ ^                  ^ ^          _8_: Dark     ^ ^
   "
 
     ("a" (dired "~/source/emacs"))
@@ -991,6 +1000,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("4" (my:set-theme INDEX-YELLOW))
     ("5" (my:set-theme INDEX-RED))
     ("6" (my:set-theme INDEX-HIGH-CONTRAST))
+    ("7" (my:set-theme INDEX-COLOR-CHANGE-LIGHT))
+    ("8" (my:set-theme INDEX-COLOR-CHANGE-DARK))
 
     ("'" (ibuffer))
     ("b" list-bookmarks)

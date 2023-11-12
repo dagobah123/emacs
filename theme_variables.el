@@ -2,6 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 
+(defvar INDEX-COLOR-CHANGE-DARK nil ".")
+(defvar INDEX-COLOR-CHANGE-LIGHT nil ".")
 (defvar INDEX-CHIAROSCURO nil ".")
 (defvar INDEX-DEFAULT nil ".")
 (defvar INDEX-ECLIPSE nil ".")

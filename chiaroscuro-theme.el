@@ -28,6 +28,14 @@
         (progn (load-file "~/.emacs.d/theme_default_light.el")
                (load-file "~/.emacs.d/theme_high_contrast.el")))
 
+    (if (eq INDEX-CHIAROSCURO INDEX-COLOR-CHANGE-LIGHT)
+        (progn (load-file "~/.emacs.d/theme_default_light.el")
+               (load-file "~/.emacs.d/theme_color_changer.el")))
+
+    (if (eq INDEX-CHIAROSCURO INDEX-COLOR-CHANGE-DARK)
+        (progn (load-file "~/.emacs.d/theme_default_dark.el")
+               (load-file "~/.emacs.d/theme_color_changer.el")))
+
     (if (> INDEX-CHIAROSCURO number-of-themes) (progn (setq INDEX-CHIAROSCURO 0)))
     (if (< INDEX-CHIAROSCURO 0) (progn (setq INDEX-CHIAROSCURO number-of-themes)))
 
