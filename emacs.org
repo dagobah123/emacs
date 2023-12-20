@@ -214,6 +214,8 @@
 
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 4)
+
+  (delete-selection-mode t)
 #+END_SRC
 ** chess
 #+BEGIN_SRC emacs-lisp

@@ -254,9 +254,9 @@
     `(git-gutter:separator              ((t (:foreground ,text-match    :background ,background-match :bold t ))))
     `(git-gutter:unchanged              ((t (:foreground ,color-blue-1  :background ,color-blue-2     :bold t ))))
 
-    `(smerge-upper                      ((t (:foreground ,text-ediff :background ,background-diff-current-A ))))
-    `(smerge-lower                      ((t (:foreground ,text-ediff :background ,background-diff-current-B ))))
-    `(smerge-markers                    ((t (:foreground ,text-ediff :background ,background-diff-current-C ))))
+    `(smerge-upper                      ((t (:foreground ,text-ediff :background ,background-diff-fine-B ))))
+    `(smerge-lower                      ((t (:foreground ,text-ediff :background ,background-diff-fine-A ))))
+    `(smerge-markers                    ((t (:foreground ,text-ediff :background ,background-diff-fine-C ))))
 
     ;ediff
     `(ediff-current-diff-A        ((t (:foreground ,text-diff :background ,background-diff-current-A        ))))
@@ -280,7 +280,7 @@
     `(ediff-odd-diff-C            ((t (:foreground ,text-diff :background ,background-diff-odd-C            ))))
 
     ;ztree
-    `(ztreep-diff-model-add-face     ((t (:foreground ,text-match :background ,background-match                 ))))
+    `(ztreep-diff-model-add-face     ((t (:foreground ,text-match     :background ,background-match             ))))
     `(ztreep-diff-model-diff-face    ((t (:foreground ,color-yellow-1 :background ,color-yellow-2               ))))
     `(ztreep-diff-model-ignored-face ((t (:foreground ,color-blue-1   :background unspecified :strike-through t ))))
     `(ztreep-diff-model-normal-face  ((t (:foreground ,text-normal    :background unspecified                   ))))
@@ -305,7 +305,7 @@
     `(org-agenda-date-weekend       ((t (:foreground ,color-yellow-1 :bold t                                                   ))))
     `(org-agenda-diary              ((t (:foreground ,text-normal                                                              ))))
     `(org-agenda-dimmed-todo-face   ((t (:foreground ,text-low                                                                 ))))
-    `(org-agenda-done               ((t (:foreground ,text-low       :background unspecified                                   ))))
+    `(org-agenda-done               ((t (:foreground ,text-lower     :background unspecified                                   ))))
     `(org-agenda-filter-category    ((t (:foreground ,text-normal                                                              ))))
     `(org-agenda-filter-effort      ((t (:foreground ,text-normal                                                              ))))
     `(org-agenda-filter-regexp      ((t (:foreground ,text-normal                                                              ))))
@@ -329,7 +329,7 @@
     `(org-document-info             ((t (:foreground ,text-normal    :background unspecified                                   ))))
     `(org-document-info-keyword     ((t (:foreground ,text-normal    :background unspecified                                   ))))
     `(org-document-title            ((t (:foreground ,text-normal    :background unspecified                                   ))))
-    `(org-done                      ((t (:foreground ,text-low                                  :bold t                        ))))
+    `(org-done                      ((t (:foreground ,text-lower                                :bold t                        ))))
     `(org-drawer                    ((t (:foreground ,text-normal    :background unspecified                                   ))))
     `(org-ellipsis                  ((t (:foreground ,text-normal    :background unspecified                                   ))))
     `(org-footnote                  ((t (:foreground ,text-normal    :background unspecified                                   ))))
@@ -372,8 +372,8 @@
     `(org-verse                     ((t (:foreground ,color-green-1  :background unspecified                                   ))))
     `(org-warning                   ((t (:foreground ,color-orange-1 :background unspecified    :bold t                        ))))
     `(org-imminent-deadline         ((t (:foreground ,alert-1        :background unspecified    :bold t                        ))))
-    `(org-upcoming-deadline         ((t (:foreground ,alert-2        :background unspecified                                   ))))
-    `(org-upcoming-distant-deadline ((t (:foreground ,alert-3        :background unspecified                                   ))))
+    `(org-upcoming-deadline         ((t (:foreground ,text-low       :background unspecified                                   ))))
+    `(org-upcoming-distant-deadline ((t (:foreground ,text-lower     :background unspecified                                   ))))
 
     `(diff-added   ((t (:foreground ,text-diff-added   :background ,background-diff-added   ))))
     `(diff-removed ((t (:foreground ,text-diff-removed :background ,background-diff-removed ))))
