@@ -679,6 +679,19 @@
     (define-key nxml-mode-map (kbd "C-9") 'my:helm-xml-tags))
   (add-hook 'nxml-mode-hook 'my:setup-xml-mode-keybindings)
 #+END_SRC
+** class overview
+#+BEGIN_SRC emacs-lisp
+  (defun my:class-overview ()
+    "Parse all classes of a project and print the class overview."
+    ; Go to main folder of the project
+    ; Find all Java files
+    ; Store the files in a list
+    ; Parse each file for parents
+    ; Parse each file for members
+    ; Print data
+
+    )
+#+END_SRC
 ** ediff
 #+BEGIN_SRC emacs-lisp
   (setq ediff-split-window-function 'split-window-horizontally)
