@@ -683,7 +683,6 @@
 #+BEGIN_SRC emacs-lisp
   (defun my:find-files-in-project (directory extension)
     "List files with a specific extension in all subdirectories of DIRECTORY."
-    (interactive "DDirectory: \nsEnter file extension (e.g., py, js): ")
     (let ((file-list '()))
       (dolist (file (directory-files-recursively directory (concat "\\." extension "$")))
         (when (file-regular-p file)
@@ -693,30 +692,23 @@
             (message "Files found with extension %s:" extension)
             (dolist (file file-list)
               (message "%s" file)))
-        (message "No files found with extension %s in %s" extension directory))))
+        (message "No files found with extension %s in %s" extension directory))
+      (message "my:find-files-in-project() Length of the list: %d" (length file-list))
+      file-list))
 
   (defun my:class-overview ()
     "Parse all classes of a project and print the class overview."
     (interactive)
-    ; Go to main folder of the project
-
-    ; Get projectile root
-    (let ((project-root (projectile-project-root))
-          (file-list ()))
-
-      ; Find all Java files in project
+    (let ((project-root (projectile-project-root)))
       (if project-root
-          (my:find-files-in-project project-root "java"))
-
-      (message "Length of the list: %d" (length file-list)))
-   
-    ; TODO Store the files in a list
-    ; TODO Remove the project root from the file paths
-    ; TODO Parse each file for parents
-    ; TODO Parse each file for members
-    ; TODO Print data
-
-    )
+          (let ((file-list (my:find-files-in-project project-root "java")))
+            (message "my:class-overview() Length of the list: %d" (length file-list))
+            ;; TODO: Remove the project root from the file paths
+            ;; TODO: Parse each file for parents
+            ;; TODO: Parse each file for members
+            ;; TODO: Print data
+            )
+        (message "Not in a Projectile project or Projectile is not active."))))
 #+END_SRC
 ** ediff
 #+BEGIN_SRC emacs-lisp
