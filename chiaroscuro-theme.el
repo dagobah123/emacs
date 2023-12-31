@@ -386,6 +386,7 @@
 
     `(whitespace-space   ((t (:foreground ,text-lower :background unspecified ))))
     `(whitespace-newline ((t (:foreground ,text-lower :background unspecified ))))
+    `(whitespace-line    ((t (:background unspecified ))))
 
     `(lsp-flycheck-warning-unnecessary-face     ((t (:foreground ,text-warning   :bold t :underline t ))))
     `(flycheck-error                            ((t (:foreground ,text-error     :bold t :underline t ))))
