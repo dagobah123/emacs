@@ -716,13 +716,18 @@
       (if project-root
           (let ((file-list (my:find-files-in-project project-root "java")))
             (message "my:class-overview() Length of the list: %d" (length file-list))
-            ;; TODO: Parse each file for parents
+
             ;; TODO: Parse each file for members
             ;; TODO: Print data
 
             (cl-loop for element in file-list
                      for index from 0
-                     do (message "Index: %d, Element: %s" index element)))
+                     do (message "Index: %d, Element: %s" index element (get-java-parents element))
+
+                     (dolist (element2 (get-java-parents element))
+                       (message "Parent: %s" element2))
+                     )
+            )
         (message "Not in a Projectile project or Projectile is not active."))))
 #+END_SRC
 ** ediff
