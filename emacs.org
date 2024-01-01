@@ -696,6 +696,19 @@
       (message "my:find-files-in-project() Length of the list: %d" (length file-list))
       file-list))
 
+  (defun get-java-parents (file-path)
+    "Parse a Java file to extract its parent classes and implemented interfaces."
+    (with-temp-buffer
+      (insert-file-contents file-path)
+      (goto-char (point-min))
+      (let (parents)
+        (while (re-search-forward "\\bextends\\s-+\\(\\(?:[[:alnum:]_$]+\\.\\)*[[:alnum:]_$]+\\)\\b" nil t)
+          (setq parents (cons (match-string 1) parents)))
+        (goto-char (point-min)) ;; Reset cursor position
+        (while (re-search-forward "\\bimplements\\s-+\\(\\(?:[[:alnum:]_$]+\\.\\)*[[:alnum:]_$]+\\)\\b" nil t)
+          (setq parents (cons (match-string 1) parents)))
+        parents)))
+
   (defun my:class-overview ()
     "Parse all classes of a project and print the class overview."
     (interactive)
@@ -703,11 +716,13 @@
       (if project-root
           (let ((file-list (my:find-files-in-project project-root "java")))
             (message "my:class-overview() Length of the list: %d" (length file-list))
-            ;; TODO: Remove the project root from the file paths
             ;; TODO: Parse each file for parents
             ;; TODO: Parse each file for members
             ;; TODO: Print data
-            )
+
+            (cl-loop for element in file-list
+                     for index from 0
+                     do (message "Index: %d, Element: %s" index element)))
         (message "Not in a Projectile project or Projectile is not active."))))
 #+END_SRC
 ** ediff
