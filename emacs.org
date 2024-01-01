@@ -709,6 +709,20 @@
           (setq parents (cons (match-string 1) parents)))
         parents)))
 
+  (defun parse-java-file-for-members (file-path)
+    "Parse a Java file to extract member types (fields, methods) with variable names."
+    (with-temp-buffer
+      (insert-file-contents file-path)
+      (goto-char (point-min))
+      (let (member-data)
+        (while (re-search-forward "\\b\\(\\(?:public\\|private\\|protected\\)?\\)\\s-+\\(\\(?:[[:alnum:]_$]+\\.\\)*[[:alnum:]_$]+\\)\\s-*\\([[:alnum:]_$]+\\)\\s-*\\(([^)]*)\\)?\\s-*\\({\\|;\\)" nil t)
+          (let ((access-modifier (match-string 1))
+                (type (match-string 2))
+                (name (match-string 3))
+                (variable-names (and (match-beginning 4) (match-end 4) (buffer-substring (match-beginning 4) (match-end 4)))))
+            (setq member-data (cons (list access-modifier type name variable-names) member-data))))
+        member-data)))
+
   (defun my:class-overview ()
     "Parse all classes of a project and print the class overview."
     (interactive)
