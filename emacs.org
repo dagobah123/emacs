@@ -687,16 +687,10 @@
       (dolist (file (directory-files-recursively directory (concat "\\." extension "$")))
         (when (file-regular-p file)
           (push file file-list)))
-      (if file-list
-          (progn
-            (message "Files found with extension %s:" extension)
-            (dolist (file file-list)
-              (message "%s" file)))
-        (message "No files found with extension %s in %s" extension directory))
       (message "my:find-files-in-project() Length of the list: %d" (length file-list))
       file-list))
 
-  (defun get-java-parents (file-path)
+  (defun my:get-java-parents (file-path)
     "Parse a Java file to extract its parent classes and implemented interfaces."
     (with-temp-buffer
       (insert-file-contents file-path)
@@ -709,7 +703,7 @@
           (setq parents (cons (match-string 1) parents)))
         parents)))
 
-  (defun parse-java-file-for-members (file-path)
+  (defun my:parse-java-file-for-members (file-path)
     "Parse a Java file to extract member types (fields, methods) with variable names."
     (with-temp-buffer
       (insert-file-contents file-path)
@@ -721,7 +715,28 @@
                 (name (match-string 3))
                 (variable-names (and (match-beginning 4) (match-end 4) (buffer-substring (match-beginning 4) (match-end 4)))))
             (setq member-data (cons (list access-modifier type name variable-names) member-data))))
-        member-data)))
+        (message member-data))))
+
+  (defun my:print-data-in-new-buffer (file-list)
+    "Print DATA in a new buffer."
+    (let ((new-buffer (get-buffer-create "*ClassOverview*"))
+          (content ""))
+      (with-current-buffer new-buffer
+        (erase-buffer)
+        (cl-loop for element in file-list
+                 for index from 1
+                 do
+                 (setq content (concat content (format "%d: %s\n" index (file-name-sans-extension (file-name-nondirectory element)) (my:get-java-parents element))))
+                 (dolist (element2 (my:get-java-parents element))
+                   (setq content (concat content (format "    %s\n" element2))))))
+      (switch-to-buffer new-buffer)
+      (insert content)))
+
+  (defun my:test ()
+    "Test function"
+    (interactive)
+    (my:parse-java-file-for-members "/home/computer/source/lsp_sandbox/src/main/java/org/sandbox/observerpattern/SubjectImplementation.java")
+    )
 
   (defun my:class-overview ()
     "Parse all classes of a project and print the class overview."
@@ -734,14 +749,7 @@
             ;; TODO: Parse each file for members
             ;; TODO: Print data
 
-            (cl-loop for element in file-list
-                     for index from 0
-                     do (message "Index: %d, Element: %s" index element (get-java-parents element))
-
-                     (dolist (element2 (get-java-parents element))
-                       (message "Parent: %s" element2))
-                     )
-            )
+            (my:print-data-in-new-buffer file-list))
         (message "Not in a Projectile project or Projectile is not active."))))
 #+END_SRC
 ** ediff
