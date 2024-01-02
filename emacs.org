@@ -728,7 +728,7 @@
                  do
                  (setq content (concat content (format "%d: %s\n" index (file-name-sans-extension (file-name-nondirectory element)) (my:get-java-parents element))))
                  (dolist (element2 (my:get-java-parents element))
-                   (setq content (concat content (format "    %s\n" element2))))))
+                   (setq content (concat content (format "        %s\n" element2))))))
       (switch-to-buffer new-buffer)
       (insert content)))
 
