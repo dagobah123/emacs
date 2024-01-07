@@ -708,11 +708,13 @@
     (with-temp-buffer
       (insert-file-contents file-path)
       (goto-char (point-min))
-      (while (re-search-forward "^\\s-*\\b\\(?:private\\|public\\|protected\\)\\b[^;\n]*;" nil t)
-        (let ((line (buffer-substring-no-properties
-                     (line-beginning-position)
-                     (line-end-position))))
-          (message "%s" line)))))
+      (let ((result ""))
+        (while (re-search-forward "^\\s-*\\b\\(?:private\\|public\\|protected\\)\\b[^;\n]*;" nil t)
+          (setq result (concat result (buffer-substring-no-properties
+                                       (line-beginning-position)
+                                       (line-end-position))
+                               "\n")))
+        result)))
 
   ; ^ asserts the start of a line.
   ; \\s-* matches any whitespace characters (including none).
@@ -732,7 +734,22 @@
                  do
                  (setq content (concat content (format "%d: %s\n" index (file-name-sans-extension (file-name-nondirectory element)) (my:get-java-parents element))))
                  (dolist (element2 (my:get-java-parents element))
-                   (setq content (concat content (format "        %s\n" element2))))))
+                   ; Parents
+                   (if element2
+                       (progn
+                         (setq content (concat content (format "--------------------------------------------------------------------------------\n")))
+                         (setq content (concat content (format "    %s\n" element2)))
+                   ))
+                   ; Members
+                   (if (my:parse-java-file-for-members element)
+                       (progn
+                         (setq content (concat content (format "--------------------------------------------------------------------------------\n")))
+                         (setq content (concat content (my:parse-java-file-for-members element)))
+                         ))
+                   )
+                 (setq content (concat content (format "________________________________________________________________________________\n\n")))
+                 )
+        )
       (switch-to-buffer new-buffer)
       (insert content)))
 
