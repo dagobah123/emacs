@@ -708,14 +708,18 @@
     (with-temp-buffer
       (insert-file-contents file-path)
       (goto-char (point-min))
-      (let (member-data)
-        (while (re-search-forward "\\b\\(\\(?:public\\|private\\|protected\\)?\\)\\s-+\\(\\(?:[[:alnum:]_$]+\\.\\)*[[:alnum:]_$]+\\)\\s-*\\([[:alnum:]_$]+\\)\\s-*\\(([^)]*)\\)?\\s-*\\({\\|;\\)" nil t)
-          (let ((access-modifier (match-string 1))
-                (type (match-string 2))
-                (name (match-string 3))
-                (variable-names (and (match-beginning 4) (match-end 4) (buffer-substring (match-beginning 4) (match-end 4)))))
-            (setq member-data (cons (list access-modifier type name variable-names) member-data))))
-        (message member-data))))
+      (while (re-search-forward "^\\s-*\\b\\(?:private\\|public\\|protected\\)\\b[^;\n]*;" nil t)
+        (let ((line (buffer-substring-no-properties
+                     (line-beginning-position)
+                     (line-end-position))))
+          (message "%s" line)))))
+
+  ; ^ asserts the start of a line.
+  ; \\s-* matches any whitespace characters (including none).
+  ; \\b\\(?:private\\|public\\|protected\\)\\b matches either "private," "public," or "protected" as standalone words.
+  ; [^;\n]* matches any characters except a semicolon or a newline, zero or more times.
+  ; ; matches the semicolon that must appear at the end of the line.
+  ; $ asserts the end of the line.
 
   (defun my:print-data-in-new-buffer (file-list)
     "Print DATA in a new buffer."
@@ -735,7 +739,7 @@
   (defun my:test ()
     "Test function"
     (interactive)
-    (my:parse-java-file-for-members "/home/computer/source/lsp_sandbox/src/main/java/org/sandbox/observerpattern/SubjectImplementation.java")
+    (my:parse-java-file-for-members "/home/computer/source/lsp_sandbox/src/main/java/org/sandbox/observerpattern/ObserverA.java")
     )
 
   (defun my:class-overview ()
