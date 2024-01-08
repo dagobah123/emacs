@@ -1288,10 +1288,10 @@ Load environment variables properly by installing *exec-path-from-shell*.
     "
   Window
 
-  ^Delete^             ^Split^         ^Enlarge^           ^Shrink^            ^Jump^             ^Golden Ratio^
+  ^Delete^             ^Split^         ^Horizontally^      ^Vertically^        ^Jump^             ^Golden Ratio^
   ^^^^^^^^----------------------------------------------------------------------------------------------------------
-  _1_: other windows   _3_: right      _5_: window         _7_: window         _9_: other window  _-_: toggle
-  _2_: window          _4_: below      _6_: horizontally   _8_: horizontally   _0_: ace
+  _1_: other windows   _3_: right      _5_: shrink         _7_: shrink         _9_: other window  _-_: toggle
+  _2_: window          _4_: below      _6_: enlarge        _8_: enlarge        _0_: ace
   "
     ("1" delete-other-windows)
     ("2" delete-window)
@@ -1299,11 +1299,11 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("3" split-window-right)
     ("4" split-window-below)
 
-    ("5" enlarge-window)
+    ("5" shrink-window-horizontally)
     ("6" enlarge-window-horizontally)
 
     ("7" shrink-window)
-    ("8" shrink-window-horizontally)
+    ("8" enlarge-window)
 
     ("9" other-window)
     ("0" ace-window)
