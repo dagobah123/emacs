@@ -71,7 +71,7 @@
     `(git-commit-summary       ((t (:foreground ,color-blue-1      :background ,color-blue-2              ))))
 
     ;line number
-    `(line-number-current-line ((t (:foreground ,text-low   :background ,background-fringe :bold t ))))
+    `(line-number-current-line ((t (:foreground ,text-lower :background ,background-fringe :bold t ))))
     `(line-number              ((t (:foreground ,text-lower :background ,background-fringe         ))))
     `(line-number-major-tick   ((t (:foreground ,text-lower :background ,background-fringe         ))))
     `(line-number-minor-tick   ((t (:foreground ,text-lower :background ,background-fringe         ))))
