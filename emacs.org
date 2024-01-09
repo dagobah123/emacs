@@ -495,6 +495,12 @@
           (define-key dired-mode-map (kbd "b")
               (lambda () (interactive) (find-alternate-file "..")))))
 
+  (defun my:dired-hide-details-mode ()
+    "Enable dired-hide-details-mode."
+    (dired-hide-details-mode 1))
+
+  (add-hook 'dired-mode-hook #'my:dired-hide-details-mode)
+
   (use-package dired-narrow
     :ensure t
     :config
