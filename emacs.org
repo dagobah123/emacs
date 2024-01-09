@@ -562,6 +562,20 @@
     (beginning-of-buffer))
   (global-set-key (kbd "C-c f") 'my:grep-in-project)
 
+  (defun my:grep-in-project2 ()
+    "Search for multiple strings using vc-git-grep with an AND condition."
+    (interactive)
+    (let* ((search-strings (split-string (read-from-minibuffer "Search for (space-separated): ") " "))
+           (search-regexp (mapconcat 'identity search-strings ".*")))
+      (setq search-regexp (concat ".*" search-regexp ".*"))
+      (project-dired)
+      (vc-git-grep search-regexp "*" "*"))
+    (quit-window)
+    (switch-to-buffer "*grep*")
+    (delete-other-windows)
+    (beginning-of-buffer))
+  (global-set-key (kbd "C-c g") 'my:grep-in-project2)
+
   ; https://emacs.stackexchange.com/questions/52295/how-to-set-value-vc-git-grep-template-within-function
   ;(defun my:vc-git-grep-noncase ()
   ;  (interactive)
@@ -878,7 +892,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
     (("M-x" . helm-M-x))
     (("C-c k r" . helm-show-kill-ring))
     (("C-c h" . helm-grep-do-git-grep))
-    (("C-c g" . helm-projectile-grep))
+    ;(("C-c g" . helm-projectile-grep))
     (("C-r"   . helm-swoop))
     (("C-c b" . helm-buffers-list))
     (("C-c r" . helm-bookmarks))
