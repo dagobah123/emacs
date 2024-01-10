@@ -18,7 +18,6 @@
 (setq text-function "#ee7700")
 (setq text-highlight-1 "#a77e23")
 (setq text-highlight-2 "#767f1c")
-(setq text-hl "#000000")
 (setq text-keyword "#a77e23")
 (setq text-low "#796e00")
 (setq text-lower "#928753")

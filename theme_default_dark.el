@@ -82,7 +82,7 @@
 (setq text-preprocessor "#04bcc0")
 (setq text-region "#000000")
 (setq text-type "#bb4f80")
-(setq text-variable "#ff9900")
-(setq text-warning "#ff9900")
+(setq text-variable "#dd8f35")
+(setq text-warning "#dd7700")
 
 ;;; theme_default_dark.el ends here

@@ -98,7 +98,6 @@
 (defvar text-function nil ".")
 (defvar text-highlight-1 nil ".")
 (defvar text-highlight-2 nil ".")
-(defvar text-hl nil ".")
 (defvar text-info nil ".")
 (defvar text-keyword nil ".")
 (defvar text-low nil ".")

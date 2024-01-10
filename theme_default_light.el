@@ -84,6 +84,6 @@
 (setq text-region "#000000")
 (setq text-type "#bb0606")
 (setq text-variable "#0e4ae5")
-(setq text-warning "#ff9900")
+(setq text-warning "#dd7700")
 
 ;;; theme_default_light.el ends here

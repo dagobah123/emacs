@@ -82,6 +82,6 @@
 (setq text-type "#bb0606")
 (setq text-region "#000000")
 (setq text-variable "#0438bf")
-(setq text-warning "#ff9900")
+(setq text-warning "#dd7700")
 
 ;;; theme_default_middle.el ends here

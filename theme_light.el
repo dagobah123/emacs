@@ -17,7 +17,6 @@
 (setq line-number-4 "#ffffff")
 (setq text-highlight-1 "#000000")
 (setq text-highlight-1 "#000000")
-(setq text-hl "#000000")
 (setq text-low "#555555")
 (setq text-lower "#777777")
 (setq text-normal "#000000")

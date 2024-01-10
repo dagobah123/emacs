@@ -17,7 +17,6 @@
 (setq text-function "#000000")
 (setq text-highlight-1 "#3f5fbf")
 (setq text-highlight-2 "#7f0055")
-(setq text-hl "#000000")
 (setq text-keyword "#7f0055")
 (setq text-low "#afafaf")
 (setq text-lower "#aaaaaa")

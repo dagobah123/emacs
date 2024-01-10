@@ -71,14 +71,14 @@
     `(git-commit-summary       ((t (:foreground ,color-blue-1      :background ,color-blue-2              ))))
 
     ;line number
-    `(line-number-current-line ((t (:foreground ,text-lower :background ,background-fringe :bold t ))))
-    `(line-number              ((t (:foreground ,text-lower :background ,background-fringe         ))))
-    `(line-number-major-tick   ((t (:foreground ,text-lower :background ,background-fringe         ))))
-    `(line-number-minor-tick   ((t (:foreground ,text-lower :background ,background-fringe         ))))
+    `(line-number-current-line ((t (:foreground ,text-low :background ,background-fringe :bold t ))))
+    `(line-number              ((t (:foreground ,text-low :background ,background-fringe         ))))
+    `(line-number-major-tick   ((t (:foreground ,text-low :background ,background-fringe         ))))
+    `(line-number-minor-tick   ((t (:foreground ,text-low :background ,background-fringe         ))))
 
     ;font-lock
     `(font-lock-bracket-face              ((t (:foreground ,text-highlight-1      ))))
-    `(font-lock-builtin-face              ((t (:foreground ,text-highlight-1 :bold t ))))
+    `(font-lock-builtin-face              ((t (:foreground ,text-type     :bold t ))))
     `(font-lock-comment-delimiter-face    ((t (:foreground ,text-lower            ))))
     `(font-lock-comment-face              ((t (:foreground ,text-lower            ))))
     `(font-lock-constant-face             ((t (:foreground ,text-constant :bold t ))))
@@ -287,12 +287,12 @@
     `(ztreep-expand-sign-face        ((t (:foreground ,color-yellow-1 :background unspecified                   ))))
 
     ;diff
-    `(diff-added             ((t (:foreground ,text-diff-added   :background ,background-diff-added-highlight   ))))
-    `(diff-refine-added      ((t (:foreground ,text-diff-added   :background ,background-diff-added-highlight   ))))
-    `(diff-removed           ((t (:foreground ,text-diff-removed :background ,background-diff-removed-highlight ))))
-    `(diff-refine-removed    ((t (:foreground ,text-diff-removed :background ,background-diff-removed-highlight ))))
-    `(diff-indicator-added   ((t (:foreground ,text-diff-added   :background ,background-diff-added-highlight   ))))
-    `(diff-indicator-removed ((t (:foreground ,text-diff-removed :background ,background-diff-removed-highlight ))))
+    `(diff-added             ((t (:foreground ,text-region :background ,background-diff-added-highlight   ))))
+    `(diff-refine-added      ((t (:foreground ,text-region :background ,background-diff-added-highlight   ))))
+    `(diff-removed           ((t (:foreground ,text-region :background ,background-diff-removed-highlight ))))
+    `(diff-refine-removed    ((t (:foreground ,text-region :background ,background-diff-removed-highlight ))))
+    `(diff-indicator-added   ((t (:foreground ,text-region :background ,background-diff-added-highlight   ))))
+    `(diff-indicator-removed ((t (:foreground ,text-region :background ,background-diff-removed-highlight ))))
 
     ;org
     `(org-agenda-calendar-event     ((t (:foreground ,color-blue-1                                                             ))))
@@ -313,9 +313,9 @@
     `(org-agenda-restriction-lock   ((t (:foreground ,text-normal                                                              ))))
     `(org-agenda-structure          ((t (:foreground ,text-low                                                                 ))))
     `(org-archived                  ((t (:foreground ,text-normal    :background ,background                                   ))))
-    `(org-block                     ((t (:foreground ,text-normal    :background unspecified                                   ))))
-    `(org-block-begin-line          ((t (:foreground ,text-low       :background unspecified                                   ))))
-    `(org-block-end-line            ((t (:foreground ,text-low       :background unspecified                                   ))))
+    `(org-block                     ((t (:foreground ,text-low       :background unspecified                                   ))))
+    `(org-block-begin-line          ((t (:foreground ,text-lower     :background unspecified                                   ))))
+    `(org-block-end-line            ((t (:foreground ,text-lower     :background unspecified                                   ))))
     `(org-checkbox                  ((t (:foreground ,color-green-1  :background unspecified                                   ))))
     `(org-checkbox-statistics-done  ((t (:foreground ,text-low       :background unspecified                                   ))))
     `(org-checkbox-statistics-todo  ((t (:foreground ,color-green-1  :background unspecified                                   ))))
@@ -324,7 +324,7 @@
     `(org-column                    ((t (:foreground ,text-normal    :background unspecified                                   ))))
     `(org-column-title              ((t (:foreground ,text-normal    :background unspecified                                   ))))
     `(org-date                      ((t (:foreground ,color-blue-1   :background unspecified    :underline t                   ))))
-    `(org-date-selected             ((t (:foreground ,text-hl        :background ,background-hl                                ))))
+    `(org-date-selected             ((t (:foreground ,text-highlight-1        :background ,background-hl                                ))))
     `(org-default                   ((t (:foreground ,color-green-1  :background unspecified                                   ))))
     `(org-document-info             ((t (:foreground ,text-normal    :background unspecified                                   ))))
     `(org-document-info-keyword     ((t (:foreground ,text-normal    :background unspecified                                   ))))
@@ -374,9 +374,6 @@
     `(org-imminent-deadline         ((t (:foreground ,alert-1        :background unspecified    :bold t                        ))))
     `(org-upcoming-deadline         ((t (:foreground ,text-low       :background unspecified                                   ))))
     `(org-upcoming-distant-deadline ((t (:foreground ,text-lower     :background unspecified                                   ))))
-
-    `(diff-added   ((t (:foreground ,text-diff-added   :background ,background-diff-added   ))))
-    `(diff-removed ((t (:foreground ,text-diff-removed :background ,background-diff-removed ))))
 
     `(evil-ex-lazy-highlight     ((t (:foreground ,text-match :background ,background-match ))))
     `(evil-ex-search             ((t (:foreground ,text-match :background ,background-match ))))

@@ -38,7 +38,6 @@
 (setq text-function "#000000")
 (setq text-highlight-1 "#000000")
 (setq text-highlight-2 "#000000")
-(setq text-hl "#000000")
 (setq text-info "#000000")
 (setq text-keyword "#000000")
 (setq text-low "#000000")
