@@ -113,5 +113,6 @@
 (defvar text-type nil ".")
 (defvar text-variable nil ".")
 (defvar text-warning nil ".")
+(defvar text-whitespace nil ".")
 
 ;;; theme_variables.el ends here

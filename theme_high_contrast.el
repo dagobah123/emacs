@@ -56,5 +56,6 @@
 (setq text-variable "#000000")
 (setq text-variable "#000000")
 (setq text-warning "#000000")
+(setq text-whitespace "#000000")
 
 ;;; theme_high_contrast.el ends here

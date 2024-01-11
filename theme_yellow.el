@@ -28,5 +28,6 @@
 (setq text-preprocessor "#afafaf")
 (setq text-type "#aaaa00")
 (setq text-variable "#50a723")
+(setq text-whitespace "#796e00")
 
 ;;; theme_yellow.el ends here

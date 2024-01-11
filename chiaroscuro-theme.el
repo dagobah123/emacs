@@ -54,7 +54,7 @@
     `(highlight                ((t (:foreground ,text-match        :background ,background-match          ))))
     `(lazy-highlight           ((t (:foreground ,text-match        :background ,background-match          ))))
 
-    `(show-paren-match         ((t (:foreground unspecified        :background ,background-region         ))))
+    `(show-paren-match         ((t (:foreground unspecified        :background ,text-highlight-2           ))))
     `(region                   ((t (:foreground ,text-region        :background ,background-region         ))))
     `(cua-rectangle            ((t (:foreground ,text-region        :background ,background-region         ))))
 
@@ -81,13 +81,13 @@
     `(font-lock-builtin-face              ((t (:foreground ,text-type     :bold t ))))
     `(font-lock-comment-delimiter-face    ((t (:foreground ,text-lower            ))))
     `(font-lock-comment-face              ((t (:foreground ,text-lower            ))))
-    `(font-lock-constant-face             ((t (:foreground ,text-constant :bold t ))))
+    `(font-lock-constant-face             ((t (:foreground ,text-constant         ))))
     ;`(font-lock-delimiter-face            ((t (:foreground ,text-normal           ))))
-    `(font-lock-doc-face                  ((t (:foreground ,text-low              ))))
+    `(font-lock-doc-face                  ((t (:foreground ,text-lower            ))))
     ;`(font-lock-doc-markup-face           ((t (:foreground ,text-normal           ))))
     ;`(font-lock-escape-face               ((t (:foreground ,text-normal           ))))
     `(font-lock-function-call-face        ((t (:foreground ,text-highlight-1      ))))
-    `(font-lock-function-name-face        ((t (:foreground ,text-normal           ))))
+    `(font-lock-function-name-face        ((t (:foreground ,text-function         ))))
     `(font-lock-keyword-face              ((t (:foreground ,text-keyword :bold t  ))))
     ;`(font-lock-misc-punctuation-face     ((t (:foreground ,text-normal           ))))
     ;`(font-lock-negation-char-face        ((t (:foreground ,text-normal           ))))
@@ -122,8 +122,8 @@
     `(dired-warning      ((t (:foreground ,text-normal      :background unspecified         ))))
     `(dired-special      ((t (:foreground ,text-match                                       ))))
 
-    `(xref-file-header   ((t (:foreground ,line-number-3                               ))))
-    `(xref-line-number   ((t (:foreground ,line-number-1                               ))))
+    ;`(xref-file-header   ((t (:foreground ,line-number-3                               ))))
+    ;`(xref-line-number   ((t (:foreground ,line-number-1                               ))))
     `(xref-match         ((t (:foreground ,text-match    :background ,background-match ))))
     `(match              ((t (:foreground ,text-match    :background ,background-match ))))
 
@@ -165,7 +165,7 @@
     `(helm-bookmark-info                ((t (:foreground ,color-blue-1   :background ,color-blue-2                          ))))
 
     `(compilation-error                 ((t (:foreground ,text-error :bold t :underline t ))))
-    `(compilation-info                  ((t (:foreground ,text-highlight-1 :bold t :underline t ))))
+    `(compilation-info                  ((t (:foreground ,text-highlight-2 :bold t :underline t ))))
     `(helm-lsp-diag-error               ((t (:foreground ,text-error :bold t :underline t ))))
     `(helm-lsp-diag-info                ((t (:foreground ,text-error :bold t :underline t ))))
 
@@ -381,8 +381,8 @@
     `(lazy-highlight             ((t (:foreground ,text-match :background ,background-match ))))
     `(isearch                    ((t (:foreground ,text-match :background ,background-match ))))
 
-    `(whitespace-space   ((t (:foreground ,text-lower :background unspecified ))))
-    `(whitespace-newline ((t (:foreground ,text-lower :background unspecified ))))
+    `(whitespace-space   ((t (:foreground ,text-whitespace :background unspecified ))))
+    `(whitespace-newline ((t (:foreground ,text-whitespace :background unspecified ))))
     `(whitespace-line    ((t (:background unspecified ))))
 
     `(lsp-flycheck-warning-unnecessary-face     ((t (:foreground ,text-warning   :bold t :underline t ))))
