@@ -21,14 +21,26 @@
 (setq color-type "none")                    ;type 
 (setq color-variable "none")                ;variable
 
-(defun my:color-lightness (color)
+(defun my:color-lightness (rgb-values)
   "Calculate the lightness of a color in the form '#RRGGBB'."
-  (let* ((rgb-values (color-values color))
-         (r (/ (car rgb-values) 255.0))
+  (let* ((r (/ (car rgb-values) 255.0))
          (g (/ (cadr rgb-values) 255.0))
          (b (/ (caddr rgb-values) 255.0))
          (luminance (+ (* 0.2126 r) (* 0.7152 g) (* 0.0722 b))))
     luminance))
+
+;(defun my:color-lightness (r g b)
+;  "Calculate the lightness of a color given its RGB values."
+;  (let* ((r (/ r 255.0))
+;         (g (/ g 255.0))
+;         (b (/ b 255.0))
+;         (luminance (+ (* 0.2126 r) (* 0.7152 g) (* 0.0722 b))))
+;    luminance))
+; 
+;;; Example usage:
+;(setq lightness (my:color-lightness 240 255 255))
+;(message "Lightness: %s" lightness)
+
 
 (defun my:get-random-element (list-of-lists)
   "Get a random element from a list of lists."
@@ -37,8 +49,17 @@
     (setq color-type (elt random-sublist 0))
     (elt random-sublist random-index)))
 
-(message "test")
-(message "test2 %s" (prin1-to-string (color-name-to-rgb (my:get-random-element colors-list))))
+
+(message "Color data")
+(setq random-color-name (my:get-random-element colors-list))
+(message "random color name: %s" random-color-name) 
+(setq random-color-rgb (color-name-to-rgb random-color-name))
+(message "rgb %s" (prin1-to-string random-color-rgb))
+(message "r %s" (prin1-to-string (car random-color-rgb)))
+(message "g %s" (prin1-to-string (cadr random-color-rgb)))
+(message "b %s" (prin1-to-string (caddr random-color-rgb)))
+(message "lightness: %s" (prin1-to-string (my:color-lightness random-color-rgb)))
+
 
 (defun my:background-color ()
   (if (eq INDEX-CHIAROSCURO INDEX-COLOR-CHANGE-DARK)
