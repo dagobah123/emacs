@@ -26,11 +26,23 @@
   (let* ((luminance (+ (* 0.2126 r) (* 0.7152 g) (* 0.0722 b))))
     luminance))
 
+(defun my:get-hue (r g b)
+  "Calculate the hue of an RGB color."
+  (let* ((hsl-values (color-rgb-to-hsl r g b))
+         (hue (car hsl-values)))
+    hue))
+
 (defun my:get-saturation (r g b)
   "Calculate the saturation of an RGB color."
   (let* ((hsl-values (color-rgb-to-hsl r g b))
          (saturation (cadr hsl-values)))
     saturation))
+
+(defun my:get-lightness (r g b)
+  "Calculate the lightness of an RGB color."
+  (let* ((hsl-values (color-rgb-to-hsl r g b))
+         (lightness (caddr hsl-values)))
+    lightness))
 
 (defun my:adjust-lightness (r g b factor)
   "Adjust the lightness of a color by multiplying each RGB component by a factor."
@@ -66,18 +78,24 @@
 ;Lightness (L): This represents the brightness or darkness of the color. A lightness of 0.0 is black, 0.5 is a balanced color, and 1.0 is white.
 ;The color-rgb-to-hsl function in Emacs Lisp takes RGB values and converts them to HSL values. The result is a list with three elements corresponding to the Hue, Saturation, and Lightness components.
 
+;https://www.gnu.org/software/emacs/manual/html_node/emacs/Colors.html#RGB-Triplets
+
 (defun my:background-color ()
   (let* ((background-color-name (my:get-random-element colors-list))
          (background-color-rgb (color-name-to-rgb background-color-name))
+         (background-color-hue (prin1-to-string (my:get-hue (car background-color-rgb) (cadr background-color-rgb) (caddr background-color-rgb))))
          (background-color-saturation (prin1-to-string (my:get-saturation (car background-color-rgb) (cadr background-color-rgb) (caddr background-color-rgb))))
-         (background-color-lightness (prin1-to-string (my:lightness (car background-color-rgb) (cadr background-color-rgb) (caddr background-color-rgb)))))
+         (background-color-lightness (prin1-to-string (my:get-lightness (car background-color-rgb) (cadr background-color-rgb) (caddr background-color-rgb))))
+         (background-color-lightness2 (prin1-to-string (my:lightness (car background-color-rgb) (cadr background-color-rgb) (caddr background-color-rgb)))))
     (message "-------------------------------------------------------")
     (message "my:background-color")
     (message "...................")
     (message "name:\t\t%s " background-color-name)
+    (message "hue:\t\t%s (0/1 red | 1/6 yellow | 2/6 green | 3/6 cyan | 4/6 blue | 5/6 magenta)" background-color-hue)
     (message "saturation:\t%s " background-color-saturation)
-    ;TODO
     (message "lightness:\t%s " background-color-lightness)
+    ;TODO
+    (message "lightness2:\t%s " background-color-lightness2)
     (if (eq INDEX-CHIAROSCURO INDEX-COLOR-CHANGE-DARK)
         (progn (message "theme:\t\tdark"))
       (progn (message "theme:\t\tlight")))
