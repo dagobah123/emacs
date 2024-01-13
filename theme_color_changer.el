@@ -21,26 +21,17 @@
 (setq color-type "none")                    ;type 
 (setq color-variable "none")                ;variable
 
-(defun my:color-lightness (rgb-values)
-  "Calculate the lightness of a color in the form '#RRGGBB'."
-  (let* ((r (/ (car rgb-values) 255.0))
-         (g (/ (cadr rgb-values) 255.0))
-         (b (/ (caddr rgb-values) 255.0))
-         (luminance (+ (* 0.2126 r) (* 0.7152 g) (* 0.0722 b))))
+(defun my:lightness (r g b)
+  "Calculate the lightness of a color given its RGB values in the range [0.0, 1.0]."
+  (let* ((luminance (+ (* 0.2126 r) (* 0.7152 g) (* 0.0722 b))))
     luminance))
 
-;(defun my:color-lightness (r g b)
-;  "Calculate the lightness of a color given its RGB values."
-;  (let* ((r (/ r 255.0))
-;         (g (/ g 255.0))
-;         (b (/ b 255.0))
-;         (luminance (+ (* 0.2126 r) (* 0.7152 g) (* 0.0722 b))))
-;    luminance))
-; 
-;;; Example usage:
-;(setq lightness (my:color-lightness 240 255 255))
-;(message "Lightness: %s" lightness)
-
+(defun my:adjust-lightness (r g b factor)
+  "Adjust the lightness of a color by multiplying each RGB component by a factor."
+  (let* ((adjusted-r (* r factor))
+         (adjusted-g (* g factor))
+         (adjusted-b (* b factor)))
+    (color-rgb-to-hex adjusted-r adjusted-g adjusted-b)))
 
 (defun my:get-random-element (list-of-lists)
   "Get a random element from a list of lists."
@@ -51,15 +42,23 @@
 
 
 (message "Color data")
-(setq random-color-name (my:get-random-element colors-list))
+;(setq random-color-name (my:get-random-element colors-list))
+(setq random-color-name "white")
 (message "random color name: %s" random-color-name) 
 (setq random-color-rgb (color-name-to-rgb random-color-name))
 (message "rgb %s" (prin1-to-string random-color-rgb))
 (message "r %s" (prin1-to-string (car random-color-rgb)))
 (message "g %s" (prin1-to-string (cadr random-color-rgb)))
 (message "b %s" (prin1-to-string (caddr random-color-rgb)))
-(message "lightness: %s" (prin1-to-string (my:color-lightness random-color-rgb)))
+(message "lightness: %s" (prin1-to-string (my:lightness (car random-color-rgb) (cadr random-color-rgb) (caddr random-color-rgb))))
+(setq adjusted-color (my:adjust-lightness 1.0 1.0 1.0 0.5))
+(message "Adjusted color: %s" adjusted-color)
 
+;TODO
+;Get a random color
+;Check lightness of the color
+;Increase/decrease color
+;Set text color
 
 (defun my:background-color ()
   (if (eq INDEX-CHIAROSCURO INDEX-COLOR-CHANGE-DARK)
