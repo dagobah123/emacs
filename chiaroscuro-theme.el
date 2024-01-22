@@ -480,7 +480,7 @@
     `(org-block-begin-line ((t (:foreground ,text-lower :background unspecified ))))
     `(org-block-end-line   ((t (:foreground ,text-lower :background unspecified ))))
 
-    `(eww-form-submit ((t (:foreground ,text-normal :background ,background-region ))))
+    `(eww-form-submit ((t (:foreground ,text-normal :background ,background-mode-line ))))
 
   )
 
