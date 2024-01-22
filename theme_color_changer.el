@@ -81,10 +81,17 @@
 ;https://www.gnu.org/software/emacs/manual/html_node/emacs/Colors.html#RGB-Triplets
 
 (defun my:background-color ()
-  (let* ((background-color-name (my:get-random-element colors-list))
+  (let* (;get random background color
+         (background-color-name (my:get-random-element colors-list))
+         ;convert background color to rgb
          (background-color-rgb (color-name-to-rgb background-color-name))
+         ;get the hue from the r g b values
          (background-color-hue (prin1-to-string (my:get-hue (car background-color-rgb) (cadr background-color-rgb) (caddr background-color-rgb))))
+         ;get the saturation from the r g b values
          (background-color-saturation (prin1-to-string (my:get-saturation (car background-color-rgb) (cadr background-color-rgb) (caddr background-color-rgb))))
+
+         ;TODO Check which lightness function to use
+
          (background-color-lightness (prin1-to-string (my:get-lightness (car background-color-rgb) (cadr background-color-rgb) (caddr background-color-rgb))))
          (background-color-lightness2 (prin1-to-string (my:lightness (car background-color-rgb) (cadr background-color-rgb) (caddr background-color-rgb)))))
     (message "-------------------------------------------------------")
