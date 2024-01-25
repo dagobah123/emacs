@@ -89,11 +89,8 @@
          (background-color-hue (prin1-to-string (my:get-hue (car background-color-rgb) (cadr background-color-rgb) (caddr background-color-rgb))))
          ;get the saturation from the r g b values
          (background-color-saturation (prin1-to-string (my:get-saturation (car background-color-rgb) (cadr background-color-rgb) (caddr background-color-rgb))))
-
-         ;TODO Check which lightness function to use
-
+         ;get the lightness from the r g b values
          (background-color-lightness (prin1-to-string (my:get-lightness (car background-color-rgb) (cadr background-color-rgb) (caddr background-color-rgb))))
-         (background-color-lightness2 (prin1-to-string (my:lightness (car background-color-rgb) (cadr background-color-rgb) (caddr background-color-rgb)))))
     (message "-------------------------------------------------------")
     (message "my:background-color")
     (message "...................")
