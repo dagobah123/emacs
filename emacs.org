@@ -50,6 +50,7 @@
                        golden-ratio
                        google-translate
                        goto-last-change
+                       hackernews
                        helm-bm
                        helm-projectile
                        helm-swoop
@@ -73,7 +74,9 @@
                        powershell
                        projectile
                        rainbow-mode
+                       speed-type
                        swiper-helm
+                       trr
                        treemacs-projectile
                        use-package
                        visual-regexp
