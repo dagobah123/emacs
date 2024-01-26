@@ -76,7 +76,6 @@
                        rainbow-mode
                        speed-type
                        swiper-helm
-                       trr
                        treemacs-projectile
                        use-package
                        visual-regexp
