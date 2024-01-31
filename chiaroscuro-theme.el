@@ -482,6 +482,10 @@
 
     `(eww-form-submit ((t (:foreground ,text-normal :background ,background-mode-line ))))
 
+    `(speed-type-correct ((t (:foreground ,text-lower ))))
+    `(speed-type-default ((t (:foreground ,text-normal ))))
+    `(speed-type-mistake ((t (:foreground ,color-red-1 ))))
+
   )
 
 ))
