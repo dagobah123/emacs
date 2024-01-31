@@ -484,7 +484,7 @@
 
     `(speed-type-correct ((t (:foreground ,text-lower ))))
     `(speed-type-default ((t (:foreground ,text-normal ))))
-    `(speed-type-mistake ((t (:foreground ,color-red-1 ))))
+    `(speed-type-mistake ((t (:foreground ,background-diff-current-A ))))
 
   )
 
