@@ -339,14 +339,14 @@
     `(org-hide                      ((t (:foreground ,text-normal    :background unspecified                                   ))))
     `(org-latex-and-related         ((t (:foreground ,text-normal    :background unspecified                                   ))))
 
-    `(org-level-1                   ((t (:foreground ,color-blue-1   :background unspecified    :bold t                        ))))
-    `(org-level-2                   ((t (:foreground ,color-red-1    :background unspecified    :bold t                        ))))
-    `(org-level-3                   ((t (:foreground ,color-green-1  :background unspecified    :bold t                        ))))
-    `(org-level-4                   ((t (:foreground ,color-yellow-1 :background unspecified    :bold t                        ))))
-    `(org-level-5                   ((t (:foreground ,color-violet-1 :background unspecified    :bold t                        ))))
-    `(org-level-6                   ((t (:foreground ,color-orange-1 :background unspecified    :bold t                        ))))
-    `(org-level-7                   ((t (:foreground ,color-gray-1   :background unspecified    :bold t                        ))))
-    `(org-level-8                   ((t (:foreground ,color-blue-1   :background unspecified    :bold t                        ))))
+    `(org-level-1                   ((t (:foreground ,text-highlight-1 :background unspecified    :bold t                        ))))
+    `(org-level-2                   ((t (:foreground ,text-highlight-1 :background unspecified    :bold t                        ))))
+    `(org-level-3                   ((t (:foreground ,text-highlight-1 :background unspecified    :bold t                        ))))
+    `(org-level-4                   ((t (:foreground ,text-highlight-1 :background unspecified    :bold t                        ))))
+    `(org-level-5                   ((t (:foreground ,text-highlight-1 :background unspecified    :bold t                        ))))
+    `(org-level-6                   ((t (:foreground ,text-highlight-1 :background unspecified    :bold t                        ))))
+    `(org-level-7                   ((t (:foreground ,text-highlight-1 :background unspecified    :bold t                        ))))
+    `(org-level-8                   ((t (:foreground ,text-highlight-1 :background unspecified    :bold t                        ))))
 
     `(org-link                      ((t (:foreground ,color-blue-1   :background unspecified    :bold t :underline t           ))))
     `(org-list-dt                   ((t (:foreground ,text-normal    :background unspecified                                   ))))
@@ -481,6 +481,7 @@
     `(org-block-end-line   ((t (:foreground ,text-lower :background unspecified ))))
 
     `(eww-form-submit ((t (:foreground ,text-normal :background ,background-mode-line ))))
+    `(eww-form-textarea ((t (:foreground ,text-normal :background ,background-mode-line ))))
 
     `(speed-type-correct ((t (:foreground ,text-lower ))))
     `(speed-type-default ((t (:foreground ,text-normal ))))

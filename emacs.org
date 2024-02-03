@@ -50,13 +50,14 @@
                        golden-ratio
                        google-translate
                        goto-last-change
-                       hackernews
                        helm-bm
                        helm-projectile
                        helm-swoop
                        hide-mode-line
                        highlight
+                       hnreader
                        ibuffer-vc
+                       iedit
                        itail
                        ivy
                        json-mode
@@ -1879,6 +1880,10 @@ Load environment variables properly by installing *exec-path-from-shell*.
           (local-set-key (kbd "C-c C-g") 'jsons-print-path)))
   (add-hook 'js-mode-hook 'js-mode-bindings)
   (add-hook 'js2-mode-hook 'js-mode-bindings)
+#+END_SRC
+** iedit
+#+BEGIN_SRC emacs-lisp
+  (require 'iedit)
 #+END_SRC
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.
