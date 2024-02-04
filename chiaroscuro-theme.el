@@ -313,7 +313,7 @@
     `(org-agenda-restriction-lock   ((t (:foreground ,text-normal                                                              ))))
     `(org-agenda-structure          ((t (:foreground ,text-low                                                                 ))))
     `(org-archived                  ((t (:foreground ,text-normal    :background ,background                                   ))))
-    `(org-block                     ((t (:foreground ,text-low       :background unspecified                                   ))))
+    `(org-block                     ((t (:foreground ,text-low       :background ,background-low  :italic t                      ))))
     `(org-block-begin-line          ((t (:foreground ,text-lower     :background unspecified                                   ))))
     `(org-block-end-line            ((t (:foreground ,text-lower     :background unspecified                                   ))))
     `(org-checkbox                  ((t (:foreground ,color-green-1  :background unspecified                                   ))))
@@ -476,9 +476,6 @@
     `(popup-scroll-bar-foreground-face  ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
     `(popup-summary-face                ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
     `(popup-tip-face                    ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
-
-    `(org-block-begin-line ((t (:foreground ,text-lower :background unspecified ))))
-    `(org-block-end-line   ((t (:foreground ,text-lower :background unspecified ))))
 
     `(eww-form-submit ((t (:foreground ,text-normal :background ,background-mode-line ))))
     `(eww-form-textarea ((t (:foreground ,text-normal :background ,background-mode-line ))))

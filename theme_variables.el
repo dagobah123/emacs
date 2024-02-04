@@ -50,6 +50,7 @@
 (defvar background-match nil ".")
 (defvar background-mode-line nil ".")
 (defvar background-mode-line-active nil ".")
+(defvar background-low nil ".")
 (defvar background-region nil ".")
 (defvar color-blue-1 nil ".")
 (defvar color-blue-2 nil ".")

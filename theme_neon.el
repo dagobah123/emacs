@@ -13,6 +13,7 @@
 (setq background-magit-dark "#000000")
 (setq background-mode-line "#331933")
 (setq background-mode-line-active "#561056")
+(setq background-low "#440044")
 (setq background-region "#a68124")
 (setq text-constant "#545299")
 (setq text-function "#339933")

@@ -4,14 +4,15 @@
 
 (load-file "~/.emacs.d/theme_variables.el")
 
-(setq background "#e1d9af");ok
-(setq background-fringe "#cac39a");ok
-(setq background-hl "#eddb80");ok
-(setq background-magit "#cac39a");ok
-(setq background-magit-dark "#c0b478");ok
-(setq background-match "#e2b35d");ok
-(setq background-mode-line "#cac39a");ok
-(setq background-mode-line-active "#cac39a");ok
+(setq background "#e1d9af")
+(setq background-fringe "#cac39a")
+(setq background-hl "#eddb80")
+(setq background-magit "#cac39a")
+(setq background-magit-dark "#c0b478")
+(setq background-match "#e2b35d")
+(setq background-mode-line "#cac39a")
+(setq background-mode-line-active "#c0b478")
+(setq background-low "#ddcc99")
 (setq background-region "#edcb8c")
 (setq text-constant "#767f1c")
 (setq text-error "#ff0000")
