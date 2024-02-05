@@ -7,7 +7,7 @@
 (setq background "#ffffff")
 (setq background-fringe "#eeeeee")
 (setq background-hl "#e8f2fe")
-(setq background-magit "#dedede")
+(setq background-magit "#eeeeee")
 (setq background-magit-dark "#f2f2f2")
 (setq background-match "#ecdba7")
 (setq background-mode-line "#eeeeee")

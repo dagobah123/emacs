@@ -86,25 +86,36 @@
          ;convert background color to rgb
          (background-color-rgb (color-name-to-rgb background-color-name))
          ;get the hue from the r g b values
-         (background-color-hue (prin1-to-string (my:get-hue (car background-color-rgb) (cadr background-color-rgb) (caddr background-color-rgb))))
+         (background-color-hue (prin1-to-string
+                                (my:get-hue (car background-color-rgb)
+                                            (cadr background-color-rgb)
+                                            (caddr background-color-rgb))))
          ;get the saturation from the r g b values
-         (background-color-saturation (prin1-to-string (my:get-saturation (car background-color-rgb) (cadr background-color-rgb) (caddr background-color-rgb))))
+         (background-color-saturation (prin1-to-string
+                                       (my:get-saturation (car background-color-rgb)
+                                                          (cadr background-color-rgb)
+                                                          (caddr background-color-rgb))))
          ;get the lightness from the r g b values
-         (background-color-lightness (prin1-to-string (my:get-lightness (car background-color-rgb) (cadr background-color-rgb) (caddr background-color-rgb))))
+         (background-color-lightness (prin1-to-string
+                                      (my:get-lightness (car background-color-rgb)
+                                                        (cadr background-color-rgb)
+                                                        (caddr background-color-rgb))))
     (message "-------------------------------------------------------")
-    (message "my:background-color")
-    (message "...................")
-    (message "name:\t\t%s " background-color-name)
-    (message "hue:\t\t%s (0/1 red | 1/6 yellow | 2/6 green | 3/6 cyan | 4/6 blue | 5/6 magenta)" background-color-hue)
-    (message "saturation:\t%s " background-color-saturation)
-    (message "lightness:\t%s " background-color-lightness)
+    ;(message "my:background-color")
+    ;(message "...................")
+    ;(message "name:\t\t%s " background-color-name)
+    ;(message "hue:\t\t%s (0/1 red | 1/6 yellow | 2/6 green | 3/6 cyan | 4/6 blue | 5/6 magenta)" background-color-hue)
+    ;(message "saturation:\t%s " background-color-saturation)
+    ;(message "lightness:\t%s " background-color-lightness)
     ;TODO
-    (message "lightness2:\t%s " background-color-lightness2)
-    (if (eq INDEX-CHIAROSCURO INDEX-COLOR-CHANGE-DARK)
-        (progn (message "theme:\t\tdark"))
-      (progn (message "theme:\t\tlight")))
+    ;(message "lightness2:\t%s " background-color-lightness2)
+    ;(if (eq INDEX-CHIAROSCURO INDEX-COLOR-CHANGE-DARK)
+    ;    (progn (message "theme:\t\tdark"))
+    ;  (progn (message "theme:\t\tlight")))
     (message "-------------------------------------------------------")
-    (setq color-background background-color-name)))
+    ))
+    ;(setq color-background background-color-name))
+  )  
 
 (defun my:text-color ()
   (setq color-text (color-complement-hex color-background))
@@ -125,8 +136,8 @@
   (message "Color background: %s" color-background))
 
 (my:background-color)
-(my:other-background-colors)
-(my:text-color)
+;(my:other-background-colors)
+;(my:text-color)
 ;(my:complementary-text-colors)
 ;(my:font-lock-colors)
 ;(my:print-colors)
