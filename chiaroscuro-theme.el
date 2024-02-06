@@ -216,8 +216,8 @@
     `(magit-diff-hunk-region            ((t (:foreground ,text-normal      :background ,background-magit              ))))
     `(magit-diff-conflict-heading       ((t (:foreground ,text-normal      :background ,background-magit              ))))
 
-    `(magit-diff-file-heading           ((t (:foreground ,text-lower       :background ,background-magit      :bold t ))))
-    `(magit-diff-file-heading-selection ((t (:foreground ,text-highlight-2 :background ,background-magit      :bold t ))))
+    `(magit-diff-file-heading           ((t (:foreground ,text-lower       :background unspecified            :bold t ))))
+    `(magit-diff-file-heading-selection ((t (:foreground ,text-highlight-2 :background unspecified            :bold t ))))
     `(magit-diff-file-heading-highlight ((t (:foreground ,text-highlight-2 :background ,background-magit      :bold t ))))
 
     `(magit-diff-hunk-heading           ((t (:foreground ,text-low         :background ,background-magit              ))))
@@ -339,14 +339,14 @@
     `(org-hide                      ((t (:foreground ,text-normal    :background unspecified                                   ))))
     `(org-latex-and-related         ((t (:foreground ,text-normal    :background unspecified                                   ))))
 
-    `(org-level-1                   ((t (:foreground ,text-highlight-1 :background unspecified    :bold t                        ))))
-    `(org-level-2                   ((t (:foreground ,text-highlight-1 :background unspecified    :bold t                        ))))
-    `(org-level-3                   ((t (:foreground ,text-highlight-1 :background unspecified    :bold t                        ))))
-    `(org-level-4                   ((t (:foreground ,text-highlight-1 :background unspecified    :bold t                        ))))
-    `(org-level-5                   ((t (:foreground ,text-highlight-1 :background unspecified    :bold t                        ))))
-    `(org-level-6                   ((t (:foreground ,text-highlight-1 :background unspecified    :bold t                        ))))
-    `(org-level-7                   ((t (:foreground ,text-highlight-1 :background unspecified    :bold t                        ))))
-    `(org-level-8                   ((t (:foreground ,text-highlight-1 :background unspecified    :bold t                        ))))
+    ;`(org-level-1                   ((t (:foreground ,text-highlight-1 :background unspecified    :bold t                        ))))
+    ;`(org-level-2                   ((t (:foreground ,text-highlight-1 :background unspecified    :bold t                        ))))
+    ;`(org-level-3                   ((t (:foreground ,text-highlight-1 :background unspecified    :bold t                        ))))
+    ;`(org-level-4                   ((t (:foreground ,text-highlight-1 :background unspecified    :bold t                        ))))
+    ;`(org-level-5                   ((t (:foreground ,text-highlight-1 :background unspecified    :bold t                        ))))
+    ;`(org-level-6                   ((t (:foreground ,text-highlight-1 :background unspecified    :bold t                        ))))
+    ;`(org-level-7                   ((t (:foreground ,text-highlight-1 :background unspecified    :bold t                        ))))
+    ;`(org-level-8                   ((t (:foreground ,text-highlight-1 :background unspecified    :bold t                        ))))
 
     `(org-link                      ((t (:foreground ,color-blue-1   :background unspecified    :bold t :underline t           ))))
     `(org-list-dt                   ((t (:foreground ,text-normal    :background unspecified                                   ))))
