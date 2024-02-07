@@ -54,9 +54,9 @@
     `(highlight                ((t (:foreground ,text-match        :background ,background-match          ))))
     `(lazy-highlight           ((t (:foreground ,text-match        :background ,background-match          ))))
 
-    `(show-paren-match         ((t (:foreground unspecified        :background ,text-highlight-2           ))))
-    `(region                   ((t (:foreground ,text-region        :background ,background-region         ))))
-    `(cua-rectangle            ((t (:foreground ,text-region        :background ,background-region         ))))
+    `(show-paren-match         ((t (:foreground unspecified        :background ,text-highlight-1           ))))
+    `(region                   ((t (:foreground ,text-region       :background ,background-region          ))))
+    `(cua-rectangle            ((t (:foreground ,text-region       :background ,background-region          ))))
 
     `(hl-line                  ((t (:foreground unspecified        :background ,background-hl             ))))
     `(fringe                   ((t (:foreground ,text-normal       :background ,background-fringe         ))))
