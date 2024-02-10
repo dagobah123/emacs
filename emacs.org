@@ -552,31 +552,40 @@
     (subword-mode t))
   (global-set-key (kbd "C-c e") 'my:backward-copy-word)
 
-  (defun my:grep-in-project ()
-    "Search for a string using vc-git-grep from the project root."
-    (interactive)
-    (let ((search-string (read-from-minibuffer "Search for: ")))
-      (setq search-string (replace-regexp-in-string "\\s-+" ".*" search-string))
-      (project-dired)
-      (vc-git-grep search-string "\*" "\*"))
-    (quit-window)
-    (switch-to-buffer "*grep*")
-    (delete-other-windows)
-    (beginning-of-buffer))
-  (global-set-key (kbd "C-c f") 'my:grep-in-project)
+  (defun my-git-grep-search (search-strings)
+    "Search for multiple strings using vc-git-grep and display simplified output."
+    (interactive "MEnter search strings (comma-separated): ")
+    (let* ((search-list (split-string search-strings "," t " "))
+           (default-directory (vc-git-root default-directory))
+           (grep-command (format "git --no-pager grep -n -E -i -e %s -- %s"
+                                 (mapconcat 'shell-quote-argument search-list ".*")
+                                 (vc-git-root default-directory)))
+           (grep-buffer-name "*Git Grep Results*"))
+      (compilation-start grep-command 'grep-mode
+                         (lambda (mode-name)
+                           (format "Search: %s" mode-name)))
+      (with-current-buffer grep-buffer-name
+        (while (re-search-forward (concat "^" (mapconcat 'identity search-list ".*")) nil t)
+          (replace-match "")))
+      (goto-char (point-min))
+      (delete-non-matching-lines (rx bol (group (1+ digit)) ":" (group (1+ not-newline)) eol))))
+  (global-set-key (kbd "C-c f") 'my-git-grep-search)
 
-  (defun my:grep-in-project2 ()
-    "Search for multiple strings using vc-git-grep with an AND condition."
-    (interactive)
-    (let* ((search-strings (split-string (read-from-minibuffer "Search for (space-separated): ") " "))
-           (search-regexp (mapconcat 'identity search-strings ".*")))
-      (setq search-regexp (concat ".*" search-regexp ".*"))
-      (project-dired)
-      (vc-git-grep search-regexp "*" "*"))
-    (quit-window)
-    (switch-to-buffer "*grep*")
-    (delete-other-windows)
-    (beginning-of-buffer))
+  (defun my:grep-in-project2 (search-strings)
+    "Search for multiple strings using vc-git-grep and display simplified output."
+    (interactive "MEnter search strings (space-separated): ")
+    (let* ((search-list (split-string search-strings " " t " "))
+           (default-directory (vc-git-root default-directory))
+           (grep-command (format "git --no-pager grep -n -E -i -e %s"
+                                 (mapconcat 'shell-quote-argument search-list " -e ")))
+           (grep-buffer-name "*Git Grep Results*"))
+      (compilation-start grep-command 'grep-mode
+                         (lambda (mode-name)
+                           (format "Search: %s" mode-name)))
+      (with-current-buffer grep-buffer-name
+        (while (search-forward-regexp (rx bol (group (1+ digit)) ":" (group (1+ not-newline)) eol) nil t)
+          (replace-match (format "%s:%s" (file-name-nondirectory (match-string 2)) (match-string 1)))))))
+   
   (global-set-key (kbd "C-c g") 'my:grep-in-project2)
 
   ; https://emacs.stackexchange.com/questions/52295/how-to-set-value-vc-git-grep-template-within-function
