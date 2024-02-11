@@ -61,6 +61,7 @@
                        itail
                        ivy
                        json-mode
+                       json-navigator
                        json-snatcher
                        lsp-java
                        lsp-ui
@@ -77,6 +78,7 @@
                        rainbow-mode
                        speed-type
                        swiper-helm
+                       tree-mode
                        treemacs-projectile
                        use-package
                        visual-regexp
@@ -1890,6 +1892,14 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ** iedit
 #+BEGIN_SRC emacs-lisp
   (require 'iedit)
+#+END_SRC
+** json-navigator
+#+BEGIN_SRC emacs-lisp
+  (require 'json-navigator)
+#+END_SRC
+** tree-mode
+#+BEGIN_SRC emacs-lisp
+  (require 'tree-mode)
 #+END_SRC
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.
