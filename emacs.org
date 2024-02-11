@@ -61,7 +61,6 @@
                        itail
                        ivy
                        json-mode
-                       json-navigator
                        json-snatcher
                        lsp-java
                        lsp-ui
@@ -78,7 +77,6 @@
                        rainbow-mode
                        speed-type
                        swiper-helm
-                       tree-mode
                        treemacs-projectile
                        use-package
                        visual-regexp
@@ -586,6 +584,8 @@
         (while (search-forward-regexp (rx bol (group (1+ digit)) ":" (group (1+ not-newline)) eol) nil t)
           (replace-match (format "%s:%s" (file-name-nondirectory (match-string 2)) (match-string 1)))))))
   (global-set-key (kbd "C-c g") 'my:grep-in-project2)
+
+
 
   ; https://emacs.stackexchange.com/questions/52295/how-to-set-value-vc-git-grep-template-within-function
   ;(defun my:vc-git-grep-noncase ()
@@ -1893,13 +1893,21 @@ Load environment variables properly by installing *exec-path-from-shell*.
 #+BEGIN_SRC emacs-lisp
   (require 'iedit)
 #+END_SRC
-** json-navigator
+** tree-sitter
 #+BEGIN_SRC emacs-lisp
-  (require 'json-navigator)
-#+END_SRC
-** tree-mode
-#+BEGIN_SRC emacs-lisp
-  (require 'tree-mode)
+;(use-package tree-sitter
+;  :ensure t
+;  :config
+;  (global-tree-sitter-mode)
+;  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+;
+;(use-package tree-sitter-langs
+;  :ensure t
+;  :config
+;  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+;
+;;; Disable font-lock globally
+;(global-font-lock-mode -1)
 #+END_SRC
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.

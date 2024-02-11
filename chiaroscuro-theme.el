@@ -477,8 +477,11 @@
     `(popup-summary-face                ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
     `(popup-tip-face                    ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
 
-    `(eww-form-submit ((t (:foreground ,text-normal :background ,background-mode-line ))))
-    `(eww-form-textarea ((t (:foreground ,text-normal :background ,background-mode-line ))))
+    `(eww-form-submit ((t (:foreground ,text-highlight-1 :background ,background-mode-line ))))
+    `(eww-form-textarea ((t (:foreground ,text-highlight-1 :background ,background-mode-line ))))
+    `(eww-form-text ((t (:foreground ,text-highlight-1 :background ,background-mode-line ))))
+    `(eww-form-checkbox ((t (:foreground ,text-highlight-1 :background ,background-mode-line ))))
+    `(shr-link ((t (:foreground ,text-highlight-2 ))))
 
     `(speed-type-correct ((t (:foreground ,text-lower ))))
     `(speed-type-default ((t (:foreground ,text-normal ))))

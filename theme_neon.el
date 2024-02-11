@@ -19,7 +19,7 @@
 (setq text-constant "#545299")
 (setq text-function "#339933")
 (setq text-highlight-1 "#ffb600")
-(setq text-highlight-2 "#00dd00")
+(setq text-highlight-2 "#bf4092")
 (setq text-info "#555577")
 (setq text-low "#8f3c7f")
 (setq text-lower "#684962")
