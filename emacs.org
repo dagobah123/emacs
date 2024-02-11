@@ -709,6 +709,21 @@
   (defun my:setup-xml-mode-keybindings ()
     (define-key nxml-mode-map (kbd "C-9") 'my:helm-xml-tags))
   (add-hook 'nxml-mode-hook 'my:setup-xml-mode-keybindings)
+
+  (defun my:mark-curly-brace-region ()
+    "Mark and select the region between the opening and closing curly braces."
+    (interactive)
+      (let ((original-point (point)))
+        (when (search-backward "{" nil t)
+          (let ((start-point (point)))
+            (when (search-forward "}" nil t)
+              (let ((end-point (point)))
+                (transient-mark-mode 1)
+                (set-mark start-point)
+                (goto-char end-point)
+                (message "Region marked and selected between curly braces")))))))
+
+  (global-set-key (kbd "C-+") 'my:mark-curly-brace-region)
 #+END_SRC
 ** class overview
 #+BEGIN_SRC emacs-lisp
