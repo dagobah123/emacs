@@ -874,7 +874,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (setq shr-use-colors nil) ; No colors
   (setq shr-indentation 2) ; Left-side margin
   (setq shr-width 80) ; Fold text
-  (setq shr-max-image-proportion 0.3) ; Image size
+  ;(setq shr-max-image-proportion 0.3) ; Image size
 
   (cond
     ((string-equal system-type "windows-nt")
