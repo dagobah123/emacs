@@ -879,6 +879,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (evil-mode nil)
 
   (setq evil-default-state 'emacs)
+  (add-to-list 'evil-emacs-state-modes 'grep-mode)
+  (add-to-list 'evil-emacs-state-modes 'Info-mode)
 #+END_SRC
 ** eww
 #+BEGIN_SRC emacs-lisp
