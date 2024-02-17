@@ -1085,15 +1085,15 @@ Load environment variables properly by installing *exec-path-from-shell*.
     "
   Code
 
-  ^LSP^             ^Git^           ^Search^               ^Project^   ^Diff^            ^Build^
-  ^^^^^--------------------------------------------------------------------------------------------------
-  _!_: Add hook     _g_: status     _1_: dired-do-find-regexp _c_: root   _E_: buffers      _-_: compile
-  _@_: Start        _l_: log                                  _f_: files  _A_: directories  _=_: lsp
-  _#_: Remove hook  _L_: log file   _3_: helm-projectile   ^ ^         _n_: branches     ^ ^
-  _$_: Shutdown     _b_: blame      _4_: helm-git-grep     ^ ^         _m_: magit-diff   ^ ^
-  ^ ^               _B_: region     _5_: buffers           ^ ^         ^ ^               ^ ^
-  ^ ^               ^ ^             _6_: grep-in-project   ^ ^         ^ ^               ^ ^
-  ^ ^               ^ ^             _7_: grep-in-project2  ^ ^         ^ ^               ^ ^
+  ^LSP^             ^Git^           ^Search^                    ^Project^   ^Diff^            ^Build^
+  ^^^^^------------------------------------------------------------------------------------------------
+  _!_: Add hook     _g_: status     _1_: dired-do-find-regexp   _c_: root   _E_: buffers      _-_: compile
+  _@_: Start        _l_: log        _2_: helm-projectile        _f_: files  _A_: directories  _=_: lsp
+  _#_: Remove hook  _L_: log file   _3_: helm-git-grep          ^ ^         _n_: branches     ^ ^
+  _$_: Shutdown     _b_: blame      _4_: buffers                ^ ^         _m_: magit-diff   ^ ^
+  ^ ^               _B_: region     _5_: grep-in-project        ^ ^         ^ ^               ^ ^
+  ^ ^               ^ ^             _6_: grep-in-project2       ^ ^         ^ ^               ^ ^
+  ^ ^               ^ ^             ^ ^                         ^ ^         ^ ^               ^ ^
   "
 
     ("!" (my:add-lsp-hook))
@@ -1108,11 +1108,11 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("B" (magit-file-dispatch))
 
     ("1" my:dired-projectile-search)
-    ("3" my:helm-projectile-grep)
-    ("4" helm-grep-do-git-grep)
-    ("5" swiper-all)
-    ("6" my:grep-in-project)
-    ("7" my:grep-in-project2)
+    ("2" my:helm-projectile-grep)
+    ("3" helm-grep-do-git-grep)
+    ("4" swiper-all)
+    ("5" my:grep-in-project)
+    ("6" my:grep-in-project2)
 
     ("c" (project-dired))
     ("f" (counsel-projectile))
