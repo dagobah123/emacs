@@ -237,7 +237,7 @@
   (use-package counsel-projectile)
   (counsel-projectile-mode t)
 #+END_SRC
-** custom functions
+** my:duplicate-line
 #+BEGIN_SRC emacs-lisp
   (defun my:duplicate-line ()
     "Duplicate line at point."
@@ -249,7 +249,9 @@
     (next-line 1)
     (yank))
   (global-set-key (kbd "C-x d") 'my:duplicate-line)
-
+#+END_SRC
+** my:copy-line-at-point
+#+BEGIN_SRC emacs-lisp
   (defun my:copy-line-at-point ()
     "Copy line at point."
     (interactive)
@@ -259,7 +261,9 @@
         (copy-region-as-kill begin end)))
     (message "Copied line."))
   (global-set-key (kbd "C-c y") 'my:copy-line-at-point)
-
+#+END_SRC
+** my:yank-line-at-point
+#+BEGIN_SRC emacs-lisp
   (defun my:yank-line-at-point ()
     "Yank line at point."
     (interactive)
@@ -268,7 +272,9 @@
     (c-indent-line-or-region)
     (message "Yanked line."))
   (global-set-key (kbd "C-c u") 'my:yank-line-at-point)
-
+#+END_SRC
+** my:trim-whitespace
+#+BEGIN_SRC emacs-lisp
   (defun my:trim-whitespace ()
     "Trim whitespace."
     (interactive)
@@ -277,7 +283,9 @@
             (end (line-end-position)))
         (whitespace-cleanup-region begin end))))
   (global-set-key (kbd "C-x t") 'my:trim-whitespace)
-
+#+END_SRC
+** my:next-java-method my:prev-java-method
+#+BEGIN_SRC emacs-lisp
   (defvar java-function-regexp
     (concat
      "^[ \t]*"                                   ;; leading white space
@@ -319,34 +327,46 @@
   ;(defvar next-method-regexp "class\\|def\\|public\\|private\\|protected\\|defun\\|defvar")
   (defvar next-method-regexp "class\\|def\\|public\\|private\\|protected\\|defun\\|defvar")
   ;(defvar next-method-regexp "public")
-
+#+END_SRC
+** my:prev-method
+#+BEGIN_SRC emacs-lisp
   (defun my:prev-method ()
     (interactive)
     (re-search-backward next-method-regexp nil t))
   (global-set-key (kbd "C-3") 'my:prev-method)
-
+#+END_SRC
+** my:next-method
+#+BEGIN_SRC emacs-lisp
   (defun my:next-method ()
     (interactive)
     (re-search-forward next-method-regexp nil t))
   (global-set-key (kbd "C-4") 'my:next-method)
-
+#+END_SRC
+** my:previous-link-center
+#+BEGIN_SRC emacs-lisp
   (defun my:previous-link-center ()
     (interactive)
     (Info-prev-reference)
     (recenter))
-
+#+END_SRC
+** my:next-link-center
+#+BEGIN_SRC emacs-lisp
   (defun my:next-link-center ()
     (interactive)
     (Info-next-reference)
     (recenter))
-
+#+END_SRC
+** my:agenda-view
+#+BEGIN_SRC emacs-lisp
   (defun my:agenda-view ()
     (interactive)
     (org-agenda t "a")
     (org-agenda-day-view)
     (delete-other-windows)
     (org-agenda-redo-all))
-
+#+END_SRC
+** my:replace-umlauts
+#+BEGIN_SRC emacs-lisp
   (defun my:replace-umlauts ()
     (interactive)
     (beginning-of-buffer)
@@ -358,53 +378,71 @@
     (beginning-of-buffer)
     (while (search-forward "ue" nil t)
       (replace-match "ü" nil t)))
-
+#+END_SRC
+** my:umlaut-a
+#+BEGIN_SRC emacs-lisp
   (defun my:umlaut-a ()
     (interactive)
     (insert "ä"))
   (global-set-key (kbd "C-c k a") 'my:umlaut-a)
-
+#+END_SRC
+** my:umlaut-o
+#+BEGIN_SRC emacs-lisp
   (defun my:umlaut-o ()
     (interactive)
     (insert "ö"))
   (global-set-key (kbd "C-c k o") 'my:umlaut-o)
-
+#+END_SRC
+** my:umlaut-u
+#+BEGIN_SRC emacs-lisp
   (defun my:umlaut-u ()
     (interactive)
     (insert "ü"))
   (global-set-key (kbd "C-c k u") 'my:umlaut-u)
-
+#+END_SRC
+** my:umlaut-s
+#+BEGIN_SRC emacs-lisp
   (defun my:umlaut-s ()
     (interactive)
     (insert "ß"))
   (global-set-key (kbd "C-c k s") 'my:umlaut-s)
-
+#+END_SRC
+** my:get-filename
+#+BEGIN_SRC emacs-lisp
   (defun my:get-filename ()
     (interactive)
     (dired-jump)
     (dired-copy-filename-as-kill)
     (kill-this-buffer))
   (global-set-key (kbd "C-x y") 'my:get-filename)
-
+#+END_SRC
+** my:projectile-magit
+#+BEGIN_SRC emacs-lisp
   (defun my:projectile-magit ()
     (interactive)
     (projectile-vc)
     (delete-other-windows))
   (global-set-key (kbd "C-c v") 'my:projectile-magit)
-
+#+END_SRC
+** my:magit-log
+#+BEGIN_SRC emacs-lisp
   (defun my:magit-log ()
     (interactive)
     (magit-log-current nil nil nil)
     (delete-other-windows))
   (global-set-key (kbd "C-c L") 'my:magit-log)
-
+#+END_SRC
+** my:new-line
+#+BEGIN_SRC emacs-lisp
   (defun my:new-line ()
     (interactive)
     (move-end-of-line nil)
     (newline)
     (c-indent-line-or-region))
   (global-set-key (kbd "C-c n") 'my:new-line)
-
+#+END_SRC
+** my:toggle-mode-line-fringe
+#+BEGIN_SRC emacs-lisp
   (defun my:toggle-mode-line-fringe ()
     "Toggle mode line and fringe."
     (interactive)
@@ -420,21 +458,27 @@
     (my:toggle-fringe))
 
   (global-set-key (kbd "C-{") 'my:toggle-mode-line-fringe)
-
+#+END_SRC
+** my:toggle-fringe
+#+BEGIN_SRC emacs-lisp
   (defun my:toggle-fringe ()
     (if (eq mode-line-fringe -1)
       (progn (fringe-mode '(0 . 0))
              (setq my:fringe 0))
       (progn (fringe-mode '(20 . 20))
              (setq my:fringe 1))))
-
+#+END_SRC
+** my:start-screen
+#+BEGIN_SRC emacs-lisp
   (defun my:start-screen ()
     (interactive)
     (my:agenda-view)
     (org-agenda-redo-all)
     (split-window-below)
     (my:show-projects))
-
+#+END_SRC
+** my:show-projects
+#+BEGIN_SRC emacs-lisp
   (defun my:show-projects ()
     (interactive)
     (switch-to-buffer "*projects*")
@@ -445,17 +489,23 @@
     (dolist (project (projectile-relevant-known-projects))
       (insert (concat "* " " [[" project "]] " "\n")))
     (goto-char (point-min)))
-
+#+END_SRC
+** my:dired-projectile-main-folder
+#+BEGIN_SRC emacs-lisp
   (defun my:dired-projectile-main-folder ()
     (projectile-dired))
-
+#+END_SRC
+** my:dired-projectile-search
+#+BEGIN_SRC emacs-lisp
   (defun my:dired-projectile-search (regexp search-in-subdirs)
     (interactive "sRegexp: \nP")
     (my:dired-projectile-main-folder)
     (message regexp)
     (dired-do-find-regexp regexp)
     (delete-other-windows))
-
+#+END_SRC
+** my:vc-git-grep
+#+BEGIN_SRC emacs-lisp
   (defun my:vc-git-grep ()
     "my:vc-git-grep"
     (interactive)
@@ -463,36 +513,48 @@
     (vc-git-grep (read-from-minibuffer "Search for: ")
       "\*"
       "\*"))
-
+#+END_SRC
+** my:helm-projectile-grep
+#+BEGIN_SRC emacs-lisp
   (defun my:helm-projectile-grep ()
     "my:helm-projectile-grep"
     (interactive)
     (helm-projectile-grep))
-
+#+END_SRC
+** my:reset-font-size
+#+BEGIN_SRC emacs-lisp
   (defun my:reset-font-size ()
     (interactive)
     (setq font-size default-font-size)
     (set-face-attribute 'default nil :height font-size))
   (global-set-key (kbd "C-S-o") 'my:reset-font-size)
-
+#+END_SRC
+** my:decrease-font-size
+#+BEGIN_SRC emacs-lisp
   (defun my:decrease-font-size ()
     (interactive)
     (setq font-size (- font-size 20))
     (set-face-attribute 'default nil :height font-size))
   (global-set-key (kbd "C-!") 'my:decrease-font-size)
-
+#+END_SRC
+** my:increase-font-size
+#+BEGIN_SRC emacs-lisp
   (defun my:increase-font-size ()
     (interactive)
     (setq font-size (+ font-size 20))
     (set-face-attribute 'default nil :height font-size))
   (global-set-key (kbd "C-@") 'my:increase-font-size)
-
+#+END_SRC
+** my:avy-goto-line
+#+BEGIN_SRC emacs-lisp
   (defun my:avy-goto-line ()
     (interactive)
     (avy-goto-line)
     (evil-first-non-blank))
   (global-set-key (kbd "C-t") 'my:avy-goto-line)
-
+#+END_SRC
+** my:dired-hide-details-mode
+#+BEGIN_SRC emacs-lisp
   (add-hook 'dired-mode-hook
         (lambda ()
           (define-key dired-mode-map (kbd "b")
@@ -511,18 +573,24 @@
   (require 'dired-narrow)
 
   (setq dired-dwim-target t)
-
+#+END_SRC
+** my:start
+#+BEGIN_SRC emacs-lisp
   (defun my:start ()
     "test"
     (interactive)
     (let ((input (read-from-minibuffer "Search for: ")))
       (my:message input)))
-
+#+END_SRC
+** my:message
+#+BEGIN_SRC emacs-lisp
   (defun my:message (arg)
     "test"
     (interactive "P")
     (clipboard-kill-ring-save arg))
-
+#+END_SRC
+** my:insert-string-to-mode-line-and-clipboard
+#+BEGIN_SRC emacs-lisp
   (defun my:insert-string-to-mode-line-and-clipboard ()
     "Prompt for a string and copy it to the clipboard."
     (interactive)
@@ -532,7 +600,9 @@
         (insert user-input)
         (clipboard-kill-region (point-min) (point-max)))))
     ;(helm-grep-do-git-grep (clipboard-yank)))
-
+#+END_SRC
+** my:yank-and-search
+#+BEGIN_SRC emacs-lisp
   (defun my:yank-and-search ()
     "test"
     (interactive)
@@ -540,7 +610,9 @@
       (helm-grep-do-git-grep search-text)))
 
   (global-set-key (kbd "C-c d") 'my:insert-string-to-mode-line-and-clipboard)
-
+#+END_SRC
+** my:backward-copy-word
+#+BEGIN_SRC emacs-lisp
   (defun my:backward-copy-word ()
     "Copy the word before point."
     (interactive)
@@ -551,8 +623,9 @@
         (copy-region-as-kill beg end)))
     (subword-mode t))
   (global-set-key (kbd "C-c e") 'my:backward-copy-word)
-
-
+#+END_SRC
+** my:grep-in-project
+#+BEGIN_SRC emacs-lisp
   (defun my:grep-in-project (search-strings)
       "Search for multiple strings using vc-git-grep and display simplified output."
       (interactive "MEnter search strings (space-separated): ")
@@ -568,7 +641,9 @@
           (while (search-forward-regexp (rx bol (group (1+ digit)) ":" (group (1+ not-newline)) eol) nil t)
             (replace-match (format "%s:%s" (file-name-nondirectory (match-string 2)) (match-string 1)))))))
   (global-set-key (kbd "C-c f") 'my:grep-in-project)
-
+#+END_SRC
+** my:grep-in-project2
+#+BEGIN_SRC emacs-lisp
   (defun my:grep-in-project2 (search-strings)
     "Search for multiple strings using vc-git-grep and display simplified output."
     (interactive "MEnter search strings (space-separated): ")
@@ -584,37 +659,9 @@
         (while (search-forward-regexp (rx bol (group (1+ digit)) ":" (group (1+ not-newline)) eol) nil t)
           (replace-match (format "%s:%s" (file-name-nondirectory (match-string 2)) (match-string 1)))))))
   (global-set-key (kbd "C-c g") 'my:grep-in-project2)
-
-
-
-  ; https://emacs.stackexchange.com/questions/52295/how-to-set-value-vc-git-grep-template-within-function
-  ;(defun my:vc-git-grep-noncase ()
-  ;  (interactive)
-  ;  (setq vc-git-grep-template "git --no-pager grep -n -i -e <R> -- <F>")
-  ;  (call-interactively #'vc-git-grep))
-
-;  (defun my:shift-line-down ()
-;    "Shift line down."
-;    (interactive)
-;    (let ((col (current-column)))
-;    (kill-whole-line)
-;    (next-line 1)
-;    (yank)
-;    (previous-line 1)
-;    (move-to-column col)))
-;  (global-set-key (kbd "M-<down>") 'my:shift-line-down)
-;
-;  (defun my:shift-line-up ()
-;    "Shift line up."
-;    (interactive)
-;    (let ((col (current-column)))
-;    (kill-whole-line)
-;    (previous-line 1)
-;    (yank)
-;    (previous-line 1)
-;    (move-to-column col)))
-;  (global-set-key (kbd "M-<up>") 'my:shift-line-up)
-
+#+END_SRC
+** my:find-file-recursively
+#+BEGIN_SRC emacs-lisp
   (defun my:find-file-recursively (directory filename)
     "Recursively search for FILENAME in DIRECTORY and its subdirectories, ignoring hidden files and directories."
     (let ((files (directory-files directory t))
@@ -630,7 +677,9 @@
               (when (string= file-name filename)
                 (setq result file))))))
       result))
-
+#+END_SRC
+** my:find-file-at-point-in-project
+#+BEGIN_SRC emacs-lisp
   (defun my:find-file-at-point-in-project ()
     "Find file at point in project."
     (interactive)
@@ -643,7 +692,9 @@
         (find-file (my:find-file-recursively (projectile-project-root) (concat (current-kill 0) ".java")))))
     (subword-mode t))
   (global-set-key (kbd "C-c t") 'my:find-file-at-point-in-project)
-
+#+END_SRC
+** my:grep-backward-copy-word-in-project
+#+BEGIN_SRC emacs-lisp
   (defun my:grep-backward-copy-word-in-project ()
     "Search for a string using vc-git-grep from the project root."
     (interactive)
@@ -657,14 +708,18 @@
     (delete-other-windows)
     (beginning-of-buffer))
   (global-set-key (kbd "C-c T") 'my:grep-backward-copy-word-in-project)
-
+#+END_SRC
+** my:forward-paragraph-recenter-top-bottom
+#+BEGIN_SRC emacs-lisp
   ;(defun my:forward-paragraph-recenter-top-bottom ()
   ;  "Go to the next paragraph and recenter top bottom."
   ;  (interactive)
   ;  (forward-paragraph)
   ;  (recenter-top-bottom))
   ;(global-set-key (kbd "C-}") 'my:forward-paragraph-recenter-top-bottom)
-
+#+END_SRC
+** my:change-cursor-color
+#+BEGIN_SRC emacs-lisp
   (defun my:change-cursor-color ()
     "Change cursor color when switching between evil-mode modes."
     (if (eq evil-state 'emacs)
@@ -686,7 +741,9 @@
 
   ;(add-hook 'evil-change-state-hook 'my:change-cursor-color)
   (add-hook 'post-command-hook 'my:change-cursor-color)
-
+#+END_SRC
+** my:helm-xml-tags
+#+BEGIN_SRC emacs-lisp
   (require 'helm)
   (defun my:helm-xml-tags ()
     (interactive)
@@ -709,7 +766,9 @@
   (defun my:setup-xml-mode-keybindings ()
     (define-key nxml-mode-map (kbd "C-9") 'my:helm-xml-tags))
   (add-hook 'nxml-mode-hook 'my:setup-xml-mode-keybindings)
-
+#+END_SRC
+** my:mark-curly-brace-region
+#+BEGIN_SRC emacs-lisp
   (defun my:mark-curly-brace-region ()
     "Mark and select the region between the opening and closing curly braces."
     (interactive)
@@ -725,7 +784,7 @@
 
   (global-set-key (kbd "C-+") 'my:mark-curly-brace-region)
 #+END_SRC
-** class overview
+** <class overview>
 #+BEGIN_SRC emacs-lisp
   (defun my:find-files-in-project (directory extension)
     "List files with a specific extension in all subdirectories of DIRECTORY."
