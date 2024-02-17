@@ -498,8 +498,10 @@
 ** my:dired-projectile-search
 #+BEGIN_SRC emacs-lisp
   (defun my:dired-projectile-search (regexp search-in-subdirs)
+    "Use dired-do-find-regexp to search from project root."
     (interactive "sRegexp: \nP")
     (my:dired-projectile-main-folder)
+    (dired-up-directory)
     (message regexp)
     (dired-do-find-regexp regexp)
     (delete-other-windows))
@@ -507,7 +509,7 @@
 ** my:vc-git-grep
 #+BEGIN_SRC emacs-lisp
   (defun my:vc-git-grep ()
-    "my:vc-git-grep"
+    "Search with vc-git-grep for one search string from project root."
     (interactive)
     (my:dired-projectile-main-folder)
     (vc-git-grep (read-from-minibuffer "Search for: ")
@@ -940,6 +942,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (setq evil-default-state 'emacs)
   (add-to-list 'evil-emacs-state-modes 'grep-mode)
   (add-to-list 'evil-emacs-state-modes 'Info-mode)
+  (add-to-list 'evil-emacs-state-modes 'help-mode)
 #+END_SRC
 ** eww
 #+BEGIN_SRC emacs-lisp
@@ -1092,14 +1095,15 @@ Load environment variables properly by installing *exec-path-from-shell*.
     "
   Code
 
-  ^LSP^             ^Git^           ^Search^              ^Project^   ^Diff^            ^Build^
-  ^^^^^-------------------------------------------------------------------------------------------------
-  _!_: Add hook     _g_: status     _1_: dired project    _c_: root   _E_: buffers      _-_: compile
-  _@_: Start        _l_: log        _2_: vc-git-grep      _f_: files  _A_: directories  _=_: lsp
-  _#_: Remove hook  _L_: log file   _3_: helm-projectile  ^ ^         _n_: branches     ^ ^
-  _$_: Shutdown     _b_: blame      _4_: helm-git-grep    ^ ^         _m_: magit-diff   ^ ^
-  ^ ^               _B_: region     _5_: buffers          ^ ^         ^ ^               ^ ^
-  ^ ^               ^ ^             _6_: grep-in-project  ^ ^         ^ ^               ^ ^
+  ^LSP^             ^Git^           ^Search^               ^Project^   ^Diff^            ^Build^
+  ^^^^^--------------------------------------------------------------------------------------------------
+  _!_: Add hook     _g_: status     _1_: dired project     _c_: root   _E_: buffers      _-_: compile
+  _@_: Start        _l_: log        _2_: vc-git-grep       _f_: files  _A_: directories  _=_: lsp
+  _#_: Remove hook  _L_: log file   _3_: helm-projectile   ^ ^         _n_: branches     ^ ^
+  _$_: Shutdown     _b_: blame      _4_: helm-git-grep     ^ ^         _m_: magit-diff   ^ ^
+  ^ ^               _B_: region     _5_: buffers           ^ ^         ^ ^               ^ ^
+  ^ ^               ^ ^             _6_: grep-in-project   ^ ^         ^ ^               ^ ^
+  ^ ^               ^ ^             _7_: grep-in-project2  ^ ^         ^ ^               ^ ^
   "
 
     ("!" (my:add-lsp-hook))
@@ -1119,6 +1123,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("4" helm-grep-do-git-grep)
     ("5" swiper-all)
     ("6" my:grep-in-project)
+    ("7" my:grep-in-project2)
 
     ("c" (project-dired))
     ("f" (counsel-projectile))
