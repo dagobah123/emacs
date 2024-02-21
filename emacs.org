@@ -71,6 +71,7 @@
                        nov
                        olivetti
                        openwith
+                       org-kanban
                        ox-jira
                        powershell
                        projectile
