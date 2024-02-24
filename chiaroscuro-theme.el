@@ -462,7 +462,7 @@
     `(error                     ((t (:foreground ,"#ff0000"                                    ))))
 
      ;mode-line
-    `(mode-line                 ((t (:foreground ,text-normal            :background ,background-mode-line-active ))))
+    `(mode-line                 ((t (:foreground ,text-mode-line         :background ,background-mode-line-active ))))
     `(mode-line-inactive        ((t (:foreground ,text-low               :background ,background-mode-line        ))))
     ;`(mode-line-buffer-id       ((t (:foreground ,text-mode-line-buffer  :bold t                                  ))))
     ;`(my:buffer-face            ((t (:foreground ,text-mode-line-buffer  t                                        ))))
