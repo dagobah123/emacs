@@ -21,6 +21,7 @@
 (setq text-highlight-1 "#ffb600")
 (setq text-highlight-2 "#bf4092")
 (setq text-info "#555577")
+(setq text-line-number "#8f3c7f")
 (setq text-low "#8f3c7f")
 (setq text-lower "#684962")
 (setq text-mode-line "#ccaaaa")

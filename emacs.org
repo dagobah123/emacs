@@ -95,15 +95,17 @@
   (setq INDEX-ECLIPSE            2)
   (setq INDEX-NEON               3)
   (setq INDEX-YELLOW             4)
-  (setq INDEX-RED                5)
-  (setq INDEX-HIGH-CONTRAST      6)
-  (setq INDEX-COLOR-CHANGE-LIGHT 7)
-  (setq INDEX-COLOR-CHANGE-DARK  8)
+  (setq INDEX-PALETTE            5)
+  (setq INDEX-RED                6)
+  (setq INDEX-HIGH-CONTRAST      7)
+  (setq INDEX-COLOR-CHANGE-LIGHT 8)
+  (setq INDEX-COLOR-CHANGE-DARK  9)
 
   (defvar chiaroscuro-index 0 "Index representing the current theme")
   (setq chiaroscuro-index 0)
 
   (setq themes-list '(chiaroscuro
+                      chiaroscuro
                       chiaroscuro
                       chiaroscuro
                       chiaroscuro
@@ -116,6 +118,7 @@
                             "eclipse"
                             "neon"
                             "yellow"
+                            "palette"
                             "red"
                             "high contrast"
                             "light"
@@ -1168,10 +1171,11 @@ Load environment variables properly by installing *exec-path-from-shell*.
   _s_: .emacs.d    _f_: chiaro...el    _j_: fullscreen      _l_: up      _2_: Eclipse  _b_: bookmarks
   ^ ^              _g_: linux.el       ^ ^                  _;_: down    _3_: Neon     ^ ^
   ^ ^              ^ ^                 ^ ^                  ^ ^          _4_: Yellow   ^ ^
-  ^ ^              ^ ^                 ^ ^                  ^ ^          _5_: Red      ^ ^
-  ^ ^              ^ ^                 ^ ^                  ^ ^          _6_: High C.  ^ ^
-  ^ ^              ^ ^                 ^ ^                  ^ ^          _7_: Light    ^ ^
-  ^ ^              ^ ^                 ^ ^                  ^ ^          _8_: Dark     ^ ^
+  ^ ^              ^ ^                 ^ ^                  ^ ^          _5_: Palette  ^ ^
+  ^ ^              ^ ^                 ^ ^                  ^ ^          _6_: Red      ^ ^
+  ^ ^              ^ ^                 ^ ^                  ^ ^          _7_: High C.  ^ ^
+  ^ ^              ^ ^                 ^ ^                  ^ ^          _8_: Light    ^ ^
+  ^ ^              ^ ^                 ^ ^                  ^ ^          _9_: Dark     ^ ^
   "
 
     ("a" (dired "~/source/emacs"))
@@ -1196,10 +1200,11 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("2" (my:set-theme INDEX-ECLIPSE))
     ("3" (my:set-theme INDEX-NEON))
     ("4" (my:set-theme INDEX-YELLOW))
-    ("5" (my:set-theme INDEX-RED))
-    ("6" (my:set-theme INDEX-HIGH-CONTRAST))
-    ("7" (my:set-theme INDEX-COLOR-CHANGE-LIGHT))
-    ("8" (my:set-theme INDEX-COLOR-CHANGE-DARK))
+    ("5" (my:set-theme INDEX-PALETTE))
+    ("6" (my:set-theme INDEX-RED))
+    ("7" (my:set-theme INDEX-HIGH-CONTRAST))
+    ("8" (my:set-theme INDEX-COLOR-CHANGE-LIGHT))
+    ("9" (my:set-theme INDEX-COLOR-CHANGE-DARK))
 
     ("'" (ibuffer))
     ("b" list-bookmarks)

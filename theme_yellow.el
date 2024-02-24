@@ -20,6 +20,7 @@
 (setq text-highlight-1 "#a77e23")
 (setq text-highlight-2 "#767f1c")
 (setq text-keyword "#a77e23")
+(setq text-line-number "#796e00")
 (setq text-low "#796e00")
 (setq text-lower "#928753")
 (setq text-match "#000000")

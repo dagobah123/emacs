@@ -20,6 +20,10 @@
         (progn (load-file "~/.emacs.d/theme_default_light_middle.el")
               (load-file "~/.emacs.d/theme_yellow.el")))
 
+    (if (eq INDEX-CHIAROSCURO INDEX-PALETTE)
+        (progn (load-file "~/.emacs.d/theme_default_dark.el")
+               (load-file "~/.emacs.d/theme_palette.el")))
+
     (if (eq INDEX-CHIAROSCURO INDEX-RED)
         (progn (load-file "~/.emacs.d/theme_default_dark.el")
                (load-file "~/.emacs.d/theme_red.el")))
@@ -71,10 +75,10 @@
     `(git-commit-summary       ((t (:foreground ,color-blue-1      :background ,color-blue-2              ))))
 
     ;line number
-    `(line-number-current-line ((t (:foreground ,text-low :background ,background-fringe :bold t ))))
-    `(line-number              ((t (:foreground ,text-low :background ,background-fringe         ))))
-    `(line-number-major-tick   ((t (:foreground ,text-low :background ,background-fringe         ))))
-    `(line-number-minor-tick   ((t (:foreground ,text-low :background ,background-fringe         ))))
+    `(line-number-current-line ((t (:foreground ,text-line-number :background ,background-fringe :bold t ))))
+    `(line-number              ((t (:foreground ,text-line-number :background ,background-fringe         ))))
+    `(line-number-major-tick   ((t (:foreground ,text-line-number :background ,background-fringe         ))))
+    `(line-number-minor-tick   ((t (:foreground ,text-line-number :background ,background-fringe         ))))
 
     ;font-lock
     ;`(font-lock-delimiter-face            ((t (:foreground ,text-normal           ))))
@@ -460,10 +464,9 @@
      ;mode-line
     `(mode-line                 ((t (:foreground ,text-normal            :background ,background-mode-line-active ))))
     `(mode-line-inactive        ((t (:foreground ,text-low               :background ,background-mode-line        ))))
-    `(mode-line-buffer-id       ((t (:foreground ,text-mode-line-buffer  :bold t                                  ))))
-    `(my:buffer-face            ((t (:foreground ,text-mode-line-buffer  t                                        ))))
+    ;`(mode-line-buffer-id       ((t (:foreground ,text-mode-line-buffer  :bold t                                  ))))
+    ;`(my:buffer-face            ((t (:foreground ,text-mode-line-buffer  t                                        ))))
 
-    `(custom-mode-line-icon     ((t (:foreground ,text-mode-line-buffer                                           ))))
     `(lsp-treemacs-file-error   ((t (:foreground ,"#ffffff"                                           ))))
 
     `(popup-face                        ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 

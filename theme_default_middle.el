@@ -75,6 +75,7 @@
 (setq text-function "#1d6a00")
 (setq text-info "#ffffff")
 (setq text-keyword "#7f3195")
+(setq text-line-number "#000000")
 (setq text-magit-branch-local "#000000")
 (setq text-magit-branch-remote "#000000")
 (setq text-match "#4e084e")

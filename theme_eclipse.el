@@ -19,6 +19,7 @@
 (setq text-highlight-1 "#7f0055")
 (setq text-highlight-2 "#3f5fbf")
 (setq text-keyword "#7f0055")
+(setq text-line-number "#9f9f9f")
 (setq text-low "#9f9f9f")
 (setq text-lower "#bfbfbf")
 (setq text-match "#000000")
