@@ -36,6 +36,6 @@
 (setq text-preprocessor "#00ff00")
 (setq text-type "#3b65ba")
 (setq text-variable "#bdac13")
-(setq text-whitespace "#a14a31")
+(setq text-whitespace "#e26131")
 
 ;;; theme_palette.el ends here

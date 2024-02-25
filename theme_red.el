@@ -21,7 +21,7 @@
 (setq text-line-number "#536661")
 (setq text-low "#536661")
 (setq text-lower "#553333")
-(setq text-mode-line "#aa0000")
+(setq text-mode-line "#bb7777")
 (setq text-mode-line-buffer "#bb7777")
 (setq text-normal "#994444")
 (setq text-preprocessor "#00ff00")

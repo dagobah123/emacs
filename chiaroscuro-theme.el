@@ -238,9 +238,9 @@
     `(magit-diff-added                  ((t (:foreground ,text-diff-added   :background ,background-diff-added   ))))
     `(magit-diff-removed                ((t (:foreground ,text-diff-removed :background ,background-diff-removed ))))
 
-    `(magit-blame-heading               ((t (:foreground ,text-low :background ,background-fringe ))))
-    `(magit-blame-highlight             ((t (:foreground ,text-low :background ,background-fringe ))))
-    `(magit-blame-margin                ((t (:foreground ,text-low :background ,background-fringe ))))
+    `(magit-blame-heading               ((t (:foreground ,text-normal :background ,background-fringe ))))
+    `(magit-blame-highlight             ((t (:foreground ,text-normal :background ,background-fringe ))))
+    `(magit-blame-margin                ((t (:foreground ,text-normal :background ,background-fringe ))))
 
     `(magit-reflog-amend                ((t (:foreground ,text-normal ))))
     `(magit-reflog-checkout             ((t (:foreground ,text-normal ))))
