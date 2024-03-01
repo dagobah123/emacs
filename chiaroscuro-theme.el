@@ -480,6 +480,8 @@
     `(popup-summary-face                ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
     `(popup-tip-face                    ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
 
+    `(custom-button ((t (:foreground ,text-highlight-1 :background ,background-mode-line ))))
+
     `(eww-form-submit ((t (:foreground ,text-highlight-1 :background ,background-mode-line ))))
     `(eww-form-textarea ((t (:foreground ,text-highlight-1 :background ,background-mode-line ))))
     `(eww-form-text ((t (:foreground ,text-highlight-1 :background ,background-mode-line ))))

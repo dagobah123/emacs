@@ -13,17 +13,11 @@
         ("b" "Reading" entry (file+headline "~/source/org-mode/agenda/books.org" "Reading")
          "* TODO %? :book:")
 
-        ("p" "Painting" entry (file+headline "~/source/org-mode/agenda/painting.org" "Painting")
-         "* TODO %? :painting:")
-
         ("c" "Programming" entry (file+headline "~/source/org-mode/agenda/programming.org" "Programming")
          "* TODO %? :programming:")
 
         ("e" "Emacs" entry (file+headline "~/source/org-mode/agenda/emacs_tasks.org" "Emacs")
          "* TODO %? :emacs:")
-
-        ("s" "Shopping List" checkitem (file+headline "~/source/org-mode/agenda/shopping_list.org" "Shopping List")
-         "- [ ] %?")
 
         ("h" "Chores" entry (file+headline "~/source/org-mode/agenda/chores.org" "chores")
          "* TODO %? :chores:")
