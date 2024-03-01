@@ -8,25 +8,13 @@
 (setq org-capture-templates
       '(
         ("t" "Tasks" entry (file+headline "~/source/org-mode/agenda/tasks.org" "Tasks")
-         "* TODO %? :task:")
+         "* TODO %?")
 
-        ("b" "Reading" entry (file+headline "~/source/org-mode/agenda/books.org" "Reading")
-         "* TODO %? :book:")
+        ("r" "Remember" entry (file+headline "~/source/org-mode/agenda/remember.org" "Remember")
+         "* %?")
 
-        ("c" "Programming" entry (file+headline "~/source/org-mode/agenda/programming.org" "Programming")
-         "* TODO %? :programming:")
-
-        ("e" "Emacs" entry (file+headline "~/source/org-mode/agenda/emacs_tasks.org" "Emacs")
-         "* TODO %? :emacs:")
-
-        ("h" "Chores" entry (file+headline "~/source/org-mode/agenda/chores.org" "chores")
-         "* TODO %? :chores:")
-
-        ("x" "Mission" entry (file+headline "~/source/org-mode/agenda/mission.org" "Mission")
-         "* TODO %? :mission:")
-
-        ("r" "Remember" checkitem (file+headline "~/source/org-mode/agenda/remember.org" "Remember")
-         "- %?")
+        ("d" "Dropbox" entry (file+headline "~/Dropbox/org-mode/dropbox.org" "Dropbox")
+         "* TODO %?")
         )
       )
 (setq org-agenda-files (list "~/source/org-mode/agenda" "~/source/org-mode/notes/general/data.org"))
