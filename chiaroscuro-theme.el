@@ -493,6 +493,9 @@
     `(speed-type-default ((t (:foreground ,text-normal ))))
     `(speed-type-mistake ((t (:foreground ,background-diff-current-A ))))
 
+    `(transient-key-exit ((t (:foreground ,text-highlight-1 :bold t ))))
+    `(transient-key-return ((t (:foreground ,text-highlight-1 :bold t ))))
+    `(transient-key-stay ((t (:foreground ,text-highlight-1 :bold t ))))
   )
 
 ))
