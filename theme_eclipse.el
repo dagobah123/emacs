@@ -12,7 +12,7 @@
 (setq background-match "#ecdba7")
 (setq background-mode-line "#eeeeee")
 (setq background-mode-line-active "#cccccc")
-(setq background-low "#cccccc")
+(setq background-low "#eeeeee")
 (setq background-region "#dedede")
 (setq text-constant "#000000")
 (setq text-function "#000000")
