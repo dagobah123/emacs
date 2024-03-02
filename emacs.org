@@ -1599,6 +1599,21 @@ Load environment variables properly by installing *exec-path-from-shell*.
     (evil-first-non-blank))
   (global-set-key (kbd "C-4") 'my:next-method)
 #+END_SRC
+** my:prev-curly-brace my:curly-brace
+#+BEGIN_SRC emacs-lisp
+  ;(defvar next-method-regexp "class\\|def\\|public\\|private\\|protected\\|defun\\|defvar")
+  (defvar next-curly-brace-regexp "{\\|}")
+
+  (defun my:prev-curly-brace ()
+    (interactive)
+    (re-search-backward next-curly-brace-regexp nil t))
+  (global-set-key (kbd "C-{") 'my:prev-curly-brace)
+
+  (defun my:next-curly-brace ()
+    (interactive)
+    (re-search-forward next-curly-brace-regexp nil t))
+  (global-set-key (kbd "C-}") 'my:next-curly-brace)
+#+END_SRC
 ** my:previous-link-center
 #+BEGIN_SRC emacs-lisp
   (defun my:previous-link-center ()
@@ -1700,7 +1715,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
       (global-hide-mode-line-mode t))
     (my:toggle-fringe))
 
-  (global-set-key (kbd "C-{") 'my:toggle-mode-line-fringe)
+  ;(global-set-key (kbd "C-{") 'my:toggle-mode-line-fringe)
 #+END_SRC
 ** my:trim-whitespace
 #+BEGIN_SRC emacs-lisp
