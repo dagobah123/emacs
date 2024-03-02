@@ -266,6 +266,15 @@
     (message "Copied line."))
   (global-set-key (kbd "C-c y") 'my:copy-line-at-point)
 #+END_SRC
+** my:select-line
+#+BEGIN_SRC emacs-lisp
+  (defun my:select-line ()
+    "Select line at point."
+    (interactive)
+    (evil-first-non-blank)
+    (set-mark (line-end-position)))
+  (global-set-key (kbd "C-c k l") 'my:select-line)
+#+END_SRC
 ** my:yank-line-at-point
 #+BEGIN_SRC emacs-lisp
   (defun my:yank-line-at-point ()
