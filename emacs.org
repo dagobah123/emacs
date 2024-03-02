@@ -802,6 +802,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
   ;(global-set-key (kbd "<tab>") 'evil-shift-right)
   ;(global-set-key (kbd "<backtab>") 'evil-shift-left)
   (global-set-key (kbd "<f9> b") 'ibuffer)
+  (global-set-key (kbd "C-x / '") 'helm-mark-ring)
+  (global-set-key (kbd "C-x / /") 'helm-global-mark-ring)
 #+END_SRC
 ** look
 #+BEGIN_SRC emacs-lisp
