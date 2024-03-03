@@ -136,7 +136,7 @@
     `(helm-match                        ((t (:foreground ,text-normal                                                       ))))
     `(helm-candidate-number             ((t (:foreground ,text-normal                                                       ))))
     `(helm-M-x-key                      ((t (:foreground ,text-normal                                  :underline t         ))))
-    ;`(helm-source-header                ((t (:foreground ,text-low                                     :bold t              ))))
+    `(helm-source-header                ((t (:foreground ,text-mode-line-buffer :background ,background-mode-line-active :bold t :height 1.3 :family "Sans Serif" ))))
     `(helm-selection                    ((t (:foreground ,text-match     :background ,background-match                      ))))
     `(helm-swoop-target-line-face       ((t (:foreground ,text-match     :background ,background-match                      ))))
     `(helm-swoop-target-word-face       ((t (:foreground ,text-match     :background ,background-match :bold t              ))))
