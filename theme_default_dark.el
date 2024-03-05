@@ -33,7 +33,7 @@
 (setq background-ediff "#ddca69")
 (setq background-magit-branch-local "#007700")
 (setq background-magit-branch-remote "#770000")
-(setq background-match "#43006d")
+(setq background-match "#10001b")
 (setq color-blue-1 "#1e90ff")
 (setq color-blue-2 "#202055")
 (setq color-gray-1 "#999999")
