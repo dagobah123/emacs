@@ -812,6 +812,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (global-set-key (kbd "C-x / p") 'point-to-register)
   (global-set-key (kbd "C-x / e") 'helm-register)
   (global-set-key (kbd "C-x / o") 'occur)
+  (global-set-key (kbd "C-x / b") 'my:projectile-ibuffer)
 #+END_SRC
 ** look
 #+BEGIN_SRC emacs-lisp
@@ -1630,6 +1631,13 @@ Load environment variables properly by installing *exec-path-from-shell*.
     (interactive)
     (Info-prev-reference)
     (recenter))
+#+END_SRC
+** my:projectile-ibuffer
+#+BEGIN_SRC emacs-lisp
+  (defun my:projectile-ibuffer ()
+    (interactive)
+    (projectile-ibuffer nil)
+    (delete-other-windows))
 #+END_SRC
 ** my:projectile-magit
 #+BEGIN_SRC emacs-lisp
