@@ -810,6 +810,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (global-set-key (kbd "C-x / r") 'copy-to-register)
   (global-set-key (kbd "C-x / p") 'point-to-register)
   (global-set-key (kbd "C-x / e") 'helm-register)
+  (global-set-key (kbd "C-x / o") 'occur)
 #+END_SRC
 ** look
 #+BEGIN_SRC emacs-lisp

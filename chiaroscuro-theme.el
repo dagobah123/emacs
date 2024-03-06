@@ -69,8 +69,9 @@
     `(ido-only-match           ((t (:foreground ,text-match        :background ,background-match          ))))
     `(lsp-face-highlight-read  ((t (:foreground ,text-match        :background ,background-match          ))))
     `(lsp-face-highlight-write ((t (:foreground ,text-match        :background ,background-match          ))))
-    `(eshell-prompt            ((t (:foreground ,text-match        :background unspecified                ))))
-    `(comint-highlight-prompt  ((t (:foreground ,text-match        :background unspecified                ))))
+    `(eshell-prompt            ((t (:foreground ,text-highlight-1  :background unspecified                ))))
+    `(eshell-ls-directory      ((t (:foreground ,text-highlight-2  :background unspecified       :bold t  ))))
+    `(comint-highlight-prompt  ((t (:foreground ,text-highlight-1  :background unspecified                ))))
     `(secondary-selection      ((t (:foreground ,color-blue-1      :background ,color-blue-2              ))))
     `(git-commit-summary       ((t (:foreground ,color-blue-1      :background ,color-blue-2              ))))
 
@@ -137,8 +138,9 @@
     `(helm-candidate-number             ((t (:foreground ,text-normal                                                       ))))
     `(helm-M-x-key                      ((t (:foreground ,text-low                                  :underline t         ))))
     `(helm-source-header                ((t (:foreground ,text-mode-line-buffer :background ,background-mode-line-active :bold t :height 1.3 :family "Sans Serif" ))))
-    `(helm-selection                    ((t (:foreground ,text-match     :background ,background-match :bold t              ))))
-    `(helm-swoop-target-line-face       ((t (:foreground ,text-match     :background ,background-match                      ))))
+    `(helm-selection                    ((t (:foreground ,text-match     :background ,text-highlight-1 :bold t              ))))
+    `(helm-selection-line               ((t (:foreground "#000000"       :background ,text-highlight-1 :bold t              ))))
+    `(helm-swoop-target-line-face       ((t (:foreground ,text-match     :background ,text-highlight-1                      ))))
     `(helm-swoop-target-word-face       ((t (:foreground ,text-match     :background ,background-match :bold t              ))))
     `(helm-swoop-line-number-face       ((t (:foreground ,text-normal    :background unspecified                            ))))
     `(helm-swoop-target-line-block-face ((t (:foreground ,text-normal    :background unspecified                            ))))
@@ -169,7 +171,7 @@
     `(helm-bookmark-info                ((t (:foreground ,color-blue-1   :background ,color-blue-2                          ))))
 
     `(compilation-error                 ((t (:foreground ,text-error :bold t :underline t ))))
-    `(compilation-info                  ((t (:foreground ,text-highlight-2 :bold t :underline t ))))
+    `(compilation-info                  ((t (:foreground ,text-highlight-1 :bold t :underline t ))))
     `(helm-lsp-diag-error               ((t (:foreground ,text-error :bold t :underline t ))))
     `(helm-lsp-diag-info                ((t (:foreground ,text-error :bold t :underline t ))))
 
@@ -221,13 +223,13 @@
     `(magit-diff-conflict-heading       ((t (:foreground ,text-normal      :background ,background-magit              ))))
 
     `(magit-diff-file-heading           ((t (:foreground ,text-lower       :background unspecified            :bold t ))))
-    `(magit-diff-file-heading-selection ((t (:foreground ,text-highlight-2 :background unspecified            :bold t ))))
-    `(magit-diff-file-heading-highlight ((t (:foreground ,text-highlight-2 :background ,background-magit      :bold t ))))
+    `(magit-diff-file-heading-selection ((t (:foreground ,text-highlight-1 :background unspecified            :bold t ))))
+    `(magit-diff-file-heading-highlight ((t (:foreground ,text-highlight-1 :background ,background-magit      :bold t ))))
 
     `(magit-diff-hunk-heading           ((t (:foreground ,text-low         :background ,background-magit              ))))
-    `(magit-diff-hunk-heading-selection ((t (:foreground ,text-highlight-2 :background ,background-magit              ))))
-    `(magit-diff-hunk-heading-highlight ((t (:foreground ,text-highlight-2 :background ,background-magit              ))))
-    `(diff-header                       ((t (:foreground ,text-highlight-2 :background ,background-magit              ))))
+    `(magit-diff-hunk-heading-selection ((t (:foreground ,text-highlight-1 :background ,background-magit              ))))
+    `(magit-diff-hunk-heading-highlight ((t (:foreground ,text-highlight-1 :background ,background-magit              ))))
+    `(diff-header                       ((t (:foreground ,text-highlight-1 :background ,background-magit              ))))
     `(diff-file-header                  ((t (:foreground ,text-highlight-1 :background ,background-magit      :bold t ))))
 
     `(magit-diff-whitespace-warning     ((t (:foreground ,text-normal      :background ,text-error                    ))))
@@ -263,25 +265,25 @@
     `(smerge-markers                    ((t (:foreground ,text-ediff :background ,background-diff-fine-C ))))
 
     ;ediff
-    `(ediff-current-diff-A        ((t (:foreground ,text-diff :background ,background-diff-current-A        ))))
-    `(ediff-current-diff-Ancestor ((t (:foreground ,text-diff :background ,background-diff-current-Ancestor ))))
-    `(ediff-current-diff-B        ((t (:foreground ,text-diff :background ,background-diff-current-B        ))))
-    `(ediff-current-diff-C        ((t (:foreground ,text-diff :background ,background-diff-current-C        ))))
+    `(ediff-current-diff-A        ((t (:foreground unspecified :background ,background-diff-current-A        ))))
+    `(ediff-current-diff-Ancestor ((t (:foreground unspecified :background ,background-diff-current-Ancestor ))))
+    `(ediff-current-diff-B        ((t (:foreground unspecified :background ,background-diff-current-B        ))))
+    `(ediff-current-diff-C        ((t (:foreground unspecified :background ,background-diff-current-C        ))))
 
-    `(ediff-even-diff-A           ((t (:foreground ,text-diff :background ,background-diff-even-A           ))))
-    `(ediff-even-diff-Ancestor    ((t (:foreground ,text-diff :background ,background-diff-even-Ancestor    ))))
-    `(ediff-even-diff-B           ((t (:foreground ,text-diff :background ,background-diff-even-B           ))))
-    `(ediff-even-diff-C           ((t (:foreground ,text-diff :background ,background-diff-even-C           ))))
+    `(ediff-even-diff-A           ((t (:foreground unspecified :background ,background-diff-even-A           ))))
+    `(ediff-even-diff-Ancestor    ((t (:foreground unspecified :background ,background-diff-even-Ancestor    ))))
+    `(ediff-even-diff-B           ((t (:foreground unspecified :background ,background-diff-even-B           ))))
+    `(ediff-even-diff-C           ((t (:foreground unspecified :background ,background-diff-even-C           ))))
 
-    `(ediff-fine-diff-A           ((t (:foreground ,text-diff :background ,background-diff-fine-A           ))))
-    `(ediff-fine-diff-Ancestor    ((t (:foreground ,text-diff :background ,background-diff-fine-Ancestor    ))))
-    `(ediff-fine-diff-B           ((t (:foreground ,text-diff :background ,background-diff-fine-B           ))))
-    `(ediff-fine-diff-C           ((t (:foreground ,text-diff :background ,background-diff-fine-C           ))))
+    `(ediff-fine-diff-A           ((t (:foreground unspecified :background ,background-diff-fine-A           ))))
+    `(ediff-fine-diff-Ancestor    ((t (:foreground unspecified :background ,background-diff-fine-Ancestor    ))))
+    `(ediff-fine-diff-B           ((t (:foreground unspecified :background ,background-diff-fine-B           ))))
+    `(ediff-fine-diff-C           ((t (:foreground unspecified :background ,background-diff-fine-C           ))))
 
-    `(ediff-odd-diff-A            ((t (:foreground ,text-diff :background ,background-diff-odd-A            ))))
-    `(ediff-odd-diff-Ancestor     ((t (:foreground ,text-diff :background ,background-diff-odd-Ancestor     ))))
-    `(ediff-odd-diff-B            ((t (:foreground ,text-diff :background ,background-diff-odd-B            ))))
-    `(ediff-odd-diff-C            ((t (:foreground ,text-diff :background ,background-diff-odd-C            ))))
+    `(ediff-odd-diff-A            ((t (:foreground unspecified :background ,background-diff-odd-A            ))))
+    `(ediff-odd-diff-Ancestor     ((t (:foreground unspecified :background ,background-diff-odd-Ancestor     ))))
+    `(ediff-odd-diff-B            ((t (:foreground unspecified :background ,background-diff-odd-B            ))))
+    `(ediff-odd-diff-C            ((t (:foreground unspecified :background ,background-diff-odd-C            ))))
 
     ;ztree
     `(ztreep-diff-model-add-face     ((t (:foreground ,text-match     :background ,background-match             ))))
@@ -304,9 +306,9 @@
     `(org-agenda-clocking           ((t (:foreground ,color-green-1  :background ,color-green-2                                ))))
     `(org-agenda-column-dateline    ((t (:foreground ,text-normal    :underline t                                              ))))
     `(org-agenda-current-time       ((t (:foreground ,color-blue-1                                                             ))))
-    `(org-agenda-date               ((t (:foreground ,color-yellow-1 :bold t                                                   ))))
-    `(org-agenda-date-today         ((t (:foreground ,color-yellow-1 :bold t :italic t                                         ))))
-    `(org-agenda-date-weekend       ((t (:foreground ,color-yellow-1 :bold t                                                   ))))
+    `(org-agenda-date               ((t (:foreground ,text-low :bold t                                                   ))))
+    `(org-agenda-date-today         ((t (:foreground ,text-normal :bold t :italic t                                         ))))
+    `(org-agenda-date-weekend       ((t (:foreground ,text-lower :bold t                                                   ))))
     `(org-agenda-diary              ((t (:foreground ,text-normal                                                              ))))
     `(org-agenda-dimmed-todo-face   ((t (:foreground ,text-low                                                                 ))))
     `(org-agenda-done               ((t (:foreground ,text-lower     :background unspecified                                   ))))
@@ -375,7 +377,7 @@
     `(org-verbatim                  ((t (:foreground ,"#ff0000"      :background unspecified    :bold t                        ))))
     `(org-verse                     ((t (:foreground ,color-green-1  :background unspecified                                   ))))
     `(org-warning                   ((t (:foreground ,color-orange-1 :background unspecified    :bold t                        ))))
-    `(org-imminent-deadline         ((t (:foreground ,alert-1        :background unspecified    :bold t                        ))))
+    `(org-imminent-deadline         ((t (:foreground ,text-normal    :background unspecified    :bold t                        ))))
     `(org-upcoming-deadline         ((t (:foreground ,text-low       :background unspecified                                   ))))
     `(org-upcoming-distant-deadline ((t (:foreground ,text-lower     :background unspecified                                   ))))
 
@@ -408,7 +410,7 @@
 
     `(bookmark-face ((t (:foreground ,text-normal :background unspecified ))))
 
-    `(ansi-color-bold ((t (:foreground ,text-match :background ,background-match :bold t ))))
+    `(ansi-color-bold ((t (:foreground ,text-highlight-2 :background unspecified :bold t ))))
 
     `(ivy-current-match              ((t (:foreground ,text-match     :background ,background-match :bold t   ))))
     `(ivy-minibuffer-match-face-1    ((t (:foreground ,color-green-1  :background ,color-green-2              ))))
@@ -425,7 +427,7 @@
     `(swiper-background-match-face-2  ((t (:foreground ,color-red-1    :background ,color-red-2      ))))
     `(swiper-background-match-face-3  ((t (:foreground ,color-blue-1   :background ,color-blue-2     ))))
     `(swiper-background-match-face-4  ((t (:foreground ,color-yellow-1 :background ,color-yellow-2   ))))
-    `(swiper-line-face                ((t (:foreground ,text-match     :background ,background-match ))))
+    ;`(swiper-line-face                ((t (:foreground ,text-match     :background ,background-match ))))
     `(swiper-match-face-1             ((t (:foreground ,color-green-1  :background ,color-green-2    ))))
     `(swiper-match-face-2             ((t (:foreground ,color-red-1    :background ,color-red-2      ))))
     `(swiper-match-face-3             ((t (:foreground ,color-blue-1   :background ,color-blue-2     ))))
@@ -450,8 +452,8 @@
 
     `(focus-unfocused           ((t (:foreground ,text-lower ))))
 
-    `(hydra-face-red            ((t (:foreground ,text-highlight-2 :bold t ))))
-    `(hydra-face-blue           ((t (:foreground ,text-highlight-2 :bold t ))))
+    `(hydra-face-red            ((t (:foreground ,text-highlight-1 :bold t ))))
+    `(hydra-face-blue           ((t (:foreground ,text-highlight-1 :bold t ))))
 
     `(bm-face                   ((t (:foreground ,color-green-1  :background ,color-green-2    ))))
     `(bm-fringe-face            ((t (:foreground ,text-match     :background ,background-match ))))
@@ -487,7 +489,7 @@
     `(eww-form-text ((t (:foreground ,text-highlight-1 :background ,background-mode-line ))))
     `(eww-form-checkbox ((t (:foreground ,text-highlight-1 :background ,background-mode-line ))))
     `(eww-form-select ((t (:foreground ,text-highlight-1 :background ,background-mode-line ))))
-    `(shr-link ((t (:foreground ,text-highlight-2 ))))
+    `(shr-link ((t (:foreground ,text-highlight-1 ))))
 
     `(speed-type-correct ((t (:foreground ,text-lower ))))
     `(speed-type-default ((t (:foreground ,text-normal ))))
