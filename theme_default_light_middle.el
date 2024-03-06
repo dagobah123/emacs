@@ -30,7 +30,6 @@
 (setq background-diff-odd-C "#eedb7a")
 (setq background-diff-removed "#ddca69")
 (setq background-diff-removed-highlight "#fba676")
-(setq background-ediff "#ddca69")
 (setq background-magit-branch-local "#99de66")
 (setq background-magit-branch-remote "#fba676")
 (setq background-match "#ddca69")

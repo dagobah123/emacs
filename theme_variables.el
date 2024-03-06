@@ -41,7 +41,6 @@
 (defvar background-diff-odd-C nil ".")
 (defvar background-diff-removed nil ".")
 (defvar background-diff-removed-highlight nil ".")
-(defvar background-ediff nil ".")
 (defvar background-fringe nil ".")
 (defvar background-hl nil ".")
 (defvar background-magit nil ".")
