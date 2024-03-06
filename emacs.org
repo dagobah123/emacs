@@ -812,7 +812,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (global-set-key (kbd "C-x / p") 'point-to-register)
   (global-set-key (kbd "C-x / e") 'helm-register)
   (global-set-key (kbd "C-x / o") 'occur)
-  (global-set-key (kbd "C-x / b") 'my:projectile-ibuffer)
+  ;(global-set-key (kbd "C-x / b") 'my:projectile-ibuffer)
+  (global-set-key (kbd "C-x / b") 'project-list-buffers)
 #+END_SRC
 ** look
 #+BEGIN_SRC emacs-lisp
