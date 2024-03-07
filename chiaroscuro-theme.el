@@ -265,25 +265,25 @@
     `(smerge-markers                    ((t (:foreground ,text-ediff :background ,background-diff-fine-C ))))
 
     ;ediff
-;   `(ediff-current-diff-A        ((t (:background ,background-diff-current-A        ))))
-;   `(ediff-current-diff-Ancestor ((t (:background ,background-diff-current-Ancestor ))))
-;   `(ediff-current-diff-B        ((t (:background ,background-diff-current-B        ))))
-;   `(ediff-current-diff-C        ((t (:background ,background-diff-current-C        ))))
-;
-;   `(ediff-even-diff-A           ((t (:background ,background-diff-even-A           ))))
-;   `(ediff-even-diff-Ancestor    ((t (:background ,background-diff-even-Ancestor    ))))
-;   `(ediff-even-diff-B           ((t (:background ,background-diff-even-B           ))))
-;   `(ediff-even-diff-C           ((t (:background ,background-diff-even-C           ))))
-;
-;   `(ediff-fine-diff-A           ((t (:background ,background-diff-fine-A           ))))
-;   `(ediff-fine-diff-Ancestor    ((t (:background ,background-diff-fine-Ancestor    ))))
-;   `(ediff-fine-diff-B           ((t (:background ,background-diff-fine-B           ))))
-;   `(ediff-fine-diff-C           ((t (:background ,background-diff-fine-C           ))))
-;
-;   `(ediff-odd-diff-A            ((t (:background ,background-diff-odd-A            ))))
-;   `(ediff-odd-diff-Ancestor     ((t (:background ,background-diff-odd-Ancestor     ))))
-;   `(ediff-odd-diff-B            ((t (:background ,background-diff-odd-B            ))))
-;   `(ediff-odd-diff-C            ((t (:background ,background-diff-odd-C            ))))
+    `(ediff-current-diff-A        ((t (:foreground unspecified :background ,background-diff-current-A        ))))
+    `(ediff-current-diff-Ancestor ((t (:foreground unspecified :background ,background-diff-current-Ancestor ))))
+    `(ediff-current-diff-B        ((t (:foreground unspecified :background ,background-diff-current-B        ))))
+    `(ediff-current-diff-C        ((t (:foreground unspecified :background ,background-diff-current-C        ))))
+
+    `(ediff-even-diff-A           ((t (:foreground unspecified :background ,background-diff-even-A           ))))
+    `(ediff-even-diff-Ancestor    ((t (:foreground unspecified :background ,background-diff-even-Ancestor    ))))
+    `(ediff-even-diff-B           ((t (:foreground unspecified :background ,background-diff-even-B           ))))
+    `(ediff-even-diff-C           ((t (:foreground unspecified :background ,background-diff-even-C           ))))
+
+    `(ediff-fine-diff-A           ((t (:foreground unspecified :background ,background-diff-fine-A           ))))
+    `(ediff-fine-diff-Ancestor    ((t (:foreground unspecified :background ,background-diff-fine-Ancestor    ))))
+    `(ediff-fine-diff-B           ((t (:foreground unspecified :background ,background-diff-fine-B           ))))
+    `(ediff-fine-diff-C           ((t (:foreground unspecified :background ,background-diff-fine-C           ))))
+
+    `(ediff-odd-diff-A            ((t (:foreground unspecified :background ,background-diff-odd-A            ))))
+    `(ediff-odd-diff-Ancestor     ((t (:foreground unspecified :background ,background-diff-odd-Ancestor     ))))
+    `(ediff-odd-diff-B            ((t (:foreground unspecified :background ,background-diff-odd-B            ))))
+    `(ediff-odd-diff-C            ((t (:foreground unspecified :background ,background-diff-odd-C            ))))
 
     ;ztree
     `(ztreep-diff-model-add-face     ((t (:foreground ,text-match     :background ,background-match             ))))
