@@ -336,6 +336,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 #+BEGIN_SRC emacs-lisp
   (require 'expand-region)
   (global-set-key (kbd "C-=") 'er/expand-region)
+  (global-set-key (kbd "C-,") 'er/expand-region)
 #+END_SRC
 ** focus
 #+BEGIN_SRC emacs-lisp
@@ -758,7 +759,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ** key bindings, kbd
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "<f9> b") 'ibuffer)
-  (global-set-key (kbd "C-.") 'avy-goto-char-2)
+  (global-set-key (kbd "C-.") 'avy-goto-char-timer)
   (global-set-key (kbd "C-1") 'delete-other-windows)
   (global-set-key (kbd "C-8") 'whitespace-mode)
   (global-set-key (kbd "C-<") #'(lambda() (interactive) (scroll-right 10)))
