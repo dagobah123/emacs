@@ -794,11 +794,17 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (define-key global-map (kbd "C-x .") my-prefix-map)
 (define-key my-prefix-map (kbd ".") 'avy-goto-char-timer)
 (define-key my-prefix-map (kbd ",") 'avy-goto-line)
-(define-key my-prefix-map (kbd "m l") 'avy-move-line)
-(define-key my-prefix-map (kbd "m r") 'avy-move-region)
+(define-key my-prefix-map (kbd "c l") 'avy-copy-line)
+(define-key my-prefix-map (kbd "c r") 'avy-copy-region)
+(define-key my-prefix-map (kbd "g a") 'avy-goto-word-0)
+(define-key my-prefix-map (kbd "g c") 'avy-goto-char)
+(define-key my-prefix-map (kbd "g l") 'avy-goto-char-in-line)
+(define-key my-prefix-map (kbd "g w") 'avy-goto-word-1)
 (define-key my-prefix-map (kbd "k l") 'avy-kill-whole-line)
 (define-key my-prefix-map (kbd "k r") 'avy-kill-region)
-(define-key my-prefix-map (kbd "c l") 'avy-goto-char-in-line)
+(define-key my-prefix-map (kbd "m l") 'avy-move-line)
+(define-key my-prefix-map (kbd "m r") 'avy-move-region)
+#+END_SRC
 
 ;    (const avy-goto-char)
 ;    (const avy-goto-char-2)
@@ -817,7 +823,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;    (const avy-kill-ring-save-whole-line)
 ;    (const avy-kill-ring-save-region)
 
-#+END_SRC
 
 ** look
 #+BEGIN_SRC emacs-lisp
