@@ -795,6 +795,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (define-key my-prefix-map (kbd ".") 'avy-goto-char-timer)
 (define-key my-prefix-map (kbd "C-.") 'avy-goto-char-timer)
 (define-key my-prefix-map (kbd ",") 'avy-goto-line)
+(define-key my-prefix-map (kbd "C-,") 'avy-goto-line)
 (define-key my-prefix-map (kbd "c l") 'avy-copy-line)
 (define-key my-prefix-map (kbd "c r") 'avy-copy-region)
 (define-key my-prefix-map (kbd "g a") 'avy-goto-word-0)
