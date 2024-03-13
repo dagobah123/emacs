@@ -792,10 +792,16 @@ Load environment variables properly by installing *exec-path-from-shell*.
 
 (defvar my-prefix-map (make-sparse-keymap) "My custom prefix keymap")
 (define-key global-map (kbd "C-.") my-prefix-map)
-(define-key my-prefix-map (kbd ".") 'avy-goto-char-timer)
+
+(define-key my-prefix-map (kbd ".")   'avy-goto-char-timer)
 (define-key my-prefix-map (kbd "C-.") 'avy-goto-char-timer)
-(define-key my-prefix-map (kbd ",") 'avy-goto-line)
+
+(define-key my-prefix-map (kbd ",")   'avy-goto-line)
 (define-key my-prefix-map (kbd "C-,") 'avy-goto-line)
+
+(define-key my-prefix-map (kbd "/")   'avy-goto-char-in-line)
+(define-key my-prefix-map (kbd "C-/")   'avy-goto-char-in-line)
+
 (define-key my-prefix-map (kbd "c l") 'avy-copy-line)
 (define-key my-prefix-map (kbd "c r") 'avy-copy-region)
 (define-key my-prefix-map (kbd "g a") 'avy-goto-word-0)

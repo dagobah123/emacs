@@ -14,7 +14,7 @@
 
 (setq background "#000000")
 (setq background-fringe "#1f1f23")
-(setq background-hl "#3c1b11")
+(setq background-hl "#111111")
 (setq background-magit "#111111")
 (setq background-magit-dark "#000000")
 (setq background-match "#ecdba7")
