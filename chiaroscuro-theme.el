@@ -486,7 +486,8 @@
     `(transient-key-stay   ((t (:foreground ,text-highlight-1 :bold t ))))
 
     `(avy-background-face      ((t (:foreground ,color-red-1 :background ,color-red-2 :bold t ))))
-    `(avy-goto-char-timer-face ((t (:foreground ,color-gray-1 :background ,color-gray-2 :bold t ))))
+    ;`(avy-goto-char-timer-face ((t (:foreground ,color-gray-1 :background ,color-gray-2 :bold t ))))
+    `(avy-goto-char-timer-face ((t (:foreground ,"#000000" :background ,text-highlight-1 :bold t ))))
     ;`(avy-lead-face            ((t (:foreground ,color-violet-1 :background ,color-violet-2 :bold t ))))
     `(avy-lead-face            ((t (:foreground ,"#000000" :background ,text-highlight-2 :bold t ))))
     `(avy-lead-face-0          ((t (:foreground ,color-green-1 :background ,color-green-2 :bold t ))))
