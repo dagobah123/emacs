@@ -2085,6 +2085,23 @@ Load environment variables properly by installing *exec-path-from-shell*.
                                         ;(global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
                                         ;(define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
 #+END_SRC
+**
+#+BEGIN_SRC emacs-lisp
+(setq org-emphasis-alist
+  '(("*" (bold :foreground "Orange"))
+    ("/" (italic :foreground "Orange"))
+    ("_" (underline :foreground "Orange"))
+    ("=" (:foreground "Black" :background "Orange"))
+    ("~" (:foreground "Black" :background "SpringGreen1"))
+    ("+" (:strike-through t :foreground "SpringGreen1"))))
+#+END_SRC
+
+*bold*
+/italic/
+_underline_
+=kjh=
+~kjhkjh~
++sdflkjsdf+
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.
 Load emacs-lisp file for custom changes.

@@ -363,7 +363,7 @@
     `(org-target                    ((t (:foreground ,text-normal      :background unspecified     :underline t                   ))))
     `(org-time-grid                 ((t (:foreground ,text-normal      :background unspecified                                    ))))
     `(org-todo                      ((t (:foreground ,color-red-1      :background unspecified     :bold t                        ))))
-    `(org-verbatim                  ((t (:foreground ,"#ff0000"        :background unspecified     :bold t                        ))))
+    ;`(org-verbatim                  ((t (:foreground ,"#ff0000"        :background unspecified     :bold t                        ))))
     `(org-verse                     ((t (:foreground ,color-green-1    :background unspecified                                    ))))
     `(org-warning                   ((t (:foreground ,color-orange-1   :background unspecified     :bold t                        ))))
     `(org-imminent-deadline         ((t (:foreground ,text-normal      :background unspecified     :bold t                        ))))
