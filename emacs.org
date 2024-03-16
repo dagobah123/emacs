@@ -744,6 +744,31 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (global-set-key (kbd "S-M-<left>") 'indent-rigidly-left)
 (global-set-key (kbd "S-M-<right>") 'indent-rigidly-right)
 #+END_SRC
+** ivy
+#+BEGIN_SRC emacs-lisp
+(ivy-mode)
+(setq ivy-use-virtual-buffers t)
+(setq enable-recursive-minibuffers t)
+;; enable this if you want `swiper' to use it
+;; (setq search-default-mode #'char-fold-to-regexp)
+                                        ;(global-set-key "\C-s" 'swiper)
+                                        ;(global-set-key (kbd "C-c C-r") 'ivy-resume)
+                                        ;(global-set-key (kbd "<f6>") 'ivy-resume)
+                                        ;(global-set-key (kbd "M-x") 'counsel-M-x)
+                                        ;(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+                                        ;(global-set-key (kbd "<f1> f") 'counsel-describe-function)
+                                        ;(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+                                        ;(global-set-key (kbd "<f1> o") 'counsel-describe-symbol)
+                                        ;(global-set-key (kbd "<f1> l") 'counsel-find-library)
+                                        ;(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
+                                        ;(global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+                                        ;(global-set-key (kbd "C-c g") 'counsel-git)
+                                        ;(global-set-key (kbd "C-c j") 'counsel-git-grep)
+                                        ;(global-set-key (kbd "C-c k") 'counsel-ag)
+                                        ;(global-set-key (kbd "C-x l") 'counsel-locate)
+                                        ;(global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+                                        ;(define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
+#+END_SRC
 ** json-snatcher
 #+BEGIN_SRC emacs-lisp
 (require 'json-snatcher)
@@ -789,49 +814,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (global-set-key (kbd "M-m") 'xref-pop-marker-stack)
 (global-set-key (kbd "M-n") 'evil-first-non-blank)
 ;(global-set-key (kbd "<f10>") Define-'tmm)
-
-(defvar my-prefix-map (make-sparse-keymap) "My custom prefix keymap")
-(define-key global-map (kbd "C-.") my-prefix-map)
-
-(define-key my-prefix-map (kbd ".")   'avy-goto-char-timer)
-(define-key my-prefix-map (kbd "C-.") 'avy-goto-char-timer)
-
-(define-key my-prefix-map (kbd ",")   'avy-goto-line)
-(define-key my-prefix-map (kbd "C-,") 'avy-goto-line)
-
-(define-key my-prefix-map (kbd "/")   'avy-goto-char-in-line)
-(define-key my-prefix-map (kbd "C-/")   'avy-goto-char-in-line)
-
-(define-key my-prefix-map (kbd "c l") 'avy-copy-line)
-(define-key my-prefix-map (kbd "c r") 'avy-copy-region)
-(define-key my-prefix-map (kbd "g a") 'avy-goto-word-0)
-(define-key my-prefix-map (kbd "g c") 'avy-goto-char)
-(define-key my-prefix-map (kbd "g l") 'avy-goto-char-in-line)
-(define-key my-prefix-map (kbd "g w") 'avy-goto-word-1)
-(define-key my-prefix-map (kbd "k l") 'avy-kill-whole-line)
-(define-key my-prefix-map (kbd "k r") 'avy-kill-region)
-(define-key my-prefix-map (kbd "m l") 'avy-move-line)
-(define-key my-prefix-map (kbd "m r") 'avy-move-region)
 #+END_SRC
-
-;    (const avy-goto-char)
-;    (const avy-goto-char-2)
-;    (const avy-isearch)
-;    (const avy-goto-line)
-;    (const avy-goto-subword-0)
-;    (const avy-goto-subword-1)
-;    (const avy-goto-word-0)
-;    (const avy-goto-word-1)
-;    (const avy-copy-line)
-;    (const avy-copy-region)
-;    (const avy-move-line)
-;    (const avy-move-region)
-;    (const avy-kill-whole-line)
-;    (const avy-kill-region)
-;    (const avy-kill-ring-save-whole-line)
-;    (const avy-kill-ring-save-region)
-
-
 ** look
 #+BEGIN_SRC emacs-lisp
 (menu-bar-mode 0)
@@ -1239,6 +1222,88 @@ Load environment variables properly by installing *exec-path-from-shell*.
                                         ;  (list
                                         ;    (list (propertize "<%m" 'face 'mode-line-mode-face) "> ")))
 #+END_SRC
+** movement, avy
+#+BEGIN_SRC emacs-lisp
+(defvar my-prefix-map (make-sparse-keymap) "My custom prefix keymap")
+(define-key global-map (kbd "C-.") my-prefix-map)
+
+(define-key my-prefix-map (kbd ".")   'avy-goto-char-timer)
+(define-key my-prefix-map (kbd "C-.") 'avy-goto-char-timer)
+
+(define-key my-prefix-map (kbd ",")   'avy-goto-line)
+(define-key my-prefix-map (kbd "C-,") 'avy-goto-line)
+
+(define-key my-prefix-map (kbd "/")   'avy-goto-char-in-line)
+(define-key my-prefix-map (kbd "C-/")   'avy-goto-char-in-line)
+
+(define-key my-prefix-map (kbd "c l") 'avy-copy-line)
+(define-key my-prefix-map (kbd "c r") 'avy-copy-region)
+(define-key my-prefix-map (kbd "g a") 'avy-goto-word-0)
+(define-key my-prefix-map (kbd "g c") 'avy-goto-char)
+(define-key my-prefix-map (kbd "g l") 'avy-goto-char-in-line)
+(define-key my-prefix-map (kbd "g w") 'avy-goto-word-1)
+(define-key my-prefix-map (kbd "k l") 'avy-kill-whole-line)
+(define-key my-prefix-map (kbd "k r") 'avy-kill-region)
+(define-key my-prefix-map (kbd "m l") 'avy-move-line)
+(define-key my-prefix-map (kbd "m r") 'avy-move-region)
+#+END_SRC
+
+;    (const avy-goto-char)
+;    (const avy-goto-char-2)
+;    (const avy-isearch)
+;    (const avy-goto-line)
+;    (const avy-goto-subword-0)
+;    (const avy-goto-subword-1)
+;    (const avy-goto-word-0)
+;    (const avy-goto-word-1)
+;    (const avy-copy-line)
+;    (const avy-copy-region)
+;    (const avy-move-line)
+;    (const avy-move-region)
+;    (const avy-kill-whole-line)
+;    (const avy-kill-region)
+;    (const avy-kill-ring-save-whole-line)
+;    (const avy-kill-ring-save-region)
+** movement, kbd
+#+BEGIN_SRC emacs-lisp
+(defvar my-movement-prefix-map (make-sparse-keymap) "My custom movement prefix keymap")
+(define-key global-map (kbd "C-,") my-movement-prefix-map)
+
+(define-key my-movement-prefix-map (kbd "c") 'my:goto-class)
+(define-key my-movement-prefix-map (kbd "m") 'my:goto-member)
+(define-key my-movement-prefix-map (kbd "C-k") 'my:prev-method)
+(define-key my-movement-prefix-map (kbd "C-l") 'my:next-method)
+#+END_SRC
+** movement, in Java class, my:prev-method my:next-method
+#+BEGIN_SRC emacs-lisp
+(defvar regexp-class ".*class.*")
+(defvar regexp-member "public.*;\\|protected.*;\\|private.*;")
+(defvar regexp-method "public.*(\\|protected.*(\\|private.*(")
+
+(defun my:goto-class ()
+  (interactive)
+  (beginning-of-buffer)
+  (re-search-forward regexp-class nil t)
+  (evil-first-non-blank))
+
+(defun my:goto-member ()
+  (interactive)
+  (beginning-of-buffer)
+  (re-search-forward regexp-member nil t)
+  (evil-first-non-blank))
+
+(defun my:prev-method ()
+  (interactive)
+  (beginning-of-line)
+  (re-search-backward regexp-method nil t)
+  (evil-first-non-blank))
+
+(defun my:next-method ()
+  (interactive)
+  (end-of-line)
+  (re-search-forward regexp-method nil t)
+  (evil-first-non-blank))
+#+END_SRC
 ** my:agenda-view
 #+BEGIN_SRC emacs-lisp
 (defun my:agenda-view ()
@@ -1609,25 +1674,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (Info-next-reference)
   (recenter))
 #+END_SRC
-** my:prev-method my:next-method
-#+BEGIN_SRC emacs-lisp
-                                        ;(defvar next-method-regexp "class\\|def\\|public\\|private\\|protected\\|defun\\|defvar")
-(defvar next-method-regexp "public.*(\\|protected.*(\\|private.*(")
-
-(defun my:prev-method ()
-  (interactive)
-  (beginning-of-line)
-  (re-search-backward next-method-regexp nil t)
-  (evil-first-non-blank))
-(global-set-key (kbd "C-x / ;") 'my:prev-method)
-
-(defun my:next-method ()
-  (interactive)
-  (end-of-line)
-  (re-search-forward next-method-regexp nil t)
-  (evil-first-non-blank))
-(global-set-key (kbd "C-x / '") 'my:next-method)
-#+END_SRC
 ** my:prev-curly-brace my:curly-brace
 #+BEGIN_SRC emacs-lisp
                                         ;(defvar next-method-regexp "class\\|def\\|public\\|private\\|protected\\|defun\\|defvar")
@@ -1889,6 +1935,23 @@ Load environment variables properly by installing *exec-path-from-shell*.
                             "org-mode-notes-development"
                             "org-mode-notes-development-static"))))
 #+END_SRC
+** org mode colors
+#+BEGIN_SRC emacs-lisp
+(setq org-emphasis-alist
+  '(("*" (bold :foreground "Orange"))
+    ("/" (italic :foreground "Orange"))
+    ("_" (underline :foreground "Orange"))
+    ("=" (:foreground "Black" :background "Orange"))
+    ("~" (:foreground "Black" :background "SpringGreen1"))
+    ("+" (:strike-through t :foreground "SpringGreen1"))))
+#+END_SRC
+
+*bold*
+/italic/
+_underline_
+=kjh=
+~kjhkjh~
++sdflkjsdf+
 ** projectile
 #+BEGIN_SRC emacs-lisp
 (use-package projectile)
@@ -2060,48 +2123,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
 (global-set-key (kbd "C-c j") 'yas-insert-snippet)
 #+END_SRC
-** ivy
-#+BEGIN_SRC emacs-lisp
-(ivy-mode)
-(setq ivy-use-virtual-buffers t)
-(setq enable-recursive-minibuffers t)
-;; enable this if you want `swiper' to use it
-;; (setq search-default-mode #'char-fold-to-regexp)
-                                        ;(global-set-key "\C-s" 'swiper)
-                                        ;(global-set-key (kbd "C-c C-r") 'ivy-resume)
-                                        ;(global-set-key (kbd "<f6>") 'ivy-resume)
-                                        ;(global-set-key (kbd "M-x") 'counsel-M-x)
-                                        ;(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-                                        ;(global-set-key (kbd "<f1> f") 'counsel-describe-function)
-                                        ;(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-                                        ;(global-set-key (kbd "<f1> o") 'counsel-describe-symbol)
-                                        ;(global-set-key (kbd "<f1> l") 'counsel-find-library)
-                                        ;(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-                                        ;(global-set-key (kbd "<f2> u") 'counsel-unicode-char)
-                                        ;(global-set-key (kbd "C-c g") 'counsel-git)
-                                        ;(global-set-key (kbd "C-c j") 'counsel-git-grep)
-                                        ;(global-set-key (kbd "C-c k") 'counsel-ag)
-                                        ;(global-set-key (kbd "C-x l") 'counsel-locate)
-                                        ;(global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
-                                        ;(define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
-#+END_SRC
-**
-#+BEGIN_SRC emacs-lisp
-(setq org-emphasis-alist
-  '(("*" (bold :foreground "Orange"))
-    ("/" (italic :foreground "Orange"))
-    ("_" (underline :foreground "Orange"))
-    ("=" (:foreground "Black" :background "Orange"))
-    ("~" (:foreground "Black" :background "SpringGreen1"))
-    ("+" (:strike-through t :foreground "SpringGreen1"))))
-#+END_SRC
-
-*bold*
-/italic/
-_underline_
-=kjh=
-~kjhkjh~
-+sdflkjsdf+
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.
 Load emacs-lisp file for custom changes.
