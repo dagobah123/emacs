@@ -24,6 +24,10 @@
         (progn (load-file "~/.emacs.d/theme_default_dark.el")
                (load-file "~/.emacs.d/theme_palette.el")))
 
+    (if (eq INDEX-CHIAROSCURO INDEX-GRAY)
+        (progn (load-file "~/.emacs.d/theme_default_dark.el")
+               (load-file "~/.emacs.d/theme_gray.el")))
+
     (if (eq INDEX-CHIAROSCURO INDEX-RED)
         (progn (load-file "~/.emacs.d/theme_default_dark.el")
                (load-file "~/.emacs.d/theme_red.el")))
@@ -475,7 +479,7 @@
     `(eww-form-text     ((t (:foreground ,text-highlight-1 :background ,background-mode-line ))))
     `(eww-form-checkbox ((t (:foreground ,text-highlight-1 :background ,background-mode-line ))))
     `(eww-form-select   ((t (:foreground ,text-highlight-1 :background ,background-mode-line ))))
-    `(shr-link          ((t (:foreground ,text-highlight-1 ))))
+    `(shr-link          ((t (:foreground ,text-highlight-1 :background ,background ))))
 
     `(speed-type-correct ((t (:foreground ,text-lower ))))
     `(speed-type-default ((t (:foreground ,text-normal ))))

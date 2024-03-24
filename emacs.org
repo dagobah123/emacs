@@ -437,10 +437,11 @@ Load environment variables properly by installing *exec-path-from-shell*.
   ^ ^              _g_: linux.el       ^ ^                  _;_: down    _3_: Neon     ^ ^
   ^ ^              ^ ^                 ^ ^                  ^ ^          _4_: Yellow   ^ ^
   ^ ^              ^ ^                 ^ ^                  ^ ^          _5_: Palette  ^ ^
-  ^ ^              ^ ^                 ^ ^                  ^ ^          _6_: Red      ^ ^
-  ^ ^              ^ ^                 ^ ^                  ^ ^          _7_: High C.  ^ ^
-  ^ ^              ^ ^                 ^ ^                  ^ ^          _8_: Light    ^ ^
-  ^ ^              ^ ^                 ^ ^                  ^ ^          _9_: Dark     ^ ^
+  ^ ^              ^ ^                 ^ ^                  ^ ^          _6_: Gray     ^ ^
+  ^ ^              ^ ^                 ^ ^                  ^ ^          _7_: Red      ^ ^
+  ^ ^              ^ ^                 ^ ^                  ^ ^          _8_: High C.  ^ ^
+  ^ ^              ^ ^                 ^ ^                  ^ ^          _9_: Light    ^ ^
+  ^ ^              ^ ^                 ^ ^                  ^ ^          _0_: Dark     ^ ^
   "
 
   ("a" (dired "~/source/emacs"))
@@ -466,10 +467,11 @@ Load environment variables properly by installing *exec-path-from-shell*.
   ("3" (my:set-theme INDEX-NEON))
   ("4" (my:set-theme INDEX-YELLOW))
   ("5" (my:set-theme INDEX-PALETTE))
-  ("6" (my:set-theme INDEX-RED))
-  ("7" (my:set-theme INDEX-HIGH-CONTRAST))
-  ("8" (my:set-theme INDEX-COLOR-CHANGE-LIGHT))
-  ("9" (my:set-theme INDEX-COLOR-CHANGE-DARK))
+  ("6" (my:set-theme INDEX-GRAY))
+  ("7" (my:set-theme INDEX-RED))
+  ("8" (my:set-theme INDEX-HIGH-CONTRAST))
+  ("9" (my:set-theme INDEX-COLOR-CHANGE-LIGHT))
+  ("0" (my:set-theme INDEX-COLOR-CHANGE-DARK))
 
   ("'" (ibuffer))
   ("b" list-bookmarks)
@@ -813,10 +815,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (global-set-key (kbd "M-g M-g") 'avy-goto-line)
 (global-set-key (kbd "M-m") 'xref-pop-marker-stack)
 (global-set-key (kbd "M-n") 'evil-first-non-blank)
-(global-set-key (kbd "C-x C-b") 'helm-projectile-switch-to-buffer)
-;(global-set-key (kbd "C-x C-b") 'my:projectile-ibuffer)
-;helm-projectile-switch-to-buffer
-;(global-set-key (kbd "<f10>") Define-'tmm)
+;(global-set-key (kbd "C-x C-b") 'helm-projectile-switch-to-buffer)
+(global-set-key (kbd "C-x C-b") 'my:buffers)
 #+END_SRC
 ** look
 #+BEGIN_SRC emacs-lisp
@@ -1280,6 +1280,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (define-key my-movement-prefix-map (kbd "m") 'my:goto-member)
 (define-key my-movement-prefix-map (kbd "C-k") 'my:prev-method)
 (define-key my-movement-prefix-map (kbd "C-l") 'my:next-method)
+(define-key my-movement-prefix-map (kbd "b") 'my:buffers)
 #+END_SRC
 ** movement, in Java class, my:prev-method my:next-method
 #+BEGIN_SRC emacs-lisp
@@ -1866,6 +1867,39 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (message "Yanked line."))
 (global-set-key (kbd "C-c u") 'my:yank-line-at-point)
 #+END_SRC
+** my:buffers-list
+#+BEGIN_SRC emacs-lisp
+(defun my:buffers-list ()
+  "Display a list of buffers alphabetically (excluding those starting with '*') and open the selected buffer."
+  (interactive)
+  (let ((buffers (mapcar #'buffer-name (buffer-list))))
+    ;; Exclude buffers starting with '*'
+    (setq buffers (seq-filter (lambda (buf) (not (string-prefix-p "*" buf))) buffers))
+    ;; Sort the remaining buffers alphabetically
+    (setq buffers (sort buffers #'string<))
+    (let ((chosen-buffer (completing-read "Select buffer: " buffers)))
+      (when chosen-buffer
+        (switch-to-buffer chosen-buffer)))))
+#+END_SRC
+** my:buffers
+#+BEGIN_SRC emacs-lisp
+;(setq-default bs-minimal-buffer-name-column 50)
+;(setq-default bs-maximal-buffer-name-column 80)
+;(setq-default bs-sort-functions "by name")
+
+(setq bs-attributes-list
+   '(("" 1 1 left bs--get-marked-string)
+     ("M" 1 1 left bs--get-modified-string)
+     ("R" 2 2 left bs--get-readonly-string)
+     ("Buffer" bs--get-name-length 10 left bs--get-name)))
+
+(defun my:buffers ()
+  "Display buffer list of buffers pointing to files"
+  (interactive)
+  (bs-show nil)
+  (delete-other-windows))
+  ;(evil-emacs-state)
+#+END_SRC
 ** org mode
 #+BEGIN_SRC emacs-lisp
 (setq org-directory "~/source/org-mode/")
@@ -2002,15 +2036,17 @@ _underline_
 (setq INDEX-NEON               3)
 (setq INDEX-YELLOW             4)
 (setq INDEX-PALETTE            5)
-(setq INDEX-RED                6)
-(setq INDEX-HIGH-CONTRAST      7)
-(setq INDEX-COLOR-CHANGE-LIGHT 8)
-(setq INDEX-COLOR-CHANGE-DARK  9)
+(setq INDEX-GRAY               6)
+(setq INDEX-RED                7)
+(setq INDEX-HIGH-CONTRAST      8)
+(setq INDEX-COLOR-CHANGE-LIGHT 9)
+(setq INDEX-COLOR-CHANGE-DARK 10)
 
 (defvar chiaroscuro-index 0 "Index representing the current theme")
 (setq chiaroscuro-index 0)
 
 (setq themes-list '(chiaroscuro
+                    chiaroscuro
                     chiaroscuro
                     chiaroscuro
                     chiaroscuro
@@ -2025,6 +2061,7 @@ _underline_
                           "neon"
                           "yellow"
                           "palette"
+                          "gray"
                           "red"
                           "high contrast"
                           "light"
