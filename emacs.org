@@ -311,20 +311,18 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (evil-mode nil)
 
 (setq evil-default-state 'emacs)
-(add-to-list 'evil-emacs-state-modes 'grep-mode)
-(add-to-list 'evil-emacs-state-modes 'Info-mode)
-(add-to-list 'evil-emacs-state-modes 'help-mode)
+
 #+END_SRC
 ** eww
 #+BEGIN_SRC emacs-lisp
 (setq eww-search-prefix "https://www.google.com/search?q=")
 
-                                        ;(setq browse-url-browser-function 'eww-browse-url) ; Use eww as the default browser
+;(setq browse-url-browser-function 'eww-browse-url) ; Use eww as the default browser
 (setq shr-use-fonts  nil) ; No special fonts
 (setq shr-use-colors nil) ; No colors
 (setq shr-indentation 2) ; Left-side margin
 (setq shr-width 80) ; Fold text
-                                        ;(setq shr-max-image-proportion 0.3) ; Image size
+;(setq shr-max-image-proportion 0.3) ; Image size
 
 (cond
  ((string-equal system-type "windows-nt")
@@ -348,8 +346,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (global-set-key (kbd "C-c P") 'google-translate-at-point)
                                         ;(global-set-key (kbd "C-c T") 'google-translate-query-translate)
 (global-set-key (kbd "C-c R") 'google-translate-query-translate-reverse)
-(setq google-translate-default-source-language "fr")
-(setq google-translate-default-target-language "en")
+(setq google-translate-default-source-language "en")
+(setq google-translate-default-target-language "fr")
 #+END_SRC
 ** helm
 #+BEGIN_SRC emacs-lisp
@@ -816,7 +814,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (global-set-key (kbd "M-m") 'xref-pop-marker-stack)
 (global-set-key (kbd "M-n") 'evil-first-non-blank)
 ;(global-set-key (kbd "C-x C-b") 'helm-projectile-switch-to-buffer)
-(global-set-key (kbd "C-x C-b") 'my:buffers)
+(global-set-key (kbd "C-b") 'my:buffers)
+(global-set-key (kbd "C-n") 'ivy-switch-buffer)
 #+END_SRC
 ** look
 #+BEGIN_SRC emacs-lisp
@@ -1227,14 +1226,28 @@ Load environment variables properly by installing *exec-path-from-shell*.
 #+END_SRC
 ** movement, avy
 #+BEGIN_SRC emacs-lisp
+(defun my:avy-lightning ()
+  "Change default text while avy is active."
+  (interactive)
+  (set-face-attribute 'default nil :foreground "#770000")
+  )
+  ;(avy-goto-word-1))
+  ;(set-face-attribute 'default nil :foreground text-normal))
+
+  ;(Run-with-timer 0.25 nil set-face-attribute 'mode-line nil :background "grey75")
+;          `(default ((t (:foreground ,text-normal :background ,background :bold t )))))
+
+(setq avy-timeout-seconds 0.25)
+
 (defvar my-prefix-map (make-sparse-keymap) "My custom prefix keymap")
 (define-key global-map (kbd "C-.") my-prefix-map)
 
 (define-key my-prefix-map (kbd ".")   'avy-goto-char-timer)
 (define-key my-prefix-map (kbd "C-.") 'avy-goto-char-timer)
 
-(define-key my-prefix-map (kbd ",")   'avy-goto-line)
-(define-key my-prefix-map (kbd "C-,") 'avy-goto-line)
+(define-key my-prefix-map (kbd ",")   'avy-goto-word-1)
+;(define-key my-prefix-map (kbd "C-,") 'avy-goto-word-1)
+(define-key my-prefix-map (kbd "C-,") 'my:avy-lightning)
 
 (define-key my-prefix-map (kbd "/")   'avy-goto-char-in-line)
 (define-key my-prefix-map (kbd "C-/")   'avy-goto-char-in-line)
@@ -1270,12 +1283,11 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ** movement, kbd
 #+BEGIN_SRC emacs-lisp
 (defvar my-movement-prefix-map (make-sparse-keymap) "My custom movement prefix keymap")
-;remap org-cycle-agenda-files
 (define-key org-mode-map (kbd "C-,") nil)
-;(global-set-key (kbd "C-,") 'info)
 
 (define-key global-map (kbd "C-,") my-movement-prefix-map)
 
+(define-key my-movement-prefix-map (kbd "C-,") 'avy-goto-word-1)
 (define-key my-movement-prefix-map (kbd "c") 'my:goto-class)
 (define-key my-movement-prefix-map (kbd "m") 'my:goto-member)
 (define-key my-movement-prefix-map (kbd "C-k") 'my:prev-method)
@@ -1357,13 +1369,12 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (if (eq evil-state 'operator)
       (progn (set-cursor-color "orange")))
   (if (eq evil-state 'replace)
-      (progn (set-cursor-color "deep pink")))
+      (progn (set-cursor-color "royal blue")))
   (if (eq evil-state 'motion)
       (progn (set-cursor-color "blue")))
   (if (bound-and-true-p cua-mode)
       (progn (set-cursor-color "dark turquoise"))))
 
-                                        ;(add-hook 'evil-change-state-hook 'my:change-cursor-color)
 (add-hook 'post-command-hook 'my:change-cursor-color)
 #+END_SRC
 ** my:copy-line-at-point
@@ -1719,20 +1730,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (delete-other-windows))
 (global-set-key (kbd "C-c v") 'my:projectile-magit)
 #+END_SRC
-** my:replace-umlauts
-#+BEGIN_SRC emacs-lisp
-(defun my:replace-umlauts ()
-  (interactive)
-  (beginning-of-buffer)
-  (while (search-forward "ae" nil t)
-    (replace-match "ä" nil t))
-  (beginning-of-buffer)
-  (while (search-forward "oe" nil t)
-    (replace-match "ö" nil t))
-  (beginning-of-buffer)
-  (while (search-forward "ue" nil t)
-    (replace-match "ü" nil t)))
-#+END_SRC
 ** my:reset-font-size
 #+BEGIN_SRC emacs-lisp
 (defun my:reset-font-size ()
@@ -1817,34 +1814,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
           (end (line-end-position)))
       (whitespace-cleanup-region begin end))))
 (global-set-key (kbd "C-x t") 'my:trim-whitespace)
-#+END_SRC
-** my:umlaut-a
-#+BEGIN_SRC emacs-lisp
-(defun my:umlaut-a ()
-  (interactive)
-  (insert "ä"))
-(global-set-key (kbd "C-c k a") 'my:umlaut-a)
-#+END_SRC
-** my:umlaut-o
-#+BEGIN_SRC emacs-lisp
-(defun my:umlaut-o ()
-  (interactive)
-  (insert "ö"))
-(global-set-key (kbd "C-c k o") 'my:umlaut-o)
-#+END_SRC
-** my:umlaut-s
-#+BEGIN_SRC emacs-lisp
-(defun my:umlaut-s ()
-  (interactive)
-  (insert "ß"))
-(global-set-key (kbd "C-c k s") 'my:umlaut-s)
-#+END_SRC
-** my:umlaut-u
-#+BEGIN_SRC emacs-lisp
-(defun my:umlaut-u ()
-  (interactive)
-  (insert "ü"))
-(global-set-key (kbd "C-c k u") 'my:umlaut-u)
 #+END_SRC
 ** my:yank-and-search
 #+BEGIN_SRC emacs-lisp
