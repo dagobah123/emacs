@@ -360,6 +360,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 #+END_SRC
 ** helm
 #+BEGIN_SRC emacs-lisp
+(setq helm-full-frame t)
 (use-package helm
   :ensure t
   :init
@@ -824,7 +825,15 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (global-set-key (kbd "M-n") 'evil-first-non-blank)
 ;(global-set-key (kbd "C-x C-b") 'helm-projectile-switch-to-buffer)
 (global-set-key (kbd "C-b") 'my:buffers)
-(global-set-key (kbd "C-n") 'ivy-switch-buffer)
+
+(defun my:switch-buffer ()
+  "Open switch buffer dialog in whole window."
+  (interactive)
+  (delete-other-windows)
+  (ido-switch-buffer))
+(global-set-key (kbd "C-n") 'my:switch-buffer)
+
+;(ivy-switch-buffer)
 #+END_SRC
 ** look
 #+BEGIN_SRC emacs-lisp
