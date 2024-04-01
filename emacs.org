@@ -826,12 +826,12 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;(global-set-key (kbd "C-x C-b") 'helm-projectile-switch-to-buffer)
 (global-set-key (kbd "C-b") 'my:buffers)
 
-(defun my:switch-buffer ()
-  "Open switch buffer dialog in whole window."
-  (interactive)
-  (delete-other-windows)
-  (ido-switch-buffer))
-(global-set-key (kbd "C-n") 'my:switch-buffer)
+;(define-key org-mode-map (kbd "C-m") nil)
+;(global-set-key (kbd "C-m") 'ido-switch-buffer)
+
+(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+
+(global-set-key (kbd "C-n") 'helm-mini)
 
 ;(ivy-switch-buffer)
 #+END_SRC
