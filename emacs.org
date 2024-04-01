@@ -1229,7 +1229,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (defun my:avy-lightning ()
   "Change default text while avy is active."
   (interactive)
-  ;(set-face-attribute 'default nil :foreground "#dddddd")
+  (set-face-attribute 'default nil :foreground "#dddddd")
   (set-face-attribute 'font-lock-bracket-face            nil  :foreground text-lower ) 
   (set-face-attribute 'font-lock-builtin-face            nil  :foreground text-lower ) 
   (set-face-attribute 'font-lock-comment-delimiter-face  nil  :foreground text-lower ) 
@@ -1248,8 +1248,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (set-face-attribute 'font-lock-warning-face            nil  :foreground text-lower )
   
   (avy-goto-char-timer)
-  ;(set-face-attribute 'default nil :foreground "#888888")
-
+  (set-face-attribute 'default nil :foreground "#888888")
+ 
   (set-face-attribute 'font-lock-bracket-face            nil  :foreground text-highlight-1  ) 
   (set-face-attribute 'font-lock-builtin-face            nil  :foreground text-type         ) 
   (set-face-attribute 'font-lock-comment-delimiter-face  nil  :foreground text-lower        ) 
