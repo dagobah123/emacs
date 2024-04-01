@@ -312,6 +312,13 @@ Load environment variables properly by installing *exec-path-from-shell*.
 
 (setq evil-default-state 'emacs)
 
+(evil-set-initial-state 'Info-mode 'emacs)
+(evil-set-initial-state 'grep-mode 'emacs)
+(evil-set-initial-state 'java-mode 'emacs)
+(evil-set-initial-state 'apropos-mode 'emacs)
+(evil-set-initial-state 'eshell-mode 'emacs)
+(evil-set-initial-state 'shell-mode 'emacs)
+(evil-set-initial-state 'eww-mode 'emacs)
 #+END_SRC
 ** eww
 #+BEGIN_SRC emacs-lisp
