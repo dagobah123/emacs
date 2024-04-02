@@ -131,8 +131,8 @@
     `(dired-warning      ((t (:foreground ,text-normal      :background unspecified         ))))
     `(dired-special      ((t (:foreground ,text-match                                       ))))
 
-    `(xref-match         ((t (:foreground ,text-match :background ,background-match ))))
-    `(match              ((t (:foreground ,text-match :background ,background-match ))))
+    `(xref-match         ((t (:foreground ,text-highlight-2 :background unspecified :bold t ))))
+    `(match              ((t (:foreground ,text-highlight-2 :background unspecified :bold t ))))
 
     ;helm
     `(helm-minibuffer-prompt            ((t (:foreground ,text-normal    :background unspecified                            ))))
@@ -173,6 +173,7 @@
     `(helm-bookmark-file                ((t (:foreground ,color-yellow-1                                                    ))))
     `(helm-bookmark-directory           ((t (:foreground ,text-match     :background, background-match :bold t              ))))
     `(helm-bookmark-info                ((t (:foreground ,color-blue-1   :background ,color-blue-2                          ))))
+    `(helm-non-file-buffer              ((t (:foreground ,text-lower     :background unspecified   :italic t                         ))))
 
     `(compilation-error                 ((t (:foreground ,text-error       :bold t :underline t ))))
     `(compilation-info                  ((t (:foreground ,text-highlight-1 :bold t :underline t ))))
