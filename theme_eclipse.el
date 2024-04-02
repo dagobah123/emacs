@@ -17,7 +17,7 @@
 (setq background-region "#dedede")
 (setq text-constant "#000000")
 (setq text-function "#000000")
-(setq text-highlight-1 "#1111ca")
+(setq text-highlight-1 "#ffb600")
 (setq text-highlight-2 "#3f5fbf")
 (setq text-info "#dd7700")
 (setq text-keyword "#7f0055")
