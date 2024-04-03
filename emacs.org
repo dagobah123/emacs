@@ -2202,6 +2202,23 @@ _underline_
 (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
 (global-set-key (kbd "C-c j") 'yas-insert-snippet)
 #+END_SRC
+** treemacs
+#+BEGIN_SRC emacs-lisp
+(use-package treemacs  
+  :ensure t  
+  :defer t  
+  :config  
+  (progn  
+   	(setq treemacs-no-png-images t)  
+   	(setq treemacs-icon-fallback-text (propertize "> " 'face 'font-lock-keyword-face)))  
+  :bind  
+  (:map global-map  
+   		([f8] . treemacs)))  
+(use-package treemacs-projectile  
+  :after treemacs projectile  
+  :defer t  
+  :ensure t)
+#+END_SRC
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.
 Load emacs-lisp file for custom changes.

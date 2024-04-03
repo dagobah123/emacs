@@ -434,18 +434,17 @@
     `(swiper-match-face-3               ((t (:foreground ,text-highlight-2  :background unspecified :bold t               ))))
     `(swiper-match-face-4               ((t (:foreground ,text-highlight-2  :background unspecified :bold t               ))))
 
-    `(treemacs-root-face                ((t (:foreground ,text-match           :background unspecified            :bold t   ))))
-    `(treemacs-file-face                ((t (:foreground ,color-green-1        :background ,color-green-2                   ))))
+    `(treemacs-root-face                ((t (:foreground ,text-highlight-1           :background unspecified            :bold t   ))))
+    `(treemacs-file-face                ((t (:foreground ,text-normal        :background unspecified                      ))))
     `(treemacs-directory-collapsed-face ((t (:foreground ,text-low             :background unspecified                      ))))
-    `(treemacs-directory-face           ((t (:foreground ,text-low             :background unspecified                      ))))
-    `(treemacs-git-modified-face        ((t (:foreground ,text-match           :background ,background-match                ))))
-    `(treemacs-git-ignored-face         ((t (:foreground ,text-low             :background unspecified                      ))))
-    `(treemacs-git-untracked-face       ((t (:foreground ,color-red-1          :background ,color-red-2                     ))))
-    `(treemacs-fringe-indicator-face    ((t (:foreground ,background-mode-line :background ,background-mode-line            ))))
-    `(treemacs-git-renamed-face         ((t (:foreground ,color-orange-1       :background unspecified                      ))))
-    `(treemacs-git-added-face           ((t (:foreground ,color-red-1          :background unspecified                      ))))
-    `(treemacs-git-conflict-face        ((t (:foreground ,color-red-1          :background unspecified                      ))))
-    `(treemacs-git-added-face           ((t (:foreground ,color-red-1          :background unspecified                      ))))
+    `(treemacs-directory-face           ((t (:foreground ,text-highlight-2     :background unspecified             :bold t         ))))
+    `(treemacs-git-modified-face        ((t (:foreground ,text-highlight-1           :background unspecified       :bold t               ))))
+    `(treemacs-git-ignored-face         ((t (:foreground ,text-low             :background unspecified             :bold t         ))))
+    `(treemacs-git-untracked-face       ((t (:foreground ,text-low         :background unspecified                 :bold t     ))))
+    `(treemacs-fringe-indicator-face    ((t (:foreground ,background-mode-line :background unspecified                      ))))
+    `(treemacs-git-renamed-face         ((t (:foreground ,text-highlight-1       :background unspecified           :bold t           ))))
+    `(treemacs-git-added-face           ((t (:foreground ,text-highlight-1          :background unspecified        :bold t              ))))
+    `(treemacs-git-conflict-face        ((t (:foreground ,color-red-1          :background unspecified             :bold t         ))))
 
     `(company-tooltip-selection ((t (:foreground ,text-match :background ,background-match ))))
 
@@ -505,7 +504,6 @@
     `(avy-lead-face-1          ((t (:foreground ,color-yellow-1 :background ,color-yellow-2 :bold t ))))
     `(avy-lead-face-2          ((t (:foreground ,color-blue-1 :background ,color-blue-2 :bold t ))))
 
-    
     `(ac-candidate-face       ((t (:foreground ,text-normal :background ,background-low ))))
     `(ac-candidate-mouse-face ((t (:foreground ,text-normal :background ,background-low ))))
     `(ac-completion-face      ((t (:foreground ,text-highlight-2 :background ,background-low :bold t ))))
