@@ -151,8 +151,11 @@
     `(helm-ff-prefix                    ((t (:foreground ,text-match     :background ,background-match                      ))))
     `(helm-buffer-directory             ((t (:foreground ,text-highlight-2  :bold t                        ))))
     `(helm-ff-directory                 ((t (:foreground ,text-highlight-2  :bold t                        ))))
-    `(helm-ff-dotted-directory          ((t (:foreground ,text-match     :background ,background-match                      ))))
+    `(helm-ff-dotted-directory          ((t (:foreground ,text-low     :background unspecified                      ))))
     `(helm-ff-file-extension            ((t (:foreground ,text-low  :background unspecified :bold nil                        ))))
+
+
+
     `(helm-ff-file                      ((t (:foreground ,color-blue-1  :background unspecified :bold nil                        ))))
     `(helm-completions-detailed         ((t (:foreground ,color-blue-1  :background unspecified :bold nil                        ))))
     `(helm-buffer-file                  ((t (:foreground ,text-normal  :background unspecified                        ))))
@@ -170,8 +173,8 @@
     `(transient-red                     ((t (:foreground ,color-yellow-1 :background ,color-yellow-2                        ))))
     `(info-menu-star                    ((t (:foreground ,color-yellow-1 :background ,color-yellow-2                        ))))
     `(helm-ff-denied                    ((t (:foreground ,color-yellow-1 :background ,color-yellow-2                        ))))
-    `(helm-bookmark-file                ((t (:foreground ,color-yellow-1                                                    ))))
-    `(helm-bookmark-directory           ((t (:foreground ,text-match     :background, background-match :bold t              ))))
+    `(helm-bookmark-file                ((t (:foreground ,text-normal                                                    ))))
+    `(helm-bookmark-directory           ((t (:foreground ,text-highlight-2  :background unspecified :bold t              ))))
     `(helm-bookmark-info                ((t (:foreground ,color-blue-1   :background ,color-blue-2                          ))))
     `(helm-non-file-buffer              ((t (:foreground ,text-lower     :background unspecified   :italic t                         ))))
 
@@ -467,17 +470,17 @@
 
     `(lsp-treemacs-file-error   ((t (:foreground ,"#ffffff"                                           ))))
 
-    `(popup-face                        ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
-    `(popup-isearch-match               ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
-    `(popup-menu-face                   ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
-    `(popup-menu-mouse-face             ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
-    `(popup-menu-selection-face         ((t (:foreground ,text-normal :background ,background-match     :bold nil :italic nil )))) 
-    `(popup-menu-summary-face           ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
+    `(popup-face                        ((t (:foreground ,text-normal :background ,background-low :bold nil :italic nil )))) 
+    `(popup-isearch-match               ((t (:foreground ,text-normal :background ,background-low :bold nil :italic nil )))) 
+    `(popup-menu-face                   ((t (:foreground ,text-normal :background ,background-low :bold nil :italic nil )))) 
+    `(popup-menu-mouse-face             ((t (:foreground ,text-normal :background ,background-low :bold nil :italic nil )))) 
+    `(popup-menu-selection-face         ((t (:foreground ,text-normal :background ,background-low :bold nil :italic nil )))) 
+    `(popup-menu-summary-face           ((t (:foreground ,text-normal :background ,background-low :bold nil :italic nil )))) 
     `(popup-scroll-bar-background-face  ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
-    `(popup-scroll-bar-foreground-face  ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
-    `(popup-summary-face                ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
-    `(popup-tip-face                    ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil )))) 
-
+    `(popup-scroll-bar-foreground-face  ((t (:foreground ,text-normal :background ,background-mode-line-active :bold nil :italic nil )))) 
+    `(popup-summary-face                ((t (:foreground ,text-normal :background ,background-low :bold nil :italic nil )))) 
+    `(popup-tip-face                    ((t (:foreground ,text-normal :background ,background-low :bold nil :italic nil )))) 
+   
     `(custom-button ((t (:foreground ,text-highlight-1 :background ,background-mode-line ))))
 
     `(eww-form-submit   ((t (:foreground ,text-highlight-1 :background ,background-mode-line ))))
@@ -502,10 +505,11 @@
     `(avy-lead-face-1          ((t (:foreground ,color-yellow-1 :background ,color-yellow-2 :bold t ))))
     `(avy-lead-face-2          ((t (:foreground ,color-blue-1 :background ,color-blue-2 :bold t ))))
 
+    
     `(ac-candidate-face       ((t (:foreground ,text-normal :background ,background-low ))))
     `(ac-candidate-mouse-face ((t (:foreground ,text-normal :background ,background-low ))))
-    `(ac-completion-face      ((t (:foreground ,text-highlight-2 :background unspecified :bold t ))))
-    `(ac-selection-face       ((t (:foreground ,text-highlight-1 :background unspecified :bold t ))))
+    `(ac-completion-face      ((t (:foreground ,text-highlight-2 :background ,background-low :bold t ))))
+    `(ac-selection-face       ((t (:foreground ,text-highlight-1 :background ,background-low :bold t ))))
   )
 
 ))
