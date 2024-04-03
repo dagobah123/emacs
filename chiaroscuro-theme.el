@@ -441,7 +441,7 @@
     `(treemacs-git-modified-face        ((t (:foreground ,text-highlight-1           :background unspecified       :bold t               ))))
     `(treemacs-git-ignored-face         ((t (:foreground ,text-low             :background unspecified             :bold t         ))))
     `(treemacs-git-untracked-face       ((t (:foreground ,text-low         :background unspecified                 :bold t     ))))
-    `(treemacs-fringe-indicator-face    ((t (:foreground ,background-mode-line :background unspecified                      ))))
+    `(treemacs-fringe-indicator-face    ((t (:foreground ,background-mode-line :background unspecified             :bold t         ))))
     `(treemacs-git-renamed-face         ((t (:foreground ,text-highlight-1       :background unspecified           :bold t           ))))
     `(treemacs-git-added-face           ((t (:foreground ,text-highlight-1          :background unspecified        :bold t              ))))
     `(treemacs-git-conflict-face        ((t (:foreground ,color-red-1          :background unspecified             :bold t         ))))
