@@ -32,7 +32,6 @@
 (setq background-diff-removed-highlight "#eecccc")
 (setq background-magit-branch-local "#00de00")
 (setq background-magit-branch-remote "#ff2f2f")
-(setq background-match "#ffe2ff")
 (setq color-blue-1 "#1111ca")
 (setq color-blue-2 "#bcdfff")
 (setq color-gray-1 "#333333")

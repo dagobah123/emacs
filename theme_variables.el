@@ -48,7 +48,6 @@
 (defvar background-magit-branch-local nil ".")
 (defvar background-magit-branch-remote nil ".")
 (defvar background-magit-dark nil ".")
-(defvar background-match nil ".")
 (defvar background-mode-line nil ".")
 (defvar background-mode-line-active nil ".")
 (defvar background-low nil ".")

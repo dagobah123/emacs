@@ -148,7 +148,6 @@
 (setq background-hl color-background-low)
 (setq background-magit color-background-lower)
 (setq background-magit-dark color-background-lowest)
-(setq background-match color-background-saturated)
 (setq background-mode-line color-background-low)
 (setq background-mode-line-active color-background-low)
 (setq background-region color-background-low)

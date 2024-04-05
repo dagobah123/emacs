@@ -18,7 +18,6 @@
 (setq background-low "#221010")
 (setq background-magit "#111111")
 (setq background-magit-dark "#000000")
-(setq background-match "#ffb600")
 (setq background-mode-line "#31160e")
 (setq background-mode-line-active "#2f2418")
 (setq background-region "#714132")

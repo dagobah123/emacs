@@ -9,7 +9,6 @@
 (setq background-hl "#eddb80")
 (setq background-magit "#cac39a")
 (setq background-magit-dark "#c0b478")
-(setq background-match "#e2b35d")
 (setq background-mode-line "#cac39a")
 (setq background-mode-line-active "#c0b478")
 (setq background-low "#ddcc99")

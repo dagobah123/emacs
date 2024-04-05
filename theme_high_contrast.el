@@ -12,7 +12,6 @@
 (setq background-hl "#cccccc")
 (setq background-magit "#dedede")
 (setq background-magit-dark "#f2f2f2")
-(setq background-match "#dddddd")
 (setq background-mode-line "#eeeeee")
 (setq background-mode-line-active "#cccccc")
 (setq background-low "#efefef")
