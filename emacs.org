@@ -826,6 +826,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ;(global-set-key (kbd "C-x C-b") 'helm-projectile-switch-to-buffer)
 (global-set-key (kbd "C-b") 'ivy-switch-buffer)
 (global-set-key (kbd "C-v") 'helm-all-mark-rings)
+(global-set-key (kbd "C-k") 'helm-show-kill-ring)
 
 ;(define-key org-mode-map (kbd "C-m") nil)
 ;(global-set-key (kbd "C-m") 'ido-switch-buffer)
