@@ -467,12 +467,12 @@
     `(transient-key-return ((t (:foreground ,text-highlight-1 :bold t ))))
     `(transient-key-stay   ((t (:foreground ,text-highlight-1 :bold t ))))
 
-    `(avy-background-face      ((t (:foreground ,color-red-1 :background unspecified :bold t ))))
-    `(avy-goto-char-timer-face ((t (:foreground ,color-red-1 :background unspecified :bold t ))))
-    `(avy-lead-face            ((t (:foreground ,color-red-1 :background unspecified :bold t ))))
-    `(avy-lead-face-0          ((t (:foreground ,color-green-1 :background unspecified :bold t ))))
-    `(avy-lead-face-1          ((t (:foreground ,color-yellow-1 :background unspecified :bold t ))))
-    `(avy-lead-face-2          ((t (:foreground ,color-blue-1 :background unspecified :bold t ))))
+    `(avy-background-face      ((t (:foreground ,color-red-1 :background ,color-red-2 :bold t ))))
+    `(avy-goto-char-timer-face ((t (:foreground ,color-red-1 :background ,color-red-2 :bold t ))))
+    `(avy-lead-face            ((t (:foreground ,color-red-1 :background ,color-red-2 :bold t ))))
+    `(avy-lead-face-0          ((t (:foreground ,color-green-1 :background ,color-green-2 :bold t ))))
+    `(avy-lead-face-1          ((t (:foreground ,color-yellow-1 :background ,color-yellow-2 :bold t ))))
+    `(avy-lead-face-2          ((t (:foreground ,color-blue-1 :background ,color-blue-2 :bold t ))))
 
     `(ac-candidate-face       ((t (:foreground ,text-normal :background ,background-low ))))
     `(ac-candidate-mouse-face ((t (:foreground ,text-normal :background ,background-low ))))
