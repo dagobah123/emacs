@@ -22,7 +22,7 @@
 (setq background-mode-line "#0a0a0a")
 (setq background-mode-line-active "#0a0a0a")
 (setq background-region "#0a0a0a")
-(setq text-constant "#a86af3")
+(setq text-constant "#965eda")
 (setq text-function "#85ceae")
 (setq text-highlight-1 "#00ff4e")
 (setq text-highlight-2 "#ffc73b")

@@ -64,7 +64,7 @@
     `(region                   ((t (:foreground ,text-highlight-1  :background ,background-region :bold t ))))
     `(cua-rectangle            ((t (:foreground ,text-highlight-1  :background ,background-region :bold t ))))
 
-    `(hl-line                  ((t (:foreground unspecified        :background ,background-hl             ))))
+    `(hl-line                  ((t (:foreground ,text-highlight-1  :background unspecified    :bold t         ))))
     `(fringe                   ((t (:foreground ,text-normal       :background ,background-fringe         ))))
     `(minibuffer-prompt        ((t (:foreground ,text-normal       :background unspecified                ))))
     `(ido-first-match          ((t (:foreground ,text-highlight-1        :background unspecified          ))))
@@ -119,7 +119,7 @@
     `(helm-match                        ((t (:foreground ,text-highlight-2 :bold t                                                       ))))
     `(helm-candidate-number             ((t (:foreground ,text-highlight-2                                                       ))))
     `(helm-M-x-key                      ((t (:foreground ,color-blue-1                                   :underline t         ))))
-    `(helm-source-header                ((t (:foreground ,text-mode-line-buffer :background ,background-mode-line-active :bold t :height 1.3 :family "Sans Serif" ))))
+    `(helm-source-header                ((t (:foreground ,text-highlight-2 :background unspecified :bold t :height 1.3 :family "Sans Serif" ))))
     `(helm-selection                    ((t (:foreground ,text-highlight-1     :background unspecified :bold t              ))))
     `(helm-selection-line               ((t (:foreground ,text-highlight-1      :background unspecified :bold t              ))))
     `(helm-swoop-target-line-face       ((t (:foreground ,text-highlight-1     :background unspecified :bold t                      ))))
