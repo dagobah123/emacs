@@ -229,7 +229,7 @@
 `(ivy-modified-outside-buffer ((t (:foreground ,text-low :background unspecified :italic t ))))
 `(ivy-org ((t (:foreground ,text-low :background unspecified :italic t ))))
 `(ivy-subdir ((t (:foreground ,text-highlight-2 :bold t ))))
-`(ivy-virtual ((t (:foreground ,color-blue-1 ))))
+`(ivy-virtual ((t (:foreground ,text-lower ))))
 `(lazy-highlight ((t (:foreground ,text-highlight-1 :background unspecified ))))
 `(lazy-highlight ((t (:foreground ,text-highlight-1 :background unspecified ))))
 `(line-number ((t (:foreground ,text-line-number :background ,background-fringe ))))
