@@ -26,7 +26,6 @@
 (setq text-lower "#684962")
 (setq text-match "#000000")
 (setq text-mode-line "#ccaaaa")
-(setq text-mode-line-buffer "#cdabab")
 (setq text-normal "#bb7777")
 (setq text-preprocessor "#009900")
 (setq text-type "#bb4f80")

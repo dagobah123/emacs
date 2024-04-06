@@ -109,7 +109,6 @@
 (defvar text-magit-branch-remote nil ".")
 (defvar text-match nil ".")
 (defvar text-mode-line nil ".")
-(defvar text-mode-line-buffer nil ".")
 (defvar text-normal nil ".")
 (defvar text-preprocessor nil ".")
 (defvar text-region nil ".")

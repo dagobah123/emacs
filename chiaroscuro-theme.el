@@ -147,7 +147,7 @@
 `(focus-unfocused ((t (:foreground ,text-lower ))))
 `(font-lock-bracket-face ((t (:foreground ,text-highlight-1 ))))
 `(font-lock-builtin-face ((t (:foreground ,text-type :bold t ))))
-`(font-lock-comment-delimiter-face ((t (:foreground ,text-function ))))
+`(font-lock-comment-delimiter-face ((t (:foreground ,text-comment ))))
 `(font-lock-comment-face ((t (:foreground ,text-comment ))))
 `(font-lock-constant-face ((t (:foreground ,text-constant ))))
 `(font-lock-doc-face ((t (:foreground ,text-comment ))))

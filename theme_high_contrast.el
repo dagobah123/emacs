@@ -46,7 +46,6 @@
 (setq text-magit-branch-remote "#000000")
 (setq text-match "#ffffff")
 (setq text-mode-line "#000000")
-(setq text-mode-line-buffer "#000000")
 (setq text-normal "#000000")
 (setq text-preprocessor "#000000")
 (setq text-preprocessor "#000000")
