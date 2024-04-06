@@ -257,14 +257,17 @@
 #+END_SRC
 ** eglot java
 #+BEGIN_SRC emacs-lisp
-                                        ;(add-hook 'java-mode-hook 'eglot-java-mode)
-                                        ;(add-hook 'eglot-java-mode-hook (lambda ()
-                                        ;  (define-key eglot-java-mode-map (kbd "C-c l n") #'eglot-java-file-new)
-                                        ;  (define-key eglot-java-mode-map (kbd "C-c l x") #'eglot-java-run-main)
-                                        ;  (define-key eglot-java-mode-map (kbd "C-c l t") #'eglot-java-run-test)
-                                        ;  (define-key eglot-java-mode-map (kbd "C-c l N") #'eglot-java-project-new)
-                                        ;  (define-key eglot-java-mode-map (kbd "C-c l T") #'eglot-java-project-build-task)
-                                        ;  (define-key eglot-java-mode-map (kbd "C-c l R") #'eglot-java-project-build-refresh)))
+(cond
+ ((string-equal system-type "windows-nt")
+  (progn
+    (add-hook 'java-mode-hook 'eglot-java-mode)
+    (add-hook 'eglot-java-mode-hook (lambda ()
+                                      (define-key eglot-java-mode-map (kbd "C-c l n") #'eglot-java-file-new)
+                                      (define-key eglot-java-mode-map (kbd "C-c l x") #'eglot-java-run-main)
+                                      (define-key eglot-java-mode-map (kbd "C-c l t") #'eglot-java-run-test)
+                                      (define-key eglot-java-mode-map (kbd "C-c l N") #'eglot-java-project-new)
+                                      (define-key eglot-java-mode-map (kbd "C-c l T") #'eglot-java-project-build-task)
+                                      (define-key eglot-java-mode-map (kbd "C-c l R") #'eglot-java-project-build-refresh))))))
 #+END_SRC
 ** elfeed
 #+BEGIN_SRC emacs-lisp
@@ -2226,8 +2229,24 @@ _underline_
 ; https://www.reddit.com/r/emacs/comments/6q644o/how_to_fix_maven_compilation_output/
 ;; Add color formatting to *compilation* buffer
 (add-hook 'compilation-filter-hook
-   (lambda () (ansi-color-apply-on-region (point-min) (point-max))))
+          (lambda () (ansi-color-apply-on-region (point-min) (point-max))))
 #+END_SRC
+** abbrev
+#+BEGIN_SRC emacs-lisp
+(clear-abbrev-table global-abbrev-table)
+
+(define-abbrev-table 'global-abbrev-table
+  '(
+    ("str" "String")
+    ("dou" "double")
+    ("pub" "public")
+    ("pro" "protected")
+    ("pri" "private")
+    ("sta" "static")
+    ("voi" "void")
+    ))
+#+END_SRC
+String  String 
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.
 Load emacs-lisp file for custom changes.
