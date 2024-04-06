@@ -62,6 +62,7 @@
 (setq evil-visual-1 "#d6b400")
 (setq evil-visual-2 "#554804")
 (setq text-branch-current "#000000")
+(setq text-comment "#994410")
 (setq text-constant "#994410")
 (setq text-diff "#000000")
 (setq text-diff-added "#113e00")

@@ -16,7 +16,7 @@
 (setq text-constant "#000000")
 (setq text-function "#000000")
 (setq text-highlight-1 "#ff0000")
-(setq text-highlight-2 "#3f5fbf")
+(setq text-highlight-2 "#7f0055")
 (setq text-info "#dd7700")
 (setq text-keyword "#7f0055")
 (setq text-line-number "#9f9f9f")

@@ -87,6 +87,7 @@
 (defvar number-of-themes nil ".")
 (defvar text-branch-current nil ".")
 (defvar text-buffer-id nil ".")
+(defvar text-comment nil ".")
 (defvar text-constant nil ".")
 (defvar text-cursor nil ".")
 (defvar text-diff nil ".")
