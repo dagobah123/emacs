@@ -246,7 +246,7 @@
 `(magit-blame-heading ((t (:foreground ,text-normal :background ,background-fringe ))))
 `(magit-blame-highlight ((t (:foreground ,text-normal :background ,background-fringe ))))
 `(magit-blame-margin ((t (:foreground ,text-normal :background ,background-fringe ))))
-`(magit-branch-current ((t (:foreground ,color-yellow-1 :background unspecified :bold t :box (:line-width 1 :color ,color-yellow-1) ))))
+`(magit-branch-current ((t (:foreground ,text-highlight-1 :background unspecified :bold t :box (:line-width 1 :color ,text-highlight-1) ))))
 `(magit-branch-local ((t (:foreground ,color-green-1 :background unspecified :bold t :box (:line-width 1 :color ,color-green-1) ))))
 `(magit-branch-remote ((t (:foreground ,color-red-1 :background unspecified :bold t :box (:line-width 1 :color ,color-red-1) ))))
 `(magit-branch-remote-head ((t (:foreground ,color-red-1 :background unspecified :bold t :box (:line-width 1 :color ,color-red-1) :bold t :italic t ))))
