@@ -47,7 +47,6 @@
                      git-gutter
                      gnuplot
                      go-mode
-                     golden-ratio
                      google-translate
                      goto-last-change
                      helm-bm
@@ -171,13 +170,6 @@
                                      (line-end-position))
                              "\n")))
       result)))
-
-                                        ; ^ asserts the start of a line.
-                                        ; \\s-* matches any whitespace characters (including none).
-                                        ; \\b\\(?:private\\|public\\|protected\\)\\b matches either "private," "public," or "protected" as standalone words.
-                                        ; [^;\n]* matches any characters except a semicolon or a newline, zero or more times.
-                                        ; ; matches the semicolon that must appear at the end of the line.
-                                        ; $ asserts the end of the line.
 
 (defun my:print-data-in-new-buffer (file-list)
   "Print DATA in a new buffer."
@@ -330,12 +322,10 @@ Load environment variables properly by installing *exec-path-from-shell*.
 #+BEGIN_SRC emacs-lisp
 (setq eww-search-prefix "https://www.google.com/search?q=")
 
-;(setq browse-url-browser-function 'eww-browse-url) ; Use eww as the default browser
 (setq shr-use-fonts  nil) ; No special fonts
 (setq shr-use-colors nil) ; No colors
 (setq shr-indentation 2) ; Left-side margin
 (setq shr-width 80) ; Fold text
-;(setq shr-max-image-proportion 0.3) ; Image size
 
 (cond
  ((string-equal system-type "windows-nt")
@@ -347,6 +337,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 #+BEGIN_SRC emacs-lisp
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "C-+") 'er/contract-region)
 #+END_SRC
 ** focus
 #+BEGIN_SRC emacs-lisp
@@ -357,7 +348,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (require 'google-translate)
 (require 'google-translate-default-ui)
 (global-set-key (kbd "C-c P") 'google-translate-at-point)
-;(global-set-key (kbd "C-c T") 'google-translate-query-translate)
 (global-set-key (kbd "C-c R") 'google-translate-query-translate-reverse)
 (setq google-translate-default-source-language "en")
 (setq google-translate-default-target-language "fr")
@@ -374,7 +364,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (("M-x" . helm-M-x))
   (("C-c k r" . helm-show-kill-ring))
   (("C-c h" . helm-grep-do-git-grep))
-  ;(("C-c g" . helm-projectile-grep))
   (("C-r"   . helm-swoop))
   (("C-c b" . helm-buffers-list))
   (("C-c r" . helm-bookmarks))
@@ -597,14 +586,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
     (progn
       (focus-mode t))))
 
-(defun my:toggle-golden-ratio-mode ()
-  "Toggle focus-mode."
-  (if golden-ratio-mode
-      (progn
-        (golden-ratio-mode -1))
-    (progn
-      (golden-ratio-mode t))))
-
 (defun my:toggle-cua-mode ()
   "Toggle 'cua-mode'."
   (if cua-mode
@@ -701,27 +682,19 @@ Load environment variables properly by installing *exec-path-from-shell*.
   "
   Window
 
-  ^Delete^             ^Split^         ^Horizontally^      ^Vertically^        ^Jump^             ^Golden Ratio^
-  ^^^^^^^^----------------------------------------------------------------------------------------------------------
-  _1_: other windows   _3_: right      _5_: shrink         _7_: shrink         _9_: other window  _-_: toggle
-  _2_: window          _4_: below      _6_: enlarge        _8_: enlarge        _0_: ace
+  ^Split^         ^Horizontally^      ^Vertically^
+  ^^^^^^^^-------------------------------------------------
+  _1_: right      _3_: shrink         _5_: shrink
+  _2_: below      _4_: enlarge        _6_: enlarge
   "
-  ("1" delete-other-windows)
-  ("2" delete-window)
+  ("1" split-window-right)
+  ("2" split-window-below)
 
-  ("3" split-window-right)
-  ("4" split-window-below)
+  ("3" shrink-window-horizontally)
+  ("4" enlarge-window-horizontally)
 
-  ("5" shrink-window-horizontally)
-  ("6" enlarge-window-horizontally)
-
-  ("7" shrink-window)
-  ("8" enlarge-window)
-
-  ("9" other-window)
-  ("0" ace-window)
-
-  ("-" (my:toggle-golden-ratio-mode))
+  ("5" shrink-window)
+  ("6" enlarge-window)
 
   ("q" nil "Quit" :color blue))
 #+END_SRC
@@ -763,25 +736,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (ivy-mode)
 (setq ivy-use-virtual-buffers t)
 (setq enable-recursive-minibuffers t)
-;; enable this if you want `swiper' to use it
-;; (setq search-default-mode #'char-fold-to-regexp)
-                                        ;(global-set-key "\C-s" 'swiper)
-                                        ;(global-set-key (kbd "C-c C-r") 'ivy-resume)
-                                        ;(global-set-key (kbd "<f6>") 'ivy-resume)
-                                        ;(global-set-key (kbd "M-x") 'counsel-M-x)
-                                        ;(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-                                        ;(global-set-key (kbd "<f1> f") 'counsel-describe-function)
-                                        ;(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-                                        ;(global-set-key (kbd "<f1> o") 'counsel-describe-symbol)
-                                        ;(global-set-key (kbd "<f1> l") 'counsel-find-library)
-                                        ;(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-                                        ;(global-set-key (kbd "<f2> u") 'counsel-unicode-char)
-                                        ;(global-set-key (kbd "C-c g") 'counsel-git)
-                                        ;(global-set-key (kbd "C-c j") 'counsel-git-grep)
-                                        ;(global-set-key (kbd "C-c k") 'counsel-ag)
-                                        ;(global-set-key (kbd "C-x l") 'counsel-locate)
-                                        ;(global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
-                                        ;(define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
 #+END_SRC
 ** json-snatcher
 #+BEGIN_SRC emacs-lisp
@@ -827,19 +781,13 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (global-set-key (kbd "M-g M-g") 'avy-goto-line)
 (global-set-key (kbd "M-m") 'xref-pop-marker-stack)
 (global-set-key (kbd "M-n") 'evil-first-non-blank)
-;(global-set-key (kbd "C-x C-b") 'helm-projectile-switch-to-buffer)
 (global-set-key (kbd "C-b") 'ivy-switch-buffer)
 (global-set-key (kbd "C-v") 'helm-all-mark-rings)
 (global-set-key (kbd "C-k") 'helm-show-kill-ring)
 
-;(define-key org-mode-map (kbd "C-m") nil)
-;(global-set-key (kbd "C-m") 'ido-switch-buffer)
-
 (global-set-key (kbd "C-x C-b") 'ivy-switch-buffer)
 
 (global-set-key (kbd "C-n") 'helm-mini)
-
-;(ivy-switch-buffer)
 #+END_SRC
 ** look
 #+BEGIN_SRC emacs-lisp
@@ -853,25 +801,11 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (setq user-cache-directory (concat EMACS-HOME "cache"))
 
 (setq blink-cursor-blinks 0)
-                                        ;(blink-cursor-mode -1)
 
 (setq display-line-numbers-type 'absolute)
 (global-set-key (kbd "C-7") 'global-display-line-numbers-mode)
 
-;; 4 spaces indentation
-                                        ;(setq c-default-style "linux" c-basic-offset 4)
-                                        ;(require 'clang-format)
-
-;; disable tabs
-                                        ;(setq-default indent-tabs-mode nil)
-                                        ;(setq-default tab-width 4)
-                                        ;(defun my:indent-tabs-mode ()
-                                        ;  (setq indent-tabs-mode nil))
-                                        ;(add-hook 'c++-mode-hook #'my:indent-tabs-mode)
-                                        ;(add-hook 'java-mode-hook #'my:indent-tabs-mode)
-
 (display-time)
-                                        ;(setq display-time-default-load-average nil)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -914,327 +848,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 
 (global-set-key (kbd "C-c 3") 'lsp-shutdown-workspace)
 
-                                        ;(defun my:turn-off-lsp ()
-                                        ;  "Turn off lsp."
-                                        ;  (interactive)
-                                        ;  (my:remove-lsp-hook)
-                                        ;  (lsp-shutdown-workspace))
-                                        ;(global-set-key (kbd "C-c 4") 'lsp-shutdown-workspace)
-
 (require 'lsp-java)
-                                        ;(add-hook 'java-mode-hook #'lsp)
-                                        ;
-                                        ;(condition-case nil
-                                        ;    (require 'use-package)
-                                        ;  (file-error
-                                        ;   (require 'package)
-                                        ;   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-                                        ;   (package-initialize)
-                                        ;   (package-refresh-contents)
-                                        ;   (package-install 'use-package)
-                                        ;   (setq use-package-always-ensure t)
-                                        ;   (require 'use-package)))
-                                        ;
-                                        ;(use-package projectile)
-                                        ;(use-package flycheck)
-                                        ;(use-package yasnippet :config (yas-global-mode))
-                                        ;(use-package lsp-mode :hook ((lsp-mode . lsp-enable-which-key-integration)))
-                                        ;(use-package hydra)
-                                        ;(use-package company)
-                                        ;(use-package lsp-ui)
-                                        ;(use-package which-key :config (which-key-mode))
-                                        ;(use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
-                                        ;(use-package dap-mode :after lsp-mode :config (dap-auto-configure-mode))
-                                        ;(use-package dap-java :ensure nil)
-                                        ;(use-package helm-lsp)
-                                        ;(use-package helm
-                                        ;  :config (helm-mode))
-                                        ;(use-package lsp-treemacs)
-#+END_SRC
-** lsp
-#+BEGIN_SRC emacs-lisp
-                                        ;*** Company
-                                        ;Complete anything aka Company provides auto-completion.
-                                        ;Company-capf is enabled by default when you start LSP on a project.
-                                        ;You can also invoke ~M-x company-capf~ to enable capf (completion at point function).
-                                        ;#+BEGIN_SRC emacs-lisp
-                                        ;  (use-package company
-                                        ;    :ensure t)
-                                        ;  (use-package company-box
-                                        ;    :ensure t)
-                                        ;  (company-mode t)
-                                        ;  (require 'company-box)
-                                        ;  (add-hook 'company-mode-hook 'company-box-mode)
-                                        ;
-                                        ;  (setq company-box-backends-colors
-                                        ;  '((company-yasnippet . (:all ,text-2 :selected (:background "green" :foreground "black")))))
-                                        ;#+END_SRC
-                                        ;*** Yasnippet
-                                        ;Yasnippet is a template system for Emacs.
-                                        ;It allows you to type abbreviation and complete the associated text.
-                                        ;#+BEGIN_SRC emacs-lisp
-                                        ;  (use-package yasnippet
-                                        ;    :config (yas-global-mode))
-                                        ;  (use-package yasnippet-snippets
-                                        ;    :ensure t)
-                                        ;  (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
-                                        ;#+END_SRC
-                                        ;
-                                        ;E.g. In java mode, if you type ~pr~ and hit ~<TAB>~ it should complete to ~System.out.println("text");~
-                                        ;
-                                        ;To create a new snippet you can use ~yas-new-snippet~ command.
-                                        ;*** FlyCheck
-                                        ;FlyCheck checks for errors in code at run-time.
-                                        ;#+BEGIN_SRC emacs-lisp
-                                        ;  (use-package flycheck
-                                        ;    :ensure t
-                                        ;    :init (global-flycheck-mode))
-                                        ;#+END_SRC
-                                        ;*** Dap Mode
-                                        ;Emacs Debug Adapter Protocol aka DAP Mode allows us to debug your program.
-                                        ;Below we will integrate ~dap-mode~ with ~dap-hydra~.
-                                        ;~Dap-hydra~ shows keys you can use to enable various options and jump through code at runtime.
-                                        ;After we install dap-mode we will also install ~dap-java~.
-                                        ;#+BEGIN_SRC emacs-lisp
-                                        ;  (use-package dap-mode
-                                        ;    :ensure t
-                                        ;    :after (lsp-mode)
-                                        ;    :functions dap-hydra/nil
-                                        ;    :config
-                                        ;    (require 'dap-java)
-                                        ;    :bind (:map lsp-mode-map
-                                        ;                ("<f5>" . dap-debug)
-                                        ;                ("M-<f5>" . dap-hydra))
-                                        ;    :hook ((dap-mode . dap-ui-mode)
-                                        ;           (dap-session-created . (lambda (&_rest) (dap-hydra)))
-                                        ;           (dap-terminated . (lambda (&_rest) (dap-hydra/nil)))))
-                                        ;
-                                        ;  (use-package dap-java :ensure nil)
-                                        ;#+END_SRC
-                                        ;*** Treemacs
-                                        ;Treemacs provides UI elements used for LSP UI.
-                                        ;Let's install lsp-treemacs and its dependency treemacs.
-                                        ;We will also assign ~M-9~ to show error list.
-                                        ;#+BEGIN_SRC emacs-lisp
-                                        ;  (use-package lsp-treemacs
-                                        ;    :after (lsp-mode treemacs)
-                                        ;    :ensure t
-                                        ;    :commands lsp-treemacs-errors-list
-                                        ;    :bind (:map lsp-mode-map
-                                        ;                ("M-9" . lsp-treemacs-errors-list)))
-                                        ;
-                                        ;  (use-package treemacs
-                                        ;    :ensure t
-                                        ;    :defer t
-                                        ;    :init
-                                        ;    (with-eval-after-load 'winum
-                                        ;      (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
-                                        ;    :config
-                                        ;    (progn
-                                        ;      (setq treemacs-collapse-dirs                   (if treemacs-python-executable 3 0)
-                                        ;            treemacs-deferred-git-apply-delay        0.5
-                                        ;            treemacs-directory-name-transformer      #'identity
-                                        ;            treemacs-display-in-side-window          t
-                                        ;            treemacs-eldoc-display                   'simple
-                                        ;            treemacs-file-event-delay                2000
-                                        ;            treemacs-file-extension-regex            treemacs-last-period-regex-value
-                                        ;            treemacs-file-follow-delay               0.2
-                                        ;            treemacs-file-name-transformer           #'identity
-                                        ;            treemacs-follow-after-init               t
-                                        ;            treemacs-expand-after-init               t
-                                        ;            treemacs-find-workspace-method           'find-for-file-or-pick-first
-                                        ;            treemacs-git-command-pipe                ""
-                                        ;            treemacs-goto-tag-strategy               'refetch-index
-                                        ;            treemacs-header-scroll-indicators        '(nil . "^^^^^^")
-                                        ;            treemacs-hide-dot-git-directory          t
-                                        ;            treemacs-indentation                     2
-                                        ;            treemacs-indentation-string              " "
-                                        ;            treemacs-is-never-other-window           nil
-                                        ;            treemacs-max-git-entries                 5000
-                                        ;            treemacs-missing-project-action          'ask
-                                        ;            treemacs-move-forward-on-expand          nil
-                                        ;            treemacs-no-png-images                   t
-                                        ;            treemacs-no-delete-other-windows         t
-                                        ;            treemacs-project-follow-cleanup          t
-                                        ;            treemacs-persist-file                    (expand-file-name ".cache/treemacs-persist" user-emacs-directory)
-                                        ;            treemacs-position                        'left
-                                        ;            treemacs-read-string-input               'from-child-frame
-                                        ;            treemacs-recenter-distance               0.1
-                                        ;            treemacs-recenter-after-file-follow      nil
-                                        ;            treemacs-recenter-after-tag-follow       nil
-                                        ;            treemacs-recenter-after-project-jump     'always
-                                        ;            treemacs-recenter-after-project-expand   'on-distance
-                                        ;            treemacs-litter-directories              '("/node_modules" "/.venv" "/.cask")
-                                        ;            treemacs-project-follow-into-home        nil
-                                        ;            treemacs-show-cursor                     t
-                                        ;            treemacs-show-hidden-files               t
-                                        ;            treemacs-silent-filewatch                nil
-                                        ;            treemacs-silent-refresh                  t
-                                        ;            treemacs-sorting                         'alphabetic-asc
-                                        ;            treemacs-select-when-already-in-treemacs 'move-back
-                                        ;            treemacs-space-between-root-nodes        t
-                                        ;            treemacs-tag-follow-cleanup              t
-                                        ;            treemacs-tag-follow-delay                1.5
-                                        ;            treemacs-text-scale                      nil
-                                        ;            treemacs-user-mode-line-format           nil
-                                        ;            treemacs-user-header-line-format         nil
-                                        ;            treemacs-wide-toggle-width               70
-                                        ;            treemacs-width                           (/ (window-total-width) 2)
-                                        ;            treemacs-width-increment                 1
-                                        ;            treemacs-width-is-initially-locked       t
-                                        ;            treemacs-workspace-switch-cleanup        t)
-                                        ;
-                                        ;      (treemacs-follow-mode t)
-                                        ;      (treemacs-project-follow-mode t)
-                                        ;      (treemacs-filewatch-mode t)
-                                        ;      (treemacs-fringe-indicator-mode 'always)
-                                        ;      (when treemacs-python-executable
-                                        ;        (treemacs-git-commit-diff-mode t))
-                                        ;
-                                        ;      (pcase (cons (not (null (executable-find "git")))
-                                        ;                   (not (null treemacs-python-executable)))
-                                        ;        (`(t . t)
-                                        ;         (treemacs-git-mode 'deferred))
-                                        ;        (`(t . _)
-                                        ;         (treemacs-git-mode 'simple)))
-                                        ;
-                                        ;      (treemacs-hide-gitignored-files-mode nil))
-                                        ;    :bind
-                                        ;    (:map global-map
-                                        ;          ("M-0"       . treemacs-select-window)
-                                        ;          ("C-x t 1"   . treemacs-delete-other-windows)
-                                        ;          ("C-x t t"   . treemacs)
-                                        ;          ("C-x t d"   . treemacs-select-directory)
-                                        ;          ("C-x t B"   . treemacs-bookmark)
-                                        ;          ("C-x t C-t" . treemacs-find-file)
-                                        ;          ("C-x t M-t" . treemacs-find-tag)))
-                                        ;
-                                        ;  (use-package treemacs-evil
-                                        ;    :after (treemacs evil)
-                                        ;    :ensure t)
-                                        ;
-                                        ;  (use-package treemacs-projectile
-                                        ;    :after (treemacs projectile)
-                                        ;    :ensure t)
-                                        ;
-                                        ;  (use-package treemacs-magit
-                                        ;    :after (treemacs magit)
-                                        ;    :ensure t)
-                                        ;
-                                        ;  (use-package treemacs-persp ;;treemacs-perspective if you use perspective.el vs. persp-mode
-                                        ;    :after (treemacs persp-mode) ;;or perspective vs. persp-mode
-                                        ;    :ensure t
-                                        ;    :config (treemacs-set-scope-type 'Perspectives))
-                                        ;
-                                        ;  (use-package treemacs-tab-bar ;;treemacs-tab-bar if you use tab-bar-mode
-                                        ;    :after (treemacs)
-                                        ;    :ensure t
-                                        ;    :config (treemacs-set-scope-type 'Tabs))
-                                        ;#+END_SRC
-                                        ;*** LSP UI
-                                        ;LSP UI is used in various packages that require UI elements in LSP.
-                                        ;E.g. ~lsp-ui-flycheck-list~ opens a window where you can see various coding errors while you code.
-                                        ;You can use ~C-c l T~ to toggle several UI elements.
-                                        ;We have also remapped some of the xref-find functions, so that we can easily jump around between symbols using ~M-.~, ~M-,~ and ~M-?~ keys.
-                                        ;#+BEGIN_SRC emacs-lisp
-                                        ;  (use-package lsp-ui
-                                        ;    :ensure t
-                                        ;    :after (lsp-mode)
-                                        ;    :bind (:map lsp-ui-mode-map
-                                        ;                ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
-                                        ;                ([remap xref-find-references] . lsp-ui-peek-find-references))
-                                        ;    :init (setq lsp-ui-doc-delay 1.5
-                                        ;                lsp-ui-doc-position 'bottom
-                                        ;                lsp-ui-doc-max-width 100))
-                                        ;#+END_SRC
-                                        ;Go through this [[https://github.com/emacs-lsp/lsp-ui/blob/master/lsp-ui-doc.el][link]] to see what other parameters are provided.
-                                        ;*** Helm LSP
-                                        ;Helm-lsp provides various functionality to work with the code.
-                                        ;E.g. code actions like adding *getter, setter, toString*, refactoring etc.
-                                        ;You can use ~helm-lsp-workspace-symbol~ to find various symbols (classes) within your workspace.
-                                        ;LSP's built in symbol explorer uses ~xref-find-apropos~ to provide symbol navigation.
-                                        ;Below we will replace that with helm version.
-                                        ;After that you can use ~C-c l g a~ to find workspace symbols in a more intuitive way.
-                                        ;#+BEGIN_SRC emacs-lisp
-                                        ;  (use-package helm-lsp
-                                        ;    :ensure t
-                                        ;    :after (lsp-mode)
-                                        ;    :commands (helm-lsp-workspace-symbol)
-                                        ;    :init (define-key lsp-mode-map [remap xref-find-apropos] #'helm-lsp-workspace-symbol))
-                                        ;#+END_SRC
-                                        ;*** Install LSP Package
-                                        ;Let's install the main package for lsp.
-                                        ;Here we will integrate lsp with which-key.
-                                        ;This way, when we type the prefix key ~C-c l~ we get additional help for completing the command.
-                                        ;#+BEGIN_SRC emacs-lisp
-                                        ;  (use-package lsp-mode
-                                        ;    :ensure t
-                                        ;    :hook ((lsp-mode . lsp-enable-which-key-integration)
-                                        ;           (java-mode . #'lsp-deferred))
-                                        ;    :init (setq lsp-keymap-prefix "C-c l"              ; this is for which-key integration documentation, need to use lsp-mode-map
-                                        ;                lsp-enable-file-watchers nil
-                                        ;                read-process-output-max (* 1024 1024)  ; 1 mb
-                                        ;                lsp-completion-provider :capf
-                                        ;                lsp-idle-delay 0.500)
-                                        ;    :config (setq lsp-intelephense-multi-root nil) ; don't scan unnecessary projects
-                                        ;    (with-eval-after-load 'lsp-intelephense
-                                        ;      (setf (lsp--client-multi-root (gethash 'iph lsp-clients)) nil))
-                                        ;    (define-key lsp-mode-map (kbd "C-c l") lsp-command-map))
-                                        ;#+END_SRC
-                                        ;You can start LSP server in a java project by using ~C-c l s s~.
-                                        ;Once you type ~C-c l~ ~which-key~ package should guide you through rest of the options.
-                                        ;In above setting I have added some memory management settings as suggested in [[https://emacs-lsp.github.io/lsp-mode/page/performance/][this guide]].
-                                        ;Change them to higher numbers, if you find *lsp-mode* sluggish in your computer.
-                                        ;*** LSP Java
-                                        ;This is the package that handles server installation and session management.
-                                        ;#+BEGIN_SRC  emacs-lisp
-                                        ;  (use-package lsp-java
-                                        ;    :ensure t
-                                        ;    :config (add-hook 'java-mode-hook 'lsp))
-                                        ;
-                                        ;  (require 'lsp-java)
-                                        ;  (add-hook 'java-mode-hook #'lsp)
-                                        ;
-                                        ;  (condition-case nil
-                                        ;      (require 'use-package)
-                                        ;    (file-error
-                                        ;     (require 'package)
-                                        ;     (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-                                        ;     (package-initialize)
-                                        ;     (package-refresh-contents)
-                                        ;     (package-install 'use-package)
-                                        ;     (setq use-package-always-ensure t)
-                                        ;     (require 'use-package)))
-                                        ;
-                                        ;  (use-package projectile)
-                                        ;  (use-package flycheck)
-                                        ;  (use-package yasnippet :config (yas-global-mode))
-                                        ;
-                                        ;  (use-package lsp-mode
-                                        ;    :hook ((lsp-mode . lsp-enable-which-key-integration))
-                                        ;    :config (setq lsp-completion-enable-additional-text-edit nil))
-                                        ;  (use-package hydra)
-                                        ;  (use-package company)
-                                        ;  (use-package company-box)
-                                        ;  (use-package lsp-ui)
-                                        ;  (use-package which-key :config (which-key-mode))
-                                        ;  (use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
-                                        ;  (use-package dap-mode :after lsp-mode :config (dap-auto-configure-mode))
-                                        ;  (use-package dap-java :ensure nil)
-                                        ;  (use-package helm-lsp)
-                                        ;  (use-package helm
-                                        ;    :config (helm-mode))
-                                        ;  (use-package lsp-treemacs)
-                                        ;
-                                        ;  ;; show nice unit test results
-                                        ;  (add-hook 'compilation-filter-hook
-                                        ;            (lambda() (ansi-color-apply-on-region (point-min) (point-max))))
-                                        ;
-                                        ;  (setq lsp-print-io t)
-                                        ;
-                                        ;  ;; https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
-                                        ;  (setq lsp-modeline-code-actions-enable nil)
-                                        ;  (setq lsp-headerline-breadcrumb-enable nil)
 #+END_SRC
 ** mode-line
 #+BEGIN_SRC emacs-lisp
@@ -1244,9 +858,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (setq display-time-24hr-format t)
 
 (setq-default mode-line-format (delq 'mode-line-modes mode-line-format))
-                                        ;(setq-default mode-line-modes
-                                        ;  (list
-                                        ;    (list (propertize "<%m" 'face 'mode-line-mode-face) "> ")))
 #+END_SRC
 ** movement, avy
 #+BEGIN_SRC emacs-lisp
@@ -1303,11 +914,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
     (my:avy-lightning-clean-up)
     ))
 
-  ;(set-face-attribute 'default nil :foreground text-normal))
-
-  ;(Run-with-timer 0.25 nil set-face-attribute 'mode-line nil :background "grey75")
-;          `(default ((t (:foreground ,text-normal :background ,background :bold t )))))
-
 (setq avy-timeout-seconds 0.25)
 
 (defvar my-prefix-map (make-sparse-keymap) "My custom prefix keymap")
@@ -1317,7 +923,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (define-key my-prefix-map (kbd "C-.") 'avy-goto-char-timer)
 
 (define-key my-prefix-map (kbd ",")   'avy-goto-word-1)
-;(define-key my-prefix-map (kbd "C-,") 'avy-goto-word-1)
 (define-key my-prefix-map (kbd "C-,") 'my:avy-lightning)
 
 (define-key my-prefix-map (kbd "/")   'avy-goto-char-in-line)
@@ -1334,23 +939,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (define-key my-prefix-map (kbd "m l") 'avy-move-line)
 (define-key my-prefix-map (kbd "m r") 'avy-move-region)
 #+END_SRC
-
-;    (const avy-goto-char)
-;    (const avy-goto-char-2)
-;    (const avy-isearch)
-;    (const avy-goto-line)
-;    (const avy-goto-subword-0)
-;    (const avy-goto-subword-1)
-;    (const avy-goto-word-0)
-;    (const avy-goto-word-1)
-;    (const avy-copy-line)
-;    (const avy-copy-region)
-;    (const avy-move-line)
-;    (const avy-move-region)
-;    (const avy-kill-whole-line)
-;    (const avy-kill-region)
-;    (const avy-kill-ring-save-whole-line)
-;    (const avy-kill-ring-save-region)
 ** movement, kbd
 #+BEGIN_SRC emacs-lisp
 (defvar my-movement-prefix-map (make-sparse-keymap) "My custom movement prefix keymap")
@@ -1551,15 +1139,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
               (setq result file))))))
     result))
 #+END_SRC
-** my:forward-paragraph-recenter-top-bottom
-#+BEGIN_SRC emacs-lisp
-                                        ;(defun my:forward-paragraph-recenter-top-bottom ()
-                                        ;  "Go to the next paragraph and recenter top bottom."
-                                        ;  (interactive)
-                                        ;  (forward-paragraph)
-                                        ;  (recenter-top-bottom))
-                                        ;(global-set-key (kbd "C-}") 'my:forward-paragraph-recenter-top-bottom)
-#+END_SRC
 ** my:get-filename
 #+BEGIN_SRC emacs-lisp
 (defun my:get-filename ()
@@ -1671,7 +1250,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
     (with-temp-buffer
       (insert user-input)
       (clipboard-kill-region (point-min) (point-max)))))
-                                        ;(helm-grep-do-git-grep (clipboard-yank)))
 #+END_SRC
 ** my:magit-log
 #+BEGIN_SRC emacs-lisp
@@ -1695,8 +1273,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
             (set-mark start-point)
             (goto-char end-point)
             (message "Region marked and selected between curly braces")))))))
-
-(global-set-key (kbd "C-+") 'my:mark-curly-brace-region)
 #+END_SRC
 ** my:message
 #+BEGIN_SRC emacs-lisp
@@ -1766,7 +1342,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
 #+END_SRC
 ** my:prev-curly-brace my:curly-brace
 #+BEGIN_SRC emacs-lisp
-                                        ;(defvar next-method-regexp "class\\|def\\|public\\|private\\|protected\\|defun\\|defvar")
 (defvar next-curly-brace-regexp "{\\|}")
 
 (defun my:prev-curly-brace ()
@@ -1872,8 +1447,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
       (global-hide-mode-line-mode -1)
     (global-hide-mode-line-mode t))
   (my:toggle-fringe))
-
-                                        ;(global-set-key (kbd "C-{") 'my:toggle-mode-line-fringe)
 #+END_SRC
 ** my:trim-whitespace
 #+BEGIN_SRC emacs-lisp
@@ -1923,10 +1496,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
 #+END_SRC
 ** my:buffers
 #+BEGIN_SRC emacs-lisp
-;(setq-default bs-minimal-buffer-name-column 50)
-;(setq-default bs-maximal-buffer-name-column 80)
-;(setq-default bs-sort-functions "by name")
-
 (setq bs-attributes-list
    '(("" 1 1 left bs--get-marked-string)
      ("M" 1 1 left bs--get-modified-string)
@@ -2050,7 +1619,6 @@ _underline_
 
 (global-set-key (kbd "C-t") 'counsel-projectile-switch-to-buffer)
 (global-set-key (kbd "C-p") 'counsel-projectile-switch-project)
-                                        ;(global-set-key (kbd "C-=") 'counsel-projectile)
 
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 #+END_SRC
@@ -2173,22 +1741,6 @@ _underline_
   (setq INDEX-CHIAROSCURO index)
   (my:toggle-themes))
 #+END_SRC
-** tree-sitter
-#+BEGIN_SRC emacs-lisp
-                                        ;(use-package tree-sitter
-                                        ;  :ensure t
-                                        ;  :config
-                                        ;  (global-tree-sitter-mode)
-                                        ;  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
-                                        ;
-                                        ;(use-package tree-sitter-langs
-                                        ;  :ensure t
-                                        ;  :config
-                                        ;  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
-                                        ;
-;;; Disable font-lock globally
-                                        ;(global-font-lock-mode -1)
-#+END_SRC
 ** which-key
 #+BEGIN_SRC emacs-lisp
 (which-key-mode t)
@@ -2225,9 +1777,9 @@ _underline_
   :ensure t)
 #+END_SRC
 ** encoding, compilation, color formatting
+https://www.reddit.com/r/emacs/comments/6q644o/how_to_fix_maven_compilation_output/
+Add color formatting to *compilation* buffer
 #+BEGIN_SRC emacs-lisp
-; https://www.reddit.com/r/emacs/comments/6q644o/how_to_fix_maven_compilation_output/
-;; Add color formatting to *compilation* buffer
 (add-hook 'compilation-filter-hook
           (lambda () (ansi-color-apply-on-region (point-min) (point-max))))
 #+END_SRC
