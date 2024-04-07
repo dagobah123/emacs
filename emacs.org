@@ -682,9 +682,9 @@ Load environment variables properly by installing *exec-path-from-shell*.
   "
   Window
 
-  ^Split^         ^Horizontally^      ^Vertically^
-  ^^^^^^^^-------------------------------------------------
-  _1_: right      _3_: shrink         _5_: shrink
+  ^Split^         ^Horizontally^      ^Vertically^       ^Menu/Tool-bar^
+  ^^^^^^^^-------------------------------------------------------------------
+  _1_: right      _3_: shrink         _5_: shrink        _7_: menu-bar
   _2_: below      _4_: enlarge        _6_: enlarge
   "
   ("1" split-window-right)
@@ -695,6 +695,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
 
   ("5" shrink-window)
   ("6" enlarge-window)
+
+  ("7" my:toggle-menu-bar-tool-bar)
 
   ("q" nil "Quit" :color blue))
 #+END_SRC
@@ -1422,6 +1424,15 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (org-agenda-redo-all)
   (split-window-below)
   (my:show-projects))
+#+END_SRC
+** my:toggle-menu-bar-tool-bar
+#+BEGIN_SRC emacs-lisp
+(defun my:toggle-menu-bar-tool-bar ()
+  "Toggle menu-bar and tool-bar."
+  (interactive)
+  (if (bound-and-true-p tool-bar-mode)
+      (progn (tool-bar-mode 0) (menu-bar-mode 0))
+    (progn (tool-bar-mode 1) (menu-bar-mode 1))))
 #+END_SRC
 ** my:toggle-fringe
 #+BEGIN_SRC emacs-lisp
