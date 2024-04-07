@@ -1800,13 +1800,18 @@ Add color formatting to *compilation* buffer
 
 (define-abbrev-table 'global-abbrev-table
   '(
-    ("str" "String")
-    ("dou" "double")
-    ("pub" "public")
-    ("pro" "protected")
+    ("c" "class")
+    ("d" "double")
+    ("f" "for (int i; i < x; i++) {")
+    ("g" "String")
+    ("i" "int")
     ("pri" "private")
-    ("sta" "static")
-    ("voi" "void")
+    ("pro" "protected")
+    ("pub" "public")
+    ("s" "static")
+    ("str" "String")
+    ("v" "void")
+    ("w" "while")
     ))
 #+END_SRC
 String  String 
