@@ -250,7 +250,7 @@
 ** eglot java
 #+BEGIN_SRC emacs-lisp
 (cond
- ((string-equal system-type "windows-nt")
+ ((string-equal system-type "gnu/linux")
   (progn
     (add-hook 'java-mode-hook 'eglot-java-mode)
     (add-hook 'eglot-java-mode-hook (lambda ()

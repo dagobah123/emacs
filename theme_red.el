@@ -18,6 +18,7 @@
 (setq text-function "#bc8f8f")
 (setq text-highlight-1 "#00b2ee")
 (setq text-highlight-2 "#ffb90f")
+(setq text-highlight-3 "#00ff00")
 (setq text-info "#7fff00")
 (setq text-keyword "#8b4513")
 (setq text-line-number "#00688b")

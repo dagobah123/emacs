@@ -20,6 +20,7 @@
 (setq text-function "#339933")
 (setq text-highlight-1 "#ffc73b")
 (setq text-highlight-2 "#ff6038")
+(setq text-highlight-3 "#00ff00")
 (setq text-info "#555577")
 (setq text-line-number "#8f3c7f")
 (setq text-low "#8f3c7f")
