@@ -17,7 +17,7 @@
 (setq text-function "#25be7b")
 (setq text-highlight-1 "#00ff4e")
 (setq text-highlight-2 "#ffc73b")
-(setq text-highlight-3 "#004eff")
+(setq text-highlight-3 "#00beff")
 (setq text-info "#dd7700")
 (setq text-keyword "#af5b59")
 (setq text-line-number "#666666")
