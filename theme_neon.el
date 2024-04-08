@@ -4,9 +4,6 @@
 
 (load-file "~/.emacs.d/theme_variables.el")
 
-;#bf4092
-;#ffb600
-
 (setq background "#000000")
 (setq background-fringe "#331933")
 (setq background-hl "#331933")
@@ -15,12 +12,12 @@
 (setq background-mode-line "#331933")
 (setq background-mode-line-active "#442244")
 (setq background-low "#271b27")
-(setq background-region "#e49e59")
+(setq background-region "#221122")
 (setq text-constant "#545299")
 (setq text-function "#339933")
 (setq text-highlight-1 "#ffc73b")
 (setq text-highlight-2 "#ff6038")
-(setq text-highlight-3 "#00ff00")
+(setq text-highlight-3 "#ff46aa")
 (setq text-info "#555577")
 (setq text-line-number "#8f3c7f")
 (setq text-low "#8f3c7f")
