@@ -274,6 +274,7 @@
                      ("https://www.comicsrss.com/rss/garfield-classics.rss" comics garfield classics)
                      ("https://www.comicsrss.com/rss/garfield.rss" comics garfield)
                      ("https://www.comicsrss.com/rss/peanuts.rss" comics peanuts)
+                     ("https://planet.emacslife.com/atom.xml" emacs)
                      ))
 #+END_SRC
 ** engine mode
