@@ -264,18 +264,23 @@
 ** elfeed
 #+BEGIN_SRC emacs-lisp
 (require 'elfeed)
-(setq elfeed-feeds '(
-                     ("https://rss.orf.at/news.xml" news orf)
-                     ("https://rss.orf.at/steiermark.xml" news orf steiermark)
-                     ("https://sachachua.com/blog/category/emacs-news/feed/" emacs)
-                     ("https://www.comicsrss.com/rss/dilbert.rss" comics dilbert)
-                     ("https://www.comicsrss.com/rss/dilbert-classics.rss" comics dilbert classics)
-                     ("https://www.comicsrss.com/rss/eek.rss" comics eek)
-                     ("https://www.comicsrss.com/rss/garfield-classics.rss" comics garfield classics)
-                     ("https://www.comicsrss.com/rss/garfield.rss" comics garfield)
-                     ("https://www.comicsrss.com/rss/peanuts.rss" comics peanuts)
-                     ("https://planet.emacslife.com/atom.xml" emacs)
-                     ))
+
+(setq elfeed-feeds
+      '("http://nullprogram.com/feed/"
+        "https://planet.emacslife.com/atom.xml"))
+
+;; (setq elfeed-feeds '(
+;;                      ("https://rss.orf.at/news.xml" news orf)
+;;                      ("https://rss.orf.at/steiermark.xml" news orf steiermark)
+;;                      ("https://sachachua.com/blog/category/emacs-news/feed/" emacs)
+;;                      ("https://www.comicsrss.com/rss/dilbert.rss" comics dilbert)
+;;                      ("https://www.comicsrss.com/rss/dilbert-classics.rss" comics dilbert classics)
+;;                      ("https://www.comicsrss.com/rss/eek.rss" comics eek)
+;;                      ("https://www.comicsrss.com/rss/garfield-classics.rss" comics garfield classics)
+;;                      ("https://www.comicsrss.com/rss/garfield.rss" comics garfield)
+;;                      ("https://www.comicsrss.com/rss/peanuts.rss" comics peanuts)
+;;                      ("https://planet.emacslife.com/atom.xml" emacs)
+;;                      ))
 #+END_SRC
 ** engine mode
 #+BEGIN_SRC emacs-lisp
@@ -866,21 +871,21 @@ Load environment variables properly by installing *exec-path-from-shell*.
 #+BEGIN_SRC emacs-lisp
 (defun my:avy-lightning-clean-up ()
   (set-face-attribute 'default                           nil  :foreground text-normal       )
-  (set-face-attribute 'font-lock-bracket-face            nil  :foreground text-highlight-1  ) 
-  (set-face-attribute 'font-lock-builtin-face            nil  :foreground text-type         ) 
-  (set-face-attribute 'font-lock-comment-delimiter-face  nil  :foreground text-lower        ) 
-  (set-face-attribute 'font-lock-comment-face            nil  :foreground text-lower        ) 
-  (set-face-attribute 'font-lock-constant-face           nil  :foreground text-constant     ) 
-  (set-face-attribute 'font-lock-doc-face                nil  :foreground text-lower        ) 
-  (set-face-attribute 'font-lock-function-call-face      nil  :foreground text-highlight-1  ) 
-  (set-face-attribute 'font-lock-function-name-face      nil  :foreground text-function     ) 
-  (set-face-attribute 'font-lock-keyword-face            nil  :foreground text-keyword      ) 
-  (set-face-attribute 'font-lock-number-face             nil  :foreground text-highlight-1  ) 
-  (set-face-attribute 'font-lock-preprocessor-face       nil  :foreground text-preprocessor ) 
-  (set-face-attribute 'font-lock-string-face             nil  :foreground text-low          ) 
-  (set-face-attribute 'font-lock-type-face               nil  :foreground text-type         ) 
-  (set-face-attribute 'font-lock-variable-name-face      nil  :foreground text-variable     ) 
-  (set-face-attribute 'font-lock-variable-use-face       nil  :foreground text-constant     ) 
+  (set-face-attribute 'font-lock-bracket-face            nil  :foreground text-highlight-1  )
+  (set-face-attribute 'font-lock-builtin-face            nil  :foreground text-type         )
+  (set-face-attribute 'font-lock-comment-delimiter-face  nil  :foreground text-lower        )
+  (set-face-attribute 'font-lock-comment-face            nil  :foreground text-lower        )
+  (set-face-attribute 'font-lock-constant-face           nil  :foreground text-constant     )
+  (set-face-attribute 'font-lock-doc-face                nil  :foreground text-lower        )
+  (set-face-attribute 'font-lock-function-call-face      nil  :foreground text-highlight-1  )
+  (set-face-attribute 'font-lock-function-name-face      nil  :foreground text-function     )
+  (set-face-attribute 'font-lock-keyword-face            nil  :foreground text-keyword      )
+  (set-face-attribute 'font-lock-number-face             nil  :foreground text-highlight-1  )
+  (set-face-attribute 'font-lock-preprocessor-face       nil  :foreground text-preprocessor )
+  (set-face-attribute 'font-lock-string-face             nil  :foreground text-low          )
+  (set-face-attribute 'font-lock-type-face               nil  :foreground text-type         )
+  (set-face-attribute 'font-lock-variable-name-face      nil  :foreground text-variable     )
+  (set-face-attribute 'font-lock-variable-use-face       nil  :foreground text-constant     )
   (set-face-attribute 'font-lock-warning-face            nil  :foreground text-warning      )
 )
 
@@ -892,23 +897,23 @@ Load environment variables properly by installing *exec-path-from-shell*.
       (progn
         ;; Protected forms: code that may raise an error
         (set-face-attribute 'default                           nil  :foreground text-low )
-        (set-face-attribute 'font-lock-bracket-face            nil  :foreground text-low ) 
-        (set-face-attribute 'font-lock-builtin-face            nil  :foreground text-low ) 
-        (set-face-attribute 'font-lock-comment-delimiter-face  nil  :foreground text-low ) 
-        (set-face-attribute 'font-lock-comment-face            nil  :foreground text-low ) 
-        (set-face-attribute 'font-lock-constant-face           nil  :foreground text-low ) 
-        (set-face-attribute 'font-lock-doc-face                nil  :foreground text-low ) 
-        (set-face-attribute 'font-lock-function-call-face      nil  :foreground text-low ) 
-        (set-face-attribute 'font-lock-function-name-face      nil  :foreground text-low ) 
-        (set-face-attribute 'font-lock-keyword-face            nil  :foreground text-low ) 
-        (set-face-attribute 'font-lock-number-face             nil  :foreground text-low ) 
-        (set-face-attribute 'font-lock-preprocessor-face       nil  :foreground text-low ) 
-        (set-face-attribute 'font-lock-string-face             nil  :foreground text-low ) 
-        (set-face-attribute 'font-lock-type-face               nil  :foreground text-low ) 
-        (set-face-attribute 'font-lock-variable-name-face      nil  :foreground text-low ) 
-        (set-face-attribute 'font-lock-variable-use-face       nil  :foreground text-low ) 
+        (set-face-attribute 'font-lock-bracket-face            nil  :foreground text-low )
+        (set-face-attribute 'font-lock-builtin-face            nil  :foreground text-low )
+        (set-face-attribute 'font-lock-comment-delimiter-face  nil  :foreground text-low )
+        (set-face-attribute 'font-lock-comment-face            nil  :foreground text-low )
+        (set-face-attribute 'font-lock-constant-face           nil  :foreground text-low )
+        (set-face-attribute 'font-lock-doc-face                nil  :foreground text-low )
+        (set-face-attribute 'font-lock-function-call-face      nil  :foreground text-low )
+        (set-face-attribute 'font-lock-function-name-face      nil  :foreground text-low )
+        (set-face-attribute 'font-lock-keyword-face            nil  :foreground text-low )
+        (set-face-attribute 'font-lock-number-face             nil  :foreground text-low )
+        (set-face-attribute 'font-lock-preprocessor-face       nil  :foreground text-low )
+        (set-face-attribute 'font-lock-string-face             nil  :foreground text-low )
+        (set-face-attribute 'font-lock-type-face               nil  :foreground text-low )
+        (set-face-attribute 'font-lock-variable-name-face      nil  :foreground text-low )
+        (set-face-attribute 'font-lock-variable-use-face       nil  :foreground text-low )
         (set-face-attribute 'font-lock-warning-face            nil  :foreground text-low )
-  
+
         (avy-goto-char-timer)
 
         (my:avy-lightning-clean-up)
@@ -1773,19 +1778,19 @@ _underline_
 #+END_SRC
 ** treemacs
 #+BEGIN_SRC emacs-lisp
-(use-package treemacs  
-  :ensure t  
-  :defer t  
-  :config  
-  (progn  
-   	(setq treemacs-no-png-images t)  
-   	(setq treemacs-icon-fallback-text (propertize "> " 'face 'font-lock-keyword-face)))  
-  :bind  
-  (:map global-map  
-   		([f8] . treemacs)))  
-(use-package treemacs-projectile  
-  :after treemacs projectile  
-  :defer t  
+(use-package treemacs
+  :ensure t
+  :defer t
+  :config
+  (progn
+    (setq treemacs-no-png-images t)
+    (setq treemacs-icon-fallback-text (propertize "> " 'face 'font-lock-keyword-face)))
+  :bind
+  (:map global-map
+        ([f8] . treemacs)))
+(use-package treemacs-projectile
+  :after treemacs projectile
+  :defer t
   :ensure t)
 #+END_SRC
 ** encoding, compilation, color formatting
@@ -1815,7 +1820,6 @@ Add color formatting to *compilation* buffer
     ("w" "while")
     ))
 #+END_SRC
-String  String 
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.
 Load emacs-lisp file for custom changes.

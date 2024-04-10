@@ -42,7 +42,7 @@
 (setq color-orange-2 "#4e2700")
 (setq color-red-1 "#f21313")
 (setq color-red-2 "#550303")
-(setq color-violet-1 "#f974f9")
+(setq color-violet-1 "#7e28b4")
 (setq color-violet-2 "#43006d")
 (setq color-yellow-1 "#d6b400")
 (setq color-yellow-2 "#554804")
