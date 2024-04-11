@@ -25,7 +25,7 @@
 (setq text-low "#8b5a2b")
 (setq text-lower "#8b7765")
 (setq text-match "#ee0000")
-(setq text-mode-line "#009acd")
+(setq text-mode-line "#218bae")
 (setq text-normal "#cd853f")
 (setq text-preprocessor "#228b22")
 (setq text-type "#d2691e")
