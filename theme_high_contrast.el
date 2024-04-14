@@ -41,6 +41,7 @@
 (setq text-highlight-3 "#ffffff")
 (setq text-info "#000000")
 (setq text-keyword "#000000")
+(setq text-link "#000000")
 (setq text-low "#000000")
 (setq text-lower "#000000")
 (setq text-magit-branch-local "#000000")

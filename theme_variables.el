@@ -104,6 +104,7 @@
 (defvar text-info nil ".")
 (defvar text-keyword nil ".")
 (defvar text-line-number nil ".")
+(defvar text-link nil ".")
 (defvar text-low nil ".")
 (defvar text-lower nil ".")
 (defvar text-magit-branch-local nil ".")

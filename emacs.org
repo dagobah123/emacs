@@ -88,7 +88,7 @@
 ** auto-complete
 #+BEGIN_SRC emacs-lisp
 (global-auto-complete-mode t)
-(setq ac-auto-show-menu nil)
+;;(setq ac-auto-show-menu nil)
 #+END_SRC
 ** behavior
 #+BEGIN_SRC emacs-lisp
@@ -211,7 +211,7 @@
 #+END_SRC
 ** company
 #+BEGIN_SRC emacs-lisp
-;;(add-hook 'after-init-hook 'global-company-mode)
+(global-company-mode)
 #+END_SRC
 ** counsel-projectile
 #+BEGIN_SRC emacs-lisp
@@ -725,7 +725,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 #+END_SRC
 ** key bindings, kbd
 #+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "<tabs>") 'complete-symbol)
+;;(global-set-key (kbd "<tab>") 'complete-symbol)
 (global-set-key (kbd "C-!") 'my:decrease-font-size)
 (global-set-key (kbd "C-+") 'er/contract-region)
 (global-set-key (kbd "C-1") 'delete-other-windows)

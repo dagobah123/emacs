@@ -76,6 +76,7 @@
 (setq text-info "#ffffff")
 (setq text-keyword "#af06d0")
 (setq text-line-number "#000000")
+(setq text-link "#0000ff")
 (setq text-magit-branch-local "#000000")
 (setq text-magit-branch-remote "#000000")
 (setq text-match "#000000")
