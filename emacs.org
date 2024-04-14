@@ -1676,6 +1676,7 @@ _underline_
 (setq number-of-themes (length themes-list))
 
 (defun my:disable-themes ()
+  "Disable themes."
   (interactive)
   (setq loop-index 0)
   (while (< loop-index number-of-themes)
@@ -1683,12 +1684,14 @@ _underline_
     (setq loop-index (+ loop-index 1))))
 
 (defun my:reset-themes-index ()
+  "Reset themes index."
   (interactive)
   (setq theme-index 0)
   (setq INDEX-CHIAROSCURO 0)
   (my:disable-themes))
 
 (defun my:loop ()
+  "Loop."
   (interactive)
   (setq loop-index 1)
   (setq themes-list-index 0)
@@ -1701,6 +1704,7 @@ _underline_
     (setq themes-list-index (+ themes-list-index 1))))
 
 (defun my:toggle-themes ()
+  "Toggle themes."
   (interactive)
   (my:disable-themes)
 
@@ -1720,18 +1724,21 @@ _underline_
              (setq INDEX-CHIAROSCURO 0))))
 
 (defun my:theme-down ()
+  "Theme down."
   (interactive)
   (setq theme-index (- theme-index 1))
   (setq INDEX-CHIAROSCURO (- INDEX-CHIAROSCURO 1))
   (my:toggle-themes))
 
 (defun my:theme-up ()
+  "Theme up."
   (interactive)
   (setq theme-index (+ theme-index 1))
   (setq INDEX-CHIAROSCURO (+ INDEX-CHIAROSCURO 1))
   (my:toggle-themes))
 
 (defun my:set-theme (index)
+  "Set theme."
   (interactive)
   (setq theme-index index)
   (setq INDEX-CHIAROSCURO index)
@@ -1765,11 +1772,21 @@ _underline_
     (setq treemacs-icon-fallback-text (propertize "> " 'face 'font-lock-keyword-face)))
   :bind
   (:map global-map
-        ([f8] . treemacs)))
+        ([f8] . treemacs)
+        ([f9] . treemacs-select-window)))
 (use-package treemacs-projectile
   :after treemacs projectile
   :defer t
   :ensure t)
+
+(defun my:treemacs-TAB-action ()
+  "Custom treemacs tab action."
+  (interactive)
+  (treemacs-TAB-action)
+  (treemacs-fit-window-width))
+
+(unbind-key "<tab>" treemacs-mode-map)
+(define-key treemacs-mode-map (kbd "<tab>") 'my:treemacs-TAB-action)
 #+END_SRC
 ** encoding, compilation, color formatting
 https://www.reddit.com/r/emacs/comments/6q644o/how_to_fix_maven_compilation_output/
