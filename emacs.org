@@ -33,17 +33,18 @@
                      drag-stuff
                      eglot
                      eglot-java
-                     expand-region
                      elfeed
                      engine-mode
                      evil
                      evil-mc
+                     expand-region
                      focus
                      git-gutter
                      gnuplot
                      go-mode
                      google-translate
                      goto-last-change
+                     helm-ag
                      helm-bm
                      helm-projectile
                      helm-swoop
@@ -70,8 +71,8 @@
                      powershell
                      projectile
                      rainbow-mode
-                     speed-type
                      shx
+                     speed-type
                      swiper-helm
                      treemacs-projectile
                      use-package
@@ -346,7 +347,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   :bind
   (("M-x" . helm-M-x))
   (("C-c k r" . helm-show-kill-ring))
-  (("C-c h" . helm-grep-do-git-grep))
+  (("C-c h" . helm-ag))
   (("C-r"   . helm-swoop))
   (("C-c b" . helm-buffers-list))
   (("C-c r" . helm-bookmarks))
