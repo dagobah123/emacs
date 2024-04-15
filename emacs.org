@@ -16,8 +16,7 @@
 
 (unless package-archive-contents (package-refresh-contents))
 
-(setq package-list '(ace-window
-                     ag
+(setq package-list '(ag
                      arduino-cli-mode
                      arduino-mode
                      auto-complete
@@ -374,6 +373,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   _$_: Shutdown     _b_: blame      _4_: buffers                ^ ^         _m_: magit-diff   ^ ^
   ^ ^               _B_: region     _5_: grep-in-project        ^ ^         ^ ^               ^ ^
   ^ ^               ^ ^             _6_: grep-in-project2       ^ ^         ^ ^               ^ ^
+  ^ ^               ^ ^             _7_: grep-in-project-hist   ^ ^         ^ ^               ^ ^
   ^ ^               ^ ^             ^ ^                         ^ ^         ^ ^               ^ ^
   "
 
@@ -394,6 +394,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   ("4" swiper-all)
   ("5" my:grep-in-project)
   ("6" my:grep-in-project2)
+  ("7" my:grep-in-all-project-history)
 
   ("c" (project-dired))
   ("f" (counsel-projectile))
@@ -815,7 +816,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (global-set-key (kbd "M-g M-g") 'avy-goto-line)
 (global-set-key (kbd "M-m") 'xref-pop-marker-stack)
 (global-set-key (kbd "M-n") 'evil-first-non-blank)
-(global-set-key (kbd "M-o") 'ace-window)
+(global-set-key (kbd "M-o") 'other-window)
 (global-set-key (kbd "M-s a") 'swiper-all)
 (global-set-key (kbd "S-M-<left>") 'indent-rigidly-left)
 (global-set-key (kbd "S-M-<right>") 'indent-rigidly-right)
@@ -1209,6 +1210,24 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (let* ((search-list (split-string search-strings " " t " "))
          (default-directory (vc-git-root default-directory))
          (grep-command (format "git --no-pager grep -n -E -i -e %s"
+                               (mapconcat 'shell-quote-argument search-list " -e ")))
+         (grep-buffer-name "*Git Grep Results*"))
+    (compilation-start grep-command 'grep-mode
+                       (lambda (mode-name)
+                         (format "Search: %s" mode-name)))
+    (with-current-buffer grep-buffer-name
+      (while (search-forward-regexp (rx bol (group (1+ digit)) ":" (group (1+ not-newline)) eol) nil t)
+        (replace-match (format "%s:%s" (file-name-nondirectory (match-string 2)) (match-string 1)))))))
+#+END_SRC
+** my:grep-in-all-project-history
+;;git grep "search string" $(git rev-list --all)
+#+BEGIN_SRC emacs-lisp
+(defun my:grep-in-all-project-history (search-strings)
+  "Search for multiple strings in project history using vc-git-grep and display simplified output."
+  (interactive "MEnter search strings (space-separated): ")
+  (let* ((search-list (split-string search-strings " " t " "))
+         (default-directory (vc-git-root default-directory))
+         (grep-command (format "git grep -n -E -i -e %s $(git rev-list --all)"
                                (mapconcat 'shell-quote-argument search-list " -e ")))
          (grep-buffer-name "*Git Grep Results*"))
     (compilation-start grep-command 'grep-mode
