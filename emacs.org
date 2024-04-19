@@ -727,7 +727,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
 #+END_SRC
 ** key bindings, kbd
 #+BEGIN_SRC emacs-lisp
-;;(global-set-key (kbd "<tab>") 'complete-symbol)
 (global-set-key (kbd "C-!") 'my:decrease-font-size)
 (global-set-key (kbd "C-+") 'er/contract-region)
 (global-set-key (kbd "C-1") 'delete-other-windows)
@@ -759,7 +758,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c b") 'helm-filtered-bookmarks)
 (global-set-key (kbd "C-c c") 'org-capture)
-(global-set-key (kbd "C-c d") 'my:insert-string-to-mode-line-and-clipboard)
+(global-set-key (kbd "C-c d") 'my:duplicate-line)
 (global-set-key (kbd "C-c e") 'my:backward-copy-word)
 (global-set-key (kbd "C-c f") 'my:grep-in-project)
 (global-set-key (kbd "C-c g") 'my:grep-in-project2)
@@ -800,7 +799,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (global-set-key (kbd "C-x 5 6") 'magit-log-buffer-file)
 (global-set-key (kbd "C-x 6") 'my:theme-down)
 (global-set-key (kbd "C-x C-b") 'ivy-switch-buffer)
-(global-set-key (kbd "C-x d") 'my:duplicate-line)
 (global-set-key (kbd "C-x o") 'helm-projectile-find-file)
 (global-set-key (kbd "C-x p") 'helm-projectile-switch-project)
 (global-set-key (kbd "C-x q") 'goto-last-change)
@@ -821,7 +819,9 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (global-set-key (kbd "M-s a") 'swiper-all)
 (global-set-key (kbd "S-M-<left>") 'indent-rigidly-left)
 (global-set-key (kbd "S-M-<right>") 'indent-rigidly-right)
+;;(global-set-key (kbd "<tab>") 'complete-symbol)
 ;;(global-set-key (kbd "C-c SPC") 'company-complete)
+;;(global-set-key (kbd "C-c d") 'my:insert-string-to-mode-line-and-clipboard)
 ;;(global-set-key (kbd "C-c j") 'company-yasnippet)
 #+END_SRC
 ** look

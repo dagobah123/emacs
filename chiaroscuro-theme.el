@@ -141,6 +141,7 @@
 `(eww-form-submit ((t (:foreground ,text-highlight-1 :background ,background-mode-line ))))
 `(eww-form-text ((t (:foreground ,text-highlight-1 :background ,background-mode-line ))))
 `(eww-form-textarea ((t (:foreground ,text-highlight-1 :background ,background-mode-line ))))
+`(eww-valid-certificate ((t (:foreground ,text-highlight-1 :background ,background-mode-line :bold t ))))
 `(flycheck-error ((t (:foreground ,text-error :bold t :underline t ))))
 `(flycheck-error-list-checker-name ((t (:foreground ,text-normal :bold t ))))
 `(flycheck-error-list-column-number ((t (:foreground ,text-normal :bold t ))))
