@@ -23,6 +23,7 @@
                      bookmark-in-project
                      chess
                      clang-format
+                     cmake-font-lock
                      company
                      company-box
                      counsel
@@ -30,6 +31,7 @@
                      counsel-web
                      diminish
                      dired-narrow
+                     dired-quick-sort
                      drag-stuff
                      eglot
                      eglot-java
@@ -1832,6 +1834,11 @@ Add color formatting to *compilation* buffer
     ("v" "void")
     ("w" "while")
     ))
+#+END_SRC
+** dired-quick-sort
+#+BEGIN_SRC emacs-lisp
+(require 'dired-quick-sort)
+(dired-quick-sort-setup)
 #+END_SRC
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.
