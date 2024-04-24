@@ -17,6 +17,7 @@
 (unless package-archive-contents (package-refresh-contents))
 
 (setq package-list '(ag
+                     aggressive-indent
                      arduino-cli-mode
                      arduino-mode
                      auto-complete
