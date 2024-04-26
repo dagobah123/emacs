@@ -78,6 +78,7 @@
                      speed-type
                      swiper-helm
                      treemacs-projectile
+                     undo-tree
                      use-package
                      visual-regexp
                      which-key
@@ -1840,6 +1841,10 @@ Add color formatting to *compilation* buffer
 #+BEGIN_SRC emacs-lisp
 (require 'dired-quick-sort)
 (dired-quick-sort-setup)
+#+END_SRC
+** undo-tree
+#+BEGIN_SRC emacs-lisp
+(global-undo-tree-mode)
 #+END_SRC
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.
