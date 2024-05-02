@@ -63,7 +63,7 @@
 (setq text-info "#ba9a74")
 (setq text-keyword "#9d7877")
 (setq text-line-number "#666666")
-(setq text-link "#4a87c2")
+(setq text-link "#9d7877")
 (setq text-low "#555555")
 (setq text-lower "#333333")
 (setq text-match "#000000")

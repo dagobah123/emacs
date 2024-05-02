@@ -30,6 +30,7 @@
 (setq text-info "#dd7700")
 (setq text-keyword "#31160e")
 (setq text-line-number "#474752")
+(setq text-link "#474752")
 (setq text-low "#512418")
 (setq text-lower "#212126")
 (setq text-match "#000000")
