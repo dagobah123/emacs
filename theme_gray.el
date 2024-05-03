@@ -56,7 +56,7 @@
 (setq text-diff-removed "#554444")
 (setq text-diff-removed-highlight "#ca6666")
 (setq text-function "#779789")
-(setq text-highlight-1 "#40c368")
+(setq text-highlight-1 "#00ff4e")
 (setq text-highlight-2 "#cdb068")
 ;;(setq text-highlight-3 "#459fbe")
 (setq text-highlight-3 "#ff7d7b")
