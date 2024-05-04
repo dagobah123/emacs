@@ -20,15 +20,15 @@
 (setq text-highlight-2 "#ff0000")
 (setq text-highlight-3 "#7f0055")
 (setq text-keyword "#a77e23")
+(setq text-link "#048603")
 (setq text-line-number "#796e00")
 (setq text-low "#6c6840")
 (setq text-lower "#ac9c49")
-(setq text-match "#000000")
 (setq text-mode-line "#43470d")
 (setq text-normal "#50532b")
 (setq text-preprocessor "#afafaf")
 (setq text-type "#aaaa00")
-(setq text-variable "#50a723")
-(setq text-whitespace "#796e00")
+(setq text-variable "#a14a31")
+(setq text-whitespace "#6cbf00")
 
 ;;; theme_yellow.el ends here

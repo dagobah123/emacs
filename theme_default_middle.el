@@ -78,7 +78,6 @@
 (setq text-link "#0000ff")
 (setq text-magit-branch-local "#000000")
 (setq text-magit-branch-remote "#000000")
-(setq text-match "#4e084e")
 (setq text-preprocessor "#04bcc0")
 (setq text-type "#bb0606")
 (setq text-region "#000000")

@@ -23,7 +23,6 @@
 (setq text-line-number "#9f9f9f")
 (setq text-low "#5577cd")
 (setq text-lower "#9f9f9f")
-(setq text-match "#000000")
 (setq text-mode-line "#461436")
 (setq text-normal "#000000")
 (setq text-preprocessor "#afafaf")

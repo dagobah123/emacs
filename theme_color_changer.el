@@ -160,7 +160,6 @@
 (setq text-keyword "#000000")
 (setq text-low "#000000")
 (setq text-lower "#000000")
-(setq text-match "#000000")
 (setq text-mode-line "#000000")
 (setq text-normal color-text)
 (setq text-preprocessor "#000000")

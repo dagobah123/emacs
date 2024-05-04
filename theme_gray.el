@@ -66,7 +66,6 @@
 (setq text-link "#9d7877")
 (setq text-low "#555555")
 (setq text-lower "#333333")
-(setq text-match "#000000")
 (setq text-mode-line "#af7473")
 (setq text-normal "#9f7e5f")
 (setq text-preprocessor "#a8b4a8")

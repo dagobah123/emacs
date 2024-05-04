@@ -850,8 +850,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (setq confirm-kill-emacs 'y-or-n-p)
 
 ;; increase height of which-key
-(setq max-mini-window-height 0.9)
-(setq which-key-side-window-max-height 0.9)
+;;(setq max-mini-window-height 0.9)
+;;(setq which-key-side-window-max-height 0.9)
 
 (defvar default-font-size 0 "Global Emacs default font size")
 (defvar font-size 0 "Global Emacs font size")
