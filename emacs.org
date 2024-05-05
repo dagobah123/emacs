@@ -22,6 +22,7 @@
                      arduino-mode
                      auto-complete
                      bookmark-in-project
+                     burly
                      chess
                      clang-format
                      cmake-font-lock
@@ -745,6 +746,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (global-set-key (kbd "C-<up>") 'scroll-down-line)
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C-@") 'my:increase-font-size)
+(global-set-key (kbd "C-M-<left>") 'tab-previous)
+(global-set-key (kbd "C-M-<right>") 'tab-next)
 (global-set-key (kbd "C-S-M-<left>") 'drag-stuff-left)
 (global-set-key (kbd "C-S-M-<right>") 'drag-stuff-right)
 (global-set-key (kbd "C-S-o") 'my:reset-font-size)
@@ -1845,6 +1848,15 @@ Add color formatting to *compilation* buffer
 ** undo-tree
 #+BEGIN_SRC emacs-lisp
 (global-undo-tree-mode)
+#+END_SRC
+** tab-bar
+#+BEGIN_SRC emacs-lisp
+(tab-bar-mode t)
+(setq tab-bar-show 1)
+(setq tab-bar-close-button-show nil)
+(setq tab-bar-new-tab-choice "*scratch*")
+(setq tab-bar-tab-hints t)
+(setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
 #+END_SRC
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.

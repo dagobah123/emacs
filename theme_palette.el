@@ -24,7 +24,7 @@
 (setq text-comment "#d6a366")
 (setq text-constant "#d6a366")
 (setq text-function "#d6a366")
-(setq text-highlight-1 "#ffd39b")
+(setq text-highlight-1 "#ffffff")
 (setq text-highlight-2 "#ffc278")
 (setq text-highlight-3 "#ff8b6a")
 (setq text-info "#d6a366")
