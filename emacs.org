@@ -1852,11 +1852,15 @@ Add color formatting to *compilation* buffer
 ** tab-bar
 #+BEGIN_SRC emacs-lisp
 (tab-bar-mode t)
-(setq tab-bar-show 1)
+;;(setq tab-bar-show nil)
+(setq tab-bar-show t)
 (setq tab-bar-close-button-show nil)
-(setq tab-bar-new-tab-choice "*scratch*")
-(setq tab-bar-tab-hints t)
-(setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
+(setq tab-bar-new-button-show nil)
+(setq tab-bar-auto-width nil)
+(setq tab-bar-separator " ")
+;;(setq tab-bar-new-tab-choice "*scratch*")
+;;(setq tab-bar-tab-hints t)
+;;(setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
 #+END_SRC
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.
