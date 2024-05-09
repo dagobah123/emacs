@@ -11,7 +11,6 @@
 (setq background-magit "#0a0a0a")
 (setq background-magit-dark "#000000")
 (setq background-mode-line "#0a0a0a")
-(setq background-mode-line-active "#0a0a0a")
 (setq background-region "#0a0a0a")
 (setq text-comment "#8264a7")
 (setq text-constant "#8264a7")

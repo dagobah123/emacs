@@ -274,17 +274,17 @@
 (require 'engine-mode)
 (engine-mode t)
 
-(defengine google
-  "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
-  :keybinding "g")
+;;(defengine google
+;;  "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
+;;  :keybinding "g")
 
-(defengine stackoverflow
-  "https://stackoverflow.com/search?q=%s"
-  :keybinding "s")
+;;(defengine stackoverflow
+;;  "https://stackoverflow.com/search?q=%s"
+;;  :keybinding "s")
 
-(defengine wikipedia
-  "http://www.wikipedia.org/search-redirect.php?language=en&go=Go&search=%s"
-  :keybinding "w")
+;;(defengine wikipedia
+;;  "http://www.wikipedia.org/search-redirect.php?language=en&go=Go&search=%s"
+;;  :keybinding "w")
 #+END_SRC
 ** environment setup
 Load environment variables properly by installing *exec-path-from-shell*.
@@ -790,17 +790,11 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (global-set-key (kbd "C-s") 'swiper)
 (global-set-key (kbd "C-t") 'my:grep-backward-copy-word-in-project)
 (global-set-key (kbd "C-v") 'helm-all-mark-rings)
-(global-set-key (kbd "C-x / b") 'project-list-buffers)
 (global-set-key (kbd "C-x / c") 'my:class-overview)
-(global-set-key (kbd "C-x / e") 'helm-register)
 (global-set-key (kbd "C-x / f") 'find-lisp-find-dired)
 (global-set-key (kbd "C-x / i") 'org-insert-link)
-(global-set-key (kbd "C-x / k") 'helm-show-kill-ring)
 (global-set-key (kbd "C-x / l") 'org-store-link)
 (global-set-key (kbd "C-x / m") 'c-mark-function)
-(global-set-key (kbd "C-x / o") 'occur)
-(global-set-key (kbd "C-x / p") 'point-to-register)
-(global-set-key (kbd "C-x / r") 'copy-to-register)
 (global-set-key (kbd "C-x 5 5") 'magit-blame)
 (global-set-key (kbd "C-x 5 6") 'magit-log-buffer-file)
 (global-set-key (kbd "C-x 6") 'my:theme-down)
@@ -985,11 +979,15 @@ x    (my:avy-lightning-clean-up)
 (define-key global-map (kbd "C-,") my-movement-prefix-map)
 
 (define-key my-movement-prefix-map (kbd "C-,") 'avy-goto-word-1)
-(define-key my-movement-prefix-map (kbd "c") 'my:goto-class)
-(define-key my-movement-prefix-map (kbd "m") 'my:goto-member)
 (define-key my-movement-prefix-map (kbd "C-k") 'my:prev-method)
 (define-key my-movement-prefix-map (kbd "C-l") 'my:next-method)
+(define-key my-movement-prefix-map (kbd "R") 'copy-to-register)
 (define-key my-movement-prefix-map (kbd "b") 'my:buffers)
+(define-key my-movement-prefix-map (kbd "c") 'my:goto-class)
+(define-key my-movement-prefix-map (kbd "e") 'helm-register)
+(define-key my-movement-prefix-map (kbd "m") 'my:goto-member)
+(define-key my-movement-prefix-map (kbd "o") 'occur)
+(define-key my-movement-prefix-map (kbd "r") 'point-to-register)
 #+END_SRC
 ** movement, in Java class, my:prev-method my:next-method
 #+BEGIN_SRC emacs-lisp
