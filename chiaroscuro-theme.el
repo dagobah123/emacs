@@ -386,7 +386,7 @@
 `(popup-scroll-bar-foreground-face ((t (:foreground ,text-normal :background ,background-mode-line :bold nil :italic nil ))))
 `(popup-summary-face ((t (:foreground ,text-normal :background ,background-fringe :bold nil :italic nil ))))
 `(popup-tip-face ((t (:foreground ,text-normal :background ,background-fringe :bold nil :italic nil ))))
-`(region ((t (:foreground ,text-highlight-1 :background ,background-region :bold t ))))
+`(region ((t (:foreground ,text-highlight-1 :background ,background-region ))))
 `(secondary-selection ((t (:foreground ,text-highlight-1 :background unspecified ))))
 `(show-paren-match ((t (:foreground ,text-highlight-2 :background unspecified :bold t ))))
 `(shr-link ((t (:foreground ,text-link :background ,background :underline t ))))
