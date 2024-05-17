@@ -21,7 +21,7 @@
 (setq text-highlight-3 "#000000")
 (setq text-keyword "#268a00")
 (setq text-link "#000000")
-(setq text-line-number "#a43300")
+(setq text-line-number "#4f8154")
 (setq text-low "#365839")
 (setq text-lower "#4f8154")
 (setq text-mode-line "#4f8154")
