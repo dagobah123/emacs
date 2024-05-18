@@ -1,4 +1,4 @@
-;;; red --- theme
+;;; blue --- theme
 ;;; Commentary:
 ;;; Code:
 
@@ -15,12 +15,12 @@
 (setq text-comment "#9acd32")
 (setq text-constant "#fa8072")
 (setq text-function "#bc8f8f")
-(setq text-highlight-1 "#008ab9")
+(setq text-highlight-1 "#0090c1")
 (setq text-highlight-2 "#d99d0d")
 (setq text-highlight-3 "#00dd00")
 (setq text-info "#5dbc00")
 (setq text-keyword "#8b522a")
-(setq text-line-number "#008ab9")
+(setq text-line-number "#0090c1")
 (setq text-link "#ffa500")
 (setq text-low "#8b5a2b")
 (setq text-lower "#8b7765")
@@ -31,4 +31,4 @@
 (setq text-variable "#daa520")
 (setq text-whitespace "#bc8622")
 
-;;; theme_red.el ends here
+;;; theme_blue.el ends here

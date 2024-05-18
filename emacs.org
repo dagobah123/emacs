@@ -426,11 +426,11 @@ Load environment variables properly by installing *exec-path-from-shell*.
   ^^^^^^^^-------------------------------------------------------------------------------------------------
   _a_: emacs       _d_: emacs.org      _h_: cp .emacs.d     _k_: reset   _1_: Default    _'_: ibuffers
   _s_: .emacs.d    _f_: chiaro...el    _j_: fullscreen      _l_: up      _2_: Eclipse    _b_: bookmarks
-  ^ ^              _g_: linux.el       ^ ^                  _;_: down    _3_: Neon       ^ ^
-  ^ ^              ^ ^                 ^ ^                  ^ ^          _4_: Yellow     ^ ^
-  ^ ^              ^ ^                 ^ ^                  ^ ^          _5_: Palette    ^ ^
-  ^ ^              ^ ^                 ^ ^                  ^ ^          _6_: Gray       ^ ^
-  ^ ^              ^ ^                 ^ ^                  ^ ^          _7_: Red        ^ ^
+  ^ ^              _g_: linux.el       ^ ^                  _;_: down    _3_: Green      ^ ^
+  ^ ^              ^ ^                 ^ ^                  ^ ^          _4_: Gray       ^ ^
+  ^ ^              ^ ^                 ^ ^                  ^ ^          _5_: Low Chroma ^ ^
+  ^ ^              ^ ^                 ^ ^                  ^ ^          _6_: Blue       ^ ^
+  ^ ^              ^ ^                 ^ ^                  ^ ^          _7_: Neon       ^ ^
   ^ ^              ^ ^                 ^ ^                  ^ ^          _8_: High C.    ^ ^
   ^ ^              ^ ^                 ^ ^                  ^ ^          _9_: Light      ^ ^
   ^ ^              ^ ^                 ^ ^                  ^ ^          _0_: Dark       ^ ^
@@ -456,11 +456,11 @@ Load environment variables properly by installing *exec-path-from-shell*.
 
   ("1" (my:set-theme INDEX-DEFAULT))
   ("2" (my:set-theme INDEX-ECLIPSE))
-  ("3" (my:set-theme INDEX-NEON))
-  ("4" (my:set-theme INDEX-YELLOW))
-  ("5" (my:set-theme INDEX-PALETTE))
-  ("6" (my:set-theme INDEX-GRAY))
-  ("7" (my:set-theme INDEX-RED))
+  ("3" (my:set-theme INDEX-GREEN))
+  ("4" (my:set-theme INDEX-GRAY))
+  ("5" (my:set-theme INDEX-LOW-CHROMA))
+  ("6" (my:set-theme INDEX-BLUE))
+  ("7" (my:set-theme INDEX-NEON))
   ("8" (my:set-theme INDEX-HIGH-CONTRAST))
   ("9" (my:set-theme INDEX-COLOR-CHANGE-LIGHT))
   ("0" (my:set-theme INDEX-COLOR-CHANGE-DARK))
@@ -1664,11 +1664,11 @@ _underline_
 #+BEGIN_SRC emacs-lisp
 (setq INDEX-DEFAULT            1)
 (setq INDEX-ECLIPSE            2)
-(setq INDEX-NEON               3)
-(setq INDEX-YELLOW             4)
-(setq INDEX-PALETTE            5)
-(setq INDEX-GRAY               6)
-(setq INDEX-RED                7)
+(setq INDEX-GREEN              3)
+(setq INDEX-GRAY               4)
+(setq INDEX-LOW-CHROMA         5)
+(setq INDEX-BLUE               6)
+(setq INDEX-NEON               7)
 (setq INDEX-HIGH-CONTRAST      8)
 (setq INDEX-COLOR-CHANGE-LIGHT 9)
 (setq INDEX-COLOR-CHANGE-DARK 10)
@@ -1689,11 +1689,11 @@ _underline_
 
 (setq themes-list-names '("default"
                           "eclipse"
-                          "neon"
-                          "yellow"
-                          "palette"
+                          "green"
                           "gray"
-                          "red"
+                          "low chroma"
+                          "blue"
+                          "neon"
                           "high contrast"
                           "light"
                           "dark"))

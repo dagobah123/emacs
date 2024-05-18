@@ -969,7 +969,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
     ("1" (my:set-theme INDEX-CONSOLE))
     ("2" (my:set-theme INDEX-ECLIPSE))
     ("3" (my:set-theme INDEX-NEON))
-    ("4" (my:set-theme INDEX-YELLOW))
+    ("4" (my:set-theme INDEX-GREEN))
     ("5" (my:set-theme INDEX-RED))
     ("6" (my:set-theme INDEX-HIGH-CONTRAST))
 
