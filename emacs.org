@@ -422,18 +422,18 @@ Load environment variables properly by installing *exec-path-from-shell*.
   "
   Emacs
 
-  ^Folders^        ^Files^             ^Update^             ^Themes^                   ^Buffers^
-  ^^^^^^^^-------------------------------------------------------------------------------------------------
-  _a_: emacs       _d_: emacs.org      _h_: cp .emacs.d     _k_: reset   _1_: Default    _'_: ibuffers
-  _s_: .emacs.d    _f_: chiaro...el    _j_: fullscreen      _l_: up      _2_: Eclipse    _b_: bookmarks
-  ^ ^              _g_: linux.el       ^ ^                  _;_: down    _3_: Green      ^ ^
-  ^ ^              ^ ^                 ^ ^                  ^ ^          _4_: Gray       ^ ^
-  ^ ^              ^ ^                 ^ ^                  ^ ^          _5_: Low Chroma ^ ^
-  ^ ^              ^ ^                 ^ ^                  ^ ^          _6_: Blue       ^ ^
-  ^ ^              ^ ^                 ^ ^                  ^ ^          _7_: Neon       ^ ^
-  ^ ^              ^ ^                 ^ ^                  ^ ^          _8_: High C.    ^ ^
-  ^ ^              ^ ^                 ^ ^                  ^ ^          _9_: Light      ^ ^
-  ^ ^              ^ ^                 ^ ^                  ^ ^          _0_: Dark       ^ ^
+  ^Folders^        ^Files^             ^Update^             ^Themes^         ^Buffers^
+  ^^^^^^^^--------------------------------------------------------------------------------------
+  _a_: emacs       _d_: emacs.org      _h_: cp .emacs.d     _1_: Default      _'_: ibuffers
+  _s_: .emacs.d    _f_: chiaro...el    _j_: fullscreen      _2_: Eclipse      _b_: bookmarks
+  ^ ^              _g_: linux.el       ^ ^                  _3_: Green        ^ ^
+  ^ ^              ^ ^                 ^ ^                  _4_: Gray         ^ ^
+  ^ ^              ^ ^                 ^ ^                  _5_: Low Chroma   ^ ^
+  ^ ^              ^ ^                 ^ ^                  _6_: Blue         ^ ^
+  ^ ^              ^ ^                 ^ ^                  _7_: Neon         ^ ^
+  ^ ^              ^ ^                 ^ ^                  _8_: High C.      ^ ^
+  ^ ^              ^ ^                 ^ ^                  _9_: Light        ^ ^
+  ^ ^              ^ ^                 ^ ^                  _0_: Dark         ^ ^
   "
 
   ("a" (dired "~/source/emacs"))
@@ -449,10 +449,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
            (my:open-and-eval-init-file)
            (toggle-frame-fullscreen))))
   ("j" (toggle-frame-fullscreen))
-
-  ("k" (my:reset-themes-index))
-  ("l" (my:theme-up))
-  (";" (my:theme-down))
 
   ("1" (my:set-theme INDEX-DEFAULT))
   ("2" (my:set-theme INDEX-ECLIPSE))
