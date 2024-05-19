@@ -15,11 +15,11 @@
 (setq text-constant "#000000")
 (setq text-function "#000000")
 (setq text-highlight-1 "#000000")
-(setq text-highlight-2 "#c7c7c7")
+(setq text-highlight-2 "#ffffff")
 (setq text-highlight-3 "#000000")
 (setq text-info "#000000")
 (setq text-keyword "#333333")
-(setq text-line-number "#c7c7c7")
+(setq text-line-number "#54ff9f")
 (setq text-link "#000000")
 (setq text-low "#444444")
 (setq text-lower "#555555")
@@ -28,6 +28,6 @@
 (setq text-preprocessor "#555555")
 (setq text-type "#000000")
 (setq text-variable "#000000")
-(setq text-whitespace "#c7c7c7")
+(setq text-whitespace "#54ff9f")
 
 ;;; theme_gray.el ends here
