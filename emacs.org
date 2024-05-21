@@ -732,6 +732,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (global-set-key (kbd "C-$") 'tab-new)
 (global-set-key (kbd "C-%") 'tab-close)
 (global-set-key (kbd "C-&") 'tab-rename)
+(global-set-key (kbd "C-*") 'my:open-all-burly-bookmarks)
 (global-set-key (kbd "C-+") 'er/contract-region)
 (global-set-key (kbd "C-1") 'delete-other-windows)
 (global-set-key (kbd "C-7") 'global-display-line-numbers-mode)
@@ -1856,6 +1857,14 @@ Add color formatting to *compilation* buffer
 (setq tab-bar-new-tab-choice "*new*")
 ;;(setq tab-bar-tab-hints t)
 ;;(setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
+
+(defun my:open-all-burly-bookmarks ()
+  "Open all burly bookmarks."
+  (interactive)
+  (dolist (item (burly-bookmark-names))
+    (tab-new)
+    (burly-open-bookmark item)
+    (tab-rename item)))
 #+END_SRC
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.
