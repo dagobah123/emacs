@@ -1868,6 +1868,10 @@ Add color formatting to *compilation* buffer
     (burly-open-bookmark item)
     (tab-rename item)))
 #+END_SRC
+** compile
+#+BEGIN_SRC emacs-lisp
+(setq compilation-scroll-output t)
+#+END_SRC
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.
 Load emacs-lisp file for custom changes.
