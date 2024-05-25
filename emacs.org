@@ -1862,7 +1862,6 @@ Add color formatting to *compilation* buffer
   "Open all burly bookmarks."
   (interactive)
   (bookmark-bmenu-list)
-  ;;(quit-window)
   (dolist (item (burly-bookmark-names))
     (tab-new)
     (burly-open-bookmark item)
