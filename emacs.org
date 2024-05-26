@@ -92,7 +92,7 @@
 #+END_SRC
 ** auto-complete
 #+BEGIN_SRC emacs-lisp
-(global-auto-complete-mode t)
+;;(global-auto-complete-mode t)
 ;;(setq ac-auto-show-menu nil)
 #+END_SRC
 ** behavior
@@ -216,7 +216,7 @@
 #+END_SRC
 ** company
 #+BEGIN_SRC emacs-lisp
-(global-company-mode)
+;;(global-company-mode)
 #+END_SRC
 ** counsel-projectile
 #+BEGIN_SRC emacs-lisp
@@ -743,12 +743,13 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (global-set-key (kbd "C-<escape>") 'evil-mode)
 (global-set-key (kbd "C-<next>") 'next-buffer)
 (global-set-key (kbd "C-<prior>") 'previous-buffer)
-(global-set-key (kbd "C-<tab>") 'auto-complete)
+(global-set-key (kbd "C-<tab>") 'dabbrev-expand)
 (global-set-key (kbd "C-<up>") 'scroll-down-line)
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C-@") 'my:increase-font-size)
 (global-set-key (kbd "C-M-<left>") 'tab-previous)
 (global-set-key (kbd "C-M-<right>") 'tab-next)
+(global-set-key (kbd "C-S-<iso-lefttab>") 'dabbrev-completion)
 (global-set-key (kbd "C-S-M-<left>") 'drag-stuff-left)
 (global-set-key (kbd "C-S-M-<right>") 'drag-stuff-right)
 (global-set-key (kbd "C-S-o") 'my:reset-font-size)
@@ -1825,16 +1826,15 @@ Add color formatting to *compilation* buffer
 
 (define-abbrev-table 'global-abbrev-table
   '(
-    ("c" "class")
-    ("d" "double")
-    ("f" "for (int i; i < x; i++) {")
-    ("i" "int")
-    ("pi" "private")
-    ("po" "protected")
-    ("pu" "public")
-    ("s" "static")
-    ("v" "void")
-    ("w" "while")
+    ("cla" "class")
+    ("dou" "double")
+    ("for" "for (int i; i < x; i++) {")
+    ("pri" "private")
+    ("pro" "protected")
+    ("pub" "public")
+    ("sta" "static")
+    ("voi" "void")
+    ("whi" "while")
     ))
 #+END_SRC
 ** dired-quick-sort
