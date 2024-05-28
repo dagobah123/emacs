@@ -987,6 +987,7 @@ x    (my:avy-lightning-clean-up)
 (define-key my-movement-prefix-map (kbd "m") 'my:goto-member)
 (define-key my-movement-prefix-map (kbd "o") 'occur)
 (define-key my-movement-prefix-map (kbd "r") 'point-to-register)
+(define-key my-movement-prefix-map (kbd "u") 'uncomment-region)
 #+END_SRC
 ** movement, in Java class, my:prev-method my:next-method
 #+BEGIN_SRC emacs-lisp
