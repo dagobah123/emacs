@@ -733,6 +733,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (global-set-key (kbd "C-$") 'tab-new)
 (global-set-key (kbd "C-%") 'tab-close)
 (global-set-key (kbd "C-&") 'tab-rename)
+(global-set-key (kbd "C-'") 'c-display-defun-name)
 (global-set-key (kbd "C-)") 'swiper-all)
 (global-set-key (kbd "C-*") 'my:open-all-burly-bookmarks)
 (global-set-key (kbd "C-+") 'er/contract-region)
@@ -819,7 +820,9 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (global-set-key (kbd "M-s a") 'swiper-all)
 (global-set-key (kbd "S-M-<left>") 'indent-rigidly-left)
 (global-set-key (kbd "S-M-<right>") 'indent-rigidly-right)
+;;(global-set-key (kbd "<down>") 'my:next-line)
 ;;(global-set-key (kbd "<tab>") 'complete-symbol)
+;;(global-set-key (kbd "<up>") 'my:previous-line)
 ;;(global-set-key (kbd "C-c SPC") 'company-complete)
 ;;(global-set-key (kbd "C-c d") 'my:insert-string-to-mode-line-and-clipboard)
 ;;(global-set-key (kbd "C-c j") 'company-yasnippet)
@@ -984,6 +987,7 @@ x    (my:avy-lightning-clean-up)
 (define-key my-movement-prefix-map (kbd "R") 'copy-to-register)
 (define-key my-movement-prefix-map (kbd "b") 'my:buffers)
 (define-key my-movement-prefix-map (kbd "c") 'my:goto-class)
+(define-key my-movement-prefix-map (kbd "d") 'c-display-defun-name)
 (define-key my-movement-prefix-map (kbd "e") 'helm-register)
 (define-key my-movement-prefix-map (kbd "m") 'my:goto-member)
 (define-key my-movement-prefix-map (kbd "o") 'occur)
@@ -1883,6 +1887,27 @@ Add color formatting to *compilation* buffer
 ;;(global-set-key (kbd "<f7>") 'symbol-overlay-mode)
 ;;(global-set-key (kbd "<f8>") 'symbol-overlay-remove-all)
 #+END_SRC
+** Show current method in mode-line
+#+BEGIN_SRC emacs-lisp
+;(defun my:next-line ()
+;  "Custom next line"
+;  (interactive)
+;  (next-line)
+;  (my:display-defun-name))
+; 
+;(defun my:previous-line ()
+;  "Custom previous line"
+;  (interactive)
+;  (previous-line)
+;  (my:display-defun-name))
+; 
+;(defun my:display-defun-name ()
+;  "Custom display defun name."
+;  (interactive)
+;  (if (eq major-mode 'java-mode)
+;      (progn
+;        (c-display-defun-name))))
+ #+END_SRC
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.
 Load emacs-lisp file for custom changes.
