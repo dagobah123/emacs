@@ -1882,8 +1882,8 @@ Add color formatting to *compilation* buffer
 #+BEGIN_SRC emacs-lisp
 (require 'symbol-overlay)
 (global-set-key (kbd "M-i") 'symbol-overlay-put)
-(global-set-key (kbd "M-n") 'symbol-overlay-switch-forward)
-(global-set-key (kbd "M-p") 'symbol-overlay-switch-backward)
+(global-set-key (kbd "M-f") 'symbol-overlay-switch-forward)
+(global-set-key (kbd "M-b") 'symbol-overlay-switch-backward)
 ;;(global-set-key (kbd "<f7>") 'symbol-overlay-mode)
 ;;(global-set-key (kbd "<f8>") 'symbol-overlay-remove-all)
 #+END_SRC
@@ -1907,7 +1907,65 @@ Add color formatting to *compilation* buffer
 ;  (if (eq major-mode 'java-mode)
 ;      (progn
 ;        (c-display-defun-name))))
- #+END_SRC
+
+
+
+(defun my:c-display-defun-name (&optional arg)
+  "Return the name of the current CC mode defun.
+With a prefix arg, push the name onto the kill ring too."
+  (interactive "P")
+  (if (eq major-mode 'java-mode)
+      (c-with-string-fences
+       (save-restriction
+         (widen)
+         (c-save-buffer-state ((name-and-limits (c-defun-name-and-limits nil))
+                               (name (car name-and-limits))
+                               (limits (cdr name-and-limits))
+                               (point-bol (c-point 'bol)))
+           (when name
+             (when arg (kill-new name))
+             (message name)
+             (or name "")))))))
+
+
+;;(defun my:c-display-defun-name (&optional arg)
+;;  "Display the name of the current CC mode defun.
+;;   With a prefix arg, push the name onto the kill ring too."
+;;  (interactive "P")
+;;  (if (eq major-mode 'java-mode)
+;;      (c-with-string-fences
+;;       (save-restriction
+;;         (widen)
+;;         (c-save-buffer-state ((name-and-limits (c-defun-name-and-limits nil))
+;;    		                   (name (car name-and-limits))
+;;    		                   (limits (cdr name-and-limits))
+;;    		                   (point-bol (c-point 'bol)))
+;;           (when name
+;;             (message "%s" name
+;;    	              (1+ (count-lines (car limits) (max point-bol (car limits))))
+;;    	              (count-lines (car limits) (cdr limits)))
+;;             (if arg (kill-new name))
+;;             ))))))
+
+;;(add-hook 'post-command-hook 'my:mode-line-format)
+(add-hook 'post-command-hook 'my:c-display-defun-name)
+
+;;(defun my:mode-line-format ()
+;;  "Custom mode-line format to include the current function name and buffer status."
+;;  (setq mode-line-format
+;;        (list
+;;         '(:eval (format "%s" (if (buffer-modified-p) "*" "-")))  ;; Shows `*` if the buffer is modified, `-` otherwise.
+;;         '(:eval (format " %s" my:c-display-defun-name))
+;;         "  %b  %p  %l:%c  %m")))
+
+;;(defun my:mode-line-format ()
+;;  "Custom mode-line format to include the current function name."
+;;  (setq mode-line-format
+;;        (list
+;;         '(:eval (format " %s" (my:c-display-defun-name)))
+;;         ;;'(:eval (format " %s" "hello"))
+;;         "  %b %p  %l:%c  %m")))
+#+END_SRC
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.
 Load emacs-lisp file for custom changes.
