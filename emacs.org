@@ -892,7 +892,32 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (display-time-mode 1)
 (setq display-time-24hr-format t)
 
-(setq-default mode-line-format (delq 'mode-line-modes mode-line-format))
+(defvar my:custom-mode-line-string "hello"
+  "A custom string to be displayed in the mode-line.")
+
+(defun my:mode-line-format ()
+  "Customize the mode line."
+  (interactive)
+  (setq-default mode-line-format
+                (list
+                 mode-line-front-space
+                 mode-line-mule-info
+                 mode-line-client
+                 mode-line-modified
+                 mode-line-remote
+                 '(:eval my:custom-mode-line-string)  ;; Custom string
+                 mode-line-frame-identification
+                 mode-line-buffer-identification "   "
+                 mode-line-position
+                 ;;(vc-mode)
+                 ;;(vc-mode vc-mode)
+                 "  "
+                 ;;mode-line-modes
+                 ;;mode-line-misc-info
+                 mode-line-end-spaces)))
+
+(my:mode-line-format)
+;;(setq-default mode-line-format (delq 'mode-line-modes mode-line-format))
 #+END_SRC
 ** movement, avy
 #+BEGIN_SRC emacs-lisp
@@ -1834,7 +1859,7 @@ Add color formatting to *compilation* buffer
   '(
     ("cla" "class")
     ("dou" "double")
-    ("for" "for (int i; i < x; i++) {")
+    ("for (" "for (int i; i < x; i++) {")
     ("pri" "private")
     ("pro" "protected")
     ("pub" "public")
@@ -1924,8 +1949,10 @@ With a prefix arg, push the name onto the kill ring too."
                                (point-bol (c-point 'bol)))
            (when name
              (when arg (kill-new name))
-             (message name)
-             (or name "")))))))
+             ;;(message name)
+             (setq my:custom-mode-line-string (concat "  " name))
+             (or name "")))))
+    (setq my:custom-mode-line-string "")))
 
 
 ;;(defun my:c-display-defun-name (&optional arg)
