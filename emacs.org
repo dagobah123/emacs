@@ -905,10 +905,15 @@ Load environment variables properly by installing *exec-path-from-shell*.
                  mode-line-client
                  mode-line-modified
                  mode-line-remote
-                 '(:eval my:custom-mode-line-string)  ;; Custom string
+                 '(:eval my:custom-mode-line-string)  ;; Jave method name
                  mode-line-frame-identification
-                 mode-line-buffer-identification "   "
-                 mode-line-position
+                 mode-line-buffer-identification " " ;; buffer name
+                 ":" '(:eval (propertize (substring vc-mode 5) 'face 'font-lock-comment-face)) ": " ;; git branch
+                 mode-line-position ;; position
+                 '(:eval (propertize (format-time-string " %b %d %H:%M ")
+                                   'face 'font-lock-builtin-face))
+                 (propertize " %m " 'face 'font-lock-string-face) ;; major mode
+                 ;;(propertize " %p " 'face 'font-lock-constant-face) ;; relative position
                  ;;(vc-mode)
                  ;;(vc-mode vc-mode)
                  "  "
@@ -1950,7 +1955,7 @@ With a prefix arg, push the name onto the kill ring too."
            (when name
              (when arg (kill-new name))
              ;;(message name)
-             (setq my:custom-mode-line-string (concat "  " name))
+             (setq my:custom-mode-line-string (concat "  <" name ">"))
              (or name "")))))
     (setq my:custom-mode-line-string "")))
 
