@@ -895,31 +895,40 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (defvar my:custom-mode-line-string "hello"
   "A custom string to be displayed in the mode-line.")
 
+(defun my:check-if-empty (str)
+  "Check if STR is an empty string and print a message."
+  (if (string-empty-p str)
+      (str)
+    (concat " @" str " ")))
+
 (defun my:mode-line-format ()
   "Customize the mode line."
   (interactive)
   (setq-default mode-line-format
                 (list
-                 mode-line-front-space
-                 mode-line-mule-info
-                 mode-line-client
-                 mode-line-modified
-                 mode-line-remote
-                 '(:eval my:custom-mode-line-string)  ;; Jave method name
-                 mode-line-frame-identification
-                 mode-line-buffer-identification " " ;; buffer name
-                 ":" '(:eval (propertize (substring vc-mode 5) 'face 'font-lock-comment-face)) ": " ;; git branch
-                 mode-line-position ;; position
-                 '(:eval (propertize (format-time-string " %b %d %H:%M ")
-                                   'face 'font-lock-builtin-face))
-                 (propertize " %m " 'face 'font-lock-string-face) ;; major mode
-                 ;;(propertize " %p " 'face 'font-lock-constant-face) ;; relative position
-                 ;;(vc-mode)
-                 ;;(vc-mode vc-mode)
+                 (propertize " %Z%*%+%& " 'face 'font-lock-constant-face) ;;
+                 '(:eval (propertize my:custom-mode-line-string 'face 'font-lock-constant-face)) ;; Jave method name
+                 (propertize " %b " 'face 'font-lock-constant-face) ;; buffer
+                 ;;'(:eval (propertize (substring vc-mode 5) 'face 'font-lock-constant-face)) ;; git branch
+                 '(:eval (propertize (my:check-if-empty (substring vc-mode 5)) 'face 'font-lock-constant-face)) ;; git branch
+                 (propertize " (%p,%l,%c) " 'face 'font-lock-constant-face) ;; position
+                 '(:eval (propertize (format-time-string " %b %d %H:%M ") 'face 'font-lock-constant-face))
+                 (propertize " %m " 'face 'font-lock-constant-face) ;; major mode
                  "  "
-                 ;;mode-line-modes
-                 ;;mode-line-misc-info
                  mode-line-end-spaces)))
+                 ;;(propertize " %p " 'face 'font-lock-constant-face) ;; relative position
+                 ;;(vc-mode vc-mode)
+                 ;;(vc-mode)
+                 ;;mode-line-buffer-identification
+                 ;;mode-line-client
+                 ;;mode-line-frame-identification
+                 ;;mode-line-front-space
+                 ;;mode-line-misc-info
+                 ;;mode-line-modes
+                 ;;mode-line-modified
+                 ;;mode-line-mule-info
+                 ;;mode-line-position
+                 ;;mode-line-remote
 
 (my:mode-line-format)
 ;;(setq-default mode-line-format (delq 'mode-line-modes mode-line-format))
@@ -1955,7 +1964,7 @@ With a prefix arg, push the name onto the kill ring too."
            (when name
              (when arg (kill-new name))
              ;;(message name)
-             (setq my:custom-mode-line-string (concat "  <" name ">"))
+             (setq my:custom-mode-line-string (concat " <" name "> "))
              (or name "")))))
     (setq my:custom-mode-line-string "")))
 
