@@ -906,7 +906,10 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (interactive)
   (setq-default mode-line-format
                 (list
-                 (propertize " %Z%*%+%& " 'face 'font-lock-constant-face) ;;
+
+                 " " mode-line-mule-info mode-line-client mode-line-modified mode-line-remote " "
+                 
+                 ;;(propertize " %Z%*%+%& " 'face 'font-lock-constant-face) ;;
                  '(:eval (propertize my:custom-mode-line-string 'face 'font-lock-regexp-grouping-backslash)) ;; Jave method name
                  (propertize " %b " 'face 'font-lock-regexp-face) ;; buffer
                  ;;'(:eval (propertize (substring vc-mode 5) 'face 'font-lock-constant-face)) ;; git branch
@@ -932,6 +935,58 @@ Load environment variables properly by installing *exec-path-from-shell*.
 
 (my:mode-line-format)
 ;;(setq-default mode-line-format (delq 'mode-line-modes mode-line-format))
+
+(defun my:c-defun-name ()
+  "sdfsdf"
+  (interactive)
+  (message (c-defun-name)))
+
+(defun my:c-defun-name-and-limits (near)
+  ;; Return a cons of the name and limits (itself a cons) of the current
+  ;; top-level declaration or macro, or nil of there is none.
+  ;;
+  ;; If `c-defun-tactic' is 'go-outward, we return the name and limits of the
+  ;; most tightly enclosing declaration or macro.  Otherwise, we return that
+  ;; at the file level.
+  (save-restriction
+    (widen)
+    (if (eq c-defun-tactic 'go-outward)
+	(c-save-buffer-state ((paren-state (c-parse-state))
+			      (orig-point-min (point-min))
+			      (orig-point-max (point-max))
+			      lim name limits)
+	  (setq lim (c-widen-to-enclosing-decl-scope
+		     paren-state orig-point-min orig-point-max))
+	  (and lim (setq lim (1- lim)))
+	  (c-while-widening-to-decl-block (not (setq name (c-defun-name-1))) t)
+	  (when name
+	    (setq limits (c-declaration-limits-1 near))
+	    (cons name limits)))
+      (c-save-buffer-state ((name (c-defun-name))
+			    (limits (c-declaration-limits near)))
+	(and name limits (cons name limits)))))
+)
+
+(defun my:c-display-defun-name (&optional arg)
+  "Return the name of the current CC mode defun.
+With a prefix arg, push the name onto the kill ring too."
+  (interactive "P")
+  (if (eq major-mode 'java-mode)
+      (c-with-string-fences
+       (save-restriction
+         (widen)
+         (c-save-buffer-state ((name-and-limits (my:c-defun-name-and-limits nil))
+                               (name (car name-and-limits))
+                               (limits (cdr name-and-limits))
+                               (point-bol (c-point 'bol)))
+           (when name
+             (when arg (kill-new name))
+             ;;(message name)
+             (setq my:custom-mode-line-string (concat " <" name "> "))
+             (or name "")))))
+    (setq my:custom-mode-line-string "")))
+
+(add-hook 'post-command-hook 'my:c-display-defun-name)
 #+END_SRC
 ** movement, avy
 #+BEGIN_SRC emacs-lisp
@@ -1925,87 +1980,6 @@ Add color formatting to *compilation* buffer
 (global-set-key (kbd "M-b") 'symbol-overlay-switch-backward)
 ;;(global-set-key (kbd "<f7>") 'symbol-overlay-mode)
 ;;(global-set-key (kbd "<f8>") 'symbol-overlay-remove-all)
-#+END_SRC
-** Show current method in mode-line
-#+BEGIN_SRC emacs-lisp
-;(defun my:next-line ()
-;  "Custom next line"
-;  (interactive)
-;  (next-line)
-;  (my:display-defun-name))
-; 
-;(defun my:previous-line ()
-;  "Custom previous line"
-;  (interactive)
-;  (previous-line)
-;  (my:display-defun-name))
-; 
-;(defun my:display-defun-name ()
-;  "Custom display defun name."
-;  (interactive)
-;  (if (eq major-mode 'java-mode)
-;      (progn
-;        (c-display-defun-name))))
-
-
-
-(defun my:c-display-defun-name (&optional arg)
-  "Return the name of the current CC mode defun.
-With a prefix arg, push the name onto the kill ring too."
-  (interactive "P")
-  (if (eq major-mode 'java-mode)
-      (c-with-string-fences
-       (save-restriction
-         (widen)
-         (c-save-buffer-state ((name-and-limits (c-defun-name-and-limits nil))
-                               (name (car name-and-limits))
-                               (limits (cdr name-and-limits))
-                               (point-bol (c-point 'bol)))
-           (when name
-             (when arg (kill-new name))
-             ;;(message name)
-             (setq my:custom-mode-line-string (concat " <" name "> "))
-             (or name "")))))
-    (setq my:custom-mode-line-string "")))
-
-
-;;(defun my:c-display-defun-name (&optional arg)
-;;  "Display the name of the current CC mode defun.
-;;   With a prefix arg, push the name onto the kill ring too."
-;;  (interactive "P")
-;;  (if (eq major-mode 'java-mode)
-;;      (c-with-string-fences
-;;       (save-restriction
-;;         (widen)
-;;         (c-save-buffer-state ((name-and-limits (c-defun-name-and-limits nil))
-;;    		                   (name (car name-and-limits))
-;;    		                   (limits (cdr name-and-limits))
-;;    		                   (point-bol (c-point 'bol)))
-;;           (when name
-;;             (message "%s" name
-;;    	              (1+ (count-lines (car limits) (max point-bol (car limits))))
-;;    	              (count-lines (car limits) (cdr limits)))
-;;             (if arg (kill-new name))
-;;             ))))))
-
-;;(add-hook 'post-command-hook 'my:mode-line-format)
-(add-hook 'post-command-hook 'my:c-display-defun-name)
-
-;;(defun my:mode-line-format ()
-;;  "Custom mode-line format to include the current function name and buffer status."
-;;  (setq mode-line-format
-;;        (list
-;;         '(:eval (format "%s" (if (buffer-modified-p) "*" "-")))  ;; Shows `*` if the buffer is modified, `-` otherwise.
-;;         '(:eval (format " %s" my:c-display-defun-name))
-;;         "  %b  %p  %l:%c  %m")))
-
-;;(defun my:mode-line-format ()
-;;  "Custom mode-line format to include the current function name."
-;;  (setq mode-line-format
-;;        (list
-;;         '(:eval (format " %s" (my:c-display-defun-name)))
-;;         ;;'(:eval (format " %s" "hello"))
-;;         "  %b %p  %l:%c  %m")))
 #+END_SRC
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.

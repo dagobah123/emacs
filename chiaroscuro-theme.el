@@ -214,7 +214,7 @@
 `(font-lock-variable-name-face ((t (:foreground ,text-variable ))))
 `(font-lock-variable-use-face ((t (:foreground ,text-variable ))))
 `(font-lock-warning-face ((t (:foreground ,text-warning ))))
-`(font-lock-regexp-face ((t (:foreground ,text-highlight-1 ))))
+`(font-lock-regexp-face ((t (:foreground ,text-highlight-1 :bold t ))))
 `(font-lock-regexp-grouping-backslash ((t (:foreground ,text-highlight-2 ))))
 `(font-lock-regexp-grouping-construct ((t (:foreground ,text-highlight-3 ))))
 `(fringe ((t (:foreground ,text-normal :background ,background-fringe ))))
