@@ -122,6 +122,8 @@
 (setq-default tab-width 4)
 
 (delete-selection-mode t)
+
+;;(my:open-all-burly-bookmarks)
 #+END_SRC
 ** chess
 #+BEGIN_SRC emacs-lisp
@@ -888,18 +890,15 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ** mode-line
 #+BEGIN_SRC emacs-lisp
 (require 'hide-mode-line)
-(column-number-mode)
-(display-time-mode 1)
-(setq display-time-24hr-format t)
+;;(column-number-mode)
+;;(display-time-mode 1)
+;;(setq display-time-24hr-format t)
 
-(defvar my:custom-mode-line-string "hello"
-  "A custom string to be displayed in the mode-line.")
-
-(defun my:check-if-empty (str)
-  "Check if STR is an empty string and print a message."
-  (if (string-empty-p str)
-      (str)
-    (concat " @" str " ")))
+(defun my:check-if-branch-is-empty (branch)
+  "Check if STR is an empty string. If not, add an @ and spaces to the branch."
+  (if (string-empty-p branch)
+      (branch)
+    (concat " @" branch " ")))
 
 (defun my:mode-line-format ()
   "Customize the mode line."
@@ -907,18 +906,32 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (setq-default mode-line-format
                 (list
 
+                 ;; -:--
                  " " mode-line-mule-info mode-line-client mode-line-modified mode-line-remote " "
-                 
                  ;;(propertize " %Z%*%+%& " 'face 'font-lock-constant-face) ;;
-                 '(:eval (propertize my:custom-mode-line-string 'face 'font-lock-regexp-grouping-backslash)) ;; Jave method name
-                 (propertize " %b " 'face 'font-lock-regexp-face) ;; buffer
+                 
+                 ;; Java method name
+                 '(:eval (propertize my:custom-mode-line-string 'face 'font-lock-regexp-grouping-backslash))
+                 
+                 ;; buffer name
+                 (propertize " %b " 'face 'font-lock-regexp-face)
                  ;;'(:eval (propertize (substring vc-mode 5) 'face 'font-lock-constant-face)) ;; git branch
-                 '(:eval (propertize (my:check-if-empty (substring vc-mode 5)) 'face 'font-lock-regexp-grouping-construct)) ;; git branch
-                 (propertize " (%p,%l,%c) " 'face 'font-lock-constant-face) ;; position
+                 
+                 ;; git branch
+                 '(:eval (propertize (my:check-if-branch-is-empty (substring vc-mode 5)) 'face 'font-lock-regexp-grouping-construct))
+
+                 ;; position
+                 (propertize " (%p,%l,%c) " 'face 'font-lock-constant-face)
+
+                 ;; date and time
                  '(:eval (propertize (format-time-string " %b %d %H:%M ") 'face 'font-lock-constant-face))
-                 (propertize " %m " 'face 'font-lock-constant-face) ;; major mode
+                 
+                 ;; major mode
+                 (propertize " %m " 'face 'font-lock-constant-face)
+
                  "  "
                  mode-line-end-spaces)))
+
                  ;;(propertize " %p " 'face 'font-lock-constant-face) ;; relative position
                  ;;(vc-mode vc-mode)
                  ;;(vc-mode)
