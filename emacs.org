@@ -122,8 +122,6 @@
 (setq-default tab-width 4)
 
 (delete-selection-mode t)
-
-;;(my:open-all-burly-bookmarks)
 #+END_SRC
 ** chess
 #+BEGIN_SRC emacs-lisp
@@ -1998,9 +1996,15 @@ Add color formatting to *compilation* buffer
 Load emacs-lisp file for linux or windows.
 Load emacs-lisp file for custom changes.
 #+BEGIN_SRC emacs-lisp
+(my:open-all-burly-bookmarks)
+
 (cond
  ((eq system-type 'gnu/linux) (load (concat EMACS-HOME "linux")))
  ((eq system-type 'windows-nt) (load (concat EMACS-HOME "windows")))
  (t (load-library "default")))
 (load (concat EMACS-HOME "custom"))
+
+(my:set-theme INDEX-LOW-CHROMA)
+
+(toggle-frame-fullscreen)
 #+END_SRC
