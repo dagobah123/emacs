@@ -426,7 +426,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   ^Folders^        ^Files^             ^Update^             ^Themes^         ^Buffers^
   ^^^^^^^^--------------------------------------------------------------------------------------
   _a_: emacs       _d_: emacs.org      _h_: cp .emacs.d     _1_: Default      _'_: ibuffers
-  _s_: .emacs.d    _f_: chiaro...el    _j_: fullscreen      _2_: Eclipse      _b_: bookmarks
+  _s_: .emacs.d    _f_: chiaro...el    ^ ^                  _2_: Eclipse      _b_: bookmarks
   ^ ^              _g_: linux.el       ^ ^                  _3_: Green        ^ ^
   ^ ^              ^ ^                 ^ ^                  _4_: Gray         ^ ^
   ^ ^              ^ ^                 ^ ^                  _5_: Low Chroma   ^ ^
@@ -447,9 +447,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   ("h" (lambda () (interactive)
          (progn
            (shell-command "cd ~/.emacs.d ; cp -r ~/source/emacs/* .")
-           (my:open-and-eval-init-file)
-           (toggle-frame-fullscreen))))
-  ("j" (toggle-frame-fullscreen))
+           (my:open-and-eval-init-file))))
 
   ("1" (my:set-theme INDEX-DEFAULT))
   ("2" (my:set-theme INDEX-ECLIPSE))
@@ -538,7 +536,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (my:kill-init-buffer)
   (find-file "~/.emacs.d/init.el")
   (eval-buffer)
-  (toggle-frame-fullscreen)
   (kill-buffer))
 
 (defun my:kill-init-buffer ()
@@ -918,7 +915,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
                  (propertize " (%p,%l,%c) " 'face 'font-lock-constant-face)
 
                  ;; date and time
-                 '(:eval (propertize (format-time-string " %d.%m. %H:%M ") 'face 'font-lock-constant-face))
+                 '(:eval (propertize (format-time-string " %d.%m.%H:%M ") 'face 'font-lock-constant-face))
 
                  ;; major mode
                  (propertize " %m " 'face 'font-lock-constant-face)
@@ -1977,7 +1974,7 @@ Add color formatting to *compilation* buffer
 Load emacs-lisp file for linux or windows.
 Load emacs-lisp file for custom changes.
 #+BEGIN_SRC emacs-lisp
-(my:open-all-burly-bookmarks)
+;;(my:open-all-burly-bookmarks)
 
 (cond
  ((eq system-type 'gnu/linux) (load (concat EMACS-HOME "linux")))
@@ -1985,7 +1982,11 @@ Load emacs-lisp file for custom changes.
  (t (load-library "default")))
 (load (concat EMACS-HOME "custom"))
 
-(my:set-theme INDEX-ECLIPSE)
+(setq current-time (current-time))
+(setq decoded-time (decode-time current-time))
+(setq current-hour (nth 2 decoded-time))
 
-(toggle-frame-fullscreen)
+(if (> current-hour 16)
+    (my:set-theme INDEX-LOW-CHROMA)
+  (my:set-theme INDEX-ECLIPSE))
 #+END_SRC
