@@ -888,9 +888,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ** mode-line
 #+BEGIN_SRC emacs-lisp
 (require 'hide-mode-line)
-;;(column-number-mode)
-;;(display-time-mode 1)
-;;(setq display-time-24hr-format t)
 
 (defun my:check-if-branch-is-empty (branch)
   "Check if STR is an empty string. If not, add an @ and spaces to the branch."
@@ -907,14 +904,13 @@ Load environment variables properly by installing *exec-path-from-shell*.
                  ;; -:--
                  " " mode-line-mule-info mode-line-client mode-line-modified mode-line-remote " "
                  ;;(propertize " %Z%*%+%& " 'face 'font-lock-constant-face) ;;
-                 
+
                  ;; Java method name
                  '(:eval (propertize my:custom-mode-line-string 'face 'font-lock-regexp-grouping-backslash))
-                 
+
                  ;; buffer name
                  (propertize " %b " 'face 'font-lock-regexp-face)
-                 ;;'(:eval (propertize (substring vc-mode 5) 'face 'font-lock-constant-face)) ;; git branch
-                 
+
                  ;; git branch
                  '(:eval (propertize (my:check-if-branch-is-empty (substring vc-mode 5)) 'face 'font-lock-regexp-grouping-construct))
 
@@ -922,35 +918,15 @@ Load environment variables properly by installing *exec-path-from-shell*.
                  (propertize " (%p,%l,%c) " 'face 'font-lock-constant-face)
 
                  ;; date and time
-                 '(:eval (propertize (format-time-string " %b %d %H:%M ") 'face 'font-lock-constant-face))
-                 
+                 '(:eval (propertize (format-time-string " %d.%m. %H:%M ") 'face 'font-lock-constant-face))
+
                  ;; major mode
                  (propertize " %m " 'face 'font-lock-constant-face)
 
                  "  "
                  mode-line-end-spaces)))
 
-                 ;;(propertize " %p " 'face 'font-lock-constant-face) ;; relative position
-                 ;;(vc-mode vc-mode)
-                 ;;(vc-mode)
-                 ;;mode-line-buffer-identification
-                 ;;mode-line-client
-                 ;;mode-line-frame-identification
-                 ;;mode-line-front-space
-                 ;;mode-line-misc-info
-                 ;;mode-line-modes
-                 ;;mode-line-modified
-                 ;;mode-line-mule-info
-                 ;;mode-line-position
-                 ;;mode-line-remote
-
 (my:mode-line-format)
-;;(setq-default mode-line-format (delq 'mode-line-modes mode-line-format))
-
-(defun my:c-defun-name ()
-  "sdfsdf"
-  (interactive)
-  (message (c-defun-name)))
 
 (defun my:c-defun-name-and-limits (near)
   ;; Return a cons of the name and limits (itself a cons) of the current
@@ -962,20 +938,26 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (save-restriction
     (widen)
     (if (eq c-defun-tactic 'go-outward)
-	(c-save-buffer-state ((paren-state (c-parse-state))
-			      (orig-point-min (point-min))
-			      (orig-point-max (point-max))
-			      lim name limits)
-	  (setq lim (c-widen-to-enclosing-decl-scope
-		     paren-state orig-point-min orig-point-max))
-	  (and lim (setq lim (1- lim)))
-	  (c-while-widening-to-decl-block (not (setq name (c-defun-name-1))) t)
-	  (when name
-	    (setq limits (c-declaration-limits-1 near))
-	    (cons name limits)))
+    (c-save-buffer-state ((paren-state (c-parse-state))
+                  (orig-point-min (point-min))
+                  (orig-point-max (point-max))
+                  lim name limits)
+      (setq lim (c-widen-to-enclosing-decl-scope
+             paren-state orig-point-min orig-point-max))
+      (and lim (setq lim (1- lim)))
+      (c-while-widening-to-decl-block (not (setq name (c-defun-name-1))) t)
+      (when name
+        (setq file-name (file-name-nondirectory (buffer-file-name)))
+        (setq file-name-concat (concat name ".java"))
+        (if (string= file-name-concat file-name)
+            (setq name "")
+          (setq name (concat " " name "() ")))
+        (setq limits (c-declaration-limits-1 near))
+        (cons name limits)
+      ))
       (c-save-buffer-state ((name (c-defun-name))
-			    (limits (c-declaration-limits near)))
-	(and name limits (cons name limits)))))
+                (limits (c-declaration-limits near)))
+    (and name limits (cons name limits)))))
 )
 
 (defun my:c-display-defun-name (&optional arg)
@@ -992,8 +974,7 @@ With a prefix arg, push the name onto the kill ring too."
                                (point-bol (c-point 'bol)))
            (when name
              (when arg (kill-new name))
-             ;;(message name)
-             (setq my:custom-mode-line-string (concat " <" name "> "))
+             (setq my:custom-mode-line-string name)
              (or name "")))))
     (setq my:custom-mode-line-string "")))
 
@@ -2004,7 +1985,7 @@ Load emacs-lisp file for custom changes.
  (t (load-library "default")))
 (load (concat EMACS-HOME "custom"))
 
-(my:set-theme INDEX-LOW-CHROMA)
+(my:set-theme INDEX-ECLIPSE)
 
 (toggle-frame-fullscreen)
 #+END_SRC
