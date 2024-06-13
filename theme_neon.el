@@ -13,7 +13,7 @@
 (setq background-mode-line "#311d31")
 (setq background-region "#221122")
 (setq text-comment "#5f5cc7")
-(setq text-constant "#5f5cc7")
+(setq text-constant "#82ce8a")
 (setq text-function "#4cb0b3")
 (setq text-highlight-1 "#00f5ff")
 (setq text-highlight-2 "#ff00ff")
