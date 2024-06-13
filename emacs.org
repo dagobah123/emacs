@@ -1911,20 +1911,20 @@ Add color formatting to *compilation* buffer
 #+END_SRC
 ** abbrev
 #+BEGIN_SRC emacs-lisp
-(clear-abbrev-table global-abbrev-table)
-
-(define-abbrev-table 'global-abbrev-table
-  '(
-    ("cla" "class")
-    ("dou" "double")
-    ("for (" "for (int i; i < x; i++) {")
-    ("pri" "private")
-    ("pro" "protected")
-    ("pub" "public")
-    ("sta" "static")
-    ("voi" "void")
-    ("whi" "while")
-    ))
+;;(clear-abbrev-table global-abbrev-table)
+;; 
+;;(define-abbrev-table 'global-abbrev-table
+;;  '(
+;;    ("cla" "class")
+;;    ("dou" "double")
+;;    ("for (" "for (int i; i < x; i++) {")
+;;    ("pri" "private")
+;;    ("pro" "protected")
+;;    ("pub" "public")
+;;    ("sta" "static")
+;;    ("voi" "void")
+;;    ("whi" "while")
+;;    ))
 #+END_SRC
 ** dired-quick-sort
 #+BEGIN_SRC emacs-lisp
@@ -1948,29 +1948,36 @@ Add color formatting to *compilation* buffer
 ;;(setq tab-bar-tab-hints t)
 ;;(setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
 
-(defun my:save-all-burly-tabs ()
-  "Save all burly bookmarks."
+(defun my:save-all-tabs ()
+  "Save all tabs to burly bookmarks."
   (interactive)
   (my:delete-all-burly-bookmarks)
-  (burly-bookmark-windows buffer-name)
-  (tab-close)
-  )
+  (let ((tabs (tab-bar-tabs)))
+    (dolist (tab tabs)
+      (if (not (eq (alist-get 'name tab) "*scratch*"))
+          (progn
+               (tab-bar-switch-to-tab (alist-get 'name tab))
+               (burly-bookmark-windows (alist-get 'name tab)))))))
 
 (defun my:delete-all-burly-bookmarks ()
   "Delete all burly bookmarks."
   (interactive)
   (bookmark-bmenu-list)
-  (dolist (item (burly-bookmark-names))
-    (bookmark-delete item)))
+  (let ((bookmarks (burly-bookmark-names)))
+    (when bookmarks
+      (dolist (item bookmarks)
+        (bookmark-delete item)))))
 
 (defun my:open-all-burly-bookmarks ()
   "Open all burly bookmarks."
   (interactive)
   (bookmark-bmenu-list)
-  (dolist (item (burly-bookmark-names))
-    (tab-new)
-    (burly-open-bookmark item)
-    (tab-rename item)))
+  (let ((bookmarks (burly-bookmark-names)))
+    (when bookmarks
+      (dolist (item bookmarks)
+        (tab-new)
+        (burly-open-bookmark item)
+        (tab-rename item)))))
 #+END_SRC
 ** compile
 #+BEGIN_SRC emacs-lisp
@@ -1989,7 +1996,8 @@ Add color formatting to *compilation* buffer
 Load emacs-lisp file for linux or windows.
 Load emacs-lisp file for custom changes.
 #+BEGIN_SRC emacs-lisp
-;;(my:open-all-burly-bookmarks)
+(my:open-all-burly-bookmarks)
+(add-hook 'kill-emacs-hook 'my:save-all-tabs)
 
 (cond
  ((eq system-type 'gnu/linux) (load (concat EMACS-HOME "linux")))
@@ -2002,6 +2010,6 @@ Load emacs-lisp file for custom changes.
 (setq current-hour (nth 2 decoded-time))
 
 (if (or (< current-hour 9) (> current-hour 16))
-    (my:set-theme INDEX-LOW-CHROMA)
+    (my:set-theme INDEX-BLUE)
   (my:set-theme INDEX-ECLIPSE))
 #+END_SRC
