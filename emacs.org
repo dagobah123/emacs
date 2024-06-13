@@ -1948,6 +1948,21 @@ Add color formatting to *compilation* buffer
 ;;(setq tab-bar-tab-hints t)
 ;;(setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
 
+(defun my:save-all-burly-tabs ()
+  "Save all burly bookmarks."
+  (interactive)
+  (my:delete-all-burly-bookmarks)
+  (burly-bookmark-windows buffer-name)
+  (tab-close)
+  )
+
+(defun my:delete-all-burly-bookmarks ()
+  "Delete all burly bookmarks."
+  (interactive)
+  (bookmark-bmenu-list)
+  (dolist (item (burly-bookmark-names))
+    (bookmark-delete item)))
+
 (defun my:open-all-burly-bookmarks ()
   "Open all burly bookmarks."
   (interactive)
@@ -1986,7 +2001,7 @@ Load emacs-lisp file for custom changes.
 (setq decoded-time (decode-time current-time))
 (setq current-hour (nth 2 decoded-time))
 
-(if (> current-hour 16)
+(if (or (< current-hour 9) (> current-hour 16))
     (my:set-theme INDEX-LOW-CHROMA)
   (my:set-theme INDEX-ECLIPSE))
 #+END_SRC
