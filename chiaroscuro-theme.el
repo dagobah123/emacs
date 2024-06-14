@@ -33,6 +33,12 @@
      (if (eq INDEX-CHIAROSCURO INDEX-COLOR-CHANGE-DARK)
          (progn (load-file "~/.emacs.d/theme_default_dark.el")
                 (load-file "~/.emacs.d/theme_color_changer.el")))
+     (if (eq INDEX-CHIAROSCURO INDEX-CONSOLE-LIGHT)
+         (progn (load-file "~/.emacs.d/theme_default_light.el")
+                (load-file "~/.emacs.d/theme_console_light.el")))
+     (if (eq INDEX-CHIAROSCURO INDEX-CONSOLE-DARK)
+         (progn (load-file "~/.emacs.d/theme_default_dark.el")
+                (load-file "~/.emacs.d/theme_console_dark.el")))
 
      (if (> INDEX-CHIAROSCURO number-of-themes) (progn (setq INDEX-CHIAROSCURO 0)))
      (if (< INDEX-CHIAROSCURO 0) (progn (setq INDEX-CHIAROSCURO number-of-themes)))

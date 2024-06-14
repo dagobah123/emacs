@@ -752,7 +752,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (global-set-key (kbd "C-S-M-<left>") 'drag-stuff-left)
 (global-set-key (kbd "C-S-M-<right>") 'drag-stuff-right)
 (global-set-key (kbd "C-S-o") 'my:reset-font-size)
-(global-set-key (kbd "C-^") 'tab-move)
+(global-set-key (kbd "C-^") 'hydra-master/body)
 (global-set-key (kbd "C-`") 'hydra-master/body)
 (global-set-key (kbd "C-b") 'ivy-switch-buffer)
 (global-set-key (kbd "C-c 1") 'my:add-lsp-hook)
@@ -1760,11 +1760,15 @@ _underline_
 (setq INDEX-HIGH-CONTRAST      8)
 (setq INDEX-COLOR-CHANGE-LIGHT 9)
 (setq INDEX-COLOR-CHANGE-DARK 10)
+(setq INDEX-CONSOLE-LIGHT     11)
+(setq INDEX-CONSOLE-DARK      12)
 
 (defvar chiaroscuro-index 0 "Index representing the current theme")
 (setq chiaroscuro-index 0)
 
 (setq themes-list '(chiaroscuro
+                    chiaroscuro
+                    chiaroscuro
                     chiaroscuro
                     chiaroscuro
                     chiaroscuro
@@ -1784,7 +1788,9 @@ _underline_
                           "neon"
                           "high contrast"
                           "light"
-                          "dark"))
+                          "dark"
+                          "console light"
+                          "console dark"))
 
 (defvar theme-index 0 "Index representing the current theme")
 (setq number-of-themes (length themes-list))
@@ -2010,6 +2016,6 @@ Load emacs-lisp file for custom changes.
 (setq current-hour (nth 2 decoded-time))
 
 (if (or (< current-hour 9) (> current-hour 16))
-    (my:set-theme INDEX-BLUE)
-  (my:set-theme INDEX-ECLIPSE))
+    (my:set-theme INDEX-CONSOLE-LIGHT)
+  (my:set-theme INDEX-CONSOLE-DARK))
 #+END_SRC
