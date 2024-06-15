@@ -122,6 +122,8 @@
 (setq-default tab-width 4)
 
 (delete-selection-mode t)
+
+(global-hl-line-mode t)
 #+END_SRC
 ** chess
 #+BEGIN_SRC emacs-lisp

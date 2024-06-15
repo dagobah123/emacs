@@ -257,7 +257,7 @@
 `(helm-swoop-target-word-face ((t (:foreground ,text-highlight-2 :background unspecified :bold t ))))
 `(help-key-binding ((t (:foreground ,text-highlight-2 :background unspecified :bold t ))))
 `(highlight ((t (:foreground ,text-highlight-1 :background unspecified ))))
-`(hl-line ((t (:foreground ,text-highlight-1 :background unspecified :bold t ))))
+`(hl-line ((t (:foreground ,text-highlight-1 :background ,background-fringe ))))
 `(hydra-face-blue ((t (:foreground ,text-highlight-1 :bold t ))))
 `(hydra-face-red ((t (:foreground ,text-highlight-1 :bold t ))))
 `(ido-first-match ((t (:foreground ,text-highlight-1 :background unspecified ))))
