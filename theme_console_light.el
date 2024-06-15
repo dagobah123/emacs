@@ -24,7 +24,7 @@
 (setq background-diff-odd-C "gray86")
 (setq background-diff-removed "lightpink1")
 (setq background-diff-removed-highlight "palevioletred1")
-(setq background "brightwhite")
+(setq background "#ffffff")
 (setq background-fringe "ivory2")
 (setq background-hl "azure2")
 (setq background-magit "ivory2")
