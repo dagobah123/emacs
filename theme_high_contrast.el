@@ -4,6 +4,7 @@
 
 (load-file "~/.emacs.d/theme_variables.el")
 
+(setq text-hl "#ffffff")
 (setq alert-1 "#000000")
 (setq alert-2 "#000000")
 (setq alert-3 "#000000")

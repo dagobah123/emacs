@@ -4,6 +4,7 @@
 
 (load-file "~/.emacs.d/theme_variables.el")
 
+(setq background "#ffffff")
 (setq background-diff-added "#c1ffc1")
 (setq background-diff-added-highlight "#c1ffc1")
 (setq background-diff-current-A "#ffaeb9")
@@ -24,7 +25,6 @@
 (setq background-diff-odd-C "#dbdbdb")
 (setq background-diff-removed "#ffaeb9")
 (setq background-diff-removed-highlight "#ff82ab")
-(setq background "#ffffff")
 (setq background-fringe "#eeeee0")
 (setq background-hl "#e0eeee")
 (setq background-magit "#eeeee0")
@@ -37,6 +37,7 @@
 (setq text-highlight-1 "#0000cd")
 (setq text-highlight-2 "#8b0a50")
 (setq text-highlight-3 "#cd1076")
+(setq text-hl "#0000cd")
 (setq text-info "#cd6600")
 (setq text-keyword "#8b0a50")
 (setq text-line-number "#999999")

@@ -2048,5 +2048,5 @@ Load emacs-lisp file for custom changes.
 
 (if (or (< current-hour 9) (> current-hour 16))
     (my:set-theme INDEX-CONSOLE-DARK)
-  (my:set-theme INDEX-CONSOLE-LIGHT))
+  (my:set-theme INDEX-CONSOLE-DARK))
 #+END_SRC
