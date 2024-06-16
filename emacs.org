@@ -1826,6 +1826,12 @@ _underline_
 (defvar theme-index 0 "Index representing the current theme")
 (setq number-of-themes (length themes-list))
 
+;; Prevent Emacs from using terminal colors
+(setq frame-background-mode 'dark)
+(setq term-default-bg-color nil)
+(setq term-default-fg-color nil)
+(setq term-term-name "xterm-256color")
+
 (defun my:disable-themes ()
   "Disable themes."
   (interactive)
@@ -2048,5 +2054,5 @@ Load emacs-lisp file for custom changes.
 
 (if (or (< current-hour 9) (> current-hour 16))
     (my:set-theme INDEX-CONSOLE-DARK)
-  (my:set-theme INDEX-CONSOLE-DARK))
+  (my:set-theme INDEX-CONSOLE-LIGHT))
 #+END_SRC
