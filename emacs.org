@@ -124,6 +124,8 @@
 (delete-selection-mode t)
 
 (global-hl-line-mode t)
+
+(setq ediff-window-setup-function #'ediff-setup-windows-plain)
 #+END_SRC
 ** chess
 #+BEGIN_SRC emacs-lisp
@@ -439,6 +441,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   ^ ^              ^ ^                 ^ ^                  _0_: Dark         ^ ^
   ^ ^              ^ ^                 ^ ^                  _c_: Console L.   ^ ^
   ^ ^              ^ ^                 ^ ^                  _C_: Console D.   ^ ^
+  ^ ^              ^ ^                 ^ ^                  _r_: Red          ^ ^
   "
 
   ("a" (dired "~/source/emacs"))
@@ -465,6 +468,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   ("0" (my:set-theme INDEX-COLOR-CHANGE-DARK))
   ("c" (my:set-theme INDEX-CONSOLE-LIGHT))
   ("C" (my:set-theme INDEX-CONSOLE-DARK))
+  ("r" (my:set-theme INDEX-RED))
 
   ("'" (ibuffer))
   ("b" list-bookmarks)
@@ -1793,11 +1797,13 @@ _underline_
 (setq INDEX-COLOR-CHANGE-DARK 10)
 (setq INDEX-CONSOLE-LIGHT     11)
 (setq INDEX-CONSOLE-DARK      12)
+(setq INDEX-RED               13)
 
 (defvar chiaroscuro-index 0 "Index representing the current theme")
 (setq chiaroscuro-index 0)
 
 (setq themes-list '(chiaroscuro
+                    chiaroscuro
                     chiaroscuro
                     chiaroscuro
                     chiaroscuro
@@ -1821,7 +1827,8 @@ _underline_
                           "light"
                           "dark"
                           "console light"
-                          "console dark"))
+                          "console dark"
+                          "red"))
 
 (defvar theme-index 0 "Index representing the current theme")
 (setq number-of-themes (length themes-list))
@@ -1988,7 +1995,7 @@ Add color formatting to *compilation* buffer
 (defun my:save-all-tabs ()
   "Save all tabs to burly bookmarks."
   (interactive)
-  (my:delete-all-burly-bookmarks)
+  ;;(my:delete-all-burly-bookmarks)
   (let ((tabs (tab-bar-tabs)))
     (dolist (tab tabs)
       (if (not (eq (alist-get 'name tab) "*scratch*"))

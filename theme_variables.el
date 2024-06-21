@@ -13,6 +13,7 @@
 (defvar INDEX-HIGH-CONTRAST nil ".")
 (defvar INDEX-LOW-CHROMA nil ".")
 (defvar INDEX-NEON nil ".")
+(defvar INDEX-RED nil ".")
 (defvar alert-1 nil ".")
 (defvar alert-2 nil ".")
 (defvar alert-3 nil ".")

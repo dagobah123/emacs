@@ -1,14 +1,21 @@
 ;;; chiaroscuro-theme.el --- Theme consisting of multiple themes
 ;;; Commentary:
 ;;; Code:
-
 (load-file "~/.emacs.d/theme_variables.el")
 
 (if (> INDEX-CHIAROSCURO INDEX-DEFAULT)
    (progn
      (if (eq INDEX-CHIAROSCURO INDEX-ECLIPSE)
-         (progn (load-file "~/.emacs.d/theme_default_light.el")
-                (load-file "~/.emacs.d/theme_eclipse.el")))
+         (progn 
+           (if (display-graphic-p)
+               (progn
+                 ;; if gui
+                 (load-file "~/.emacs.d/theme_default_light.el")
+                 (load-file "~/.emacs.d/theme_eclipse.el"))
+             (progn
+               ;; if shell
+               (load-file "~/.emacs.d/theme_default_console_light.el")
+               (load-file "~/.emacs.d/theme_console_light.el")))))
      (if (eq INDEX-CHIAROSCURO INDEX-GREEN)
          (progn (load-file "~/.emacs.d/theme_default_light.el")
                 (load-file "~/.emacs.d/theme_green.el")))
@@ -39,6 +46,9 @@
      (if (eq INDEX-CHIAROSCURO INDEX-CONSOLE-DARK)
          (progn (load-file "~/.emacs.d/theme_default_dark.el")
                 (load-file "~/.emacs.d/theme_console_dark.el")))
+     (if (eq INDEX-CHIAROSCURO INDEX-RED)
+         (progn (load-file "~/.emacs.d/theme_default_dark.el")
+                (load-file "~/.emacs.d/theme_red.el")))
 
      (if (> INDEX-CHIAROSCURO number-of-themes) (progn (setq INDEX-CHIAROSCURO 0)))
      (if (< INDEX-CHIAROSCURO 0) (progn (setq INDEX-CHIAROSCURO number-of-themes)))
