@@ -48,7 +48,7 @@
 (setq color-violet-2 "#40274f")
 (setq color-yellow-1 "#af9d3e")
 (setq color-yellow-2 "#4b4522")
-(setq text-comment "#867d91")
+(setq text-comment "#7b68ee")
 (setq text-constant "#867d91")
 (setq text-diff-added "#445544")
 (setq text-diff-added-highlight "#52ad3c")
