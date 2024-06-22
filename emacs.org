@@ -443,7 +443,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   ("s" (dired "~/.emacs.d"))
 
   ("d" (find-file "~/source/emacs/emacs.org"))
-  ("f" (find-file "~/source/emacs/chiaroscuro-theme.el"))
+  ("f" (find-file "~/source/emacs/theme/chiaroscuro-theme.el"))
   ("g" (find-file "~/source/emacs/linux.el"))
 
   ("h" (lambda () (interactive)
