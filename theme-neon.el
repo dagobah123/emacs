@@ -32,4 +32,4 @@
 (setq text-variable "#ffa143")
 (setq text-whitespace "#ff1493")
 
-;;; theme_neon.el ends here
+;;; theme-neon.el ends here

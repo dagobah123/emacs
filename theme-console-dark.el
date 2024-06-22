@@ -50,4 +50,4 @@
 (setq text-variable "#9fb6cd")
 (setq text-whitespace "#8b7e66")
 
-;;; theme_console_dark.el ends here
+;;; theme-console-dark.el ends here

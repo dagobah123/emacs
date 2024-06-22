@@ -25,4 +25,4 @@
 (setq background-diff-removed "#ffaeb9")
 (setq background-diff-removed-highlight "#ff82ab")
 
-;;; theme_default_console_light ends here
+;;; theme-default-diff-light-console.el ends here

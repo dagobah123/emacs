@@ -28,6 +28,5 @@
 (setq text-diff-added-highlight "#113e00")
 (setq text-diff-removed "#854343")
 (setq text-diff-removed-highlight "#850b0b")
-(setq text-warning "#bb0606")
 
-;;; theme_default_middle.el ends here
+;;; theme-default-diff-middle.el ends here

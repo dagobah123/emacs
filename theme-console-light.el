@@ -30,4 +30,4 @@
 (setq text-variable "#0000cd")
 (setq text-whitespace "#adadad")
 
-;;; theme_console_light.el ends here
+;;; theme-console-light.el ends here

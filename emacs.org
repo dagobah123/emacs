@@ -427,21 +427,16 @@ Load environment variables properly by installing *exec-path-from-shell*.
   "
   Emacs
 
-  ^Folders^        ^Files^             ^Update^             ^Themes^         ^Buffers^
-  ^^^^^^^^--------------------------------------------------------------------------------------
-  _a_: emacs       _d_: emacs.org      _h_: cp .emacs.d     _1_: Default      _'_: ibuffers
-  _s_: .emacs.d    _f_: chiaro...el    ^ ^                  _2_: Eclipse      _b_: bookmarks
-  ^ ^              _g_: linux.el       ^ ^                  _3_: Green        ^ ^
-  ^ ^              ^ ^                 ^ ^                  _4_: Gray         ^ ^
-  ^ ^              ^ ^                 ^ ^                  _5_: Low Chroma   ^ ^
-  ^ ^              ^ ^                 ^ ^                  _6_: Blue         ^ ^
-  ^ ^              ^ ^                 ^ ^                  _7_: Neon         ^ ^
-  ^ ^              ^ ^                 ^ ^                  _8_: High C.      ^ ^
-  ^ ^              ^ ^                 ^ ^                  _9_: Light        ^ ^
-  ^ ^              ^ ^                 ^ ^                  _0_: Dark         ^ ^
-  ^ ^              ^ ^                 ^ ^                  _c_: Console L.   ^ ^
-  ^ ^              ^ ^                 ^ ^                  _C_: Console D.   ^ ^
-  ^ ^              ^ ^                 ^ ^                  _r_: Red          ^ ^
+  ^Folders^        ^Files^             ^Update^            ^Themes^
+  ^^^^^^^^------------------------------------------------------------------------------------------
+  _a_: emacs       _d_: emacs.org      _h_: cp .emacs.d    _1_: Default        _9_: Light
+  _s_: .emacs.d    _f_: chiaro...el    ^ ^                 _2_: Eclipse        _0_: Dark
+  ^ ^              _g_: linux.el       ^ ^                 _3_: Green          _c_: Console Light
+  ^ ^              ^ ^                 ^ ^                 _4_: Gray           _C_: Console Dark
+  ^ ^              ^ ^                 ^ ^                 _5_: Low Chroma     _r_: Red          ^ ^
+  ^ ^              ^ ^                 ^ ^                 _6_: Blue           ^ ^
+  ^ ^              ^ ^                 ^ ^                 _7_: Neon           ^ ^
+  ^ ^              ^ ^                 ^ ^                 _8_: High Contrast  ^ ^
   "
 
   ("a" (dired "~/source/emacs"))
@@ -469,9 +464,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
   ("c" (my:set-theme INDEX-CONSOLE-LIGHT))
   ("C" (my:set-theme INDEX-CONSOLE-DARK))
   ("r" (my:set-theme INDEX-RED))
-
-  ("'" (ibuffer))
-  ("b" list-bookmarks)
 
   ("q" nil "Quit" :color blue))
 #+END_SRC

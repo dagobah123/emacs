@@ -24,6 +24,5 @@
 (setq background-diff-odd-C "#222222")
 (setq background-diff-removed "#441111")
 (setq background-diff-removed-highlight "#881111")
-(setq text-warning "#dd7700")
 
-;;; theme_default_dark.el ends here
+;;; theme-default-diff-dark.el ends here

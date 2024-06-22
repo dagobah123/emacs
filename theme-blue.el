@@ -32,4 +32,4 @@
 (setq text-variable "#daa520")
 (setq text-whitespace "#bc8622")
 
-;;; theme_blue.el ends here
+;;; theme-blue.el ends here

@@ -167,4 +167,4 @@
 (setq text-variable "#000000")
 (setq text-warning "#000000")
 
-;;; theme_color_changer.el ends here
+;;; theme-color-changer.el ends here

@@ -16,8 +16,8 @@
 (setq text-constant "#000000")
 (setq text-function "#000000")
 (setq text-highlight-1 "#000080")
-(setq text-highlight-2 "#800000")
-(setq text-highlight-3 "#008000")
+(setq text-highlight-2 "#8b0000")
+(setq text-highlight-3 "#8b008b")
 (setq text-hl "#000000")
 (setq text-info "#000000")
 (setq text-keyword "#333333")
@@ -32,4 +32,4 @@
 (setq text-variable "#000000")
 (setq text-whitespace "#555555")
 
-;;; theme_gray.el ends here
+;;; theme-gray.el ends here

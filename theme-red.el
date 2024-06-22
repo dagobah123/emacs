@@ -33,21 +33,7 @@
 (setq background-magit-branch-remote "#770000")
 (setq background-magit-dark "#000000")
 (setq background-mode-line "#111111")
-(setq background-region "#8b3a62")
-(setq color-blue-1 "#6a96c2")
-(setq color-blue-2 "#2b2b4c")
-(setq color-gray-1 "#999999")
-(setq color-gray-2 "#444444")
-(setq color-green-1 "#5ec650")
-(setq color-green-2 "#1f3b1f")
-(setq color-orange-1 "#e29040")
-(setq color-orange-2 "#4a321a")
-(setq color-red-1 "#df2e2e")
-(setq color-red-2 "#501b1b")
-(setq color-violet-1 "#7f539b")
-(setq color-violet-2 "#40274f")
-(setq color-yellow-1 "#af9d3e")
-(setq color-yellow-2 "#4b4522")
+(setq background-region "#8b0000")
 (setq text-comment "#7b68ee")
 (setq text-constant "#867d91")
 (setq text-diff-added "#445544")
@@ -73,4 +59,4 @@
 (setq text-warning "#ff7c37")
 (setq text-whitespace "#4682b4")
 
-;;; theme_red.el ends here
+;;; theme-red.el ends here

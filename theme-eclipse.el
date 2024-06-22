@@ -31,4 +31,4 @@
 (setq text-variable "#0000c0")
 (setq text-whitespace "#afafaf")
 
-;;; theme_eclipse.el ends here
+;;; theme-eclipse.el ends here
