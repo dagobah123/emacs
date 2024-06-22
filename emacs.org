@@ -1212,6 +1212,7 @@ With a prefix arg, push the name onto the kill ring too."
 
 (defun my:dired-hide-details-mode ()
   "Enable dired-hide-details-mode."
+  (dired-omit-mode 1)
   (dired-hide-details-mode 1))
 
 (add-hook 'dired-mode-hook #'my:dired-hide-details-mode)
