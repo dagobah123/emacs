@@ -1,4 +1,4 @@
-;;; color_changer --- theme
+;;; color-changer --- theme
 ;;; Commentary:
 ;;; Code:
 
@@ -167,4 +167,4 @@
 (setq text-variable "#000000")
 (setq text-warning "#000000")
 
-;;; theme-color-changer.el ends here
+;;; color-changer.el ends here

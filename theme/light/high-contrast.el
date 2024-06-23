@@ -1,4 +1,4 @@
-;;; high_contrast --- theme
+;;; high-contrast --- theme
 ;;; Commentary:
 ;;; Code:
 
