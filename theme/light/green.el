@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(load-file "~/.emacs.d/theme_variables.el")
+(load-file "~/.emacs.d/theme/common/variables.el")
 
 (setq background "#c4e1af")
 (setq background-fringe "#bad6a6")
@@ -32,4 +32,4 @@
 (setq text-variable "#000000")
 (setq text-whitespace "#2bb326")
 
-;;; theme-green.el ends here
+;;; green.el ends here

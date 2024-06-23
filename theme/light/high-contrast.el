@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(load-file "~/.emacs.d/theme_variables.el")
+(load-file "~/.emacs.d/theme/common/variables.el")
 
 (setq alert-1 "#000000")
 (setq alert-2 "#000000")
@@ -51,4 +51,4 @@
 (setq text-warning "#000000")
 (setq text-whitespace "#000000")
 
-;;; theme-high-contrast.el ends here
+;;; high-contrast.el ends here

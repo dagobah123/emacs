@@ -1,8 +1,8 @@
-;;; theme_default_console_light --- common console light theme
+;;; console light --- common console light theme
 ;;; Commentary:
 ;;; Code:
 
-(load-file "~/.emacs.d/theme_variables.el")
+(load-file "~/.emacs.d/theme/common/variables.el")
 
 (setq background-diff-added "#c1ffc1")
 (setq background-diff-added-highlight "#9bcd9b")
@@ -25,4 +25,4 @@
 (setq background-diff-removed "#ffaeb9")
 (setq background-diff-removed-highlight "#ff82ab")
 
-;;; theme-default-diff-light-console.el ends here
+;;; diff-light-console.el ends here

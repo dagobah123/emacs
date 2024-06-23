@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(load-file "~/.emacs.d/theme_variables.el")
+(load-file "~/.emacs.d/theme/common/variables.el")
 
 (setq background "#ffffff")
 (setq background-fringe "#eeeee0")
@@ -30,4 +30,4 @@
 (setq text-variable "#0000cd")
 (setq text-whitespace "#adadad")
 
-;;; theme-console-light.el ends here
+;;; console-light.el ends here

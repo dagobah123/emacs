@@ -363,6 +363,9 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (("C-c r" . helm-bookmarks))
   (("C-c i" . helm-mini))
   (("C-c q" . helm-info)))
+
+(add-to-list 'helm-completing-read-handlers-alist
+             '(dired . nil))
 #+END_SRC
 ** helm-projectile
 #+BEGIN_SRC emacs-lisp
@@ -1065,11 +1068,9 @@ With a prefix arg, push the name onto the kill ring too."
 (define-key my-prefix-map (kbd "8") 'whitespace-mode)
 (define-key my-prefix-map (kbd "9") 'helm-semantic-or-imenu)
 (define-key my-prefix-map (kbd "<SPC>") 'set-mark-command)
-(define-key my-prefix-map (kbd "<TAB>") 'dabbrev-expand)
-(define-key my-prefix-map (kbd "<tab>") 'dabbrev-expand)
-(define-key my-prefix-map (kbd "C-<TAB>") 'dabbrev-expand)
-(define-key my-prefix-map (kbd "C-<tab>") 'dabbrev-expand)
+;; TODO dabbrev-expand
 (define-key my-prefix-map (kbd "l") 'recenter-top-bottom)
+(define-key my-prefix-map (kbd "o") 'occur)
 (define-key my-prefix-map (kbd "s") 'sort-lines)
 (define-key my-prefix-map (kbd "t") 'tab-new)
 

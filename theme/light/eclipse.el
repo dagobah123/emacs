@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(load-file "~/.emacs.d/theme_variables.el")
+(load-file "~/.emacs.d/theme/common/variables.el")
 
 (setq background "#ffffff")
 (setq background-fringe "#eeeeee")
@@ -31,4 +31,4 @@
 (setq text-variable "#0000c0")
 (setq text-whitespace "#afafaf")
 
-;;; theme-eclipse.el ends here
+;;; eclipse.el ends here

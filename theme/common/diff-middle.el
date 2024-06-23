@@ -1,8 +1,8 @@
-;;; theme_default_middle --- common light theme
+;;; middle --- common light theme
 ;;; Commentary:
 ;;; Code:
 
-(load-file "~/.emacs.d/theme_variables.el")
+(load-file "~/.emacs.d/theme/common/variables.el")
 
 (setq background-diff-added "#739866")
 (setq background-diff-added-highlight "#639851")
@@ -29,4 +29,4 @@
 (setq text-diff-removed "#854343")
 (setq text-diff-removed-highlight "#850b0b")
 
-;;; theme-default-diff-middle.el ends here
+;;; diff-middle.el ends here

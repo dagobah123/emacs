@@ -105,4 +105,4 @@
 (defvar text-warning nil ".")
 (defvar text-whitespace nil ".")
 
-;;; theme-variables.el ends here
+;;; variables.el ends here

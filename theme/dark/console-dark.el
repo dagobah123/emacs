@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(load-file "~/.emacs.d/theme_variables.el")
+(load-file "~/.emacs.d/theme/common/variables.el")
 
 (setq background "#000000")
 (setq background-diff-added "#698b69")
@@ -25,8 +25,8 @@
 (setq background-diff-odd-C "#dbdbdb")
 (setq background-diff-removed "#8b3a3a")
 (setq background-diff-removed-highlight "#cd3333")
-(setq background-fringe "#242424")
-(setq background-hl "#000080")
+(setq background-fringe "#111111")
+(setq background-hl "#ff0080")
 (setq background-magit "#000000")
 (setq background-magit-dark "#000000")
 (setq background-mode-line "#000000")
@@ -50,4 +50,4 @@
 (setq text-variable "#9fb6cd")
 (setq text-whitespace "#8b7e66")
 
-;;; theme-console-dark.el ends here
+;;; console-dark.el ends here

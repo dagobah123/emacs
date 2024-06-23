@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(load-file "~/.emacs.d/theme_variables.el")
+(load-file "~/.emacs.d/theme/common/variables.el")
 
 (setq background "#000000")
 (setq background-fringe "#1d151d")
@@ -32,4 +32,4 @@
 (setq text-variable "#ffa143")
 (setq text-whitespace "#ff1493")
 
-;;; theme-neon.el ends here
+;;; neon.el ends here
