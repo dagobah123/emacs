@@ -2038,10 +2038,10 @@ Load emacs-lisp file for custom changes.
 (add-hook 'kill-emacs-hook 'my:save-all-tabs)
 
 (cond
- ((eq system-type 'gnu/linux) (load (concat EMACS-HOME "linux")))
- ((eq system-type 'windows-nt) (load (concat EMACS-HOME "windows")))
+ ((eq system-type 'gnu/linux) (load (concat EMACS-HOME "os-specific/" "linux")))
+ ((eq system-type 'windows-nt) (load (concat EMACS-HOME "os-specific/" "windows")))
  (t (load-library "default")))
-(load (concat EMACS-HOME "custom"))
+(load (concat EMACS-HOME "os-specific/" "custom"))
 
 (setq current-time (current-time))
 (setq decoded-time (decode-time current-time))
