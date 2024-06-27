@@ -922,7 +922,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
                  (propertize " %b " 'face 'font-lock-delimiter-face)
 
                  ;; git branch
-                 '(:eval (propertize (my:check-if-branch-is-empty (substring vc-mode 5)) 'face 'font-lock-delimiter-face))
+                 '(:eval (when vc-mode (propertize (my:check-if-branch-is-empty (substring vc-mode 5)) 'face 'font-lock-delimiter-face)))
 
                  ;; evil mode state
                  '(:eval (propertize (my:evil-state) 'face 'font-lock-delimiter-face))
@@ -2047,7 +2047,7 @@ Load emacs-lisp file for custom changes.
 (setq decoded-time (decode-time current-time))
 (setq current-hour (nth 2 decoded-time))
 
-(if (or (< current-hour 9) (> current-hour 16))
-    (my:set-theme INDEX-CONSOLE-DARK)
-  (my:set-theme INDEX-CONSOLE-LIGHT))
+;;(if (or (< current-hour 6) (> current-hour 20))
+;;    (my:set-theme INDEX-CONSOLE-DARK)
+;;  (my:set-theme INDEX-CONSOLE-LIGHT))
 #+END_SRC
