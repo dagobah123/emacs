@@ -76,6 +76,7 @@
                      projectile
                      rainbow-mode
                      shx
+                     slime
                      speed-type
                      swiper-helm
                      symbol-overlay
@@ -126,6 +127,8 @@
 (global-hl-line-mode t)
 
 (setq ediff-window-setup-function #'ediff-setup-windows-plain)
+
+(setq warning-minimum-level :emergency)
 #+END_SRC
 ** chess
 #+BEGIN_SRC emacs-lisp
@@ -238,6 +241,15 @@
 ** ediff
 #+BEGIN_SRC emacs-lisp
 (setq ediff-split-window-function 'split-window-horizontally)
+
+(defun ediff-copy-A-B-C-to-C ()
+  (interactive)
+  (ediff-copy-diff ediff-current-difference nil 'C nil
+                   (concat
+                    (ediff-get-region-contents ediff-current-difference 'A ediff-control-buffer)
+                    (ediff-get-region-contents ediff-current-difference 'B ediff-control-buffer))))
+(defun add-f-to-ediff-mode-map () (define-key ediff-mode-map "f" 'ediff-copy-A-B-C-to-C))
+(add-hook 'ediff-keymap-setup-hook 'add-f-to-ediff-mode-map)
 #+END_SRC
 ** eglot java
 #+BEGIN_SRC emacs-lisp
@@ -876,6 +888,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
 #+END_SRC
 ** mode-line
 #+BEGIN_SRC emacs-lisp
+;;(setq debug-on-error t)
+
 (require 'hide-mode-line)
 
 (defun my:check-if-branch-is-empty (branch)
@@ -2029,6 +2043,11 @@ Add color formatting to *compilation* buffer
 (global-set-key (kbd "M-b") 'symbol-overlay-switch-backward)
 ;;(global-set-key (kbd "<f7>") 'symbol-overlay-mode)
 ;;(global-set-key (kbd "<f8>") 'symbol-overlay-remove-all)
+#+END_SRC
+** slime, common lisp
+#+BEGIN_SRC emacs-lisp
+(setq inferior-lisp-program "/usr/bin/sbcl")
+(setq slime-contribs '(slime-fancy))
 #+END_SRC
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.
