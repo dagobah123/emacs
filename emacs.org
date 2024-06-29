@@ -526,26 +526,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   ("w" hydra-window/body "Window")
   ("k" hydra-custom/body "Custom")
   ("q" nil "Quit" :color red))
-#+END_SRC
-** hydra programs
-#+BEGIN_SRC emacs-lisp
-(defhydra hydra-programs (:hint nil :color red)
 
-  "
-  Programs
-
-  ^Web Surfing^    ^Reading^
-  ^^^^^^^^-----------------------------
-  _a_: eww         _d_: elfeed
-  _s_: luwak       _f_: gnus
-  "
-  ("a" eww)
-  ("s" luwak-search)
-
-  ("d" elfeed)
-  ("f" gnus)
-
-  ("q" nil "Quit" :color blue))
 
 (defun my:open-and-eval-init-file ()
   "Open and eval init file."
@@ -752,7 +733,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (global-set-key (kbd "C-@") 'my:increase-font-size)
 (global-set-key (kbd "C-M-<left>") 'tab-previous)
 (global-set-key (kbd "C-M-<right>") 'tab-next)
-(global-set-key (kbd "C-S-<iso-lefttab>") 'dabbrev-completion)
+(global-set-key (kbd "C-<tab>") 'dabbrev-completion)
 (global-set-key (kbd "C-S-M-<left>") 'drag-stuff-left)
 (global-set-key (kbd "C-S-M-<right>") 'drag-stuff-right)
 (global-set-key (kbd "C-S-o") 'my:reset-font-size)

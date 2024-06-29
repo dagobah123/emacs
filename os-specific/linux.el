@@ -49,22 +49,4 @@
 ;(add-hook 'lsp-mode-hook 'my:buffer-face-mode-mono)
 ;(add-hook 'lisp-mode-hook 'my:buffer-face-mode-mono)
 
-(defhydra hydra-custom (:hint nil :color red)
-
-  "
-Custom
-
-^Web Surfing^    ^Reading^
-^^^^^^^^-------------------------------------------------------------------------------------------
-_a_: eww         _d_: elfeed
-_s_: luwak       _f_: gnus
-"
-  ("a" eww)
-  ("s" luwak-search)
-
-  ("d" elfeed)
-  ("f" gnus)
-
-  ("q" nil "Quit" :color blue))
-
 ;;; linux.el ends here
