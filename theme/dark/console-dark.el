@@ -41,6 +41,7 @@
 (setq text-info "#ffe7ba")
 (setq text-keyword "#fa8072")
 (setq text-line-number "#cdba96")
+(setq text-link "#ba55d3")
 (setq text-low "#eed8ae")
 (setq text-lower "#cdba96")
 (setq text-mode-line "#ffe7ba")
