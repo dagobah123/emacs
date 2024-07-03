@@ -30,7 +30,7 @@
 (setq background-magit "#000000")
 (setq background-magit-dark "#000000")
 (setq background-mode-line "#0d0d0d")
-(setq background-region "#483d8b")
+(setq background-region "#32cd32")
 (setq text-comment "#43cd80")
 (setq text-constant "#2e8b57")
 (setq text-function "#b9d3ee")

@@ -724,11 +724,22 @@ Load environment variables properly by installing *exec-path-from-shell*.
 #+END_SRC
 ** key bindings, kbd
 #+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-<down>") 'scroll-up-line)
+
+(defun my:scroll-up ()
+  "Scroll up."
+  (interactive)
+  (scroll-up-command 1))
+
+(defun my:scroll-down ()
+  "Scroll down."
+  (interactive)
+  (scroll-down-command 1))
+
+(global-set-key (kbd "C-<down>") 'my:scroll-up)
 (global-set-key (kbd "C-<escape>") 'evil-mode)
 (global-set-key (kbd "C-<next>") 'next-buffer)
 (global-set-key (kbd "C-<prior>") 'previous-buffer)
-(global-set-key (kbd "C-<up>") 'scroll-down-line)
+(global-set-key (kbd "C-<up>") 'my:scroll-down)
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C-@") 'my:increase-font-size)
 (global-set-key (kbd "C-M-<left>") 'tab-previous)
