@@ -1469,6 +1469,20 @@ With a prefix arg, push the name onto the kill ring too."
       (kill-buffer buffer-name))))
 #+END_SRC
 
+** my-log
+#+BEGIN_SRC emacs-lisp
+(defun my-log ()
+  "Log."
+  (interactive)
+  ;; TODO Open log file 
+  ;; TODO Isolate log lines (start state - end state)
+  ;; TODO Modify lines / delete lines
+  ;; TODO Store modified log in file (make name unique (date / state))
+  ;; TODO Compare current log with default/previous log
+  ;; TODO Print difference like in a unit test
+  )
+#+END_SRC
+
 ** my-lsp-off
 #+BEGIN_SRC emacs-lisp
 (defun my-lsp-off ()
