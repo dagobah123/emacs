@@ -1474,12 +1474,64 @@ With a prefix arg, push the name onto the kill ring too."
 (defun my-log ()
   "Log."
   (interactive)
-  ;; TODO Open log file 
+  ;; TODO Open log file
+  (my-log-load-logs)
+
   ;; TODO Isolate log lines (start state - end state)
+  (my-log-isolate-logs 'a-log.log)
+
   ;; TODO Modify lines / delete lines
   ;; TODO Store modified log in file (make name unique (date / state))
   ;; TODO Compare current log with default/previous log
   ;; TODO Print difference like in a unit test
+  )
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(defun my-log-isolate-logs (buffer-name)
+  "Log."
+  (interactive)
+  (switch-to-buffer (prin1-to-string buffer-name))
+  (beginning-of-buffer)
+  
+  )
+
+
+(defun my-keep-lines-containing (search-string)
+  "Search the buffer line by line, keeping only lines that contain SEARCH-STRING and deleting others."
+  (interactive "sEnter string to keep lines containing: ")
+  (goto-char (point-min))  ; Move to the beginning of the buffer
+  (while (not (eobp))      ; While not at the end of the buffer
+    (let ((line-start (point)))  ; Remember the start of the line
+      (forward-line 1)           ; Move to the start of the next line
+      (if (not (save-excursion   ; Check if the line contains the search string
+                  (goto-char line-start)
+                  (search-forward search-string (line-end-position) t)))
+          (delete-region line-start (point)))))  ; Delete the line if it doesn't contain the search string
+  (message "Lines not containing '%s' have been deleted." search-string))
+
+(defun my-keep-lines-containing-any (search-strings)
+  "Search the buffer line by line, keeping only lines that contain any of the SEARCH-STRINGS and deleting others."
+  (interactive "sEnter strings to keep lines containing (separated by commas): ")
+  (let* ((strings (split-string search-strings ","))
+         (regex (mapconcat 'regexp-quote strings "\\|")))
+    (goto-char (point-min))  ; Move to the beginning of the buffer
+    (while (not (eobp))      ; While not at the end of the buffer
+      (let ((line-start (point)))  ; Remember the start of the line
+        (forward-line 1)           ; Move to the start of the next line
+        (if (not (save-excursion   ; Check if the line contains any of the search strings
+                    (goto-char line-start)
+                    (re-search-forward regex (line-end-position) t)))
+            (delete-region line-start (point)))))  ; Delete the line if it doesn't contain any of the search strings
+    (message "Lines not containing any of '%s' have been deleted." search-strings)))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(defun my-log-load-logs ()
+  "Log."
+  (interactive)
+  (find-file "~/logs/a-log.log")
+  (find-file "~/logs/b-log.log")
   )
 #+END_SRC
 
