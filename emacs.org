@@ -1,5 +1,5 @@
 * emacs
-** archives and startup
+** aaa archives and startup
 #+BEGIN_SRC emacs-lisp
 (setq INDEX-CHIAROSCURO 0)
 (setq iterations 1)
@@ -93,6 +93,24 @@
   (unless (package-installed-p package) (package-install package)))
 #+END_SRC
 
+** abbrev
+#+BEGIN_SRC emacs-lisp
+;;(clear-abbrev-table global-abbrev-table)
+;; 
+;;(define-abbrev-table 'global-abbrev-table
+;;  '(
+;;    ("cla" "class")
+;;    ("dou" "double")
+;;    ("for (" "for (int i; i < x; i++) {")
+;;    ("pri" "private")
+;;    ("pro" "protected")
+;;    ("pub" "public")
+;;    ("sta" "static")
+;;    ("voi" "void")
+;;    ("whi" "while")
+;;    ))
+#+END_SRC
+
 ** auto-complete
 #+BEGIN_SRC emacs-lisp
 ;;(global-auto-complete-mode t)
@@ -137,6 +155,20 @@
 #+BEGIN_SRC emacs-lisp
 (setq chess-images-directory "~/source/emacs/xboard/")
 (setq chess-images-default-size 75)
+#+END_SRC
+
+** <class overview> my-class-overview
+#+BEGIN_SRC emacs-lisp
+(defun my-class-overview ()
+  "Parse all classes of a project and print the class overview."
+  (interactive)
+  (let ((project-root (projectile-project-root)))
+    (if project-root
+        (let ((file-list (my-find-files-in-project project-root "java")))
+          (message "my-class-overview() Length of the list: %d" (length file-list))
+
+          (my-print-data-in-new-buffer file-list))
+      (message "Not in a Projectile project or Projectile is not active."))))
 #+END_SRC
 
 ** <class overview> my-find-files-in-project
@@ -225,23 +257,14 @@
   )
 #+END_SRC
 
-** <class overview> my-class-overview
-#+BEGIN_SRC emacs-lisp
-(defun my-class-overview ()
-  "Parse all classes of a project and print the class overview."
-  (interactive)
-  (let ((project-root (projectile-project-root)))
-    (if project-root
-        (let ((file-list (my-find-files-in-project project-root "java")))
-          (message "my-class-overview() Length of the list: %d" (length file-list))
-
-          (my-print-data-in-new-buffer file-list))
-      (message "Not in a Projectile project or Projectile is not active."))))
-#+END_SRC
-
 ** company
 #+BEGIN_SRC emacs-lisp
 ;;(global-company-mode)
+#+END_SRC
+
+** compile
+#+BEGIN_SRC emacs-lisp
+(setq compilation-scroll-output t)
 #+END_SRC
 
 ** counsel-projectile
@@ -249,6 +272,31 @@
 (require 'counsel-projectile)
 (use-package counsel-projectile)
 (counsel-projectile-mode t)
+#+END_SRC
+
+** dired b
+#+BEGIN_SRC emacs-lisp
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (define-key dired-mode-map (kbd "b")
+                        (lambda () (interactive) (find-alternate-file "..")))))
+#+END_SRC
+
+** dired-narrow
+#+BEGIN_SRC emacs-lisp
+(use-package dired-narrow
+  :ensure t
+  :config
+  (bind-key "C-c s" #'dired-narrow-fuzzy))
+(require 'dired-narrow)
+
+(setq dired-dwim-target t)
+#+END_SRC
+
+** dired-quick-sort
+#+BEGIN_SRC emacs-lisp
+(require 'dired-quick-sort)
+(dired-quick-sort-setup)
 #+END_SRC
 
 ** drag-stuff
@@ -307,6 +355,14 @@
 ;;                      ("https://www.comicsrss.com/rss/peanuts.rss" comics peanuts)
 ;;                      ("https://planet.emacslife.com/atom.xml" emacs)
 ;;                      ))
+#+END_SRC
+
+** encoding, compilation, color formatting
+https://www.reddit.com/r/emacs/comments/6q644o/how_to_fix_maven_compilation_output/
+Add color formatting to *compilation* buffer
+#+BEGIN_SRC emacs-lisp
+(add-hook 'compilation-filter-hook
+          (lambda () (ansi-color-apply-on-region (point-min) (point-max))))
 #+END_SRC
 
 ** engine mode
@@ -563,147 +619,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
   ("q" nil "Quit" :color red))
 #+END_SRC
 
-** my-open-and-eval-init-file
-#+BEGIN_SRC emacs-lisp
-(defun my-open-and-eval-init-file ()
-  "Open and eval init file."
-  (interactive)
-  (my-kill-init-buffer)
-  (find-file "~/.emacs.d/init.el")
-  (eval-buffer)
-  (kill-buffer))
-#+END_SRC
-
-** my-kill-init-buffer
-#+BEGIN_SRC emacs-lisp
-(defun my-kill-init-buffer ()
-  "Kill init buffer."
-  (interactive)
-  (let ((buffer-name "init.el"))
-    (when (get-buffer buffer-name)
-      (kill-buffer buffer-name))))
-#+END_SRC
-
-** my-toggle-line-numbers
-#+BEGIN_SRC emacs-lisp
-(defun my-toggle-line-numbers ()
-  "Toggle line numbers."
-  (if global-display-line-numbers-mode
-      (progn
-        (global-display-line-numbers-mode -1))
-    (progn
-      (global-display-line-numbers-mode t))))
-#+END_SRC
-
-** my-toggle-whitespace
-#+BEGIN_SRC emacs-lisp
-(defun my-toggle-whitespace ()
-  "Toggle whitespace."
-  (if whitespace-mode
-      (progn
-        (whitespace-mode -1))
-    (progn
-      (whitespace-mode t))))
-#+END_SRC
-
-** my-toggle-focus-mode
-#+BEGIN_SRC emacs-lisp
-(defun my-toggle-focus-mode ()
-  "Toggle focus-mode."
-  (if focus-mode
-      (progn
-        (focus-mode -1))
-    (progn
-      (focus-mode t))))
-#+END_SRC
-
-** my-toggle-cua-mode
-#+BEGIN_SRC emacs-lisp
-(defun my-toggle-cua-mode ()
-  "Toggle 'cua-mode'."
-  (if cua-mode
-      (progn
-        (cua-mode -1))
-    (progn
-      (cua-mode t))))
-#+END_SRC
-
-** my-company-on
-#+BEGIN_SRC emacs-lisp
-(defun my-company-on ()
-  "Company on."
-  (progn
-    (message "Company on")
-    (global-company-mode t)
-    ))
-#+END_SRC
-
-** my-company-off
-#+BEGIN_SRC emacs-lisp
-(defun my-company-off ()
-  "Company off."
-  (progn
-    (message "Company off")
-    (global-company-mode -1)
-    ))
-#+END_SRC
-
-** my-eglot-on
-#+BEGIN_SRC emacs-lisp
-(defun my-eglot-on ()
-  "Eglot on."
-  (progn (message "Eglot on")
-         (eglot-java-mode)
-         (add-hook 'java-mode-hook 'eglot-java-mode)))
-#+END_SRC
-
-** my-eglot-off
-#+BEGIN_SRC emacs-lisp
-(defun my-eglot-off ()
-  "Eglot off."
-  (progn (message "Eglot off")
-         (eglot-shutdown-all)))
-#+END_SRC
-
-** my-lsp-on
-#+BEGIN_SRC emacs-lisp
-(defun my-lsp-on ()
-  "Lsp on."
-  (progn (message "Lsp on")
-         (lsp)
-         (add-hook 'java-mode-hook #'lsp)
-         ))
-#+END_SRC
-
-** my-lsp-off
-#+BEGIN_SRC emacs-lisp
-(defun my-lsp-off ()
-  "Lsp off."
-  (progn (message "Lsp off")
-         (lsp-shutdown-workspace)
-         (remove-hook 'java-mode-hook (lambda () 'lsp))
-         ))
-#+END_SRC
-
-** my-enable-spaces
-#+BEGIN_SRC emacs-lisp
-(defun my-enable-spaces ()
-  "Enable spaces."
-  (progn (message "Enable spaces")
-         (setq-default indent-tabs-mode nil)
-         ))
-#+END_SRC
-
-** my-enable-tabs
-#+BEGIN_SRC emacs-lisp
-(defun my-enable-tabs ()
-  "Enable tabs."
-  (progn (message "Enable tabs")
-         (setq-default indent-tabs-mode t)
-         (setq-default tab-width 4)
-         ))
-#+END_SRC
-
 ** hydra registers
 #+BEGIN_SRC emacs-lisp
 (defhydra hydra-registers (:hint nil :color red)
@@ -803,20 +718,25 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (add-hook 'js2-mode-hook 'js-mode-bindings)
 #+END_SRC
 
-** my-scroll-up
+** kbd
 #+BEGIN_SRC emacs-lisp
-(defun my-scroll-up ()
-  "Scroll up."
-  (interactive)
-  (scroll-up-command 1))
-#+END_SRC
+(defvar my-movement-prefix-map (make-sparse-keymap) "My custom movement prefix keymap")
+(define-key org-mode-map (kbd "C-,") nil)
 
-** my-scroll-down
-#+BEGIN_SRC emacs-lisp
-(defun my-scroll-down ()
-  "Scroll down."
-  (interactive)
-  (scroll-down-command 1))
+(define-key global-map (kbd "C-,") my-movement-prefix-map)
+
+(define-key my-movement-prefix-map (kbd "C-,") 'avy-goto-word-1)
+(define-key my-movement-prefix-map (kbd "C-k") 'my-prev-method)
+(define-key my-movement-prefix-map (kbd "C-l") 'my-next-method)
+(define-key my-movement-prefix-map (kbd "R") 'copy-to-register)
+(define-key my-movement-prefix-map (kbd "b") 'my-buffers)
+(define-key my-movement-prefix-map (kbd "c") 'my-goto-class)
+(define-key my-movement-prefix-map (kbd "d") 'c-display-defun-name)
+(define-key my-movement-prefix-map (kbd "e") 'helm-register)
+(define-key my-movement-prefix-map (kbd "m") 'my-goto-member)
+(define-key my-movement-prefix-map (kbd "o") 'occur)
+(define-key my-movement-prefix-map (kbd "r") 'point-to-register)
+(define-key my-movement-prefix-map (kbd "u") 'uncomment-region)
 #+END_SRC
 
 ** key bindings, kbd
@@ -962,18 +882,6 @@ Load environment variables properly by installing *exec-path-from-shell*.
   (add-hook 'java-mode-hook #'lsp))
 #+END_SRC
 
-** my-remove-lsp-hook
-#+BEGIN_SRC emacs-lisp
-(defun my-remove-lsp-hook ()
-  "Remove lsp hook."
-  (interactive)
-  (remove-hook 'java-mode-hook #'lsp))
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-(require 'lsp-java)
-#+END_SRC
-
 ** mode-line
 #+BEGIN_SRC emacs-lisp
 ;;(setq debug-on-error t)
@@ -981,76 +889,133 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (require 'hide-mode-line)
 #+END_SRC
 
-** my-check-if-branch-is-empty
+** movement, in Java class, my-prev-method my-next-method
 #+BEGIN_SRC emacs-lisp
-(defun my-check-if-branch-is-empty (branch)
-  "Check if STR is an empty string. If not, add an @ and spaces to the branch."
-  (if (string-empty-p (prin1-to-string branch))
-      (branch)
-    (concat " @" branch " ")))
+(defvar regexp-class ".*class.*")
+(defvar regexp-member "public.*;\\|protected.*;\\|private.*;")
+(defvar regexp-method "public.*(\\|protected.*(\\|private.*(")
 #+END_SRC
 
-** my-evil-state
+** my-agenda-view
 #+BEGIN_SRC emacs-lisp
-(defun my-evil-state ()
-  "Return string with current evil-state."
-  (setq result "")
-  (if (eq evil-state 'emacs)
-      (setq result " <E> "))
-  (if (eq evil-state 'normal)
-      (setq result " <N> "))
-  (if (eq evil-state 'insert)
-      (setq result " <I> "))
-  (if (eq evil-state 'visual)
-      (setq result " <V> "))
-  (if (eq evil-state 'operator)
-      (setq result " <O> "))
-  (if (eq evil-state 'replace)
-      (setq result " <R> "))
-  (if (eq evil-state 'motion)
-      (setq result " <M> "))
-  (if (bound-and-true-p cua-mode)
-      (setq result " <C> "))
-  result)
-#+END_SRC
-
-** my-mode-line-format
-#+BEGIN_SRC emacs-lisp
-(defun my-mode-line-format ()
-  "Customize the mode line."
+(defun my-agenda-view ()
   (interactive)
-  (setq-default mode-line-format
-                (list
+  (org-agenda t "a")
+  (org-agenda-day-view)
+  (delete-other-windows)
+  (org-agenda-redo-all))
+#+END_SRC
 
-                 ;; -:--
-                 " " mode-line-mule-info mode-line-client mode-line-modified mode-line-remote " "
-                 ;;(propertize " %Z%*%+%& " 'face 'font-lock-constant-face) ;;
+** my-avy-goto-line
+#+BEGIN_SRC emacs-lisp
+(defun my-avy-goto-line ()
+  (interactive)
+  (avy-goto-line)
+  (evil-first-non-blank))
+#+END_SRC
 
-                 ;; Java method name
-                 '(:eval (propertize my-custom-mode-line-string 'face 'font-lock-delimiter-face))
+** my-avy-lightning
+#+BEGIN_SRC emacs-lisp
+(defun my-avy-lightning ()
+  "Change default text while avy is active."
+  (interactive)
 
-                 ;; buffer name
-                 (propertize " %b " 'face 'font-lock-delimiter-face)
+  (unwind-protect
+      (progn
+        ;; Protected forms: code that may raise an error
+        (set-face-attribute 'default                           nil  :foreground text-low )
+        (set-face-attribute 'font-lock-bracket-face            nil  :foreground text-low )
+        (set-face-attribute 'font-lock-builtin-face            nil  :foreground text-low )
+        (set-face-attribute 'font-lock-comment-delimiter-face  nil  :foreground text-low )
+        (set-face-attribute 'font-lock-comment-face            nil  :foreground text-low )
+        (set-face-attribute 'font-lock-constant-face           nil  :foreground text-low )
+        (set-face-attribute 'font-lock-doc-face                nil  :foreground text-low )
+        (set-face-attribute 'font-lock-function-call-face      nil  :foreground text-low )
+        (set-face-attribute 'font-lock-function-name-face      nil  :foreground text-low )
+        (set-face-attribute 'font-lock-keyword-face            nil  :foreground text-low )
+        (set-face-attribute 'font-lock-number-face             nil  :foreground text-low )
+        (set-face-attribute 'font-lock-preprocessor-face       nil  :foreground text-low )
+        (set-face-attribute 'font-lock-string-face             nil  :foreground text-low )
+        (set-face-attribute 'font-lock-type-face               nil  :foreground text-low )
+        (set-face-attribute 'font-lock-variable-name-face      nil  :foreground text-low )
+        (set-face-attribute 'font-lock-variable-use-face       nil  :foreground text-low )
+        (set-face-attribute 'font-lock-warning-face            nil  :foreground text-low )
 
-                 ;; git branch
-                 '(:eval (when vc-mode (propertize (my-check-if-branch-is-empty (substring vc-mode 5)) 'face 'font-lock-delimiter-face)))
+        (avy-goto-char-timer)
 
-                 ;; evil mode state
-                 '(:eval (propertize (my-evil-state) 'face 'font-lock-delimiter-face))
+        (my-avy-lightning-clean-up)
+        )
+    ;; Cleanup forms: code that will always be executed
+    (my-avy-lightning-clean-up)
+    ))
 
-                 ;; position
-                 (propertize " (%p,%l,%c) " 'face 'font-lock-delimiter-face)
+(setq avy-timeout-seconds 0.25)
+#+END_SRC
 
-                 ;; date and time
-                 '(:eval (propertize (format-time-string " %d.%m.%H:%M ") 'face 'font-lock-delimiter-face))
+** my-avy-lightning-clean-up
+#+BEGIN_SRC emacs-lisp
+(defun my-avy-lightning-clean-up ()
+  (set-face-attribute 'default                           nil  :foreground text-normal       )
+  (set-face-attribute 'font-lock-bracket-face            nil  :foreground text-highlight-1  )
+  (set-face-attribute 'font-lock-builtin-face            nil  :foreground text-type         )
+  (set-face-attribute 'font-lock-comment-delimiter-face  nil  :foreground text-lower        )
+  (set-face-attribute 'font-lock-comment-face            nil  :foreground text-lower        )
+  (set-face-attribute 'font-lock-constant-face           nil  :foreground text-constant     )
+  (set-face-attribute 'font-lock-doc-face                nil  :foreground text-lower        )
+  (set-face-attribute 'font-lock-function-call-face      nil  :foreground text-highlight-1  )
+  (set-face-attribute 'font-lock-function-name-face      nil  :foreground text-function     )
+  (set-face-attribute 'font-lock-keyword-face            nil  :foreground text-keyword      )
+  (set-face-attribute 'font-lock-number-face             nil  :foreground text-highlight-1  )
+  (set-face-attribute 'font-lock-preprocessor-face       nil  :foreground text-preprocessor )
+  (set-face-attribute 'font-lock-string-face             nil  :foreground text-low          )
+  (set-face-attribute 'font-lock-type-face               nil  :foreground text-type         )
+  (set-face-attribute 'font-lock-variable-name-face      nil  :foreground text-variable     )
+  (set-face-attribute 'font-lock-variable-use-face       nil  :foreground text-constant     )
+  (set-face-attribute 'font-lock-warning-face            nil  :foreground text-warning      )
+)
+#+END_SRC
 
-                 ;; major mode
-                 (propertize " %m " 'face 'font-lock-delimiter-face)
+** my-backward-copy-word
+#+BEGIN_SRC emacs-lisp
+(defun my-backward-copy-word ()
+  "Copy the word before point."
+  (interactive)
+  (subword-mode 0)
+  (save-excursion
+    (let ((end (progn (right-word) (point)))
+          (beg (progn (backward-word) (point))))
+      (copy-region-as-kill beg end)))
+  (subword-mode t))
+#+END_SRC
 
-                 "  "
-                 mode-line-end-spaces)))
+** my-buffers
+#+BEGIN_SRC emacs-lisp
+(setq bs-attributes-list
+   '(("" 1 1 left bs--get-marked-string)
+     ("M" 1 1 left bs--get-modified-string)
+     ("R" 2 2 left bs--get-readonly-string)
+     ("Buffer" bs--get-name-length 10 left bs--get-name)))
 
-(my-mode-line-format)
+(defun my-buffers ()
+  "Display buffer list of buffers pointing to files"
+  (interactive)
+  (bs-show nil)
+  (delete-other-windows))
+#+END_SRC
+
+** my-buffers-list
+#+BEGIN_SRC emacs-lisp
+(defun my-buffers-list ()
+  "Display a list of buffers alphabetically (excluding those starting with '*') and open the selected buffer."
+  (interactive)
+  (let ((buffers (mapcar #'buffer-name (buffer-list))))
+    ;; Exclude buffers starting with '*'
+    (setq buffers (seq-filter (lambda (buf) (not (string-prefix-p "*" buf))) buffers))
+    ;; Sort the remaining buffers alphabetically
+    (setq buffers (sort buffers #'string<))
+    (let ((chosen-buffer (completing-read "Select buffer: " buffers)))
+      (when chosen-buffer
+        (switch-to-buffer chosen-buffer)))))
 #+END_SRC
 
 ** my-c-defun-name-and-limits
@@ -1111,200 +1076,6 @@ With a prefix arg, push the name onto the kill ring too."
 (add-hook 'post-command-hook 'my-c-display-defun-name)
 #+END_SRC
 
-** my-avy-lightning-clean-up
-#+BEGIN_SRC emacs-lisp
-(defun my-avy-lightning-clean-up ()
-  (set-face-attribute 'default                           nil  :foreground text-normal       )
-  (set-face-attribute 'font-lock-bracket-face            nil  :foreground text-highlight-1  )
-  (set-face-attribute 'font-lock-builtin-face            nil  :foreground text-type         )
-  (set-face-attribute 'font-lock-comment-delimiter-face  nil  :foreground text-lower        )
-  (set-face-attribute 'font-lock-comment-face            nil  :foreground text-lower        )
-  (set-face-attribute 'font-lock-constant-face           nil  :foreground text-constant     )
-  (set-face-attribute 'font-lock-doc-face                nil  :foreground text-lower        )
-  (set-face-attribute 'font-lock-function-call-face      nil  :foreground text-highlight-1  )
-  (set-face-attribute 'font-lock-function-name-face      nil  :foreground text-function     )
-  (set-face-attribute 'font-lock-keyword-face            nil  :foreground text-keyword      )
-  (set-face-attribute 'font-lock-number-face             nil  :foreground text-highlight-1  )
-  (set-face-attribute 'font-lock-preprocessor-face       nil  :foreground text-preprocessor )
-  (set-face-attribute 'font-lock-string-face             nil  :foreground text-low          )
-  (set-face-attribute 'font-lock-type-face               nil  :foreground text-type         )
-  (set-face-attribute 'font-lock-variable-name-face      nil  :foreground text-variable     )
-  (set-face-attribute 'font-lock-variable-use-face       nil  :foreground text-constant     )
-  (set-face-attribute 'font-lock-warning-face            nil  :foreground text-warning      )
-)
-#+END_SRC
-
-** my-avy-lightning
-#+BEGIN_SRC emacs-lisp
-(defun my-avy-lightning ()
-  "Change default text while avy is active."
-  (interactive)
-
-  (unwind-protect
-      (progn
-        ;; Protected forms: code that may raise an error
-        (set-face-attribute 'default                           nil  :foreground text-low )
-        (set-face-attribute 'font-lock-bracket-face            nil  :foreground text-low )
-        (set-face-attribute 'font-lock-builtin-face            nil  :foreground text-low )
-        (set-face-attribute 'font-lock-comment-delimiter-face  nil  :foreground text-low )
-        (set-face-attribute 'font-lock-comment-face            nil  :foreground text-low )
-        (set-face-attribute 'font-lock-constant-face           nil  :foreground text-low )
-        (set-face-attribute 'font-lock-doc-face                nil  :foreground text-low )
-        (set-face-attribute 'font-lock-function-call-face      nil  :foreground text-low )
-        (set-face-attribute 'font-lock-function-name-face      nil  :foreground text-low )
-        (set-face-attribute 'font-lock-keyword-face            nil  :foreground text-low )
-        (set-face-attribute 'font-lock-number-face             nil  :foreground text-low )
-        (set-face-attribute 'font-lock-preprocessor-face       nil  :foreground text-low )
-        (set-face-attribute 'font-lock-string-face             nil  :foreground text-low )
-        (set-face-attribute 'font-lock-type-face               nil  :foreground text-low )
-        (set-face-attribute 'font-lock-variable-name-face      nil  :foreground text-low )
-        (set-face-attribute 'font-lock-variable-use-face       nil  :foreground text-low )
-        (set-face-attribute 'font-lock-warning-face            nil  :foreground text-low )
-
-        (avy-goto-char-timer)
-
-        (my-avy-lightning-clean-up)
-        )
-    ;; Cleanup forms: code that will always be executed
-    (my-avy-lightning-clean-up)
-    ))
-
-(setq avy-timeout-seconds 0.25)
-#+END_SRC
-
-** my-prefix-map 
-#+BEGIN_SRC emacs-lisp
-(defvar my-prefix-map (make-sparse-keymap) "My custom prefix keymap")
-(define-key global-map (kbd "C-l") my-prefix-map)
-
-(define-key my-prefix-map (kbd ".")   'avy-goto-char-timer)
-(define-key my-prefix-map (kbd "C-.") 'avy-goto-char-timer)
-
-(define-key my-prefix-map (kbd ",")   'avy-goto-word-1)
-(define-key my-prefix-map (kbd "C-,") 'my-avy-lightning)
-
-(define-key my-prefix-map (kbd "/")   'avy-goto-char-in-line)
-(define-key my-prefix-map (kbd "C-/")   'avy-goto-char-in-line)
-
-(define-key my-prefix-map (kbd "0") 'er/expand-region)
-(define-key my-prefix-map (kbd "1") 'swiper-all)
-(define-key my-prefix-map (kbd "7") 'global-display-line-numbers-mode)
-(define-key my-prefix-map (kbd "8") 'whitespace-mode)
-(define-key my-prefix-map (kbd "9") 'helm-semantic-or-imenu)
-(define-key my-prefix-map (kbd "<SPC>") 'set-mark-command)
-;; TODO dabbrev-expand
-(define-key my-prefix-map (kbd "l") 'recenter-top-bottom)
-(define-key my-prefix-map (kbd "o") 'occur)
-(define-key my-prefix-map (kbd "s") 'sort-lines)
-(define-key my-prefix-map (kbd "t") 'tab-new)
-
-(define-key my-prefix-map (kbd "c l") 'avy-copy-line)
-(define-key my-prefix-map (kbd "c r") 'avy-copy-region)
-(define-key my-prefix-map (kbd "g a") 'avy-goto-word-0)
-(define-key my-prefix-map (kbd "g c") 'avy-goto-char)
-(define-key my-prefix-map (kbd "g l") 'avy-goto-char-in-line)
-(define-key my-prefix-map (kbd "g w") 'avy-goto-word-1)
-(define-key my-prefix-map (kbd "k l") 'avy-kill-whole-line)
-(define-key my-prefix-map (kbd "k r") 'avy-kill-region)
-(define-key my-prefix-map (kbd "m l") 'avy-move-line)
-(define-key my-prefix-map (kbd "m r") 'avy-move-region)
-#+END_SRC
-
-** kbd
-#+BEGIN_SRC emacs-lisp
-(defvar my-movement-prefix-map (make-sparse-keymap) "My custom movement prefix keymap")
-(define-key org-mode-map (kbd "C-,") nil)
-
-(define-key global-map (kbd "C-,") my-movement-prefix-map)
-
-(define-key my-movement-prefix-map (kbd "C-,") 'avy-goto-word-1)
-(define-key my-movement-prefix-map (kbd "C-k") 'my-prev-method)
-(define-key my-movement-prefix-map (kbd "C-l") 'my-next-method)
-(define-key my-movement-prefix-map (kbd "R") 'copy-to-register)
-(define-key my-movement-prefix-map (kbd "b") 'my-buffers)
-(define-key my-movement-prefix-map (kbd "c") 'my-goto-class)
-(define-key my-movement-prefix-map (kbd "d") 'c-display-defun-name)
-(define-key my-movement-prefix-map (kbd "e") 'helm-register)
-(define-key my-movement-prefix-map (kbd "m") 'my-goto-member)
-(define-key my-movement-prefix-map (kbd "o") 'occur)
-(define-key my-movement-prefix-map (kbd "r") 'point-to-register)
-(define-key my-movement-prefix-map (kbd "u") 'uncomment-region)
-#+END_SRC
-
-** movement, in Java class, my-prev-method my-next-method
-#+BEGIN_SRC emacs-lisp
-(defvar regexp-class ".*class.*")
-(defvar regexp-member "public.*;\\|protected.*;\\|private.*;")
-(defvar regexp-method "public.*(\\|protected.*(\\|private.*(")
-#+END_SRC
-
-** my-goto-class
-#+BEGIN_SRC emacs-lisp
-(defun my-goto-class ()
-  (interactive)
-  (beginning-of-buffer)
-  (re-search-forward regexp-class nil t)
-  (evil-first-non-blank))
-#+END_SRC
-
-** my-goto-member
-#+BEGIN_SRC emacs-lisp
-(defun my-goto-member ()
-  (interactive)
-  (beginning-of-buffer)
-  (re-search-forward regexp-member nil t)
-  (evil-first-non-blank))
-#+END_SRC
-
-** my-prev-method
-#+BEGIN_SRC emacs-lisp
-(defun my-prev-method ()
-  (interactive)
-  (beginning-of-line)
-  (re-search-backward regexp-method nil t)
-  (evil-first-non-blank))
-#+END_SRC
-
-** my-next-method
-#+BEGIN_SRC emacs-lisp
-(defun my-next-method ()
-  (interactive)
-  (end-of-line)
-  (re-search-forward regexp-method nil t)
-  (evil-first-non-blank))
-#+END_SRC
-
-** my-agenda-view
-#+BEGIN_SRC emacs-lisp
-(defun my-agenda-view ()
-  (interactive)
-  (org-agenda t "a")
-  (org-agenda-day-view)
-  (delete-other-windows)
-  (org-agenda-redo-all))
-#+END_SRC
-
-** my-avy-goto-line
-#+BEGIN_SRC emacs-lisp
-(defun my-avy-goto-line ()
-  (interactive)
-  (avy-goto-line)
-  (evil-first-non-blank))
-#+END_SRC
-
-** my-backward-copy-word
-#+BEGIN_SRC emacs-lisp
-(defun my-backward-copy-word ()
-  "Copy the word before point."
-  (interactive)
-  (subword-mode 0)
-  (save-excursion
-    (let ((end (progn (right-word) (point)))
-          (beg (progn (backward-word) (point))))
-      (copy-region-as-kill beg end)))
-  (subword-mode t))
-#+END_SRC
-
 ** my-change-cursor-color
 #+BEGIN_SRC emacs-lisp
 (defun my-change-cursor-color ()
@@ -1329,6 +1100,35 @@ With a prefix arg, push the name onto the kill ring too."
 (add-hook 'post-command-hook 'my-change-cursor-color)
 #+END_SRC
 
+** my-check-if-branch-is-empty
+#+BEGIN_SRC emacs-lisp
+(defun my-check-if-branch-is-empty (branch)
+  "Check if STR is an empty string. If not, add an @ and spaces to the branch."
+  (if (string-empty-p (prin1-to-string branch))
+      (branch)
+    (concat " @" branch " ")))
+#+END_SRC
+
+** my-company-off
+#+BEGIN_SRC emacs-lisp
+(defun my-company-off ()
+  "Company off."
+  (progn
+    (message "Company off")
+    (global-company-mode -1)
+    ))
+#+END_SRC
+
+** my-company-on
+#+BEGIN_SRC emacs-lisp
+(defun my-company-on ()
+  "Company on."
+  (progn
+    (message "Company on")
+    (global-company-mode t)
+    ))
+#+END_SRC
+
 ** my-copy-line-at-point
 #+BEGIN_SRC emacs-lisp
 (defun my-copy-line-at-point ()
@@ -1349,12 +1149,16 @@ With a prefix arg, push the name onto the kill ring too."
   (set-face-attribute 'default nil :height font-size))
 #+END_SRC
 
-** dired b
+** my-delete-all-burly-bookmarks
 #+BEGIN_SRC emacs-lisp
-(add-hook 'dired-mode-hook
-          (lambda ()
-            (define-key dired-mode-map (kbd "b")
-                        (lambda () (interactive) (find-alternate-file "..")))))
+(defun my-delete-all-burly-bookmarks ()
+  "Delete all burly bookmarks."
+  (interactive)
+  (bookmark-bmenu-list)
+  (let ((bookmarks (burly-bookmark-names)))
+    (when bookmarks
+      (dolist (item bookmarks)
+        (bookmark-delete item)))))
 #+END_SRC
 
 ** my-dired-hide-details-mode
@@ -1365,17 +1169,6 @@ With a prefix arg, push the name onto the kill ring too."
   (dired-hide-details-mode 1))
 
 (add-hook 'dired-mode-hook #'my-dired-hide-details-mode)
-#+END_SRC
-
-** dired-narrow
-#+BEGIN_SRC emacs-lisp
-(use-package dired-narrow
-  :ensure t
-  :config
-  (bind-key "C-c s" #'dired-narrow-fuzzy))
-(require 'dired-narrow)
-
-(setq dired-dwim-target t)
 #+END_SRC
 
 ** my-dired-projectile-main-folder
@@ -1396,6 +1189,17 @@ With a prefix arg, push the name onto the kill ring too."
   (delete-other-windows))
 #+END_SRC
 
+** my-disable-themes
+#+BEGIN_SRC emacs-lisp
+(defun my-disable-themes ()
+  "Disable themes."
+  (interactive)
+  (setq loop-index 0)
+  (while (< loop-index number-of-themes)
+    (disable-theme (nth loop-index themes-list))
+    (setq loop-index (+ loop-index 1))))
+#+END_SRC
+
 ** my-duplicate-line
 #+BEGIN_SRC emacs-lisp
 (defun my-duplicate-line ()
@@ -1407,6 +1211,66 @@ With a prefix arg, push the name onto the kill ring too."
   (open-line 1)
   (next-line 1)
   (yank))
+#+END_SRC
+
+** my-eglot-off
+#+BEGIN_SRC emacs-lisp
+(defun my-eglot-off ()
+  "Eglot off."
+  (progn (message "Eglot off")
+         (eglot-shutdown-all)))
+#+END_SRC
+
+** my-eglot-on
+#+BEGIN_SRC emacs-lisp
+(defun my-eglot-on ()
+  "Eglot on."
+  (progn (message "Eglot on")
+         (eglot-java-mode)
+         (add-hook 'java-mode-hook 'eglot-java-mode)))
+#+END_SRC
+
+** my-enable-spaces
+#+BEGIN_SRC emacs-lisp
+(defun my-enable-spaces ()
+  "Enable spaces."
+  (progn (message "Enable spaces")
+         (setq-default indent-tabs-mode nil)
+         ))
+#+END_SRC
+
+** my-enable-tabs
+#+BEGIN_SRC emacs-lisp
+(defun my-enable-tabs ()
+  "Enable tabs."
+  (progn (message "Enable tabs")
+         (setq-default indent-tabs-mode t)
+         (setq-default tab-width 4)
+         ))
+#+END_SRC
+
+** my-evil-state
+#+BEGIN_SRC emacs-lisp
+(defun my-evil-state ()
+  "Return string with current evil-state."
+  (setq result "")
+  (if (eq evil-state 'emacs)
+      (setq result " <E> "))
+  (if (eq evil-state 'normal)
+      (setq result " <N> "))
+  (if (eq evil-state 'insert)
+      (setq result " <I> "))
+  (if (eq evil-state 'visual)
+      (setq result " <V> "))
+  (if (eq evil-state 'operator)
+      (setq result " <O> "))
+  (if (eq evil-state 'replace)
+      (setq result " <R> "))
+  (if (eq evil-state 'motion)
+      (setq result " <M> "))
+  (if (bound-and-true-p cua-mode)
+      (setq result " <C> "))
+  result)
 #+END_SRC
 
 ** my-find-file-at-point-in-project
@@ -1453,6 +1317,24 @@ With a prefix arg, push the name onto the kill ring too."
   (kill-this-buffer))
 #+END_SRC
 
+** my-goto-class
+#+BEGIN_SRC emacs-lisp
+(defun my-goto-class ()
+  (interactive)
+  (beginning-of-buffer)
+  (re-search-forward regexp-class nil t)
+  (evil-first-non-blank))
+#+END_SRC
+
+** my-goto-member
+#+BEGIN_SRC emacs-lisp
+(defun my-goto-member ()
+  (interactive)
+  (beginning-of-buffer)
+  (re-search-forward regexp-member nil t)
+  (evil-first-non-blank))
+#+END_SRC
+
 ** my-grep-backward-copy-word-in-project
 #+BEGIN_SRC emacs-lisp
 (defun my-grep-backward-copy-word-in-project ()
@@ -1467,6 +1349,25 @@ With a prefix arg, push the name onto the kill ring too."
   (switch-to-buffer "*grep*")
   (delete-other-windows)
   (beginning-of-buffer))
+#+END_SRC
+
+** my-grep-in-all-project-history
+;;git grep "search string" $(git rev-list --all)
+#+BEGIN_SRC emacs-lisp
+(defun my-grep-in-all-project-history (search-strings)
+  "Search for multiple strings in project history using vc-git-grep and display simplified output."
+  (interactive "MEnter search strings (space-separated): ")
+  (let* ((search-list (split-string search-strings " " t " "))
+         (default-directory (vc-git-root default-directory))
+         (grep-command (format "git grep -n -E -i -e %s $(git rev-list --all)"
+                               (mapconcat 'shell-quote-argument search-list " -e ")))
+         (grep-buffer-name "*Git Grep Results*"))
+    (compilation-start grep-command 'grep-mode
+                       (lambda (mode-name)
+                         (format "Search: %s" mode-name)))
+    (with-current-buffer grep-buffer-name
+      (while (search-forward-regexp (rx bol (group (1+ digit)) ":" (group (1+ not-newline)) eol) nil t)
+        (replace-match (format "%s:%s" (file-name-nondirectory (match-string 2)) (match-string 1)))))))
 #+END_SRC
 
 ** my-grep-in-project
@@ -1495,25 +1396,6 @@ With a prefix arg, push the name onto the kill ring too."
   (let* ((search-list (split-string search-strings " " t " "))
          (default-directory (vc-git-root default-directory))
          (grep-command (format "git --no-pager grep -n -E -i -e %s"
-                               (mapconcat 'shell-quote-argument search-list " -e ")))
-         (grep-buffer-name "*Git Grep Results*"))
-    (compilation-start grep-command 'grep-mode
-                       (lambda (mode-name)
-                         (format "Search: %s" mode-name)))
-    (with-current-buffer grep-buffer-name
-      (while (search-forward-regexp (rx bol (group (1+ digit)) ":" (group (1+ not-newline)) eol) nil t)
-        (replace-match (format "%s:%s" (file-name-nondirectory (match-string 2)) (match-string 1)))))))
-#+END_SRC
-
-** my-grep-in-all-project-history
-;;git grep "search string" $(git rev-list --all)
-#+BEGIN_SRC emacs-lisp
-(defun my-grep-in-all-project-history (search-strings)
-  "Search for multiple strings in project history using vc-git-grep and display simplified output."
-  (interactive "MEnter search strings (space-separated): ")
-  (let* ((search-list (split-string search-strings " " t " "))
-         (default-directory (vc-git-root default-directory))
-         (grep-command (format "git grep -n -E -i -e %s $(git rev-list --all)"
                                (mapconcat 'shell-quote-argument search-list " -e ")))
          (grep-buffer-name "*Git Grep Results*"))
     (compilation-start grep-command 'grep-mode
@@ -1578,6 +1460,36 @@ With a prefix arg, push the name onto the kill ring too."
       (clipboard-kill-region (point-min) (point-max)))))
 #+END_SRC
 
+** my-kill-init-buffer
+#+BEGIN_SRC emacs-lisp
+(defun my-kill-init-buffer ()
+  "Kill init buffer."
+  (interactive)
+  (let ((buffer-name "init.el"))
+    (when (get-buffer buffer-name)
+      (kill-buffer buffer-name))))
+#+END_SRC
+
+** my-lsp-off
+#+BEGIN_SRC emacs-lisp
+(defun my-lsp-off ()
+  "Lsp off."
+  (progn (message "Lsp off")
+         (lsp-shutdown-workspace)
+         (remove-hook 'java-mode-hook (lambda () 'lsp))
+         ))
+#+END_SRC
+
+** my-lsp-on
+#+BEGIN_SRC emacs-lisp
+(defun my-lsp-on ()
+  "Lsp on."
+  (progn (message "Lsp on")
+         (lsp)
+         (add-hook 'java-mode-hook #'lsp)
+         ))
+#+END_SRC
+
 ** my-magit-log
 #+BEGIN_SRC emacs-lisp
 (defun my-magit-log ()
@@ -1610,6 +1522,45 @@ With a prefix arg, push the name onto the kill ring too."
   (clipboard-kill-ring-save arg))
 #+END_SRC
 
+** my-mode-line-format
+#+BEGIN_SRC emacs-lisp
+(defun my-mode-line-format ()
+  "Customize the mode line."
+  (interactive)
+  (setq-default mode-line-format
+                (list
+
+                 ;; -:--
+                 " " mode-line-mule-info mode-line-client mode-line-modified mode-line-remote " "
+                 ;;(propertize " %Z%*%+%& " 'face 'font-lock-constant-face) ;;
+
+                 ;; Java method name
+                 '(:eval (propertize my-custom-mode-line-string 'face 'font-lock-delimiter-face))
+
+                 ;; buffer name
+                 (propertize " %b " 'face 'font-lock-delimiter-face)
+
+                 ;; git branch
+                 '(:eval (when vc-mode (propertize (my-check-if-branch-is-empty (substring vc-mode 5)) 'face 'font-lock-delimiter-face)))
+
+                 ;; evil mode state
+                 '(:eval (propertize (my-evil-state) 'face 'font-lock-delimiter-face))
+
+                 ;; position
+                 (propertize " (%p,%l,%c) " 'face 'font-lock-delimiter-face)
+
+                 ;; date and time
+                 '(:eval (propertize (format-time-string " %d.%m.%H:%M ") 'face 'font-lock-delimiter-face))
+
+                 ;; major mode
+                 (propertize " %m " 'face 'font-lock-delimiter-face)
+
+                 "  "
+                 mode-line-end-spaces)))
+
+(my-mode-line-format)
+#+END_SRC
+
 ** my-new-line
 #+BEGIN_SRC emacs-lisp
 (defun my-new-line ()
@@ -1617,6 +1568,23 @@ With a prefix arg, push the name onto the kill ring too."
   (move-end-of-line nil)
   (newline)
   (c-indent-line-or-region))
+#+END_SRC
+
+** my-next-curly-brace
+#+BEGIN_SRC emacs-lisp
+(defun my-next-curly-brace ()
+  (interactive)
+  (re-search-forward next-curly-brace-regexp nil t))
+#+END_SRC
+
+** my-next-java-method
+#+BEGIN_SRC emacs-lisp
+(defun my-next-java-method ()
+  "Jump to next Java method."
+  (interactive)
+  (re-search-forward java-function-regexp nil t)
+  (end-of-line)
+  (recenter))
 #+END_SRC
 
 ** my-next-java-method my-prev-java-method
@@ -1647,13 +1615,98 @@ With a prefix arg, push the name onto the kill ring too."
    ))
 #+END_SRC
 
-** my-next-java-method
+** my-next-link-center
 #+BEGIN_SRC emacs-lisp
-(defun my-next-java-method ()
-  "Jump to next Java method."
+(defun my-next-link-center ()
   (interactive)
-  (re-search-forward java-function-regexp nil t)
+  (Info-next-reference)
+  (recenter))
+#+END_SRC
+
+** my-next-method
+#+BEGIN_SRC emacs-lisp
+(defun my-next-method ()
+  (interactive)
   (end-of-line)
+  (re-search-forward regexp-method nil t)
+  (evil-first-non-blank))
+#+END_SRC
+
+** my-open-all-burly-bookmarks
+#+BEGIN_SRC emacs-lisp
+(defun my-open-all-burly-bookmarks ()
+  "Open all burly bookmarks."
+  (interactive)
+  (bookmark-bmenu-list)
+  (let ((bookmarks (burly-bookmark-names)))
+    (when bookmarks
+      (dolist (item bookmarks)
+        (tab-new)
+        (burly-open-bookmark item)
+        (tab-rename item)))))
+#+END_SRC
+
+** my-open-and-eval-init-file
+#+BEGIN_SRC emacs-lisp
+(defun my-open-and-eval-init-file ()
+  "Open and eval init file."
+  (interactive)
+  (my-kill-init-buffer)
+  (find-file "~/.emacs.d/init.el")
+  (eval-buffer)
+  (kill-buffer))
+#+END_SRC
+
+** my-prefix-map 
+#+BEGIN_SRC emacs-lisp
+(defvar my-prefix-map (make-sparse-keymap) "My custom prefix keymap")
+(define-key global-map (kbd "C-l") my-prefix-map)
+
+(define-key my-prefix-map (kbd ".")   'avy-goto-char-timer)
+(define-key my-prefix-map (kbd "C-.") 'avy-goto-char-timer)
+
+(define-key my-prefix-map (kbd ",")   'avy-goto-word-1)
+(define-key my-prefix-map (kbd "C-,") 'my-avy-lightning)
+
+(define-key my-prefix-map (kbd "/")   'avy-goto-char-in-line)
+(define-key my-prefix-map (kbd "C-/")   'avy-goto-char-in-line)
+
+(define-key my-prefix-map (kbd "0") 'er/expand-region)
+(define-key my-prefix-map (kbd "1") 'swiper-all)
+(define-key my-prefix-map (kbd "7") 'global-display-line-numbers-mode)
+(define-key my-prefix-map (kbd "8") 'whitespace-mode)
+(define-key my-prefix-map (kbd "9") 'helm-semantic-or-imenu)
+(define-key my-prefix-map (kbd "<SPC>") 'set-mark-command)
+;; TODO dabbrev-expand
+(define-key my-prefix-map (kbd "l") 'recenter-top-bottom)
+(define-key my-prefix-map (kbd "o") 'occur)
+(define-key my-prefix-map (kbd "s") 'sort-lines)
+(define-key my-prefix-map (kbd "t") 'tab-new)
+
+(define-key my-prefix-map (kbd "c l") 'avy-copy-line)
+(define-key my-prefix-map (kbd "c r") 'avy-copy-region)
+(define-key my-prefix-map (kbd "g a") 'avy-goto-word-0)
+(define-key my-prefix-map (kbd "g c") 'avy-goto-char)
+(define-key my-prefix-map (kbd "g l") 'avy-goto-char-in-line)
+(define-key my-prefix-map (kbd "g w") 'avy-goto-word-1)
+(define-key my-prefix-map (kbd "k l") 'avy-kill-whole-line)
+(define-key my-prefix-map (kbd "k r") 'avy-kill-region)
+(define-key my-prefix-map (kbd "m l") 'avy-move-line)
+(define-key my-prefix-map (kbd "m r") 'avy-move-region)
+#+END_SRC
+
+** my-prev-curly-brace
+#+BEGIN_SRC emacs-lisp
+(defun my-prev-curly-brace ()
+  (interactive)
+  (re-search-backward next-curly-brace-regexp nil t))
+#+END_SRC
+
+** my-previous-link-center
+#+BEGIN_SRC emacs-lisp
+(defun my-previous-link-center ()
+  (interactive)
+  (Info-prev-reference)
   (recenter))
 #+END_SRC
 
@@ -1667,39 +1720,13 @@ With a prefix arg, push the name onto the kill ring too."
   (recenter))
 #+END_SRC
 
-** my-next-link-center
+** my-prev-method
 #+BEGIN_SRC emacs-lisp
-(defun my-next-link-center ()
+(defun my-prev-method ()
   (interactive)
-  (Info-next-reference)
-  (recenter))
-#+END_SRC
-
-** next-curly-brace-regexp
-#+BEGIN_SRC emacs-lisp
-(defvar next-curly-brace-regexp "{\\|}")
-#+END_SRC
-
-** my-prev-curly-brace
-#+BEGIN_SRC emacs-lisp
-(defun my-prev-curly-brace ()
-  (interactive)
-  (re-search-backward next-curly-brace-regexp nil t))
-#+END_SRC
-
-** my-next-curly-brace
-#+BEGIN_SRC emacs-lisp
-(defun my-next-curly-brace ()
-  (interactive)
-  (re-search-forward next-curly-brace-regexp nil t))
-#+END_SRC
-
-** my-previous-link-center
-#+BEGIN_SRC emacs-lisp
-(defun my-previous-link-center ()
-  (interactive)
-  (Info-prev-reference)
-  (recenter))
+  (beginning-of-line)
+  (re-search-backward regexp-method nil t)
+  (evil-first-non-blank))
 #+END_SRC
 
 ** my-projectile-ibuffer
@@ -1718,12 +1745,64 @@ With a prefix arg, push the name onto the kill ring too."
   (delete-other-windows))
 #+END_SRC
 
+** my-remove-lsp-hook
+#+BEGIN_SRC emacs-lisp
+(defun my-remove-lsp-hook ()
+  "Remove lsp hook."
+  (interactive)
+  (remove-hook 'java-mode-hook #'lsp))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(require 'lsp-java)
+#+END_SRC
+
 ** my-reset-font-size
 #+BEGIN_SRC emacs-lisp
 (defun my-reset-font-size ()
   (interactive)
   (setq font-size default-font-size)
   (set-face-attribute 'default nil :height font-size))
+#+END_SRC
+
+** my-reset-themes-index
+#+BEGIN_SRC emacs-lisp
+(defun my-reset-themes-index ()
+  "Reset themes index."
+  (interactive)
+  (setq theme-index 0)
+  (setq INDEX-CHIAROSCURO 0)
+  (my-disable-themes))
+#+END_SRC
+
+** my-save-all-tabs
+#+BEGIN_SRC emacs-lisp
+(defun my-save-all-tabs ()
+  "Save all tabs to burly bookmarks."
+  (interactive)
+  ;;(my-delete-all-burly-bookmarks)
+  (let ((tabs (tab-bar-tabs)))
+    (dolist (tab tabs)
+      (if (not (eq (alist-get 'name tab) "*scratch*"))
+          (progn
+               (tab-bar-switch-to-tab (alist-get 'name tab))
+               (burly-bookmark-windows (alist-get 'name tab)))))))
+#+END_SRC
+
+** my-scroll-down
+#+BEGIN_SRC emacs-lisp
+(defun my-scroll-down ()
+  "Scroll down."
+  (interactive)
+  (scroll-down-command 1))
+#+END_SRC
+
+** my-scroll-up
+#+BEGIN_SRC emacs-lisp
+(defun my-scroll-up ()
+  "Scroll up."
+  (interactive)
+  (scroll-up-command 1))
 #+END_SRC
 
 ** my-select-line
@@ -1733,6 +1812,16 @@ With a prefix arg, push the name onto the kill ring too."
   (interactive)
   (evil-first-non-blank)
   (set-mark (line-end-position)))
+#+END_SRC
+
+** my-set-theme
+#+BEGIN_SRC emacs-lisp
+(defun my-set-theme (index)
+  "Set theme."
+  (interactive)
+  (setq theme-index index)
+  (setq INDEX-CHIAROSCURO index)
+  (my-toggle-themes))
 #+END_SRC
 
 ** my-show-projects
@@ -1768,14 +1857,62 @@ With a prefix arg, push the name onto the kill ring too."
   (my-show-projects))
 #+END_SRC
 
-** my-toggle-menu-bar-tool-bar
+** my-theme-down
 #+BEGIN_SRC emacs-lisp
-(defun my-toggle-menu-bar-tool-bar ()
-  "Toggle menu-bar and tool-bar."
+(defun my-theme-down ()
+  "Theme down."
   (interactive)
-  (if (bound-and-true-p tool-bar-mode)
-      (progn (tool-bar-mode 0) (menu-bar-mode 0))
-    (progn (tool-bar-mode 1) (menu-bar-mode 1))))
+  (setq theme-index (- theme-index 1))
+  (setq INDEX-CHIAROSCURO (- INDEX-CHIAROSCURO 1))
+  (my-toggle-themes))
+#+END_SRC
+
+** my-theme-loop
+#+BEGIN_SRC emacs-lisp
+(defun my-theme-loop ()
+  "Loop."
+  (interactive)
+  (setq loop-index 1)
+  (setq themes-list-index 0)
+  (while (<= loop-index number-of-themes)
+    (if (eq theme-index loop-index)
+        (progn
+          (load-theme (nth themes-list-index themes-list) t)
+          (message "%s" (nth themes-list-index themes-list-names))))
+    (setq loop-index (+ loop-index 1))
+    (setq themes-list-index (+ themes-list-index 1))))
+#+END_SRC
+
+** my-theme-up
+#+BEGIN_SRC emacs-lisp
+(defun my-theme-up ()
+  "Theme up."
+  (interactive)
+  (setq theme-index (+ theme-index 1))
+  (setq INDEX-CHIAROSCURO (+ INDEX-CHIAROSCURO 1))
+  (my-toggle-themes))
+#+END_SRC
+
+** my-toggle-cua-mode
+#+BEGIN_SRC emacs-lisp
+(defun my-toggle-cua-mode ()
+  "Toggle 'cua-mode'."
+  (if cua-mode
+      (progn
+        (cua-mode -1))
+    (progn
+      (cua-mode t))))
+#+END_SRC
+
+** my-toggle-focus-mode
+#+BEGIN_SRC emacs-lisp
+(defun my-toggle-focus-mode ()
+  "Toggle focus-mode."
+  (if focus-mode
+      (progn
+        (focus-mode -1))
+    (progn
+      (focus-mode t))))
 #+END_SRC
 
 ** my-toggle-fringe
@@ -1786,6 +1923,27 @@ With a prefix arg, push the name onto the kill ring too."
              (setq my-fringe 0))
     (progn (fringe-mode '(20 . 20))
            (setq my-fringe 1))))
+#+END_SRC
+
+** my-toggle-line-numbers
+#+BEGIN_SRC emacs-lisp
+(defun my-toggle-line-numbers ()
+  "Toggle line numbers."
+  (if global-display-line-numbers-mode
+      (progn
+        (global-display-line-numbers-mode -1))
+    (progn
+      (global-display-line-numbers-mode t))))
+#+END_SRC
+
+** my-toggle-menu-bar-tool-bar
+#+BEGIN_SRC emacs-lisp
+(defun my-toggle-menu-bar-tool-bar ()
+  "Toggle menu-bar and tool-bar."
+  (interactive)
+  (if (bound-and-true-p tool-bar-mode)
+      (progn (tool-bar-mode 0) (menu-bar-mode 0))
+    (progn (tool-bar-mode 1) (menu-bar-mode 1))))
 #+END_SRC
 
 ** my-toggle-mode-line-fringe
@@ -1803,6 +1961,40 @@ With a prefix arg, push the name onto the kill ring too."
       (global-hide-mode-line-mode -1)
     (global-hide-mode-line-mode t))
   (my-toggle-fringe))
+#+END_SRC
+
+** my-toggle-themes
+#+BEGIN_SRC emacs-lisp
+(defun my-toggle-themes ()
+  "Toggle themes."
+  (interactive)
+  (my-disable-themes)
+
+  (if (eq theme-index -1)
+      (progn (setq theme-index number-of-themes)))
+
+  (if (eq theme-index 0)
+      (progn (message "emacs")
+             (setq theme-index 0)
+             (setq INDEX-CHIAROSCURO 0)))
+
+  (my-theme-loop)
+
+  (if (> theme-index number-of-themes)
+      (progn (message "emacs")
+             (setq theme-index 0)
+             (setq INDEX-CHIAROSCURO 0))))
+#+END_SRC
+
+** my-toggle-whitespace
+#+BEGIN_SRC emacs-lisp
+(defun my-toggle-whitespace ()
+  "Toggle whitespace."
+  (if whitespace-mode
+      (progn
+        (whitespace-mode -1))
+    (progn
+      (whitespace-mode t))))
 #+END_SRC
 
 ** my-trim-whitespace
@@ -1836,34 +2028,9 @@ With a prefix arg, push the name onto the kill ring too."
   (message "Yanked line."))
 #+END_SRC
 
-** my-buffers-list
+** next-curly-brace-regexp
 #+BEGIN_SRC emacs-lisp
-(defun my-buffers-list ()
-  "Display a list of buffers alphabetically (excluding those starting with '*') and open the selected buffer."
-  (interactive)
-  (let ((buffers (mapcar #'buffer-name (buffer-list))))
-    ;; Exclude buffers starting with '*'
-    (setq buffers (seq-filter (lambda (buf) (not (string-prefix-p "*" buf))) buffers))
-    ;; Sort the remaining buffers alphabetically
-    (setq buffers (sort buffers #'string<))
-    (let ((chosen-buffer (completing-read "Select buffer: " buffers)))
-      (when chosen-buffer
-        (switch-to-buffer chosen-buffer)))))
-#+END_SRC
-
-** my-buffers
-#+BEGIN_SRC emacs-lisp
-(setq bs-attributes-list
-   '(("" 1 1 left bs--get-marked-string)
-     ("M" 1 1 left bs--get-modified-string)
-     ("R" 2 2 left bs--get-readonly-string)
-     ("Buffer" bs--get-name-length 10 left bs--get-name)))
-
-(defun my-buffers ()
-  "Display buffer list of buffers pointing to files"
-  (interactive)
-  (bs-show nil)
-  (delete-other-windows))
+(defvar next-curly-brace-regexp "{\\|}")
 #+END_SRC
 
 ** org mode
@@ -1976,6 +2143,36 @@ With a prefix arg, push the name onto the kill ring too."
 (shx-global-mode 1)
 #+END_SRC
 
+** slime, common lisp
+#+BEGIN_SRC emacs-lisp
+(setq inferior-lisp-program "/usr/bin/sbcl")
+(setq slime-contribs '(slime-fancy))
+#+END_SRC
+
+** symbol-overlay
+#+BEGIN_SRC emacs-lisp
+(require 'symbol-overlay)
+(global-set-key (kbd "M-i") 'symbol-overlay-put)
+(global-set-key (kbd "M-f") 'symbol-overlay-switch-forward)
+(global-set-key (kbd "M-b") 'symbol-overlay-switch-backward)
+;;(global-set-key (kbd "<f7>") 'symbol-overlay-mode)
+;;(global-set-key (kbd "<f8>") 'symbol-overlay-remove-all)
+#+END_SRC
+
+** tab-bar
+#+BEGIN_SRC emacs-lisp
+(tab-bar-mode t)
+;;(setq tab-bar-show nil)
+(setq tab-bar-show t)
+(setq tab-bar-close-button-show nil)
+(setq tab-bar-new-button-show nil)
+(setq tab-bar-auto-width nil)
+(setq tab-bar-separator " ")
+(setq tab-bar-new-tab-choice "*new*")
+;;(setq tab-bar-tab-hints t)
+;;(setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
+#+END_SRC
+
 ** themes
 #+BEGIN_SRC emacs-lisp
 (setq INDEX-DEFAULT            1)
@@ -2027,116 +2224,6 @@ With a prefix arg, push the name onto the kill ring too."
 (setq number-of-themes (length themes-list))
 #+END_SRC
 
-** my-disable-themes
-#+BEGIN_SRC emacs-lisp
-(defun my-disable-themes ()
-  "Disable themes."
-  (interactive)
-  (setq loop-index 0)
-  (while (< loop-index number-of-themes)
-    (disable-theme (nth loop-index themes-list))
-    (setq loop-index (+ loop-index 1))))
-#+END_SRC
-
-** my-reset-themes-index
-#+BEGIN_SRC emacs-lisp
-(defun my-reset-themes-index ()
-  "Reset themes index."
-  (interactive)
-  (setq theme-index 0)
-  (setq INDEX-CHIAROSCURO 0)
-  (my-disable-themes))
-#+END_SRC
-
-** my-theme-loop
-#+BEGIN_SRC emacs-lisp
-(defun my-theme-loop ()
-  "Loop."
-  (interactive)
-  (setq loop-index 1)
-  (setq themes-list-index 0)
-  (while (<= loop-index number-of-themes)
-    (if (eq theme-index loop-index)
-        (progn
-          (load-theme (nth themes-list-index themes-list) t)
-          (message "%s" (nth themes-list-index themes-list-names))))
-    (setq loop-index (+ loop-index 1))
-    (setq themes-list-index (+ themes-list-index 1))))
-#+END_SRC
-
-** my-toggle-themes
-#+BEGIN_SRC emacs-lisp
-(defun my-toggle-themes ()
-  "Toggle themes."
-  (interactive)
-  (my-disable-themes)
-
-  (if (eq theme-index -1)
-      (progn (setq theme-index number-of-themes)))
-
-  (if (eq theme-index 0)
-      (progn (message "emacs")
-             (setq theme-index 0)
-             (setq INDEX-CHIAROSCURO 0)))
-
-  (my-theme-loop)
-
-  (if (> theme-index number-of-themes)
-      (progn (message "emacs")
-             (setq theme-index 0)
-             (setq INDEX-CHIAROSCURO 0))))
-#+END_SRC
-
-** my-theme-down
-#+BEGIN_SRC emacs-lisp
-(defun my-theme-down ()
-  "Theme down."
-  (interactive)
-  (setq theme-index (- theme-index 1))
-  (setq INDEX-CHIAROSCURO (- INDEX-CHIAROSCURO 1))
-  (my-toggle-themes))
-#+END_SRC
-
-** my-theme-up
-#+BEGIN_SRC emacs-lisp
-(defun my-theme-up ()
-  "Theme up."
-  (interactive)
-  (setq theme-index (+ theme-index 1))
-  (setq INDEX-CHIAROSCURO (+ INDEX-CHIAROSCURO 1))
-  (my-toggle-themes))
-#+END_SRC
-
-** my-set-theme
-#+BEGIN_SRC emacs-lisp
-(defun my-set-theme (index)
-  "Set theme."
-  (interactive)
-  (setq theme-index index)
-  (setq INDEX-CHIAROSCURO index)
-  (my-toggle-themes))
-#+END_SRC
-
-** which-key
-#+BEGIN_SRC emacs-lisp
-(which-key-mode t)
-#+END_SRC
-
-** winner mode
-#+BEGIN_SRC emacs-lisp
-(when (fboundp 'winner-mode)
-  (winner-mode t))
-#+END_SRC
-
-** Yasnippet
-#+BEGIN_SRC emacs-lisp
-(use-package yasnippet
-  :config (yas-global-mode))
-(use-package yasnippet-snippets
-  :ensure t)
-(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
-#+END_SRC
-
 ** treemacs
 #+BEGIN_SRC emacs-lisp
 (use-package treemacs
@@ -2165,116 +2252,29 @@ With a prefix arg, push the name onto the kill ring too."
 (define-key treemacs-mode-map (kbd "<tab>") 'my-treemacs-TAB-action)
 #+END_SRC
 
-** encoding, compilation, color formatting
-https://www.reddit.com/r/emacs/comments/6q644o/how_to_fix_maven_compilation_output/
-Add color formatting to *compilation* buffer
-#+BEGIN_SRC emacs-lisp
-(add-hook 'compilation-filter-hook
-          (lambda () (ansi-color-apply-on-region (point-min) (point-max))))
-#+END_SRC
-
-** abbrev
-#+BEGIN_SRC emacs-lisp
-;;(clear-abbrev-table global-abbrev-table)
-;; 
-;;(define-abbrev-table 'global-abbrev-table
-;;  '(
-;;    ("cla" "class")
-;;    ("dou" "double")
-;;    ("for (" "for (int i; i < x; i++) {")
-;;    ("pri" "private")
-;;    ("pro" "protected")
-;;    ("pub" "public")
-;;    ("sta" "static")
-;;    ("voi" "void")
-;;    ("whi" "while")
-;;    ))
-#+END_SRC
-
-** dired-quick-sort
-#+BEGIN_SRC emacs-lisp
-(require 'dired-quick-sort)
-(dired-quick-sort-setup)
-#+END_SRC
-
 ** undo-tree
 #+BEGIN_SRC emacs-lisp
 (global-undo-tree-mode)
 #+END_SRC
 
-** tab-bar
+** which-key
 #+BEGIN_SRC emacs-lisp
-(tab-bar-mode t)
-;;(setq tab-bar-show nil)
-(setq tab-bar-show t)
-(setq tab-bar-close-button-show nil)
-(setq tab-bar-new-button-show nil)
-(setq tab-bar-auto-width nil)
-(setq tab-bar-separator " ")
-(setq tab-bar-new-tab-choice "*new*")
-;;(setq tab-bar-tab-hints t)
-;;(setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
+(which-key-mode t)
 #+END_SRC
 
-** my-save-all-tabs
+** winner mode
 #+BEGIN_SRC emacs-lisp
-(defun my-save-all-tabs ()
-  "Save all tabs to burly bookmarks."
-  (interactive)
-  ;;(my-delete-all-burly-bookmarks)
-  (let ((tabs (tab-bar-tabs)))
-    (dolist (tab tabs)
-      (if (not (eq (alist-get 'name tab) "*scratch*"))
-          (progn
-               (tab-bar-switch-to-tab (alist-get 'name tab))
-               (burly-bookmark-windows (alist-get 'name tab)))))))
+(when (fboundp 'winner-mode)
+  (winner-mode t))
 #+END_SRC
 
-** my-delete-all-burly-bookmarks
+** Yasnippet
 #+BEGIN_SRC emacs-lisp
-(defun my-delete-all-burly-bookmarks ()
-  "Delete all burly bookmarks."
-  (interactive)
-  (bookmark-bmenu-list)
-  (let ((bookmarks (burly-bookmark-names)))
-    (when bookmarks
-      (dolist (item bookmarks)
-        (bookmark-delete item)))))
-#+END_SRC
-
-** my-open-all-burly-bookmarks
-#+BEGIN_SRC emacs-lisp
-(defun my-open-all-burly-bookmarks ()
-  "Open all burly bookmarks."
-  (interactive)
-  (bookmark-bmenu-list)
-  (let ((bookmarks (burly-bookmark-names)))
-    (when bookmarks
-      (dolist (item bookmarks)
-        (tab-new)
-        (burly-open-bookmark item)
-        (tab-rename item)))))
-#+END_SRC
-
-** compile
-#+BEGIN_SRC emacs-lisp
-(setq compilation-scroll-output t)
-#+END_SRC
-
-** symbol-overlay
-#+BEGIN_SRC emacs-lisp
-(require 'symbol-overlay)
-(global-set-key (kbd "M-i") 'symbol-overlay-put)
-(global-set-key (kbd "M-f") 'symbol-overlay-switch-forward)
-(global-set-key (kbd "M-b") 'symbol-overlay-switch-backward)
-;;(global-set-key (kbd "<f7>") 'symbol-overlay-mode)
-;;(global-set-key (kbd "<f8>") 'symbol-overlay-remove-all)
-#+END_SRC
-
-** slime, common lisp
-#+BEGIN_SRC emacs-lisp
-(setq inferior-lisp-program "/usr/bin/sbcl")
-(setq slime-contribs '(slime-fancy))
+(use-package yasnippet
+  :config (yas-global-mode))
+(use-package yasnippet-snippets
+  :ensure t)
+(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
 #+END_SRC
 
 ** zzz os specific settings
