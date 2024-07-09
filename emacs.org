@@ -447,7 +447,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   ("s" (dired "~/.emacs.d"))
 
   ("d" (find-file "~/source/emacs/emacs.org"))
-  ("f" (find-file "~/source/emacs/theme/chiaroscuro-theme.el"))
+  ("f" (find-file "~/source/emacs/chiaroscuro-theme.el"))
   ("g" (find-file "~/source/emacs/linux.el"))
 
   ("h" (lambda () (interactive)
@@ -643,8 +643,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-<down>") 'my-scroll-up)
 (global-set-key (kbd "C-<escape>") 'evil-mode)
-(global-set-key (kbd "C-<next>") 'next-buffer)
-(global-set-key (kbd "C-<prior>") 'previous-buffer)
+(global-set-key (kbd "C-<next>") 'avy-goto-word-1)
+(global-set-key (kbd "C-<prior>") 'avy-goto-char-in-line)
 (global-set-key (kbd "C-<tab>") 'dabbrev-completion)
 (global-set-key (kbd "C-<up>") 'my-scroll-down)
 (global-set-key (kbd "C-=") 'er/expand-region)
@@ -706,7 +706,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
 (global-set-key (kbd "C-x y") 'my-get-filename)
 (global-set-key (kbd "C-{") 'my-prev-curly-brace)
 (global-set-key (kbd "C-}") 'my-next-curly-brace)
-(global-set-key (kbd "C-~") 'helm-projectile-switch-to-buffer)
+(global-set-key (kbd "C-~") 'avy-goto-char-timer)
 (global-set-key (kbd "M-,") 'xref-find-definitions)
 (global-set-key (kbd "M-<down>") 'drag-stuff-down)
 (global-set-key (kbd "M-<next>") #'(lambda() (interactive) (scroll-left 10)))

@@ -2,6 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 (load-file "~/.emacs.d/theme/common/variables.el")
+(load-file "~/.emacs.d/theme/common/default.el")
 
 (if (> INDEX-CHIAROSCURO INDEX-DEFAULT)
    (progn
@@ -67,12 +68,12 @@
 `(ac-completion-face ((t (:foreground ,text-highlight-2 :background ,background-fringe :bold t ))))
 `(ac-selection-face ((t (:foreground ,text-highlight-2 :background ,background-fringe :bold t ))))
 `(ansi-color-bold ((t (:foreground ,text-highlight-2 :background unspecified :bold t ))))
-`(avy-background-face ((t (:foreground ,text-highlight-1 :background ,background-fringe :bold t ))))
-`(avy-goto-char-timer-face ((t (:foreground ,text-highlight-1 :background ,background-fringe :bold t ))))
-`(avy-lead-face ((t (:foreground ,text-highlight-1 :background ,background-fringe :bold t ))))
-`(avy-lead-face-0 ((t (:foreground ,text-highlight-1 :background ,background-fringe :bold t ))))
-`(avy-lead-face-1 ((t (:foreground ,text-highlight-1 :background ,background-fringe :bold t ))))
-`(avy-lead-face-2 ((t (:foreground ,text-highlight-1 :background ,background-fringe :bold t ))))
+;;`(avy-background-face ((t (:foreground ,text-avy :background ,background-avy :bold t ))))
+;;`(avy-goto-char-timer-face ((t (:foreground ,text-avy :background ,background-avy :bold t ))))
+;;`(avy-lead-face ((t (:foreground ,text-avy :background ,background-avy :bold t ))))
+;;`(avy-lead-face-0 ((t (:foreground ,text-avy :background ,background-avy :bold t ))))
+;;`(avy-lead-face-1 ((t (:foreground ,text-avy :background ,background-avy :bold t ))))
+;;`(avy-lead-face-2 ((t (:foreground ,text-avy :background ,background-avy :bold t ))))
 `(bm-fringe-face ((t (:foreground ,text-highlight-1 :background unspecified ))))
 `(bm-fringe-persistent-face ((t (:foreground ,text-highlight-1 :background unspecified ))))
 `(bookmark-face ((t (:foreground ,text-normal :background unspecified ))))
