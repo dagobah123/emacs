@@ -1841,6 +1841,7 @@ With a prefix arg, push the name onto the kill ring too."
   "Scroll down."
   (interactive)
   (next-line)
+  (evil-first-non-blank)
   (recenter))
 #+END_SRC
 
@@ -1859,6 +1860,7 @@ With a prefix arg, push the name onto the kill ring too."
   "Scroll up."
   (interactive)
   (previous-line)
+  (evil-first-non-blank)
   (recenter))
 #+END_SRC
 
