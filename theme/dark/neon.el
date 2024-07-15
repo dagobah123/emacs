@@ -6,7 +6,7 @@
 
 (setq background "#000000")
 (setq background-fringe "#1d151d")
-(setq background-hl "#8b3a62")
+(setq background-hl "#008b00")
 (setq background-low "#271b27")
 (setq background-magit "#1d151d")
 (setq background-magit-dark "#000000")
