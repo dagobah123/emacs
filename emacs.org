@@ -437,8 +437,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
   _s_: .emacs.d    _f_: chiaro...el    ^ ^                 _2_: Eclipse        _0_: Dark
   ^ ^              _g_: linux.el       ^ ^                 _3_: Green          _c_: Console Light
   ^ ^              ^ ^                 ^ ^                 _4_: Gray           _C_: Console Dark
-  ^ ^              ^ ^                 ^ ^                 _5_: Low Chroma     _r_: Red          ^ ^
-  ^ ^              ^ ^                 ^ ^                 _6_: Blue           ^ ^
+  ^ ^              ^ ^                 ^ ^                 _5_: Low Chroma     _r_: Red
+  ^ ^              ^ ^                 ^ ^                 _6_: Blue           _b_: Casablance
   ^ ^              ^ ^                 ^ ^                 _7_: Neon           ^ ^
   ^ ^              ^ ^                 ^ ^                 _8_: High Contrast  ^ ^
   "
