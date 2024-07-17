@@ -468,6 +468,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   ("c" (my-set-theme INDEX-CONSOLE-LIGHT))
   ("C" (my-set-theme INDEX-CONSOLE-DARK))
   ("r" (my-set-theme INDEX-RED))
+  ("b" (my-set-theme INDEX-CASABLANCA))
 
   ("q" nil "Quit" :color blue))
 #+END_SRC
@@ -2256,11 +2257,13 @@ With a prefix arg, push the name onto the kill ring too."
 (setq INDEX-CONSOLE-LIGHT     11)
 (setq INDEX-CONSOLE-DARK      12)
 (setq INDEX-RED               13)
+(setq INDEX-CASABLANCA        14)
 
 (defvar chiaroscuro-index 0 "Index representing the current theme")
 (setq chiaroscuro-index 0)
 
 (setq themes-list '(chiaroscuro
+                    chiaroscuro
                     chiaroscuro
                     chiaroscuro
                     chiaroscuro
@@ -2286,7 +2289,8 @@ With a prefix arg, push the name onto the kill ring too."
                           "dark"
                           "console light"
                           "console dark"
-                          "red"))
+                          "red"
+                          "casablanca"))
 
 (defvar theme-index 0 "Index representing the current theme")
 (setq number-of-themes (length themes-list))

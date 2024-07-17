@@ -50,6 +50,9 @@
      (if (eq INDEX-CHIAROSCURO INDEX-RED)
          (progn (load-file "~/.emacs.d/theme/common/diff-middle.el")
                 (load-file "~/.emacs.d/theme/dark/red.el")))
+     (if (eq INDEX-CHIAROSCURO INDEX-CASABLANCA)
+         (progn (load-file "~/.emacs.d/theme/common/diff-middle.el")
+                (load-file "~/.emacs.d/theme/dark/casablanca.el")))
 
      (if (> INDEX-CHIAROSCURO number-of-themes) (progn (setq INDEX-CHIAROSCURO 0)))
      (if (< INDEX-CHIAROSCURO 0) (progn (setq INDEX-CHIAROSCURO number-of-themes)))
