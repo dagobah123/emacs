@@ -438,7 +438,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
   ^ ^              _g_: linux.el       ^ ^                 _3_: Green          _c_: Console Light
   ^ ^              ^ ^                 ^ ^                 _4_: Gray           _C_: Console Dark
   ^ ^              ^ ^                 ^ ^                 _5_: Low Chroma     _r_: Red
-  ^ ^              ^ ^                 ^ ^                 _6_: Blue           _b_: Casablance
+  ^ ^              ^ ^                 ^ ^                 _6_: Blue           _b_: Casablanca
   ^ ^              ^ ^                 ^ ^                 _7_: Neon           ^ ^
   ^ ^              ^ ^                 ^ ^                 _8_: High Contrast  ^ ^
   "
