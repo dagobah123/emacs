@@ -12,9 +12,9 @@
 (cond
  ((string-equal LINUX-VERSION "ubuntu")
   (progn
-    ;(setenv "JAVA_HOME" "/usr/lib/jvm/java-21-openjdk-amd64")
+    (setenv "JAVA_HOME" "/usr/lib/jvm/java-21-openjdk-amd64")
     ;(setq lsp-java-java-path "/usr/lib/jvm/java-21-openjdk-amd64/bin/java")))
-     (setenv "JAVA_HOME" "/usr/lib/jvm/java-1.17.0-openjdk-amd64")
+    ;(setenv "JAVA_HOME" "/usr/lib/jvm/java-1.17.0-openjdk-amd64")
     (setq lsp-java-java-path "/usr/lib/jvm/java-1.17.0-openjdk-amd64/bin/java")))
  ((string-equal LINUX-VERSION "raspberrypi")
   (progn
