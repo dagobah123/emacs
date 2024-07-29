@@ -80,6 +80,7 @@
                      speed-type
                      swiper-helm
                      symbol-overlay
+                     transpose-frame
                      treemacs-projectile
                      undo-tree
                      use-package
@@ -1704,19 +1705,21 @@ With a prefix arg, push the name onto the kill ring too."
   (kill-buffer))
 #+END_SRC
 
-** my-prefix-map 
+** my-prefix-map C-l
 #+BEGIN_SRC emacs-lisp
 (defvar my-prefix-map (make-sparse-keymap) "My custom prefix keymap")
 (define-key global-map (kbd "C-l") my-prefix-map)
 
-(define-key my-prefix-map (kbd ".")   'avy-goto-char-timer)
+(define-key my-prefix-map (kbd ".") 'avy-goto-char-timer)
 (define-key my-prefix-map (kbd "C-.") 'avy-goto-char-timer)
 
-(define-key my-prefix-map (kbd ",")   'avy-goto-word-1)
+(define-key my-prefix-map (kbd ",") 'avy-goto-word-1)
 (define-key my-prefix-map (kbd "C-,") 'my-avy-lightning)
 
-(define-key my-prefix-map (kbd "/")   'avy-goto-char-in-line)
-(define-key my-prefix-map (kbd "C-/")   'avy-goto-char-in-line)
+(define-key my-prefix-map (kbd "/") 'avy-goto-char-in-line)
+(define-key my-prefix-map (kbd "C-/") 'avy-goto-char-in-line)
+
+(define-key my-prefix-map (kbd "|") 'transpose-frame)
 
 (define-key my-prefix-map (kbd "0") 'er/expand-region)
 (define-key my-prefix-map (kbd "1") 'swiper-all)
@@ -2347,6 +2350,13 @@ With a prefix arg, push the name onto the kill ring too."
 (use-package yasnippet-snippets
   :ensure t)
 (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+#+END_SRC
+
+** my-projectile-run-project
+#+BEGIN_SRC emacs-lisp
+(defun my-projectile-run-project ()
+  "Set custom projectile-run-project command."
+  (projectile-run-project (concat)))
 #+END_SRC
 
 ** zzz os specific settings
