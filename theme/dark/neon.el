@@ -6,7 +6,7 @@
 
 (setq background "#000000")
 (setq background-fringe "#1d151d")
-(setq background-hl "#008b00")
+(setq background-hl "#271327")
 (setq background-low "#271b27")
 (setq background-magit "#1d151d")
 (setq background-magit-dark "#000000")
@@ -26,7 +26,7 @@
 (setq text-low "#834076")
 (setq text-lower "#684962")
 (setq text-mode-line "#ff49bd")
-(setq text-normal "#cd853f")
+(setq text-normal "#8fbc8f")
 (setq text-preprocessor "#009900")
 (setq text-type "#bb4f80")
 (setq text-variable "#ffa143")
