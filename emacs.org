@@ -70,9 +70,9 @@
                      nov
                      olivetti
                      openwith
+                     org-drill
                      org-kanban
                      ox-jira
-                     pamparam
                      powershell
                      projectile
                      rainbow-mode
