@@ -2361,6 +2361,16 @@ With a prefix arg, push the name onto the kill ring too."
   (projectile-run-project (concat)))
 #+END_SRC
 
+** olivetti
+#+BEGIN_SRC emacs-lisp
+(use-package olivetti
+  :bind
+  ("<left-margin> <mouse-1>" . ignore)
+  ("<right-margin> <mouse-1>" . ignore)
+  :custom
+  (olivetti-body-width 40))
+#+END_SRC
+
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.
 Load emacs-lisp file for custom changes.
