@@ -72,6 +72,7 @@
                      openwith
                      org-kanban
                      ox-jira
+                     pamparam
                      powershell
                      projectile
                      rainbow-mode
@@ -1731,7 +1732,8 @@ With a prefix arg, push the name onto the kill ring too."
 (define-key my-prefix-map (kbd "l") 'recenter-top-bottom)
 (define-key my-prefix-map (kbd "o") 'occur)
 (define-key my-prefix-map (kbd "s") 'sort-lines)
-(define-key my-prefix-map (kbd "t") 'tab-new)
+(define-key my-prefix-map (kbd "t n") 'tab-new)
+(define-key my-prefix-map (kbd "t c") 'tab-close)
 
 (define-key my-prefix-map (kbd "c l") 'avy-copy-line)
 (define-key my-prefix-map (kbd "c r") 'avy-copy-region)
