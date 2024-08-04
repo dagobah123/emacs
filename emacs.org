@@ -342,8 +342,8 @@ Load environment variables properly by installing *exec-path-from-shell*.
 #+BEGIN_SRC emacs-lisp
 (require 'google-translate)
 (require 'google-translate-default-ui)
-(setq google-translate-default-source-language "en")
-(setq google-translate-default-target-language "fr")
+(setq google-translate-default-source-language "fr")
+(setq google-translate-default-target-language "en")
 #+END_SRC
 
 ** helm
@@ -1048,13 +1048,13 @@ With a prefix arg, push the name onto the kill ring too."
                do
                (setq content (concat content (format "%d: %s\n" index (file-name-sans-extension (file-name-nondirectory element)) (my-class-oveview-get-java-parents element))))
                (dolist (element2 (my-class-oveview-get-java-parents element))
-                                        ; Parents
+                 ; Parents
                  (if element2
                      (progn
                        (setq content (concat content (format "--------------------------------------------------------------------------------\n")))
                        (setq content (concat content (format "    %s\n" element2)))
                        ))
-                                        ; Members
+                 ; Members
                  (if (my-class-overview-parse-java-file-for-members element)
                      (progn
                        (setq content (concat content (format "--------------------------------------------------------------------------------\n")))
@@ -2370,6 +2370,31 @@ With a prefix arg, push the name onto the kill ring too."
   :custom
   (olivetti-body-width 40))
 #+END_SRC
+
+** vocabulary creator for org-drill
+#+BEGIN_SRC emacs-lisp
+(defun my-vocabulary-creator-for-org-drill ()
+  "Vocabulary creator for org-drill."
+  (interactive)
+  (my-parse-text-into-list "/home/computer/source/org-mode/learn/texts/tintin"))
+  ;;(my-parse-text-into-list "/home/computer/source/org-mode/learn/texts/test"))
+#+END_SRC
+
+** my-parse-text-into-list
+#+BEGIN_SRC emacs-lisp
+(defun my-parse-text-into-list (file-path)
+  "Parse text into list."
+  (with-temp-buffer
+    (insert-file-contents file-path)
+    (goto-char (point-min))
+    (let ((result ""))
+      (while (not (eobp))
+        (setq result (concat result (thing-at-point 'word t) "\n"))
+        (right-word))
+      (with-temp-file "/home/computer/source/org-mode/learn/texts/output" (insert result))
+      result)))
+#+END_SRC
+                             ;;"\n"))
 
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.
