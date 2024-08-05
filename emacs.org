@@ -2376,8 +2376,8 @@ With a prefix arg, push the name onto the kill ring too."
 (defun my-vocabulary-creator-for-org-drill ()
   "Vocabulary creator for org-drill."
   (interactive)
-  ;;(my-clean-output-file (my-parse-text-into-list "/home/computer/source/org-mode/learn/texts/tintin"))
-  (my-clean-output-file (my-parse-text-into-list "/home/computer/source/org-mode/learn/texts/test"))
+  (let ((words (my-parse-text-into-list "/home/computer/source/org-mode/learn/texts/test")))
+    (my-sort-and-remove-duplicates words)))
 #+END_SRC
 
 ** my-parse-text-into-list
@@ -2389,22 +2389,22 @@ With a prefix arg, push the name onto the kill ring too."
     (goto-char (point-min))
     (let ((result '()))
       (while (not (eobp))
-        (push (thing-at-point 'word t) result)
-        (right-word))
-      (with-temp-file "/home/computer/source/org-mode/learn/texts/output" (insert result))
-      result)))
+        (let ((word (thing-at-point 'word t)))
+          (when word
+            (push word result)))
+        (forward-word))
+      (with-temp-file "/home/computer/source/org-mode/learn/texts/output"
+        (insert (mapconcat 'identity (reverse result) "\n")))
+      (reverse result))))
 #+END_SRC
-        ;;(setq result (concat result (thing-at-point 'word t) "\n"))
 
-** my-clean-output-file
+** my-sort-and-remove-duplicates
 #+BEGIN_SRC emacs-lisp
 (defun my-sort-and-remove-duplicates (input-list)
   "Sort INPUT-LIST and remove duplicate entries."
   (let ((sorted-list (sort (copy-sequence input-list) 'string<)))
-    (delete-dups sorted-list))))
+    (delete-dups sorted-list)))
 #+END_SRC
-;;(write-file "/home/computer/source/org-mode/learn/texts/output2" (insert sorted-list)))))
-
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.
 Load emacs-lisp file for custom changes.
