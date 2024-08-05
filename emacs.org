@@ -2377,7 +2377,8 @@ With a prefix arg, push the name onto the kill ring too."
   "Vocabulary creator for org-drill."
   (interactive)
   (let ((words (my-parse-text-into-list "/home/computer/source/org-mode/learn/texts/test")))
-    (my-sort-and-remove-duplicates words)))
+    (my-sort-and-remove-duplicates words)
+    (my-translate-word-list words)))
 #+END_SRC
 
 ** my-parse-text-into-list
@@ -2405,6 +2406,28 @@ With a prefix arg, push the name onto the kill ring too."
   (let ((sorted-list (sort (copy-sequence input-list) 'string<)))
     (delete-dups sorted-list)))
 #+END_SRC
+
+** my-translate-word-list
+#+BEGIN_SRC emacs-lisp
+(defun my-translate-word-list (word-list)
+  "Translate a list of words using Google Translate and return the translated text."
+  (interactive)
+  (let ((translated-text nil)
+        (input-text (mapconcat 'identity word-list ", ")))
+    ;; Create a temporary buffer with the words to translate
+    (with-temp-buffer
+      (insert input-text)
+      ;; Translate the buffer
+      (google-translate-buffer)
+      ;; Wait for the translation to complete
+      (sit-for 3)  ;; Adjust the wait time if needed
+      ;; Capture the translated text
+      (with-current-buffer "*Google Translate*"
+        (setq translated-text (buffer-string))))
+    ;; Return the translated text
+    (concat "-----------------------" translated-text "-----------------------")))
+#+END_SRC
+
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.
 Load emacs-lisp file for custom changes.
