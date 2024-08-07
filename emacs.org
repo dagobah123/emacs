@@ -2376,9 +2376,10 @@ With a prefix arg, push the name onto the kill ring too."
 (defun my-vocabulary-creator-for-org-drill ()
   "Vocabulary creator for org-drill."
   (interactive)
-  (let ((words (my-parse-text-into-list "/home/computer/source/org-mode/learn/texts/test")))
+  (let ((words (my-parse-text-into-list "/home/computer/source/org-mode/learn/texts/test"))
+        (translation-pairs nil))
     (my-sort-and-remove-duplicates words)
-    (my-translate-word-list words)))
+    (my-printed-string-without-substring (my-translate-word-list words))))
 #+END_SRC
 
 ** my-parse-text-into-list
@@ -2420,13 +2421,28 @@ With a prefix arg, push the name onto the kill ring too."
       ;; Translate the buffer
       (google-translate-buffer)
       ;; Wait for the translation to complete
-      (sit-for 3)  ;; Adjust the wait time if needed
+      ;;(sit-for 3)  ;; Adjust the wait time if needed
       ;; Capture the translated text
       (with-current-buffer "*Google Translate*"
-        (setq translated-text (buffer-string))))
+        (setq translated-text (buffer-string)))
+      (kill-buffer "*Google Translate*"))
     ;; Return the translated text
-    (concat "-----------------------" translated-text "-----------------------")))
+    translated-text))
+    ;;(concat "-----------------------" translated-text "-----------------------")))
 #+END_SRC
+
+** my-store-translations-as-pairs
+#+BEGIN_SRC emacs-lisp
+(defun remove-substring (str substring)
+  "Remove all occurrences of SUBSTRING from STR."
+  (replace-regexp-in-string (regexp-quote substring) "" str))
+
+(defun my-printed-string-without-substring (translated-words)
+  "Remove a specific substring from TRANSLATED-WORDS and print the result."
+  (let ((translated-words-redacted (remove-substring translated-words "Translate from French to English:")))
+    (message "%s" translated-words-redacted)))
+#+END_SRC
+  ;;(let ((translated-words-redacted (remove-substring translated-words "Translate from French to English:"))
 
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.
