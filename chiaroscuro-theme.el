@@ -307,7 +307,7 @@
 `(org-agenda-restriction-lock ((t (:foreground ,text-highlight-1 ))))
 `(org-agenda-structure ((t (:foreground ,text-low ))))
 `(org-archived ((t (:foreground ,text-normal :background unspecified ))))
-`(org-block ((t (:foreground ,text-low :background unspecified :italic t ))))
+`(org-block ((t (:foreground ,text-normal :background unspecified :italic t ))))
 `(org-block-begin-line ((t (:foreground ,text-lower :background unspecified ))))
 `(org-block-end-line ((t (:foreground ,text-lower :background unspecified ))))
 `(org-checkbox-statistics-done ((t (:foreground ,text-low :background unspecified ))))
