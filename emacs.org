@@ -2442,7 +2442,6 @@ With a prefix arg, push the name onto the kill ring too."
   (let ((translated-words-redacted (remove-substring translated-words "Translate from French to English:")))
     (message "%s" translated-words-redacted)))
 #+END_SRC
-  ;;(let ((translated-words-redacted (remove-substring translated-words "Translate from French to English:"))
 
 ** zzz os specific settings
 Load emacs-lisp file for linux or windows.
