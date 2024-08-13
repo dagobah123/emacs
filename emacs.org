@@ -98,7 +98,7 @@
 ** abbrev
 #+BEGIN_SRC emacs-lisp
 ;;(clear-abbrev-table global-abbrev-table)
-;; 
+;;
 ;;(define-abbrev-table 'global-abbrev-table
 ;;  '(
 ;;    ("cla" "class")
@@ -839,23 +839,23 @@ Load environment variables properly by installing *exec-path-from-shell*.
 ** my-avy-lightning-clean-up
 #+BEGIN_SRC emacs-lisp
 (defun my-avy-lightning-clean-up ()
-  (set-face-attribute 'default                           nil  :foreground text-normal       )
-  (set-face-attribute 'font-lock-bracket-face            nil  :foreground text-highlight-1  )
-  (set-face-attribute 'font-lock-builtin-face            nil  :foreground text-type         )
-  (set-face-attribute 'font-lock-comment-delimiter-face  nil  :foreground text-lower        )
-  (set-face-attribute 'font-lock-comment-face            nil  :foreground text-lower        )
-  (set-face-attribute 'font-lock-constant-face           nil  :foreground text-constant     )
-  (set-face-attribute 'font-lock-doc-face                nil  :foreground text-lower        )
-  (set-face-attribute 'font-lock-function-call-face      nil  :foreground text-highlight-1  )
-  (set-face-attribute 'font-lock-function-name-face      nil  :foreground text-function     )
-  (set-face-attribute 'font-lock-keyword-face            nil  :foreground text-keyword      )
-  (set-face-attribute 'font-lock-number-face             nil  :foreground text-highlight-1  )
-  (set-face-attribute 'font-lock-preprocessor-face       nil  :foreground text-preprocessor )
-  (set-face-attribute 'font-lock-string-face             nil  :foreground text-low          )
-  (set-face-attribute 'font-lock-type-face               nil  :foreground text-type         )
-  (set-face-attribute 'font-lock-variable-name-face      nil  :foreground text-variable     )
-  (set-face-attribute 'font-lock-variable-use-face       nil  :foreground text-constant     )
-  (set-face-attribute 'font-lock-warning-face            nil  :foreground text-warning      )
+  (set-face-attribute 'default                          nil :foreground text-normal      )
+  (set-face-attribute 'font-lock-bracket-face           nil :foreground text-highlight-1 )
+  (set-face-attribute 'font-lock-builtin-face           nil :foreground text-type        )
+  (set-face-attribute 'font-lock-comment-delimiter-face nil :foreground text-lower       )
+  (set-face-attribute 'font-lock-comment-face           nil :foreground text-lower       )
+  (set-face-attribute 'font-lock-constant-face          nil :foreground text-constant    )
+  (set-face-attribute 'font-lock-doc-face               nil :foreground text-lower       )
+  (set-face-attribute 'font-lock-function-call-face     nil :foreground text-highlight-1 )
+  (set-face-attribute 'font-lock-function-name-face     nil :foreground text-function    )
+  (set-face-attribute 'font-lock-keyword-face           nil :foreground text-keyword     )
+  (set-face-attribute 'font-lock-number-face            nil :foreground text-highlight-1 )
+  (set-face-attribute 'font-lock-preprocessor-face      nil :foreground text-preprocessor)
+  (set-face-attribute 'font-lock-string-face            nil :foreground text-low         )
+  (set-face-attribute 'font-lock-type-face              nil :foreground text-type        )
+  (set-face-attribute 'font-lock-variable-name-face     nil :foreground text-variable    )
+  (set-face-attribute 'font-lock-variable-use-face      nil :foreground text-constant    )
+  (set-face-attribute 'font-lock-warning-face           nil :foreground text-warning     )
 )
 #+END_SRC
 
@@ -1477,7 +1477,7 @@ With a prefix arg, push the name onto the kill ring too."
   (interactive)
   (switch-to-buffer (prin1-to-string buffer-name))
   (beginning-of-buffer)
-  
+
   )
 
 
@@ -1711,14 +1711,14 @@ With a prefix arg, push the name onto the kill ring too."
 (defvar my-prefix-map (make-sparse-keymap) "My custom prefix keymap")
 (define-key global-map (kbd "C-l") my-prefix-map)
 
-(define-key my-prefix-map (kbd ".") 'avy-goto-char-timer)
-(define-key my-prefix-map (kbd "C-.") 'avy-goto-char-timer)
+;;(define-key my-prefix-map (kbd ".") 'avy-goto-char-timer)
+;;(define-key my-prefix-map (kbd "C-.") 'avy-goto-char-timer)
 
-(define-key my-prefix-map (kbd ",") 'avy-goto-word-1)
-(define-key my-prefix-map (kbd "C-,") 'my-avy-lightning)
+;;(define-key my-prefix-map (kbd ",") 'avy-goto-word-1)
+;;(define-key my-prefix-map (kbd "C-,") 'my-avy-lightning)
 
-(define-key my-prefix-map (kbd "/") 'avy-goto-char-in-line)
-(define-key my-prefix-map (kbd "C-/") 'avy-goto-char-in-line)
+;;(define-key my-prefix-map (kbd "/") 'avy-goto-char-in-line)
+;;(define-key my-prefix-map (kbd "C-/") 'avy-goto-char-in-line)
 
 (define-key my-prefix-map (kbd "|") 'transpose-frame)
 
@@ -1732,19 +1732,23 @@ With a prefix arg, push the name onto the kill ring too."
 (define-key my-prefix-map (kbd "l") 'recenter-top-bottom)
 (define-key my-prefix-map (kbd "o") 'occur)
 (define-key my-prefix-map (kbd "s") 'sort-lines)
+(define-key my-prefix-map (kbd "i") 'iedit-mode)
+
 (define-key my-prefix-map (kbd "t n") 'tab-new)
 (define-key my-prefix-map (kbd "t c") 'tab-close)
 
-(define-key my-prefix-map (kbd "c l") 'avy-copy-line)
-(define-key my-prefix-map (kbd "c r") 'avy-copy-region)
-(define-key my-prefix-map (kbd "g a") 'avy-goto-word-0)
-(define-key my-prefix-map (kbd "g c") 'avy-goto-char)
-(define-key my-prefix-map (kbd "g l") 'avy-goto-char-in-line)
-(define-key my-prefix-map (kbd "g w") 'avy-goto-word-1)
-(define-key my-prefix-map (kbd "k l") 'avy-kill-whole-line)
-(define-key my-prefix-map (kbd "k r") 'avy-kill-region)
-(define-key my-prefix-map (kbd "m l") 'avy-move-line)
-(define-key my-prefix-map (kbd "m r") 'avy-move-region)
+(define-key my-prefix-map (kbd "a l") 'my-avy-lightning)
+
+;;(define-key my-prefix-map (kbd "c l") 'avy-copy-line)
+;;(define-key my-prefix-map (kbd "c r") 'avy-copy-region)
+;;(define-key my-prefix-map (kbd "g a") 'avy-goto-word-0)
+;;(define-key my-prefix-map (kbd "g c") 'avy-goto-char)
+;;(define-key my-prefix-map (kbd "g l") 'avy-goto-char-in-line)
+;;(define-key my-prefix-map (kbd "g w") 'avy-goto-word-1)
+;;(define-key my-prefix-map (kbd "k l") 'avy-kill-whole-line)
+;;(define-key my-prefix-map (kbd "k r") 'avy-kill-region)
+;;(define-key my-prefix-map (kbd "m l") 'avy-move-line)
+;;(define-key my-prefix-map (kbd "m r") 'avy-move-region)
 #+END_SRC
 
 ** my-prev-curly-brace

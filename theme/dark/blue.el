@@ -12,7 +12,7 @@
 (setq background-magit-dark "#000000")
 (setq background-mode-line "#111111")
 (setq background-region "#700000")
-(setq text-comment "#333660")
+(setq text-comment "#0077a6")
 (setq text-constant "#182869")
 (setq text-function "#bc8f8f")
 (setq text-highlight-1 "#0053c1")
