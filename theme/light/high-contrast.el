@@ -40,7 +40,6 @@
 (setq text-lower "#000000")
 (setq text-magit-branch-local "#000000")
 (setq text-magit-branch-remote "#000000")
-(setq text-mode-line "#000000")
 (setq text-normal "#000000")
 (setq text-preprocessor "#000000")
 (setq text-preprocessor "#000000")

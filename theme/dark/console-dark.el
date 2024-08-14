@@ -44,7 +44,6 @@
 (setq text-link "#ba55d3")
 (setq text-low "#eed8ae")
 (setq text-lower "#cdba96")
-(setq text-mode-line "#ffe7ba")
 (setq text-normal "#ffe7ba")
 (setq text-preprocessor "#2e8b57")
 (setq text-type "#6c7b8b")

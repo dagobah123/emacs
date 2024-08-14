@@ -25,7 +25,6 @@
 (setq text-link "#bb4f80")
 (setq text-low "#834076")
 (setq text-lower "#684962")
-(setq text-mode-line "#ff49bd")
 (setq text-normal "#548648")
 (setq text-preprocessor "#009900")
 (setq text-type "#bb4f80")

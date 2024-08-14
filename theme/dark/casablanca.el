@@ -28,7 +28,6 @@
 (setq text-link "#9d9d9d")
 (setq text-low "#404040")
 (setq text-lower "#1f1f1f")
-(setq text-mode-line "#888888")
 (setq text-normal "#888888")
 (setq text-preprocessor "#696969")
 (setq text-type "#9d9d9d")
