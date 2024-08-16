@@ -2377,6 +2377,8 @@ With a prefix arg, push the name onto the kill ring too."
 
 ** vocabulary creator for org-drill
 #+BEGIN_SRC emacs-lisp
+(setq org-drill-maximum-items-per-session 1000)
+
 (defun my-vocabulary-creator-for-org-drill ()
   "Vocabulary creator for org-drill."
   (interactive)
