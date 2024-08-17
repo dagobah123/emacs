@@ -4,6 +4,10 @@
 
 (load-file "~/.emacs.d/theme/common/variables.el")
 
+(setq text-match-1 "#000000")
+(setq text-match-2 "#000000")
+(setq background-match-1 "#bbbbbb")
+(setq background-match-2 "#ffffff")
 (setq background "#000000")
 (setq background-diff-added "#698b69")
 (setq background-diff-added-highlight "#008b45")

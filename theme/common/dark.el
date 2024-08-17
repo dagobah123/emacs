@@ -1,4 +1,4 @@
-;;; default --- common colors
+;;; dark --- common colors
 ;;; Commentary:
 ;;; Code:
 
@@ -6,7 +6,7 @@
 
 (setq text-match-1 "#000000")
 (setq text-match-2 "#000000")
-(setq background-match-1 "#bbffbb")
-(setq background-match-2 "#77ff77")
+(setq background-match-1 "#006400")
+(setq background-match-2 "#33bb33")
 
-;;; default.el ends here
+;;; dark.el ends here
