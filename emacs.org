@@ -243,7 +243,9 @@
 
 (setq elfeed-feeds
       '("http://nullprogram.com/feed/"
-        "https://planet.emacslife.com/atom.xml"))
+        "https://planet.emacslife.com/atom.xml"
+        "https://www.comicsrss.com/rss/garfield-classics.rss"
+        "https://www.comicsrss.com/rss/garfield.rss"))
 
 ;; (setq elfeed-feeds '(
 ;;                      ("https://rss.orf.at/news.xml" news orf)
@@ -252,8 +254,6 @@
 ;;                      ("https://www.comicsrss.com/rss/dilbert.rss" comics dilbert)
 ;;                      ("https://www.comicsrss.com/rss/dilbert-classics.rss" comics dilbert classics)
 ;;                      ("https://www.comicsrss.com/rss/eek.rss" comics eek)
-;;                      ("https://www.comicsrss.com/rss/garfield-classics.rss" comics garfield classics)
-;;                      ("https://www.comicsrss.com/rss/garfield.rss" comics garfield)
 ;;                      ("https://www.comicsrss.com/rss/peanuts.rss" comics peanuts)
 ;;                      ("https://planet.emacslife.com/atom.xml" emacs)
 ;;                      ))
