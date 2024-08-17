@@ -32,7 +32,6 @@
 (setq text-highlight-2 "#ff0000")
 (setq text-highlight-3 "#009900")
 (setq text-hl "#ffffff")
-(setq text-hl "#ffffff")
 (setq text-info "#000000")
 (setq text-keyword "#000000")
 (setq text-link "#000000")
