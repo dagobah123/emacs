@@ -2365,43 +2365,117 @@ With a prefix arg, push the name onto the kill ring too."
   (olivetti-body-width 40))
 #+END_SRC
 
-** vocabulary creator for org-drill
+** org-drill
 #+BEGIN_SRC emacs-lisp
 (setq org-drill-maximum-items-per-session 1000)
+#+END_SRC
 
+** vocabulary creator for org-drill
+#+BEGIN_SRC emacs-lisp
 (defun my-vocabulary-creator-for-org-drill ()
   "Vocabulary creator for org-drill."
   (interactive)
+
+  ;; create temp variable list words
+  ;; create temp variable translation
+  ;; create temp variable translation-pairs
   (let ((words (my-parse-text-into-list "/home/computer/source/org-mode/learn/texts/test"))
+        (translation "")
         (translation-pairs nil))
-    (my-sort-and-remove-duplicates words)
-    (my-printed-string-without-substring (my-translate-word-list words))))
+
+    ;; sort and remove duplicate words
+    (setq sorted-words (my-sort-and-remove-duplicates words))
+
+    ;; create new output file
+    (with-temp-file "/home/computer/source/org-mode/learn/texts/output-sorted-words"
+
+      ;; result in file
+      (insert (mapconcat 'identity sorted-words "\n")))
+
+    (setq translation (my-translate-word-list sorted-words))
+
+    ;; delete the first line that says: Translate from French to English:
+    (setq translation (if (string-match "\n" translation)
+        (substring translation (1+ (match-end 0)))
+      translation))
+
+    ;; TODO delete first paragraph
+
+    ;; TODO loop through sorted-words and translation and create translation-pairs
+
+    ;; TODO create org-drill files
+
+    ;; create new output file
+    (with-temp-file "/home/computer/source/org-mode/learn/texts/output-translation"
+
+      ;; result in file
+      (insert translation))))
 #+END_SRC
+
+#("Translate from French to English:
+
+je, je, suis, un, homme, pommes, des, terre
+
+I, I, am, a, man, apples, of, the, earth
+"
 
 ** my-parse-text-into-list
 #+BEGIN_SRC emacs-lisp
 (defun my-parse-text-into-list (file-path)
   "Parse text into list."
   (with-temp-buffer
+    ;; read file
     (insert-file-contents file-path)
+
+    ;; go to beginning of file
     (goto-char (point-min))
+
+    ;; create temp list result
     (let ((result '()))
+
+      ;; continue until end of file is reached
       (while (not (eobp))
+
+        ;; create temp variable word, store current word
         (let ((word (thing-at-point 'word t)))
+
+          ;; if it is not null
           (when word
+
+            ;; add it to result
             (push word result)))
+
+        ;; go to next word
         (forward-word))
+
+      ;; create new output file
       (with-temp-file "/home/computer/source/org-mode/learn/texts/output"
+
+        ;; result in file
         (insert (mapconcat 'identity (reverse result) "\n")))
+
+      ;; return result
       (reverse result))))
 #+END_SRC
 
 ** my-sort-and-remove-duplicates
 #+BEGIN_SRC emacs-lisp
 (defun my-sort-and-remove-duplicates (input-list)
-  "Sort INPUT-LIST and remove duplicate entries."
+  "Sort input-list and remove duplicate entries."
+
+  ;; create temp list sorted-list
   (let ((sorted-list (sort (copy-sequence input-list) 'string<)))
-    (delete-dups sorted-list)))
+
+    ;; create duplicates
+    (delete-dups sorted-list)
+
+    ;; write sorted list to file
+    (with-temp-file "/home/computer/source/org-mode/learn/texts/output-2"
+
+      ;; result in file
+      (insert (mapconcat 'identity sorted-list "\n")))
+
+    sorted-list))
 #+END_SRC
 
 ** my-translate-word-list
@@ -2409,22 +2483,25 @@ With a prefix arg, push the name onto the kill ring too."
 (defun my-translate-word-list (word-list)
   "Translate a list of words using Google Translate and return the translated text."
   (interactive)
+
+  ;; create temp variable translated-text
+  ;; create local string of word-list separated by a comma
   (let ((translated-text nil)
-        (input-text (mapconcat 'identity word-list ", ")))
-    ;; Create a temporary buffer with the words to translate
+        (comma-separated-word-list-string (mapconcat 'identity word-list ", ")))
+
+    ;; create a temporary buffer with the words to translate
     (with-temp-buffer
-      (insert input-text)
-      ;; Translate the buffer
+      (insert comma-separated-word-list-string)
+
+      ;; translate the buffer
       (google-translate-buffer)
-      ;; Wait for the translation to complete
-      ;;(sit-for 3)  ;; Adjust the wait time if needed
-      ;; Capture the translated text
+
+      ;; capture the translated text
       (with-current-buffer "*Google Translate*"
         (setq translated-text (buffer-string)))
       (kill-buffer "*Google Translate*"))
-    ;; Return the translated text
+    ;; return the translated text
     translated-text))
-    ;;(concat "-----------------------" translated-text "-----------------------")))
 #+END_SRC
 
 ** my-store-translations-as-pairs
