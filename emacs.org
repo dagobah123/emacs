@@ -436,11 +436,11 @@ Load environment variables properly by installing *exec-path-from-shell*.
   ^Folders^        ^Files^             ^Update^            ^Themes^
   ^^^^^^^^------------------------------------------------------------------------------------------
   _a_: emacs       _d_: emacs.org      _h_: cp .emacs.d    _1_: Default        _9_: Neon
-  _s_: .emacs.d    _f_: chiaro...el    ^ ^                 _2_: Eclipse        _0_: Console Dark       
-  ^ ^              _g_: linux.el       ^ ^                 _3_: Console Light  _r_: Red                
-  ^ ^              ^ ^                 ^ ^                 _4_: Color Change L _b_: Casablanca         
+  _s_: .emacs.d    _f_: chiaro...el    ^ ^                 _2_: Eclipse        _0_: Console Dark
+  ^ ^              _g_: linux.el       ^ ^                 _3_: Console Light  _r_: Red
+  ^ ^              ^ ^                 ^ ^                 _4_: Color Change L _b_: Casablanca
   ^ ^              ^ ^                 ^ ^                 _5_: High Contrast  _c_: Color Change D
-  ^ ^              ^ ^                 ^ ^                 _6_: Gray           ^ ^ 
+  ^ ^              ^ ^                 ^ ^                 _6_: Gray           ^ ^
   ^ ^              ^ ^                 ^ ^                 _7_: Low Chroma     ^ ^
   ^ ^              ^ ^                 ^ ^                 _8_: Blue           ^ ^
   "
@@ -1740,17 +1740,8 @@ With a prefix arg, push the name onto the kill ring too."
 (define-key my-prefix-map (kbd "t c") 'tab-close)
 
 (define-key my-prefix-map (kbd "a l") 'my-avy-lightning)
-
-;;(define-key my-prefix-map (kbd "c l") 'avy-copy-line)
-;;(define-key my-prefix-map (kbd "c r") 'avy-copy-region)
-;;(define-key my-prefix-map (kbd "g a") 'avy-goto-word-0)
-;;(define-key my-prefix-map (kbd "g c") 'avy-goto-char)
-;;(define-key my-prefix-map (kbd "g l") 'avy-goto-char-in-line)
-;;(define-key my-prefix-map (kbd "g w") 'avy-goto-word-1)
-;;(define-key my-prefix-map (kbd "k l") 'avy-kill-whole-line)
-;;(define-key my-prefix-map (kbd "k r") 'avy-kill-region)
-;;(define-key my-prefix-map (kbd "m l") 'avy-move-line)
-;;(define-key my-prefix-map (kbd "m r") 'avy-move-region)
+(define-key my-prefix-map (kbd "a a") 'avy-goto-word-1)
+(define-key my-prefix-map (kbd "a c") 'avy-goto-char-in-line)
 #+END_SRC
 
 ** my-prev-curly-brace
