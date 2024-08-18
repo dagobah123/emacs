@@ -435,14 +435,14 @@ Load environment variables properly by installing *exec-path-from-shell*.
 
   ^Folders^        ^Files^             ^Update^            ^Themes^
   ^^^^^^^^------------------------------------------------------------------------------------------
-  _a_: emacs       _d_: emacs.org      _h_: cp .emacs.d    _1_: Default        _9_: Light
-  _s_: .emacs.d    _f_: chiaro...el    ^ ^                 _2_: Eclipse        _0_: Dark
-  ^ ^              _g_: linux.el       ^ ^                 _3_: Green          _c_: Console Light
-  ^ ^              ^ ^                 ^ ^                 _4_: Gray           _C_: Console Dark
-  ^ ^              ^ ^                 ^ ^                 _5_: Low Chroma     _r_: Red
-  ^ ^              ^ ^                 ^ ^                 _6_: Blue           _b_: Casablanca
-  ^ ^              ^ ^                 ^ ^                 _7_: Neon           ^ ^
-  ^ ^              ^ ^                 ^ ^                 _8_: High Contrast  ^ ^
+  _a_: emacs       _d_: emacs.org      _h_: cp .emacs.d    _1_: Default        _9_: Neon
+  _s_: .emacs.d    _f_: chiaro...el    ^ ^                 _2_: Eclipse        _0_: Console Dark       
+  ^ ^              _g_: linux.el       ^ ^                 _3_: Console Light  _r_: Red                
+  ^ ^              ^ ^                 ^ ^                 _4_: Color Change L _b_: Casablanca         
+  ^ ^              ^ ^                 ^ ^                 _5_: High Contrast  _c_: Color Change D
+  ^ ^              ^ ^                 ^ ^                 _6_: Gray           ^ ^ 
+  ^ ^              ^ ^                 ^ ^                 _7_: Low Chroma     ^ ^
+  ^ ^              ^ ^                 ^ ^                 _8_: Blue           ^ ^
   "
 
   ("a" (dired "~/source/emacs"))
@@ -459,18 +459,17 @@ Load environment variables properly by installing *exec-path-from-shell*.
 
   ("1" (my-set-theme INDEX-DEFAULT))
   ("2" (my-set-theme INDEX-ECLIPSE))
-  ("3" (my-set-theme INDEX-GREEN))
-  ("4" (my-set-theme INDEX-GRAY))
-  ("5" (my-set-theme INDEX-LOW-CHROMA))
-  ("6" (my-set-theme INDEX-BLUE))
-  ("7" (my-set-theme INDEX-NEON))
-  ("8" (my-set-theme INDEX-HIGH-CONTRAST))
-  ("9" (my-set-theme INDEX-COLOR-CHANGE-LIGHT))
-  ("0" (my-set-theme INDEX-COLOR-CHANGE-DARK))
-  ("c" (my-set-theme INDEX-CONSOLE-LIGHT))
-  ("C" (my-set-theme INDEX-CONSOLE-DARK))
+  ("3" (my-set-theme INDEX-CONSOLE-LIGHT))
+  ("4" (my-set-theme INDEX-COLOR-CHANGE-LIGHT))
+  ("5" (my-set-theme INDEX-HIGH-CONTRAST))
+  ("6" (my-set-theme INDEX-GRAY))
+  ("7" (my-set-theme INDEX-LOW-CHROMA))
+  ("8" (my-set-theme INDEX-BLUE))
+  ("9" (my-set-theme INDEX-NEON))
+  ("0" (my-set-theme INDEX-CONSOLE-DARK))
   ("r" (my-set-theme INDEX-RED))
   ("b" (my-set-theme INDEX-CASABLANCA))
+  ("c" (my-set-theme INDEX-COLOR-CHANGE-DARK))
 
   ("q" nil "Quit" :color blue))
 #+END_SRC
@@ -1728,6 +1727,9 @@ With a prefix arg, push the name onto the kill ring too."
 (define-key my-prefix-map (kbd "8") 'whitespace-mode)
 (define-key my-prefix-map (kbd "9") 'helm-semantic-or-imenu)
 (define-key my-prefix-map (kbd "<SPC>") 'set-mark-command)
+
+(define-key my-prefix-map (kbd "C-l") 'avy-goto-line)
+(define-key my-prefix-map (kbd ";") 'iedit-mode)
 ;; TODO dabbrev-expand
 (define-key my-prefix-map (kbd "l") 'recenter-top-bottom)
 (define-key my-prefix-map (kbd "o") 'occur)
@@ -2253,20 +2255,19 @@ With a prefix arg, push the name onto the kill ring too."
 
 ** themes
 #+BEGIN_SRC emacs-lisp
-(setq INDEX-DEFAULT            1)
-(setq INDEX-ECLIPSE            2)
-(setq INDEX-GREEN              3)
-(setq INDEX-GRAY               4)
-(setq INDEX-LOW-CHROMA         5)
-(setq INDEX-BLUE               6)
-(setq INDEX-NEON               7)
-(setq INDEX-HIGH-CONTRAST      8)
-(setq INDEX-COLOR-CHANGE-LIGHT 9)
-(setq INDEX-COLOR-CHANGE-DARK 10)
-(setq INDEX-CONSOLE-LIGHT     11)
-(setq INDEX-CONSOLE-DARK      12)
-(setq INDEX-RED               13)
-(setq INDEX-CASABLANCA        14)
+(setq INDEX-DEFAULT             1)
+(setq INDEX-ECLIPSE             2)
+(setq INDEX-CONSOLE-LIGHT       3)
+(setq INDEX-COLOR-CHANGE-LIGHT  4)
+(setq INDEX-HIGH-CONTRAST       5)
+(setq INDEX-GRAY                6)
+(setq INDEX-LOW-CHROMA          7)
+(setq INDEX-BLUE                8)
+(setq INDEX-NEON                9)
+(setq INDEX-CONSOLE-DARK       10)
+(setq INDEX-RED                11)
+(setq INDEX-CASABLANCA         12)
+(setq INDEX-COLOR-CHANGE-DARK  13)
 
 (defvar chiaroscuro-index 0 "Index representing the current theme")
 (setq chiaroscuro-index 0)
@@ -2283,23 +2284,21 @@ With a prefix arg, push the name onto the kill ring too."
                     chiaroscuro
                     chiaroscuro
                     chiaroscuro
-                    chiaroscuro
                     chiaroscuro))
 
 (setq themes-list-names '("default"
                           "eclipse"
-                          "green"
+                          "console light"
+                          "color change light"
+                          "high contrast"
                           "gray"
                           "low chroma"
                           "blue"
                           "neon"
-                          "high contrast"
-                          "light"
-                          "dark"
-                          "console light"
                           "console dark"
                           "red"
-                          "casablanca"))
+                          "casablanca"
+                          "color change dark"))
 
 (defvar theme-index 0 "Index representing the current theme")
 (setq number-of-themes (length themes-list))

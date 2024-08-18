@@ -11,5 +11,6 @@
 (setq text-hl "#000000")
 (setq text-match-1 "#000000")
 (setq text-match-2 "#000000")
+(setq text-region "#000000")
 
 ;;; default.el ends here
