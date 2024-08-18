@@ -2378,10 +2378,13 @@ With a prefix arg, push the name onto the kill ring too."
 
   ;; create temp variable list words
   ;; create temp variable translation
+  ;; create temp variable translation-list
   ;; create temp variable translation-pairs
   (let ((words (my-parse-text-into-list "/home/computer/source/org-mode/learn/texts/test"))
         (translation "")
-        (translation-pairs nil))
+        (translation-list nil)
+        (translation-pairs nil)
+        (org-drill-string ""))
 
     ;; sort and remove duplicate words
     (setq sorted-words (my-sort-and-remove-duplicates words))
@@ -2396,20 +2399,47 @@ With a prefix arg, push the name onto the kill ring too."
 
     ;; delete the first line that says: Translate from French to English:
     (setq translation (if (string-match "\n" translation)
-        (substring translation (1+ (match-end 0)))
-      translation))
+                          (substring translation (1+ (match-end 0)))
+                        translation))
 
-    ;; TODO delete first paragraph
-
-    ;; TODO loop through sorted-words and translation and create translation-pairs
-
-    ;; TODO create org-drill files
+    ;; delete first paragraph
+    (setq translation (if (string-match "\n[ \t]*\n" translation)
+                          (substring translation (match-end 0))
+                        translation))
 
     ;; create new output file
     (with-temp-file "/home/computer/source/org-mode/learn/texts/output-translation"
 
       ;; result in file
-      (insert translation))))
+      (insert translation))
+
+    ;; create translation list
+    (setq translation-list (my-comma-separated-string-to-list translation))
+
+    ;; combine lists to one list
+    (setq translation-pairs (my-combine-lists-to-pair sorted-words translation-list))
+
+    (dolist (pair translation-pairs)
+      (message "%s %s" (car pair)(cadr pair)))
+    
+    ;; create org-drill files
+    (dolist (pair translation-pairs)
+      (setq org-drill-string (concat org-drill-string "* Q :drill:\n" (car pair) "\n** A\n" (cadr pair) "\n")))
+
+    ;; create final output file
+    (with-temp-file "/home/computer/source/org-mode/learn/texts/output-org-drill.org"
+
+      ;; result in file
+      (insert org-drill-string))))
+#+END_SRC
+
+** my-combine-lists-to-pair
+#+BEGIN_SRC emacs-lisp
+(require 'cl-lib)  ;; Ensure cl-lib is available
+
+(defun my-combine-lists-to-pair (list1 list2)
+  "Combine LIST1 and LIST2 into a list of pairs, where each pair consists of elements at the same index."
+  (cl-mapcar #'list list1 list2))
 #+END_SRC
 
 #("Translate from French to English:
@@ -2502,6 +2532,13 @@ I, I, am, a, man, apples, of, the, earth
       (kill-buffer "*Google Translate*"))
     ;; return the translated text
     translated-text))
+#+END_SRC
+
+** my-comma-separated-string-to-list
+#+BEGIN_SRC emacs-lisp
+(defun my-comma-separated-string-to-list (str)
+  "Convert a comma-separated string STR into a list of trimmed strings."
+  (mapcar 'string-trim (split-string str ",[ \t\n]*" t)))
 #+END_SRC
 
 ** my-store-translations-as-pairs
