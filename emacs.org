@@ -2376,11 +2376,13 @@ With a prefix arg, push the name onto the kill ring too."
   "Vocabulary creator for org-drill."
   (interactive)
 
+  (message "[voc] Starting vocabulary creation...")
+
   ;; create temp variable list words
   ;; create temp variable translation
   ;; create temp variable translation-list
   ;; create temp variable translation-pairs
-  (let ((words (my-parse-text-into-list "/home/computer/source/org-mode/learn/texts/test"))
+  (let ((words (my-parse-text-into-list "/home/computer/source/org-mode/learn/texts/fr-guillermo"))
         (translation "")
         (translation-list nil)
         (translation-pairs nil)
@@ -2403,9 +2405,9 @@ With a prefix arg, push the name onto the kill ring too."
                         translation))
 
     ;; delete first paragraph
-    (setq translation (if (string-match "\n[ \t]*\n" translation)
-                          (substring translation (match-end 0))
-                        translation))
+    ;;(setq translation (if (string-match "\n[ \t]*\n" translation)
+    ;;                      (substring translation (match-end 0))
+    ;;                    translation))
 
     ;; create new output file
     (with-temp-file "/home/computer/source/org-mode/learn/texts/output-translation"
@@ -2453,6 +2455,9 @@ I, I, am, a, man, apples, of, the, earth
 #+BEGIN_SRC emacs-lisp
 (defun my-parse-text-into-list (file-path)
   "Parse text into list."
+
+  (message "[voc] Parse text into list... File path: %s" file-path)
+  
   (with-temp-buffer
     ;; read file
     (insert-file-contents file-path)
@@ -2472,11 +2477,14 @@ I, I, am, a, man, apples, of, the, earth
           ;; if it is not null
           (when word
 
+            (message "[voc] Current word... <%s>" word)
+
             ;; add it to result
             (push word result)))
 
         ;; go to next word
         (forward-word))
+        ;;(my-forward-to-next-whitespace))
 
       ;; create new output file
       (with-temp-file "/home/computer/source/org-mode/learn/texts/output"
@@ -2493,6 +2501,8 @@ I, I, am, a, man, apples, of, the, earth
 (defun my-sort-and-remove-duplicates (input-list)
   "Sort input-list and remove duplicate entries."
 
+  (message "[voc] Sort and remove duplicates...")
+  
   ;; create temp list sorted-list
   (let ((sorted-list (sort (copy-sequence input-list) 'string<)))
 
@@ -2514,10 +2524,13 @@ I, I, am, a, man, apples, of, the, earth
   "Translate a list of words using Google Translate and return the translated text."
   (interactive)
 
+  (message "[voc] Translate word list...")
+  
   ;; create temp variable translated-text
   ;; create local string of word-list separated by a comma
   (let ((translated-text nil)
-        (comma-separated-word-list-string (mapconcat 'identity word-list ", ")))
+        ;;(comma-separated-word-list-string (mapconcat 'identity word-list ", ")))
+        (comma-separated-word-list-string (mapconcat 'identity word-list "\n")))
 
     ;; create a temporary buffer with the words to translate
     (with-temp-buffer
@@ -2551,6 +2564,15 @@ I, I, am, a, man, apples, of, the, earth
   "Remove a specific substring from TRANSLATED-WORDS and print the result."
   (let ((translated-words-redacted (remove-substring translated-words "Translate from French to English:")))
     (message "%s" translated-words-redacted)))
+#+END_SRC
+
+** my-forward-to-next-whitespace
+#+BEGIN_SRC emacs-lisp
+(defun my-forward-to-next-whitespace ()
+  "Move the cursor forward to the next whitespace."
+  (interactive)
+  (message "[voc] Forward to next whitespace...")
+  (re-search-forward "[ \t\n\r]" nil t))
 #+END_SRC
 
 ** zzz os specific settings
