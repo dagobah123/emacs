@@ -2413,7 +2413,14 @@ With a prefix arg, push the name onto the kill ring too."
 
       (goto-char (point-min))
 
-      (replace-string " " ",")
+      (while (not (eobp))
+      (let ((word (thing-at-point 'word)))
+        (when word
+          (let ((start (car (bounds-of-thing-at-point 'word)))
+                (end (cdr (bounds-of-thing-at-point 'word))))
+            (goto-char end)
+            (insert ",")))
+        (forward-word)))
 
       (buffer-string)))
 
@@ -2449,8 +2456,7 @@ With a prefix arg, push the name onto the kill ring too."
     (message "[voc] translation-pairs: <%i>" (length translation-pairs))
     (dolist (pair translation-pairs)
       (message "TEST %i %s %s" counter (car pair)(cadr pair))
-      (setq counter (+ counter 1))
-      )
+      (setq counter (+ counter 1)))
 
     ;; create org-drill files
     (dolist (pair translation-pairs)
