@@ -749,7 +749,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
  ((string-equal system-type "gnu/linux")
   (cond
    ((string-equal LINUX-VERSION "ubuntu")
-    (progn (setq default-font-size 180) (setq font-size 180)))
+    (progn (setq default-font-size 120) (setq font-size 120)))
    ((string-equal LINUX-VERSION "raspberrypi")
     (progn (setq default-font-size 200) (setq font-size 200))))))
 (set-face-attribute 'default nil :height font-size)
@@ -2372,17 +2372,18 @@ With a prefix arg, push the name onto the kill ring too."
 
 ** vocabulary creator for org-drill
 #+BEGIN_SRC emacs-lisp
-(defun my-vocabulary-creator-for-org-drill ()
+(defun my-vocabulary-creator-for-org-drill (input-file-path)
   "Vocabulary creator for org-drill."
   (interactive)
 
   (message "[voc] Starting vocabulary creation...")
+  (message "[voc] Reading file... <%s>" input-file-path)
 
   ;; create temp variable list words
   ;; create temp variable translation
   ;; create temp variable translation-list
   ;; create temp variable translation-pairs
-  (let ((words (my-parse-text-into-list "/home/computer/source/org-mode/learn/texts/fr-guillermo"))
+  (let ((words (my-parse-text-into-list input-file-path))
         (translation "")
         (translation-list nil)
         (translation-pairs nil)
@@ -2392,7 +2393,7 @@ With a prefix arg, push the name onto the kill ring too."
     (setq sorted-words (my-sort-and-remove-duplicates words))
 
     ;; create new output file
-    (with-temp-file "/home/computer/source/org-mode/learn/texts/output-sorted-words"
+    (with-temp-file "/home/computer/source/org-mode/learn/texts-output/1-output-sorted-words"
 
       ;; result in file
       (insert (mapconcat 'identity sorted-words "\n")))
@@ -2404,32 +2405,62 @@ With a prefix arg, push the name onto the kill ring too."
                           (substring translation (1+ (match-end 0)))
                         translation))
 
-    ;; delete first paragraph
-    ;;(setq translation (if (string-match "\n[ \t]*\n" translation)
-    ;;                      (substring translation (match-end 0))
-    ;;                    translation))
-
     ;; create new output file
-    (with-temp-file "/home/computer/source/org-mode/learn/texts/output-translation"
+    (setq translation (with-temp-file "/home/computer/source/org-mode/learn/texts-output/2-output-translation"
 
       ;; result in file
-      (insert translation))
+      (insert translation)
 
-    ;; create translation list
-    (setq translation-list (my-comma-separated-string-to-list translation))
+      (goto-char (point-min))
 
-    ;; combine lists to one list
-    (setq translation-pairs (my-combine-lists-to-pair sorted-words translation-list))
+      (replace-string " " ",")
 
-    (dolist (pair translation-pairs)
-      (message "%s %s" (car pair)(cadr pair)))
+      (buffer-string)))
+
+    ;; split translation into two paragraphs
+    (setq paragraphs (split-string translation "\n\n+" t))
+
+    (setq french-translation-list (my-comma-separated-string-to-list (car paragraphs)))
+    (setq english-translation-list (my-comma-separated-string-to-list (cadr paragraphs)))
     
+    ;; create lists out of paragraphs
+    
+    ;; create translation list
+    ;;(setq translation-list (my-comma-separated-string-to-list translation))
+
+    ;;TODO
+    (print "[voc] sorted-words:")
+    (print sorted-words)
+    ;;(print "[voc] translation-list:")
+    ;;(print translation-list)
+    (print "[voc] french-translation-list:")
+    (print french-translation-list)
+    (print "[voc] english-translation-list:")
+    (print english-translation-list)
+
+    (print "LENGTH:")
+    (message "%i %i" (length french-translation-list) (length english-translation-list))
+    
+    ;; combine lists to one list
+    (setq translation-pairs (my-combine-lists-to-pair
+                             french-translation-list english-translation-list))
+    
+    (setq counter 0)
+    (message "[voc] translation-pairs: <%i>" (length translation-pairs))
+    (dolist (pair translation-pairs)
+      (message "TEST %i %s %s" counter (car pair)(cadr pair))
+      (setq counter (+ counter 1))
+      )
+
     ;; create org-drill files
     (dolist (pair translation-pairs)
-      (setq org-drill-string (concat org-drill-string "* Q :drill:\n" (car pair) "\n** A\n" (cadr pair) "\n")))
+      (setq org-drill-string
+            (concat org-drill-string "\n";;"* Q :drill:\n"
+                    (car pair) "\n";;"\n** A\n"
+                    (cadr pair) "\n")))
 
     ;; create final output file
-    (with-temp-file "/home/computer/source/org-mode/learn/texts/output-org-drill.org"
+    (with-temp-file "/home/computer/source/org-mode/learn/texts-output/3-output-org-drill.org"
 
       ;; result in file
       (insert org-drill-string))))
@@ -2456,12 +2487,20 @@ I, I, am, a, man, apples, of, the, earth
 (defun my-parse-text-into-list (file-path)
   "Parse text into list."
 
-  (message "[voc] Parse text into list... File path: %s" file-path)
-  
+  (message "[voc] Parse file into list...")
+
   (with-temp-buffer
+
+    (modify-syntax-entry ?' "w")
+    (modify-syntax-entry ?’ "w")
+
     ;; read file
+    (message "[voc] Load file content into buffer...")
     (insert-file-contents file-path)
 
+    (replace-string "’" "'")
+
+    (message "[voc] Go to beginning of buffer...")
     ;; go to beginning of file
     (goto-char (point-min))
 
@@ -2474,21 +2513,22 @@ I, I, am, a, man, apples, of, the, earth
         ;; create temp variable word, store current word
         (let ((word (thing-at-point 'word t)))
 
-          ;; if it is not null
+          ;; if it is not nil
           (when word
-
-            (message "[voc] Current word... <%s>" word)
 
             ;; add it to result
             (push word result)))
 
         ;; go to next word
-        (forward-word))
+        ;;(forward-word))
+        (my-forward-french-word))
         ;;(my-forward-to-next-whitespace))
 
       ;; create new output file
-      (with-temp-file "/home/computer/source/org-mode/learn/texts/output"
+      (setq output-file "/home/computer/source/org-mode/learn/texts-output/4-output")
+      (with-temp-file output-file
 
+        (message "[voc] Write words to file... <%s>" output-file)
         ;; result in file
         (insert (mapconcat 'identity (reverse result) "\n")))
 
@@ -2502,15 +2542,19 @@ I, I, am, a, man, apples, of, the, earth
   "Sort input-list and remove duplicate entries."
 
   (message "[voc] Sort and remove duplicates...")
-  
+
   ;; create temp list sorted-list
   (let ((sorted-list (sort (copy-sequence input-list) 'string<)))
 
-    ;; create duplicates
+    (message "[voc] Remove duplicates...")
+    ;; Remove duplicates
     (delete-dups sorted-list)
 
+    (setq output-file "/home/computer/source/org-mode/learn/texts-output/5-output-2")
+
     ;; write sorted list to file
-    (with-temp-file "/home/computer/source/org-mode/learn/texts/output-2"
+    (message "[voc] Write to <%s>..." output-file)
+    (with-temp-file output-file
 
       ;; result in file
       (insert (mapconcat 'identity sorted-list "\n")))
@@ -2525,7 +2569,7 @@ I, I, am, a, man, apples, of, the, earth
   (interactive)
 
   (message "[voc] Translate word list...")
-  
+
   ;; create temp variable translated-text
   ;; create local string of word-list separated by a comma
   (let ((translated-text nil)
@@ -2564,6 +2608,14 @@ I, I, am, a, man, apples, of, the, earth
   "Remove a specific substring from TRANSLATED-WORDS and print the result."
   (let ((translated-words-redacted (remove-substring translated-words "Translate from French to English:")))
     (message "%s" translated-words-redacted)))
+#+END_SRC
+
+** my-forward-french-word
+#+BEGIN_SRC emacs-lisp
+(defun my-forward-french-word ()
+  "Move forward over a French word, including apostrophes."
+  (interactive)
+  (re-search-forward "\\w+['’]?\\w*" nil "move"))
 #+END_SRC
 
 ** my-forward-to-next-whitespace
