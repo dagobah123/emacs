@@ -14,7 +14,7 @@
 (setq background-magit "#dedede")
 (setq background-magit-dark "#f2f2f2")
 (setq background-mode-line "#cccccc")
-(setq background-region "#000000")
+(setq background-region "#bbbbbb")
 (setq text-branch-current "#000000")
 (setq text-constant "#000000")
 (setq text-constant "#000000")

@@ -2370,6 +2370,15 @@ With a prefix arg, push the name onto the kill ring too."
 (setq org-drill-maximum-items-per-session 1000)
 #+END_SRC
 
+** vocabulary creator test
+#+BEGIN_SRC emacs-lisp
+(defun voc-test ()
+  "Test run voc-test."
+  (interactive)
+  (my-vocabulary-creator-for-org-drill "/home/computer/source/org-mode/learn/texts/fr-hobbit-2"))
+(global-set-key (kbd "C-l v") 'voc-test)
+#+END_SRC
+
 ** vocabulary creator for org-drill
 #+BEGIN_SRC emacs-lisp
 (defun my-vocabulary-creator-for-org-drill (input-file-path)
@@ -2396,7 +2405,7 @@ With a prefix arg, push the name onto the kill ring too."
     (with-temp-file "/home/computer/source/org-mode/learn/texts-output/1-output-sorted-words"
 
       ;; result in file
-      (insert (mapconcat 'identity sorted-words "\n")))
+      (insert (mapconcat 'identity sorted-words "#\n")))
 
     (setq translation (my-translate-word-list sorted-words))
 
@@ -2405,6 +2414,9 @@ With a prefix arg, push the name onto the kill ring too."
                           (substring translation (1+ (match-end 0)))
                         translation))
 
+    (with-temp-file "/home/computer/source/org-mode/learn/texts-output/1-2-output-translation"
+      (insert translation))
+    
     ;; create new output file
     (setq translation (with-temp-file "/home/computer/source/org-mode/learn/texts-output/2-output-translation"
 
@@ -2556,14 +2568,14 @@ I, I, am, a, man, apples, of, the, earth
     ;; Remove duplicates
     (delete-dups sorted-list)
 
-    (setq output-file "/home/computer/source/org-mode/learn/texts-output/5-output-2")
+    (setq output-file "/home/computer/source/org-mode/learn/texts-output/1-1-output")
 
     ;; write sorted list to file
     (message "[voc] Write to <%s>..." output-file)
     (with-temp-file output-file
 
       ;; result in file
-      (insert (mapconcat 'identity sorted-list "\n")))
+      (insert (mapconcat 'identity sorted-list "#\n")))
 
     sorted-list))
 #+END_SRC
@@ -2579,8 +2591,7 @@ I, I, am, a, man, apples, of, the, earth
   ;; create temp variable translated-text
   ;; create local string of word-list separated by a comma
   (let ((translated-text nil)
-        ;;(comma-separated-word-list-string (mapconcat 'identity word-list ", ")))
-        (comma-separated-word-list-string (mapconcat 'identity word-list "\n")))
+        (comma-separated-word-list-string (mapconcat 'identity word-list "#\n")))
 
     ;; create a temporary buffer with the words to translate
     (with-temp-buffer
