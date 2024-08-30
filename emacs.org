@@ -2372,116 +2372,117 @@ With a prefix arg, push the name onto the kill ring too."
 
 ** vocabulary creator test
 #+BEGIN_SRC emacs-lisp
-(defun voc-test ()
+(defun my-vocabulary-test ()
   "Test run voc-test."
   (interactive)
-  (my-vocabulary-creator-for-org-drill "/home/computer/source/org-mode/learn/texts/fr-hobbit-2"))
-(global-set-key (kbd "C-l v") 'voc-test)
+  (my-vocabulary-start "/home/computer/source/org-mode/learn/texts/fr-hobbit-2"))
+(global-set-key (kbd "C-l v") 'my-vocabulary-test)
 #+END_SRC
+
+;;  ;; create temp variable list words
+;;  ;; create temp variable translation
+;;  ;; create temp variable translation-list
+;;  ;; create temp variable translation-pairs
+;;        (translation "")
+;;        (translation-list nil)
+;;        (translation-pairs nil)
+;;        (org-drill-string ""))
 
 ** vocabulary creator for org-drill
 #+BEGIN_SRC emacs-lisp
-(defun my-vocabulary-creator-for-org-drill (input-file-path)
+(defun my-vocabulary-start (input-file-path)
   "Vocabulary creator for org-drill."
   (interactive)
 
   (message "[voc] Starting vocabulary creation...")
-  (message "[voc] Reading file... <%s>" input-file-path)
-
-  ;; create temp variable list words
-  ;; create temp variable translation
-  ;; create temp variable translation-list
-  ;; create temp variable translation-pairs
-  (let ((words (my-parse-text-into-list input-file-path))
-        (translation "")
-        (translation-list nil)
-        (translation-pairs nil)
-        (org-drill-string ""))
-
-    ;; sort and remove duplicate words
-    (setq sorted-words (my-sort-and-remove-duplicates words))
-
-    ;; create new output file
-    (with-temp-file "/home/computer/source/org-mode/learn/texts-output/1-output-sorted-words"
-
-      ;; result in file
-      (insert (mapconcat 'identity sorted-words "#\n")))
-
-    (setq translation (my-translate-word-list sorted-words))
-
-    ;; delete the first line that says: Translate from French to English:
-    (setq translation (if (string-match "\n" translation)
-                          (substring translation (1+ (match-end 0)))
-                        translation))
-
-    (with-temp-file "/home/computer/source/org-mode/learn/texts-output/1-2-output-translation"
-      (insert translation))
-    
-    ;; create new output file
-    (setq translation (with-temp-file "/home/computer/source/org-mode/learn/texts-output/2-output-translation"
-
-      ;; result in file
-      (insert translation)
-
-      (goto-char (point-min))
-
-      (while (not (eobp))
-      (let ((word (thing-at-point 'word)))
-        (when word
-          (let ((start (car (bounds-of-thing-at-point 'word)))
-                (end (cdr (bounds-of-thing-at-point 'word))))
-            (goto-char end)
-            (insert ",")))
-        (forward-word)))
-
-      (buffer-string)))
-
-    ;; split translation into two paragraphs
-    (setq paragraphs (split-string translation "\n\n+" t))
-
-    (setq french-translation-list (my-comma-separated-string-to-list (car paragraphs)))
-    (setq english-translation-list (my-comma-separated-string-to-list (cadr paragraphs)))
-    
-    ;; create lists out of paragraphs
-    
-    ;; create translation list
-    ;;(setq translation-list (my-comma-separated-string-to-list translation))
-
-    ;;TODO
-    (print "[voc] sorted-words:")
-    (print sorted-words)
-    ;;(print "[voc] translation-list:")
-    ;;(print translation-list)
-    (print "[voc] french-translation-list:")
-    (print french-translation-list)
-    (print "[voc] english-translation-list:")
-    (print english-translation-list)
-
-    (print "LENGTH:")
-    (message "%i %i" (length french-translation-list) (length english-translation-list))
-    
-    ;; combine lists to one list
-    (setq translation-pairs (my-combine-lists-to-pair
-                             french-translation-list english-translation-list))
-    
-    (setq counter 0)
-    (message "[voc] translation-pairs: <%i>" (length translation-pairs))
-    (dolist (pair translation-pairs)
-      (message "TEST %i %s %s" counter (car pair)(cadr pair))
-      (setq counter (+ counter 1)))
-
-    ;; create org-drill files
-    (dolist (pair translation-pairs)
-      (setq org-drill-string
-            (concat org-drill-string "\n";;"* Q :drill:\n"
-                    (car pair) "\n";;"\n** A\n"
-                    (cadr pair) "\n")))
-
-    ;; create final output file
-    (with-temp-file "/home/computer/source/org-mode/learn/texts-output/3-output-org-drill.org"
-
-      ;; result in file
-      (insert org-drill-string))))
+ 
+  (let ((words (my-vocabulary-parse input-file-path))
+        ))
+  )
+;;    ;; sort and remove duplicate words
+;;    (setq sorted-words (my-sort-and-remove-duplicates words))
+;; 
+;;    ;; create new output file
+;;    (with-temp-file "/home/computer/source/org-mode/learn/texts-output/1-output-sorted-words"
+;; 
+;;      ;; result in file
+;;      (insert (mapconcat 'identity sorted-words "#\n")))
+;; 
+;;    (setq translation (my-translate-word-list sorted-words))
+;; 
+;;    ;; delete the first line that says: Translate from French to English:
+;;    (setq translation (if (string-match "\n" translation)
+;;                          (substring translation (1+ (match-end 0)))
+;;                        translation))
+;; 
+;;    (with-temp-file "/home/computer/source/org-mode/learn/texts-output/1-2-output-translation"
+;;      (insert translation))
+;;    
+;;    ;; create new output file
+;;    (setq translation (with-temp-file "/home/computer/source/org-mode/learn/texts-output/2-output-translation"
+;; 
+;;      ;; result in file
+;;      (insert translation)
+;; 
+;;      (goto-char (point-min))
+;; 
+;;      (while (not (eobp))
+;;      (let ((word (thing-at-point 'word)))
+;;        (when word
+;;          (let ((start (car (bounds-of-thing-at-point 'word)))
+;;                (end (cdr (bounds-of-thing-at-point 'word))))
+;;            (goto-char end)
+;;            (insert ",")))
+;;        (forward-word)))
+;; 
+;;      (buffer-string)))
+;; 
+;;    ;; split translation into two paragraphs
+;;    (setq paragraphs (split-string translation "\n\n+" t))
+;; 
+;;    (setq french-translation-list (my-comma-separated-string-to-list (car paragraphs)))
+;;    (setq english-translation-list (my-comma-separated-string-to-list (cadr paragraphs)))
+;;    
+;;    ;; create lists out of paragraphs
+;;    
+;;    ;; create translation list
+;;    ;;(setq translation-list (my-comma-separated-string-to-list translation))
+;; 
+;;    ;;TODO
+;;    (print "[voc] sorted-words:")
+;;    (print sorted-words)
+;;    ;;(print "[voc] translation-list:")
+;;    ;;(print translation-list)
+;;    (print "[voc] french-translation-list:")
+;;    (print french-translation-list)
+;;    (print "[voc] english-translation-list:")
+;;    (print english-translation-list)
+;; 
+;;    (print "LENGTH:")
+;;    (message "%i %i" (length french-translation-list) (length english-translation-list))
+;;    
+;;    ;; combine lists to one list
+;;    (setq translation-pairs (my-combine-lists-to-pair
+;;                             french-translation-list english-translation-list))
+;;    
+;;    (setq counter 0)
+;;    (message "[voc] translation-pairs: <%i>" (length translation-pairs))
+;;    (dolist (pair translation-pairs)
+;;      (message "TEST %i %s %s" counter (car pair)(cadr pair))
+;;      (setq counter (+ counter 1)))
+;; 
+;;    ;; create org-drill files
+;;    (dolist (pair translation-pairs)
+;;      (setq org-drill-string
+;;            (concat org-drill-string "\n";;"* Q :drill:\n"
+;;                    (car pair) "\n";;"\n** A\n"
+;;                    (cadr pair) "\n")))
+;; 
+;;    ;; create final output file
+;;    (with-temp-file "/home/computer/source/org-mode/learn/texts-output/3-output-org-drill.org"
+;; 
+;;      ;; result in file
+;;      (insert org-drill-string))))
 #+END_SRC
 
 ** my-combine-lists-to-pair
@@ -2500,26 +2501,24 @@ je, je, suis, un, homme, pommes, des, terre
 I, I, am, a, man, apples, of, the, earth
 "
 
-** my-parse-text-into-list
+** my-vocabulary-parse
 #+BEGIN_SRC emacs-lisp
-(defun my-parse-text-into-list (file-path)
+(defun my-vocabulary-parse (file-path)
   "Parse text into list."
 
-  (message "[voc] Parse file into list...")
+  (message "[voc] Parse file <%s> into list..." file-path)
 
   (with-temp-buffer
 
-    (modify-syntax-entry ?' "w")
-    (modify-syntax-entry ?’ "w")
-
-    ;; read file
-    (message "[voc] Load file content into buffer...")
+    ;; insert file into temp buffer
     (insert-file-contents file-path)
 
-    (replace-string "’" "'")
+    ;; replace right apostrophe with regular one
+    ;;(replace-string "’" "'")
 
-    (message "[voc] Go to beginning of buffer...")
-    ;; go to beginning of file
+    ;; add # as delimiter
+    ;;(replace-string " " "# ")
+
     (goto-char (point-min))
 
     ;; create temp list result
@@ -2538,12 +2537,11 @@ I, I, am, a, man, apples, of, the, earth
             (push word result)))
 
         ;; go to next word
-        ;;(forward-word))
         (my-forward-french-word))
-        ;;(my-forward-to-next-whitespace))
 
       ;; create new output file
-      (setq output-file "/home/computer/source/org-mode/learn/texts-output/4-output")
+      (setq output-file "/home/computer/source/org-mode/learn/texts-output/output-parse")
+
       (with-temp-file output-file
 
         (message "[voc] Write words to file... <%s>" output-file)
@@ -2556,75 +2554,75 @@ I, I, am, a, man, apples, of, the, earth
 
 ** my-sort-and-remove-duplicates
 #+BEGIN_SRC emacs-lisp
-(defun my-sort-and-remove-duplicates (input-list)
-  "Sort input-list and remove duplicate entries."
-
-  (message "[voc] Sort and remove duplicates...")
-
-  ;; create temp list sorted-list
-  (let ((sorted-list (sort (copy-sequence input-list) 'string<)))
-
-    (message "[voc] Remove duplicates...")
-    ;; Remove duplicates
-    (delete-dups sorted-list)
-
-    (setq output-file "/home/computer/source/org-mode/learn/texts-output/1-1-output")
-
-    ;; write sorted list to file
-    (message "[voc] Write to <%s>..." output-file)
-    (with-temp-file output-file
-
-      ;; result in file
-      (insert (mapconcat 'identity sorted-list "#\n")))
-
-    sorted-list))
+;;(defun my-sort-and-remove-duplicates (input-list)
+;;  "Sort input-list and remove duplicate entries."
+;; 
+;;  (message "[voc] Sort and remove duplicates...")
+;; 
+;;  ;; create temp list sorted-list
+;;  (let ((sorted-list (sort (copy-sequence input-list) 'string<)))
+;; 
+;;    (message "[voc] Remove duplicates...")
+;;    ;; Remove duplicates
+;;    (delete-dups sorted-list)
+;; 
+;;    (setq output-file "/home/computer/source/org-mode/learn/texts-output/1-1-output")
+;; 
+;;    ;; write sorted list to file
+;;    (message "[voc] Write to <%s>..." output-file)
+;;    (with-temp-file output-file
+;; 
+;;      ;; result in file
+;;      (insert (mapconcat 'identity sorted-list "#\n")))
+;; 
+;;    sorted-list))
 #+END_SRC
 
 ** my-translate-word-list
 #+BEGIN_SRC emacs-lisp
-(defun my-translate-word-list (word-list)
-  "Translate a list of words using Google Translate and return the translated text."
-  (interactive)
-
-  (message "[voc] Translate word list...")
-
-  ;; create temp variable translated-text
-  ;; create local string of word-list separated by a comma
-  (let ((translated-text nil)
-        (comma-separated-word-list-string (mapconcat 'identity word-list "#\n")))
-
-    ;; create a temporary buffer with the words to translate
-    (with-temp-buffer
-      (insert comma-separated-word-list-string)
-
-      ;; translate the buffer
-      (google-translate-buffer)
-
-      ;; capture the translated text
-      (with-current-buffer "*Google Translate*"
-        (setq translated-text (buffer-string)))
-      (kill-buffer "*Google Translate*"))
-    ;; return the translated text
-    translated-text))
+;;(defun my-translate-word-list (word-list)
+;;  "Translate a list of words using Google Translate and return the translated text."
+;;  (interactive)
+;; 
+;;  (message "[voc] Translate word list...")
+;; 
+;;  ;; create temp variable translated-text
+;;  ;; create local string of word-list separated by a comma
+;;  (let ((translated-text nil)
+;;        (comma-separated-word-list-string (mapconcat 'identity word-list "#\n")))
+;; 
+;;    ;; create a temporary buffer with the words to translate
+;;    (with-temp-buffer
+;;      (insert comma-separated-word-list-string)
+;; 
+;;      ;; translate the buffer
+;;      (google-translate-buffer)
+;; 
+;;      ;; capture the translated text
+;;      (with-current-buffer "*Google Translate*"
+;;        (setq translated-text (buffer-string)))
+;;      (kill-buffer "*Google Translate*"))
+;;    ;; return the translated text
+;;    translated-text))
 #+END_SRC
 
 ** my-comma-separated-string-to-list
 #+BEGIN_SRC emacs-lisp
-(defun my-comma-separated-string-to-list (str)
-  "Convert a comma-separated string STR into a list of trimmed strings."
-  (mapcar 'string-trim (split-string str ",[ \t\n]*" t)))
+;;(defun my-comma-separated-string-to-list (str)
+;;  "Convert a comma-separated string STR into a list of trimmed strings."
+;;  (mapcar 'string-trim (split-string str ",[ \t\n]*" t)))
 #+END_SRC
 
 ** my-store-translations-as-pairs
 #+BEGIN_SRC emacs-lisp
-(defun remove-substring (str substring)
-  "Remove all occurrences of SUBSTRING from STR."
-  (replace-regexp-in-string (regexp-quote substring) "" str))
-
-(defun my-printed-string-without-substring (translated-words)
-  "Remove a specific substring from TRANSLATED-WORDS and print the result."
-  (let ((translated-words-redacted (remove-substring translated-words "Translate from French to English:")))
-    (message "%s" translated-words-redacted)))
+;(defun remove-substring (str substring)
+;  "Remove all occurrences of SUBSTRING from STR."
+;  (replace-regexp-in-string (regexp-quote substring) "" str))
+; 
+;(defun my-printed-string-without-substring (translated-words)
+;  "Remove a specific substring from TRANSLATED-WORDS and print the result."
+;  (let ((translated-words-redacted (remove-substring translated-words "Translate from French to English:")))
+;    (message "%s" translated-words-redacted)))
 #+END_SRC
 
 ** my-forward-french-word
