@@ -749,7 +749,7 @@ Load environment variables properly by installing *exec-path-from-shell*.
  ((string-equal system-type "gnu/linux")
   (cond
    ((string-equal LINUX-VERSION "ubuntu")
-    (progn (setq default-font-size 170) (setq font-size 170)))
+    (progn (setq default-font-size 150) (setq font-size 150)))
    ((string-equal LINUX-VERSION "raspberrypi")
     (progn (setq default-font-size 200) (setq font-size 200))))))
 (set-face-attribute 'default nil :height font-size)
